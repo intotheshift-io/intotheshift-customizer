@@ -121,12 +121,13 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 <script src="catalogue.js"></script>
 <script src="app.js"></script>
 
+
 <div class="stepper-wrap">
   <div class="stepper">
-    <div class="step" onclick="window.location.href='index.html'"><div class="step-circle done">✓</div><span class="step-label done">Choisir</span></div><div class="step-connector"></div>
-    <div class="step" onclick="window.location.href='questions.html'"><div class="step-circle done">✓</div><span class="step-label done">Créer</span></div><div class="step-connector"></div>
-    <div class="step" onclick="window.location.href='parametrage.html'"><div class="step-circle done">✓</div><span class="step-label done">Paramétrer</span></div><div class="step-connector"></div>
-    <div class="step" onclick="window.location.href='campagne.html'"><div class="step-circle done">✓</div><span class="step-label done">Préparer</span></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="parametrage.html">Paramétrer</a></div><div class="step-connector"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="campagne.html">Campagne</a></div><div class="step-connector"></div>
     <div class="step"><div class="step-circle active">5</div><span class="step-label active">Transmettre</span></div>
   </div>
 </div>
@@ -217,7 +218,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
       </section>
 
       <div class="actions">
-        <button class="btn-back" onclick="window.location.href='campagne.html'">← Retour au lancement</button>
+        <button class="btn-back" onclick="window.location.href='campagne.html'">← Retour à la campagne</button>
         <button class="btn-main" id="btn-transmit" onclick="transmit()" disabled>Transmettre pour mise en ligne</button>
       </div>
     </main>

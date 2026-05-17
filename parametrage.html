@@ -72,11 +72,12 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 <script src="catalogue.js"></script>
 <script src="app.js"></script>
 
+
 <div class="stepper-wrap">
   <div class="stepper">
-    <div class="step"><div class="step-circle done">✓</div><span class="step-label done">Choisir</span></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle done">✓</div><span class="step-label done">Créer</span></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrage</span></div><div class="step-connector todo"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector done"></div>
+    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="questions.html">Créer l’autodiagnostic</a></div><div class="step-connector done"></div>
+    <div class="step"><div class="step-circle active">3</div><span class="step-label active">Paramétrer</span></div><div class="step-connector todo"></div>
     <div class="step"><div class="step-circle todo">4</div><span class="step-label todo">Campagne</span></div><div class="step-connector todo"></div>
     <div class="step"><div class="step-circle todo">5</div><span class="step-label todo">Transmettre</span></div>
   </div>
@@ -137,7 +138,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="preview-box" id="preview-box"></div>
       </div>
 
-      <div class="bottom-actions"><button class="btn-back" onclick="goBack()">← Retour à l'éditeur</button><button class="btn-continue" id="btn-continue" onclick="goNext()">Continuer vers le lancement →</button></div>
+      <div class="bottom-actions"><button class="btn-back" onclick="goBack()">← Retour à l'éditeur</button><button class="btn-continue" id="btn-continue" onclick="goNext()">Continuer vers la campagne →</button></div>
     </div>
 
     <div class="sidebar">
@@ -354,8 +355,32 @@ function checkContinue(){
   const ok = baseOk && packOk;
   document.getElementById('btn-continue').disabled=!ok;
 }
+
+async function persistProjectDraft(step, status){
+  save();
+  state.status = status || state.status || 'draft';
+  state.current_step = step || 'parametrage';
+  save();
+  const token = getToken();
+  if(!token) return;
+  try{
+    const response = await fetch(`${API_URL}/api/projects`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
+      body: JSON.stringify({
+        title: state.parametrage?.nom || state.themeTitle || state.title || 'Autodiagnostic',
+        organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
+        data:{step: step || 'parametrage', status: state.status, configTransmise:false, state}
+      })
+    });
+    const saved = await response.json().catch(()=>({}));
+    const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
+    if(id){ state.currentAdId = id; state.project_id = id; save(); }
+  }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
+}
+
 function goBack(){ save(); window.location.href='questions.html'; }
-function goNext(){
+async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
     state.parametrage.mode_quota = "partner";
@@ -363,9 +388,11 @@ function goNext(){
   }
   state.parametrage.done=true;
   save();
+  await persistProjectDraft('parametrage','draft');
   window.location.href='campagne.html';
 }
 init();
 </script>
 </body>
 </html>
+

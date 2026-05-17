@@ -158,15 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       Bibliothèque
     </a>
   `;
-
-  const creationLinks = logged
-    ? `
-      <a class="nav-link ${active("questions.html")}" href="questions.html">Créer</a>
-      <a class="nav-link ${active("parametrage.html")}" href="parametrage.html">Paramétrer</a>
-      <a class="nav-link ${active("campagne.html")}" href="campagne.html">Préparer</a>
-      <a class="nav-link ${active("validation.html")}" href="validation.html">Transmettre</a>
-    `
-    : "";
+  const creationLinks = "";
 
   const authLinks = logged
     ? `
