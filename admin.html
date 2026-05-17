@@ -401,7 +401,14 @@ function hasPartnerLink(o){
   return ownerRole==="partner";
 }
 function getDirectOrganizations(){
-  return getFinalOrganizations().filter(o=>!hasPartnerLink(o));
+  return getFinalOrganizations().filter(o=>{
+    const creatorId = getOrgCreatorId(o);
+    const creator = getUserById(creatorId);
+
+    // On garde uniquement les clients finaux créés par un compte client ITS direct.
+    // On exclut les dossiers créés par un partner ou devenus orphelins après suppression.
+    return creator && !isPartnerUser(creator);
+  });
 }
 function getLinkedOrganizations(){
   return getFinalOrganizations().filter(o=>hasPartnerLink(o));
