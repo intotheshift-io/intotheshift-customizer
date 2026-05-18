@@ -176,6 +176,91 @@
       padding:20px;
       text-align:center;
     }
+
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(13,31,45,.55);
+      z-index:9999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+    .modal-backdrop.open{
+      display:flex;
+    }
+    .modal{
+      width:min(520px,100%);
+      background:#fff;
+      border-radius:24px;
+      box-shadow:0 24px 70px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .modal-header{
+      background:#0d4c72;
+      color:#fff;
+      padding:22px 24px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+    }
+    .modal-header h3{
+      margin:0 0 6px;
+      font-size:22px;
+    }
+    .modal-header p{
+      margin:0;
+      opacity:.9;
+      line-height:1.4;
+      font-size:14px;
+    }
+    .modal-close{
+      border:none;
+      background:rgba(255,255,255,.16);
+      color:#fff;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      font-size:20px;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+    .modal-body{
+      padding:22px 24px;
+      color:#60758a;
+      line-height:1.45;
+    }
+    .modal-highlight{
+      background:#eef6fb;
+      border:1px solid #d7e8f1;
+      color:#0d4c72;
+      border-radius:14px;
+      padding:12px;
+      margin-top:14px;
+      font-weight:800;
+    }
+    .modal-footer{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      padding:0 24px 24px;
+      flex-wrap:wrap;
+    }
+    .success-inline{
+      display:none;
+      margin-top:12px;
+      background:#eefbf3;
+      color:#176239;
+      border:1px solid #bee8cd;
+      border-radius:14px;
+      padding:11px 12px;
+      font-weight:700;
+      font-size:13px;
+    }
+    .success-inline.on{display:block;}
+
     @media(max-width:800px){
       .cards{grid-template-columns:1fr}
       h1{font-size:26px}
@@ -187,7 +272,7 @@
   <div id="header"></div>
 
   <main class="page">
-    <a class="back" href="#" onclick="goBackToClients()">← Retour à mes clients</a>
+    <a class="back" href="partner.html">← Retour à mes clients</a>
 
     <section class="hero">
       <div class="hero-top">
@@ -231,12 +316,37 @@
     </section>
   </main>
 
+
+  <div id="publishModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="publishModalTitle">
+      <div class="modal-header">
+        <div>
+          <h3 id="publishModalTitle">Publier cet autodiagnostic ?</h3>
+          <p>Le statut passera en publié dans le dossier client.</p>
+        </div>
+        <button class="modal-close" type="button" onclick="closePublishModal()" aria-label="Fermer">×</button>
+      </div>
+      <div class="modal-body">
+        Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift.
+        <div id="publishProjectTitle" class="modal-highlight"></div>
+        <div id="publishSuccess" class="success-inline">✓ Autodiagnostic publié.</div>
+      </div>
+      <div class="modal-footer">
+        <button class="small-btn" type="button" onclick="closePublishModal()">Annuler</button>
+        <button id="confirmPublishBtn" class="small-btn publish" type="button" onclick="confirmPublishProject()">Publier</button>
+      </div>
+    </div>
+  </div>
+
   <script src="header.js"></script>
 
   <script>
-    const API_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+    const API_URL = window.location.hostname === 'localhost'
+      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
     let currentClient = null;
+    let projectToPublish = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -251,8 +361,17 @@
       );
     }
 
+    function decodeJwt(token){
+      try{
+        const payload = token.split(".")[1];
+        return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));
+      }catch(e){
+        return null;
+      }
+    }
+
     function getRole(){
-      return localStorage.getItem("its_user_role") || "";
+      return localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "";
     }
 
     function isAdmin(){
@@ -264,33 +383,111 @@
       return params.get("id") || localStorage.getItem("its_selected_partner_client_id");
     }
 
+    function goBackToClients(event){
+      if(event) event.preventDefault();
+
+      if(isAdmin()){
+        window.location.href = "admin.html#organizations";
+        return;
+      }
+
+      window.location.href = "partner.html";
+    }
+
+    function getContactName(client){
+      return (
+        client.contactName ||
+        client.contact_name ||
+        client.ownerName ||
+        client.owner_name ||
+        [client.firstName || client.first_name, client.lastName || client.last_name].filter(Boolean).join(" ").trim() ||
+        "—"
+      );
+    }
+
+    function getContactEmail(client){
+      return client.contactEmail || client.contact_email || client.ownerEmail || client.owner_email || client.email || "";
+    }
+
+    function getProjectTitle(project){
+      const data = project.data || {};
+      const payload = data.payload || data || {};
+      return (
+        payload.titre_autodiag ||
+        data.autodiagTitle ||
+        data.title ||
+        project.title ||
+        "Autodiag sans titre"
+      );
+    }
+
     async function loadClientFolder(){
       const clientId = getClientId();
+      const backLink = document.getElementById("backToClients");
+
+      if(backLink){
+        backLink.textContent = isAdmin()
+          ? "← Retour aux clients finaux"
+          : "← Retour à mes clients";
+      }
 
       if(!clientId){
         alert("Client introuvable.");
-        window.location.href = "partner.html";
+        goBackToClients();
         return;
       }
 
       try{
-        const response = await fetch(`${API_URL}/api/partner/clients`, {
-          headers: {
-            Authorization: `Bearer ${getToken()}`
+        if(isAdmin()){
+          const [orgResponse, projectResponse] = await Promise.all([
+            fetch(`${API_URL}/api/admin/organizations`, {
+              headers: { Authorization: `Bearer ${getToken()}` }
+            }),
+            fetch(`${API_URL}/api/admin/projects`, {
+              headers: { Authorization: `Bearer ${getToken()}` }
+            })
+          ]);
+
+          const orgData = await orgResponse.json().catch(() => ({}));
+          const projectData = await projectResponse.json().catch(() => ({}));
+
+          if(!orgResponse.ok){
+            throw new Error(orgData.error || "Erreur API organisations");
           }
-        });
 
-        const data = await response.json();
+          if(!projectResponse.ok){
+            throw new Error(projectData.error || "Erreur API projets");
+          }
 
-        if(!response.ok){
-          throw new Error(data.error || "Erreur API");
+          const organizations = orgData.organizations || orgData.clients || orgData.data || [];
+          const projects = projectData.projects || projectData.autodiags || projectData.data || [];
+
+          currentClient = organizations.find(c => String(c.id) === String(clientId));
+
+          if(currentClient){
+            currentClient.projects = projects.filter(project =>
+              String(project.organizationId || project.organization_id || project.orgId || project.org_id || "") === String(clientId)
+            );
+          }
+        }else{
+          const response = await fetch(`${API_URL}/api/partner/clients`, {
+            headers: {
+              Authorization: `Bearer ${getToken()}`
+            }
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if(!response.ok){
+            throw new Error(data.error || "Erreur API");
+          }
+
+          currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
         }
-
-        currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
 
         if(!currentClient){
           alert("Client introuvable ou non autorisé.");
-          window.location.href = "partner.html";
+          goBackToClients();
           return;
         }
 
@@ -338,8 +535,8 @@
       document.getElementById("clientName").textContent = currentClient.name || "Dossier client";
 
       document.getElementById("clientMeta").innerHTML = `
-        Contact : ${escapeHtml(currentClient.contact_name || "—")}<br>
-        Email : ${escapeHtml(currentClient.contact_email || "—")}
+        Contact : ${escapeHtml(getContactName(currentClient))}<br>
+        Email : ${escapeHtml(getContactEmail(currentClient) || "—")}
       `;
 
       const projects = currentClient.projects || [];
@@ -356,10 +553,11 @@
 
       adsList.innerHTML = projects.map(project => {
         const normalizedStatus = normalizeStatus(project.status);
+        const projectTitle = getProjectTitle(project);
 
         return `
           <article class="card">
-            <h3>${escapeHtml(project.title || "Autodiag sans titre")}</h3>
+            <h3>${escapeHtml(projectTitle)}</h3>
 
             <span class="status ${getStatusClass(project.status)}">
               ${getStatusLabel(project.status)}
@@ -368,7 +566,7 @@
             <div class="card-actions">
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? `<button class="small-btn publish" onclick="publishProject(${Number(project.id)})">Marquer comme publié</button>`
+                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">Marquer comme publié</button>`
                   : ""
               }
             </div>
@@ -377,14 +575,39 @@
       }).join("");
     }
 
-    async function publishProject(projectId){
+    function openPublishModal(projectId, projectTitle){
       if(!projectId) return;
 
-      const ok = confirm("Confirmer que cet autodiagnostic est publié ?");
-      if(!ok) return;
+      projectToPublish = {
+        id: projectId,
+        title: projectTitle || "Autodiag sélectionné"
+      };
+
+      document.getElementById("publishProjectTitle").textContent = projectToPublish.title;
+      document.getElementById("publishSuccess").classList.remove("on");
+      document.getElementById("publishModal").classList.add("open");
+      document.getElementById("publishModal").setAttribute("aria-hidden", "false");
+    }
+
+    function closePublishModal(){
+      projectToPublish = null;
+      document.getElementById("publishModal").classList.remove("open");
+      document.getElementById("publishModal").setAttribute("aria-hidden", "true");
+    }
+
+    async function confirmPublishProject(){
+      if(!projectToPublish?.id) return;
+
+      const btn = document.getElementById("confirmPublishBtn");
+      const oldText = btn?.textContent || "Publier";
 
       try{
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/status`, {
+        if(btn){
+          btn.disabled = true;
+          btn.textContent = "Publication…";
+        }
+
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/status`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -401,11 +624,21 @@
           throw new Error(data.error || "Erreur publication");
         }
 
-        await loadClientFolder();
+        document.getElementById("publishSuccess").classList.add("on");
+
+        setTimeout(async () => {
+          closePublishModal();
+          await loadClientFolder();
+        }, 650);
 
       } catch(err){
         console.error(err);
-        alert("Impossible de passer cet AD en publié.");
+        alert("Impossible de publier cet autodiagnostic.");
+      } finally {
+        if(btn){
+          btn.disabled = false;
+          btn.textContent = oldText;
+        }
       }
     }
 
@@ -434,6 +667,16 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
     }
+
+    function escapeAttr(value = ""){
+      return escapeHtml(value).replaceAll("`", "&#096;");
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape"){
+        closePublishModal();
+      }
+    });
   </script>
 </body>
 </html>

@@ -719,9 +719,14 @@ function renderOrganizations(){
   grid.innerHTML=rows.map(o=>{
     const id=val(o,["id"],"");
     const name=getOrgName(o);
-    const contactName=val(o,["contactName","contact_name"],"—");
-    const contactEmail=val(o,["contactEmail","contact_email"],"");
     const ownerName=val(o,["ownerName","owner_name"],"—");
+    const contactName=(
+      val(o,["contactName","contact_name"],"") ||
+      [val(o,["contactFirstName","contact_first_name","firstName","first_name"],""), val(o,["contactLastName","contact_last_name","lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
+      ownerName ||
+      "—"
+    );
+    const contactEmail=val(o,["contactEmail","contact_email","ownerEmail","owner_email"],"");
     const ownerEmail=val(o,["ownerEmail","owner_email"],"");
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
     const pack=val(o,["passationsPack","passations_pack"],"");
@@ -1099,10 +1104,19 @@ function hideError(){const box=document.getElementById("errorBox");box.style.dis
 function showSuccess(msg){hideError();const box=document.getElementById("successBox");box.textContent=msg;box.style.display="block";setTimeout(()=>hideSuccess(),3500);}
 function hideSuccess(){const box=document.getElementById("successBox");box.style.display="none";box.textContent="";}
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", async ()=>{
   resetAdminFilters();
   setTimeout(resetAdminFilters,250);
-  if(requireAdmin())loadAdminData();
+
+  if(requireAdmin()){
+    await loadAdminData();
+
+    const initialTab = String(window.location.hash || "").replace("#", "").trim();
+    if(["global","create","accounts","partners","organizations","projects"].includes(initialTab)){
+      showTab(initialTab);
+      document.getElementById("tab-" + initialTab)?.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  }
 });
 </script>
 <div id="deleteProjectModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
