@@ -930,6 +930,45 @@ function closeTransmitModal(){
 }
 
 
+async function sendClientRecapEmail(payload, token){
+  const email = payload?.client_info?.email || "";
+  if(!email){
+    console.warn("Email récap client non envoyé : email client manquant.");
+    return { ok:false, reason:"MISSING_CLIENT_EMAIL" };
+  }
+
+  try{
+    const response = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/transmissions/client-recap", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + token
+      },
+      body: JSON.stringify({
+        client_info: payload.client_info,
+        entreprise: payload.entreprise,
+        titre_autodiag: payload.titre_autodiag,
+        titre_repondants: payload.titre_repondants,
+        pdf_html: payload.pdf_html,
+        recap_html: payload.pdf_html,
+        subject: "Récapitulatif de votre configuration Shift Studio — " + (payload.titre_repondants || payload.titre_autodiag || "autodiagnostic")
+      })
+    });
+
+    const json = await response.json().catch(() => ({}));
+    if(!response.ok || json.ok === false){
+      console.warn("Email récap client non confirmé", response.status, json);
+      return { ok:false, reason:json.emailStatus || json.error || "SEND_FAILED" };
+    }
+
+    return { ok:true };
+  }catch(e){
+    console.warn("Erreur envoi email récap client", e);
+    return { ok:false, reason:"REQUEST_FAILED" };
+  }
+}
+
+
 function getCurrentProjectIdForSave(){
   return state.currentAdId || state.project_id || state.projectId ||
     localStorage.getItem('its_current_project_id') ||
@@ -1030,6 +1069,11 @@ async function transmit(){
     }
   }
 
+  const clientRecapResult = await sendClientRecapEmail(payload, token);
+  state.transmission.client_recap_email_sent = clientRecapResult.ok === true;
+  state.transmission.client_recap_email_status = clientRecapResult.reason || (clientRecapResult.ok ? 'SENT' : 'NOT_SENT');
+  if (typeof itsSave === 'function') itsSave(state);
+
   if(sentOk){
     state.status = 'sent';
     state.configTransmise = true;
@@ -1038,7 +1082,7 @@ async function transmit(){
     state.transmission.status = 'sent';
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
-    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Pour tout changement, contactez contact@intotheshift.io.');
+    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Un récapitulatif vient d’être envoyé à l’email renseigné. Pour tout changement, contactez contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
