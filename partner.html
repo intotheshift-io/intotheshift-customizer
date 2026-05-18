@@ -520,7 +520,7 @@
     <section id="clientsGrid" class="clients-grid"></section>
 
     <section id="emptyState" class="empty">
-      Aucun client ne correspond à votre recherche.
+      Aucun client final pour le moment. Ajoutez un client pour créer son cockpit, ses autodiagnostics, ses campagnes et ses résultats.
     </section>
 
   </main>
@@ -572,6 +572,7 @@
     const API_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
     let clients = [];
+    let currentPartner = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
       if(!protectPartnerPage()) return;
@@ -691,6 +692,7 @@
 
         const data = await response.json();
         const partner = data.partner || data.user || data || {};
+        currentPartner = partner;
 
         const quota = Number(partner.passations_quota || partner.passationsQuota || 0);
         const used = Number(partner.passations_used || partner.passationsUsed || 0);
@@ -735,35 +737,57 @@
 
         const data = await response.json();
 
-        clients = (data.clients || []).map(client => {
-          const projects = client.projects || [];
+        const partnerCompany = String(currentPartner?.companyName || currentPartner?.company_name || "").trim().toLowerCase();
+        const partnerEmail = String(currentPartner?.email || "").trim().toLowerCase();
 
-          return {
-            id: client.id,
-            name: client.name,
-            contact: client.contact_name || "—",
-            email: client.contact_email || "",
-            status: Number(client.active_campaigns_count || 0) > 0 ? "active" : "draft",
-            ads: projects.map(project => {
+        clients = (data.clients || [])
+          .filter(client => {
+            const clientName = String(client.name || "").trim().toLowerCase();
+            const clientEmail = String(client.contact_email || client.contactEmail || "").trim().toLowerCase();
+            const hasProjects = Array.isArray(client.projects) && client.projects.length > 0;
 
-              const configSent = isProjectConfigSent(project);
+            // Sécurité front : un partner ne doit pas se voir lui-même comme client.
+            // On masque uniquement le dossier automatique vide qui reprend son entreprise/email.
+            if(
+              partnerCompany &&
+              clientName === partnerCompany &&
+              (!clientEmail || clientEmail === partnerEmail) &&
+              !hasProjects
+            ){
+              return false;
+            }
 
-              return {
-                id: project.id,
-                title:
-                  project?.data?.payload?.titre_autodiag ||
-                  project?.data?.autodiagTitle ||
-                  project.title ||
-                  "Autodiag",
-                campaign: configSent ? "Configuration transmise" : "Brouillon",
-                status:
-                  project.status ||
-                  (configSent ? "sent" : "draft"),
-                raw: project
-              };
-            })
-          };
-        });
+            return true;
+          })
+          .map(client => {
+            const projects = client.projects || [];
+
+            return {
+              id: client.id,
+              name: client.name,
+              contact: client.contact_name || "—",
+              email: client.contact_email || "",
+              status: Number(client.active_campaigns_count || 0) > 0 ? "active" : "draft",
+              ads: projects.map(project => {
+
+                const configSent = isProjectConfigSent(project);
+
+                return {
+                  id: project.id,
+                  title:
+                    project?.data?.payload?.titre_autodiag ||
+                    project?.data?.autodiagTitle ||
+                    project.title ||
+                    "Autodiag",
+                  campaign: configSent ? "Configuration transmise" : "Brouillon",
+                  status:
+                    project.status ||
+                    (configSent ? "sent" : "draft"),
+                  raw: project
+                };
+              })
+            };
+          });
 
         renderClients(clients);
         updateStats(clients);
