@@ -69,6 +69,9 @@ td{padding:13px 12px;border-bottom:1px solid #edf2f6;font-size:14px;vertical-ali
 .form-actions{display:flex;gap:8px;align-items:center;grid-column:3;justify-content:flex-start}
 .form-msg{font-size:13px;color:#60758a;margin:-4px 0 14px}
 .actions-cell{display:flex;gap:8px;flex-wrap:wrap}
+.admin-logo-actions{display:flex;gap:8px;flex-wrap:wrap;min-width:190px}
+.admin-logo-actions .mini-btn{font-size:12px;padding:7px 9px}
+.admin-logo-actions .muted{width:100%}
 .password-wrap{position:relative;width:100%}
 .password-wrap .admin-input{padding-right:46px}
 .eye-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#0d4c72;font-size:18px;cursor:pointer;padding:6px;border-radius:10px;line-height:1}
@@ -245,6 +248,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow-x:hid
                 <th>Compte</th>
                 <th>Email</th>
                 <th>Entreprise / organisme</th>
+                <th>Images</th>
                 <th>Rôle</th>
                 <th>Changer rôle</th>
                 <th>Projets</th>
@@ -361,6 +365,23 @@ function statusBadge(status){const s=String(status||"brouillon").toLowerCase();i
 function isConfigSent(project){const sent=val(project,["config_transmise","configSent","submitted","is_submitted"],false);const status=String(val(project,["status","statut"],"")).toLowerCase();return sent===true||sent==="true"||status.includes("transmis")||status.includes("submitted");}
 function getCompany(c){return val(c,["companyName","company_name","company","organization","organisation","entreprise"],"");}
 function getUserName(c){return (val(c,["firstName","first_name"],"") + " " + val(c,["lastName","last_name"],"")).trim() || val(c,["name","full_name"],"—");}
+function getUserLogos(c){
+  return {
+    orgName: val(c,["organizationLogoName","organization_logo_name"],""),
+    orgData: val(c,["organizationLogoDataUrl","organization_logo_data_url"],""),
+    passName: val(c,["passationLogoName","passation_logo_name"],""),
+    passData: val(c,["passationLogoDataUrl","passation_logo_data_url"],"")
+  };
+}
+function downloadDataUrl(dataUrl,fileName){
+  if(!dataUrl)return;
+  const a=document.createElement("a");
+  a.href=dataUrl;
+  a.download=fileName || "logo-shift-studio.png";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
 function getPartnerIdFromOrg(o){
   return val(o,["partnerId","partner_id","parent_id","parentId","partner_user_id","partnerUserId"],"");
 }
@@ -586,6 +607,7 @@ function renderAccounts(){
     const company=getCompany(c);
     const role=String(val(c,["role"],"client")).toLowerCase();
     const status=val(c,["status","statut"],"actif");
+    const logos=getUserLogos(c);
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Supprimer ce compte";
@@ -597,6 +619,13 @@ function renderAccounts(){
         <div class="company-edit">
           <input id="company-${escapeAttr(id)}" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
           <button class="mini-btn light" onclick="saveUserCompany('${escapeAttr(id)}')">Enregistrer</button>
+        </div>
+      </td>
+      <td>
+        <div class="admin-logo-actions">
+          ${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Logo organisation</button>`:""}
+          ${logos.passData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.passData)}','${escapeAttr(logos.passName || "logo-passation.png")}')">Logo passation</button>`:""}
+          ${(!logos.orgData&&!logos.passData)?`<span class="muted">Aucune image</span>`:""}
         </div>
       </td>
       <td id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</td>
