@@ -548,6 +548,19 @@ if (isBlankMode) {
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
 } else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
+  const hasProjectId = typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId();
+  if(hasProjectId && typeof itsBootstrapProjectFromUrl === 'function'){
+    document.body.innerHTML = '<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d">Chargement du projet…</div>';
+    itsBootstrapProjectFromUrl().then(() => {
+      const loaded = typeof itsLoad === 'function' ? itsLoad() : {};
+      if(loaded && Array.isArray(loaded.chapters) && loaded.chapters.length){
+        window.location.reload();
+      }else{
+        window.location.href = 'index.html';
+      }
+    });
+    throw new Error('Chargement projet en cours');
+  }
   window.location.href = 'index.html';
 }
 
@@ -1904,6 +1917,10 @@ if (needsBlankSetup()) {
   renderMain();
   updateSaveButton();
   syncToState();
+}
+
+if(typeof itsApplyReadOnlyMode === 'function'){
+  setTimeout(() => itsApplyReadOnlyMode(), 50);
 }
 </script>
 </body>

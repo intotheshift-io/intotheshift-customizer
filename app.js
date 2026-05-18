@@ -21,7 +21,13 @@ function itsGetCurrentUserKey() {
 }
 
 function itsGetStorageKey() {
-  return "intotheshift_customizer_state_v1_" + itsGetCurrentUserKey();
+  const projectId =
+    localStorage.getItem("its_current_project_id") ||
+    localStorage.getItem("its_current_ad_id") ||
+    "";
+
+  const base = "intotheshift_customizer_state_v1_" + itsGetCurrentUserKey();
+  return projectId ? base + "_project_" + String(projectId) : base;
 }
 
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
@@ -199,13 +205,16 @@ async function itsSyncProjectToApi(state) {
     const json = await res.json();
     const savedId = json?.project?.id || json?.id || json?.project_id;
     if (savedId) {
-      itsSetCurrentProjectId(savedId);
       try {
-        const latest = itsLoad();
+        const latest = itsUnwrapProjectData(state || {});
         latest.currentAdId = savedId;
         latest.project_id = savedId;
+        latest.projectId = savedId;
+        itsSetCurrentProjectId(savedId);
         localStorage.setItem(itsGetStorageKey(), JSON.stringify(latest));
-      } catch(e) {}
+      } catch(e) {
+        itsSetCurrentProjectId(savedId);
+      }
     }
   } catch(e) {
     console.warn("Sauvegarde projet API impossible", e);
@@ -249,12 +258,30 @@ function itsRestoreProject(project) {
     data.step = realProject.currentStep || realProject.current_step;
   }
 
-  if (realProject.status && !data.status) {
+  if (realProject.status) {
     data.status = realProject.status;
+  }
+
+  if (realProject.share_url || realProject.shareUrl) {
+    data.share_url = realProject.share_url || realProject.shareUrl;
+    data.shareUrl = realProject.share_url || realProject.shareUrl;
+  }
+
+  if (realProject.results_url || realProject.resultsUrl) {
+    data.results_url = realProject.results_url || realProject.resultsUrl;
+    data.resultsUrl = realProject.results_url || realProject.resultsUrl;
+  }
+
+  if (realProject.published_at || realProject.publishedAt) {
+    data.published_at = realProject.published_at || realProject.publishedAt;
+    data.publishedAt = realProject.published_at || realProject.publishedAt;
   }
 
   itsIsRestoringProject = true;
   localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
+  if (projectId) {
+    sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(realProject));
+  }
   itsIsRestoringProject = false;
 
   return true;
@@ -271,6 +298,11 @@ function itsResumeUrlForProject(project) {
   ).toLowerCase();
   const id = encodeURIComponent(project?.id || project?.project_id || "");
   const suffix = id ? `?projectId=${id}` : "";
+
+  const status = itsNormalizeProjectStatus(project);
+  if (status === "published" || status === "sent" || status === "submitted" || status === "archived") {
+    return "validation.html" + suffix;
+  }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
   if (rawStep.includes("campagne")) return "campagne.html" + suffix;
@@ -318,13 +350,35 @@ function itsStartFromCatalogue(adId) {
     chapters: itsClone(ad.chapters || []),
     meta: {
       nom: "Autodiagnostic " + ad.title,
-      titre: "",
-      desc: "Campagne interne Mon entreprise sur " + ad.title + ".",
+      titre: ad.title,
+      desc: "Campagne interne sur " + ad.title + ".",
       slug: itsSlugify(ad.title),
       date_lancement: "",
       date_cloture: ""
     },
     intro: ad.intro || "",
+    parametrage: {
+      nom: "Autodiagnostic " + ad.title,
+      titre: ad.title,
+      desc: "Campagne interne sur " + ad.title + ".",
+      slug: itsSlugify(ad.title),
+      entreprise: "",
+      date_lancement: "",
+      date_cloture: "",
+      pack_choisi: "",
+      nb_repondants: 120,
+      intro: ad.intro || (
+        "Bienvenue dans cet autodiagnostic consacré à " + ad.title + ". Vous allez découvrir des situations concrètes du quotidien professionnel et choisir les réactions qui correspondent le mieux à vos réflexes. Il ne s’agit pas d’une évaluation individuelle : l’objectif est de favoriser la prise de conscience et d’identifier des pistes d’action utiles. Cet autodiagnostic est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP. Répondez sincèrement, sans chercher la bonne réponse. Les résultats seront analysés de manière agrégée."
+      ),
+      sociodemo: [
+        { q:"À quelle catégorie appartenez-vous ?", opts:["Collaborateur·rice","Manager","Direction"], min_groupe:25 },
+        { q:"Quel est votre service principal ?", opts:["Production","Maintenance","RH","Fonctions support","Autre"], min_groupe:10 }
+      ],
+      resources: [
+        { titre:"Comprendre les bons réflexes", url:"https://www.monentreprise.fr/ressources/reflexes" },
+        { titre:"Accéder aux consignes internes", url:"https://www.monentreprise.fr/ressources/consignes" }
+      ]
+    },
     packPassations: "",
     demographics: [
       { q:"À quelle catégorie appartenez-vous ?", opts:["Collaborateur·rice","Manager","Direction"], min_groupe:25 },
@@ -334,6 +388,7 @@ function itsStartFromCatalogue(adId) {
       { titre:"Comprendre les bons réflexes", url:"https://www.monentreprise.fr/ressources/reflexes" },
       { titre:"Accéder aux consignes internes", url:"https://www.monentreprise.fr/ressources/consignes" }
     ],
+    status: "draft",
     step: "questions",
     current_step: "questions"
   };
@@ -343,4 +398,151 @@ function itsStartFromCatalogue(adId) {
 }
 
 
+
+function itsNormalizeProjectStatus(projectOrState) {
+  const project = projectOrState || {};
+  const data = itsUnwrapProjectData(project.data || project.payload || project.configuration || project);
+  const raw = String(
+    project.status ||
+    project.project_status ||
+    data.status ||
+    data.project_status ||
+    ""
+  ).toLowerCase();
+
+  const sentFlag =
+    project.configTransmise === true ||
+    project.config_transmise === true ||
+    project.submitted === true ||
+    data.configTransmise === true ||
+    data.config_transmise === true ||
+    data.submitted === true ||
+    data.transmission?.status === "sent" ||
+    !!data.submitted_at;
+
+  if (raw.includes("archiv")) return "archived";
+  if (raw.includes("publish") || raw.includes("publi") || raw.includes("ligne") || raw.includes("result")) return "published";
+  if (raw.includes("sent") || raw.includes("submitted") || raw.includes("transmis") || sentFlag) return "sent";
+  return "draft";
+}
+
+function itsIsProjectReadOnly(state) {
+  const status = itsNormalizeProjectStatus(state || itsLoad());
+  return status === "published" || status === "archived";
+}
+
+async function itsFetchProjectById(projectId) {
+  const token = itsGetToken();
+  if (!token || !projectId) return null;
+
+  try {
+    const res = await fetch(ITS_API_BASE + "/api/projects", {
+      headers: { "Authorization": "Bearer " + token }
+    });
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    const projects = Array.isArray(json.projects) ? json.projects : [];
+    return projects.find(p => String(p.id || p.project_id || p.projectId) === String(projectId)) || null;
+  } catch(e) {
+    console.warn("Chargement projet API impossible", e);
+    return null;
+  }
+}
+
+async function itsBootstrapProjectFromUrl() {
+  const projectId = itsGetCurrentProjectId();
+  if (!projectId) return itsLoad();
+
+  try {
+    const cached = sessionStorage.getItem("its_project_cache_" + projectId);
+    if (cached) {
+      itsRestoreProject(JSON.parse(cached));
+      return itsLoad();
+    }
+  } catch(e) {}
+
+  const local = itsLoad();
+  if (local && Array.isArray(local.chapters) && local.chapters.length) {
+    return local;
+  }
+
+  const project = await itsFetchProjectById(projectId);
+  if (project) {
+    itsRestoreProject(project);
+    return itsLoad();
+  }
+
+  return local || {};
+}
+
+function itsInjectReadOnlyBanner(message) {
+  if (document.getElementById("its-readonly-banner")) return;
+
+  const banner = document.createElement("div");
+  banner.id = "its-readonly-banner";
+  banner.style.cssText = "background:#f0fbf2;border-bottom:1px solid #b8e8c0;color:#18375d;padding:12px 24px;font-family:Asap,sans-serif;font-size:13px;line-height:1.45;font-weight:700";
+  banner.innerHTML = message || "Cet autodiagnostic est publié. Cette page est en lecture seule. Pour toute modification, contactez <a href=\"mailto:contact@intotheshift.io\" style=\"color:#0d4c72;font-weight:900;text-decoration:none\">contact@intotheshift.io</a>.";
+
+  const header = document.getElementById("header");
+  if (header && header.parentNode) {
+    header.parentNode.insertBefore(banner, header.nextSibling);
+  } else {
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+}
+
+function itsApplyReadOnlyMode(options = {}) {
+  const state = itsLoad();
+  if (!itsIsProjectReadOnly(state)) return false;
+
+  document.body.classList.add("its-readonly-mode");
+  itsInjectReadOnlyBanner(options.message);
+
+  document.querySelectorAll(".step-link").forEach(link => {
+    link.removeAttribute("href");
+    link.style.pointerEvents = "none";
+    link.style.opacity = ".55";
+    link.title = "Navigation bloquée : projet publié";
+  });
+
+  document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.disabled = true;
+    el.style.cursor = "not-allowed";
+  });
+
+  document.querySelectorAll("[contenteditable='true']").forEach(el => {
+    el.setAttribute("contenteditable", "false");
+    el.style.cursor = "not-allowed";
+    el.style.opacity = ".78";
+  });
+
+  document.querySelectorAll("button").forEach(btn => {
+    const txt = (btn.textContent || "").toLowerCase();
+    const keep =
+      txt.includes("copier") ||
+      txt.includes("tester") ||
+      txt.includes("télécharger") ||
+      txt.includes("telecharger") ||
+      btn.classList.contains("pass-close") ||
+      btn.classList.contains("preview-close");
+    if (!keep) {
+      btn.disabled = true;
+      btn.style.cursor = "not-allowed";
+      btn.style.opacity = ".55";
+    }
+  });
+
+  const style = document.createElement("style");
+  style.textContent = ".its-readonly-mode .bottom-actions{display:none!important}.its-readonly-mode .btn-add-chapter,.its-readonly-mode .btn-save{display:none!important}";
+  document.head.appendChild(style);
+
+  return true;
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => itsApplyReadOnlyMode());
+} else {
+  setTimeout(() => itsApplyReadOnlyMode(), 0);
+}
 

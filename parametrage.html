@@ -167,10 +167,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 <script>
 const API_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
-let state = itsLoad();
-if(!state.chapters){ window.location.href = 'index.html'; }
-if(!state.parametrage) state.parametrage = {};
-if(!state.parametrage.sociodemo) state.parametrage.sociodemo = [{q:"À quelle catégorie appartenez-vous ?",opts:["Collaborateur·rice","Manager","Direction"],min_groupe:25}];
+let state = {};
 
 function getToken(){
   return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
@@ -395,7 +392,7 @@ async function persistProjectDraft(step, status){
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
-async async function goNext(){
+async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
     state.parametrage.mode_quota = "partner";
@@ -406,7 +403,29 @@ async async function goNext(){
   await persistProjectDraft('parametrage','draft');
   window.location.href='campagne.html';
 }
-init();
+async function bootParametragePage(){
+  if(typeof itsBootstrapProjectFromUrl === "function"){
+    state = await itsBootstrapProjectFromUrl();
+  } else {
+    state = itsLoad();
+  }
+
+  if(!state || !state.chapters){
+    window.location.href = 'index.html';
+    return;
+  }
+
+  if(!state.parametrage) state.parametrage = {};
+  if(!state.parametrage.sociodemo) state.parametrage.sociodemo = [{q:"À quelle catégorie appartenez-vous ?",opts:["Collaborateur·rice","Manager","Direction"],min_groupe:25}];
+
+  init();
+
+  if(typeof itsApplyReadOnlyMode === "function"){
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
+  }
+}
+
+bootParametragePage();
 </script>
 </body>
 </html>

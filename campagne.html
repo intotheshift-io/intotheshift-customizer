@@ -60,8 +60,7 @@
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
 <script>
-let state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
-if(!state || !state.chapters){ state={theme:{title:'Sécurité & culture de sûreté'},chapters:[]}; }
+let state = {};
 function saveState(){ if(typeof itsSave==='function') itsSave(state); else localStorage.setItem('intoTheShiftState',JSON.stringify(state)); }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function slugify(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
@@ -182,7 +181,25 @@ async function persistProjectDraft(step, status){
   }catch(e){ console.error('Sauvegarde backend impossible pour la campagne', e); }
 }
 
-function init(){document.getElementById('bc-theme').textContent=cleanTheme();document.getElementById('sb-title').textContent=cleanTheme();if(document.getElementById('company-name'))document.getElementById('company-name').value=companyName();refreshLaunchUrl();document.getElementById('date-launch').value=p().date_lancement||'';document.getElementById('date-close').value=p().date_cloture||'';updateDatesUI();document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.questions||[]).length,0);document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.profiles||ch.profils||[]).length,0);let v=(state.parametrage&&state.parametrage.pack_choisi)||(state.pack&&state.pack.volume)||'';document.getElementById('pack-select').value=v;document.getElementById('pack-val').textContent=packLabel(v);let ck=c().checklist||{};document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));refreshLaunchUrl();updateChecklist()}async async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}init();
+function init(){document.getElementById('bc-theme').textContent=cleanTheme();document.getElementById('sb-title').textContent=cleanTheme();if(document.getElementById('company-name'))document.getElementById('company-name').value=companyName();refreshLaunchUrl();document.getElementById('date-launch').value=p().date_lancement||'';document.getElementById('date-close').value=p().date_cloture||'';updateDatesUI();document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.questions||[]).length,0);document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.profiles||ch.profils||[]).length,0);let v=(state.parametrage&&state.parametrage.pack_choisi)||(state.pack&&state.pack.volume)||'';document.getElementById('pack-select').value=v;document.getElementById('pack-val').textContent=packLabel(v);let ck=c().checklist||{};document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));refreshLaunchUrl();updateChecklist()}async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}async function bootCampagnePage(){
+  if(typeof itsBootstrapProjectFromUrl === "function"){
+    state = await itsBootstrapProjectFromUrl();
+  } else {
+    state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
+  }
+
+  if(!state || !state.chapters){
+    state={theme:{title:'Sécurité & culture de sûreté'},chapters:[]};
+  }
+
+  init();
+
+  if(typeof itsApplyReadOnlyMode === "function"){
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
+  }
+}
+
+bootCampagnePage();
 </script>
 
 <script>
