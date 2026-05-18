@@ -132,15 +132,21 @@
     let currentFilter = "all";
 
     function token() {
-      return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
+      return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+    }
+
+    function parseData(p){
+      let d = p?.data || {};
+      if(typeof d === "string"){ try{ d = JSON.parse(d); }catch(e){ d = {}; } }
+      return d && typeof d === "object" ? d : {};
     }
 
     function normalizeStatus(project) {
       const raw = String(project.status || project.project_status || "").toLowerCase();
-
-      if (raw.includes("result")) return "results";
-      if (raw.includes("publi")) return "published";
-      if (raw.includes("transmis") || raw.includes("submitted")) return "submitted";
+      const d = parseData(project);
+      if (raw === "results" || raw.includes("result") || project.resultsUrl || project.results_url) return "results";
+      if (raw === "published" || raw.includes("publi")) return "published";
+      if (raw === "sent" || raw.includes("transmis") || raw.includes("submitted") || d.configTransmise || d.config_transmise || d.submitted) return "submitted";
       if (raw.includes("archiv")) return "archived";
       return "draft";
     }
@@ -157,43 +163,23 @@
 
     function formatDate(value) {
       if (!value) return "—";
-      try {
-        return new Date(value).toLocaleDateString("fr-FR");
-      } catch {
-        return "—";
-      }
+      try { return new Date(value).toLocaleDateString("fr-FR"); } catch { return "—"; }
     }
 
     function getTitle(p) {
-      return p.title || p.name || p.project_name || p.ad_title || "Autodiagnostic sans titre";
+      const d = parseData(p);
+      const prm = d.parametrage || d.meta || {};
+      return p.title || d.autodiagTitle || d.title || d.titre || prm.titre || prm.nom || "Autodiagnostic sans titre";
     }
 
     function deepFindTheme(obj, depth = 0) {
       if (!obj || depth > 5) return "";
-
-      if (typeof obj === "string") {
-        const s = obj.trim();
-        if (!s) return "";
-        if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
-          try { return deepFindTheme(JSON.parse(s), depth + 1); } catch(e) {}
-        }
-        return "";
-      }
-
+      if (typeof obj === "string") return "";
       if (Array.isArray(obj)) {
-        for (const item of obj) {
-          const found = deepFindTheme(item, depth + 1);
-          if (found) return found;
-        }
+        for (const item of obj) { const found = deepFindTheme(item, depth + 1); if (found) return found; }
         return "";
       }
-
-      const keys = [
-        "theme", "thematique", "thématique", "selectedTheme", "themeLabel", "themeName",
-        "baseTheme", "catalogTheme", "base_theme", "catalog_theme", "category", "topic",
-        "categorie", "catégorie", "subject", "domaine", "universe", "libraryTheme"
-      ];
-
+      const keys = ["theme", "thematique", "thématique", "selectedTheme", "themeLabel", "themeName", "category", "topic", "subject"];
       for (const key of keys) {
         const value = obj[key];
         if (!value) continue;
@@ -201,73 +187,52 @@
         if (typeof value === "object") {
           const label = value.title || value.name || value.label || value.titre || value.nom;
           if (label) return String(label).trim();
-          const found = deepFindTheme(value, depth + 1);
-          if (found) return found;
         }
       }
-
-      const likelyContainers = ["data", "payload", "meta", "config", "parametrage", "settings", "source", "base", "catalogue", "template"];
-      for (const key of likelyContainers) {
+      for (const key of ["data", "payload", "meta", "config", "parametrage", "settings", "source", "base", "catalogue", "template"]) {
         const found = deepFindTheme(obj[key], depth + 1);
         if (found) return found;
       }
-
       return "";
     }
 
     function inferThemeFromTitle(title) {
       const t = String(title || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      if (t.includes("rps") || t.includes("risques psychosociaux") || t.includes("qvt") || t.includes("signaux faibles")) return "QVT & RPS";
-      if (t.includes("fraude") || t.includes("cyber") || t.includes("phishing") || t.includes("numerique")) return "Cybersécurité";
-      if (t.includes("securite") || t.includes("surete") || t.includes("accident") || t.includes("risque")) return "Sécurité & sûreté au travail";
-      if (t.includes("changer") || t.includes("transformation") || t.includes("management") || t.includes("manager")) return "Transformation & management";
-      if (t.includes("energie") || t.includes("sobriete") || t.includes("rse") || t.includes("environnement")) return "RSE";
+      if (t.includes("rps") || t.includes("qvt")) return "QVT & RPS";
+      if (t.includes("fraude") || t.includes("cyber") || t.includes("phishing")) return "Cybersécurité";
+      if (t.includes("securite") || t.includes("surete")) return "Sécurité & sûreté au travail";
+      if (t.includes("transformation") || t.includes("management") || t.includes("manager")) return "Transformation & management";
+      if (t.includes("rse") || t.includes("environnement")) return "RSE";
       if (t.includes("ethique") || t.includes("compliance") || t.includes("conformite")) return "Éthique & compliance";
-
       return "";
     }
 
-    function getTheme(p) {
-      return deepFindTheme(p) || inferThemeFromTitle(getTitle(p)) || "Thématique non renseignée";
-    }
+    function getTheme(p) { return deepFindTheme(p) || inferThemeFromTitle(getTitle(p)) || "Thématique non renseignée"; }
 
     function getCampaignDates(p) {
-      const start = p.campaign_start_date || p.start_date;
-      const end = p.campaign_end_date || p.end_date;
+      const d = parseData(p);
+      const prm = d.parametrage || {};
+      const start = p.campaign_start_date || p.start_date || prm.date_lancement || prm.dateLancement;
+      const end = p.campaign_end_date || p.end_date || prm.date_cloture || prm.dateCloture;
       if (!start && !end) return "Dates de campagne non renseignées";
       return `Campagne : ${formatDate(start)} → ${formatDate(end)}`;
     }
 
-    function projectEditUrl(p) {
-      const id = p.id || p.project_id;
-      return id ? `questions.html?projectId=${encodeURIComponent(id)}` : "questions.html";
-    }
+    function getShareUrl(p){ return p.shareUrl || p.share_url || p.ad_url || p.public_url || ""; }
+    function getResultsUrl(p){ return p.resultsUrl || p.results_url || p.result_url || ""; }
 
-    function campaignUrl(p) {
-      const id = p.id || p.project_id;
-      const status = normalizeStatus(p);
-      const readonly = (status === "published" || status === "results" || status === "archived") ? "readonly=1" : "";
-      if (id && readonly) return `campagne.html?projectId=${encodeURIComponent(id)}&${readonly}`;
-      if (id) return `campagne.html?projectId=${encodeURIComponent(id)}`;
-      return readonly ? "campagne.html?readonly=1" : "campagne.html";
-    }
+    function openExternal(url) { if (url) window.open(url, "_blank", "noopener,noreferrer"); }
+    function copyText(text) { if (!text) return alert("Aucun lien n’est encore disponible."); navigator.clipboard.writeText(text); alert("Lien copié."); }
 
-    function openExternal(url) {
-      if (!url) return;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-
-    function copyText(text) {
-      if (!text) return alert("Aucun lien n’est encore disponible.");
-      navigator.clipboard.writeText(text);
-      alert("Lien copié.");
+    async function api(path, opts={}){
+      const res = await fetch(API_BASE + path, { ...opts, headers:{ "Content-Type":"application/json", "Authorization":"Bearer " + token(), ...(opts.headers||{}) }});
+      if(!res.ok){ const e = await res.json().catch(()=>({})); throw new Error(e.error || "Erreur API"); }
+      return await res.json();
     }
 
     function renderStats() {
       const counts = { draft:0, submitted:0, published:0, results:0 };
       projects.forEach(p => counts[normalizeStatus(p)] = (counts[normalizeStatus(p)] || 0) + 1);
-
       document.getElementById("countAll").textContent = projects.length;
       document.getElementById("countDraft").textContent = counts.draft || 0;
       document.getElementById("countSubmitted").textContent = counts.submitted || 0;
@@ -277,7 +242,6 @@
     function renderProjects() {
       const list = document.getElementById("adList");
       const q = document.getElementById("searchInput").value.trim().toLowerCase();
-
       const filtered = projects.filter(p => {
         const status = normalizeStatus(p);
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
@@ -285,12 +249,7 @@
       });
 
       if (!filtered.length) {
-        list.innerHTML = `
-          <div class="empty">
-            <strong>Aucun autodiagnostic trouvé</strong>
-            Aucun élément ne correspond à ce filtre.
-          </div>
-        `;
+        list.innerHTML = `<div class="empty"><strong>Aucun autodiagnostic trouvé</strong>Aucun élément ne correspond à ce filtre.</div>`;
         return;
       }
 
@@ -298,64 +257,45 @@
         const status = normalizeStatus(p);
         const title = getTitle(p);
         const theme = getTheme(p);
-        const shareUrl = p.share_url || p.ad_url || p.public_url || "";
-        const resultsUrl = p.results_url || p.result_url || "";
-        const isLocked = status === "published" || status === "results" || status === "archived";
-        const canEdit = status === "draft" || status === "submitted";
-        const hasShare = Boolean(shareUrl);
-        const hasResults = Boolean(resultsUrl);
+        const shareUrl = getShareUrl(p);
+        const resultsUrl = getResultsUrl(p);
+        const canResume = status === "draft" || status === "submitted";
+        const canClone = status === "submitted" || status === "published" || status === "results";
+        const showShare = (status === "published" || status === "results") && Boolean(shareUrl);
+        const showResults = status === "results" && Boolean(resultsUrl);
+        const id = p.id || p.project_id || "";
 
         return `
           <article class="card">
             <div class="bar ${status}"></div>
-
             <div>
               <div class="title">${escapeHtml(title)}</div>
               <div class="meta">
-                Créé le ${formatDate(p.created_at || p.createdAt)} ·
-                ${getCampaignDates(p)}<br>
-                Lien de diffusion : ${hasShare ? "disponible" : "en attente admin"} ·
-                Résultats : ${hasResults ? "disponibles" : "non disponibles"}
+                Créé le ${formatDate(p.created_at || p.createdAt)} · ${getCampaignDates(p)}<br>
+                ${showShare ? "Lien de diffusion disponible" : "Lien de diffusion disponible après publication par Into The Shift"} ·
+                ${showResults ? "Résultats disponibles" : "Résultats non disponibles"}
               </div>
-              <div class="tags">
-                <span class="tag">${escapeHtml(theme)}</span>
-                ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
-              </div>
+              <div class="tags"><span class="tag">${escapeHtml(theme)}</span>${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}</div>
             </div>
-
             <div class="actions">
               <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
-                ${canEdit ? `
-                  <button class="btn btn-blue" onclick="window.location.href='${projectEditUrl(p)}'">
-                    Modifier le contenu
-                  </button>
-                ` : `
-                  <div class="contact-note">
-                    Pour toute modification, contactez-nous :
-                    <a href="mailto:contact@intotheshift.io">contact@intotheshift.io</a>
-                  </div>
-                `}
-                <button class="btn btn-green" ${hasShare ? "" : "disabled"} onclick="openExternal('${escapeAttr(shareUrl)}')">
-                  Voir l’AD
-                </button>
-                <button class="btn" ${hasResults ? "" : "disabled"} onclick="openExternal('${escapeAttr(resultsUrl)}')">
-                  Résultats
-                </button>
+                ${canResume ? `<button class="btn btn-blue" onclick="resumeProject('${escapeAttr(id)}')">Reprendre là où je me suis arrêté</button>` : ""}
+                ${showShare ? `<button class="btn btn-green" onclick="openExternal('${escapeAttr(shareUrl)}')">Voir l’AD</button>` : ""}
+                ${showResults ? `<button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">Résultats</button>` : ""}
                 <button class="btn" onclick="toggleMenu(${index})">···</button>
               </div>
+              ${!canResume && !showShare && status !== "archived" ? `<div class="contact-note">Publication en cours côté Into The Shift.</div>` : ""}
             </div>
-
             <div class="menu" id="menu-${index}">
-              <button onclick="window.location.href='${campaignUrl(p)}'">${isLocked ? "Voir la campagne" : "Préparer la campagne"}</button>
-              <button ${hasShare ? "" : "disabled"} onclick="copyText('${escapeAttr(shareUrl)}')">Copier le lien de diffusion</button>
-              <button ${hasResults ? "" : "disabled"} onclick="copyText('${escapeAttr(resultsUrl)}')">Copier le lien résultats</button>
-              <div class="sep"></div>
-              <button onclick="duplicateProject('${p.id || p.project_id || ""}')">Cloner</button>
-              ${isLocked ? "" : `<button class="danger" onclick="archiveProject('${p.id || p.project_id || ""}')">Archiver</button>`}
+              ${canResume ? `<button onclick="resumeProject('${escapeAttr(id)}')">Reprendre là où je me suis arrêté</button>` : ""}
+              ${showShare ? `<button onclick="copyText('${escapeAttr(shareUrl)}')">Copier le lien de diffusion</button>` : ""}
+              ${showResults ? `<button onclick="copyText('${escapeAttr(resultsUrl)}')">Copier le lien résultats</button>` : ""}
+              ${showShare || showResults || canResume ? `<div class="sep"></div>` : ""}
+              <button ${canClone ? "" : "disabled"} onclick="duplicateProject('${escapeAttr(id)}')">Cloner${canClone ? "" : " — disponible après transmission"}</button>
+              ${status === "draft" ? `<button class="danger" onclick="archiveProject('${escapeAttr(id)}')">Archiver</button>` : ""}
             </div>
-          </article>
-        `;
+          </article>`;
       }).join("");
     }
 
@@ -366,9 +306,7 @@
     }
 
     document.addEventListener("click", e => {
-      if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
-        document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
-      }
+      if (!e.target.closest(".menu") && !e.target.closest(".btn")) document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
     });
 
     document.querySelectorAll(".tab").forEach(tab => {
@@ -379,52 +317,57 @@
         renderProjects();
       });
     });
-
     document.getElementById("searchInput").addEventListener("input", renderProjects);
+
+    async function resumeProject(id) {
+      if (!id) return alert("Projet introuvable.");
+      if (typeof itsOpenProject === "function") return itsOpenProject(id);
+      const data = await api(`/api/projects/${encodeURIComponent(id)}`);
+      localStorage.setItem("its_current_project_id", id);
+      localStorage.setItem("its_current_ad_id", id);
+      localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(data.project?.data || {}));
+      window.location.href = "questions.html?projectId=" + encodeURIComponent(id);
+    }
 
     async function loadProjects() {
       try {
-        const res = await fetch(`${API_BASE}/api/projects`, {
-          headers: { Authorization: `Bearer ${token()}` }
-        });
-
-        if (!res.ok) throw new Error("Erreur API");
-
-        const data = await res.json();
+        const data = await api("/api/projects");
         projects = Array.isArray(data) ? data : (data.projects || data.items || []);
+        localStorage.setItem("its_projects_cache", JSON.stringify(projects));
       } catch (e) {
         projects = JSON.parse(localStorage.getItem("its_projects_cache") || "[]");
       }
-
       renderStats();
       renderProjects();
     }
 
     async function duplicateProject(id) {
       if (!id) return alert("Projet introuvable.");
-      alert("Le clonage sera branché ensuite sur l’API.");
+      try {
+        const data = await api(`/api/projects/${encodeURIComponent(id)}/clone`, { method:"POST", body:JSON.stringify({}) });
+        const clone = data.project;
+        if (typeof itsStoreProjectLocally === "function") itsStoreProjectLocally(clone);
+        alert("Autodiagnostic cloné. Vous pouvez modifier la copie sans toucher à l’original.");
+        window.location.href = "questions.html?projectId=" + encodeURIComponent(clone.id);
+      } catch(e) { alert(e.message || "Clonage impossible."); }
     }
 
     async function archiveProject(id) {
       if (!id) return alert("Projet introuvable.");
       if (!confirm("Archiver cet autodiagnostic ?")) return;
-      alert("L’archivage sera branché ensuite sur l’API.");
+      try {
+        await api(`/api/projects/${encodeURIComponent(id)}`, { method:"PUT", body:JSON.stringify({ status:"archived", currentStep:"archived" }) });
+        await loadProjects();
+      } catch(e) { alert(e.message || "Archivage impossible."); }
     }
 
     function escapeHtml(str) {
-      return String(str || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      return String(str || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
     }
-
-    function escapeAttr(str) {
-      return escapeHtml(str).replaceAll("`", "");
-    }
+    function escapeAttr(str) { return escapeHtml(str).replaceAll("`", ""); }
 
     loadProjects();
-  </script>
+  </script>  </script>
 </body>
 </html>
+
