@@ -188,8 +188,8 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow-x:hid
           Règle métier : un <strong>partner</strong> possède un quota global. Ses clients finaux consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
         </div>
         <div class="global-cards">
-          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('results')"><span>Résultats disponibles</span><strong id="globalResults">—</strong></div></div></article>
-          <article class="global-card"><div class="global-ico">🚀</div><div style="width:100%"><h3>Publication</h3><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalToPublish">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés sans résultats</span><strong id="globalPublishedNoResults">—</strong></div><div class="global-line clickable" onclick="goToProjects('', 'sans lien diffusion')"><span>Sans lien diffusion</span><strong id="globalNoShare">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">🚀</div><div style="width:100%"><h3>Publication</h3><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalToPublish">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublishedNoResults">—</strong></div><div class="global-line clickable" onclick="goToProjects('', 'sans lien diffusion')"><span>Sans lien diffusion</span><strong id="globalNoShare">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🏢</div><div style="width:100%"><h3>Clients</h3><div class="global-line clickable" onclick="goToOrganizations()"><span>Clients directs</span><strong id="kpiDirectOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Clients partners</span><strong id="kpiLinkedOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Partners</span><strong id="globalPartners">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">📊</div><div style="width:100%"><h3>Passations partners</h3><div class="global-line clickable" onclick="goToPartners()"><span>Achetées</span><strong id="kpiPartnerQuota">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Utilisées</span><strong id="kpiPartnerUsed">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Restantes</span><strong id="globalPartnerRemaining">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>Transmis sans lien</span><strong id="globalSentNoShare">—</strong></div></div></article>
@@ -302,8 +302,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow-x:hid
               <option value="draft">Brouillon</option>
               <option value="sent">Transmis</option>
               <option value="published">Publié</option>
-              <option value="results">Résultats disponibles</option>
-            </select>
+                          </select>
           </div>
         </div>
         <div id="projectsLoading" class="loading">Chargement des projets...</div>
@@ -545,11 +544,11 @@ function renderKpis(){
   const finalOrgs=getFinalOrganizations();
   const linkedOrgs=getLinkedOrganizations().length;
   const directOrgs=getDirectOrganizations().length;
-  const statusCounts={draft:0,sent:0,published:0,results:0};
+  const statusCounts={draft:0,sent:0,published:0};
   adminState.projects.forEach(p=>{const st=getProjectEffectiveStatus(p);statusCounts[st]=(statusCounts[st]||0)+1;});
   const sentNoShare=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="sent"&&!getProjectShareUrl(p)).length;
-  const noShare=adminState.projects.filter(p=>["sent","published","results"].includes(getProjectEffectiveStatus(p))&&!getProjectShareUrl(p)).length;
-  const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="published"&&!getProjectResultsUrl(p)).length;
+  const noShare=adminState.projects.filter(p=>["sent","published"].includes(getProjectEffectiveStatus(p))&&!getProjectShareUrl(p)).length;
+  const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="published").length;
   const noCompany=adminState.clients.filter(c=>!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
   document.getElementById("kpiUsers").textContent=val(adminState.summary,["users","usersCount","totalUsers"],adminState.clients.length);
@@ -559,7 +558,7 @@ function renderKpis(){
   document.getElementById("kpiLinkedOrgs").textContent=linkedOrgs;
   document.getElementById("kpiDirectOrgs").textContent=directOrgs;
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
-  set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalResults",statusCounts.results||0);
+  set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
   set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
   document.getElementById("sideUsers").textContent=adminState.clients.length;
@@ -725,7 +724,7 @@ function getProjectEffectiveStatus(p){
   const raw = String(val(p,["status","statut"],"draft")).toLowerCase();
   const sentFlag = val(p,["config_transmise","configTransmise","configSent","submitted","is_submitted"],false);
   const resultsUrl = getProjectResultsUrl(p);
-  if(raw === "results" || raw.includes("result") || !!resultsUrl) return "results";
+  if(raw === "results" || raw.includes("result")) return "published";
   if(raw === "published" || raw.includes("publi") || raw.includes("ligne")) return "published";
   if(raw === "sent" || raw.includes("transmis") || raw.includes("submitted")) return "sent";
   if(sentFlag === true || sentFlag === "true") return "sent";
@@ -734,7 +733,7 @@ function getProjectEffectiveStatus(p){
 
 function getProjectStatusLabel(status){
   const s = String(status || "draft").toLowerCase();
-  if(s === "results") return "Résultats disponibles";
+  if(s === "results") return "Publié";
   if(s === "published") return "Publié";
   if(s === "sent") return "Transmis";
   return "Brouillon";
@@ -742,7 +741,7 @@ function getProjectStatusLabel(status){
 
 function projectStatusBadge(status){
   const s = String(status || "draft").toLowerCase();
-  if(s === "results") return `<span class="badge badge-results">Résultats disponibles</span>`;
+  if(s === "results") return `<span class="badge badge-published">Publié</span>`;
   if(s === "published") return `<span class="badge badge-published">Publié</span>`;
   if(s === "sent") return `<span class="badge badge-sent">Transmis</span>`;
   return `<span class="badge badge-draft">Brouillon</span>`;
@@ -756,14 +755,14 @@ function isProjectConfigActuallySent(p){
     sentFlag === true ||
     sentFlag === "true" ||
     effectiveStatus === "sent" ||
-    effectiveStatus === "published" || effectiveStatus === "results"
+    effectiveStatus === "published"
   );
 }
 
 function renderProjects(){
   const q=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
   const sf=(document.getElementById("statusFilter")?.value||"").toLowerCase();
-  const rows=adminState.projects.filter(p=>{const effectiveStatus=getProjectEffectiveStatus(p);const text=JSON.stringify(p).toLowerCase();const specialNoShare=q==="sans lien diffusion";return(!q||specialNoShare||text.includes(q))&&(!sf||effectiveStatus===sf)&&(!specialNoShare||(["sent","published","results"].includes(effectiveStatus)&&!getProjectShareUrl(p)));});
+  const rows=adminState.projects.filter(p=>{const effectiveStatus=getProjectEffectiveStatus(p);const text=JSON.stringify(p).toLowerCase();const specialNoShare=q==="sans lien diffusion";return(!q||specialNoShare||text.includes(q))&&(!sf||effectiveStatus===sf)&&(!specialNoShare||(["sent","published"].includes(effectiveStatus)&&!getProjectShareUrl(p)));});
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
@@ -782,31 +781,56 @@ function renderProjects(){
         <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
       </div>
       <div class="project-publication">
-        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="results" ${status==="results"?"selected":""}>Résultats disponibles</option></select></div>
-        <div class="publication-field"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
-        <div class="publication-field"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
+        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option></select></div>
+        <div class="publication-field publication-url-field" id="project-share-wrap-${escapeAttr(id)}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(status==="published"?share:"")}" placeholder="https://..."></div>
+        <div class="publication-field publication-url-field" id="project-results-wrap-${escapeAttr(id)}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(status==="published"?results:"")}" placeholder="https://..."></div>
         <button class="mini-btn" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
-        <div class="publication-current">
-          <div><strong>URL diffusion enregistrée :</strong> ${share ? `<a href="${escapeAttr(share)}" target="_blank" rel="noopener noreferrer">${escapeHtml(share)}</a>` : "non renseignée"}</div>
-          <div><strong>URL résultats enregistrée :</strong> ${results ? `<a href="${escapeAttr(results)}" target="_blank" rel="noopener noreferrer">${escapeHtml(results)}</a>` : "non renseignée"}</div>
+        <div class="publication-current" id="project-current-${escapeAttr(id)}">
+          ${status==="published" ? `<div><strong>URL diffusion enregistrée :</strong> ${share ? `<a href="${escapeAttr(share)}" target="_blank" rel="noopener noreferrer">${escapeHtml(share)}</a>` : "non renseignée"}</div><div><strong>URL résultats enregistrée :</strong> ${results ? `<a href="${escapeAttr(results)}" target="_blank" rel="noopener noreferrer">${escapeHtml(results)}</a>` : "non renseignée"}</div>` : `<div><strong>URLs :</strong> elles seront renseignées uniquement au moment du passage en Publié.</div>`}
         </div>
-        <div class="publication-help">${status==="draft"?"En attente de transmission par le client.":status==="sent"?"Ajoute l’URL de diffusion puis passe en Publié. Après enregistrement, les URL restent visibles ci-dessus et côté client.":status==="published"?"L’AD est visible côté client. Ajoute l’URL résultats quand elle est disponible.":"Le client peut consulter l’AD et les résultats."}</div>
+        <div class="publication-help">${status==="draft"?"Brouillon : aucune URL à renseigner.":status==="sent"?"Transmis : en attente de publication. Passe le statut en Publié pour renseigner les URL.":"Publié : l’URL de diffusion et l’URL résultats sont obligatoires."}</div>
       </div>
     </article>`;
   }).join("");
   document.getElementById("projectsEmpty").style.display=rows.length?"none":"block";
+  refreshPublicationUrlFields();
+}
+
+function togglePublicationUrlFields(projectId){
+  const status=document.getElementById("project-status-"+String(projectId))?.value || "draft";
+  const show=status==="published";
+  ["project-share-wrap-","project-results-wrap-"].forEach(prefix=>{
+    const el=document.getElementById(prefix+String(projectId));
+    if(el)el.style.display=show?"flex":"none";
+  });
+  if(!show){
+    const share=document.getElementById("project-share-"+String(projectId));
+    const results=document.getElementById("project-results-"+String(projectId));
+    if(share)share.value="";
+    if(results)results.value="";
+  }
+}
+
+function refreshPublicationUrlFields(){
+  adminState.projects.forEach(p=>{
+    const id=val(p,["id"],"");
+    if(id)togglePublicationUrlFields(id);
+  });
 }
 
 async function saveProjectPublication(projectId){
   if(!projectId)return;
   const status=document.getElementById("project-status-"+String(projectId))?.value || "draft";
-  const shareUrl=document.getElementById("project-share-"+String(projectId))?.value.trim() || "";
-  const resultsUrl=document.getElementById("project-results-"+String(projectId))?.value.trim() || "";
+  let shareUrl=document.getElementById("project-share-"+String(projectId))?.value.trim() || "";
+  let resultsUrl=document.getElementById("project-results-"+String(projectId))?.value.trim() || "";
+  if(status!=="published"){shareUrl="";resultsUrl="";}
+  if(status==="published" && (!shareUrl || !resultsUrl)){showError("Pour passer en Publié, renseigne l’URL de diffusion et l’URL résultats.");return;}
   try{
     await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{status,share_url:shareUrl,results_url:resultsUrl,shareUrl,resultsUrl});
     adminState.projects=adminState.projects.map(p=>String(val(p,["id"],""))===String(projectId)?{...p,status,statut:status,share_url:shareUrl,shareUrl,results_url:resultsUrl,resultsUrl}:p);
     renderAll();
+    refreshPublicationUrlFields();
     showSuccess("Publication mise à jour : " + getProjectStatusLabel(status) + ".");
   }catch(err){console.error(err);showError("Mise à jour publication impossible. Détail : "+err.message);}
 }
@@ -832,6 +856,7 @@ async function confirmDeleteProject(){
     adminState.projects = adminState.projects.filter(p => String(val(p,["id"],"")) !== String(projectToDelete.id));
     closeDeleteProjectModal();
     renderAll();
+    refreshPublicationUrlFields();
     showSuccess("Autodiag supprimé.");
   }catch(err){
     console.error(err);
@@ -940,6 +965,7 @@ async function changeRole(userId){
       return c;
     });
     renderAll();
+    refreshPublicationUrlFields();
     showSuccess("Rôle mis à jour.");
   }catch(err){
     if(badgeCell)badgeCell.innerHTML=roleBadge(previousRole);

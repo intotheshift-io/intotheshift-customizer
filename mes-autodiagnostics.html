@@ -36,8 +36,7 @@
     .bar.draft{background:#94a3b8}
     .bar.submitted{background:#ffc744}
     .bar.published{background:#007883}
-    .bar.results{background:#77CD8a}
-    .bar.archived{background:#cbd5e1}
+        .bar.archived{background:#cbd5e1}
 
     .title{font-size:16px;font-weight:800;color:#18375d;margin-bottom:5px}
     .meta{font-size:13px;color:#64748b;line-height:1.5}
@@ -47,8 +46,7 @@
     .status.draft{background:#edf1f7;color:#475569}
     .status.submitted{background:#fff4d5;color:#9a6700}
     .status.published{background:#e5f4f5;color:#007883}
-    .status.results{background:#e8f8ef;color:#22824d}
-    .status.archived{background:#f1f4f8;color:#94a3b8}
+        .status.archived{background:#f1f4f8;color:#94a3b8}
 
     .actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
     .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
@@ -109,7 +107,7 @@
       <div class="stat"><strong id="countAll">0</strong><span>Total</span></div>
       <div class="stat"><strong id="countDraft">0</strong><span>Brouillons</span></div>
       <div class="stat"><strong id="countSubmitted">0</strong><span>Transmis</span></div>
-      <div class="stat"><strong id="countPublished">0</strong><span>Publiés / résultats</span></div>
+      <div class="stat"><strong id="countPublished">0</strong><span>Publiés</span></div>
     </section>
 
     <section class="toolbar">
@@ -118,8 +116,7 @@
         <button class="tab" data-filter="draft">Brouillons</button>
         <button class="tab" data-filter="submitted">Transmis</button>
         <button class="tab" data-filter="published">Publiés</button>
-        <button class="tab" data-filter="results">Résultats disponibles</button>
-      </div>
+              </div>
       <div class="search">
         <input id="searchInput" type="search" placeholder="Rechercher un autodiagnostic..." />
       </div>
@@ -158,7 +155,7 @@
         payload.config_transmise === true ||
         payload.submitted === true;
 
-      if (raw.includes("result")) return "results";
+      if (raw.includes("result")) return "published";
       if (raw.includes("publi")) return "published";
       if (raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
       if (raw.includes("archiv")) return "archived";
@@ -170,7 +167,6 @@
         draft: "Brouillon",
         submitted: "Transmis à Into The Shift",
         published: "Publié",
-        results: "Résultats disponibles",
         archived: "Archivé"
       }[status] || "Brouillon";
     }
@@ -305,7 +301,7 @@
 
     function resumeLabel(project) {
       const status = normalizeStatus(project);
-      if (status === "published" || status === "results" || status === "archived") return "Voir le projet";
+      if (status === "published" || status === "archived") return "Voir le projet";
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "Reprendre la transmission";
@@ -319,7 +315,7 @@
       const id = project.id || project.project_id || "";
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
-      if (status === "published" || status === "results" || status === "archived") return "validation.html" + suffix;
+      if (status === "published" || status === "archived") return "validation.html" + suffix;
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
@@ -350,7 +346,7 @@
     }
 
     function canCloneProject(project) {
-      return ["submitted", "published", "results"].includes(normalizeStatus(project));
+      return ["submitted", "published"].includes(normalizeStatus(project));
     }
 
     function openExternal(url) {
@@ -365,13 +361,13 @@
     }
 
     function renderStats() {
-      const counts = { draft:0, submitted:0, published:0, results:0 };
+      const counts = { draft:0, submitted:0, published:0 };
       projects.forEach(p => counts[normalizeStatus(p)] = (counts[normalizeStatus(p)] || 0) + 1);
 
       document.getElementById("countAll").textContent = projects.length;
       document.getElementById("countDraft").textContent = counts.draft || 0;
       document.getElementById("countSubmitted").textContent = counts.submitted || 0;
-      document.getElementById("countPublished").textContent = (counts.published || 0) + (counts.results || 0);
+      document.getElementById("countPublished").textContent = counts.published || 0;
     }
 
     function renderProjects() {
@@ -402,9 +398,9 @@
         const theme = getTheme(p);
         const shareUrl = getShareUrl(p);
         const resultsUrl = getResultsUrl(p);
-        const isLocked = status === "published" || status === "results" || status === "archived";
-        const hasShare = (status === "published" || status === "results") && Boolean(shareUrl);
-        const hasResults = status === "results" && Boolean(resultsUrl);
+        const isLocked = status === "published" || status === "archived";
+        const hasShare = status === "published" && Boolean(shareUrl);
+        const hasResults = status === "published" && Boolean(resultsUrl);
         const canClone = canCloneProject(p);
 
         return `
@@ -419,10 +415,10 @@
                 Lien de diffusion : ${hasShare ? "disponible" : "en attente admin"} ·
                 Résultats : ${hasResults ? "disponibles" : "non disponibles"}
               </div>
-              <div class="url-lines">
+              ${status === "published" ? `<div class="url-lines">
                 ${shareUrl ? `<div class="url-line"><strong>URL diffusion :</strong> <a href="${escapeAttr(shareUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(shareUrl)}</a></div>` : ""}
                 ${resultsUrl ? `<div class="url-line"><strong>URL résultats :</strong> <a href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resultsUrl)}</a></div>` : ""}
-              </div>
+              </div>` : ""}
               <div class="tags">
                 <span class="tag">${escapeHtml(theme)}</span>
                 ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
@@ -450,12 +446,12 @@
                     Cloner
                   </button>
                 ` : ""}
-                ${status === "draft" ? `<button class="btn" onclick="toggleMenu(${index})">···</button>` : ""}
+                ${status === "draft" ? `<button class="btn" onclick="toggleMenu(${originalIndex})">···</button>` : ""}
               </div>
             </div>
 
             ${status === "draft" ? `
-              <div class="menu" id="menu-${index}">
+              <div class="menu" id="menu-${originalIndex}">
                 <button class="danger" onclick="archiveProject('${p.id || p.project_id || ""}')">Archiver</button>
               </div>
             ` : ""}
