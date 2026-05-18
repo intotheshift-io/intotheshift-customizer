@@ -299,6 +299,11 @@
       return val(project,["campaignEndDate","campaign_end_date","endDate","end_date"], val(data,["campaignEndDate","campaign_end_date","date_cloture","dateCloture"], val(param,["date_cloture","dateCloture"],"")));
     }
 
+    function getCurrentProjectById(projectId){
+      const projects = currentClient?.projects || [];
+      return projects.find(project => String(project.id) === String(projectId)) || null;
+    }
+
     function formatDate(value){
       if(!value) return "—";
       const d = new Date(value);
@@ -441,7 +446,7 @@
             <div class="card-actions">
               <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
               ${isAdmin()
-                ? `<button class="small-btn" onclick="showTabByName('campaigns')">Voir campagne</button>`
+                ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
                 : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
               }
               ${
@@ -457,7 +462,7 @@
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p));
+      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
 
       if(!campaignProjects.length){
         list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
@@ -467,7 +472,10 @@
       list.innerHTML = campaignProjects.map(project => {
         const title = getProjectTitle(project);
         const share = getProjectShareUrl(project);
+        const results = getProjectResultsUrl(project);
         const status = normalizeStatus(project.status);
+        const isPublished = status === "published" || status === "unpublished";
+
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
@@ -476,10 +484,29 @@
               Début : ${formatDate(getProjectStartDate(project))}<br>
               Fin : ${formatDate(getProjectEndDate(project))}
             </div>
-            ${share ? `<div class="url-line"><code>${escapeHtml(share)}</code><a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a></div>` : `<div class="empty" style="padding:14px;text-align:left">URL de diffusion non renseignée.</div>`}
+
+            <div style="display:grid;gap:10px;margin-top:10px">
+              <div>
+                <div class="info-label">URL de diffusion</div>
+                ${share
+                  ? `<div class="url-line"><code>${escapeHtml(share)}</code><a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a><button class="small-btn" onclick="copyText('${escapeAttr(share)}')">Copier</button></div>`
+                  : `<div class="empty" style="padding:14px;text-align:left">URL de diffusion non renseignée dans l’onglet AD de l’admin.</div>`
+                }
+              </div>
+
+              <div>
+                <div class="info-label">URL résultats</div>
+                ${results
+                  ? `<div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a><button class="small-btn" onclick="copyText('${escapeAttr(results)}')">Copier</button></div>`
+                  : `<div class="empty" style="padding:14px;text-align:left">URL résultats non renseignée dans l’onglet AD de l’admin.</div>`
+                }
+              </div>
+            </div>
+
             <div class="card-actions">
+              <button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>
               <button class="small-btn" onclick="copyCampaignMessage('${escapeAttr(title)}','${escapeAttr(share)}')">Message campagne</button>
-              ${status === "published" && share ? `<button class="small-btn main" onclick="copyText('${escapeAttr(share)}')">Copier URL</button>` : ""}
+              ${isPublished && share ? `<button class="small-btn main" onclick="copyText('${escapeAttr(share)}')">Copier URL diffusion</button>` : ""}
             </div>
           </article>
         `;
@@ -567,9 +594,24 @@
       window.location.href = "campagne.html";
     }
 
+    function openCampaignPage(projectId){
+      if(projectId) localStorage.setItem("its_current_project_id", projectId);
+      localStorage.setItem("its_selected_partner_client_id", getClientId());
+      window.location.href = "campagne.html";
+    }
+
     function openPublishModal(projectId, projectTitle){
       if(!projectId) return;
-      projectToPublish = { id: projectId, title: projectTitle || "Autodiag sélectionné" };
+      const project = getCurrentProjectById(projectId);
+      projectToPublish = {
+        id: projectId,
+        title: projectTitle || "Autodiag sélectionné",
+        shareUrl: project ? getProjectShareUrl(project) : "",
+        resultsUrl: project ? getProjectResultsUrl(project) : "",
+        campaignStartDate: project ? getProjectStartDate(project) : "",
+        campaignEndDate: project ? getProjectEndDate(project) : ""
+      };
+
       document.getElementById("publishProjectTitle").textContent = projectToPublish.title;
       document.getElementById("publishSuccess").classList.remove("on");
       document.getElementById("publishModal").classList.add("open");
@@ -591,13 +633,27 @@
       try{
         if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
 
-        const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/status`, {
+        if(!projectToPublish.shareUrl || !projectToPublish.resultsUrl){
+          throw new Error("Renseigne d’abord l’URL de diffusion et l’URL résultats dans Admin > Autodiags, puis enregistre l’AD comme publié.");
+        }
+
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/publication`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${getToken()}`
           },
-          body: JSON.stringify({ status: "published" })
+          body: JSON.stringify({
+            status: "published",
+            shareUrl: projectToPublish.shareUrl,
+            resultsUrl: projectToPublish.resultsUrl,
+            share_url: projectToPublish.shareUrl,
+            results_url: projectToPublish.resultsUrl,
+            campaignStartDate: projectToPublish.campaignStartDate,
+            campaignEndDate: projectToPublish.campaignEndDate,
+            campaign_start_date: projectToPublish.campaignStartDate,
+            campaign_end_date: projectToPublish.campaignEndDate
+          })
         });
 
         const data = await response.json().catch(() => ({}));
@@ -612,7 +668,7 @@
 
       }catch(err){
         console.error(err);
-        alert("Impossible de publier cet autodiagnostic.");
+        alert(err.message || "Impossible de publier cet autodiagnostic.");
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
