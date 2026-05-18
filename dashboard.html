@@ -891,6 +891,10 @@ function getEffectiveStatus(apiProject){
     payload.submitted === true ||
     !!payload.submitted_at;
 
+  if(rawStatus === "unpublished" || rawStatus.includes("dépub") || rawStatus.includes("depub")){
+    return "unpublished";
+  }
+
   if(rawStatus === "published" || rawStatus.includes("publi") || rawStatus.includes("ligne")){
     return "published";
   }
@@ -1001,7 +1005,7 @@ function renderLocalDraft(state){
 
   if(miniAction){
     miniAction.textContent = "Continuer la création";
-    miniAction.href = "questions.html";
+    miniAction.href = getProjectResumeUrl(apiProject);
   }
 
   if(resumeBtn) resumeBtn.style.display = "inline-flex";
@@ -1018,7 +1022,7 @@ function getProjectResumeUrl(apiProject){
   const status = getEffectiveStatus(apiProject);
   const id = apiProject?.id ? "?projectId=" + encodeURIComponent(apiProject.id) : "";
   const step = String(apiProject?.currentStep || apiProject?.current_step || data.current_step || data.step || "questions").toLowerCase();
-  if(status === "published") return "mes-autodiagnostics.html";
+  if(status === "published" || status === "unpublished") return "mes-autodiagnostics.html";
   if(step === "validation") return "validation.html" + id;
   if(step === "campagne") return "campagne.html" + id;
   if(step === "parametrage") return "parametrage.html" + id;
@@ -1038,7 +1042,7 @@ function renderApiProject(apiProject){
   latestVisibleProject = apiProject;
   const heading = document.getElementById("current-project-heading");
   if(heading){
-    heading.textContent = status === "published" ? "Autodiagnostic publié" : status === "sent" ? "Autodiagnostic transmis" : "Brouillon en cours";
+    heading.textContent = status === "unpublished" ? "Autodiagnostic dépublié" : status === "published" ? "Autodiagnostic publié" : status === "sent" ? "Autodiagnostic transmis" : "Brouillon en cours";
   }
 
   const miniAction = document.getElementById("mini-action");
@@ -1053,7 +1057,12 @@ function renderApiProject(apiProject){
   document.getElementById("draft-theme").textContent = theme;
   document.getElementById("draft-questions").textContent = qCount + " question" + (qCount > 1 ? "s" : "");
 
-  if(status === "published"){
+  if(status === "unpublished"){
+    document.getElementById("mini-progress").textContent = "Dépublié";
+    document.getElementById("mini-next").textContent = "Consulter les résultats";
+    document.getElementById("draft-status").textContent = "Dépublié";
+    document.getElementById("draft-step").textContent = "Campagne terminée";
+  } else if(status === "published"){
     document.getElementById("mini-progress").textContent = "Publié";
     document.getElementById("mini-next").textContent = "Consulter";
     document.getElementById("draft-status").textContent = "Publié";
@@ -1072,13 +1081,13 @@ function renderApiProject(apiProject){
 
   if(resumeBtn){
     resumeBtn.style.display = "inline-flex";
-    resumeBtn.textContent = status === "sent" ? "Voir la configuration transmise" : "Reprendre la création";
+    resumeBtn.textContent = (status === "published" || status === "unpublished") ? "Voir le projet" : status === "sent" ? "Modifier le contenu" : "Reprendre la création";
     resumeBtn.href = getProjectResumeUrl(apiProject);
   }
 
   if(settingsBtn){
     settingsBtn.style.display = "inline-flex";
-    settingsBtn.textContent = status === "sent" ? "Voir le paramétrage" : "Paramétrer";
+    settingsBtn.textContent = (status === "published" || status === "unpublished") ? "Voir les paramètres" : status === "sent" ? "Modifier le paramétrage" : "Paramétrer";
     settingsBtn.href = "parametrage.html" + (apiProject?.id ? "?projectId=" + encodeURIComponent(apiProject.id) : "");
   }
 
@@ -1090,11 +1099,11 @@ function renderApiProject(apiProject){
   if(blankBtn) blankBtn.style.display = "none";
 
   if(miniAction){
-    if(status === "published"){
-      miniAction.textContent = "Voir le projet";
+    if(status === "published" || status === "unpublished"){
+      miniAction.textContent = status === "unpublished" ? "Voir les résultats" : "Voir le projet";
       miniAction.href = "mes-autodiagnostics.html";
     } else if(status === "sent"){
-      miniAction.textContent = "Voir la configuration transmise";
+      miniAction.textContent = "Modifier la configuration";
       miniAction.href = getProjectResumeUrl(apiProject);
     } else {
       miniAction.textContent = "Continuer la création";

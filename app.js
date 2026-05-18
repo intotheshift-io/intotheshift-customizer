@@ -182,11 +182,16 @@ async function itsSyncProjectToApi(state) {
   const configSent = state.configTransmise === true || state.config_transmise === true || state.submitted === true;
   const status = state.status || (configSent ? "sent" : "draft");
 
+  const campaignStartDate = state.campaignStartDate || state.campaign_start_date || state.startDate || state.start_date || state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.meta?.date_lancement || "";
+  const campaignEndDate = state.campaignEndDate || state.campaign_end_date || state.endDate || state.end_date || state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.meta?.date_cloture || "";
+
   const body = {
     projectId: projectId || undefined,
     title,
     status,
     currentStep,
+    campaignStartDate: campaignStartDate || undefined,
+    campaignEndDate: campaignEndDate || undefined,
     data: state
   };
 
@@ -277,6 +282,28 @@ function itsRestoreProject(project) {
     data.publishedAt = realProject.published_at || realProject.publishedAt;
   }
 
+  if (realProject.unpublished_at || realProject.unpublishedAt) {
+    data.unpublished_at = realProject.unpublished_at || realProject.unpublishedAt;
+    data.unpublishedAt = realProject.unpublished_at || realProject.unpublishedAt;
+  }
+
+  const startDate = realProject.campaign_start_date || realProject.campaignStartDate || realProject.start_date || realProject.startDate || "";
+  const endDate = realProject.campaign_end_date || realProject.campaignEndDate || realProject.end_date || realProject.endDate || "";
+
+  if (startDate) {
+    data.campaign_start_date = startDate;
+    data.campaignStartDate = startDate;
+    data.parametrage = data.parametrage || {};
+    data.parametrage.date_lancement = data.parametrage.date_lancement || startDate;
+  }
+
+  if (endDate) {
+    data.campaign_end_date = endDate;
+    data.campaignEndDate = endDate;
+    data.parametrage = data.parametrage || {};
+    data.parametrage.date_cloture = data.parametrage.date_cloture || endDate;
+  }
+
   itsIsRestoringProject = true;
   localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
   if (projectId) {
@@ -300,7 +327,7 @@ function itsResumeUrlForProject(project) {
   const suffix = id ? `?projectId=${id}` : "";
 
   const status = itsNormalizeProjectStatus(project);
-  if (status === "published" || status === "sent" || status === "submitted" || status === "archived") {
+  if (status === "published" || status === "unpublished" || status === "sent" || status === "submitted" || status === "archived") {
     return "validation.html" + suffix;
   }
 
@@ -420,6 +447,7 @@ function itsNormalizeProjectStatus(projectOrState) {
     data.transmission?.status === "sent" ||
     !!data.submitted_at;
 
+  if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
   if (raw.includes("archiv")) return "archived";
   if (raw.includes("publish") || raw.includes("publi") || raw.includes("ligne") || raw.includes("result")) return "published";
   if (raw.includes("sent") || raw.includes("submitted") || raw.includes("transmis") || sentFlag) return "sent";
@@ -428,7 +456,7 @@ function itsNormalizeProjectStatus(projectOrState) {
 
 function itsIsProjectReadOnly(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "archived";
+  return status === "published" || status === "unpublished" || status === "archived";
 }
 
 async function itsFetchProjectById(projectId) {
@@ -552,7 +580,8 @@ function itsShouldApplyReadOnlyOnThisPage() {
     "validation.html"
   ];
 
-  return editablePages.includes(page);
+  const hasProjectId = new URLSearchParams(window.location.search).has("projectId");
+  return editablePages.includes(page) && hasProjectId;
 }
 
 if (document.readyState === "loading") {
