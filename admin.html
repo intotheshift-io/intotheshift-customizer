@@ -796,7 +796,7 @@ function renderProjects(){
         <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
         <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
         <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
-        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
+        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
         <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
         <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
@@ -810,11 +810,10 @@ function renderProjects(){
 
 function togglePublicationUrlFields(projectId){
   const status=document.getElementById("project-status-"+String(projectId))?.value || "draft";
-  const show=status==="published" || status==="unpublished";
-  ["project-share-wrap-","project-results-wrap-"].forEach(prefix=>{
-    const el=document.getElementById(prefix+String(projectId));
-    if(el) el.style.display=show?"flex":"none";
-  });
+  const shareWrap=document.getElementById("project-share-wrap-"+String(projectId));
+  const resultsWrap=document.getElementById("project-results-wrap-"+String(projectId));
+  if(shareWrap) shareWrap.style.display=status==="published"?"flex":"none";
+  if(resultsWrap) resultsWrap.style.display=(status==="published" || status==="unpublished")?"flex":"none";
 }
 
 async function saveProjectPublication(projectId){
