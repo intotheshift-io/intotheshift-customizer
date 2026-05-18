@@ -115,7 +115,7 @@ td{padding:13px 12px;border-bottom:1px solid #edf2f6;font-size:14px;vertical-ali
 .info-box{background:#f6f9fb;border:1px solid #e2ebf2;border-radius:14px;padding:11px}
 .info-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900;margin-bottom:4px}
 .info-value{font-size:13px;color:#18375d;font-weight:800;word-break:break-word}
-.project-publication{display:grid;grid-template-columns:150px 170px 170px minmax(240px,1fr) minmax(240px,1fr) auto;gap:14px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:18px;padding:16px;margin-top:12px}
+.project-publication{display:grid;grid-template-columns:150px 170px 170px;gap:14px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:18px;padding:16px;margin-top:12px}
 .publication-field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .publication-field label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900}
 .publication-field select,.publication-field input{width:100%;height:44px;border:1px solid #d5e1e9;border-radius:12px;padding:10px 12px;font-family:'Asap',sans-serif;color:#18375d;background:#fff;outline:none}
@@ -789,18 +789,27 @@ function renderProjects(){
         <div class="info-box"><div class="info-label">Fin campagne</div><div class="info-value">${formatDate(endDate)}</div></div>
       </div>
       <div class="project-publication">
-        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
+        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
         <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
         <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
-        <div class="publication-field"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
-        <div class="publication-field"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
+        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
+        <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
         <button class="mini-btn" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
-        <div class="publication-help">${status==="draft"?"En attente de transmission par le client.":status==="sent"?"Ajoute l’URL de diffusion puis passe en Publié.":status==="published"?"L’AD est visible côté client. La date de fin permettra la dépublication automatique.":status==="unpublished"?"La campagne est terminée : l’URL de passation n’est plus mise en avant, mais l’URL résultats reste disponible.":"Ajoute les dates de campagne et publie quand les URL sont prêtes."}</div>
+        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
     </article>`;
   }).join("");
   document.getElementById("projectsEmpty").style.display=rows.length?"none":"block";
+}
+
+function togglePublicationUrlFields(projectId){
+  const status=document.getElementById("project-status-"+String(projectId))?.value || "draft";
+  const show=status==="published" || status==="unpublished";
+  ["project-share-wrap-","project-results-wrap-"].forEach(prefix=>{
+    const el=document.getElementById(prefix+String(projectId));
+    if(el) el.style.display=show?"flex":"none";
+  });
 }
 
 async function saveProjectPublication(projectId){
