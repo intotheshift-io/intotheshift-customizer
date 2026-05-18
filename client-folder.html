@@ -3,268 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dossier client — Into The Shift</title>
+  <title>Cockpit client — Into The Shift</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
   <link rel="stylesheet" href="style.css">
 
   <style>
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Asap',sans-serif;
-      background:#f4f7fb;
-      color:#17375d;
-    }
-    .page{
-      max-width:1120px;
-      margin:0 auto;
-      padding:32px 20px 60px;
-    }
-    .back{
-      display:inline-flex;
-      margin-bottom:18px;
-      color:#0d4c72;
-      font-weight:700;
-      text-decoration:none;
-    }
-    .hero{
-      background:#fff;
-      border:1px solid #e1e8f0;
-      border-radius:28px;
-      padding:28px;
-      box-shadow:0 14px 34px rgba(15,45,80,.07);
-      margin-bottom:22px;
-    }
-    .hero-top{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-    h1{
-      margin:0 0 8px;
-      font-size:32px;
-      color:#17375d;
-    }
-    .meta{
-      color:#61738a;
-      line-height:1.5;
-      font-size:15px;
-    }
-    .btn{
-      border:none;
-      border-radius:999px;
-      padding:11px 18px;
-      font-family:'Asap',sans-serif;
-      font-weight:700;
-      cursor:pointer;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:#0d4c72;
-      color:#fff;
-      height:max-content;
-    }
-    .btn.light{
-      background:#fff;
-      color:#0d4c72;
-      border:1px solid #cbd9e7;
-    }
-    .btn.publish{
-      background:#16774a;
-      color:#fff;
-    }
-    .tabs{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin:18px 0;
-    }
-    .tab{
-      border:1px solid #d8e2ec;
-      background:#fff;
-      color:#0d4c72;
-      border-radius:999px;
-      padding:10px 14px;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .tab.active{
-      background:#0d4c72;
-      color:#fff;
-      border-color:#0d4c72;
-    }
-    .panel{
-      background:#fff;
-      border:1px solid #e1e8f0;
-      border-radius:24px;
-      padding:22px;
-      box-shadow:0 12px 28px rgba(15,45,80,.06);
-    }
-    .panel h2{
-      margin:0 0 16px;
-      font-size:23px;
-    }
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-    }
-    .card{
-      border:1px solid #e4edf5;
-      border-radius:20px;
-      padding:18px;
-      background:#f9fbfd;
-    }
-    .card h3{
-      margin:0 0 8px;
-      font-size:19px;
-    }
-    .status{
-      display:inline-flex;
-      border-radius:999px;
-      padding:6px 10px;
-      font-weight:700;
-      font-size:12px;
-      margin-bottom:14px;
-    }
-    .status-draft{
-      background:#fff5da;
-      color:#8a6200;
-    }
-    .status-sent{
-      background:#e8f1ff;
-      color:#1f4e91;
-    }
-    .status-published{
-      background:#eafbf1;
-      color:#16774a;
-    }
-    .card-actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .small-btn{
-      border-radius:999px;
-      padding:9px 13px;
-      border:1px solid #d8e2ec;
-      background:#fff;
-      color:#0d4c72;
-      font-weight:700;
-      font-family:'Asap',sans-serif;
-      cursor:pointer;
-    }
-    .small-btn.publish{
-      background:#16774a;
-      color:#fff;
-      border-color:#16774a;
-    }
-    .empty{
-      border:1px dashed #cbd9e7;
-      border-radius:20px;
-      padding:24px;
-      text-align:center;
-      color:#61738a;
-      background:#fafcff;
-    }
-    .loading{
-      color:#61738a;
-      padding:20px;
-      text-align:center;
-    }
+    body{margin:0;font-family:'Asap',sans-serif;background:#f4f7fb;color:#17375d}
+    .page{max-width:1180px;margin:0 auto;padding:32px 20px 60px}
+    .back{display:inline-flex;margin-bottom:18px;color:#0d4c72;font-weight:800;text-decoration:none}
+    .hero{background:linear-gradient(135deg,#0d4c72,#1f7b98);color:#fff;border-radius:30px;padding:30px;box-shadow:0 18px 40px rgba(13,76,114,.18);margin-bottom:20px}
+    .hero-top{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-start}
+    h1{margin:0 0 8px;font-size:34px;line-height:1.1;color:#fff}
+    .meta{opacity:.92;line-height:1.5;font-size:15px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{border:none;border-radius:999px;padding:11px 18px;font-family:'Asap',sans-serif;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;background:#0d4c72;color:#fff;height:max-content}
+    .hero .btn{background:#fff;color:#0d4c72}
+    .btn.light{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
+    .btn.publish,.small-btn.publish{background:#16774a;color:#fff;border-color:#16774a}
+    .btn:disabled,.small-btn:disabled{opacity:.55;cursor:not-allowed}
 
-    .modal-backdrop{
-      position:fixed;
-      inset:0;
-      background:rgba(13,31,45,.55);
-      z-index:9999;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-    .modal-backdrop.open{
-      display:flex;
-    }
-    .modal{
-      width:min(520px,100%);
-      background:#fff;
-      border-radius:24px;
-      box-shadow:0 24px 70px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .modal-header{
-      background:#0d4c72;
-      color:#fff;
-      padding:22px 24px;
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      align-items:flex-start;
-    }
-    .modal-header h3{
-      margin:0 0 6px;
-      font-size:22px;
-    }
-    .modal-header p{
-      margin:0;
-      opacity:.9;
-      line-height:1.4;
-      font-size:14px;
-    }
-    .modal-close{
-      border:none;
-      background:rgba(255,255,255,.16);
-      color:#fff;
-      width:34px;
-      height:34px;
-      border-radius:999px;
-      font-size:20px;
-      cursor:pointer;
-      flex:0 0 auto;
-    }
-    .modal-body{
-      padding:22px 24px;
-      color:#60758a;
-      line-height:1.45;
-    }
-    .modal-highlight{
-      background:#eef6fb;
-      border:1px solid #d7e8f1;
-      color:#0d4c72;
-      border-radius:14px;
-      padding:12px;
-      margin-top:14px;
-      font-weight:800;
-    }
-    .modal-footer{
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      padding:0 24px 24px;
-      flex-wrap:wrap;
-    }
-    .success-inline{
-      display:none;
-      margin-top:12px;
-      background:#eefbf3;
-      color:#176239;
-      border:1px solid #bee8cd;
-      border-radius:14px;
-      padding:11px 12px;
-      font-weight:700;
-      font-size:13px;
-    }
-    .success-inline.on{display:block;}
+    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 22px}
+    .kpi{background:#fff;border:1px solid #e1e8f0;border-radius:22px;padding:18px;box-shadow:0 10px 24px rgba(15,45,80,.06)}
+    .kpi strong{display:block;color:#0d4c72;font-size:28px;margin-bottom:4px}
+    .kpi span{font-size:13px;color:#61738a}
 
-    @media(max-width:800px){
-      .cards{grid-template-columns:1fr}
-      h1{font-size:26px}
-    }
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+    .tab{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .tab.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
+    .panel{background:#fff;border:1px solid #e1e8f0;border-radius:26px;padding:22px;box-shadow:0 12px 28px rgba(15,45,80,.06)}
+    .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+    .panel h2{margin:0 0 4px;font-size:23px;color:#17375d}
+    .panel-sub{font-size:14px;color:#61738a;line-height:1.45}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{border:1px solid #e4edf5;border-radius:22px;padding:18px;background:#f9fbfd}
+    .card h3{margin:0 0 8px;font-size:19px;color:#17375d}
+    .card-meta{font-size:13px;color:#61738a;line-height:1.45;margin:8px 0 12px}
+    .status{display:inline-flex;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px;margin-bottom:10px}
+    .status-draft{background:#fff5da;color:#8a6200}
+    .status-sent{background:#e8f1ff;color:#1f4e91}
+    .status-published{background:#eafbf1;color:#16774a}
+    .status-unpublished{background:#eef2f6;color:#64748b}
+    .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .small-btn{border-radius:999px;padding:9px 13px;border:1px solid #d8e2ec;background:#fff;color:#0d4c72;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .small-btn.main{background:#0d4c72;color:#fff;border-color:#0d4c72}
+    .empty{border:1px dashed #cbd9e7;border-radius:20px;padding:24px;text-align:center;color:#61738a;background:#fafcff}
+    .loading{color:#61738a;padding:20px;text-align:center}
+    .info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+    .info-box{background:#f7fafd;border:1px solid #e4edf5;border-radius:18px;padding:14px}
+    .info-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900;margin-bottom:5px}
+    .info-value{font-size:14px;color:#17375d;font-weight:800;word-break:break-word}
+    .url-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .url-line code{background:#eef6fb;color:#0d4c72;border-radius:10px;padding:7px 9px;font-size:12px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-backdrop.open{display:flex}
+    .modal{width:min(560px,100%);background:#fff;border-radius:26px;box-shadow:0 24px 70px rgba(0,0,0,.25);overflow:hidden}
+    .modal-header{background:#0d4c72;color:#fff;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .modal-header h3{margin:0 0 6px;font-size:23px}
+    .modal-header p{margin:0;opacity:.9;line-height:1.4;font-size:14px}
+    .modal-close{border:none;background:rgba(255,255,255,.16);color:#fff;width:34px;height:34px;border-radius:999px;font-size:20px;cursor:pointer;flex:0 0 auto}
+    .modal-body{padding:22px 24px;color:#60758a;line-height:1.45}
+    .modal-highlight{background:#eef6fb;border:1px solid #d7e8f1;color:#0d4c72;border-radius:14px;padding:12px;margin-top:14px;font-weight:800}
+    .modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
+    .success-inline{display:none;margin-top:12px;background:#eefbf3;color:#176239;border:1px solid #bee8cd;border-radius:14px;padding:11px 12px;font-weight:800;font-size:13px}
+    .success-inline.on{display:block}
+
+    @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
+    @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
   </style>
 </head>
 
@@ -272,16 +79,25 @@
   <div id="header"></div>
 
   <main class="page">
-    <a class="back" href="partner.html">← Retour à mes clients</a>
+    <a id="backToClients" class="back" href="#" onclick="goBackToClients(event)">← Retour</a>
 
     <section class="hero">
       <div class="hero-top">
         <div>
-          <h1 id="clientName">Dossier client</h1>
+          <h1 id="clientName">Cockpit client</h1>
           <div class="meta" id="clientMeta">Chargement du client…</div>
         </div>
-        <button class="btn" onclick="createAdForThisClient()">Créer un AD pour ce client</button>
+        <div class="hero-actions">
+          <button class="btn" onclick="createAdForThisClient()">Créer un AD pour ce client</button>
+        </div>
       </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi"><strong id="kpiAds">—</strong><span>Autodiagnostics</span></div>
+      <div class="kpi"><strong id="kpiSent">—</strong><span>Transmis</span></div>
+      <div class="kpi"><strong id="kpiPublished">—</strong><span>Publiés</span></div>
+      <div class="kpi"><strong id="kpiPassations">—</strong><span>Passations restantes</span></div>
     </section>
 
     <section class="tabs">
@@ -292,37 +108,56 @@
     </section>
 
     <section class="panel">
-      <div id="loadingState" class="loading">Chargement du dossier…</div>
+      <div id="loadingState" class="loading">Chargement du cockpit…</div>
 
       <div id="tab-ads" class="tab-content" style="display:none;">
-        <h2>Autodiagnostics du client</h2>
+        <div class="panel-head">
+          <div>
+            <h2>Autodiagnostics</h2>
+            <div class="panel-sub">Tous les AD rattachés à ce client, avec leur statut de traitement.</div>
+          </div>
+        </div>
         <div id="adsList" class="cards"></div>
       </div>
 
       <div id="tab-campaigns" class="tab-content" style="display:none;">
-        <h2>Campagnes</h2>
-        <div class="empty">Les campagnes de ce client seront affichées ici.</div>
+        <div class="panel-head">
+          <div>
+            <h2>Campagnes</h2>
+            <div class="panel-sub">URLs de diffusion, dates, préparation et état de publication.</div>
+          </div>
+        </div>
+        <div id="campaignsList" class="cards"></div>
       </div>
 
       <div id="tab-results" class="tab-content" style="display:none;">
-        <h2>Résultats</h2>
-        <div class="empty">Les résultats et restitutions seront affichés ici.</div>
+        <div class="panel-head">
+          <div>
+            <h2>Résultats</h2>
+            <div class="panel-sub">Accès aux liens résultats et aux restitutions disponibles.</div>
+          </div>
+        </div>
+        <div id="resultsList" class="cards"></div>
       </div>
 
       <div id="tab-resources" class="tab-content" style="display:none;">
-        <h2>Ressources client</h2>
-        <div class="empty">Les ressources spécifiques du client seront affichées ici.</div>
+        <div class="panel-head">
+          <div>
+            <h2>Ressources</h2>
+            <div class="panel-sub">Éléments utiles pour exploiter le dossier client et retrouver les livrables.</div>
+          </div>
+        </div>
+        <div id="resourcesList"></div>
       </div>
     </section>
   </main>
-
 
   <div id="publishModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="publishModalTitle">
       <div class="modal-header">
         <div>
           <h3 id="publishModalTitle">Publier cet autodiagnostic ?</h3>
-          <p>Le statut passera en publié dans le dossier client.</p>
+          <p>Le statut passera en publié dans le cockpit client.</p>
         </div>
         <button class="modal-close" type="button" onclick="closePublishModal()" aria-label="Fermer">×</button>
       </div>
@@ -352,31 +187,26 @@
       await loadClientFolder();
     });
 
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape") closePublishModal();
+    });
+
     function getToken(){
-      return (
-        localStorage.getItem("its_token") ||
-        localStorage.getItem("token") ||
-        localStorage.getItem("auth_token") ||
-        ""
-      );
+      return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
     }
 
     function decodeJwt(token){
       try{
         const payload = token.split(".")[1];
         return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));
-      }catch(e){
-        return null;
-      }
+      }catch(e){ return null; }
     }
 
     function getRole(){
       return localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "";
     }
 
-    function isAdmin(){
-      return getRole() === "admin";
-    }
+    function isAdmin(){ return getRole() === "admin"; }
 
     function getClientId(){
       const params = new URLSearchParams(window.location.search);
@@ -385,28 +215,37 @@
 
     function goBackToClients(event){
       if(event) event.preventDefault();
-
       if(isAdmin()){
         window.location.href = "admin.html#organizations";
         return;
       }
-
       window.location.href = "partner.html";
+    }
+
+    function updateBackLabel(){
+      const link = document.getElementById("backToClients");
+      if(!link) return;
+      link.textContent = isAdmin() ? "← Retour aux clients finaux" : "← Retour à mes clients";
+    }
+
+    function val(obj, keys, fallback = ""){
+      for(const key of keys){
+        if(obj && obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
+      }
+      return fallback;
     }
 
     function getContactName(client){
       return (
-        client.contactName ||
-        client.contact_name ||
-        client.ownerName ||
-        client.owner_name ||
-        [client.firstName || client.first_name, client.lastName || client.last_name].filter(Boolean).join(" ").trim() ||
+        val(client,["contactName","contact_name"],"") ||
+        val(client,["ownerName","owner_name"],"") ||
+        [val(client,["firstName","first_name"],""), val(client,["lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
         "—"
       );
     }
 
     function getContactEmail(client){
-      return client.contactEmail || client.contact_email || client.ownerEmail || client.owner_email || client.email || "";
+      return val(client,["contactEmail","contact_email","ownerEmail","owner_email","email"],"");
     }
 
     function getProjectTitle(project){
@@ -414,6 +253,7 @@
       const payload = data.payload || data || {};
       return (
         payload.titre_autodiag ||
+        payload.title ||
         data.autodiagTitle ||
         data.title ||
         project.title ||
@@ -421,15 +261,37 @@
       );
     }
 
-    async function loadClientFolder(){
-      const clientId = getClientId();
-      const backLink = document.getElementById("backToClients");
+    function getProjectShareUrl(project){
+      return val(project,["shareUrl","share_url","adUrl","ad_url","publicUrl","public_url","diffusionUrl","diffusion_url"],"");
+    }
 
-      if(backLink){
-        backLink.textContent = isAdmin()
-          ? "← Retour aux clients finaux"
-          : "← Retour à mes clients";
-      }
+    function getProjectResultsUrl(project){
+      return val(project,["resultsUrl","results_url","resultUrl","result_url","dashboardUrl","dashboard_url"],"");
+    }
+
+    function getProjectStartDate(project){
+      const data = project.data || {};
+      const param = data.parametrage || {};
+      return val(project,["campaignStartDate","campaign_start_date","startDate","start_date"], val(data,["campaignStartDate","campaign_start_date","date_lancement","dateLancement"], val(param,["date_lancement","dateLancement"],"")));
+    }
+
+    function getProjectEndDate(project){
+      const data = project.data || {};
+      const param = data.parametrage || {};
+      return val(project,["campaignEndDate","campaign_end_date","endDate","end_date"], val(data,["campaignEndDate","campaign_end_date","date_cloture","dateCloture"], val(param,["date_cloture","dateCloture"],"")));
+    }
+
+    function formatDate(value){
+      if(!value) return "—";
+      const d = new Date(value);
+      if(Number.isNaN(d.getTime())) return String(value);
+      return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});
+    }
+
+    async function loadClientFolder(){
+      updateBackLabel();
+
+      const clientId = getClientId();
 
       if(!clientId){
         alert("Client introuvable.");
@@ -440,24 +302,15 @@
       try{
         if(isAdmin()){
           const [orgResponse, projectResponse] = await Promise.all([
-            fetch(`${API_URL}/api/admin/organizations`, {
-              headers: { Authorization: `Bearer ${getToken()}` }
-            }),
-            fetch(`${API_URL}/api/admin/projects`, {
-              headers: { Authorization: `Bearer ${getToken()}` }
-            })
+            fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
           ]);
 
           const orgData = await orgResponse.json().catch(() => ({}));
           const projectData = await projectResponse.json().catch(() => ({}));
 
-          if(!orgResponse.ok){
-            throw new Error(orgData.error || "Erreur API organisations");
-          }
-
-          if(!projectResponse.ok){
-            throw new Error(projectData.error || "Erreur API projets");
-          }
+          if(!orgResponse.ok) throw new Error(orgData.error || "Erreur API organisations");
+          if(!projectResponse.ok) throw new Error(projectData.error || "Erreur API projets");
 
           const organizations = orgData.organizations || orgData.clients || orgData.data || [];
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
@@ -471,17 +324,12 @@
           }
         }else{
           const response = await fetch(`${API_URL}/api/partner/clients`, {
-            headers: {
-              Authorization: `Bearer ${getToken()}`
-            }
+            headers: { Authorization: `Bearer ${getToken()}` }
           });
 
           const data = await response.json().catch(() => ({}));
 
-          if(!response.ok){
-            throw new Error(data.error || "Erreur API");
-          }
-
+          if(!response.ok) throw new Error(data.error || "Erreur API");
           currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
         }
 
@@ -492,78 +340,88 @@
         }
 
         renderClient();
-      } catch(err){
+      }catch(err){
         console.error(err);
-        alert("Impossible de charger le dossier client.");
+        alert("Impossible de charger le cockpit client.");
       }
     }
 
     function normalizeStatus(status){
       const s = String(status || "").toLowerCase();
-
-      if(s === "sent" || s === "transmis" || s === "submitted"){
-        return "sent";
-      }
-
-      if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne"){
-        return "published";
-      }
-
+      if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
+      if(s === "sent" || s === "transmis" || s === "submitted") return "sent";
+      if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
       return "draft";
     }
 
     function getStatusLabel(status){
       const s = normalizeStatus(status);
-
       if(s === "sent") return "Transmis";
       if(s === "published") return "Publié";
+      if(s === "unpublished") return "Dépublié";
       return "Brouillon";
     }
 
     function getStatusClass(status){
       const s = normalizeStatus(status);
-
       if(s === "sent") return "status-sent";
       if(s === "published") return "status-published";
+      if(s === "unpublished") return "status-unpublished";
       return "status-draft";
     }
 
     function renderClient(){
+      const projects = currentClient.projects || [];
+      const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
+      const publishedCount = projects.filter(p => normalizeStatus(p.status) === "published").length;
+      const remaining = val(currentClient,["passationsRemaining","passations_remaining"],"—");
+
       document.getElementById("loadingState").style.display = "none";
       document.getElementById("tab-ads").style.display = "block";
 
-      document.getElementById("clientName").textContent = currentClient.name || "Dossier client";
-
+      document.getElementById("clientName").textContent = currentClient.name || "Cockpit client";
       document.getElementById("clientMeta").innerHTML = `
         Contact : ${escapeHtml(getContactName(currentClient))}<br>
-        Email : ${escapeHtml(getContactEmail(currentClient) || "—")}
+        Email : ${escapeHtml(getContactEmail(currentClient) || "—")}<br>
+        Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
       `;
 
-      const projects = currentClient.projects || [];
+      document.getElementById("kpiAds").textContent = projects.length;
+      document.getElementById("kpiSent").textContent = sentCount;
+      document.getElementById("kpiPublished").textContent = publishedCount;
+      document.getElementById("kpiPassations").textContent = remaining;
+
+      renderAds(projects);
+      renderCampaigns(projects);
+      renderResults(projects);
+      renderResources(projects);
+    }
+
+    function renderAds(projects){
       const adsList = document.getElementById("adsList");
 
       if(!projects.length){
-        adsList.innerHTML = `
-          <div class="empty">
-            Aucun autodiagnostic n’est encore rattaché à ce client.
-          </div>
-        `;
+        adsList.innerHTML = `<div class="empty">Aucun autodiagnostic n’est encore rattaché à ce client.</div>`;
         return;
       }
 
       adsList.innerHTML = projects.map(project => {
         const normalizedStatus = normalizeStatus(project.status);
         const projectTitle = getProjectTitle(project);
+        const startDate = getProjectStartDate(project);
+        const endDate = getProjectEndDate(project);
 
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
-
-            <span class="status ${getStatusClass(project.status)}">
-              ${getStatusLabel(project.status)}
-            </span>
-
+            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div class="card-meta">
+              Début : ${formatDate(startDate)}<br>
+              Fin : ${formatDate(endDate)}
+            </div>
             <div class="card-actions">
+              <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
+              <button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">Marquer comme publié</button>`
@@ -575,14 +433,115 @@
       }).join("");
     }
 
+    function renderCampaigns(projects){
+      const list = document.getElementById("campaignsList");
+      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p));
+
+      if(!campaignProjects.length){
+        list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
+        return;
+      }
+
+      list.innerHTML = campaignProjects.map(project => {
+        const title = getProjectTitle(project);
+        const share = getProjectShareUrl(project);
+        const status = normalizeStatus(project.status);
+        return `
+          <article class="card">
+            <h3>${escapeHtml(title)}</h3>
+            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div class="card-meta">
+              Début : ${formatDate(getProjectStartDate(project))}<br>
+              Fin : ${formatDate(getProjectEndDate(project))}
+            </div>
+            ${share ? `<div class="url-line"><code>${escapeHtml(share)}</code><a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a></div>` : `<div class="empty" style="padding:14px;text-align:left">URL de diffusion non renseignée.</div>`}
+            <div class="card-actions">
+              <button class="small-btn" onclick="copyCampaignMessage('${escapeAttr(title)}','${escapeAttr(share)}')">Message campagne</button>
+              ${status === "published" && share ? `<button class="small-btn main" onclick="copyText('${escapeAttr(share)}')">Copier URL</button>` : ""}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderResults(projects){
+      const list = document.getElementById("resultsList");
+      const resultProjects = projects.filter(p => getProjectResultsUrl(p) || ["published","unpublished"].includes(normalizeStatus(p.status)));
+
+      if(!resultProjects.length){
+        list.innerHTML = `<div class="empty">Aucun résultat disponible pour le moment. Les liens résultats apparaîtront après publication et paramétrage par Into The Shift.</div>`;
+        return;
+      }
+
+      list.innerHTML = resultProjects.map(project => {
+        const title = getProjectTitle(project);
+        const results = getProjectResultsUrl(project);
+        return `
+          <article class="card">
+            <h3>${escapeHtml(title)}</h3>
+            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${results ? `<div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>` : `<div class="empty" style="padding:14px;text-align:left">Lien résultats non renseigné.</div>`}
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderResources(projects){
+      const list = document.getElementById("resourcesList");
+
+      const transmitted = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status))).length;
+      const published = projects.filter(p => normalizeStatus(p.status) === "published").length;
+      const results = projects.filter(p => getProjectResultsUrl(p)).length;
+
+      list.innerHTML = `
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-label">Dossier</div>
+            <div class="info-value">${escapeHtml(currentClient.name || "—")}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">Contact</div>
+            <div class="info-value">${escapeHtml(getContactName(currentClient))}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">État livrables</div>
+            <div class="info-value">${transmitted} transmis · ${published} publiés · ${results} résultats</div>
+          </div>
+        </div>
+        <div class="empty" style="text-align:left">
+          Les ressources documentaires pourront ensuite rassembler les logos, fichiers client, exports Excel, kits de communication et livrables de restitution.
+        </div>
+      `;
+    }
+
+    function showTab(tabName, button){
+      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+      button.classList.add("active");
+      document.querySelectorAll(".tab-content").forEach(content => content.style.display = "none");
+      document.getElementById(`tab-${tabName}`).style.display = "block";
+    }
+
+    function createAdForThisClient(){
+      const clientId = getClientId();
+      localStorage.setItem("its_selected_partner_client_id", clientId);
+      window.location.href = "index.html";
+    }
+
+    function editProject(projectId){
+      if(projectId) localStorage.setItem("its_current_project_id", projectId);
+      localStorage.setItem("its_selected_partner_client_id", getClientId());
+      window.location.href = "questions.html";
+    }
+
+    function prepareCampaign(projectId){
+      if(projectId) localStorage.setItem("its_current_project_id", projectId);
+      localStorage.setItem("its_selected_partner_client_id", getClientId());
+      window.location.href = "campagne.html";
+    }
+
     function openPublishModal(projectId, projectTitle){
       if(!projectId) return;
-
-      projectToPublish = {
-        id: projectId,
-        title: projectTitle || "Autodiag sélectionné"
-      };
-
+      projectToPublish = { id: projectId, title: projectTitle || "Autodiag sélectionné" };
       document.getElementById("publishProjectTitle").textContent = projectToPublish.title;
       document.getElementById("publishSuccess").classList.remove("on");
       document.getElementById("publishModal").classList.add("open");
@@ -602,10 +561,7 @@
       const oldText = btn?.textContent || "Publier";
 
       try{
-        if(btn){
-          btn.disabled = true;
-          btn.textContent = "Publication…";
-        }
+        if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
 
         const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/status`, {
           method: "PATCH",
@@ -613,16 +569,11 @@
             "Content-Type": "application/json",
             Authorization: `Bearer ${getToken()}`
           },
-          body: JSON.stringify({
-            status: "published"
-          })
+          body: JSON.stringify({ status: "published" })
         });
 
         const data = await response.json().catch(() => ({}));
-
-        if(!response.ok){
-          throw new Error(data.error || "Erreur publication");
-        }
+        if(!response.ok) throw new Error(data.error || "Erreur publication");
 
         document.getElementById("publishSuccess").classList.add("on");
 
@@ -631,32 +582,25 @@
           await loadClientFolder();
         }, 650);
 
-      } catch(err){
+      }catch(err){
         console.error(err);
         alert("Impossible de publier cet autodiagnostic.");
-      } finally {
-        if(btn){
-          btn.disabled = false;
-          btn.textContent = oldText;
-        }
+      }finally{
+        if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
     }
 
-    function showTab(tabName, button){
-      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-      button.classList.add("active");
-
-      document.querySelectorAll(".tab-content").forEach(content => {
-        content.style.display = "none";
-      });
-
-      document.getElementById(`tab-${tabName}`).style.display = "block";
+    function copyText(text){
+      if(!text) return;
+      navigator.clipboard?.writeText(text);
     }
 
-    function createAdForThisClient(){
-      const clientId = getClientId();
-      localStorage.setItem("its_selected_partner_client_id", clientId);
-      window.location.href = "index.html";
+    function copyCampaignMessage(title, url){
+      const message = url
+        ? `Bonjour,\\n\\nNous vous invitons à réaliser l’autodiagnostic "${title}" :\\n${url}\\n\\nMerci pour votre participation.`
+        : `Bonjour,\\n\\nL’autodiagnostic "${title}" sera bientôt disponible.`;
+      navigator.clipboard?.writeText(message);
+      alert("Message de campagne copié.");
     }
 
     function escapeHtml(value = ""){
@@ -671,12 +615,6 @@
     function escapeAttr(value = ""){
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
-
-    document.addEventListener("keydown", (event) => {
-      if(event.key === "Escape"){
-        closePublishModal();
-      }
-    });
   </script>
 </body>
 </html>
