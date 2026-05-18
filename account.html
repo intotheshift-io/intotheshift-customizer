@@ -469,7 +469,8 @@ function hydrateAccount(forcedUser=null){
   document.getElementById("roleBadge").innerHTML=roleBadge(role);
   document.getElementById("heroRole").textContent="Rôle : "+role;
   document.getElementById("avatar").textContent=initials(first,last,email);
-  document.getElementById("userId").value=user.id||payload.id||"—";
+  const userIdField=document.getElementById("userId");
+  if(userIdField)userIdField.value=user.id||payload.id||"—";
 
   const navOrganisation=document.getElementById("navOrganisation");
   const navPartner=document.getElementById("navPartner");
