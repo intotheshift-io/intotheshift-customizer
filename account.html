@@ -498,6 +498,7 @@ function hydrateAccount(forcedUser=null){
   const navOrganisation=document.getElementById("navOrganisation");
   const navPartner=document.getElementById("navPartner");
   const navPassation=document.getElementById("navPassation");
+  if(navPartner)navPartner.style.display="none";
   const partnerEmail=document.getElementById("partnerEmail");
   const partnerCompany=document.getElementById("partnerCompany");
 
