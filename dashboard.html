@@ -1001,7 +1001,7 @@ function renderLocalDraft(state){
 
   if(miniAction){
     miniAction.textContent = "Continuer la création";
-    miniAction.href = getProjectResumeUrl(apiProject);
+    miniAction.href = "questions.html";
   }
 
   if(resumeBtn) resumeBtn.style.display = "inline-flex";
@@ -1072,13 +1072,13 @@ function renderApiProject(apiProject){
 
   if(resumeBtn){
     resumeBtn.style.display = "inline-flex";
-    resumeBtn.textContent = status === "sent" ? "Modifier le contenu" : "Reprendre la création";
+    resumeBtn.textContent = status === "sent" ? "Voir la configuration transmise" : "Reprendre la création";
     resumeBtn.href = getProjectResumeUrl(apiProject);
   }
 
   if(settingsBtn){
     settingsBtn.style.display = "inline-flex";
-    settingsBtn.textContent = status === "sent" ? "Modifier le paramétrage" : "Paramétrer";
+    settingsBtn.textContent = status === "sent" ? "Voir le paramétrage" : "Paramétrer";
     settingsBtn.href = "parametrage.html" + (apiProject?.id ? "?projectId=" + encodeURIComponent(apiProject.id) : "");
   }
 
@@ -1094,7 +1094,7 @@ function renderApiProject(apiProject){
       miniAction.textContent = "Voir le projet";
       miniAction.href = "mes-autodiagnostics.html";
     } else if(status === "sent"){
-      miniAction.textContent = "Modifier la configuration";
+      miniAction.textContent = "Voir la configuration transmise";
       miniAction.href = getProjectResumeUrl(apiProject);
     } else {
       miniAction.textContent = "Continuer la création";

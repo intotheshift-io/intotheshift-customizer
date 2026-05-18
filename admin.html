@@ -122,6 +122,10 @@ td{padding:13px 12px;border-bottom:1px solid #edf2f6;font-size:14px;vertical-ali
 .publication-field select:focus,.publication-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
 .project-publication .mini-btn{height:44px;border-radius:12px;padding:0 16px}
 .project-publication .publication-help{grid-column:1/-1;font-size:13px;color:#60758a;line-height:1.4;background:#eef6fb;border:1px solid #d7e8f1;border-radius:12px;padding:10px 12px}
+.publication-current{grid-column:1/-1;display:grid;gap:7px;background:#fff;border:1px solid #e2ebf2;border-radius:12px;padding:10px 12px;font-size:12px;color:#60758a;word-break:break-all}
+.publication-current strong{color:#18375d}
+.publication-current a{color:#007883;font-weight:900;text-decoration:none}
+.publication-current a:hover{text-decoration:underline}
 .org-quota-panel{display:grid;grid-template-columns:1fr 1fr 170px auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 @media(max-width:1100px){.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
@@ -783,7 +787,11 @@ function renderProjects(){
         <div class="publication-field"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
         <button class="mini-btn" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
-        <div class="publication-help">${status==="draft"?"En attente de transmission par le client.":status==="sent"?"Ajoute l’URL de diffusion puis passe en Publié.":status==="published"?"L’AD est visible côté client. Ajoute l’URL résultats quand elle est disponible.":"Le client peut consulter l’AD et les résultats."}</div>
+        <div class="publication-current">
+          <div><strong>URL diffusion enregistrée :</strong> ${share ? `<a href="${escapeAttr(share)}" target="_blank" rel="noopener noreferrer">${escapeHtml(share)}</a>` : "non renseignée"}</div>
+          <div><strong>URL résultats enregistrée :</strong> ${results ? `<a href="${escapeAttr(results)}" target="_blank" rel="noopener noreferrer">${escapeHtml(results)}</a>` : "non renseignée"}</div>
+        </div>
+        <div class="publication-help">${status==="draft"?"En attente de transmission par le client.":status==="sent"?"Ajoute l’URL de diffusion puis passe en Publié. Après enregistrement, les URL restent visibles ci-dessus et côté client.":status==="published"?"L’AD est visible côté client. Ajoute l’URL résultats quand elle est disponible.":"Le client peut consulter l’AD et les résultats."}</div>
       </div>
     </article>`;
   }).join("");

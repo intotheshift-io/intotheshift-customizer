@@ -96,6 +96,15 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .progress-wrap{height:7px;background:#edf1f7;border-radius:20px;overflow:hidden;margin:8px 0}
 .progress-fill{height:100%;background:#007883;border-radius:20px;transition:width .2s}
 .hidden{display:none}
+.locked-transmission{background:#f0fbf2;border:1px solid #b8e8c0;color:#1f7a3b;border-radius:14px;padding:18px;margin-bottom:16px;line-height:1.55;font-size:13px}
+.locked-transmission strong{display:block;color:#18375d;font-size:16px;margin-bottom:4px}
+.locked-transmission a{color:#0d4c72;font-weight:900;text-decoration:none}
+.locked-transmission a:hover{text-decoration:underline}
+.is-transmitted .form-input,
+.is-transmitted .form-textarea,
+.is-transmitted input[type="checkbox"]{pointer-events:none;opacity:.72}
+.is-transmitted .check-row{background:#f8fafc}
+.is-transmitted #btn-transmit{background:#94a3b8;cursor:not-allowed}
 
 
 /* Modal transmission */
@@ -134,10 +143,15 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
 <div class="page-wrap">
   <h1 class="page-title">Transmettre votre autodiagnostic pour mise en ligne</h1>
-  <p class="page-sub">
+  <p class="page-sub" id="default-page-sub">
     Votre autodiagnostic est prêt à être finalisé. Une fois transmis, l’équipe Into The Shift vérifiera les derniers éléments,
     configurera la mise en ligne et vous recevrez un récapitulatif PDF des choix renseignés.
   </p>
+  <div id="already-transmitted-box" class="locked-transmission hidden">
+    <strong>Configuration déjà transmise à Into The Shift.</strong>
+    Votre demande est en cours de traitement. Pour tout changement, contactez
+    <a href="mailto:contact@intotheshift.io">contact@intotheshift.io</a>.
+  </div>
 
   <div class="grid">
     <main>
@@ -972,8 +986,14 @@ async function transmit(){
   }
 
   if(sentOk){
+    state.status = 'sent';
+    state.configTransmise = true;
+    state.config_transmise = true;
+    state.submitted = true;
+    state.transmission.status = 'sent';
+    if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
-    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Le fichier de configuration a été transmis à l’équipe Into The Shift et le récapitulatif PDF va vous être adressé par mail.');
+    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Pour tout changement, contactez contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
@@ -982,8 +1002,41 @@ async function transmit(){
   }
 }
 
+function isAlreadyTransmitted(){
+  return state?.status === 'sent' ||
+    state?.configTransmise === true ||
+    state?.config_transmise === true ||
+    state?.submitted === true ||
+    state?.transmission?.status === 'sent' ||
+    state?.transmission?.status === 'ready_to_send' ||
+    !!state?.transmission?.submitted_at;
+}
+
+function applyTransmittedView(){
+  if(!isAlreadyTransmitted()) return;
+  document.body.classList.add('is-transmitted');
+  const box = document.getElementById('already-transmitted-box');
+  if(box) box.classList.remove('hidden');
+  const title = document.querySelector('.page-title');
+  if(title) title.textContent = 'Configuration transmise à Into The Shift';
+  const sub = document.getElementById('default-page-sub');
+  if(sub) sub.textContent = 'Votre autodiagnostic a déjà été transmis. La page reste consultable, mais une nouvelle transmission n’est plus nécessaire.';
+  document.querySelectorAll('.form-input,.form-textarea').forEach(el => { el.readOnly = true; });
+  document.querySelectorAll('.check-row input').forEach(el => { el.checked = true; el.disabled = true; });
+  const missing = document.getElementById('missing-alert');
+  if(missing) missing.classList.add('hidden');
+  const success = document.getElementById('success-alert');
+  if(success) success.classList.remove('hidden');
+  const btn = document.getElementById('btn-transmit');
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = 'Configuration déjà transmise ✓';
+  }
+}
+
 restoreClientInfo();
 refresh();
+applyTransmittedView();
 </script>
 </body>
 </html>
