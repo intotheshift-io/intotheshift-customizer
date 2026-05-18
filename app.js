@@ -540,9 +540,28 @@ function itsApplyReadOnlyMode(options = {}) {
   return true;
 }
 
+function itsShouldApplyReadOnlyOnThisPage() {
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+
+  // On bloque uniquement les pages d'édition / consultation d'un projet précis.
+  // Les pages de liste ou de navigation globale doivent rester utilisables.
+  const editablePages = [
+    "questions.html",
+    "parametrage.html",
+    "campagne.html",
+    "validation.html"
+  ];
+
+  return editablePages.includes(page);
+}
+
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => itsApplyReadOnlyMode());
+  document.addEventListener("DOMContentLoaded", () => {
+    if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
+  });
 } else {
-  setTimeout(() => itsApplyReadOnlyMode(), 0);
+  setTimeout(() => {
+    if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
+  }, 0);
 }
 
