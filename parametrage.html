@@ -356,6 +356,13 @@ function checkContinue(){
   document.getElementById('btn-continue').disabled=!ok;
 }
 
+
+function getCurrentProjectIdForSave(){
+  return state.currentAdId || state.project_id || state.projectId ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
+}
 async function persistProjectDraft(step, status){
   save();
   state.status = status || state.status || 'draft';
@@ -368,9 +375,17 @@ async function persistProjectDraft(step, status){
       method:'POST',
       headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
       body: JSON.stringify({
+        projectId: getCurrentProjectIdForSave() || undefined,
         title: state.parametrage?.nom || state.themeTitle || state.title || 'Autodiagnostic',
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
-        data:{step: step || 'parametrage', status: state.status, configTransmise:false, state}
+        status: status || state.status || 'draft',
+        currentStep: step || 'parametrage',
+        data: Object.assign({}, state, {
+          step: step || 'parametrage',
+          current_step: step || 'parametrage',
+          status: status || state.status || 'draft',
+          configTransmise:false
+        })
       })
     });
     const saved = await response.json().catch(()=>({}));
@@ -380,7 +395,7 @@ async function persistProjectDraft(step, status){
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
-async function goNext(){
+async async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
     state.parametrage.mode_quota = "partner";

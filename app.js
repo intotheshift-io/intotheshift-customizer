@@ -35,6 +35,13 @@ const ITS_API_BASE =
 let itsSaveTimer = null;
 let itsIsRestoringProject = false;
 
+(function itsCaptureProjectIdFromUrl(){
+  try {
+    const id = new URLSearchParams(window.location.search).get("projectId");
+    if (id) itsSetCurrentProjectId(id);
+  } catch(e) {}
+})();
+
 function itsGetToken() {
   return (
     localStorage.getItem("its_token") ||
@@ -191,7 +198,15 @@ async function itsSyncProjectToApi(state) {
 
     const json = await res.json();
     const savedId = json?.project?.id || json?.id || json?.project_id;
-    if (savedId) itsSetCurrentProjectId(savedId);
+    if (savedId) {
+      itsSetCurrentProjectId(savedId);
+      try {
+        const latest = itsLoad();
+        latest.currentAdId = savedId;
+        latest.project_id = savedId;
+        localStorage.setItem(itsGetStorageKey(), JSON.stringify(latest));
+      } catch(e) {}
+    }
   } catch(e) {
     console.warn("Sauvegarde projet API impossible", e);
   }

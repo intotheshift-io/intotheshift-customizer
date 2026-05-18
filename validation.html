@@ -876,6 +876,13 @@ function closeTransmitModal(){
   modal.setAttribute('aria-hidden','true');
 }
 
+
+function getCurrentProjectIdForSave(){
+  return state.currentAdId || state.project_id || state.projectId ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
+}
 async function transmit(){
   if(!validateClientInfo(true)){
     document.getElementById('missing-alert').classList.remove('hidden');
@@ -910,19 +917,37 @@ async function transmit(){
       "Authorization": "Bearer " + token
     },
     body: JSON.stringify({
+      projectId: getCurrentProjectIdForSave() || undefined,
       title: getThemeTitle(),
       organizationId: getSelectedPartnerClientId(),
-      data: {
+      status: 'sent',
+      currentStep: 'validation',
+      data: Object.assign({}, state, {
         autodiagTitle: getThemeTitle(),
         configTransmise: true,
+        config_transmise: true,
+        submitted: true,
+        step: 'validation',
+        current_step: 'validation',
+        status: 'sent',
         payload
-      }
+      })
     })
   });
 
   if(!projectResponse.ok){
     const err = await projectResponse.json().catch(() => ({}));
     console.error("Erreur API sauvegarde projet", projectResponse.status, err);
+  } else {
+    const saved = await projectResponse.json().catch(() => ({}));
+    const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
+    if(id){
+      state.currentAdId = id;
+      state.project_id = id;
+      localStorage.setItem('its_current_project_id', String(id));
+      localStorage.setItem('its_current_ad_id', String(id));
+      if (typeof itsSave === 'function') itsSave(state);
+    }
   }
 } catch(e) {
   console.error("Erreur sauvegarde projet", e);
