@@ -805,6 +805,12 @@ function buildPdfHtml(){
 
 function buildPayload(){
   const param = getParam();
+  const excelHtml = buildExcelHtml();
+  const pdfHtml = buildPdfHtml();
+  const safeCompanySlug = slugify(getCompany() || 'client');
+  const excelFilename = 'configuration-shift-studio-' + safeCompanySlug + '.xls';
+  const pdfFilename = 'recapitulatif-shift-studio-' + safeCompanySlug + '.html';
+
   return {
     organizationId: getSelectedPartnerClientId(),
     submitted_at: new Date().toISOString(),
@@ -818,10 +824,43 @@ function buildPayload(){
     slug: getSlug(),
     url_prevue: getUrl(),
     chapters: getChapters(),
-    excel_html: buildExcelHtml(),
-    pdf_html: buildPdfHtml(),
-    excel_filename: 'configuration-shift-studio-' + slugify(getCompany()) + '.xls',
-    pdf_filename: 'recapitulatif-shift-studio-' + slugify(getCompany()) + '.pdf'
+
+    // Champs historiques conservés pour le scénario Make existant.
+    excel_html: excelHtml,
+    pdf_html: pdfHtml,
+    excel_filename: excelFilename,
+    pdf_filename: pdfFilename,
+
+    // Champs ajoutés pour éviter l'erreur Make "Missing value of required parameter data".
+    // Le module Email de Make attend souvent un champ obligatoire nommé data pour la pièce jointe.
+    data: excelHtml,
+    filename: excelFilename,
+    file_name: excelFilename,
+    mime_type: 'application/vnd.ms-excel',
+
+    // Champs explicites, plus faciles à mapper dans Make si le scénario est ajusté.
+    excel: {
+      data: excelHtml,
+      filename: excelFilename,
+      mime_type: 'application/vnd.ms-excel'
+    },
+    recap: {
+      data: pdfHtml,
+      filename: pdfFilename,
+      mime_type: 'text/html'
+    },
+    attachments: [
+      {
+        data: excelHtml,
+        filename: excelFilename,
+        mime_type: 'application/vnd.ms-excel'
+      },
+      {
+        data: pdfHtml,
+        filename: pdfFilename,
+        mime_type: 'text/html'
+      }
+    ]
   };
 }
 
@@ -970,11 +1009,17 @@ async function transmit(){
   const webhook = 'https://hook.eu1.make.com/cs7ho799lf6mzkfurl1dcp9ai2pn1led';
   if (webhook) {
     try {
-      await fetch(webhook, {
+      const makeResponse = await fetch(webhook, {
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
+
+      if(!makeResponse.ok){
+        const makeErrorText = await makeResponse.text().catch(() => '');
+        throw new Error('Make webhook error ' + makeResponse.status + ' ' + makeErrorText);
+      }
+
       state.transmission.status = 'sent';
       sentOk = true;
       if (typeof itsSave === 'function') itsSave(state);
