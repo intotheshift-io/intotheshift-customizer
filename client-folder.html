@@ -213,9 +213,23 @@
       return params.get("id") || localStorage.getItem("its_selected_partner_client_id");
     }
 
+    function getClientOwnerRole(){
+      return String(val(currentClient,["ownerRole","owner_role","creatorRole","creator_role"],"")).toLowerCase();
+    }
+
+    function getClientOwnerId(){
+      return val(currentClient,["createdBy","created_by","ownerId","owner_id","creatorId","creator_id"],"");
+    }
+
     function goBackToClients(event){
       if(event) event.preventDefault();
       if(isAdmin()){
+        const ownerRole = getClientOwnerRole();
+        const ownerId = getClientOwnerId();
+        if(ownerRole === "partner" && ownerId){
+          window.location.href = `partner-folder.html?id=${encodeURIComponent(ownerId)}`;
+          return;
+        }
         window.location.href = "admin.html#organizations";
         return;
       }
@@ -225,7 +239,11 @@
     function updateBackLabel(){
       const link = document.getElementById("backToClients");
       if(!link) return;
-      link.textContent = isAdmin() ? "← Retour aux clients finaux" : "← Retour à mes clients";
+      if(isAdmin()){
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour aux clients finaux";
+      }else{
+        link.textContent = "← Retour à mes clients";
+      }
     }
 
     function val(obj, keys, fallback = ""){
@@ -340,6 +358,7 @@
         }
 
         renderClient();
+        updateBackLabel();
       }catch(err){
         console.error(err);
         alert("Impossible de charger le cockpit client.");
@@ -421,7 +440,10 @@
             </div>
             <div class="card-actions">
               <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
-              <button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>
+              ${isAdmin()
+                ? `<button class="small-btn" onclick="showTabByName('campaigns')">Voir campagne</button>`
+                : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
+              }
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">Marquer comme publié</button>`
@@ -516,9 +538,15 @@
 
     function showTab(tabName, button){
       document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-      button.classList.add("active");
+      if(button) button.classList.add("active");
       document.querySelectorAll(".tab-content").forEach(content => content.style.display = "none");
       document.getElementById(`tab-${tabName}`).style.display = "block";
+    }
+
+    function showTabByName(tabName){
+      const buttons = Array.from(document.querySelectorAll(".tab"));
+      const index = ["ads","campaigns","results","resources"].indexOf(tabName);
+      showTab(tabName, buttons[index] || null);
     }
 
     function createAdForThisClient(){

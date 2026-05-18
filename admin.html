@@ -719,9 +719,14 @@ function renderOrganizations(){
   grid.innerHTML=rows.map(o=>{
     const id=val(o,["id"],"");
     const name=getOrgName(o);
-    const contactName=val(o,["contactName","contact_name"],"—");
-    const contactEmail=val(o,["contactEmail","contact_email"],"");
     const ownerName=val(o,["ownerName","owner_name"],"—");
+    const contactName=(
+      val(o,["contactName","contact_name"],"") ||
+      [val(o,["contactFirstName","contact_first_name","firstName","first_name"],""), val(o,["contactLastName","contact_last_name","lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
+      ownerName ||
+      "—"
+    );
+    const contactEmail=val(o,["contactEmail","contact_email","ownerEmail","owner_email"],"");
     const ownerEmail=val(o,["ownerEmail","owner_email"],"");
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
     const pack=val(o,["passationsPack","passations_pack"],"");
