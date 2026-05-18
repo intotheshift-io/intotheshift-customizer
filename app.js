@@ -36,11 +36,20 @@ let itsSaveTimer = null;
 let itsIsRestoringProject = false;
 
 function itsGetToken() {
-  return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+  return (
+    localStorage.getItem("its_token") ||
+    localStorage.getItem("token") ||
+    localStorage.getItem("auth_token") ||
+    ""
+  );
 }
 
 function itsGetCurrentProjectId() {
-  return localStorage.getItem("its_current_project_id") || localStorage.getItem("its_current_ad_id") || "";
+  return (
+    localStorage.getItem("its_current_project_id") ||
+    localStorage.getItem("its_current_ad_id") ||
+    ""
+  );
 }
 
 function itsSetCurrentProjectId(id) {
@@ -54,9 +63,44 @@ function itsClearCurrentProjectId() {
   localStorage.removeItem("its_current_ad_id");
 }
 
+function itsParseMaybeJson(value) {
+  if (!value) return {};
+  if (typeof value !== "string") return value;
+  try {
+    return JSON.parse(value);
+  } catch(e) {
+    return {};
+  }
+}
+
+function itsUnwrapProjectData(rawData) {
+  let data = itsParseMaybeJson(rawData);
+  if (!data || typeof data !== "object") return {};
+
+  // Ancienne sauvegarde questions.html : { step, status, configTransmise, state: {...} }
+  if (data.state && typeof data.state === "object") {
+    const state = data.state;
+    return {
+      ...state,
+      current_step: data.step || data.current_step || state.current_step || state.step || "questions",
+      step: data.step || data.current_step || state.step || state.current_step || "questions",
+      status: data.status || state.status || "draft",
+      configTransmise: data.configTransmise === true || state.configTransmise === true
+    };
+  }
+
+  // Variante possible : { payload: { state: {...} } }
+  if (data.payload && typeof data.payload === "object") {
+    return itsUnwrapProjectData(data.payload);
+  }
+
+  return data;
+}
+
 function itsLoad() {
   try {
-    return JSON.parse(localStorage.getItem(itsGetStorageKey())) || {};
+    const current = JSON.parse(localStorage.getItem(itsGetStorageKey())) || {};
+    return itsUnwrapProjectData(current);
   } catch(e) {
     return {};
   }
@@ -73,16 +117,31 @@ function itsInferCurrentStep() {
 
 function itsProjectTitleFromState(state) {
   const p = state?.parametrage || state?.meta || {};
-  return p.nom || p.titre || state?.title || state?.subject || state?.theme || "Nouveau projet";
+  return (
+    p.nom ||
+    p.titre ||
+    state?.autodiagTitle ||
+    state?.title ||
+    state?.subject ||
+    state?.theme ||
+    "Nouveau projet"
+  );
 }
 
 function itsSave(state) {
-  const safeState = state || {};
+  const safeState = itsUnwrapProjectData(state || {});
   const step = safeState.current_step || safeState.currentStep || safeState.step || itsInferCurrentStep();
 
   if (step) {
     safeState.current_step = step;
     safeState.step = step;
+  }
+
+  const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || itsGetCurrentProjectId();
+  if (projectId) {
+    safeState.currentAdId = projectId;
+    safeState.project_id = projectId;
+    itsSetCurrentProjectId(projectId);
   }
 
   localStorage.setItem(itsGetStorageKey(), JSON.stringify(safeState));
@@ -104,7 +163,7 @@ async function itsSyncProjectToApi(state) {
   const token = itsGetToken();
   if (!token || !state || typeof state !== "object") return;
 
-  const projectId = itsGetCurrentProjectId();
+  const projectId = state.currentAdId || state.project_id || state.projectId || itsGetCurrentProjectId();
   const title = itsProjectTitleFromState(state);
   const currentStep = state.current_step || state.step || itsInferCurrentStep();
   const configSent = state.configTransmise === true || state.config_transmise === true || state.submitted === true;
@@ -131,7 +190,7 @@ async function itsSyncProjectToApi(state) {
     if (!res.ok) return;
 
     const json = await res.json();
-    const savedId = json?.project?.id;
+    const savedId = json?.project?.id || json?.id || json?.project_id;
     if (savedId) itsSetCurrentProjectId(savedId);
   } catch(e) {
     console.warn("Sauvegarde projet API impossible", e);
@@ -157,13 +216,29 @@ function itsClearLegacyDraft() {
 function itsRestoreProject(project) {
   if (!project) return false;
 
-  const rawData = project.data || project.payload || project.configuration || {};
-  const data = typeof rawData === "string" ? JSON.parse(rawData || "{}") : rawData;
+  const realProject = project.project || project;
+  const projectId = realProject.id || realProject.project_id || realProject.projectId || "";
+  const rawData = realProject.data || realProject.payload || realProject.configuration || {};
+  const data = itsUnwrapProjectData(rawData);
 
   if (!data || typeof data !== "object") return false;
 
+  if (projectId) {
+    data.currentAdId = projectId;
+    data.project_id = projectId;
+    itsSetCurrentProjectId(projectId);
+  }
+
+  if (realProject.currentStep || realProject.current_step) {
+    data.current_step = realProject.currentStep || realProject.current_step;
+    data.step = realProject.currentStep || realProject.current_step;
+  }
+
+  if (realProject.status && !data.status) {
+    data.status = realProject.status;
+  }
+
   itsIsRestoringProject = true;
-  itsSetCurrentProjectId(project.id || project.project_id);
   localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
   itsIsRestoringProject = false;
 
@@ -171,7 +246,14 @@ function itsRestoreProject(project) {
 }
 
 function itsResumeUrlForProject(project) {
-  const rawStep = String(project?.currentStep || project?.current_step || project?.data?.current_step || project?.data?.step || "").toLowerCase();
+  const rawData = itsUnwrapProjectData(project?.data || {});
+  const rawStep = String(
+    project?.currentStep ||
+    project?.current_step ||
+    rawData.current_step ||
+    rawData.step ||
+    ""
+  ).toLowerCase();
   const id = encodeURIComponent(project?.id || project?.project_id || "");
   const suffix = id ? `?projectId=${id}` : "";
 
@@ -244,5 +326,6 @@ function itsStartFromCatalogue(adId) {
   itsSave(state);
   return state;
 }
+
 
 

@@ -410,24 +410,12 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <span class="bc-cur" id="bc-cur">Questions</span>
 </div>
 
-<div class="stepper-wrap">
-  <div class="stepper">
-    <div class="step"><div class="step-circle done">✓</div><a class="step-label done step-link" href="index.html">Choisir une base</a></div><div class="step-connector done"></div>
-    <div class="step"><div class="step-circle active">2</div><span class="step-label active">Créer l’autodiagnostic</span></div><div class="step-connector todo"></div>
-    <div class="step"><div class="step-circle todo">3</div><span class="step-label todo">Paramétrer</span></div><div class="step-connector todo"></div>
-    <div class="step"><div class="step-circle todo">4</div><span class="step-label todo">Campagne</span></div><div class="step-connector todo"></div>
-    <div class="step"><div class="step-circle todo">5</div><span class="step-label todo">Transmettre</span></div>
-  </div>
-</div>
-<a class="workflow-back" href="index.html">← Retour à la bibliothèque</a>
-
 <div class="editor-layout">
   <div class="sidebar">
     <div class="sb-title">Chapitres</div>
     <div id="chap-nav"></div>
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
-      <button class="btn-add-chapter" type="button" onclick="window.location.href='index.html'">← Retour à la bibliothèque</button>
       <div class="sb-total" id="sb-total"></div>
       <div class="btn-save-hint" id="btn-save-hint">4 questions min. par chapitre</div>
       <button class="btn-save" id="btn-save" onclick="trySave()">Enregistrer le thème</button>
@@ -531,6 +519,21 @@ function makeBlankDiagnosticState(){
 }
 
 let state = (typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}');
+
+// Sécurité reprise projet : si une ancienne sauvegarde contient { state: {...} },
+// on récupère le vrai contenu de l'autodiagnostic avant de tester les chapitres.
+if (state && state.state && typeof state.state === 'object') {
+  const wrapper = state;
+  state = {
+    ...state.state,
+    current_step: wrapper.step || wrapper.current_step || state.state.current_step || state.state.step || 'questions',
+    step: wrapper.step || wrapper.current_step || state.state.step || state.state.current_step || 'questions',
+    status: wrapper.status || state.state.status || 'draft',
+    configTransmise: wrapper.configTransmise === true || state.state.configTransmise === true
+  };
+  if (typeof itsSave === 'function') itsSave(state);
+  else localStorage.setItem('its_state', JSON.stringify(state));
+}
 
 if (isBlankMode) {
   const freshBlank = makeBlankDiagnosticState();
@@ -1869,48 +1872,7 @@ function updateSaveButton() {
   if(allProblems.length) hint.textContent = 'Questions et/ou profils incomplets sur certains chapitres';
 }
 
-async function persistProjectDraft(step, status){
-  syncToState();
-  state.status = status || state.status || 'draft';
-  state.current_step = step || 'questions';
-  if (typeof itsSave === 'function') itsSave(state);
-  else localStorage.setItem('its_state', JSON.stringify(state));
-
-  const token = localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
-  if(!token) return;
-
-  try{
-    const response = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/projects", {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer " + token
-      },
-      body: JSON.stringify({
-        title: state.title || state.themeTitle || state.selectedTheme?.title || 'Autodiagnostic',
-        organizationId: localStorage.getItem("its_selected_partner_client_id") || null,
-        data:{
-          step: step || 'questions',
-          status: state.status,
-          configTransmise:false,
-          state
-        }
-      })
-    });
-    const saved = await response.json().catch(()=>({}));
-    const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){
-      state.currentAdId = id;
-      state.project_id = id;
-      if (typeof itsSave === 'function') itsSave(state);
-      else localStorage.setItem('its_state', JSON.stringify(state));
-    }
-  }catch(e){
-    console.error('Sauvegarde backend impossible pour le brouillon', e);
-  }
-}
-
-async function trySave() {
+function trySave() {
   syncToState();
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
@@ -1928,7 +1890,6 @@ async function trySave() {
     return;
   }
 
-  await persistProjectDraft('questions','draft');
   window.location.href = 'parametrage.html';
 }
 
@@ -1947,4 +1908,5 @@ if (needsBlankSetup()) {
 </script>
 </body>
 </html>
+
 
