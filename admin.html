@@ -122,6 +122,10 @@ td{padding:13px 12px;border-bottom:1px solid #edf2f6;font-size:14px;vertical-ali
 .publication-field select:focus,.publication-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
 .project-publication .mini-btn{height:44px;border-radius:12px;padding:0 16px}
 .project-publication .publication-help{grid-column:1/-1;font-size:13px;color:#60758a;line-height:1.4;background:#eef6fb;border:1px solid #d7e8f1;border-radius:12px;padding:10px 12px}
+
+.publication-save-feedback{grid-column:1/-1;display:none;background:#eefbf3;border:1px solid #bee8cd;color:#176239;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800}
+.publication-save-feedback.on{display:block}
+
 .org-quota-panel{display:grid;grid-template-columns:1fr 1fr 170px auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 @media(max-width:1100px){.project-publication{grid-template-columns:1fr 1fr}.project-publication button{grid-column:auto}.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
@@ -794,8 +798,9 @@ function renderProjects(){
         <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
         <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
         <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
-        <button class="mini-btn" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
+        <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
         <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
+        <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
         <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
     </article>`;
@@ -815,16 +820,60 @@ function togglePublicationUrlFields(projectId){
 async function saveProjectPublication(projectId){
   if(!projectId)return;
   const status=document.getElementById("project-status-"+String(projectId))?.value || "draft";
-  const shareUrl=document.getElementById("project-share-"+String(projectId))?.value.trim() || "";
-  const resultsUrl=document.getElementById("project-results-"+String(projectId))?.value.trim() || "";
+  const shareInput=document.getElementById("project-share-"+String(projectId));
+  const resultsInput=document.getElementById("project-results-"+String(projectId));
+  const shareUrl=shareInput?.value.trim() || "";
+  const resultsUrl=resultsInput?.value.trim() || "";
   const campaignStartDate=document.getElementById("project-start-"+String(projectId))?.value || "";
   const campaignEndDate=document.getElementById("project-end-"+String(projectId))?.value || "";
+  const saveBtn=document.getElementById("project-save-"+String(projectId));
+  const feedback=document.getElementById("project-save-feedback-"+String(projectId));
+
+  if(campaignStartDate && campaignEndDate && campaignStartDate > campaignEndDate){
+    showError("La date de début de campagne ne peut pas être postérieure à la date de fin.");
+    return;
+  }
+
+  if(status === "published" && (!shareUrl || !resultsUrl)){
+    showError("Pour passer un autodiag en Publié, renseigne l’URL de diffusion et l’URL résultats.");
+    return;
+  }
+
+  const oldBtnText=saveBtn?.textContent || "Enregistrer";
+  if(saveBtn){
+    saveBtn.disabled=true;
+    saveBtn.textContent="Enregistrement...";
+  }
+  if(feedback) feedback.classList.remove("on");
+
   try{
     await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{status,share_url:shareUrl,results_url:resultsUrl,shareUrl,resultsUrl,campaign_start_date:campaignStartDate,campaign_end_date:campaignEndDate,campaignStartDate,campaignEndDate});
     adminState.projects=adminState.projects.map(p=>String(val(p,["id"],""))===String(projectId)?{...p,status,statut:status,share_url:shareUrl,shareUrl,results_url:resultsUrl,resultsUrl,campaign_start_date:campaignStartDate,campaignStartDate,campaign_end_date:campaignEndDate,campaignEndDate}:p);
-    renderAll();
-    showSuccess("Publication mise à jour : " + getProjectStatusLabel(status) + ".");
-  }catch(err){console.error(err);showError("Mise à jour publication impossible. Détail : "+err.message);}
+    renderKpis();
+    renderProjects();
+    showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + ".");
+
+    setTimeout(()=>{
+      const btn=document.getElementById("project-save-"+String(projectId));
+      const fb=document.getElementById("project-save-feedback-"+String(projectId));
+      if(btn){
+        btn.textContent="Enregistré ✓";
+        btn.disabled=false;
+        setTimeout(()=>{ const b=document.getElementById("project-save-"+String(projectId)); if(b)b.textContent="Enregistrer"; },2200);
+      }
+      if(fb){
+        fb.classList.add("on");
+        setTimeout(()=>fb.classList.remove("on"),3000);
+      }
+    },50);
+  }catch(err){
+    console.error(err);
+    showError("Mise à jour publication impossible. Détail : "+err.message);
+    if(saveBtn){
+      saveBtn.disabled=false;
+      saveBtn.textContent=oldBtnText;
+    }
+  }
 }
 let projectToDelete = null;
 
