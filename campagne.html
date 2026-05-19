@@ -756,14 +756,20 @@ bootCampagnePage();
     const readonly = params.get("readonly") === "1";
     const role = getUserRole();
 
-    // Admin et partner : page verrouillée, mais sans message client “publié / lecture seule”.
+    const status = String((typeof backendProject !== "undefined" && backendProject && backendProject.status) || (typeof state !== "undefined" && state && state.status) || "").toLowerCase();
+    const lockedStatus = status === "published" || status === "unpublished" || status.includes("publi") || status.includes("dépub") || status.includes("depub");
+
+    // Admin / partner : on ne verrouille plus toute la page uniquement à cause du rôle.
+    // Le verrou s'applique seulement en consultation explicite ou si la campagne est déjà publiée/dépubliée.
     if(isBackofficeRole()){
-      applyLockedCampaignMode();
+      if(readonly || lockedStatus){
+        applyLockedCampaignMode();
+      }
       return;
     }
 
-    // Client final : message de lecture seule uniquement si explicitement demandé.
-    if(readonly){
+    // Client final : message de lecture seule uniquement si explicitement demandé ou campagne publiée/dépubliée.
+    if(readonly || lockedStatus){
       applyClientReadonlyText();
       applyLockedCampaignMode();
     }
