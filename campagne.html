@@ -412,6 +412,35 @@ function normalizeLoadedProject(project){
     '';
   saveState();
 }
+function readCachedProject(projectId){
+  if(!projectId) return null;
+  try{
+    return JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
+  }catch(e){
+    return null;
+  }
+}
+function enrichProjectWithCachedDates(project, cached){
+  if(!project || !cached) return project;
+  const projectData=parseProjectObject(project.data || project.payload || project.configuration || {});
+  const projectPayload=parseProjectObject(projectData.payload || {});
+  const cachedData=parseProjectObject(cached.data || cached.payload || cached.configuration || {});
+  const cachedPayload=parseProjectObject(cachedData.payload || {});
+  const currentStart=extractProjectDate(project, projectData, projectPayload, 'start');
+  const currentEnd=extractProjectDate(project, projectData, projectPayload, 'end');
+  const cachedStart=extractProjectDate(cached, cachedData, cachedPayload, 'start');
+  const cachedEnd=extractProjectDate(cached, cachedData, cachedPayload, 'end');
+
+  if(!currentStart && cachedStart){
+    project.campaignStartDate=cachedStart;
+    project.campaign_start_date=cachedStart;
+  }
+  if(!currentEnd && cachedEnd){
+    project.campaignEndDate=cachedEnd;
+    project.campaign_end_date=cachedEnd;
+  }
+  return project;
+}
 function countQuestions(){
   return (state.chapters||[]).reduce((a,ch)=>a+((ch.questions||[]).length),0);
 }
@@ -474,15 +503,17 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
         params.set('projectId', String(projectId));
         history.replaceState(null,'',window.location.pathname+'?'+params.toString());
       }
+      const cachedProject=readCachedProject(projectId);
+      if(cachedProject) normalizeLoadedProject(cachedProject);
       const project=await fetchProjectFromBackend(projectId);
-      if(project) normalizeLoadedProject(project);
+      if(project) normalizeLoadedProject(enrichProjectWithCachedDates(project,cachedProject));
     }
   }catch(e){
     console.error('Chargement backend campagne impossible', e);
     const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
     if(projectId){
       try{
-        const cached=JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
+        const cached=readCachedProject(projectId);
         if(cached) normalizeLoadedProject(cached);
       }catch(cacheError){}
     }
