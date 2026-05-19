@@ -513,6 +513,10 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
 
   init();
 
+  if(typeof window.applyCampaignModeAfterHydration === "function"){
+    window.applyCampaignModeAfterHydration();
+  }
+
   if(typeof itsApplyReadOnlyMode === "function"){
     setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
@@ -562,23 +566,22 @@ bootCampagnePage();
 
     document.querySelectorAll("input, select, textarea").forEach(el => {
 
-  if(
-    el.id === "date-launch" ||
-    el.id === "date-close"
-  ){
-    el.readOnly = true;
-    el.style.pointerEvents = "none";
-    el.style.background = "#f6f8fb";
-    return;
-  }
+      if(
+        el.id === "date-launch" ||
+        el.id === "date-close"
+      ){
+        el.disabled = false;
+        el.readOnly = true;
+        el.style.pointerEvents = "none";
+        el.style.cursor = "not-allowed";
+        el.style.background = "#f6f8fb";
+        return;
+      }
 
-  el.disabled = true;
-    });
-
-    document.querySelectorAll("input, select, textarea").forEach(el => {
       el.disabled = true;
       el.style.cursor = "not-allowed";
     });
+
 
     document.querySelectorAll("button").forEach(button => {
       if(allowedButton(button)){
@@ -633,14 +636,7 @@ bootCampagnePage();
     }
   }
 
-  if(document.readyState === "loading"){
-    document.addEventListener("DOMContentLoaded", applyCampaignMode);
-  }else{
-    applyCampaignMode();
-  }
-
-  setTimeout(applyCampaignMode, 150);
-  setTimeout(applyCampaignMode, 600);
+  window.applyCampaignModeAfterHydration = applyCampaignMode;
 })();
 </script>
 
