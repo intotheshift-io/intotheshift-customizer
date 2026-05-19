@@ -173,11 +173,11 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
       </section>
 
       <section class="block">
-        <div class="block-title">Vos informations</div>
-        <div class="block-sub">Ces informations permettront de vous envoyer le récapitulatif et de préparer la mise en ligne de votre autodiagnostic.</div>
+        <div class="block-title">Entreprise commanditaire</div>
+        <div class="block-sub">Ces informations identifient l’entreprise commanditaire et le contact à utiliser pour préparer la mise en ligne de votre autodiagnostic.</div>
         <div class="form-grid">
           <div class="form-field" id="field-company">
-            <label class="form-label" for="client-company">Entreprise <span class="req">*</span></label>
+            <label class="form-label" for="client-company">Entreprise commanditaire <span class="req">*</span></label>
             <input class="form-input" id="client-company" type="text" autocomplete="organization" placeholder="Nom de l’entreprise" oninput="updateReady()">
             <div class="field-error">Entreprise obligatoire.</div>
           </div>
@@ -196,9 +196,10 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
             <input class="form-input" id="client-lastname" type="text" autocomplete="family-name" placeholder="Nom" oninput="updateReady()">
             <div class="field-error">Nom obligatoire.</div>
           </div>
-          <div class="form-field">
-            <label class="form-label" for="client-role">Fonction</label>
+          <div class="form-field" id="field-role">
+            <label class="form-label" for="client-role">Fonction <span class="req">*</span></label>
             <input class="form-input" id="client-role" type="text" autocomplete="organization-title" placeholder="Ex. DRH, Responsable formation…" oninput="updateReady()">
+            <div class="field-error">Fonction obligatoire.</div>
           </div>
           <div class="form-field">
             <label class="form-label" for="client-phone">Téléphone</label>
@@ -598,7 +599,8 @@ function validateClientInfo(showErrors){
     ['field-company', !!info.entreprise],
     ['field-firstname', !!info.prenom],
     ['field-lastname', !!info.nom],
-    ['field-email', isValidEmail(info.email)]
+    ['field-email', isValidEmail(info.email)],
+    ['field-role', !!info.fonction]
   ];
   rules.forEach(([id, ok]) => {
     const el = document.getElementById(id);

@@ -327,6 +327,28 @@
       return `<div class="theme-tags">${tags.map(t => `<span class="theme-tag">${escapeHtml(t)}</span>`).join("")}</div>`;
     }
 
+    function getProjectComment(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
+      const clientInfo = payload.clientInfo || payload.client_info || data.clientInfo || data.client_info || transmission.clientInfo || transmission.client_info || {};
+      const innerPayload = payload.payload && typeof payload.payload === "object" ? payload.payload : {};
+      const innerClientInfo = innerPayload.client_info || innerPayload.clientInfo || {};
+      return String(
+        val(clientInfo,["commentaire","comment","clientComment","client_comment"],"") ||
+        val(innerClientInfo,["commentaire","comment","clientComment","client_comment"],"") ||
+        val(payload,["commentaire","comment","clientComment","client_comment"],"") ||
+        val(data,["commentaire","comment","clientComment","client_comment"],"") ||
+        ""
+      ).trim();
+    }
+
+    function renderProjectComment(project){
+      const comment = getProjectComment(project);
+      if(!comment) return "";
+      return `<div class="card-meta" style="background:#fff;border:1px solid #e4edf5;border-radius:14px;padding:10px 12px;margin-top:10px"><strong>Commentaire client :</strong><br>${escapeHtml(comment)}</div>`;
+    }
+
     function getProjectLogoData(project){
       const payload = getProjectPayload(project);
       return val(project,["passationLogoDataUrl","passation_logo_data_url","projectLogoDataUrl","project_logo_data_url"],
@@ -528,6 +550,7 @@
               Début : ${formatDate(startDate)}<br>
               Fin : ${formatDate(endDate)}
             </div>
+            ${renderProjectComment(project)}
             <div class="card-actions">
               <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
               ${isAdmin()
