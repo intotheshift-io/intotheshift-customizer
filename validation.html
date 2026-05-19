@@ -823,6 +823,8 @@ function buildPayload(){
     pack: formatPack(getPackChoice()),
     slug: getSlug(),
     url_prevue: getUrl(),
+    passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+    passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
     chapters: getChapters(),
 
     // Champs historiques conservés pour le scénario Make existant.
@@ -1022,6 +1024,8 @@ async function transmit(){
         step: 'validation',
         current_step: 'validation',
         status: 'sent',
+        passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
         payload
       })
     })

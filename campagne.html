@@ -235,7 +235,13 @@ async function persistProjectDraft(step, status){
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
         status: status || state.status || 'ready_for_transmission',
         currentStep: step || 'campagne',
+        campaignStartDate: p().date_lancement || undefined,
+        campaignEndDate: p().date_cloture || undefined,
         data: Object.assign({}, state, {
+          campaignStartDate: p().date_lancement || '',
+          campaignEndDate: p().date_cloture || '',
+          campaign_start_date: p().date_lancement || '',
+          campaign_end_date: p().date_cloture || '',
           step: step || 'campagne',
           current_step: step || 'campagne',
           status: status || state.status || 'ready_for_transmission',
@@ -245,7 +251,7 @@ async function persistProjectDraft(step, status){
     });
     const saved = await response.json().catch(()=>({}));
     const id = saved.id || saved.project_id || saved.projectId || (saved.project&&saved.project.id);
-    if(id){ state.currentAdId=id; state.project_id=id; saveState(); }
+    if(id){ state.currentAdId=id; state.project_id=id; state.projectId=id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); saveState(); }
   }catch(e){ console.error('Sauvegarde backend impossible pour la campagne', e); }
 }
 
@@ -281,6 +287,14 @@ function getVal(obj,keys,fallback=''){
   }
   return fallback;
 }
+function parseProjectObject(value){
+  if(!value)return {};
+  if(typeof value==='object')return value;
+  if(typeof value==='string'){
+    try{return JSON.parse(value)}catch(e){return {}}
+  }
+  return {};
+}
 function extractProjectDate(project, data, payload, kind){
   const param = (data && data.parametrage) || (payload && payload.parametrage) || {};
   const campaign = (data && data.campagne) || (payload && payload.campagne) || {};
@@ -307,11 +321,12 @@ async function fetchProjectFromBackend(projectId){
     const direct=await fetch(apiBase()+'/api/admin/projects/'+encodeURIComponent(projectId),{headers});
     const directData=await direct.json().catch(()=>({}));
     if(direct.ok && directData.project) return directData.project;
+    if(direct.ok && directData.id) return directData;
 
     const res=await fetch(apiBase()+'/api/admin/projects',{headers});
     const data=await res.json().catch(()=>({}));
     if(!res.ok)throw new Error(data.error || directData.error || 'Erreur chargement projets admin');
-    const projects=data.projects || data.autodiags || data.data || [];
+    const projects=Array.isArray(data) ? data : (data.projects || data.autodiags || data.data || []);
     return projects.find(p=>String(p.id)===String(projectId)) || null;
   }
 
@@ -341,8 +356,8 @@ async function fetchProjectFromBackend(projectId){
 function normalizeLoadedProject(project){
   if(!project)return;
   backendProject=project;
-  const data=(project.data && typeof project.data==='object') ? project.data : {};
-  const payload=(data.payload && typeof data.payload==='object') ? data.payload : {};
+  const data=parseProjectObject(project.data || project.payload || project.configuration || {});
+  const payload=parseProjectObject(data.payload || {});
   const merged=Object.assign({}, data, payload);
   state=Object.assign({}, state || {}, merged);
   state.data=data;
@@ -378,6 +393,11 @@ function normalizeLoadedProject(project){
 
   state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
   state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
+  state.campaignStartDate = state.parametrage.date_lancement;
+  state.campaignEndDate = state.parametrage.date_cloture;
+  if(project.id){
+    try{sessionStorage.setItem('its_project_cache_'+project.id, JSON.stringify(project));}catch(e){}
+  }
   state.parametrage.pack_choisi =
     state.parametrage.pack_choisi ||
     project.pack ||
@@ -431,7 +451,7 @@ function init(){
     if(sbStatus)sbStatus.textContent=statusLabel();
   }
 }
-async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}async function bootCampagnePage(){
+async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
   const projectIdBeforeBootstrap=getCurrentProjectId();
 
   if(typeof itsBootstrapProjectFromUrl === "function"){
@@ -455,6 +475,13 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
     }
   }catch(e){
     console.error('Chargement backend campagne impossible', e);
+    const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
+    if(projectId){
+      try{
+        const cached=JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
+        if(cached) normalizeLoadedProject(cached);
+      }catch(cacheError){}
+    }
   }
 
   if(!state || !state.chapters){

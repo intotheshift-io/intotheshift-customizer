@@ -257,7 +257,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
                 <th>Compte</th>
                 <th>Email</th>
                 <th>Entreprise / organisme</th>
-                <th>Images</th>
+                <th>Logo organisation</th>
                 <th>Rôle</th>
                 <th>Changer rôle</th>
                 <th>Projets</th>
@@ -380,6 +380,14 @@ function getUserLogos(c){
     orgData: val(c,["organizationLogoDataUrl","organization_logo_data_url"],""),
     passName: val(c,["passationLogoName","passation_logo_name"],""),
     passData: val(c,["passationLogoDataUrl","passation_logo_data_url"],"")
+  };
+}
+function getProjectLogo(project){
+  const data = project?.data || {};
+  const param = data.parametrage || {};
+  return {
+    name: val(project,["passationLogoName","passation_logo_name"],"") || val(data,["passationLogoName","passation_logo_name"],"") || val(param,["passationLogoName","passation_logo_name"],""),
+    data: val(project,["passationLogoDataUrl","passation_logo_data_url"],"") || val(data,["passationLogoDataUrl","passation_logo_data_url"],"") || val(param,["passationLogoDataUrl","passation_logo_data_url"],"")
   };
 }
 function downloadDataUrl(dataUrl,fileName){
@@ -632,9 +640,7 @@ function renderAccounts(){
       </td>
       <td>
         <div class="admin-logo-actions">
-          ${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Logo org.</button>`:""}
-          ${logos.passData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.passData)}','${escapeAttr(logos.passName || "logo-passation.png")}')">Logo pass.</button>`:""}
-          ${(!logos.orgData&&!logos.passData)?`<span class="muted">Aucune image</span>`:""}
+          ${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo organisation</span>`}
         </div>
       </td>
       <td id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</td>
@@ -719,14 +725,9 @@ function renderOrganizations(){
   grid.innerHTML=rows.map(o=>{
     const id=val(o,["id"],"");
     const name=getOrgName(o);
+    const contactName=val(o,["contactName","contact_name"],"—");
+    const contactEmail=val(o,["contactEmail","contact_email"],"");
     const ownerName=val(o,["ownerName","owner_name"],"—");
-    const contactName=(
-      val(o,["contactName","contact_name"],"") ||
-      [val(o,["contactFirstName","contact_first_name","firstName","first_name"],""), val(o,["contactLastName","contact_last_name","lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
-      ownerName ||
-      "—"
-    );
-    const contactEmail=val(o,["contactEmail","contact_email","ownerEmail","owner_email"],"");
     const ownerEmail=val(o,["ownerEmail","owner_email"],"");
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
     const pack=val(o,["passationsPack","passations_pack"],"");

@@ -517,7 +517,8 @@ function hydrateAccount(forcedUser=null){
     if(navPartner)navPartner.hidden=false;
   }else{
     if(navOrganisation)navOrganisation.hidden=false;
-    if(navPassation)navPassation.hidden=false;
+    // Le logo de passation est désormais rattaché à chaque autodiagnostic, pas au compte.
+    if(navPassation)navPassation.hidden=true;
     if(navPartner)navPartner.hidden=true;
   }
 }

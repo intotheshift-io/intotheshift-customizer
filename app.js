@@ -287,6 +287,21 @@ function itsRestoreProject(project) {
     data.unpublishedAt = realProject.unpublished_at || realProject.unpublishedAt;
   }
 
+  const passationLogoName = realProject.passation_logo_name || realProject.passationLogoName || data.passation_logo_name || data.passationLogoName || "";
+  const passationLogoDataUrl = realProject.passation_logo_data_url || realProject.passationLogoDataUrl || data.passation_logo_data_url || data.passationLogoDataUrl || "";
+
+  if (passationLogoName || passationLogoDataUrl) {
+    data.passationLogoName = passationLogoName;
+    data.passationLogoDataUrl = passationLogoDataUrl;
+    data.passation_logo_name = passationLogoName;
+    data.passation_logo_data_url = passationLogoDataUrl;
+    data.parametrage = data.parametrage || {};
+    data.parametrage.passationLogoName = passationLogoName;
+    data.parametrage.passationLogoDataUrl = passationLogoDataUrl;
+    data.parametrage.passation_logo_name = passationLogoName;
+    data.parametrage.passation_logo_data_url = passationLogoDataUrl;
+  }
+
   const startDate = realProject.campaign_start_date || realProject.campaignStartDate || realProject.start_date || realProject.startDate || "";
   const endDate = realProject.campaign_end_date || realProject.campaignEndDate || realProject.end_date || realProject.endDate || "";
 

@@ -69,6 +69,15 @@
     .modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
     .success-inline{display:none;margin-top:12px;background:#eefbf3;color:#176239;border:1px solid #bee8cd;border-radius:14px;padding:11px 12px;font-weight:800;font-size:13px}
     .success-inline.on{display:block}
+    .theme-tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+    .theme-tag{display:inline-flex;border-radius:999px;background:#eef6fb;color:#0d4c72;border:1px solid #d7e8f1;padding:4px 8px;font-size:11px;font-weight:900}
+    .project-logo-box{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0;padding:10px;border:1px dashed #cbd9e7;border-radius:16px;background:#fff}
+    .project-logo-preview{width:48px;height:48px;border-radius:13px;background:#eef6fb;color:#0d4c72;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;overflow:hidden;flex-shrink:0}
+    .project-logo-preview img{width:100%;height:100%;object-fit:contain;background:#fff}
+    .project-logo-info{font-size:12px;color:#61738a;line-height:1.35;min-width:140px;flex:1}
+    .project-logo-info strong{display:block;color:#17375d;font-size:13px}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10000;opacity:0;pointer-events:none;transition:all .18s ease}
+    .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
     @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
     @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
@@ -174,6 +183,8 @@
   </div>
 
   <script src="header.js"></script>
+  <input id="projectLogoInput" type="file" accept="image/*" hidden onchange="uploadProjectLogo(event)">
+  <div id="clientFolderToast" class="toast" aria-live="polite"></div>
 
   <script>
     const API_URL = window.location.hostname === 'localhost'
@@ -182,6 +193,7 @@
 
     let currentClient = null;
     let projectToPublish = null;
+    let projectToLogo = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -266,17 +278,78 @@
       return val(client,["contactEmail","contact_email","ownerEmail","owner_email","email"],"");
     }
 
+    function getProjectData(project){
+      const raw = project?.data || project?.payload || project?.configuration || {};
+      if(typeof raw === "string"){
+        try{return JSON.parse(raw) || {};}catch(e){return {}}
+      }
+      return raw && typeof raw === "object" ? raw : {};
+    }
+
+    function getProjectPayload(project){
+      const data = getProjectData(project);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      return Object.assign({}, data, state, payload);
+    }
+
     function getProjectTitle(project){
-      const data = project.data || {};
-      const payload = data.payload || data || {};
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
       return (
         payload.titre_autodiag ||
+        payload.autodiagTitle ||
         payload.title ||
+        payload.titre ||
+        param.nom ||
+        param.titre ||
         data.autodiagTitle ||
         data.title ||
         project.title ||
         "Autodiag sans titre"
       );
+    }
+
+    function getProjectThemes(project){
+      const payload = getProjectPayload(project);
+      const source = []
+        .concat(payload.tags || [])
+        .concat(payload.themeTags || [])
+        .concat(payload.theme?.tags || [])
+        .concat(payload.theme?.title || payload.themeTitle || payload.title || []);
+      return [...new Set(source.map(x => String(x || "").trim()).filter(Boolean))].slice(0,4);
+    }
+
+    function renderThemeTags(project){
+      const tags = getProjectThemes(project);
+      if(!tags.length) return "";
+      return `<div class="theme-tags">${tags.map(t => `<span class="theme-tag">${escapeHtml(t)}</span>`).join("")}</div>`;
+    }
+
+    function getProjectLogoData(project){
+      const payload = getProjectPayload(project);
+      return val(project,["passationLogoDataUrl","passation_logo_data_url","projectLogoDataUrl","project_logo_data_url"],
+        val(payload,["passationLogoDataUrl","passation_logo_data_url","projectLogoDataUrl","project_logo_data_url"],""));
+    }
+
+    function getProjectLogoName(project){
+      const payload = getProjectPayload(project);
+      return val(project,["passationLogoName","passation_logo_name","projectLogoName","project_logo_name"],
+        val(payload,["passationLogoName","passation_logo_name","projectLogoName","project_logo_name"],""));
+    }
+
+    function renderProjectLogo(project){
+      const logo = getProjectLogoData(project);
+      const name = getProjectLogoName(project);
+      const preview = logo ? `<img src="${escapeAttr(logo)}" alt="Logo passation">` : "LOGO";
+      return `
+        <div class="project-logo-box">
+          <div class="project-logo-preview">${preview}</div>
+          <div class="project-logo-info"><strong>Logo de passation</strong>${escapeHtml(name || "Aucun logo spécifique pour cet AD")}</div>
+          <button class="small-btn" type="button" onclick="chooseProjectLogo('${escapeAttr(project.id)}')">Changer</button>
+        </div>
+      `;
     }
 
     function getProjectShareUrl(project){
@@ -288,15 +361,25 @@
     }
 
     function getProjectStartDate(project){
-      const data = project.data || {};
-      const param = data.parametrage || {};
-      return val(project,["campaignStartDate","campaign_start_date","startDate","start_date"], val(data,["campaignStartDate","campaign_start_date","date_lancement","dateLancement"], val(param,["date_lancement","dateLancement"],"")));
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const campaign = payload.campagne || data.campagne || {};
+      return val(project,["campaignStartDate","campaign_start_date","startDate","start_date"],
+        val(payload,["campaignStartDate","campaign_start_date","date_lancement","dateLancement","startDate","start_date"],
+        val(campaign,["campaignStartDate","campaign_start_date","date_lancement","dateLancement","startDate","start_date"],
+        val(param,["date_lancement","dateLancement","campaignStartDate","campaign_start_date"],""))));
     }
 
     function getProjectEndDate(project){
-      const data = project.data || {};
-      const param = data.parametrage || {};
-      return val(project,["campaignEndDate","campaign_end_date","endDate","end_date"], val(data,["campaignEndDate","campaign_end_date","date_cloture","dateCloture"], val(param,["date_cloture","dateCloture"],"")));
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const campaign = payload.campagne || data.campagne || {};
+      return val(project,["campaignEndDate","campaign_end_date","endDate","end_date"],
+        val(payload,["campaignEndDate","campaign_end_date","date_cloture","dateCloture","endDate","end_date"],
+        val(campaign,["campaignEndDate","campaign_end_date","date_cloture","dateCloture","endDate","end_date"],
+        val(param,["date_cloture","dateCloture","campaignEndDate","campaign_end_date"],""))));
     }
 
     function getCurrentProjectById(projectId){
@@ -438,7 +521,9 @@
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
+            ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderProjectLogo(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
               Fin : ${formatDate(endDate)}
@@ -477,6 +562,7 @@
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
+            ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             <div class="card-meta">
               Début : ${formatDate(getProjectStartDate(project))}<br>
@@ -527,6 +613,7 @@
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
+            ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
             <div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>
           </article>
@@ -673,9 +760,82 @@
       }
     }
 
-    function copyText(text){
+    function chooseProjectLogo(projectId){
+      projectToLogo = getCurrentProjectById(projectId);
+      const input = document.getElementById("projectLogoInput");
+      if(input){
+        input.value = "";
+        input.click();
+      }
+    }
+
+    async function uploadProjectLogo(event){
+      const file = event?.target?.files?.[0];
+      if(!file || !projectToLogo?.id) return;
+
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const dataUrl = String(reader.result || "");
+        const payload = {
+          passationLogoName: file.name,
+          passationLogoDataUrl: dataUrl,
+          passation_logo_name: file.name,
+          passation_logo_data_url: dataUrl
+        };
+
+        try{
+          const response = await fetch(`${API_URL}/api/admin/projects/${projectToLogo.id}/publication`, {
+            method:"PATCH",
+            headers:{
+              "Content-Type":"application/json",
+              Authorization:`Bearer ${getToken()}`
+            },
+            body:JSON.stringify(payload)
+          });
+
+          const data = await response.json().catch(() => ({}));
+          if(!response.ok) throw new Error(data.error || "Erreur enregistrement logo");
+          showToast("Logo de passation enregistré");
+          await loadClientFolder();
+        }catch(err){
+          console.error(err);
+          showToast(err.message || "Impossible d’enregistrer le logo");
+        }finally{
+          projectToLogo = null;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function showToast(message){
+      const el = document.getElementById("clientFolderToast");
+      if(!el) return;
+      el.textContent = message;
+      el.classList.add("on");
+      clearTimeout(window.__clientFolderToastTimer);
+      window.__clientFolderToastTimer = setTimeout(() => el.classList.remove("on"), 2200);
+    }
+
+    async function copyText(text){
       if(!text) return;
-      navigator.clipboard?.writeText(text);
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+        }else{
+          const ta=document.createElement("textarea");
+          ta.value=text;
+          ta.style.position="fixed";
+          ta.style.left="-9999px";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+        showToast("Lien copié");
+      }catch(e){
+        showToast("Copie impossible : copiez le lien manuellement");
+      }
     }
 
     function escapeHtml(value = ""){
