@@ -413,17 +413,42 @@ bootCampagnePage();
 
 <script>
 (function(){
-  function applyReadonlyCampaignMode(){
-    const params = new URLSearchParams(window.location.search);
-    const readonly = params.get("readonly") === "1";
-    if(!readonly) return;
+  function getToken(){
+    return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+  }
 
+  function decodeJwt(token){
+    try{
+      const payload = token.split(".")[1];
+      return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));
+    }catch(e){
+      return null;
+    }
+  }
+
+  function getUserRole(){
+    return localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "";
+  }
+
+  function isAdminUser(){
+    return String(getUserRole() || "").toLowerCase() === "admin";
+  }
+
+  function isAllowedReadonlyButton(button){
+    const onclick = String(button.getAttribute("onclick") || "");
+
+    // En lecture seule client, on garde seulement les actions de communication :
+    // changer d’onglet de message + copier le message affiché.
+    return button.classList.contains("comm-tab") || onclick.includes("copyTemplate");
+  }
+
+  function applyClientReadonlyCampaignMode(){
     document.body.classList.add("readonly-campaign");
 
     const title = document.querySelector(".page-title");
     const sub = document.querySelector(".page-sub");
     if(title) title.textContent = "Voir la campagne";
-    if(sub) sub.textContent = "Cette campagne est publiée. Cette page est affichée en lecture seule : pour toute modification, contactez contact@intotheshift.io.";
+    if(sub) sub.textContent = "Cette campagne est publiée. Elle est consultable en lecture seule. Vous pouvez copier les messages de communication ci-dessous.";
 
     document.querySelectorAll(".bottom-actions").forEach(el => {
       el.style.display = "none";
@@ -434,21 +459,42 @@ bootCampagnePage();
       el.style.cursor = "not-allowed";
     });
 
-    document.querySelectorAll(".check-row input").forEach(el => {
-      el.disabled = true;
+    document.querySelectorAll("button").forEach(button => {
+      if(isAllowedReadonlyButton(button)) return;
+      button.disabled = true;
+      button.style.cursor = "not-allowed";
+      button.style.opacity = ".55";
+    });
+
+    document.querySelectorAll("a.pack-contact, a.btn-secondary").forEach(link => {
+      link.style.pointerEvents = "none";
+      link.style.opacity = ".55";
+      link.style.cursor = "not-allowed";
     });
 
     const sbStatus = document.getElementById("sb-status");
     if(sbStatus) sbStatus.textContent = "Publié";
 
     const sidebarHint = document.getElementById("sidebar-check-hint");
-    if(sidebarHint) sidebarHint.textContent = "Campagne publiée : lecture seule.";
+    if(sidebarHint) sidebarHint.textContent = "Campagne publiée : seuls les messages de communication restent copiables.";
 
     const help = document.getElementById("publish-help");
     if(help){
       help.style.display = "block";
-      help.innerHTML = "Pour toute modification de cette campagne publiée, contactez <strong>contact@intotheshift.io</strong>.";
+      help.innerHTML = "Campagne publiée : les champs sont bloqués. Vous pouvez uniquement copier les messages de communication.";
     }
+  }
+
+  function applyReadonlyCampaignMode(){
+    const params = new URLSearchParams(window.location.search);
+    const readonly = params.get("readonly") === "1";
+    if(!readonly) return;
+
+    // En admin, on n’affiche pas le message client de lecture seule et on ne bloque pas la page.
+    // L’admin doit pouvoir consulter la campagne sans être traité comme le client final.
+    if(isAdminUser()) return;
+
+    applyClientReadonlyCampaignMode();
   }
 
   if(document.readyState === "loading"){
@@ -456,6 +502,9 @@ bootCampagnePage();
   }else{
     applyReadonlyCampaignMode();
   }
+
+  // Sécurité : si le bootstrap projet termine après ce script, on réapplique le verrouillage côté client.
+  setTimeout(applyReadonlyCampaignMode, 150);
 })();
 </script>
 
