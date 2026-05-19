@@ -1927,8 +1927,49 @@ if (needsBlankSetup()) {
   syncToState();
 }
 
+
+function itsCurrentUserRoleForQuestions(){
+  const keys = ['its_user','user','currentUser','auth_user'];
+  for (const key of keys) {
+    try {
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const data = JSON.parse(raw);
+      if(data && data.role) return String(data.role).toLowerCase();
+      if(data && data.user && data.user.role) return String(data.user.role).toLowerCase();
+    } catch(e) {}
+  }
+
+  const tokenKeys = ['its_token','token','authToken','jwt'];
+  for (const key of tokenKeys) {
+    try {
+      const token = localStorage.getItem(key);
+      if(!token || !token.includes('.')) continue;
+      const payload = JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+      if(payload && payload.role) return String(payload.role).toLowerCase();
+    } catch(e) {}
+  }
+
+  return '';
+}
+
+function restoreAdminQuestionNavigation(){
+  if(itsCurrentUserRoleForQuestions() !== 'admin') return;
+
+  // Le mode lecture seule global peut désactiver tous les boutons d'une page transmise/publiée.
+  // En admin, on garde au minimum la navigation interne Questions / Profils cliquable.
+  document.querySelectorAll('.cni-tab').forEach(btn => {
+    btn.disabled = false;
+    btn.removeAttribute('disabled');
+    btn.style.pointerEvents = 'auto';
+  });
+}
+
 if(typeof itsApplyReadOnlyMode === 'function'){
-  setTimeout(() => itsApplyReadOnlyMode(), 50);
+  setTimeout(() => {
+    itsApplyReadOnlyMode();
+    restoreAdminQuestionNavigation();
+  }, 50);
 }
 </script>
 </body>
