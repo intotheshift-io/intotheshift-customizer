@@ -75,6 +75,20 @@
     .menu .danger{color:#c24141}
     .sep{height:1px;background:#edf1f6;margin:3px 0}
 
+
+    /* Modale archive */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(15,30,55,.42);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
+    .modal-backdrop.open{display:flex}
+    .modal-box{width:min(460px,100%);background:#fff;border:1px solid #d8e0ea;border-radius:18px;box-shadow:0 22px 60px rgba(24,55,93,.22);padding:22px}
+    .modal-icon{width:42px;height:42px;border-radius:14px;background:#fff4d5;color:#9a6700;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
+    .modal-box h2{margin:0 0 8px;color:#18375d;font-size:20px}
+    .modal-box p{margin:0;color:#64748b;font-size:14px;line-height:1.55}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
+    .modal-btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
+    .modal-btn:hover{background:#f7f9fc}
+    .modal-btn.danger{background:#eb6366;border-color:#eb6366;color:#fff}
+    .modal-btn.danger:hover{background:#d94f52}
+
     @media(max-width:850px){
       .hero{flex-direction:column}
       .stats{grid-template-columns:repeat(2,1fr)}
@@ -126,6 +140,20 @@
     <section class="list" id="adList"></section>
   </main>
 
+
+
+  <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
+      <div class="modal-icon">🗄️</div>
+      <h2 id="archiveModalTitle">Archiver cet autodiagnostic ?</h2>
+      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Cette action sera reliée ensuite à l’API d’archivage.</p>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button>
+        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const API_BASE =
       window.ITS_API_BASE ||
@@ -134,6 +162,7 @@
 
     let projects = [];
     let currentFilter = "all";
+    let pendingArchiveProjectId = "";
 
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
@@ -440,6 +469,7 @@
     }
 
     document.addEventListener("click", e => {
+      if (e.target.id === "archiveModal") closeArchiveModal();
       if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
         document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       }
@@ -502,10 +532,51 @@
       }
     }
 
-    async function archiveProject(id) {
+    function archiveProject(id) {
       if (!id) return alert("Projet introuvable.");
-      if (!confirm("Archiver cet autodiagnostic ?")) return;
-      alert("L’archivage sera branché ensuite sur l’API.");
+      pendingArchiveProjectId = String(id);
+      document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function closeArchiveModal() {
+      pendingArchiveProjectId = "";
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function confirmArchiveProject() {
+      if (!pendingArchiveProjectId) return closeArchiveModal();
+      closeArchiveModal();
+      showArchiveNotice();
+    }
+
+    function showArchiveNotice() {
+      const modal = document.getElementById("archiveModal");
+      if (!modal) return alert("L’archivage sera branché ensuite sur l’API.");
+      modal.querySelector(".modal-icon").textContent = "ℹ️";
+      modal.querySelector("#archiveModalTitle").textContent = "Archivage bientôt disponible";
+      modal.querySelector("p").textContent = "L’archivage sera branché ensuite sur l’API. Aucun changement n’a été appliqué pour le moment.";
+      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn danger" type="button" onclick="resetArchiveModal()">Compris</button>';
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function resetArchiveModal() {
+      const modal = document.getElementById("archiveModal");
+      if (!modal) return;
+      modal.querySelector(".modal-icon").textContent = "🗄️";
+      modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
+      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Cette action sera reliée ensuite à l’API d’archivage.";
+      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>';
+      closeArchiveModal();
     }
 
     function escapeHtml(str) {
