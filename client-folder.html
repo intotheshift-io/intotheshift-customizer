@@ -240,7 +240,7 @@
       const link = document.getElementById("backToClients");
       if(!link) return;
       if(isAdmin()){
-        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour aux clients finaux";
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour à la vue globale admin";
       }else{
         link.textContent = "← Retour à mes clients";
       }
@@ -473,8 +473,6 @@
         const title = getProjectTitle(project);
         const share = getProjectShareUrl(project);
         const results = getProjectResultsUrl(project);
-        const status = normalizeStatus(project.status);
-        const isPublished = status === "published" || status === "unpublished";
 
         return `
           <article class="card">
@@ -505,7 +503,6 @@
 
             <div class="card-actions">
               <button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>
-              ${isPublished && share ? `<button class="small-btn main" onclick="copyText('${escapeAttr(share)}')">Copier URL diffusion</button>` : ""}
             </div>
           </article>
         `;
@@ -514,10 +511,13 @@
 
     function renderResults(projects){
       const list = document.getElementById("resultsList");
-      const resultProjects = projects.filter(p => getProjectResultsUrl(p) || ["published","unpublished"].includes(normalizeStatus(p.status)));
+      const resultProjects = projects.filter(p => {
+        const status = normalizeStatus(p.status);
+        return ["published","unpublished"].includes(status) && !!getProjectResultsUrl(p);
+      });
 
       if(!resultProjects.length){
-        list.innerHTML = `<div class="empty">Aucun résultat disponible pour le moment. Les liens résultats apparaîtront après publication et paramétrage par Into The Shift.</div>`;
+        list.innerHTML = `<div class="empty">Aucun résultat disponible pour le moment. Les liens résultats apparaîtront uniquement pour les AD publiés ou dépubliés avec une URL résultats renseignée.</div>`;
         return;
       }
 
@@ -528,7 +528,7 @@
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
-            ${results ? `<div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>` : `<div class="empty" style="padding:14px;text-align:left">Lien résultats non renseigné.</div>`}
+            <div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>
           </article>
         `;
       }).join("");
