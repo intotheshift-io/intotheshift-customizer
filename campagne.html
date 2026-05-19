@@ -297,6 +297,14 @@ function parseProjectObject(value){
   }
   return {};
 }
+function unwrapCampaignProjectData(raw){
+  const data = parseProjectObject(raw);
+  if(!data || typeof data !== 'object') return {};
+  const payload = parseProjectObject(data.payload || {});
+  const stateObj = parseProjectObject(data.state || {});
+  const payloadState = parseProjectObject(payload.state || {});
+  return Object.assign({}, data, payload, stateObj, payloadState);
+}
 function extractProjectDate(project, data, payload, kind){
   const param = (data && data.parametrage) || (payload && payload.parametrage) || {};
   const campaign = (data && data.campagne) || (payload && payload.campagne) || {};
@@ -358,25 +366,33 @@ async function fetchProjectFromBackend(projectId){
 function normalizeLoadedProject(project){
   if(!project)return;
   backendProject=project;
+
   const data=parseProjectObject(project.data || project.payload || project.configuration || {});
   const payload=parseProjectObject(data.payload || {});
-  const merged=Object.assign({}, data, payload);
-  state=Object.assign({}, state || {}, merged);
+  const merged=unwrapCampaignProjectData(project.data || project.payload || project.configuration || {});
+
+  // Hydratation stricte depuis le projet backend :
+  // le backend est prioritaire, le localStorage ne doit plus écraser la consultation admin.
+  state=Object.assign({}, merged);
+
   state.data=data;
   state.currentAdId=project.id || state.currentAdId;
   state.project_id=project.id || state.project_id;
   state.projectId=project.id || state.projectId;
-  state.status=project.status || state.status || data.status || payload.status || 'draft';
-  state.shareUrl=project.shareUrl || project.share_url || state.shareUrl || state.share_url || '';
+  state.status=project.status || project.statut || merged.status || merged.project_status || 'draft';
+
+  state.shareUrl=project.shareUrl || project.share_url || merged.shareUrl || merged.share_url || '';
   state.share_url=state.shareUrl;
-  state.resultsUrl=project.resultsUrl || project.results_url || state.resultsUrl || state.results_url || '';
+  state.resultsUrl=project.resultsUrl || project.results_url || merged.resultsUrl || merged.results_url || '';
   state.results_url=state.resultsUrl;
-  state.title=project.title || merged.autodiagTitle || merged.title || merged.titre || state.title || '';
-  state.themeTitle=merged.themeTitle || merged.autodiagTitle || merged.titre_autodiag || project.title || state.themeTitle || state.title || '';
-  state.theme=state.theme || {};
+
+  state.title=project.title || merged.autodiagTitle || merged.title || merged.titre || merged.titre_autodiag || '';
+  state.themeTitle=merged.themeTitle || merged.autodiagTitle || merged.titre_autodiag || project.title || state.title || '';
+  state.theme=merged.theme && typeof merged.theme === 'object' ? merged.theme : {};
   state.theme.title=state.theme.title || state.themeTitle || state.title || '';
-  state.chapters=merged.chapters || state.chapters || [];
-  state.parametrage=Object.assign({}, state.parametrage || {}, merged.parametrage || {});
+  state.chapters=merged.chapters || merged.questions?.chapters || [];
+
+  state.parametrage=Object.assign({}, merged.parametrage || {});
   state.parametrage.nom =
     state.parametrage.nom ||
     merged.titre_autodiag ||
@@ -384,21 +400,21 @@ function normalizeLoadedProject(project){
     project.title ||
     state.title ||
     '';
+
   state.parametrage.entreprise =
     state.parametrage.entreprise ||
     merged.entreprise ||
     merged.clientCompany ||
     merged.company ||
     getVal(project,['organizationName','organization_name','clientName','company_name'],'');
-  const backendStartDate = extractProjectDate(project, data, payload, 'start');
-  const backendEndDate = extractProjectDate(project, data, payload, 'end');
 
-  state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
-  state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
+  const backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
+  const backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
+
+  state.parametrage.date_lancement = backendStartDate || '';
+  state.parametrage.date_cloture = backendEndDate || '';
   normalizeCampaignDatesInState();
-  if(project.id){
-    try{sessionStorage.setItem('its_project_cache_'+project.id, JSON.stringify(project));}catch(e){}
-  }
+
   state.parametrage.pack_choisi =
     state.parametrage.pack_choisi ||
     project.pack ||
@@ -407,8 +423,20 @@ function normalizeLoadedProject(project){
     merged.selectedPack ||
     merged.pack ||
     '';
-  saveState();
+
+  if(project.id){
+    try{sessionStorage.setItem('its_project_cache_'+project.id, JSON.stringify(project));}catch(e){}
+  }
+
+  try{
+    localStorage.setItem('its_current_project_id', String(project.id || ''));
+    localStorage.setItem('its_current_ad_id', String(project.id || ''));
+    const storageKey = typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '';
+    if(storageKey) localStorage.setItem(storageKey, JSON.stringify(state));
+    else localStorage.setItem('intoTheShiftState', JSON.stringify(state));
+  }catch(e){}
 }
+
 async function persistLoadedProjectDatesIfNeeded(project){
   if(!project || !project.id || !getToken()) return;
   const start = state.parametrage?.date_lancement || '';
@@ -475,39 +503,55 @@ function init(){
   }
 }
 async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');const id=getCurrentProjectIdForSave();location.href=id?'validation.html?projectId='+encodeURIComponent(id):'validation.html'}async function bootCampagnePage(){
-  const projectIdBeforeBootstrap=getCurrentProjectId();
+  const params=new URLSearchParams(window.location.search);
+  const projectIdFromUrl=params.get('projectId') || params.get('project_id') || params.get('id') || '';
+  const projectId=projectIdFromUrl ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    '';
 
-  if(typeof itsBootstrapProjectFromUrl === "function"){
-    state = await itsBootstrapProjectFromUrl();
-  } else {
-    state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
-  }
+  let projectLoaded=false;
 
-  try{
-    const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
-    if(projectId){
-      localStorage.setItem('its_current_project_id', String(projectId));
-      localStorage.setItem('its_current_ad_id', String(projectId));
-      const params=new URLSearchParams(window.location.search);
-      if(!params.get('projectId') && !params.get('project_id') && !params.get('id')){
-        params.set('projectId', String(projectId));
-        history.replaceState(null,'',window.location.pathname+'?'+params.toString());
-      }
-      const project=await fetchProjectFromBackend(projectId);
-      if(project){ normalizeLoadedProject(project); await persistLoadedProjectDatesIfNeeded(project); }
+  if(projectId){
+    localStorage.setItem('its_current_project_id', String(projectId));
+    localStorage.setItem('its_current_ad_id', String(projectId));
+
+    if(!projectIdFromUrl){
+      params.set('projectId', String(projectId));
+      history.replaceState(null,'',window.location.pathname+'?'+params.toString());
     }
-  }catch(e){
-    console.error('Chargement backend campagne impossible', e);
-    const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
-    if(projectId){
+
+    try{
+      const project=await fetchProjectFromBackend(projectId);
+      if(project){
+        normalizeLoadedProject(project);
+        projectLoaded=true;
+        await persistLoadedProjectDatesIfNeeded(project);
+      }
+    }catch(e){
+      console.error('Chargement backend campagne impossible', e);
       try{
         const cached=JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
-        if(cached){ normalizeLoadedProject(cached); await persistLoadedProjectDatesIfNeeded(cached); }
+        if(cached){
+          normalizeLoadedProject(cached);
+          projectLoaded=true;
+          await persistLoadedProjectDatesIfNeeded(cached);
+        }
       }catch(cacheError){}
     }
   }
 
-  if(!state || !state.chapters){
+  // Fallback uniquement si aucun projet backend/cache n'a été trouvé.
+  // On évite qu'un ancien localStorage vide écrase les données admin.
+  if(!projectLoaded){
+    if(typeof itsBootstrapProjectFromUrl === "function"){
+      state = await itsBootstrapProjectFromUrl();
+    } else {
+      state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
+    }
+  }
+
+  if(!state || typeof state !== 'object'){
     state={theme:{title:'Sécurité & culture de sûreté'},chapters:[]};
   }
 
@@ -521,6 +565,7 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
     setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
 }
+
 
 
 bootCampagnePage();
@@ -564,24 +609,14 @@ bootCampagnePage();
   function applyLockedCampaignMode(){
     document.body.classList.add("campaign-locked");
 
+    document.querySelectorAll(".bottom-actions").forEach(el => {
+      el.style.display = "none";
+    });
+
     document.querySelectorAll("input, select, textarea").forEach(el => {
-
-      if(
-        el.id === "date-launch" ||
-        el.id === "date-close"
-      ){
-        el.disabled = false;
-        el.readOnly = true;
-        el.style.pointerEvents = "none";
-        el.style.cursor = "not-allowed";
-        el.style.background = "#f6f8fb";
-        return;
-      }
-
       el.disabled = true;
       el.style.cursor = "not-allowed";
     });
-
 
     document.querySelectorAll("button").forEach(button => {
       if(allowedButton(button)){
@@ -636,7 +671,14 @@ bootCampagnePage();
     }
   }
 
-  window.applyCampaignModeAfterHydration = applyCampaignMode;
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", applyCampaignMode);
+  }else{
+    applyCampaignMode();
+  }
+
+  setTimeout(applyCampaignMode, 150);
+  setTimeout(applyCampaignMode, 600);
 })();
 </script>
 
