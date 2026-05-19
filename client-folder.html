@@ -590,13 +590,13 @@
     function prepareCampaign(projectId){
       if(projectId) localStorage.setItem("its_current_project_id", projectId);
       localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = "campagne.html";
+      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
     }
 
     function openCampaignPage(projectId){
       if(projectId) localStorage.setItem("its_current_project_id", projectId);
       localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = "campagne.html";
+      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
     }
 
     function openPublishModal(projectId, projectTitle){

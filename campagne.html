@@ -281,6 +281,23 @@ function getVal(obj,keys,fallback=''){
   }
   return fallback;
 }
+function extractProjectDate(project, data, payload, kind){
+  const param = (data && data.parametrage) || (payload && payload.parametrage) || {};
+  const campaign = (data && data.campagne) || (payload && payload.campagne) || {};
+
+  const startKeys = ['campaignStartDate','campaign_start_date','startDate','start_date','date_lancement','dateLancement'];
+  const endKeys = ['campaignEndDate','campaign_end_date','endDate','end_date','date_cloture','dateCloture'];
+  const keys = kind === 'start' ? startKeys : endKeys;
+
+  return normalizeDateInputValue(
+    getVal(project, keys, '') ||
+    getVal(data, keys, '') ||
+    getVal(payload, keys, '') ||
+    getVal(param, keys, '') ||
+    getVal(campaign, keys, '') ||
+    ''
+  );
+}
 async function fetchProjectFromBackend(projectId){
   if(!projectId || !getToken()) return null;
   const headers={Authorization:'Bearer '+getToken()};
@@ -356,20 +373,11 @@ function normalizeLoadedProject(project){
     merged.clientCompany ||
     merged.company ||
     getVal(project,['organizationName','organization_name','clientName','company_name'],'');
-  state.parametrage.date_lancement = normalizeDateInputValue(
-    getVal(project,['campaignStartDate','campaign_start_date','startDate','start_date'],'') ||
-    state.parametrage.date_lancement ||
-    merged.date_lancement ||
-    merged.dateLancement ||
-    ''
-  );
-  state.parametrage.date_cloture = normalizeDateInputValue(
-    getVal(project,['campaignEndDate','campaign_end_date','endDate','end_date'],'') ||
-    state.parametrage.date_cloture ||
-    merged.date_cloture ||
-    merged.dateCloture ||
-    ''
-  );
+  const backendStartDate = extractProjectDate(project, data, payload, 'start');
+  const backendEndDate = extractProjectDate(project, data, payload, 'end');
+
+  state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
+  state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
   state.parametrage.pack_choisi =
     state.parametrage.pack_choisi ||
     project.pack ||
