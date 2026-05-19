@@ -412,26 +412,42 @@
       return val(project,["resultsUrl","results_url","resultUrl","result_url","dashboardUrl","dashboard_url"],"");
     }
 
+    function normalizeDateInputValue(value){
+      if(!value) return "";
+      const s = String(value).trim();
+      if(!s) return "";
+      if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+      const d = new Date(s);
+      if(Number.isNaN(d.getTime())) return "";
+      return d.toISOString().slice(0,10);
+    }
+
     function getProjectStartDate(project){
       const data = getProjectData(project);
-      const payload = getProjectPayload(project);
-      const param = payload.parametrage || data.parametrage || {};
-      const campaign = payload.campagne || data.campagne || {};
-      return val(project,["campaignStartDate","campaign_start_date","startDate","start_date"],
-        val(payload,["campaignStartDate","campaign_start_date","date_lancement","dateLancement","startDate","start_date"],
-        val(campaign,["campaignStartDate","campaign_start_date","date_lancement","dateLancement","startDate","start_date"],
-        val(param,["date_lancement","dateLancement","campaignStartDate","campaign_start_date"],""))));
+      const param = data.parametrage || {};
+
+      // Format canonique côté API / SQL : projects.campaign_start_date.
+      // Fallback conservé uniquement pour relire d'anciens brouillons non resynchronisés.
+      return normalizeDateInputValue(
+        project?.campaign_start_date ||
+        data?.campaign_start_date ||
+        param?.date_lancement ||
+        ""
+      );
     }
 
     function getProjectEndDate(project){
       const data = getProjectData(project);
-      const payload = getProjectPayload(project);
-      const param = payload.parametrage || data.parametrage || {};
-      const campaign = payload.campagne || data.campagne || {};
-      return val(project,["campaignEndDate","campaign_end_date","endDate","end_date"],
-        val(payload,["campaignEndDate","campaign_end_date","date_cloture","dateCloture","endDate","end_date"],
-        val(campaign,["campaignEndDate","campaign_end_date","date_cloture","dateCloture","endDate","end_date"],
-        val(param,["date_cloture","dateCloture","campaignEndDate","campaign_end_date"],""))));
+      const param = data.parametrage || {};
+
+      // Format canonique côté API / SQL : projects.campaign_end_date.
+      // Fallback conservé uniquement pour relire d'anciens brouillons non resynchronisés.
+      return normalizeDateInputValue(
+        project?.campaign_end_date ||
+        data?.campaign_end_date ||
+        param?.date_cloture ||
+        ""
+      );
     }
 
     function getCurrentProjectById(projectId){
@@ -800,14 +816,10 @@
           },
           body: JSON.stringify({
             status: "published",
-            shareUrl: projectToPublish.shareUrl,
-            resultsUrl: projectToPublish.resultsUrl,
             share_url: projectToPublish.shareUrl,
             results_url: projectToPublish.resultsUrl,
-            campaignStartDate: projectToPublish.campaignStartDate,
-            campaignEndDate: projectToPublish.campaignEndDate,
-            campaign_start_date: projectToPublish.campaignStartDate,
-            campaign_end_date: projectToPublish.campaignEndDate
+            campaign_start_date: projectToPublish.campaignStartDate || null,
+            campaign_end_date: projectToPublish.campaignEndDate || null
           })
         });
 

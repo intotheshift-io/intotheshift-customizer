@@ -765,15 +765,40 @@ function getProjectResultsUrl(p){
   const cfg=getProjectConfig(p);
   return val(p,["results_url","resultsUrl","result_url","resultUrl","dashboard_url","dashboardUrl"],val(cfg,["results_url","resultsUrl","result_url","resultUrl","dashboard_url","dashboardUrl"],""));
 }
+function normalizeDateInputValue(value){
+  if(!value) return "";
+  const s = String(value).trim();
+  if(!s) return "";
+  if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  const d = new Date(s);
+  if(Number.isNaN(d.getTime())) return "";
+  return d.toISOString().slice(0,10);
+}
 function getCampaignStartDate(p){
-  const cfg=getProjectConfig(p);
-  const param=cfg.parametrage||{};
-  return val(p,["campaign_start_date","campaignStartDate","start_date","startDate"],val(cfg,["campaign_start_date","campaignStartDate","start_date","startDate","date_lancement","dateLancement"],val(param,["date_lancement","dateLancement"],"")));
+  const cfg = getProjectConfig(p);
+  const param = cfg.parametrage || {};
+
+  // Format canonique côté API / SQL : projects.campaign_start_date.
+  // Fallback conservé uniquement pour relire d'anciens brouillons non resynchronisés.
+  return normalizeDateInputValue(
+    p?.campaign_start_date ||
+    cfg?.campaign_start_date ||
+    param?.date_lancement ||
+    ""
+  );
 }
 function getCampaignEndDate(p){
-  const cfg=getProjectConfig(p);
-  const param=cfg.parametrage||{};
-  return val(p,["campaign_end_date","campaignEndDate","end_date","endDate"],val(cfg,["campaign_end_date","campaignEndDate","end_date","endDate","date_cloture","dateCloture"],val(param,["date_cloture","dateCloture"],"")));
+  const cfg = getProjectConfig(p);
+  const param = cfg.parametrage || {};
+
+  // Format canonique côté API / SQL : projects.campaign_end_date.
+  // Fallback conservé uniquement pour relire d'anciens brouillons non resynchronisés.
+  return normalizeDateInputValue(
+    p?.campaign_end_date ||
+    cfg?.campaign_end_date ||
+    param?.date_cloture ||
+    ""
+  );
 }
 function getProjectEffectiveStatus(p){
   const raw = String(val(p,["status","statut"],"draft")).toLowerCase();
@@ -892,8 +917,21 @@ async function saveProjectPublication(projectId){
   if(feedback) feedback.classList.remove("on");
 
   try{
-    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{status,share_url:shareUrl,results_url:resultsUrl,shareUrl,resultsUrl,campaign_start_date:campaignStartDate,campaign_end_date:campaignEndDate,campaignStartDate,campaignEndDate});
-    adminState.projects=adminState.projects.map(p=>String(val(p,["id"],""))===String(projectId)?{...p,status,statut:status,share_url:shareUrl,shareUrl,results_url:resultsUrl,resultsUrl,campaign_start_date:campaignStartDate,campaignStartDate,campaign_end_date:campaignEndDate,campaignEndDate}:p);
+    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{
+      status,
+      share_url: shareUrl,
+      results_url: resultsUrl,
+      campaign_start_date: campaignStartDate || null,
+      campaign_end_date: campaignEndDate || null
+    });
+    adminState.projects=adminState.projects.map(p=>String(val(p,["id"],""))===String(projectId)?{
+      ...p,
+      status,
+      share_url: shareUrl,
+      results_url: resultsUrl,
+      campaign_start_date: campaignStartDate || "",
+      campaign_end_date: campaignEndDate || ""
+    }:p);
     renderKpis();
     renderProjects();
     showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + ".");
