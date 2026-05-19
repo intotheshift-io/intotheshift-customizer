@@ -61,6 +61,7 @@
 <div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
 <script>
 let state = {};
+let backendProject = null;
 function saveState(){ if(typeof itsSave==='function') itsSave(state); else localStorage.setItem('intoTheShiftState',JSON.stringify(state)); }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function slugify(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
@@ -69,9 +70,63 @@ function themeTitle(){return (state.theme&&state.theme.title)||state.title||p().
 function cleanTheme(){return String(themeTitle()).replace(/^Autodiagnostic\s+/i,'')}
 function companyName(){return String(p().entreprise||p().company||p().client||'').trim()}
 function companySlug(){return slugify(companyName())}
-function buildUrl(){let cs=companySlug();if(!cs)return '';return 'https://selfdiag-mayt.meandyoutoo.app/'+cs+'/'+(p().slug||slugify(cleanTheme())||'autodiagnostic')}
+function getPublishedShareUrl(){
+  return String(
+    (backendProject && (backendProject.shareUrl || backendProject.share_url)) ||
+    state.shareUrl || state.share_url ||
+    (state.publication && (state.publication.shareUrl || state.publication.share_url)) ||
+    ''
+  ).trim();
+}
+function getPublishedResultsUrl(){
+  return String(
+    (backendProject && (backendProject.resultsUrl || backendProject.results_url)) ||
+    state.resultsUrl || state.results_url ||
+    (state.publication && (state.publication.resultsUrl || state.publication.results_url)) ||
+    ''
+  ).trim();
+}
+function buildPlannedUrl(){
+  let cs=companySlug();
+  if(!cs)return '';
+  return 'https://selfdiag-mayt.meandyoutoo.app/'+cs+'/'+(p().slug||slugify(cleanTheme())||'autodiagnostic')
+}
+function buildUrl(){
+  return getPublishedShareUrl() || buildPlannedUrl();
+}
 function displayUrl(){return buildUrl()||'Renseignez le nom de l’entreprise pour générer le lien'}
-function refreshLaunchUrl(){let url=buildUrl();document.getElementById('launch-url').textContent=displayUrl();document.getElementById('sb-url').textContent=displayUrl();drawQrCode(url);showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab.on')||document.querySelector('.comm-tab'))}
+function ensureResultsUrlBlock(){
+  let box=document.querySelector('.launch-url-box');
+  if(!box)return null;
+  let block=document.getElementById('results-url-box');
+  if(!block){
+    block=document.createElement('div');
+    block.id='results-url-box';
+    block.className='launch-url-box';
+    block.style.marginTop='10px';
+    block.innerHTML='<div><div class="url-label">URL résultats</div><div class="url-big" id="results-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyResultsUrl()">Copier l’URL résultats</button><button class="btn-test" onclick="openResultsUrl()">Ouvrir</button></div>';
+    box.insertAdjacentElement('afterend',block);
+  }
+  return block;
+}
+function refreshPublicationUrls(){
+  let share=buildUrl();
+  let results=getPublishedResultsUrl();
+  let launchEl=document.getElementById('launch-url');
+  let sbUrl=document.getElementById('sb-url');
+  if(launchEl)launchEl.textContent=displayUrl();
+  if(sbUrl)sbUrl.textContent=displayUrl();
+  let block=ensureResultsUrlBlock();
+  if(block){
+    const resultsEl=document.getElementById('results-url');
+    if(resultsEl)resultsEl.textContent=results || 'URL résultats renseignée par l’admin après publication';
+    block.style.display = results ? 'flex' : 'none';
+  }
+  drawQrCode(share);
+}
+function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab.on')||document.querySelector('.comm-tab'))}
+function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){alert('URL résultats non renseignée.');return}navigator.clipboard&&navigator.clipboard.writeText(url);alert('URL résultats copiée')}
+function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){alert('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
 function formatDateFR(s){if(!s)return'—';let a=s.split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:s}function parseD(s){let a=String(s||'').split('-');return a.length===3?new Date(+a[0],+a[1]-1,+a[2]):null}function diffDays(a,b){return(!a||!b)?null:Math.round((b-a)/(86400000))}
 const templates={launch:{title:'Email de lancement',meta:'Jour du lancement',body:`Bonjour à toutes et tous,\n\nNous lançons un autodiagnostic consacré à {{THEME}}.\n\nIl vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes, vos points d’appui et les sujets à renforcer collectivement.\n\nLa démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.\n\nLien de passation : {{URL}}\n\nMerci pour votre participation.`},managers:{title:'Email managers',meta:'Relais managers',body:`Bonjour,\n\nNous lançons la campagne {{THEME}}. Merci de relayer l’autodiagnostic auprès de vos équipes, sans orienter les réponses.\n\nLa démarche est anonyme et vise à mieux comprendre les réflexes du quotidien pour identifier des actions utiles collectivement.\n\nLien : {{URL}}`},reminder:{title:'Relance',meta:'Mi-campagne',body:`Bonjour,\n\nPetit rappel : l’autodiagnostic {{THEME}} est toujours ouvert.\n\nVotre participation est importante pour obtenir une vision utile des pratiques du quotidien.\n\nLien : {{URL}}`},last:{title:'Dernière chance',meta:'Avant clôture',body:`Bonjour,\n\nDernière chance pour participer à l’autodiagnostic avant la clôture de la campagne.\n\nLa démarche reste entièrement anonyme.\n\nLien : {{URL}}`},channels:{title:'Canaux internes',meta:'Teams / Slack',body:`📣 L’autodiagnostic {{THEME}} est ouvert.\n\n5 à 7 minutes, 100 % anonyme, sans login ni suivi individuel.\n\n👉 {{URL}}`},intranet:{title:'Post intranet',meta:'Intranet',body:`Nous lançons un autodiagnostic pour mieux comprendre les réflexes du quotidien autour de {{THEME}}.\n\nL’objectif n’est pas d’évaluer les personnes, mais d’identifier les leviers utiles pour progresser collectivement.\n\nAccéder à l’autodiagnostic : {{URL}}`},firstResults:{title:'Restitution premiers enseignements',meta:'Après clôture',body:`Merci pour votre participation à l’autodiagnostic.\n\nLes premiers enseignements permettent d’identifier les points d’appui et les sujets à approfondir collectivement.\n\nLes résultats seront partagés de manière agrégée.`},finalResults:{title:'Restitution finale',meta:'Après restitution',body:`Suite à l’autodiagnostic, nous partageons les principaux enseignements et les actions qui seront engagées.\n\nMerci encore pour votre contribution à cette démarche collective.`}};
@@ -181,11 +236,164 @@ async function persistProjectDraft(step, status){
   }catch(e){ console.error('Sauvegarde backend impossible pour la campagne', e); }
 }
 
-function init(){document.getElementById('bc-theme').textContent=cleanTheme();document.getElementById('sb-title').textContent=cleanTheme();if(document.getElementById('company-name'))document.getElementById('company-name').value=companyName();refreshLaunchUrl();document.getElementById('date-launch').value=p().date_lancement||'';document.getElementById('date-close').value=p().date_cloture||'';updateDatesUI();document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.questions||[]).length,0);document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,ch)=>a+(ch.profiles||ch.profils||[]).length,0);let v=(state.parametrage&&state.parametrage.pack_choisi)||(state.pack&&state.pack.volume)||'';document.getElementById('pack-select').value=v;document.getElementById('pack-val').textContent=packLabel(v);let ck=c().checklist||{};document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));refreshLaunchUrl();updateChecklist()}async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}async function bootCampagnePage(){
+
+function apiBase(){
+  return window.location.hostname === 'localhost'
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
+}
+function getToken(){
+  return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+}
+function decodeJwt(token){
+  try{
+    const payload=token.split('.')[1];
+    return JSON.parse(atob(payload.replace(/-/g,'+').replace(/_/g,'/')));
+  }catch(e){return null}
+}
+function getRole(){
+  return localStorage.getItem('its_user_role') || decodeJwt(getToken())?.role || '';
+}
+function getCurrentProjectId(){
+  const params=new URLSearchParams(window.location.search);
+  return params.get('projectId') || params.get('project_id') || params.get('id') ||
+    localStorage.getItem('its_current_project_id') ||
+    localStorage.getItem('its_current_ad_id') ||
+    localStorage.getItem('its_current_project') ||
+    state.currentAdId || state.project_id || state.projectId || '';
+}
+function getVal(obj,keys,fallback=''){
+  for(const key of keys){
+    if(obj && obj[key]!==undefined && obj[key]!==null && obj[key]!=='') return obj[key];
+  }
+  return fallback;
+}
+async function fetchProjectFromBackend(projectId){
+  if(!projectId || !getToken()) return null;
+  const headers={Authorization:'Bearer '+getToken()};
+  if(getRole()==='admin'){
+    const res=await fetch(apiBase()+'/api/admin/projects',{headers});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.error || 'Erreur chargement projets admin');
+    const projects=data.projects || data.autodiags || data.data || [];
+    return projects.find(p=>String(p.id)===String(projectId)) || null;
+  }
+  const res=await fetch(apiBase()+'/api/projects/'+encodeURIComponent(projectId),{headers});
+  const data=await res.json().catch(()=>({}));
+  if(!res.ok)throw new Error(data.error || 'Erreur chargement projet');
+  return data.project || data;
+}
+function normalizeLoadedProject(project){
+  if(!project)return;
+  backendProject=project;
+  const data=(project.data && typeof project.data==='object') ? project.data : {};
+  const payload=(data.payload && typeof data.payload==='object') ? data.payload : {};
+  const merged=Object.assign({}, data, payload);
+  state=Object.assign({}, state || {}, merged);
+  state.data=data;
+  state.currentAdId=project.id || state.currentAdId;
+  state.project_id=project.id || state.project_id;
+  state.projectId=project.id || state.projectId;
+  state.status=project.status || state.status || data.status || payload.status || 'draft';
+  state.shareUrl=project.shareUrl || project.share_url || state.shareUrl || state.share_url || '';
+  state.share_url=state.shareUrl;
+  state.resultsUrl=project.resultsUrl || project.results_url || state.resultsUrl || state.results_url || '';
+  state.results_url=state.resultsUrl;
+  state.title=project.title || merged.autodiagTitle || merged.title || merged.titre || state.title || '';
+  state.themeTitle=merged.themeTitle || merged.autodiagTitle || merged.titre_autodiag || project.title || state.themeTitle || state.title || '';
+  state.theme=state.theme || {};
+  state.theme.title=state.theme.title || state.themeTitle || state.title || '';
+  state.chapters=merged.chapters || state.chapters || [];
+  state.parametrage=Object.assign({}, state.parametrage || {}, merged.parametrage || {});
+  state.parametrage.nom =
+    state.parametrage.nom ||
+    merged.titre_autodiag ||
+    merged.autodiagTitle ||
+    project.title ||
+    state.title ||
+    '';
+  state.parametrage.entreprise =
+    state.parametrage.entreprise ||
+    merged.entreprise ||
+    merged.clientCompany ||
+    merged.company ||
+    getVal(project,['organizationName','organization_name','clientName','company_name'],'');
+  state.parametrage.date_lancement =
+    getVal(project,['campaignStartDate','campaign_start_date','startDate','start_date'],'') ||
+    state.parametrage.date_lancement ||
+    merged.date_lancement ||
+    merged.dateLancement ||
+    '';
+  state.parametrage.date_cloture =
+    getVal(project,['campaignEndDate','campaign_end_date','endDate','end_date'],'') ||
+    state.parametrage.date_cloture ||
+    merged.date_cloture ||
+    merged.dateCloture ||
+    '';
+  state.parametrage.pack_choisi =
+    state.parametrage.pack_choisi ||
+    project.pack ||
+    merged.pack_choisi ||
+    merged.packChoisi ||
+    merged.selectedPack ||
+    merged.pack ||
+    '';
+  saveState();
+}
+function countQuestions(){
+  return (state.chapters||[]).reduce((a,ch)=>a+((ch.questions||[]).length),0);
+}
+function countProfiles(){
+  return (state.chapters||[]).reduce((a,ch)=>a+((ch.profiles||ch.profils||[]).length),0);
+}
+function statusLabel(){
+  const s=String((backendProject&&backendProject.status)||state.status||'draft').toLowerCase();
+  if(s==='published'||s.includes('publi'))return 'Publié';
+  if(s==='unpublished'||s.includes('dépub')||s.includes('depub'))return 'Dépublié';
+  if(s==='sent'||s.includes('transmis')||s.includes('submitted'))return 'Transmis';
+  if(s==='ready_for_transmission')return 'Prêt';
+  return 'Brouillon';
+}
+function applyBackendHydrationUI(){
+  document.getElementById('bc-theme').textContent=cleanTheme();
+  document.getElementById('sb-title').textContent=cleanTheme();
+  document.getElementById('sb-status').textContent=statusLabel();
+  document.getElementById('sb-q').textContent=countQuestions();
+  document.getElementById('sb-profils').textContent=countProfiles();
+  if(document.getElementById('company-name'))document.getElementById('company-name').value=companyName();
+  const v=(state.parametrage&&state.parametrage.pack_choisi)||(state.pack&&state.pack.volume)||'';
+  const packSelect=document.getElementById('pack-select');
+  if(packSelect && v) packSelect.value=v;
+  document.getElementById('pack-val').textContent=packLabel(v);
+}
+
+function init(){
+  applyBackendHydrationUI();
+  refreshLaunchUrl();
+  document.getElementById('date-launch').value=p().date_lancement||'';
+  document.getElementById('date-close').value=p().date_cloture||'';
+  updateDatesUI();
+  let ck=c().checklist||{};
+  document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);
+  showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));
+  refreshLaunchUrl();
+  updateChecklist();
+}
+async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}async function bootCampagnePage(){
   if(typeof itsBootstrapProjectFromUrl === "function"){
     state = await itsBootstrapProjectFromUrl();
   } else {
     state = (typeof itsLoad==='function') ? itsLoad() : JSON.parse(localStorage.getItem('intoTheShiftState')||'{}');
+  }
+
+  try{
+    const projectId=getCurrentProjectId();
+    if(projectId){
+      const project=await fetchProjectFromBackend(projectId);
+      if(project) normalizeLoadedProject(project);
+    }
+  }catch(e){
+    console.error('Chargement backend campagne impossible', e);
   }
 
   if(!state || !state.chapters){
@@ -198,6 +406,7 @@ function init(){document.getElementById('bc-theme').textContent=cleanTheme();doc
     setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
 }
+
 
 bootCampagnePage();
 </script>
