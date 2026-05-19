@@ -505,7 +505,6 @@
 
             <div class="card-actions">
               <button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>
-              <button class="small-btn" onclick="copyCampaignMessage('${escapeAttr(title)}','${escapeAttr(share)}')">Message campagne</button>
               ${isPublished && share ? `<button class="small-btn main" onclick="copyText('${escapeAttr(share)}')">Copier URL diffusion</button>` : ""}
             </div>
           </article>
@@ -677,14 +676,6 @@
     function copyText(text){
       if(!text) return;
       navigator.clipboard?.writeText(text);
-    }
-
-    function copyCampaignMessage(title, url){
-      const message = url
-        ? `Bonjour,\\n\\nNous vous invitons à réaliser l’autodiagnostic "${title}" :\\n${url}\\n\\nMerci pour votre participation.`
-        : `Bonjour,\\n\\nL’autodiagnostic "${title}" sera bientôt disponible.`;
-      navigator.clipboard?.writeText(message);
-      alert("Message de campagne copié.");
     }
 
     function escapeHtml(value = ""){
