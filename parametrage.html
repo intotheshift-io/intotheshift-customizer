@@ -278,7 +278,23 @@ function ensureDefaults(){
   if(!Array.isArray(p.resources)) p.resources = [];
 }
 function save(){ itsSave(state); }
-function updateParam(k,v){ state.parametrage[k]=v; save(); }
+function normalizeCampaignDatesInState(){
+  const start = state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.campaignStartDate || state.campaign_start_date || '';
+  const end = state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.campaignEndDate || state.campaign_end_date || '';
+  state.parametrage.date_lancement = start;
+  state.parametrage.dateLancement = start;
+  state.parametrage.date_cloture = end;
+  state.parametrage.dateCloture = end;
+  state.campaignStartDate = start;
+  state.campaign_start_date = start;
+  state.campaignEndDate = end;
+  state.campaign_end_date = end;
+}
+function updateParam(k,v){
+  state.parametrage[k]=v;
+  if(k === 'date_lancement' || k === 'dateLancement' || k === 'date_cloture' || k === 'dateCloture') normalizeCampaignDatesInState();
+  save();
+}
 async function loadDefaultClientLogoForPassation(){
   if(isPartnerMode()) return;
   state.parametrage = state.parametrage || {};
@@ -310,6 +326,7 @@ async function loadDefaultClientLogoForPassation(){
 }
 async function init(){
   ensureDefaults();
+  normalizeCampaignDatesInState();
   applyRoleMode();
   const p=state.parametrage;
   ['nom','titre','desc','date_lancement','date_cloture','slug','intro','nb_repondants','entreprise','pack_choisi','volume_prevu'].forEach(id=>{

@@ -192,7 +192,8 @@ function downloadQrCode(){
     document.body.removeChild(holder);
   },150);
 }
-function updateDatesFromInputs(){p().date_lancement=document.getElementById('date-launch').value;p().date_cloture=document.getElementById('date-close').value;updateDatesUI();updateChecklist();saveState()}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
+function normalizeCampaignDatesInState(){let start=p().date_lancement||p().dateLancement||state.campaignStartDate||state.campaign_start_date||'';let end=p().date_cloture||p().dateCloture||state.campaignEndDate||state.campaign_end_date||'';p().date_lancement=start;p().dateLancement=start;p().date_cloture=end;p().dateCloture=end;state.campaignStartDate=start;state.campaign_start_date=start;state.campaignEndDate=end;state.campaign_end_date=end}
+function updateDatesFromInputs(){p().date_lancement=document.getElementById('date-launch').value;p().date_cloture=document.getElementById('date-close').value;normalizeCampaignDatesInState();updateDatesUI();updateChecklist();saveState()}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){return !v?'Pack à choisir':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations')}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const v=document.getElementById('pack-select').value||'';state.pack.volume=v;state.parametrage.pack_choisi=v;document.getElementById('pack-val').textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
   const role = String((typeof getRole === 'function' ? getRole() : '') || '').toLowerCase();
@@ -394,8 +395,7 @@ function normalizeLoadedProject(project){
 
   state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
   state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
-  state.campaignStartDate = state.parametrage.date_lancement;
-  state.campaignEndDate = state.parametrage.date_cloture;
+  normalizeCampaignDatesInState();
   if(project.id){
     try{sessionStorage.setItem('its_project_cache_'+project.id, JSON.stringify(project));}catch(e){}
   }
@@ -460,6 +460,7 @@ function applyBackendHydrationUI(){
 function init(){
   applyBackendHydrationUI();
   refreshLaunchUrl();
+  normalizeCampaignDatesInState();
   document.getElementById('date-launch').value=p().date_lancement||'';
   document.getElementById('date-close').value=p().date_cloture||'';
   updateDatesUI();

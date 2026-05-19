@@ -48,6 +48,58 @@ let itsIsRestoringProject = false;
   } catch(e) {}
 })();
 
+
+function itsPickFirstNonEmpty(values) {
+  for (const value of values) {
+    if (value !== undefined && value !== null && String(value).trim() !== "") {
+      return String(value).trim();
+    }
+  }
+  return "";
+}
+
+function itsCanonicalizeCampaignDates(state) {
+  if (!state || typeof state !== "object") return state || {};
+  state.parametrage = state.parametrage || {};
+
+  const start = itsPickFirstNonEmpty([
+    state.parametrage.date_lancement,
+    state.parametrage.dateLancement,
+    state.campaignStartDate,
+    state.campaign_start_date,
+    state.startDate,
+    state.start_date,
+    state.meta?.date_lancement,
+    state.meta?.dateLancement
+  ]);
+
+  const end = itsPickFirstNonEmpty([
+    state.parametrage.date_cloture,
+    state.parametrage.dateCloture,
+    state.campaignEndDate,
+    state.campaign_end_date,
+    state.endDate,
+    state.end_date,
+    state.meta?.date_cloture,
+    state.meta?.dateCloture
+  ]);
+
+  state.parametrage.date_lancement = start;
+  state.parametrage.dateLancement = start;
+  state.parametrage.date_cloture = end;
+  state.parametrage.dateCloture = end;
+  state.campaignStartDate = start;
+  state.campaign_start_date = start;
+  state.startDate = start;
+  state.start_date = start;
+  state.campaignEndDate = end;
+  state.campaign_end_date = end;
+  state.endDate = end;
+  state.end_date = end;
+
+  return state;
+}
+
 function itsGetToken() {
   return (
     localStorage.getItem("its_token") ||
@@ -142,7 +194,7 @@ function itsProjectTitleFromState(state) {
 }
 
 function itsSave(state) {
-  const safeState = itsUnwrapProjectData(state || {});
+  const safeState = itsCanonicalizeCampaignDates(itsUnwrapProjectData(state || {}));
   const step = safeState.current_step || safeState.currentStep || safeState.step || itsInferCurrentStep();
 
   if (step) {
@@ -182,8 +234,9 @@ async function itsSyncProjectToApi(state) {
   const configSent = state.configTransmise === true || state.config_transmise === true || state.submitted === true;
   const status = state.status || (configSent ? "sent" : "draft");
 
-  const campaignStartDate = state.campaignStartDate || state.campaign_start_date || state.startDate || state.start_date || state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.meta?.date_lancement || "";
-  const campaignEndDate = state.campaignEndDate || state.campaign_end_date || state.endDate || state.end_date || state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.meta?.date_cloture || "";
+  state = itsCanonicalizeCampaignDates(state);
+  const campaignStartDate = state.parametrage?.date_lancement || "";
+  const campaignEndDate = state.parametrage?.date_cloture || "";
 
   const body = {
     projectId: projectId || undefined,
@@ -248,7 +301,7 @@ function itsRestoreProject(project) {
   const realProject = project.project || project;
   const projectId = realProject.id || realProject.project_id || realProject.projectId || "";
   const rawData = realProject.data || realProject.payload || realProject.configuration || {};
-  const data = itsUnwrapProjectData(rawData);
+  const data = itsCanonicalizeCampaignDates(itsUnwrapProjectData(rawData));
 
   if (!data || typeof data !== "object") return false;
 
@@ -306,18 +359,18 @@ function itsRestoreProject(project) {
   const endDate = realProject.campaign_end_date || realProject.campaignEndDate || realProject.end_date || realProject.endDate || "";
 
   if (startDate) {
-    data.campaign_start_date = startDate;
-    data.campaignStartDate = startDate;
     data.parametrage = data.parametrage || {};
-    data.parametrage.date_lancement = data.parametrage.date_lancement || startDate;
+    data.parametrage.date_lancement = startDate;
+    data.parametrage.dateLancement = startDate;
   }
 
   if (endDate) {
-    data.campaign_end_date = endDate;
-    data.campaignEndDate = endDate;
     data.parametrage = data.parametrage || {};
-    data.parametrage.date_cloture = data.parametrage.date_cloture || endDate;
+    data.parametrage.date_cloture = endDate;
+    data.parametrage.dateCloture = endDate;
   }
+
+  itsCanonicalizeCampaignDates(data);
 
   itsIsRestoringProject = true;
   localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
@@ -429,6 +482,7 @@ function itsStartFromCatalogue(adId) {
     current_step: "questions"
   };
 
+  itsCanonicalizeCampaignDates(state);
   itsSave(state);
   return state;
 }
