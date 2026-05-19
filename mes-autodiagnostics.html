@@ -146,7 +146,7 @@
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
       <div class="modal-icon">🗄️</div>
       <h2 id="archiveModalTitle">Archiver cet autodiagnostic ?</h2>
-      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Cette action sera reliée ensuite à l’API d’archivage.</p>
+      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.</p>
       <div class="modal-actions">
         <button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button>
         <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>
@@ -560,10 +560,10 @@
 
     function showArchiveNotice() {
       const modal = document.getElementById("archiveModal");
-      if (!modal) return alert("L’archivage sera branché ensuite sur l’API.");
+      if (!modal) return alert("Cette action n’est pas encore disponible dans votre espace.");
       modal.querySelector(".modal-icon").textContent = "ℹ️";
-      modal.querySelector("#archiveModalTitle").textContent = "Archivage bientôt disponible";
-      modal.querySelector("p").textContent = "L’archivage sera branché ensuite sur l’API. Aucun changement n’a été appliqué pour le moment.";
+      modal.querySelector("#archiveModalTitle").textContent = "Archivage indisponible pour le moment";
+      modal.querySelector("p").textContent = "Cette action n’est pas encore disponible dans votre espace. Aucun changement n’a été appliqué pour le moment.";
       modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn danger" type="button" onclick="resetArchiveModal()">Compris</button>';
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
@@ -574,7 +574,7 @@
       if (!modal) return;
       modal.querySelector(".modal-icon").textContent = "🗄️";
       modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Cette action sera reliée ensuite à l’API d’archivage.";
+      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.";
       modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>';
       closeArchiveModal();
     }
