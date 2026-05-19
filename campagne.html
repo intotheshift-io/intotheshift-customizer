@@ -42,6 +42,10 @@
   .step-connector{margin:0 7px;min-width:12px;}
 }
 
+.toast-customizer{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:#18375d;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:800;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:9999;opacity:0;pointer-events:none;transition:all .18s ease}.toast-customizer.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.qr-download-btn{background:#007883!important;color:#fff!important;border-color:#007883!important;box-shadow:0 8px 18px rgba(0,120,131,.16);cursor:pointer!important}.qr-download-btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(0,120,131,.20)}
+.campaign-locked input,.campaign-locked select,.campaign-locked textarea{background:#f6f8fb!important;color:#64748b!important}
+
 </style>
 </head>
 <body>
@@ -51,13 +55,14 @@
 <div class="page-wrap"><h1 class="page-title">Préparer la campagne</h1><p class="page-sub">Centralisez le lien de passation prévu, les messages prêts à copier, les canaux de communication et les éléments à transmettre à Into The Shift pour la mise en ligne.</p>
 <div class="launch-grid"><main>
 <div class="kpi-grid"><div class="kpi"><div class="kpi-lbl">Lancement prévu</div><div class="kpi-val" id="kpi-launch">—</div><input class="date-edit" id="date-launch" type="date" onchange="updateDatesFromInputs()"><div class="kpi-sub">Modifiable avant transmission</div></div><div class="kpi"><div class="kpi-lbl">Clôture choisie</div><div class="kpi-val" id="kpi-close">—</div><input class="date-edit" id="date-close" type="date" onchange="updateDatesFromInputs()"><div class="kpi-sub">Date choisie par le client</div></div><div class="kpi"><div class="kpi-lbl">Participation recommandée</div><div class="kpi-val">40%</div><div class="progress-wrap"><div class="progress-fill"></div></div><div class="kpi-sub">Un bon repère pour dégager des tendances exploitables, sans prétendre à une représentativité parfaite.</div></div></div>
-<section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="margin-top:12px"><label style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em">Nom de l’entreprise</label><input class="date-edit" id="company-name" type="text" placeholder="Ex. Nom de l’entreprise" oninput="updateCompanyName()"></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
+<section class="block"><div class="block-title">Lien de passation</div><div class="block-sub">À diffuser dans les emails, messages Teams / Slack, intranet ou affiches QR code.Ne communiquez pas ce lien avant validation de Into The Shift</div><div class="launch-url-box"><div><div class="url-label">URL collaborateur</div><div class="url-big" id="launch-url">—</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-copy" onclick="copyUrl()">Copier le lien</button><button class="btn-test" onclick="openPassationPreview()">Tester</button></div></div><div style="margin-top:12px"><label style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em">Nom de l’entreprise</label><input class="date-edit" id="company-name" type="text" placeholder="Ex. Nom de l’entreprise" oninput="updateCompanyName()"></div><div style="display:flex;gap:16px;align-items:center;margin-top:16px;flex-wrap:wrap"><div class="qr-box" id="qr-code"></div><div><div style="font-size:13px;font-weight:800;color:#18375d;margin-bottom:4px">QR code pour affiches ou intranet</div><div style="font-size:12px;color:#64748b;line-height:1.5;max-width:470px">Téléchargez le QR code généré à partir du lien de passation pour l’ajouter à une affiche, une bannière interne ou un support de conférence.</div><button class="btn-secondary qr-download-btn" style="margin-top:10px" onclick="downloadQrCode()">Télécharger le QR code</button></div></div></section>
 <section class="block"><div class="block-title">Messages de communication</div><div class="block-sub">Chaque message peut être copié séparément et utilisé dans les canaux internes de l’entreprise.</div><div class="comm-tabs"><button class="comm-tab on" onclick="showTemplate('launch',this)">Email lancement</button><button class="comm-tab" onclick="showTemplate('managers',this)">Email managers</button><button class="comm-tab" onclick="showTemplate('reminder',this)">Relance</button><button class="comm-tab" onclick="showTemplate('last',this)">Dernière chance</button><button class="comm-tab" onclick="showTemplate('channels',this)">Canaux internes</button><button class="comm-tab" onclick="showTemplate('intranet',this)">Intranet</button><button class="comm-tab" onclick="showTemplate('firstResults',this)">Premiers enseignements</button><button class="comm-tab" onclick="showTemplate('finalResults',this)">Restitution finale</button></div><div class="template-card"><div class="template-head"><div><div class="template-title" id="tpl-title">Email lancement</div><div class="template-meta" id="tpl-meta">Message prêt à copier</div></div><button class="btn-copy" onclick="copyTemplate()">Copier ce message</button></div><div class="template-body" id="tpl-body"></div></div></section>
 <section class="block"><div class="block-title">Plan de relance conseillé</div><div class="block-sub">Le rythme s’adapte à la durée choisie pour la campagne.</div><div class="timeline"><div class="time-row"><div class="time-day">J</div><div><div class="time-txt">Lancement</div><div class="time-sub">Email DRH + message Teams / Slack + post intranet.</div></div></div><div class="time-row"><div class="time-day" id="first-reminder-day">J+14</div><div><div class="time-txt">Première relance</div><div class="time-sub" id="first-reminder-text">Première relance après environ 14 jours de campagne.</div></div></div><div class="time-row"><div class="time-day" id="last-reminder-day">J-10</div><div><div class="time-txt">Dernière chance</div><div class="time-sub" id="last-reminder-text">Dernière relance 10 jours avant la clôture.</div></div></div><div class="time-row"><div class="time-day">Après</div><div><div class="time-txt">Restitution</div><div class="time-sub">Remercier les participants et annoncer les prochaines étapes.</div></div></div></div></section>
 <section class="block"><div class="block-title">Checklist avant transmission</div><div class="block-sub">Le lien final sera mis en ligne après transmission à Into The Shift.</div><div class="checklist"><label class="check-row"><input type="checkbox" data-key="dates" onchange="updateChecklist()"><span><span class="check-title">Vérifier les dates de campagne</span><span class="check-sub">Date de lancement et date de clôture cohérentes.</span></span></label><label class="check-row"><input type="checkbox" data-key="messages" onchange="updateChecklist()"><span><span class="check-title">Vérifier les messages</span><span class="check-sub">Emails, relances et messages internes relus.</span></span></label><label class="check-row"><input type="checkbox" data-key="channels" onchange="updateChecklist()"><span><span class="check-title">Vérifier les canaux de diffusion</span><span class="check-sub">Email, Teams / Slack, intranet, affichage ou QR code.</span></span></label><label class="check-row"><input type="checkbox" data-key="visuals" onchange="updateChecklist()"><span><span class="check-title">Demander des visuels si besoin</span><span class="check-sub">Affiche, bannière intranet ou visuels prêts à diffuser.</span></span></label><label class="check-row"><input type="checkbox" data-key="transmit" onchange="updateChecklist()"><span><span class="check-title">Transmettre à Into The Shift pour mise en ligne</span><span class="check-sub">Les éléments sont prêts à être intégrés et activés.</span></span></label></div><div class="publish-help" id="publish-help"></div></section>
 <div class="bottom-actions"><button class="btn-back" onclick="location.href='parametrage.html'">← Retour au paramétrage</button><button class="btn-continue" id="btn-launch" onclick="goNext()" disabled>Continuer vers la transmission</button></div>
 </main><aside class="sidebar"><div class="sidebar-card"><div class="sidebar-head"><div class="sidebar-head-lbl">Autodiagnostic</div><div class="sidebar-head-val" id="sb-title">—</div></div><div class="sidebar-body"><div class="sidebar-row"><span class="sidebar-row-lbl">Statut</span><span class="status-badge" id="sb-status">Brouillon</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Questions</span><span class="sidebar-row-val" id="sb-q">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Profils</span><span class="sidebar-row-val" id="sb-profils">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Lancement</span><span class="sidebar-row-val" id="sb-launch">—</span></div><div class="sidebar-row"><span class="sidebar-row-lbl">Clôture choisie</span><span class="sidebar-row-val" id="sb-close">—</span></div></div><div class="sidebar-url"><div class="sidebar-url-lbl">URL de passation</div><div class="sidebar-url-val" id="sb-url">—</div></div></div><div class="side-mini"><div class="side-mini-head">Préparation</div><div class="side-mini-body"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:#64748b">Checklist</span><span class="pill" id="check-pill">0/5</span></div><div class="progress-wrap"><div class="progress-fill" id="check-progress" style="width:0%"></div></div><div style="font-size:11px;color:#94a3b8;line-height:1.4" id="sidebar-check-hint">Le bouton s’active quand tous les points sont cochés.</div></div></div><div class="pack-card"><div class="pack-head"><div class="pack-head-lbl">Pack choisi</div><div class="pack-head-val" id="pack-val">Pack à choisir</div></div><div class="pack-body"><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><select class="pack-select" id="pack-select" onchange="updatePackChoice()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><a class="pack-contact" href="mailto:contact@intotheshift.io?subject=Tarifs%20pack%20de%20passations">Pour obtenir les tarifs →</a></div></div><div class="side-mini"><div class="side-mini-head">Besoin d’aide ?</div><div class="side-mini-body"><div style="font-size:12px;color:#475569;line-height:1.5;margin-bottom:10px">Besoin d’un coup de pouce pour réussir votre lancement ? Contactez-nous pour adapter vos messages, obtenir des visuels prêts à diffuser.</div><a class="btn-secondary" href="mailto:contact@intotheshift.io?subject=Accompagnement%20lancement%20autodiagnostic">Contacter l’équipe Into The Shift</a></div></div></aside></div></div>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<div id="toastCustomizer" class="toast-customizer" aria-live="polite"></div>
 <div class="pass-overlay" id="pass-overlay"><div class="pass-modal"><div class="pass-modal-head"><div class="pass-modal-title">Aperçu de la passation</div><button class="pass-close" onclick="closePassationPreview()">✕</button></div><div class="pass-frame" id="pass-app"></div></div></div>
 <script>
 let state = {};
@@ -125,13 +130,15 @@ function refreshPublicationUrls(){
   drawQrCode(share);
 }
 function refreshLaunchUrl(){refreshPublicationUrls();showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab.on')||document.querySelector('.comm-tab'))}
-function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){alert('URL résultats non renseignée.');return}navigator.clipboard&&navigator.clipboard.writeText(url);alert('URL résultats copiée')}
-function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){alert('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
+function copyResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}copyToClipboard(url,'URL résultats copiée')}
+function openResultsUrl(){let url=getPublishedResultsUrl();if(!url){showToast('URL résultats non renseignée.');return}window.open(url,'_blank','noopener')}
 function updateCompanyName(){let v=document.getElementById('company-name').value.trim();p().entreprise=v;saveState();refreshLaunchUrl();updateChecklist()}
 function formatDateFR(s){if(!s)return'—';let a=s.split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:s}function parseD(s){let a=String(s||'').split('-');return a.length===3?new Date(+a[0],+a[1]-1,+a[2]):null}function diffDays(a,b){return(!a||!b)?null:Math.round((b-a)/(86400000))}
 const templates={launch:{title:'Email de lancement',meta:'Jour du lancement',body:`Bonjour à toutes et tous,\n\nNous lançons un autodiagnostic consacré à {{THEME}}.\n\nIl vous propose des situations concrètes du quotidien professionnel pour identifier vos réflexes, vos points d’appui et les sujets à renforcer collectivement.\n\nLa démarche est entièrement anonyme : aucun login, aucun mot de passe, aucun cookie, aucun suivi d’adresse IP.\n\nLien de passation : {{URL}}\n\nMerci pour votre participation.`},managers:{title:'Email managers',meta:'Relais managers',body:`Bonjour,\n\nNous lançons la campagne {{THEME}}. Merci de relayer l’autodiagnostic auprès de vos équipes, sans orienter les réponses.\n\nLa démarche est anonyme et vise à mieux comprendre les réflexes du quotidien pour identifier des actions utiles collectivement.\n\nLien : {{URL}}`},reminder:{title:'Relance',meta:'Mi-campagne',body:`Bonjour,\n\nPetit rappel : l’autodiagnostic {{THEME}} est toujours ouvert.\n\nVotre participation est importante pour obtenir une vision utile des pratiques du quotidien.\n\nLien : {{URL}}`},last:{title:'Dernière chance',meta:'Avant clôture',body:`Bonjour,\n\nDernière chance pour participer à l’autodiagnostic avant la clôture de la campagne.\n\nLa démarche reste entièrement anonyme.\n\nLien : {{URL}}`},channels:{title:'Canaux internes',meta:'Teams / Slack',body:`📣 L’autodiagnostic {{THEME}} est ouvert.\n\n5 à 7 minutes, 100 % anonyme, sans login ni suivi individuel.\n\n👉 {{URL}}`},intranet:{title:'Post intranet',meta:'Intranet',body:`Nous lançons un autodiagnostic pour mieux comprendre les réflexes du quotidien autour de {{THEME}}.\n\nL’objectif n’est pas d’évaluer les personnes, mais d’identifier les leviers utiles pour progresser collectivement.\n\nAccéder à l’autodiagnostic : {{URL}}`},firstResults:{title:'Restitution premiers enseignements',meta:'Après clôture',body:`Merci pour votre participation à l’autodiagnostic.\n\nLes premiers enseignements permettent d’identifier les points d’appui et les sujets à approfondir collectivement.\n\nLes résultats seront partagés de manière agrégée.`},finalResults:{title:'Restitution finale',meta:'Après restitution',body:`Suite à l’autodiagnostic, nous partageons les principaux enseignements et les actions qui seront engagées.\n\nMerci encore pour votre contribution à cette démarche collective.`}};
 function showTemplate(k,btn){document.querySelectorAll('.comm-tab').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');let t=templates[k]||templates.launch;document.getElementById('tpl-title').textContent=t.title;document.getElementById('tpl-meta').textContent=t.meta;document.getElementById('tpl-body').textContent=t.body.replaceAll('{{URL}}',buildUrl()||'[Lien généré après saisie du nom de l’entreprise]').replaceAll('{{THEME}}',cleanTheme());c().activeTemplate=k;saveState()}
-function copyUrl(){let url=buildUrl();if(!url){alert('Renseignez d’abord le nom de l’entreprise pour générer le lien.');return}navigator.clipboard&&navigator.clipboard.writeText(url);alert('Lien copié')}function copyTemplate(){let text=document.getElementById('tpl-body').textContent;navigator.clipboard&&navigator.clipboard.writeText(text);alert('Message copié')}
+function showToast(message){let el=document.getElementById('toastCustomizer');if(!el)return;el.textContent=message;el.classList.add('on');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove('on'),2200)}
+async function copyToClipboard(text,successMessage){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');ta.remove()}showToast(successMessage||'Copié')}catch(e){console.error(e);showToast('Copie impossible : copiez manuellement')}}
+function copyUrl(){let url=buildUrl();if(!url){showToast('Renseignez d’abord le nom de l’entreprise pour générer le lien.');return}copyToClipboard(url,'Lien de passation copié')}function copyTemplate(){let text=document.getElementById('tpl-body').textContent;copyToClipboard(text,'Message copié')}
 let qrCodeInstance=null;
 function makeStyledQr(url,size){
   return new QRCodeStyling({
@@ -165,8 +172,8 @@ function drawQrCode(url){
 }
 function downloadQrCode(){
   let url=buildUrl();
-  if(!url){alert('Renseignez d’abord le nom de l’entreprise pour générer le QR code.');return}
-  if(typeof QRCodeStyling==='undefined'){alert('Le générateur de QR code n’est pas encore chargé. Vérifiez la connexion puis réessayez.');return}
+  if(!url){showToast('Renseignez d’abord le nom de l’entreprise pour générer le QR code.');return}
+  if(typeof QRCodeStyling==='undefined'){showToast('Le générateur de QR code n’est pas encore chargé.');return}
   let filename='qr-code-'+companySlug()+'-'+(p().slug||slugify(cleanTheme())||'autodiagnostic');
   let holder=document.createElement('div');
   holder.style.position='fixed';
@@ -271,13 +278,34 @@ function getVal(obj,keys,fallback=''){
 async function fetchProjectFromBackend(projectId){
   if(!projectId || !getToken()) return null;
   const headers={Authorization:'Bearer '+getToken()};
-  if(getRole()==='admin'){
+  const role=String(getRole()||'').toLowerCase();
+
+  if(role==='admin'){
     const res=await fetch(apiBase()+'/api/admin/projects',{headers});
     const data=await res.json().catch(()=>({}));
     if(!res.ok)throw new Error(data.error || 'Erreur chargement projets admin');
     const projects=data.projects || data.autodiags || data.data || [];
     return projects.find(p=>String(p.id)===String(projectId)) || null;
   }
+
+  if(role==='partner'){
+    const res=await fetch(apiBase()+'/api/partner/clients',{headers});
+    const data=await res.json().catch(()=>({}));
+    if(res.ok){
+      const clients=data.clients || [];
+      for(const client of clients){
+        const found=(client.projects || []).find(p=>String(p.id)===String(projectId));
+        if(found){
+          return Object.assign({}, found, {
+            organizationName: client.name || found.organizationName || found.organization_name || '',
+            organization_id: client.id || found.organization_id,
+            organizationId: client.id || found.organizationId
+          });
+        }
+      }
+    }
+  }
+
   const res=await fetch(apiBase()+'/api/projects/'+encodeURIComponent(projectId),{headers});
   const data=await res.json().catch(()=>({}));
   if(!res.ok)throw new Error(data.error || 'Erreur chargement projet');
@@ -427,28 +455,27 @@ bootCampagnePage();
   }
 
   function getUserRole(){
-    return localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "";
+    return String(localStorage.getItem("its_user_role") || decodeJwt(getToken())?.role || "").toLowerCase();
   }
 
-  function isAdminUser(){
-    return String(getUserRole() || "").toLowerCase() === "admin";
+  function isBackofficeRole(){
+    const role=getUserRole();
+    return role === "admin" || role === "partner";
   }
 
-  function isAllowedReadonlyButton(button){
+  function allowedButton(button){
     const onclick = String(button.getAttribute("onclick") || "");
-
-    // En lecture seule client, on garde seulement les actions de communication :
-    // changer d’onglet de message + copier le message affiché.
-    return button.classList.contains("comm-tab") || onclick.includes("copyTemplate");
+    return (
+      button.classList.contains("comm-tab") ||
+      onclick.includes("copyTemplate") ||
+      onclick.includes("copyUrl") ||
+      onclick.includes("copyResultsUrl") ||
+      onclick.includes("downloadQrCode")
+    );
   }
 
-  function applyClientReadonlyCampaignMode(){
-    document.body.classList.add("readonly-campaign");
-
-    const title = document.querySelector(".page-title");
-    const sub = document.querySelector(".page-sub");
-    if(title) title.textContent = "Voir la campagne";
-    if(sub) sub.textContent = "Cette campagne est publiée. Elle est consultable en lecture seule. Vous pouvez copier les messages de communication ci-dessous.";
+  function applyLockedCampaignMode(){
+    document.body.classList.add("campaign-locked");
 
     document.querySelectorAll(".bottom-actions").forEach(el => {
       el.style.display = "none";
@@ -460,7 +487,12 @@ bootCampagnePage();
     });
 
     document.querySelectorAll("button").forEach(button => {
-      if(isAllowedReadonlyButton(button)) return;
+      if(allowedButton(button)){
+        button.disabled = false;
+        button.style.cursor = "pointer";
+        button.style.opacity = "1";
+        return;
+      }
       button.disabled = true;
       button.style.cursor = "not-allowed";
       button.style.opacity = ".55";
@@ -472,39 +504,49 @@ bootCampagnePage();
       link.style.cursor = "not-allowed";
     });
 
-    const sbStatus = document.getElementById("sb-status");
-    if(sbStatus) sbStatus.textContent = "Publié";
-
     const sidebarHint = document.getElementById("sidebar-check-hint");
-    if(sidebarHint) sidebarHint.textContent = "Campagne publiée : seuls les messages de communication restent copiables.";
+    if(sidebarHint) sidebarHint.textContent = "Consultation verrouillée : lien, QR code et messages restent copiables.";
 
     const help = document.getElementById("publish-help");
     if(help){
-      help.style.display = "block";
-      help.innerHTML = "Campagne publiée : les champs sont bloqués. Vous pouvez uniquement copier les messages de communication.";
+      help.style.display = "none";
+      help.innerHTML = "";
     }
   }
 
-  function applyReadonlyCampaignMode(){
+  function applyClientReadonlyText(){
+    const title = document.querySelector(".page-title");
+    const sub = document.querySelector(".page-sub");
+    if(title) title.textContent = "Voir la campagne";
+    if(sub) sub.textContent = "Cette campagne est publiée. Elle est consultable en lecture seule. Vous pouvez copier les messages de communication ci-dessous.";
+  }
+
+  function applyCampaignMode(){
     const params = new URLSearchParams(window.location.search);
     const readonly = params.get("readonly") === "1";
-    if(!readonly) return;
+    const role = getUserRole();
 
-    // En admin, on n’affiche pas le message client de lecture seule et on ne bloque pas la page.
-    // L’admin doit pouvoir consulter la campagne sans être traité comme le client final.
-    if(isAdminUser()) return;
+    // Admin et partner : page verrouillée, mais sans message client “publié / lecture seule”.
+    if(isBackofficeRole()){
+      applyLockedCampaignMode();
+      return;
+    }
 
-    applyClientReadonlyCampaignMode();
+    // Client final : message de lecture seule uniquement si explicitement demandé.
+    if(readonly){
+      applyClientReadonlyText();
+      applyLockedCampaignMode();
+    }
   }
 
   if(document.readyState === "loading"){
-    document.addEventListener("DOMContentLoaded", applyReadonlyCampaignMode);
+    document.addEventListener("DOMContentLoaded", applyCampaignMode);
   }else{
-    applyReadonlyCampaignMode();
+    applyCampaignMode();
   }
 
-  // Sécurité : si le bootstrap projet termine après ce script, on réapplique le verrouillage côté client.
-  setTimeout(applyReadonlyCampaignMode, 150);
+  setTimeout(applyCampaignMode, 150);
+  setTimeout(applyCampaignMode, 600);
 })();
 </script>
 
