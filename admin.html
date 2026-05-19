@@ -937,10 +937,9 @@ async function confirmDeleteProject(){
 
   try{
     await apiDelete(`/api/admin/projects/${encodeURIComponent(projectToDelete.id)}`);
-    adminState.projects = adminState.projects.filter(p => String(val(p,["id"],"")) !== String(projectToDelete.id));
     closeDeleteProjectModal();
-    renderAll();
     showSuccess("Autodiag supprimé.");
+    await loadAdminData();
   }catch(err){
     console.error(err);
     showError("Suppression de l’autodiag impossible. Détail : " + err.message);
