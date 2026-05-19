@@ -559,13 +559,27 @@ if (isBlankMode) {
   const hasProjectId = typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId();
   if(hasProjectId && typeof itsBootstrapProjectFromUrl === 'function'){
     document.body.innerHTML = '<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d">Chargement du projet…</div>';
-    itsBootstrapProjectFromUrl().then(() => {
+
+    const bootstrapTimeout = new Promise(resolve => {
+      setTimeout(() => resolve({timeout:true}), 6000);
+    });
+
+    Promise.race([
+      Promise.resolve(itsBootstrapProjectFromUrl()).then(() => ({timeout:false})).catch(err => ({timeout:false,error:err})),
+      bootstrapTimeout
+    ]).then(result => {
       const loaded = typeof itsLoad === 'function' ? itsLoad() : {};
       if(loaded && Array.isArray(loaded.chapters) && loaded.chapters.length){
         window.location.reload();
-      }else{
-        window.location.href = 'index.html';
+        return;
       }
+
+      const projectId = hasProjectId;
+      document.body.innerHTML = `<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d;max-width:760px">
+        <h2 style="margin:0 0 10px;font-size:20px">Projet non chargé</h2>
+        <p style="font-size:14px;line-height:1.6;color:#64748b">La page n’a pas réussi à récupérer le contenu du projet${projectId ? ` <strong>${projectId}</strong>` : ''}. Retournez au dashboard puis ouvrez le projet avec le bouton “Reprendre” ou “Modifier le contenu”.</p>
+        <button onclick="window.location.href='admin.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour admin</button>
+      </div>`;
     });
     throw new Error('Chargement projet en cours');
   }
@@ -1958,10 +1972,18 @@ function restoreAdminQuestionNavigation(){
 
   // Le mode lecture seule global peut désactiver tous les boutons d'une page transmise/publiée.
   // En admin, on garde au minimum la navigation interne Questions / Profils cliquable.
+  document.querySelectorAll('.cni-head').forEach(el => {
+    el.style.pointerEvents = 'auto';
+    el.style.cursor = 'pointer';
+  });
+
   document.querySelectorAll('.cni-tab').forEach(btn => {
-    btn.disabled = false;
-    btn.removeAttribute('disabled');
     btn.style.pointerEvents = 'auto';
+    if(!btn.classList.contains('disabled')){
+      btn.disabled = false;
+      btn.removeAttribute('disabled');
+      btn.style.cursor = 'pointer';
+    }
   });
 }
 
@@ -1970,6 +1992,7 @@ if(typeof itsApplyReadOnlyMode === 'function'){
     itsApplyReadOnlyMode();
     restoreAdminQuestionNavigation();
   }, 50);
+  setTimeout(restoreAdminQuestionNavigation, 250);
 }
 </script>
 </body>
