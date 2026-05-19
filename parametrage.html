@@ -35,6 +35,8 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .partner-quota-mini strong{display:block;font-size:16px;color:#18375d}
 .partner-quota-mini span{display:block;font-size:10px;color:#64748b;margin-top:2px}
 
+.resource-empty-guide{border:1px dashed #d8e0ea;background:#f8fafc;border-radius:12px;padding:12px;margin-bottom:10px}.resource-empty-guide-title{font-size:12px;font-weight:800;color:#64748b;margin-bottom:8px}.resource-empty-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}.resource-empty-input{flex:1;min-width:160px;border:1px solid #d8e0ea;border-radius:8px;padding:8px 11px;background:#eef2f6;color:#94a3b8;font-size:12px;font-family:'Asap',sans-serif}.resource-empty-note{font-size:11px;color:#94a3b8;line-height:1.45}
+
 @media (max-width: 760px){
   body{overflow-x:hidden;}
   .topbar{height:auto;min-height:54px;padding:10px 14px;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:80;}
@@ -279,6 +281,8 @@ function save(){ itsSave(state); }
 function updateParam(k,v){ state.parametrage[k]=v; save(); }
 async function loadDefaultClientLogoForPassation(){
   if(isPartnerMode()) return;
+  state.parametrage = state.parametrage || {};
+  if(state.parametrage.passationLogoCleared === true || state.passationLogoCleared === true) return;
   const hasProjectLogo = Boolean(
     state.passationLogoDataUrl ||
     state.passation_logo_data_url ||
@@ -298,7 +302,7 @@ async function loadDefaultClientLogoForPassation(){
     const logoData = user.organizationLogoDataUrl || user.organization_logo_data_url || '';
     const logoName = user.organizationLogoName || user.organization_logo_name || 'Logo entreprise';
     if(logoData){
-      setProjectPassationLogo(logoName, logoData);
+      setProjectPassationLogo(logoName, logoData, 'account-default');
     }
   }catch(err){
     console.warn('Logo entreprise non récupéré pour la passation', err);
@@ -360,7 +364,7 @@ function renderResources(){
   const container = document.getElementById('resources-list');
   if(!container) return;
   if(!arr.length){
-    container.innerHTML = '<div class="alert alert-neutral" style="margin-bottom:10px"><span class="alert-ico">ℹ️</span><span>Aucune ressource ajoutée pour le moment. Vous pouvez laisser cette zone vide ou ajouter des liens utiles pour les répondants.</span></div>';
+    container.innerHTML = '<div class="resource-empty-guide"><div class="resource-empty-guide-title">Aucune ressource ajoutée pour le moment</div><div class="resource-empty-row"><input class="resource-empty-input" disabled placeholder="Titre de la ressource, ex. Guide interne"><input class="resource-empty-input" disabled placeholder="URL, ex. https://..."></div><div class="resource-empty-note">Ces champs grisés sont uniquement des consignes. Cliquez sur “Ajouter une ressource” pour créer une ressource visible par les répondants.</div></div>';
   } else {
     container.innerHTML = arr.map((r,i)=>`<div class="resource-row"><input class="inp" style="flex:2;min-width:140px;font-size:12px;padding:7px 11px" value="${esc(r.titre||'')}" placeholder="Titre de la ressource à afficher" oninput="state.parametrage.resources[${i}].titre=this.value;save();updatePreview()"><input class="inp" style="flex:3;min-width:180px;font-size:12px;padding:7px 11px;color:#007883" type="url" value="${esc((r.url==='https://'?'':(r.url||'')))}" placeholder="Collez l’URL de la ressource" oninput="state.parametrage.resources[${i}].url=this.value;save();updatePreview()"><button class="btn-del" onclick="removeResource(${i})" title="Supprimer">×</button></div>`).join('');
   }
@@ -382,7 +386,7 @@ function updatePreview(){
   if(!previewEl) return;
   const arr = state.parametrage.resources || [];
   if(!arr.length){
-    previewEl.innerHTML = '<div class="preview-label">Aperçu — ressources complémentaires</div><div style="font-size:12px;color:#94a3b8;line-height:1.5">Aucune ressource ne sera affichée pour le moment.</div>';
+    previewEl.innerHTML = '<div class="preview-label">Aperçu — ressources complémentaires</div><div style="font-size:12px;color:#94a3b8;line-height:1.5">Aucune ressource ne sera affichée pour le moment. Les consignes grisées au-dessus ne sont pas enregistrées comme ressources.</div>';
     return;
   }
   const resHTML = arr.map(r=>'<div class="preview-res-item">↗ '+esc(r.titre||'Nommez votre document')+'</div>').join('');
@@ -397,18 +401,22 @@ function renderPassationLogo(){
   if(!preview || !name) return;
   if(logoData){
     preview.innerHTML = `<img src="${esc(logoData)}" alt="">`;
-    name.textContent = logoName || "Logo spécifique importé";
+    name.textContent = (state.parametrage?.passationLogoSource === "account-default" || state.passationLogoSource === "account-default") ? "Logo repris depuis Mon compte" : (logoName || "Logo spécifique importé");
   }else{
     preview.textContent = "LOGO";
     name.textContent = "Aucun logo spécifique";
   }
 }
-function setProjectPassationLogo(name,dataUrl){
+function setProjectPassationLogo(name,dataUrl,source){
   state.parametrage = state.parametrage || {};
   state.parametrage.passationLogoName = name || "";
   state.parametrage.passationLogoDataUrl = dataUrl || "";
   state.parametrage.passation_logo_name = name || "";
   state.parametrage.passation_logo_data_url = dataUrl || "";
+  state.parametrage.passationLogoSource = source || "manual";
+  state.parametrage.passationLogoCleared = false;
+  state.passationLogoSource = source || "manual";
+  state.passationLogoCleared = false;
   state.passationLogoName = name || "";
   state.passationLogoDataUrl = dataUrl || "";
   state.passation_logo_name = name || "";
@@ -421,12 +429,15 @@ function handlePassationLogoUpload(event){
   if(!file) return;
   const reader = new FileReader();
   reader.onload = function(e){
-    setProjectPassationLogo(file.name, e.target.result);
+    state.parametrage.passationLogoCleared = false; state.passationLogoCleared = false; setProjectPassationLogo(file.name, e.target.result, "manual");
   };
   reader.readAsDataURL(file);
 }
 function clearPassationLogo(){
-  setProjectPassationLogo("", "");
+  setProjectPassationLogo("", "", "manual");
+  state.parametrage.passationLogoCleared = true;
+  state.passationLogoCleared = true;
+  save();
   const input = document.getElementById("passationLogoInput");
   if(input) input.value = "";
 }

@@ -360,10 +360,13 @@
       const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
       const clientInfo = payload.clientInfo || payload.client_info || data.clientInfo || data.client_info || transmission.clientInfo || transmission.client_info || {};
       const innerPayload = payload.payload && typeof payload.payload === "object" ? payload.payload : {};
+      const transmissionPayload = transmission.payload && typeof transmission.payload === "object" ? transmission.payload : {};
       const innerClientInfo = innerPayload.client_info || innerPayload.clientInfo || {};
+      const transmissionClientInfo = transmissionPayload.client_info || transmissionPayload.clientInfo || {};
       return String(
         val(clientInfo,["commentaire","comment","clientComment","client_comment"],"") ||
         val(innerClientInfo,["commentaire","comment","clientComment","client_comment"],"") ||
+        val(transmissionClientInfo,["commentaire","comment","clientComment","client_comment"],"") ||
         val(payload,["commentaire","comment","clientComment","client_comment"],"") ||
         val(data,["commentaire","comment","clientComment","client_comment"],"") ||
         ""
