@@ -192,7 +192,65 @@ function downloadQrCode(){
     document.body.removeChild(holder);
   },150);
 }
-function normalizeCampaignDatesInState(){let start=p().date_lancement||p().dateLancement||state.campaignStartDate||state.campaign_start_date||'';let end=p().date_cloture||p().dateCloture||state.campaignEndDate||state.campaign_end_date||'';p().date_lancement=start;p().dateLancement=start;p().date_cloture=end;p().dateCloture=end;state.campaignStartDate=start;state.campaign_start_date=start;state.campaignEndDate=end;state.campaign_end_date=end}
+function normalizeCampaignDatesInState(){
+  const param = p();
+  const nestedState = (state.data && state.data.state) || {};
+  const nestedPayload = (state.data && state.data.payload) || {};
+  const nestedPayloadState = (nestedPayload && nestedPayload.state) || {};
+  const nestedParam = (nestedState && nestedState.parametrage) || {};
+  const nestedPayloadParam = (nestedPayload && nestedPayload.parametrage) || {};
+  const nestedPayloadStateParam = (nestedPayloadState && nestedPayloadState.parametrage) || {};
+
+  let start = normalizeDateInputValue(
+    param.date_lancement ||
+    param.dateLancement ||
+    state.campaign_start_date ||
+    state.campaignStartDate ||
+    nestedParam.date_lancement ||
+    nestedParam.dateLancement ||
+    nestedPayloadParam.date_lancement ||
+    nestedPayloadParam.dateLancement ||
+    nestedPayloadStateParam.date_lancement ||
+    nestedPayloadStateParam.dateLancement ||
+    ''
+  );
+
+  let end = normalizeDateInputValue(
+    param.date_cloture ||
+    param.dateCloture ||
+    state.campaign_end_date ||
+    state.campaignEndDate ||
+    nestedParam.date_cloture ||
+    nestedParam.dateCloture ||
+    nestedPayloadParam.date_cloture ||
+    nestedPayloadParam.dateCloture ||
+    nestedPayloadStateParam.date_cloture ||
+    nestedPayloadStateParam.dateCloture ||
+    ''
+  );
+
+  param.date_lancement=start;
+  param.dateLancement=start;
+  param.date_cloture=end;
+  param.dateCloture=end;
+  state.campaignStartDate=start;
+  state.campaign_start_date=start;
+  state.campaignEndDate=end;
+  state.campaign_end_date=end;
+}
+
+function forceInjectCampaignDatesUI(){
+  normalizeCampaignDatesInState();
+  const start = p().date_lancement || '';
+  const end = p().date_cloture || '';
+  const launchInput = document.getElementById('date-launch');
+  const closeInput = document.getElementById('date-close');
+  if(launchInput) launchInput.value = start;
+  if(closeInput) closeInput.value = end;
+  updateDatesUI();
+  console.log('[ITS campagne] dates injectées UI', {start, end, stateStart: state.campaign_start_date, stateEnd: state.campaign_end_date});
+}
+
 function updateDatesFromInputs(){p().date_lancement=document.getElementById('date-launch').value;p().date_cloture=document.getElementById('date-close').value;normalizeCampaignDatesInState();updateDatesUI();updateChecklist();saveState()}function updateDatesUI(){let l=p().date_lancement||'',cl=p().date_cloture||'';['kpi-launch','sb-launch'].forEach(id=>document.getElementById(id).textContent=formatDateFR(l));['kpi-close','sb-close'].forEach(id=>document.getElementById(id).textContent=formatDateFR(cl));updateReminderPlan(l,cl)}function updateReminderPlan(l,cl){let d=diffDays(parseD(l),parseD(cl)),fd='J+14',ld='J-10',ft='Première relance après environ 14 jours de campagne.',lt='Dernière relance 10 jours avant la clôture.';if(d&&d>0){if(d<15){fd='J+'+Math.max(3,Math.round(d/2));ld='J-2';ft='Relance rapide à prévoir, car la campagne est courte.';lt='Dernière relance 2 jours avant la clôture.'}else if(d<30){fd='J+'+Math.max(7,Math.round(d/2));ld='J-5';ft='Première relance à mi-campagne.';lt='Dernière relance 5 jours avant la clôture.'}}document.getElementById('first-reminder-day').textContent=fd;document.getElementById('last-reminder-day').textContent=ld;document.getElementById('first-reminder-text').textContent=ft;document.getElementById('last-reminder-text').textContent=lt}
 function packLabel(v){return !v?'Pack à choisir':(v==='illimite'?'Illimité':Number(v).toLocaleString('fr-FR')+' passations')}function updatePackChoice(){state.pack=state.pack||{};state.parametrage=state.parametrage||{};const v=document.getElementById('pack-select').value||'';state.pack.volume=v;state.parametrage.pack_choisi=v;document.getElementById('pack-val').textContent=packLabel(v);saveState()}
 function isBackofficeViewingCampaign(){
@@ -306,21 +364,41 @@ function unwrapCampaignProjectData(raw){
   return Object.assign({}, data, payload, stateObj, payloadState);
 }
 function extractProjectDate(project, data, payload, kind){
-  const param = (data && data.parametrage) || (payload && payload.parametrage) || {};
-  const campaign = (data && data.campagne) || (payload && payload.campagne) || {};
+  const dataState = parseProjectObject(data && data.state || {});
+  const payloadState = parseProjectObject(payload && payload.state || {});
+  const dataPayload = parseProjectObject(data && data.payload || {});
+  const dataPayloadState = parseProjectObject(dataPayload && dataPayload.state || {});
 
-  const startKeys = ['campaignStartDate','campaign_start_date','startDate','start_date','date_lancement','dateLancement'];
-  const endKeys = ['campaignEndDate','campaign_end_date','endDate','end_date','date_cloture','dateCloture'];
+  const param = (data && data.parametrage) || {};
+  const payloadParam = (payload && payload.parametrage) || {};
+  const stateParam = (dataState && dataState.parametrage) || {};
+  const payloadStateParam = (payloadState && payloadState.parametrage) || {};
+  const dataPayloadParam = (dataPayload && dataPayload.parametrage) || {};
+  const dataPayloadStateParam = (dataPayloadState && dataPayloadState.parametrage) || {};
+  const campaign = (data && data.campagne) || (payload && payload.campagne) || (dataState && dataState.campagne) || (payloadState && payloadState.campagne) || {};
+
+  const startKeys = ['campaign_start_date','campaignStartDate','start_date','startDate','date_lancement','dateLancement'];
+  const endKeys = ['campaign_end_date','campaignEndDate','end_date','endDate','date_cloture','dateCloture'];
   const keys = kind === 'start' ? startKeys : endKeys;
 
-  return normalizeDateInputValue(
+  const found =
     getVal(project, keys, '') ||
     getVal(data, keys, '') ||
     getVal(payload, keys, '') ||
+    getVal(dataState, keys, '') ||
+    getVal(payloadState, keys, '') ||
+    getVal(dataPayload, keys, '') ||
+    getVal(dataPayloadState, keys, '') ||
     getVal(param, keys, '') ||
+    getVal(payloadParam, keys, '') ||
+    getVal(stateParam, keys, '') ||
+    getVal(payloadStateParam, keys, '') ||
+    getVal(dataPayloadParam, keys, '') ||
+    getVal(dataPayloadStateParam, keys, '') ||
     getVal(campaign, keys, '') ||
-    ''
-  );
+    '';
+
+  return normalizeDateInputValue(found);
 }
 async function fetchProjectFromBackend(projectId){
   if(!projectId || !getToken()) return null;
@@ -411,8 +489,15 @@ function normalizeLoadedProject(project){
   const backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
   const backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
 
+  console.log('[ITS campagne] dates backend détectées', {backendStartDate, backendEndDate, projectStart: project.campaign_start_date || project.campaignStartDate, projectEnd: project.campaign_end_date || project.campaignEndDate});
   state.parametrage.date_lancement = backendStartDate || '';
+  state.parametrage.dateLancement = backendStartDate || '';
   state.parametrage.date_cloture = backendEndDate || '';
+  state.parametrage.dateCloture = backendEndDate || '';
+  state.campaign_start_date = backendStartDate || '';
+  state.campaignStartDate = backendStartDate || '';
+  state.campaign_end_date = backendEndDate || '';
+  state.campaignEndDate = backendEndDate || '';
   normalizeCampaignDatesInState();
 
   state.parametrage.pack_choisi =
@@ -488,10 +573,7 @@ function applyBackendHydrationUI(){
 function init(){
   applyBackendHydrationUI();
   refreshLaunchUrl();
-  normalizeCampaignDatesInState();
-  document.getElementById('date-launch').value=p().date_lancement||'';
-  document.getElementById('date-close').value=p().date_cloture||'';
-  updateDatesUI();
+  forceInjectCampaignDatesUI();
   let ck=c().checklist||{};
   document.querySelectorAll('.check-row input').forEach(b=>b.checked=!!ck[b.dataset.key]);
   showTemplate(c().activeTemplate||'launch',document.querySelector('.comm-tab'));
@@ -614,6 +696,14 @@ bootCampagnePage();
     });
 
     document.querySelectorAll("input, select, textarea").forEach(el => {
+      if(el.id === "date-launch" || el.id === "date-close"){
+        el.disabled = false;
+        el.readOnly = true;
+        el.style.pointerEvents = "none";
+        el.style.cursor = "not-allowed";
+        el.style.background = "#f6f8fb";
+        return;
+      }
       el.disabled = true;
       el.style.cursor = "not-allowed";
     });
@@ -671,14 +761,7 @@ bootCampagnePage();
     }
   }
 
-  if(document.readyState === "loading"){
-    document.addEventListener("DOMContentLoaded", applyCampaignMode);
-  }else{
-    applyCampaignMode();
-  }
-
-  setTimeout(applyCampaignMode, 150);
-  setTimeout(applyCampaignMode, 600);
+  window.applyCampaignModeAfterHydration = applyCampaignMode;
 })();
 </script>
 
