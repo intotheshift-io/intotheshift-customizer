@@ -935,14 +935,43 @@ function closeDeleteProjectModal(){
 async function confirmDeleteProject(){
   if(!projectToDelete?.id)return;
 
+  const idToDelete = String(projectToDelete.id);
+  const modal = document.getElementById("deleteProjectModal");
+  const confirmBtn = modal ? modal.querySelector(".mini-btn.danger") : null;
+  const previousText = confirmBtn?.textContent || "Supprimer définitivement";
+
   try{
-    await apiDelete(`/api/admin/projects/${encodeURIComponent(projectToDelete.id)}`);
+    if(confirmBtn){
+      confirmBtn.disabled = true;
+      confirmBtn.textContent = "Suppression...";
+    }
+
+    const result = await apiDelete(`/api/admin/projects/${encodeURIComponent(idToDelete)}`);
+
+    if(result && result.ok === false){
+      throw new Error(result.error || "Suppression refusée par le serveur.");
+    }
+
     closeDeleteProjectModal();
-    showSuccess("Autodiag supprimé.");
+
+    // On recharge depuis le backend pour éviter les cartes fantômes et vérifier la suppression réelle.
     await loadAdminData();
+
+    const stillExists = adminState.projects.some(p => String(val(p,["id"],"")) === idToDelete);
+    if(stillExists){
+      showError("Le serveur a répondu OK, mais l’autodiag est encore renvoyé par l’API. Il faut vérifier la table projects pour l’ID " + idToDelete + ".");
+      return;
+    }
+
+    showSuccess("Autodiag supprimé.");
   }catch(err){
     console.error(err);
-    showError("Suppression de l’autodiag impossible. Détail : " + err.message);
+    showError("Suppression de l’autodiag impossible. Détail : " + (err.message || "Erreur inconnue"));
+  }finally{
+    if(confirmBtn){
+      confirmBtn.disabled = false;
+      confirmBtn.textContent = previousText;
+    }
   }
 }
 async function saveProjectStatus(projectId){return saveProjectPublication(projectId);}
