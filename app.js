@@ -392,7 +392,7 @@ function itsStartFromCatalogue(adId) {
     chapters: itsClone(ad.chapters || []),
     meta: {
       nom: "Autodiagnostic " + ad.title,
-      titre: ad.title,
+      titre: "",
       desc: "Campagne interne sur " + ad.title + ".",
       slug: itsSlugify(ad.title),
       date_lancement: "",
@@ -401,7 +401,7 @@ function itsStartFromCatalogue(adId) {
     intro: ad.intro || "",
     parametrage: {
       nom: "Autodiagnostic " + ad.title,
-      titre: ad.title,
+      titre: "",
       desc: "Campagne interne sur " + ad.title + ".",
       slug: itsSlugify(ad.title),
       entreprise: "",
@@ -416,20 +416,14 @@ function itsStartFromCatalogue(adId) {
         { q:"À quelle catégorie appartenez-vous ?", opts:["Collaborateur·rice","Manager","Direction"], min_groupe:25 },
         { q:"Quel est votre service principal ?", opts:["Production","Maintenance","RH","Fonctions support","Autre"], min_groupe:10 }
       ],
-      resources: [
-        { titre:"Comprendre les bons réflexes", url:"https://www.monentreprise.fr/ressources/reflexes" },
-        { titre:"Accéder aux consignes internes", url:"https://www.monentreprise.fr/ressources/consignes" }
-      ]
+      resources: []
     },
     packPassations: "",
     demographics: [
       { q:"À quelle catégorie appartenez-vous ?", opts:["Collaborateur·rice","Manager","Direction"], min_groupe:25 },
       { q:"Quel est votre service principal ?", opts:["Production","Maintenance","RH","Fonctions support","Autre"], min_groupe:10 }
     ],
-    resources: [
-      { titre:"Comprendre les bons réflexes", url:"https://www.monentreprise.fr/ressources/reflexes" },
-      { titre:"Accéder aux consignes internes", url:"https://www.monentreprise.fr/ressources/consignes" }
-    ],
+    resources: [],
     status: "draft",
     step: "questions",
     current_step: "questions"
