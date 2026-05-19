@@ -560,8 +560,19 @@ bootCampagnePage();
   function applyLockedCampaignMode(){
     document.body.classList.add("campaign-locked");
 
-    document.querySelectorAll(".bottom-actions").forEach(el => {
-      el.style.display = "none";
+    document.querySelectorAll("input, select, textarea").forEach(el => {
+
+  if(
+    el.id === "date-launch" ||
+    el.id === "date-close"
+  ){
+    el.readOnly = true;
+    el.style.pointerEvents = "none";
+    el.style.background = "#f6f8fb";
+    return;
+  }
+
+  el.disabled = true;
     });
 
     document.querySelectorAll("input, select, textarea").forEach(el => {
