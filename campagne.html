@@ -296,8 +296,9 @@ function parseProjectObject(value){
   return {};
 }
 function extractProjectDate(project, data, payload, kind){
-  const param = (data && data.parametrage) || (payload && payload.parametrage) || {};
-  const campaign = (data && data.campagne) || (payload && payload.campagne) || {};
+  const nestedState = parseProjectObject(data && data.state || {});
+  const param = (data && data.parametrage) || (nestedState && nestedState.parametrage) || (payload && payload.parametrage) || {};
+  const campaign = (data && data.campagne) || (nestedState && nestedState.campagne) || (payload && payload.campagne) || {};
 
   const startKeys = ['campaignStartDate','campaign_start_date','startDate','start_date','date_lancement','dateLancement'];
   const endKeys = ['campaignEndDate','campaign_end_date','endDate','end_date','date_cloture','dateCloture'];
@@ -306,6 +307,7 @@ function extractProjectDate(project, data, payload, kind){
   return normalizeDateInputValue(
     getVal(project, keys, '') ||
     getVal(data, keys, '') ||
+    getVal(nestedState, keys, '') ||
     getVal(payload, keys, '') ||
     getVal(param, keys, '') ||
     getVal(campaign, keys, '') ||
@@ -358,7 +360,8 @@ function normalizeLoadedProject(project){
   backendProject=project;
   const data=parseProjectObject(project.data || project.payload || project.configuration || {});
   const payload=parseProjectObject(data.payload || {});
-  const merged=Object.assign({}, data, payload);
+  const nestedState=parseProjectObject(data.state || {});
+  const merged=Object.assign({}, data, nestedState, payload);
   state=Object.assign({}, state || {}, merged);
   state.data=data;
   state.currentAdId=project.id || state.currentAdId;
@@ -393,10 +396,6 @@ function normalizeLoadedProject(project){
 
   state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
   state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
-
-  p().date_lancement = state.parametrage.date_lancement || '';
-  p().date_cloture = state.parametrage.date_cloture || '';
-
   state.campaignStartDate = state.parametrage.date_lancement;
   state.campaignEndDate = state.parametrage.date_cloture;
   if(project.id){
@@ -411,35 +410,6 @@ function normalizeLoadedProject(project){
     merged.pack ||
     '';
   saveState();
-}
-function readCachedProject(projectId){
-  if(!projectId) return null;
-  try{
-    return JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
-  }catch(e){
-    return null;
-  }
-}
-function enrichProjectWithCachedDates(project, cached){
-  if(!project || !cached) return project;
-  const projectData=parseProjectObject(project.data || project.payload || project.configuration || {});
-  const projectPayload=parseProjectObject(projectData.payload || {});
-  const cachedData=parseProjectObject(cached.data || cached.payload || cached.configuration || {});
-  const cachedPayload=parseProjectObject(cachedData.payload || {});
-  const currentStart=extractProjectDate(project, projectData, projectPayload, 'start');
-  const currentEnd=extractProjectDate(project, projectData, projectPayload, 'end');
-  const cachedStart=extractProjectDate(cached, cachedData, cachedPayload, 'start');
-  const cachedEnd=extractProjectDate(cached, cachedData, cachedPayload, 'end');
-
-  if(!currentStart && cachedStart){
-    project.campaignStartDate=cachedStart;
-    project.campaign_start_date=cachedStart;
-  }
-  if(!currentEnd && cachedEnd){
-    project.campaignEndDate=cachedEnd;
-    project.campaign_end_date=cachedEnd;
-  }
-  return project;
 }
 function countQuestions(){
   return (state.chapters||[]).reduce((a,ch)=>a+((ch.questions||[]).length),0);
@@ -498,22 +468,28 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
     if(projectId){
       localStorage.setItem('its_current_project_id', String(projectId));
       localStorage.setItem('its_current_ad_id', String(projectId));
+
+      try{
+        const cachedProject = JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
+        if(cachedProject){
+          normalizeLoadedProject(cachedProject);
+        }
+      }catch(cacheError){}
+
       const params=new URLSearchParams(window.location.search);
       if(!params.get('projectId') && !params.get('project_id') && !params.get('id')){
         params.set('projectId', String(projectId));
         history.replaceState(null,'',window.location.pathname+'?'+params.toString());
       }
-      const cachedProject=readCachedProject(projectId);
-      if(cachedProject) normalizeLoadedProject(cachedProject);
       const project=await fetchProjectFromBackend(projectId);
-      if(project) normalizeLoadedProject(enrichProjectWithCachedDates(project,cachedProject));
+      if(project) normalizeLoadedProject(project);
     }
   }catch(e){
     console.error('Chargement backend campagne impossible', e);
     const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
     if(projectId){
       try{
-        const cached=readCachedProject(projectId);
+        const cached=JSON.parse(sessionStorage.getItem('its_project_cache_'+projectId)||'null');
         if(cached) normalizeLoadedProject(cached);
       }catch(cacheError){}
     }

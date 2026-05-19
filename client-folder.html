@@ -313,15 +313,12 @@
 
     function getProjectThemes(project){
       const payload = getProjectPayload(project);
-
-      const theme =
-        payload.theme?.title ||
-        payload.themeTitle ||
-        payload.thematique ||
-        payload.theme ||
-        "";
-
-      return theme ? [String(theme).trim()] : [];
+      const source = []
+        .concat(payload.tags || [])
+        .concat(payload.themeTags || [])
+        .concat(payload.theme?.tags || [])
+        .concat(payload.theme?.title || payload.themeTitle || payload.title || []);
+      return [...new Set(source.map(x => String(x || "").trim()).filter(Boolean))].slice(0,4);
     }
 
     function renderThemeTags(project){
@@ -677,38 +674,31 @@
       window.location.href = "questions.html";
     }
 
-    function cacheProjectForCampaign(projectId){
-      if(!projectId) return;
-      const project = getCurrentProjectById(projectId);
-      localStorage.setItem("its_current_project_id", projectId);
-      localStorage.setItem("its_current_ad_id", projectId);
-      localStorage.setItem("its_selected_partner_client_id", getClientId());
-
-      if(!project) return;
-
-      const cachedProject = Object.assign({}, project, {
-        campaignStartDate: getProjectStartDate(project),
-        campaignEndDate: getProjectEndDate(project),
-        campaign_start_date: getProjectStartDate(project),
-        campaign_end_date: getProjectEndDate(project),
-        shareUrl: getProjectShareUrl(project),
-        resultsUrl: getProjectResultsUrl(project),
-        share_url: getProjectShareUrl(project),
-        results_url: getProjectResultsUrl(project)
-      });
-
-      try{
-        sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(cachedProject));
-      }catch(e){}
-    }
-
     function prepareCampaign(projectId){
-      cacheProjectForCampaign(projectId);
+      if(projectId){
+        localStorage.setItem("its_current_project_id", projectId);
+        const project = getCurrentProjectById(projectId);
+        if(project){
+          try{
+            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
+          }catch(e){}
+        }
+      }
+      localStorage.setItem("its_selected_partner_client_id", getClientId());
       window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
     }
 
     function openCampaignPage(projectId){
-      cacheProjectForCampaign(projectId);
+      if(projectId){
+        localStorage.setItem("its_current_project_id", projectId);
+        const project = getCurrentProjectById(projectId);
+        if(project){
+          try{
+            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
+          }catch(e){}
+        }
+      }
+      localStorage.setItem("its_selected_partner_client_id", getClientId());
       window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
     }
 
