@@ -281,9 +281,13 @@ async function fetchProjectFromBackend(projectId){
   const role=String(getRole()||'').toLowerCase();
 
   if(role==='admin'){
+    const direct=await fetch(apiBase()+'/api/admin/projects/'+encodeURIComponent(projectId),{headers});
+    const directData=await direct.json().catch(()=>({}));
+    if(direct.ok && directData.project) return directData.project;
+
     const res=await fetch(apiBase()+'/api/admin/projects',{headers});
     const data=await res.json().catch(()=>({}));
-    if(!res.ok)throw new Error(data.error || 'Erreur chargement projets admin');
+    if(!res.ok)throw new Error(data.error || directData.error || 'Erreur chargement projets admin');
     const projects=data.projects || data.autodiags || data.data || [];
     return projects.find(p=>String(p.id)===String(projectId)) || null;
   }
@@ -408,6 +412,8 @@ function init(){
   updateChecklist();
 }
 async function goNext(){updateChecklist();if(document.getElementById('btn-launch').disabled)return;c().done=true;state.status='ready_for_transmission';saveState();await persistProjectDraft('campagne','ready_for_transmission');location.href='validation.html'}async function bootCampagnePage(){
+  const projectIdBeforeBootstrap=getCurrentProjectId();
+
   if(typeof itsBootstrapProjectFromUrl === "function"){
     state = await itsBootstrapProjectFromUrl();
   } else {
@@ -415,8 +421,15 @@ async function goNext(){updateChecklist();if(document.getElementById('btn-launch
   }
 
   try{
-    const projectId=getCurrentProjectId();
+    const projectId=projectIdBeforeBootstrap || getCurrentProjectId();
     if(projectId){
+      localStorage.setItem('its_current_project_id', String(projectId));
+      localStorage.setItem('its_current_ad_id', String(projectId));
+      const params=new URLSearchParams(window.location.search);
+      if(!params.get('projectId') && !params.get('project_id') && !params.get('id')){
+        params.set('projectId', String(projectId));
+        history.replaceState(null,'',window.location.pathname+'?'+params.toString());
+      }
       const project=await fetchProjectFromBackend(projectId);
       if(project) normalizeLoadedProject(project);
     }
