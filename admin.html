@@ -826,7 +826,8 @@ function renderProjects(){
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
     const client=organization || creatorCompany || val(cfg,["company","entreprise","clientCompany","clientEmail"],"—");
     const status=getProjectEffectiveStatus(p); const created=formatDate(val(p,["created_at","createdAt","date_creation"],"")); const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
-    const sent=isProjectConfigActuallySent(p); const share=getProjectShareUrl(p); const results=getProjectResultsUrl(p); const startDate=getCampaignStartDate(p); const endDate=getCampaignEndDate(p);
+    const sent=isProjectConfigActuallySent(p); const share=getProjectShareUrl(p); const results=getProjectResultsUrl(p); const startDate=getCampaignStartDate(p); const endDate=getCampaignEndDate(p); const logo=getProjectLogo(p);
+    const logoHtml = logo.data ? `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">${escapeHtml(logo.name || "Logo importé")}</div><button class="mini-btn light" style="margin-top:8px" onclick="downloadDataUrl('${escapeAttr(logo.data)}','${escapeAttr(logo.name || 'logo-passation.png')}')">Télécharger</button></div>` : `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">—</div><div class="muted">Aucun logo spécifique</div></div>`;
     return`<article class="project-card">
       <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
       <div class="info-grid">
@@ -835,6 +836,7 @@ function renderProjects(){
         <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
         <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
         <div class="info-box"><div class="info-label">Fin campagne</div><div class="info-value">${formatDate(endDate)}</div></div>
+        ${logoHtml}
       </div>
       <div class="project-publication">
         <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>

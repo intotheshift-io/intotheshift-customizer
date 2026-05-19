@@ -313,12 +313,39 @@
 
     function getProjectThemes(project){
       const payload = getProjectPayload(project);
+      const data = getProjectData(project);
+      const forbidden = [
+        "base assistée par ia",
+        "base assistee par ia",
+        "aide à la rédaction",
+        "aide a la redaction",
+        "relecture obligatoire",
+        "conçu par un expert",
+        "concu par un expert"
+      ];
+      const businessKeywords = [
+        "cybersécurité","cybersecurite","cyber",
+        "qvt","rps",
+        "management","manager",
+        "compliance","conformité","conformite","éthique","ethique",
+        "diversité","diversite","inclusion","handicap","sexisme","lgbt","religieuse","origines",
+        "rse","sécurité","securite","sûreté","surete","transformation"
+      ];
       const source = []
+        .concat(payload.theme?.title || [])
+        .concat(payload.themeTitle || [])
+        .concat(payload.title || [])
+        .concat(data.theme?.title || [])
+        .concat(data.themeTitle || [])
         .concat(payload.tags || [])
         .concat(payload.themeTags || [])
-        .concat(payload.theme?.tags || [])
-        .concat(payload.theme?.title || payload.themeTitle || payload.title || []);
-      return [...new Set(source.map(x => String(x || "").trim()).filter(Boolean))].slice(0,4);
+        .concat(payload.theme?.tags || []);
+      const cleaned = source
+        .map(x => String(x || "").trim())
+        .filter(Boolean)
+        .filter(t => !forbidden.includes(t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')))
+        .filter(t => businessKeywords.some(k => t.toLowerCase().includes(k)) || !forbidden.some(f => t.toLowerCase().includes(f)));
+      return [...new Set(cleaned)].slice(0,4);
     }
 
     function renderThemeTags(project){

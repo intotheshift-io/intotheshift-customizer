@@ -463,7 +463,19 @@ async function persistProjectDraft(step, status){
         organizationId: localStorage.getItem('its_selected_partner_client_id') || null,
         status: status || state.status || 'draft',
         currentStep: step || 'parametrage',
+        campaignStartDate: state.parametrage?.date_lancement || undefined,
+        campaignEndDate: state.parametrage?.date_cloture || undefined,
+        passationLogoName: state.passationLogoName || state.passation_logo_name || state.parametrage?.passationLogoName || state.parametrage?.passation_logo_name || undefined,
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || state.parametrage?.passationLogoDataUrl || state.parametrage?.passation_logo_data_url || undefined,
         data: Object.assign({}, state, {
+          campaignStartDate: state.parametrage?.date_lancement || '',
+          campaignEndDate: state.parametrage?.date_cloture || '',
+          campaign_start_date: state.parametrage?.date_lancement || '',
+          campaign_end_date: state.parametrage?.date_cloture || '',
+          passationLogoName: state.passationLogoName || state.passation_logo_name || state.parametrage?.passationLogoName || state.parametrage?.passation_logo_name || '',
+          passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || state.parametrage?.passationLogoDataUrl || state.parametrage?.passation_logo_data_url || '',
+          passation_logo_name: state.passationLogoName || state.passation_logo_name || state.parametrage?.passationLogoName || state.parametrage?.passation_logo_name || '',
+          passation_logo_data_url: state.passationLogoDataUrl || state.passation_logo_data_url || state.parametrage?.passationLogoDataUrl || state.parametrage?.passation_logo_data_url || '',
           step: step || 'parametrage',
           current_step: step || 'parametrage',
           status: status || state.status || 'draft',
@@ -473,7 +485,7 @@ async function persistProjectDraft(step, status){
     });
     const saved = await response.json().catch(()=>({}));
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){ state.currentAdId = id; state.project_id = id; save(); }
+    if(id){ state.currentAdId = id; state.project_id = id; state.projectId = id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); save(); }
   }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
 }
 
