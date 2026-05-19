@@ -527,14 +527,24 @@ async function itsFetchProjectById(projectId) {
   if (!token || !projectId) return null;
 
   try {
-    const res = await fetch(ITS_API_BASE + "/api/projects", {
-      headers: { "Authorization": "Bearer " + token }
-    });
+    const res = await fetch(
+      ITS_API_BASE + "/api/projects/" + encodeURIComponent(projectId),
+      {
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      }
+    );
+
     if (!res.ok) return null;
 
     const json = await res.json();
-    const projects = Array.isArray(json.projects) ? json.projects : [];
-    return projects.find(p => String(p.id || p.project_id || p.projectId) === String(projectId)) || null;
+
+    return (
+      json.project ||
+      json.data ||
+      json
+    );
   } catch(e) {
     console.warn("Chargement projet API impossible", e);
     return null;
