@@ -313,12 +313,15 @@
 
     function getProjectThemes(project){
       const payload = getProjectPayload(project);
-      const source = []
-        .concat(payload.tags || [])
-        .concat(payload.themeTags || [])
-        .concat(payload.theme?.tags || [])
-        .concat(payload.theme?.title || payload.themeTitle || payload.title || []);
-      return [...new Set(source.map(x => String(x || "").trim()).filter(Boolean))].slice(0,4);
+
+      const theme =
+        payload.theme?.title ||
+        payload.themeTitle ||
+        payload.thematique ||
+        payload.theme ||
+        "";
+
+      return theme ? [String(theme).trim()] : [];
     }
 
     function renderThemeTags(project){

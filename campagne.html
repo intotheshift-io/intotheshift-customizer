@@ -393,6 +393,10 @@ function normalizeLoadedProject(project){
 
   state.parametrage.date_lancement = backendStartDate || state.parametrage.date_lancement || '';
   state.parametrage.date_cloture = backendEndDate || state.parametrage.date_cloture || '';
+
+  p().date_lancement = state.parametrage.date_lancement || '';
+  p().date_cloture = state.parametrage.date_cloture || '';
+
   state.campaignStartDate = state.parametrage.date_lancement;
   state.campaignEndDate = state.parametrage.date_cloture;
   if(project.id){
