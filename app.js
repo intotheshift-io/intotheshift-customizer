@@ -575,6 +575,14 @@ async function itsBootstrapProjectFromUrl() {
   const projectId = itsGetCurrentProjectId();
   if (!projectId) return itsLoad();
 
+  // Priorité au backend : cela évite qu'un ancien localStorage sans dates
+  // écrase les dates enregistrées dans le projet après Paramétrage.
+  const project = await itsFetchProjectById(projectId);
+  if (project) {
+    itsRestoreProject(project);
+    return itsLoad();
+  }
+
   try {
     const cached = sessionStorage.getItem("its_project_cache_" + projectId);
     if (cached) {
@@ -583,18 +591,7 @@ async function itsBootstrapProjectFromUrl() {
     }
   } catch(e) {}
 
-  const local = itsLoad();
-  if (local && Array.isArray(local.chapters) && local.chapters.length) {
-    return local;
-  }
-
-  const project = await itsFetchProjectById(projectId);
-  if (project) {
-    itsRestoreProject(project);
-    return itsLoad();
-  }
-
-  return local || {};
+  return itsLoad() || {};
 }
 
 function itsInjectReadOnlyBanner(message) {

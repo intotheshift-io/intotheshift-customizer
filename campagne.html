@@ -494,8 +494,20 @@ function normalizeLoadedProject(project){
     merged.company ||
     getVal(project,['organizationName','organization_name','clientName','company_name'],'');
 
-  const backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
-  const backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
+  let backendStartDate = extractProjectDate(project, data, payload, 'start') || extractProjectDate(project, merged, merged, 'start');
+  let backendEndDate = extractProjectDate(project, data, payload, 'end') || extractProjectDate(project, merged, merged, 'end');
+
+  // Sécurité : si le backend renvoie encore un projet ancien sans champs SQL,
+  // on reprend les dates du state local du même projet au lieu d'afficher vide.
+  if(!backendStartDate || !backendEndDate){
+    try{
+      const localRaw = localStorage.getItem(typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '');
+      const localState = localRaw ? JSON.parse(localRaw) : {};
+      const localParam = localState.parametrage || {};
+      backendStartDate = backendStartDate || normalizeDateInputValue(localParam.date_lancement || localParam.dateLancement || localState.campaign_start_date || localState.campaignStartDate || '');
+      backendEndDate = backendEndDate || normalizeDateInputValue(localParam.date_cloture || localParam.dateCloture || localState.campaign_end_date || localState.campaignEndDate || '');
+    }catch(e){}
+  }
 
   console.log('[ITS campagne] dates backend détectées', {backendStartDate, backendEndDate, projectStart: project.campaign_start_date || project.campaignStartDate, projectEnd: project.campaign_end_date || project.campaignEndDate});
   state.parametrage.date_lancement = backendStartDate || '';
