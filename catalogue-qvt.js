@@ -2210,178 +2210,679 @@
     ],
 
   },
-  // ─────────────────────────────────────────────────────────────────────
+  // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "epuisement-prevention" dans Object.assign(window.CUSTOM_QUESTIONS,
 
-  "retour-apres-absence": {
+  "epuisement-prevention": {
     0: [
-        {
-          text: "Vous revenez d'un arrêt de plusieurs semaines. Votre boîte mail contient des centaines de messages. Que faites-vous ?",
-          answers: [
-          {text: "Je traite tout du premier jour pour être à jour rapidement.", score: 0},
-          {text: "Je trie les messages les plus importants et traite le reste au fil de l'eau.", score: 1},
-          {text: "Je commence par demander à mon responsable quelles sont les priorités avant de plonger dans ma messagerie.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Depuis trois semaines, vous vous levez fatigué·e même après une nuit complète. Vous mettez ça sur le compte de la période — c'est chargé en ce moment pour tout le monde.",
+        tags: ["signaux", "auto-observation"],
+        answers: [
+          { text: "Je continue — c'est une période difficile, ça finira bien par passer.", score: 0 },
+          { text: "Je note que c'est récurrent depuis trois semaines et je m'en préoccupe sérieusement.", score: 2 },
+          { text: "Je prends quelques jours plus calmes pour récupérer, si mon agenda le permet.", score: 1 },
+          { text: "J'en parle à un proche, pour voir si je suis le seul à me sentir ainsi.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
         },
-        {
-          text: "Vous revenez d'une longue absence et réalisez que certains de vos projets ont évolué sans vous. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends le pilotage comme avant.", score: 0},
-          {text: "Je me tiens informé de ce qui a changé.", score: 1},
-          {text: "Je prends le temps de comprendre les évolutions avant de prendre des décisions.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez remarqué que les sujets qui vous passionnaient il y a un an vous laissent maintenant indifférent·e. Vous gérez, vous produisez, mais l'engagement n'est plus là.",
+        tags: ["signaux", "cynisme"],
+        answers: [
+          { text: "C'est normal d'évoluer — les intérêts changent avec le temps.", score: 0 },
+          { text: "Je note ce signal et je prends le temps de comprendre ce qui a changé.", score: 2 },
+          { text: "Je cherche de nouveaux sujets stimulants pour remplacer ceux qui m'ont quitté.", score: 1 },
+          { text: "Je me dis que c'est peut-être le signe que c'est le moment de changer de poste.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
         },
-        {
-          text: "À votre retour, votre périmètre a légèrement changé sans que vous en ayez été informé. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte sans poser de questions.", score: 0},
-          {text: "J'en prends note et attends de voir comment ça se passe.", score: 1},
-          {text: "Je demande un point clair sur les nouvelles attentes avant de reprendre pleinement.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites régulièrement le point sur votre propre état — pas seulement sur votre charge de travail, mais sur votre engagement et votre énergie.",
+        tags: ["signaux", "régularité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
         },
-        {
-          text: "À votre retour, vos collègues vous traitent comme si vous n'aviez jamais été absent. Ça vous met mal à l'aise. Que faites-vous ?",
-          answers: [
-          {text: "Je fais pareil et reprends le rythme.", score: 0},
-          {text: "Je leur signale discrètement que j'ai besoin d'un peu de temps.", score: 1},
-          {text: "Je m'accorde le droit de reprendre progressivement et je le communique clairement.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous vous retrouvez régulièrement agacé·e par des choses qui ne vous affectaient pas avant — un collègue qui parle fort, une réunion qui commence en retard, un mail mal formulé.",
+        tags: ["signaux", "irritabilité"],
+        answers: [
+          { text: "C'est de l'irritabilité normale — tout le monde a des jours plus difficiles.", score: 0 },
+          { text: "Je reconnais ce signal comme le signe que ma capacité de tolérance a baissé, et je creuse.", score: 2 },
+          { text: "Je m'impose une discipline — ne pas réagir à chaud, prendre du recul.", score: 1 },
+          { text: "Je réduis les interactions pour éviter les frictions.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
         },
-        {
-          text: "Au retour de votre absence, votre responsable vous charge dès le premier jour. Il semble ne pas réaliser l'impact. Que faites-vous ?",
-          answers: [
-          {text: "Je prends tout — je veux montrer que je suis de retour.", score: 0},
-          {text: "Je fais ce que je peux sans le dire.", score: 1},
-          {text: "J'expose clairement ce que je peux absorber dans un premier temps.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous mettez deux fois plus de temps qu'avant pour faire des tâches qui vous étaient faciles. Vous compensez en travaillant plus longtemps pour maintenir votre niveau de production.",
+        tags: ["signaux", "performance"],
+        answers: [
+          { text: "Je compense — tant que la qualité est là, personne ne verra la différence.", score: 0 },
+          { text: "Je reconnais que cette baisse d'efficacité est un signal et je réduis ma charge pour récupérer.", score: 2 },
+          { text: "Je me demande si ce n'est pas une question de motivation — je cherche à me remotiver.", score: 0.5 },
+          { text: "Je l'accepte comme une phase normale — ça reviendra quand la pression retombera.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous prenez en compte les signaux physiques — sommeil perturbé, tensions musculaires, maux de tête récurrents — comme des informations sur votre état général, pas comme des aléas à ignorer.",
+        tags: ["signaux", "corps"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Des proches vous ont dit à deux reprises ces derniers mois que vous semblez épuisé·e et moins présent·e. Vous répondez que tout va bien, que c'est juste une période.",
+        tags: ["signaux", "déni"],
+        answers: [
+          { text: "Mes proches ne voient pas les choses de l'intérieur — je sais mieux que quiconque comment je vais.", score: 0 },
+          { text: "Je prends leur observation au sérieux, même si je ne ressens pas encore la gravité qu'ils perçoivent.", score: 2 },
+          { text: "Je les rassure et je fais plus attention à paraître moins fatigué·e.", score: 0 },
+          { text: "Je les écoute mais j'attends de voir si ça continue avant de m'alarmer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez arrêté progressivement les activités qui vous ressourçaient — sport, loisirs, sorties — sans vraiment décider de les arrêter. Votre agenda de travail les a simplement absorbées.",
+        tags: ["signaux", "plaisir"],
+        answers: [
+          { text: "C'est une période intense — je reprendrai ces activités quand ça se calmera.", score: 0 },
+          { text: "Je remarque cette érosion comme un signal et je réintègre délibérément ces activités.", score: 2 },
+          { text: "Je cherche des activités plus courtes qui s'intègrent mieux dans mon emploi du temps actuel.", score: 1.5 },
+          { text: "Je me concentre sur les priorités — les loisirs peuvent attendre.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez sur votre état quand les premiers signaux apparaissent, sans attendre qu'ils deviennent impossibles à ignorer.",
+        tags: ["signaux", "précocité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous vous surprenez régulièrement à décrocher en réunion — votre esprit est ailleurs, vous ne suivez plus vraiment. Ça ne vous arrivait pas avant.",
+        tags: ["signaux", "décrochage"],
+        answers: [
+          { text: "Les réunions sont souvent inintéressantes — c'est normal de décrocher.", score: 0 },
+          { text: "Je note ce changement comme un signal inhabituel et je prends ça au sérieux.", score: 2 },
+          { text: "Je me force à être plus présent·e en prenant des notes systématiquement.", score: 1 },
+          { text: "Je demande à participer à moins de réunions pour ne pas perdre mon temps.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez ou minimisez vos propres signaux d'alerte jusqu'à ce qu'ils soient impossibles à contourner", desc: "Mettre la fatigue sur le compte de la période, attendre que ça passe, minimiser ce que les proches observent : ce sont des réflexes courants qui retardent la prise en compte de signaux réels. L'épuisement professionnel ne s'installe pas du jour au lendemain — il s'accumule lentement, et ce sont les premiers signaux, souvent discrets, qui sont les plus faciles à traiter." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez vos signaux d'alerte quand ils sont forts, les subtils vous échappent encore", desc: "Vous réagissez quand les signaux sont clairs — fatigue intense, irritabilité forte, baisse de performance évidente. Mais les premiers signaux, plus ténus — un léger désengagement, un plaisir qui s'efface progressivement, un sommeil qui se dégrade doucement — passent encore sans réaction de votre part. L'enjeu est d'abaisser votre seuil d'attention." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez vos propres signaux au sérieux dès qu'ils apparaissent, sans attendre qu'ils s'imposent", desc: "Vous prenez au sérieux les observations de vos proches, vous notez les changements durables dans votre état, vous intervenez quand les premiers signaux apparaissent — avant qu'ils ne s'accumulent. Cette attention précoce à soi-même n'est pas de l'hypocondrie : c'est ce qui permet de traiter des situations qui seraient devenues lourdes si elles avaient été ignorées trois mois de plus." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Vous revenez d'une longue absence et vous n'êtes plus tout à fait sûr de vos compétences sur certains sujets qui ont évolué. Que faites-vous ?",
-          answers: [
-          {text: "Je fais comme si j'étais à jour.", score: 0},
-          {text: "Je me mets à niveau discrètement.", score: 1},
-          {text: "Je reconnais clairement ce dont j'ai besoin pour être opérationnel et demande un accompagnement.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous avez eu une semaine particulièrement intense. Votre prochain week-end est déjà planifié avec des activités sociales et familiales. Vous avez besoin de récupérer.",
+        tags: ["régulation", "charge"],
+        answers: [
+          { text: "Je tiens le programme — annuler serait décevoir les gens qui comptent sur moi.", score: 0 },
+          { text: "Je maintiens l'essentiel et je me donne la permission d'annuler le reste sans culpabiliser.", score: 2 },
+          { text: "Je passe le week-end normalement — la récupération peut se faire en semaine.", score: 0 },
+          { text: "Je préviens que je serai moins disponible ce week-end sans tout annuler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
         },
-        {
-          text: "Des décisions ont été prises pendant votre absence que vous n'auriez peut-être pas prises de la même façon. Que faites-vous ?",
-          answers: [
-          {text: "Je les remets en question.", score: 0},
-          {text: "Je les accepte sans en parler.", score: 1},
-          {text: "Je les accepte et, si elles ont un impact important, j'ouvre une discussion constructive sur les adaptations possibles.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous prenez des mesures préventives avant d'être à bout — vous réduisez votre charge, vous prenez des pauses, vous demandez de l'aide — sans attendre le point de rupture.",
+        tags: ["régulation", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
         },
-        {
-          text: "Au retour, vous réalisez que certaines relations de travail ont changé pendant votre absence. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends là où j'étais — les relations se reconstruisent d'elles-mêmes.", score: 0},
-          {text: "Je m'y adapte au fil du temps.", score: 1},
-          {text: "Je prends des initiatives pour reconstruire les liens importants.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Il est 14h, vous n'avez pas déjeuné et vous êtes sur votre ordinateur depuis 8h sans pause réelle. Vous avez encore trois heures de travail devant vous.",
+        tags: ["régulation", "pause"],
+        answers: [
+          { text: "Je continue — je mangerai quelque chose sur le pouce, il y a trop à faire.", score: 0 },
+          { text: "Je prends 30 minutes pour déjeuner correctement — ça m'aidera à tenir l'après-midi.", score: 2 },
+          { text: "Je prends une pause courte maintenant et je mangerai plus tard.", score: 1 },
+          { text: "Je finis ce que j'ai en cours avant de faire une pause.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
         },
-        {
-          text: "Vous devez rattraper un retard professionnel mais vous sentez que votre capacité de travail n'est pas encore à 100%. Que faites-vous ?",
-          answers: [
-          {text: "Je compense par du volume horaire.", score: 0},
-          {text: "Je priorise l'essentiel.", score: 1},
-          {text: "Je suis honnête avec mon responsable sur mon état réel et je propose un plan de reprise réaliste.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous sentez que vous commencez à saturer. Demander de l'aide vous semble difficile — votre équipe est déjà sous pression et vous ne voulez pas ajouter à leur charge.",
+        tags: ["régulation", "demande d'aide"],
+        answers: [
+          { text: "Je gère seul·e — tout le monde a sa propre charge, je ne vais pas en rajouter.", score: 0 },
+          { text: "Je signale mon état à mon responsable sans nécessairement demander une redistribution immédiate.", score: 2 },
+          { text: "J'identifie la tâche la moins urgente et je la décale ou la délègue.", score: 1.5 },
+          { text: "J'attends que la pression retombe — c'est souvent temporaire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
         },
-        {
-          text: "Votre équipe vous sollicite beaucoup à votre retour. C'est valorisant mais épuisant. Que faites-vous ?",
-          answers: [
-          {text: "Je réponds à tout — je suis de retour.", score: 0},
-          {text: "Je gère au cas par cas selon mon énergie.", score: 1},
-          {text: "Je pose des limites claires sur ma disponibilité dans les premiers jours.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous identifiez ce qui vous ressource vraiment — pas ce que vous devriez faire pour récupérer, mais ce qui fonctionne réellement pour vous — et vous y revenez régulièrement.",
+        tags: ["régulation", "ressources"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez des jours de congé à prendre avant la fin du trimestre. Vous avez tendance à les reporter — il y a toujours quelque chose d'important qui arrive au mauvais moment.",
+        tags: ["régulation", "vacances"],
+        answers: [
+          { text: "Je les reporte encore — ce n'est vraiment pas le bon moment.", score: 0 },
+          { text: "Je les pose même si le contexte n'est pas idéal — il ne l'est jamais vraiment.", score: 2 },
+          { text: "Je pose quelques jours maintenant et je garde le reste pour plus tard.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour trouver un moment moins perturbant.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pendant vos congés, vous consultez vos mails professionnels régulièrement — juste pour être sûr·e que rien d'urgent ne vous échappe.",
+        tags: ["régulation", "coupure"],
+        answers: [
+          { text: "C'est raisonnable — une vraie coupure n'est pas toujours possible dans mon poste.", score: 0 },
+          { text: "Je coupe vraiment — j'ai prévenu en amont et j'ai désigné quelqu'un pour les urgences.", score: 2 },
+          { text: "Je consulte une fois par jour le matin pour limiter l'anxiété sans être complètement absent·e.", score: 0.5 },
+          { text: "Je consulte uniquement si quelqu'un me contacte directement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos actions pour préserver votre énergie sont cohérentes avec ce que vous savez vous faire du bien — vous ne vous contentez pas de lire des conseils sans les appliquer.",
+        tags: ["régulation", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre entreprise, partir à l'heure est parfois mal perçu. Vous avez besoin de partir à l'heure ce soir pour respecter un engagement personnel.",
+        tags: ["régulation", "norme"],
+        answers: [
+          { text: "Je reste encore une heure pour ne pas créer de mauvaise impression.", score: 0 },
+          { text: "Je pars à l'heure sans l'annoncer — si personne ne le remarque, tant mieux.", score: 1 },
+          { text: "Je pars à l'heure après avoir signalé que mon travail du jour est fait.", score: 2 },
+          { text: "Je reste jusqu'à ce que les autres partent — aligner son départ sur le groupe évite les commentaires.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous posez des limites sur votre temps de travail et vous les tenez, même quand la culture de votre équipe pousse à faire autrement.",
+        tags: ["régulation", "limites"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez le point de rupture pour réguler, au lieu d'intervenir avant", desc: "Continuer à compenser, différer les congés, travailler le week-end pour récupérer du retard : ces comportements donnent l'impression de tenir, mais ils entretiennent l'épuisement plutôt que de le corriger. Réguler avant d'être à bout demande de reconnaître que la récupération est un investissement, pas une faiblesse." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réglez les pics, les mécanismes profonds de la surcharge restent en place", desc: "Vous prenez des congés, vous faites des pauses, vous réduisez votre charge pendant les périodes les plus intenses. Mais les comportements qui alimentent l'épuisement sur le long terme — l'incapacité à couper vraiment pendant les vacances, la difficulté à poser des limites face à la culture de l'équipe, la tendance à compenser plutôt que réduire — sont encore là. L'enjeu est de traiter ces mécanismes de fond." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur votre énergie de façon préventive, sans attendre d'être à bout", desc: "Vous prenez vos congés même quand le contexte n'est pas idéal, vous coupez vraiment pendant les vacances, vous posez des limites sur votre temps même quand la culture de l'équipe pousse à faire autrement. Cette cohérence entre ce que vous savez nécessaire et ce que vous faites réellement est plus difficile à maintenir qu'il n'y paraît." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Vous avez du mal à retrouver votre rythme de travail après votre absence. Que faites-vous ?",
-          answers: [
-          {text: "Je force et ça finit par venir.", score: 0},
-          {text: "Je me fixe des objectifs simples pour les premiers jours.", score: 1},
-          {text: "Je construis une reprise progressive et en parle ouvertement à mon responsable.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous sentez que vous commencez à ne plus tenir. Vous hésitez à en parler à votre responsable — vous ne voulez pas passer pour quelqu'un qui ne gère pas.",
+        tags: ["appui", "manager"],
+        answers: [
+          { text: "Je continue à gérer seul·e — en parler serait interprété comme un signe de faiblesse.", score: 0 },
+          { text: "Je lui parle de ma charge concrète, sans parler de mon état, pour qu'il ajuste.", score: 1.5 },
+          { text: "Je lui dis que j'ai besoin d'un point sur ma charge — sans attendre d'aller plus mal.", score: 2 },
+          { text: "J'attends de voir si la situation s'améliore d'elle-même avant d'en parler.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
         },
-        {
-          text: "À votre retour, vous avez l'impression de ne plus être dans la boucle et d'avoir raté des choses importantes. Que faites-vous ?",
-          answers: [
-          {text: "Je remonte aux derniers emails importants.", score: 0},
-          {text: "Je demande à un collègue de me mettre à jour.", score: 1},
-          {text: "Je demande un point structuré à mon responsable sur les évolutions importantes et les priorités actuelles.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous parlez de votre état à votre responsable ou à un collègue de confiance quand vous ne vous sentez plus à même de tenir votre rythme.",
+        tags: ["appui", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
         },
-        {
-          text: "Vous vous surcompensez pour montrer que vous êtes pleinement opérationnel, mais vous vous épuisez à nouveau. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — il faut que je sois à la hauteur.", score: 0},
-          {text: "Je lève le pied discrètement.", score: 1},
-          {text: "Je reconnais cette dynamique et agis pour casser le cercle vicieux.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous dormez mal depuis plusieurs semaines, vous avez des maux de tête fréquents et vous vous sentez à bout. Vous n'avez pas consulté de médecin.",
+        tags: ["appui", "médecin"],
+        answers: [
+          { text: "Je n'ai pas besoin de consulter — je sais que c'est lié au stress au travail, ça passera.", score: 0 },
+          { text: "Je prends rendez-vous chez mon médecin pour en parler même si c'est probablement lié au travail.", score: 2 },
+          { text: "J'attends encore quelques semaines — si ça continue, j'irai consulter.", score: 0 },
+          { text: "Je consulte rapidement en précisant le contexte professionnel.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
         },
-        {
-          text: "Au retour, un collègue vous pose des questions sur les raisons de votre absence. Vous ne souhaitez pas en parler. Que faites-vous ?",
-          answers: [
-          {text: "Je lui donne une réponse vague et change de sujet.", score: 0},
-          {text: "Je lui dis que c'était personnel sans aller plus loin.", score: 1},
-          {text: "Je pose clairement une limite, de façon calme : il n'est pas nécessaire que je m'en explique.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Sarah remarque que vous n'êtes pas dans votre assiette et vous le dit spontanément. Vous répondez que tout va bien.",
+        tags: ["appui", "collègue"],
+        answers: [
+          { text: "Ce n'est pas le bon contexte pour en parler — je garde ça pour moi.", score: 0 },
+          { text: "Je lui dis que je traverse une période difficile sans entrer dans les détails.", score: 1.5 },
+          { text: "Je profite de son ouverture pour lui parler de ce qui me pèse réellement.", score: 2 },
+          { text: "Je la rassure — si je commence à en parler, ça va prendre des proportions.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
         },
-        {
-          text: "Vous êtes revenu mais vous ne vous sentez pas vraiment prêt. Que faites-vous ?",
-          answers: [
-          {text: "Je fais bonne figure — ça reviendra.", score: 0},
-          {text: "Je travaille à mi-régime sans le dire.", score: 1},
-          {text: "J'en parle à mon médecin et à mon responsable pour définir des conditions de reprise adaptées.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez les ressources disponibles dans votre organisation pour vous soutenir — médecin du travail, service d'écoute, RH — et vous n'hésiteriez pas à les utiliser si nécessaire.",
+        tags: ["appui", "ressources"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre médecin vous suggère un arrêt de travail d'une semaine pour récupérer. Vous pensez que ce n'est pas possible — trop de choses à faire, trop de personnes qui dépendent de vous.",
+        tags: ["appui", "arrêt"],
+        answers: [
+          { text: "Je refuse — une semaine d'absence maintenant créerait plus de problèmes qu'elle n'en résoudrait.", score: 0 },
+          { text: "Je prends l'arrêt, même si c'est inconfortable — mon médecin a une vision que je n'ai peut-être pas.", score: 2 },
+          { text: "Je négocie avec lui une solution intermédiaire — quelques jours plutôt qu'une semaine.", score: 1 },
+          { text: "Je lui explique mon contexte pour qu'il comprenne pourquoi ce n'est pas possible.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise propose un service d'écoute psychologique. Vous pensez que vous en auriez peut-être besoin mais vous ne l'avez pas encore utilisé.",
+        tags: ["appui", "initiative"],
+        answers: [
+          { text: "Ce type de service, c'est pour les cas vraiment graves — je n'en suis pas là.", score: 0 },
+          { text: "Je prends contact — c'est fait pour être utilisé avant d'en arriver aux cas graves.", score: 2 },
+          { text: "Je me renseigne d'abord sur la confidentialité avant de décider.", score: 1.5 },
+          { text: "Je préfère en parler à un proche — c'est plus naturel pour moi.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous cherchez un appui professionnel ou personnel avant d'être en situation de crise, pas seulement quand vous n'avez plus d'autre choix.",
+        tags: ["appui", "précocité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez du mal à demander de l'aide parce que vous avez l'impression que les autres s'en sortent mieux que vous avec la même charge.",
+        tags: ["appui", "honte"],
+        answers: [
+          { text: "Si les autres y arrivent, je dois pouvoir y arriver aussi — demander de l'aide serait reconnaître que je suis moins capable.", score: 0 },
+          { text: "Je me rappelle que ce que les autres montrent n'est pas forcément ce qu'ils vivent.", score: 2 },
+          { text: "J'observe plus attentivement si vraiment les autres s'en sortent mieux avant de conclure.", score: 1 },
+          { text: "Je demande de l'aide sur les tâches concrètes mais pas sur mon état général.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous acceptez l'aide qu'on vous propose sans la décliner par réflexe, même quand vous pensez que vous devriez y arriver seul·e.",
+        tags: ["appui", "acceptation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez seul·e par crainte d'être perçu·e comme quelqu'un qui ne tient pas", desc: "Ne pas en parler par peur d'être jugé·e, gérer seul·e alors que des ressources existent, refuser un arrêt médical parce que ce n'est pas le bon moment : ce sont des façons de maintenir une façade qui coûtent cher dans la durée. Chercher un appui tôt est une forme d'intelligence pratique, pas un aveu d'échec." },
+          moyen: { label: "Pratiques en développement", titre: "Vous cherchez un appui dans les cas évidents, vous hésitez encore dans les zones grises", desc: "Vous consultez votre médecin, vous parlez à votre responsable de votre charge, vous utilisez les ressources disponibles quand la situation est clairement difficile. Mais dans les zones grises — est-ce que c'est assez grave pour en parler ? vais-je être jugé·e ? — vous hésitez encore. L'enjeu est de normaliser le recours à ces ressources avant que la situation soit critique." },
+          haut: { label: "Réflexes installés", titre: "Vous cherchez un appui tôt, sans attendre d'être en situation de crise", desc: "Vous parlez de votre état à votre responsable avant d'être en crise, vous utilisez les ressources disponibles sans attendre d'y être contraint·e, vous prenez les recommandations de votre médecin au sérieux même quand elles sont inconfortables. Cette façon de traiter votre santé comme une priorité pratique — pas comme un idéal à atteindre quand tout le reste sera réglé — est ce qui prévient les ruptures." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Plusieurs semaines après votre retour, vous sentez que votre énergie ne remonte pas vraiment. Que faites-vous ?",
-          answers: [
-          {text: "J'attends encore — le retour prend du temps.", score: 0},
-          {text: "Je prends des congés supplémentaires.", score: 1},
-          {text: "Je consulte à nouveau un médecin : ce signal n'est pas à ignorer.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre collègue David est quelqu'un d'habituellement solide. Depuis un mois, il fait des erreurs inhabituelles, il est moins disponible et ses réponses sont laconiques. Personne d'autre ne semble le remarquer.",
+        tags: ["épuisement autre", "observation"],
+        answers: [
+          { text: "S'il ne dit rien, c'est qu'il gère — ce n'est pas à moi d'intervenir.", score: 0 },
+          { text: "Je lui en parle en tête-à-tête, en lui disant ce que j'ai observé sans interprétation.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il fasse un point avec lui.", score: 1 },
+          { text: "Je l'aide davantage sur nos sujets communs pour soulager sa charge.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
         },
-        {
-          text: "Vous réalisez que les conditions qui ont causé votre absence n'ont pas changé. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends en espérant que ça se passe mieux.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je formalise clairement les conditions nécessaires à un retour durable et demande un engagement concret.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous remarquez les changements durables dans le comportement de vos collègues — pas seulement les mauvaises journées, mais les tendances qui s'installent.",
+        tags: ["épuisement autre", "présence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
         },
-        {
-          text: "À votre retour, votre responsable vous charge progressivement plus vite que vous ne le souhaiteriez. Que faites-vous ?",
-          answers: [
-          {text: "Je tiens — il faut montrer que je suis capable.", score: 0},
-          {text: "Je lui dis que c'est un peu tôt.", score: 1},
-          {text: "J'exprime clairement mon rythme de reprise et les limites que je dois respecter pour ne pas rechuter.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Laura vous dit qu'elle ne tient plus mais vous demande de ne rien dire à personne. Vous êtes inquiet·e pour elle.",
+        tags: ["épuisement autre", "intervention"],
+        answers: [
+          { text: "Je respecte sa demande — elle m'a fait confiance et je ne vais pas la trahir.", score: 0 },
+          { text: "Je lui propose qu'on réfléchisse ensemble à qui elle pourrait parler dans l'organisation.", score: 2 },
+          { text: "Je lui dis que je vais devoir en parler si ça ne s'améliore pas — pour la préparer.", score: 1.5 },
+          { text: "Je surveille la situation et j'agirai si ça se dégrade davantage.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
         },
-        {
-          text: "Vous avez encore des moments difficiles ponctuels depuis votre retour. Vous ne savez pas si vous devez en parler. Que faites-vous ?",
-          answers: [
-          {text: "Je garde ça pour moi — ça peut faire peur aux autres.", score: 0},
-          {text: "J'en parle à quelqu'un de confiance hors travail.", score: 1},
-          {text: "J'en parle à la personne la plus adaptée selon la nature du problème : médecin, RH, ou responsable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un membre de votre équipe fait visiblement trop d'heures depuis plusieurs semaines. L'équipe considère ça comme normal — 'c'est comme ça pour tout le monde en ce moment'.",
+        tags: ["épuisement autre", "normes"],
+        answers: [
+          { text: "Si l'équipe s'en accommode, c'est que c'est encore gérable — je laisse.", score: 0 },
+          { text: "Je lui en parle directement pour voir comment il vit la situation.", score: 2 },
+          { text: "J'en parle à notre responsable en lui signalant ce que j'observe.", score: 1.5 },
+          { text: "Je lui propose de l'aide sur ses tâches pour l'alléger un peu.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
         },
-        {
-          text: "Une situation similaire à celle qui vous a causé votre absence se reproduit. Que faites-vous ?",
-          answers: [
-          {text: "J'essaie de la gérer autrement cette fois.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "J'agis rapidement pour ne pas laisser la situation s'installer : signalement, ajustement de charge, demande d'aide.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous observez des signaux préoccupants chez un·e collègue, vous créez une occasion de lui parler avant que la situation ne soit manifeste.",
+        tags: ["épuisement autre", "intervention précoce"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous voulez parler à Jonathan de ce que vous observez chez lui, mais vous ne savez pas comment le formuler sans paraître intrusif·ve ou inquiétant·e.",
+        tags: ["épuisement autre", "formulation"],
+        answers: [
+          { text: "Je renonce — mieux vaut ne pas risquer de maladresse.", score: 0 },
+          { text: "Je lui pose une question ouverte sur son travail et je laisse l'espace pour qu'il aille plus loin s'il le souhaite.", score: 2 },
+          { text: "Je lui dis directement que je le trouve épuisé — mieux vaut être honnête.", score: 0.5 },
+          { text: "J'en parle à un autre collègue pour valider mon observation avant d'agir.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez parlé à Camille de ce que vous observiez. Elle vous a dit que ça allait. Mais vous n'êtes pas convaincu·e. Deux semaines plus tard, rien n'a changé.",
+        tags: ["épuisement autre", "relais"],
+        answers: [
+          { text: "Elle m'a dit que ça allait — je n'ai plus de légitimité à insister.", score: 0 },
+          { text: "Je reviens vers elle une deuxième fois en lui proposant quelque chose de concret.", score: 2 },
+          { text: "J'en parle à notre responsable — j'ai fait ce que je pouvais à mon niveau.", score: 1.5 },
+          { text: "Je lui propose un déjeuner pour créer un cadre plus informel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous savez faire la différence entre ce que vous pouvez accompagner vous-même et ce qui nécessite un relais professionnel — et vous passez à l'acte.",
+        tags: ["épuisement autre", "relais"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe entière semble épuisée depuis plusieurs semaines. Votre responsable dit que c'est temporaire et que ça ira mieux après le pic.",
+        tags: ["épuisement autre", "collectif"],
+        answers: [
+          { text: "Je lui fais confiance — il connaît le contexte mieux que moi et a probablement raison.", score: 0 },
+          { text: "Je lui dis que je partage son espoir mais que j'ai besoin de comprendre ce qui va changer concrètement.", score: 2 },
+          { text: "J'attends de voir — si ça dure après le pic, j'en reparlerai.", score: 0.5 },
+          { text: "Je parle à mes collègues pour voir si eux aussi pensent que c'est temporaire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous alertez sur l'état d'un·e collègue, vous vous appuyez sur des faits observés plutôt que sur un diagnostic de ce qu'il ou elle ressent.",
+        tags: ["épuisement autre", "faits"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous observez les signaux chez les autres mais vous n'intervenez pas avant que ce soit très visible", desc: "Laisser un collègue qui ne dit rien gérer seul, ne pas intervenir parce que personne d'autre ne le fait, respecter une confidence au détriment de la sécurité de la personne : ces comportements laissent des personnes en difficulté sans filet. Créer une occasion de parler, même maladroitement, vaut presque toujours mieux que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez quand les signaux sont visibles, les situations plus discrètes restent dans l'angle mort", desc: "Vous intervenez quand un collègue montre des signes évidents de difficulté. Mais les signaux plus discrets — un retrait progressif, une baisse d'engagement sans cause visible — ne déclenchent pas encore systématiquement une réaction de votre part. L'enjeu est d'intervenir plus tôt, sur des situations moins constituées." },
+          haut: { label: "Réflexes installés", titre: "Vous créez des occasions de parler pour vos collègues en difficulté, avant que la situation ne soit visible de tous", desc: "Vous repérez les changements discrets chez vos collègues et vous créez des occasions de leur parler, factuellement, sans forcer. Vous savez ne pas rester seul·e avec une situation qui vous inquiète et vous mobilisez les bons relais quand nécessaire. Cette vigilance bienveillante est un vrai levier de protection collective dans une équipe." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "manager-signaux-rps": {
     0: [
