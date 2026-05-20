@@ -166,7 +166,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
       <div class="block">
         <div class="block-title">Ressources complémentaires</div>
-        <div class="block-sub">Ajoutez uniquement les ressources affichées après les résultats individuels du répondant. Le message de fin n’est pas paramétré ici, car il n’est pas codé dans l’app de passation.</div>
+        <div class="block-sub">Ajoutez ici des liens vers votre intranet, ou tout type de sites intégrant des informations et documents que vous souhaitez partager à vos collaborateurs. Ces boutons seront affichés sur la page de fin de l'autodiagnostic. Si vous avez des documents mais que vous n'avez pas de site pour les héberger, contactez-nous !</div>
         <div id="resources-list"></div>
         <button type="button" class="btn-add" onclick="addResource()" style="margin-top:4px">+ Ajouter une ressource</button>
         <div class="block-divider"></div>
@@ -294,7 +294,21 @@ async function loadPartnerQuota(){
 
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function slugify(text){return String(text||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
-function formatDateFr(d){if(!d)return ''; const p=d.split('-'); return p.length===3 ? p[2]+'/'+p[1]+'/'+p[0] : d}
+function formatDateFr(d){
+  if(!d) return '';
+  const value = String(d).trim();
+
+  const isoDate = value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(isoDate) return isoDate[3] + '/' + isoDate[2] + '/' + isoDate[1];
+
+  const compactWithTime = value.match(/^(\d{4})T.*?(\d{2})(\d{2})(\d{4})$/);
+  if(compactWithTime) return compactWithTime[2] + '/' + compactWithTime[3] + '/' + compactWithTime[4];
+
+  const alreadyFr = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if(alreadyFr) return value;
+
+  return value;
+}
 function themeTitle(){return state.themeTitle || state.title || state.name || state.selectedTheme?.title || state.selectedTheme?.name || 'Nouveau thème'}
 function ensureDefaults(){
   const p = state.parametrage;
