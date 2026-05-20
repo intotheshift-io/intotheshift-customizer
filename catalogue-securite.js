@@ -2697,176 +2697,676 @@
   },
   // ─────────────────────────────────────────────────────────────────────
 
+    // ─── À coller dans catalogue-securite.js ──────────────────────────────
+  // Clé : "coactivite-sous-traitance"
+
   "coactivite-sous-traitance": {
     0: [
-        {
-          text: "Deux équipes doivent intervenir dans la même zone le même jour. Personne n'a formalisé qui intervient en premier ni les zones de chacun. Que faites-vous ?",
-          answers: [
-          {text: "Je démarre de mon côté et on s'arrange au fil de l'eau.", score: 0},
-          {text: "Je contacte le responsable de l'autre équipe pour s'organiser oralement.", score: 1},
-          {text: "Je demande qu'un plan de coactivité soit établi avant tout démarrage.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un prestataire régulier arrive pour sa dixième intervention sur votre site cette année. Il connaît les lieux, il est pressé. Vous êtes censé·e réaliser avec lui le plan de prévention.",
+        tags: ["intégration", "prestataire"],
+        answers: [
+          { text: "Je saute le plan de prévention — il connaît le site mieux que certains de mes collègues.", score: 0 },
+          { text: "Je réalise le plan de prévention même si c'est un habitué.", score: 2 },
+          { text: "Je fais un rappel rapide des points essentiels sans refaire le plan complet.", score: 1 },
+          { text: "Je lui demande de signer le plan de prévention de la dernière fois s'il est encore valide.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
         },
-        {
-          text: "Vous découvrez au dernier moment qu'un prestataire doit intervenir dans votre zone pendant que vous travaillez. Il n'a pas été annoncé. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — la coordination se fera naturellement.", score: 0},
-          {text: "Je préviens mon responsable et travaille en faisant attention.", score: 1},
-          {text: "Je demande que son intervention soit officiellement planifiée et intégrée à mon plan de travail.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau sous-traitant commence une mission longue durée. Votre responsable vous demande d'accélérer son intégration pour qu'il soit opérationnel rapidement. L'accueil sécurité complet prend une demi-journée.",
+        tags: ["intégration", "accueil sécurité"],
+        answers: [
+          { text: "Je réalise un accueil sécurité allégé — on complétera en cours de mission.", score: 0 },
+          { text: "Je réalise l'accueil sécurité complet avant qu'il commence à travailler.", score: 2 },
+          { text: "Je lui donne le document d'accueil à lire seul et je le valide avec lui le lendemain.", score: 0.5 },
+          { text: "Je lui fais l'accueil verbal les points critiques et je programme le complet pour la semaine prochaine.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
         },
-        {
-          text: "Un sous-traitant vous demande d'accéder à une zone où vous travaillez sans avoir le plan de prévention correspondant. Il dit que ça ne devrait pas prendre longtemps. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse entrer — c'est court et il semble compétent.", score: 0},
-          {text: "Je lui pose quelques questions et l'oriente vers la zone la moins risquée.", score: 1},
-          {text: "Je lui explique qu'il ne peut pas entrer sans le plan de prévention validé.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous réalisez l'accueil sécurité complet de tout intervenant extérieur avant qu'il commence à travailler, quelle que soit sa connaissance du site ou la pression de délai.",
+        tags: ["intégration", "rigueur"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
         },
-        {
-          text: "Vous animez un point de coordination de chantier avec plusieurs intervenants. L'un d'eux ne s'est pas présenté. Que faites-vous ?",
-          answers: [
-          {text: "Je commence sans lui — l'équipe présente est suffisante.", score: 0},
-          {text: "Je l'appelle rapidement et continue sans attendre trop.", score: 1},
-          {text: "Je m'assure qu'il est bien informé des décisions avant que son équipe intervienne.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un sous-traitant vous explique qu'il applique des procédures de sécurité différentes des vôtres 'parce que c'est comme ça chez eux'. Il estime que ses méthodes couvrent les risques de façon équivalente.",
+        tags: ["intégration", "pratiques différentes"],
+        answers: [
+          { text: "J'accepte — il est expert de son métier et ses méthodes couvrent les risques.", score: 0 },
+          { text: "Je lui explique que sur ce site, c'est notre procédure qui s'applique, pas celle de son organisation.", score: 2 },
+          { text: "Je compare les deux approches et je valide la sienne si elle me semble équivalente.", score: 0.5 },
+          { text: "Je lui demande de nous soumettre sa procédure par écrit pour validation.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
         },
-        {
-          text: "Deux prestataires ont des pratiques incompatibles pour une même opération. Aucun ne veut changer. Que faites-vous ?",
-          answers: [
-          {text: "Je les laisse trouver un arrangement entre eux.", score: 0},
-          {text: "Je tranche moi-même en choisissant la méthode qui me semble la meilleure.", score: 1},
-          {text: "Je remonte la situation au coordinateur de site pour qu'une décision formelle soit prise.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous constatez qu'un prestataire sur votre site ne porte pas les EPI requis. Il est en plein travail. Stopper son intervention va créer un retard.",
+        tags: ["intégration", "EPI"],
+        answers: [
+          { text: "Je le lui signale mais je le laisse finir son intervention en cours.", score: 0 },
+          { text: "Je lui demande d'arrêter immédiatement jusqu'à ce qu'il ait l'EPI requis.", score: 2 },
+          { text: "Je lui prête un EPI disponible pour qu'il puisse continuer.", score: 1 },
+          { text: "Je le note pour l'évoquer lors du prochain point avec son responsable.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous stoppez l'intervention d'un prestataire qui ne respecte pas les règles de sécurité de votre site, quelle que soit la pression contractuelle ou le retard créé.",
+        tags: ["intégration", "arrêt"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire vous informe à la dernière minute que la personne prévue est indisponible. Il propose de la remplacer par quelqu'un moins qualifié pour ne pas retarder l'intervention.",
+        tags: ["intégration", "qualifications"],
+        answers: [
+          { text: "J'accepte — le planning est contraint et le prestataire assume la responsabilité de son équipe.", score: 0 },
+          { text: "Je refuse et j'exige que les qualifications requises soient fournies avant le démarrage.", score: 2 },
+          { text: "J'évalue les tâches qui peuvent être réalisées avec le niveau de qualification disponible.", score: 0.5 },
+          { text: "Je valide avec mon responsable avant de décider.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire refuse de réaliser la visite préalable obligatoire avant son intervention — 'ça fait perdre du temps pour un travail qu'on a déjà fait cent fois'.",
+        tags: ["intégration", "visite préalable"],
+        answers: [
+          { text: "Je l'exempte — la visite préalable est une formalité pour les habitués.", score: 0 },
+          { text: "Je maintiens l'obligation — la visite préalable est non négociable quelle que soit l'expérience.", score: 2 },
+          { text: "Je la réduis à l'essentiel pour trouver un compromis.", score: 0.5 },
+          { text: "Je lui demande de la réaliser seul et de me rendre compte.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les mêmes exigences d'intégration sécurité à tous les intervenants extérieurs, habitués ou non, quelle que soit la relation commerciale.",
+        tags: ["intégration", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le prestataire arrive sans les documents requis pour l'intervention — habilitations, certificats, attestations. Il dit qu'il les enverra par mail dans l'après-midi.",
+        tags: ["intégration", "documents"],
+        answers: [
+          { text: "J'autorise l'intervention en attendant les documents — il est de bonne foi.", score: 0 },
+          { text: "Je conditionne le démarrage à la réception des documents requis.", score: 2 },
+          { text: "Je démarre pour les tâches qui ne nécessitent pas ces documents.", score: 0.5 },
+          { text: "Je contacte son responsable pour accélérer l'envoi des documents.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos exigences d'intégration s'assouplissent encore pour les prestataires habituels ou sous pression de délai", desc: "Sauter le plan de prévention pour un habitué, réduire l'accueil sécurité sous pression, accepter les documents manquants en promesse : ces accommodements créent des failles réelles dans la gestion des risques de co-activité. La grande majorité des accidents en co-activité implique des intervenants 'qui connaissaient le site' ou des situations 'déjà vécues'. La familiarité est un facteur de risque, pas une protection." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intégrez rigoureusement les nouveaux prestataires mais vos exigences peuvent s'assouplir pour les habitués", desc: "Vous appliquez les procédures d'intégration avec les nouveaux intervenants. Mais les prestataires réguliers bénéficient encore parfois d'un accueil allégé, et les documents manquants peuvent être acceptés en promesse. L'enjeu est d'appliquer les mêmes exigences indépendamment de la fréquence des interventions — les habitudes créent des angles morts, pas des protections." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les mêmes exigences d'intégration à tous les intervenants, habitués ou non, quelles que soient les pressions", desc: "Vous réalisez le plan de prévention même pour le prestataire de la dixième intervention. Vous refusez le démarrage si les qualifications ou les documents requis ne sont pas là. Vous stoppez l'intervention du prestataire sans EPI même en plein travail. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend votre gestion de la co-activité réellement protectrice." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Votre zone de travail n'est pas clairement balisée par rapport à celle du prestataire qui intervient en parallèle. Que faites-vous ?",
-          answers: [
-          {text: "On voit bien la limite de façon intuitive — pas besoin de balisage supplémentaire.", score: 0},
-          {text: "Je fais un balisage sommaire avec ce que j'ai sous la main.", score: 1},
-          {text: "Je mets en place un balisage conforme et l'indique aux deux équipes.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Deux équipes doivent intervenir simultanément dans une même zone demain. Un risque d'interférence vous semble possible mais pas certain. Les deux plannings sont contraints.",
+        tags: ["interférence", "analyse"],
+        answers: [
+          { text: "Je laisse les deux équipes démarrer — le risque est incertain et les plannings ne peuvent pas bouger.", score: 0 },
+          { text: "Je réalise une analyse de co-activité avant d'autoriser les deux équipes à démarrer simultanément.", score: 2 },
+          { text: "Je demande aux deux chefs d'équipe de se coordonner entre eux.", score: 1 },
+          { text: "Je supervise moi-même l'intervention pour gérer les interférences en temps réel.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
         },
-        {
-          text: "Un prestataire entre dans votre zone sans s'annoncer, pensant que c'était libre. Vous êtes en cours d'opération. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse faire — il a l'air de savoir ce qu'il fait.", score: 0},
-          {text: "Je l'arrête et lui demande de faire attention.", score: 1},
-          {text: "Je l'arrête, explique la situation et organise une coordination avant toute reprise.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Avant toute situation de co-activité, vous réalisez une analyse des risques d'interférence et vous la documentez, même pour des interventions qui semblent sans interaction directe.",
+        tags: ["interférence", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
         },
-        {
-          text: "Vous avez un doute sur les habilitations d'un sous-traitant pour une zone spécifique. Il affirme être qualifié. Que faites-vous ?",
-          answers: [
-          {text: "Je le crois sur parole — il est responsable de ses habilitations.", score: 0},
-          {text: "Je vérifie rapidement avec son responsable.", score: 1},
-          {text: "Je vérifie les documents avant de l'autoriser à accéder à la zone.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En cours d'intervention, une équipe extérieure commence à travailler dans une zone adjacente sans vous en avoir informé. Votre propre intervention est en cours.",
+        tags: ["interférence", "inattendue"],
+        answers: [
+          { text: "Je continue — si l'autre équipe est là, c'est qu'elle a les autorisations.", score: 0 },
+          { text: "J'arrête mon intervention et je contacte le responsable de l'autre équipe avant de reprendre.", score: 2 },
+          { text: "Je fais attention à la présence de l'autre équipe et je continue prudemment.", score: 0 },
+          { text: "Je signale la situation à mon responsable pour qu'il gère.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
         },
-        {
-          text: "Un prestataire n'a pas été informé d'une modification de dernière minute dans les conditions d'accès à la zone. Vous le savez. Que faites-vous ?",
-          answers: [
-          {text: "Je suppose que son responsable l'a informé.", score: 0},
-          {text: "Je lui dis rapidement ce qui a changé.", score: 1},
-          {text: "Je m'assure qu'il reçoit l'information formellement et qu'il a tout ce dont il a besoin pour adapter son intervention.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un sous-traitant demande à accéder à une zone pendant votre intervention pour une raison urgente non prévue dans l'analyse de co-activité initiale.",
+        tags: ["interférence", "urgence"],
+        answers: [
+          { text: "J'autorise — c'est urgent et je vais surveiller sa présence.", score: 0 },
+          { text: "Je suspends mon intervention ou nous établissons un accès séquencé après réévaluation.", score: 2 },
+          { text: "J'évalue rapidement le risque d'interférence spécifique et je décide.", score: 1 },
+          { text: "Je lui demande d'attendre la fin de mon intervention.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
         },
-        {
-          text: "Deux équipes présentent des vitesses d'avancement très différentes, créant des zones d'interférence non prévues. Que faites-vous ?",
-          answers: [
-          {text: "On adapte au fil de l'eau.", score: 0},
-          {text: "J'en informe mon responsable.", score: 1},
-          {text: "Je propose une réunion de coordination pour réviser le planning et les zones.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Un changement de dernière minute dans votre intervention peut créer un risque pour un sous-traitant qui travaille à proximité. Il est déjà en train d'intervenir.",
+        tags: ["interférence", "communication"],
+        answers: [
+          { text: "Je continue en faisant très attention à ne pas interférer.", score: 0 },
+          { text: "Je l'informe immédiatement du changement avant de poursuivre.", score: 2 },
+          { text: "Je termine rapidement mon changement puis je l'informe.", score: 0.5 },
+          { text: "Je lui envoie un message pour le prévenir.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lorsqu'une situation de co-activité non prévue se présente en cours d'intervention, vous suspendez ou réévaluez avant de continuer, même sous pression de délai.",
+        tags: ["interférence", "suspension"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin d'intervention, un prestataire vous donne oralement des informations importantes sur l'état du matériel qu'il a traité. Il est pressé de partir.",
+        tags: ["interférence", "information"],
+        answers: [
+          { text: "Je note mentalement les points essentiels — je les consignerai plus tard.", score: 0 },
+          { text: "Je lui demande de rester quelques minutes pour formaliser ces informations dans notre registre.", score: 2 },
+          { text: "Je les note rapidement dans mon carnet et je les consigne dès que possible.", score: 1 },
+          { text: "Je lui demande de me les envoyer par mail.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une zone est partagée entre vos équipes et un prestataire. Des habitudes de circulation informelles se sont créées qui ne correspondent plus au plan de circulation officiel.",
+        tags: ["interférence", "zones"],
+        answers: [
+          { text: "Je laisse — les habitudes se sont créées parce qu'elles sont plus pratiques.", score: 0 },
+          { text: "Je revois le plan de circulation avec le prestataire pour l'actualiser ou rétablir les règles.", score: 2 },
+          { text: "Je rappelle le plan de circulation officiel à mes équipes.", score: 1 },
+          { text: "J'attends le prochain audit pour traiter le sujet formellement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous formalisez les informations sécurité importantes transmises oralement par vos prestataires avant qu'ils quittent le site.",
+        tags: ["interférence", "formalisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident de co-activité s'est produit entre votre équipe et un prestataire. Les deux parties ont tendance à se rejeter mutuellement la responsabilité.",
+        tags: ["interférence", "REX"],
+        answers: [
+          { text: "Je défends la position de mon équipe — le prestataire n'a pas respecté les règles établies.", score: 0 },
+          { text: "Je propose un REX conjoint pour analyser les faits sans position défensive.", score: 2 },
+          { text: "Je réalise mon propre REX interne et je le partage avec le prestataire.", score: 1 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle gère avec le donneur d'ordre du prestataire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous analysez les co-activités planifiées mais réagissez encore de façon insuffisante aux situations imprévues", desc: "Laisser deux équipes démarrer simultanément parce que le risque semble incertain, continuer son intervention quand une équipe démarre à côté sans prévenir, ne pas formaliser les informations transmises oralement : ces comportements laissent des risques d'interférence non traités. En co-activité, les accidents surviennent précisément dans les zones d'intersection non anticipées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez bien les co-activités prévues mais les situations imprévues vous trouvent encore en réaction", desc: "Vous analysez les co-activités planifiées et vous documentez les risques d'interférence. Mais quand une situation imprévue survient en cours d'intervention — une équipe qui démarre sans prévenir, un changement de dernière minute — votre réaction peut encore être insuffisante. L'enjeu est d'appliquer le même réflexe de suspension et de réévaluation aux situations non planifiées." },
+          haut: { label: "Réflexes installés", titre: "Vous anticipez les risques d'interférence et suspendez systématiquement face aux situations imprévues", desc: "Vous analysez les co-activités avant de les autoriser, même quand le risque semble incertain. Vous arrêtez votre intervention quand une équipe démarre à côté sans vous avoir informé. Vous suspendez et réévaluez avant d'autoriser un accès urgent non prévu. Cette posture préventive — sur les situations planifiées comme sur les imprévues — est ce qui évite les accidents dans les zones d'intersection." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Un sous-traitant intervenant sur votre site ne parle pas la même langue que vos équipes. Les consignes de sécurité n'ont pas été traduites. Que faites-vous ?",
-          answers: [
-          {text: "Je suppose que son chef d'équipe lui a expliqué.", score: 0},
-          {text: "Je tente de communiquer par gestes pour les points importants.", score: 1},
-          {text: "Je remonte la situation pour que des consignes adaptées soient fournies avant toute intervention.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un prestataire régulier contourne régulièrement une procédure parce que 'ça va plus vite'. Aucun incident n'est survenu. La relation commerciale est importante.",
+        tags: ["écarts prestataire", "intervention"],
+        answers: [
+          { text: "Je laisse — aucun incident ne justifie de créer des tensions sur une relation importante.", score: 0 },
+          { text: "Je lui signale l'écart formellement et j'escalade à mon responsable si ça continue.", score: 2 },
+          { text: "Je lui en parle informellement pour qu'il fasse attention, sans formaliser.", score: 1 },
+          { text: "Je le signale au responsable du prestataire sans en parler directement à l'intervenant.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
         },
-        {
-          text: "Un prestataire vous demande d'utiliser vos équipements car les siens sont défectueux. Que faites-vous ?",
-          answers: [
-          {text: "Je lui prête — il en a besoin et c'est logique de s'entraider.", score: 0},
-          {text: "Je lui prête un équipement basique en lui expliquant comment l'utiliser.", score: 1},
-          {text: "Je refuse et remonte la situation à mon responsable — les équipements du prestataire doivent être conformes avant intervention.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez formellement les écarts de sécurité des prestataires, quelle que soit l'importance de la relation commerciale.",
+        tags: ["écarts prestataire", "fermeté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
         },
-        {
-          text: "Vous découvrez qu'un prestataire a utilisé une entrée de secours pour accéder au site car la principale était encombrée. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas grave — il a trouvé une solution pratique.", score: 0},
-          {text: "Je lui explique que ce n'est pas la bonne voie mais je ne formalise pas.", score: 1},
-          {text: "Je signale l'accès non contrôlé et demande que les voies d'accès soient clarifiées.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un sous-traitant a réalisé une tâche correctement sur le plan technique mais en contournant les consignes de sécurité. Le résultat final est conforme.",
+        tags: ["écarts prestataire", "résultat conforme"],
+        answers: [
+          { text: "Je ne dis rien — le résultat est conforme et mettre ça en avant va créer un conflit.", score: 0 },
+          { text: "Je le signale formellement — la conformité du résultat ne valide pas les moyens utilisés.", score: 2 },
+          { text: "J'en parle au responsable du prestataire pour éviter que ça se reproduise.", score: 1 },
+          { text: "Je note l'écart sans le signaler officiellement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
         },
-        {
-          text: "Un interlocuteur prestataire est remplacé en urgence par quelqu'un qui ne connaît pas le site. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse se débrouiller — il est professionnel.", score: 0},
-          {text: "Je lui donne les grandes lignes rapidement.", score: 1},
-          {text: "Je m'assure qu'il reçoit un accueil sécurité complet avant de démarrer, même si ça prend du temps.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez signalé deux fois en un mois des écarts de sécurité au responsable d'un prestataire. Les comportements n'ont pas changé.",
+        tags: ["écarts prestataire", "escalade"],
+        answers: [
+          { text: "Je continues à signaler — la pression finira par porter ses fruits.", score: 0.5 },
+          { text: "J'escalade à mon responsable et au donneur d'ordre pour que la situation soit traitée à un niveau supérieur.", score: 2 },
+          { text: "Je renforce ma supervision directe de ce prestataire.", score: 1 },
+          { text: "Je propose de ne plus faire appel à ce prestataire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
         },
-        {
-          text: "La fin de chantier approche et plusieurs prestataires travaillent en parallèle. La coordination se fait moins rigoureusement. Que faites-vous ?",
-          answers: [
-          {text: "C'est normal en fin de chantier — tout le monde accélère.", score: 0},
-          {text: "Je reste prudent de mon côté mais sans intervenir sur les autres.", score: 1},
-          {text: "Je propose une coordination renforcée pour la phase finale, qui est souvent la plus risquée.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez refuser une intervention d'un prestataire parce qu'il ne respecte pas les conditions de sécurité requises. Votre responsable vous demande de trouver un arrangement.",
+        tags: ["écarts prestataire", "pression"],
+        answers: [
+          { text: "Je cherche un arrangement — mon responsable a arbitré.", score: 0 },
+          { text: "Je maintiens mon refus et je lui explique les risques concrets que ça crée.", score: 2 },
+          { text: "Je lui demande de me confirmer par écrit qu'il assume la responsabilité.", score: 1.5 },
+          { text: "Je cède partiellement en limitant le périmètre de l'intervention.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez le démarrage d'une intervention si les conditions de sécurité requises ne sont pas remplies, quelle que soit la pression de planning.",
+        tags: ["écarts prestataire", "démarrage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez que les sous-traitants qui interviennent sur votre site ont des niveaux de culture sécurité très variables. Certains sont bien en dessous de vos standards.",
+        tags: ["écarts prestataire", "culture"],
+        answers: [
+          { text: "Je m'adapte à chaque prestataire — je ne peux pas imposer mes standards à des entreprises extérieures.", score: 0 },
+          { text: "J'applique les mêmes exigences à tous les intervenants sur mon site, et je les accompagne si nécessaire.", score: 2 },
+          { text: "Je renforce la supervision des prestataires les moins rigoureux.", score: 1 },
+          { text: "Je remonte la situation à mon donneur d'ordre pour qu'il sélectionne des prestataires plus qualifiés.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un de vos collaborateurs, Baptiste, vous signale avoir vu un prestataire prendre un risque grave mais ne pas vouloir témoigner officiellement par peur des représailles.",
+        tags: ["écarts prestataire", "témoignage"],
+        answers: [
+          { text: "Sans témoignage, je ne peux pas agir — je prends note en attendant.", score: 0 },
+          { text: "Je prends les mesures conservatoires nécessaires sur la base de ce que Baptiste m'a rapporté.", score: 2 },
+          { text: "Je réalise moi-même une vérification pour constater l'écart directement.", score: 1.5 },
+          { text: "Je demande à Baptiste de reconsidérer son témoignage en lui expliquant les enjeux.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les mêmes standards de sécurité à vos équipes internes et à vos prestataires — pas de tolérance supplémentaire pour les uns ou pour les autres.",
+        tags: ["écarts prestataire", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "À la fin d'une intervention, vous réalisez que le prestataire a réalisé son travail correctement mais que plusieurs micro-écarts sécurité ont été observés. Rien de grave n'est survenu.",
+        tags: ["écarts prestataire", "bilan"],
+        answers: [
+          { text: "Je valide l'intervention — tout s'est bien passé et les micro-écarts n'ont pas eu de conséquences.", score: 0 },
+          { text: "Je consigne les écarts dans le bilan d'intervention et j'en informe le responsable du prestataire.", score: 2 },
+          { text: "Je les mentionne verbalement au prestataire avant son départ.", score: 1 },
+          { text: "Je les note pour les évoquer si les mêmes écarts se reproduisent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les écarts graves des prestataires mais laissez encore passer les accommodements habituels", desc: "Tolérer le contournement d'un prestataire parce que la relation commerciale est importante, valider une intervention dont le résultat est conforme malgré de mauvaises pratiques, ne pas escalader après deux signalements sans effet : cette tolérance envoie aux prestataires le message que vos règles sont négociables. Ce qui est toléré sur votre site devient la norme de fait." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts significatifs des prestataires mais hésitez encore sur les accommodements récurrents", desc: "Vous signalez les écarts clairement problématiques et vous escaladez si nécessaire. Mais les accommodements récurrents qui n'ont pas encore causé d'incident, les résultats conformes obtenus par de mauvaises méthodes : votre traitement reste encore inconsistant. L'enjeu est de traiter tous les écarts avec la même rigueur, indépendamment de leurs conséquences immédiates." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts des prestataires avec la même rigueur que ceux de vos équipes internes", desc: "Vous signalez le contournement récurrent du prestataire même sans incident et même si la relation est importante. Vous escaladez quand les signalements restent sans effet. Vous refusez un résultat conforme obtenu par de mauvaises méthodes. Cette rigueur constante envers tous les intervenants crée des standards crédibles et protège réellement votre site." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Un incident se produit dans une zone partagée entre votre équipe et un prestataire. Les deux parties se renvoient la responsabilité. Que faites-vous ?",
-          answers: [
-          {text: "Je défends la position de mon équipe.", score: 0},
-          {text: "Je laisse les responsables gérer.", score: 1},
-          {text: "Je documente les faits tels qu'ils se sont passés et coopère à l'analyse sans chercher à désigner un coupable.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous avez connaissance d'un incident survenu récemment sur une installation similaire dans une autre entreprise. Votre prestataire habituel intervient la semaine prochaine sur un équipement identique.",
+        tags: ["information", "partage"],
+        answers: [
+          { text: "Je garde l'information pour moi — c'est survenu ailleurs et les contextes sont différents.", score: 0 },
+          { text: "Je transmets l'information à mon responsable en proposant de la partager avec le prestataire.", score: 2 },
+          { text: "Je la partage directement avec le prestataire — l'information est utile.", score: 1.5 },
+          { text: "J'attends que l'information soit diffusée officiellement par les canaux professionnels.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
         },
-        {
-          text: "Suite à un incident impliquant un sous-traitant, son entreprise demande à accéder aux données du signalement. Que faites-vous ?",
-          answers: [
-          {text: "Je leur communique le document complet.", score: 0},
-          {text: "J'en parle à mon responsable avant de décider.", score: 1},
-          {text: "Je transmets la demande à la personne compétente et n'agis pas de façon unilatérale.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous partagez proactivement avec vos prestataires les informations de sécurité utiles à leurs interventions, même quand ils ne les ont pas demandées.",
+        tags: ["information", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
         },
-        {
-          text: "Un prestataire a été blessé sur votre site dans une zone dont vous étiez responsable. Quelle est votre première réaction ?",
-          answers: [
-          {text: "Je sécurise la zone et attends les instructions.", score: 0},
-          {text: "Je préviens les secours et mon responsable.", score: 1},
-          {text: "Je préviens les secours, sécurise la zone, préserve les éléments de l'incident et contacte immédiatement les personnes compétentes.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire arrive pour une intervention. Depuis sa dernière visite, une modification a été faite sur une installation adjacente à sa zone de travail. Il n'en est pas informé.",
+        tags: ["information", "briefing"],
+        answers: [
+          { text: "Je ne mentionne pas la modification — elle n'est pas dans sa zone de travail directe.", score: 0 },
+          { text: "Je l'inclus dans le briefing de démarrage même si elle est à la périphérie de son périmètre.", score: 2 },
+          { text: "Je note que je devrais l'informer et je le fais si j'y pense en cours d'intervention.", score: 0 },
+          { text: "Je lui dis de se renseigner auprès du responsable de l'installation modifiée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
         },
-        {
-          text: "Après un incident de coactivité, le prestataire propose d'arranger les choses informellement pour éviter des complications administratives. Que faites-vous ?",
-          answers: [
-          {text: "J'accepte si ça simplifie la situation pour tout le monde.", score: 0},
-          {text: "Je refuse mais sans en faire une affaire.", score: 1},
-          {text: "Je refuse clairement et maintiens les procédures de déclaration qui s'imposent.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En fin d'intervention, votre prestataire vous informe que sa procédure habituelle ne fonctionnait pas sur cet équipement et qu'il a dû improviser. Il décrit brièvement ce qu'il a fait.",
+        tags: ["information", "retour"],
+        answers: [
+          { text: "Je valide — il est l'expert de son métier et l'intervention s'est bien passée.", score: 0 },
+          { text: "Je lui demande de détailler par écrit ce qu'il a fait pour que ça soit documenté et transmis.", score: 2 },
+          { text: "Je note l'information pour moi mais je ne formalise pas.", score: 0 },
+          { text: "J'en parle à mon responsable technique pour qu'il évalue les implications.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
         },
-        {
-          text: "Un prestataire quitte le site avant d'avoir fait le bilan de clôture d'intervention prévu. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — il devait partir.", score: 0},
-          {text: "J'en informe mon responsable pour information.", score: 1},
-          {text: "Je signale l'absence de bilan et demande qu'il soit réalisé même tardivement.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "En réalisant votre analyse de co-activité, vous identifiez un risque d'interférence que le prestataire n'a pas mentionné dans son plan de prévention.",
+        tags: ["information", "risque identifié"],
+        answers: [
+          { text: "Je laisse — si le prestataire n'a pas identifié ce risque, c'est peut-être que je me trompe.", score: 0 },
+          { text: "Je lui signale le risque identifié et je demande que le plan de prévention soit complété.", score: 2 },
+          { text: "J'intègre ce risque dans ma propre gestion sans en informer le prestataire.", score: 0 },
+          { text: "Je le mentionne lors du briefing de démarrage sans modifier le plan de prévention.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous communiquez aux prestataires les retours sur leur performance sécurité — positifs et négatifs — pas seulement les écarts.",
+        tags: ["information", "feedback"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un changement de planning va modifier les conditions d'intervention d'un prestataire qui travaille déjà sur site. Il va être affecté mais il n'en est pas encore informé.",
+        tags: ["information", "changement"],
+        answers: [
+          { text: "J'informe le prestataire dès que possible, même si le changement n'est pas encore définitif.", score: 2 },
+          { text: "J'attends que le changement soit confirmé avant d'informer le prestataire.", score: 0.5 },
+          { text: "Je l'informe au moment où le changement s'applique.", score: 0 },
+          { text: "Je demande à mon responsable de l'informer — c'est lui qui gère la relation contractuelle.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Des intervenants étrangers travaillent sur votre site. Vous avez des doutes sur leur compréhension réelle des consignes de sécurité lors de l'accueil.",
+        tags: ["information", "langue"],
+        answers: [
+          { text: "Je fais confiance — ils ont signé les documents, ils ont compris.", score: 0 },
+          { text: "Je vérifie la compréhension effective et je m'assure que les consignes critiques sont accessibles dans leur langue.", score: 2 },
+          { text: "Je leur associe un référent bilingue de leur entreprise.", score: 1.5 },
+          { text: "Je simplifie les consignes en utilisant des supports visuels.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez la compréhension effective des consignes de sécurité par les intervenants extérieurs, pas seulement leur signature sur les documents.",
+        tags: ["information", "compréhension"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident de co-activité a eu lieu sur votre site. Le REX produit contient des enseignements utiles pour vos prestataires habituels. La diffusion externe n'est pas prévue.",
+        tags: ["information", "REX partagé"],
+        answers: [
+          { text: "Je ne le partage pas — le REX est interne et la diffusion externe n'est pas prévue.", score: 0 },
+          { text: "Je propose à ma hiérarchie de partager les enseignements pertinents avec nos prestataires.", score: 2 },
+          { text: "J'en parle informellement aux prestataires concernés lors de leur prochaine intervention.", score: 1 },
+          { text: "Je leur transmets directement les conclusions sans attendre la validation hiérarchique.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le partage d'information avec vos prestataires est réactif plutôt que systématique", desc: "Ne pas mentionner une modification adjacente à la zone du prestataire, attendre que l'information soit demandée, formaliser en différé ce qui a été dit oralement : l'information de sécurité non partagée est de l'information perdue. En co-activité, ce que le prestataire ne sait pas est aussi dangereux que ce qu'il fait mal." },
+          moyen: { label: "Pratiques en développement", titre: "Vous partagez les informations importantes mais pas de façon systématique et proactive", desc: "Vous transmettez les informations importantes quand la situation l'exige clairement. Mais l'information proactive — partager sans qu'on vous le demande, informer des modifications périphériques, vérifier la compréhension effective : ces comportements sont encore insuffisamment ancrés. L'enjeu est de passer d'un partage réactif à un partage systématique." },
+          haut: { label: "Réflexes installés", titre: "Vous partagez proactivement les informations de sécurité avec vos prestataires et vérifiez leur compréhension", desc: "Vous informez le prestataire des modifications adjacentes à sa zone même s'il ne les a pas demandées. Vous formalisez les informations orales avant son départ. Vous vérifiez la compréhension effective des consignes, pas seulement la signature. Cette façon de traiter l'information comme un outil de sécurité actif — pas comme une formalité — est ce qui rend la co-activité réellement sûre." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "epi-gestes-securite": {
     0: [
@@ -3600,7 +4100,16 @@
   ]}
 ],    
     
-    ["coactivite-sous-traitance",  "Travailler en coactivité et gérer les prestataires",   "Équipes terrain",          "Coordonner les interventions simultanées, intégrer les sous-traitants et gérer les zones partagées.",                                                           T.securiteCoactivite],
+["coactivite-sous-traitance", "Travailler en coactivité et gérer les prestataires", "Équipes terrain",
+  "Coordonner les interventions simultanées, intégrer les sous-traitants et gérer les zones partagées.",
+  { domain: "securite", chapters: [
+    ["Intégrer les intervenants extérieurs",        "Appliquer les mêmes exigences d'intégration à tous, habitués ou non."],
+    ["Coordonner les risques d'interférence",       "Anticiper et gérer les risques créés par la présence simultanée de plusieurs équipes."],
+    ["Gérer les écarts des sous-traitants",         "Traiter les non-conformités des prestataires avec la même rigueur que celles des équipes internes."],
+    ["Partager les informations de sécurité",       "Informer proactivement et vérifier la compréhension effective."]
+  ]}
+],    
+        
     ["epi-gestes-securite",        "EPI et gestes de sécurité au quotidien",               "Collaborateurs",           "Porter les bons équipements, maintenir ses réflexes sous contrainte et signaler les anomalies matérielles.",                                                    T.securiteEPI],
     ["securite-manager-arbitrage", "Arbitrer entre sécurité et pression opérationnelle",   "Managers / Encadrants",    "Tenir les exigences de sécurité face aux délais, traiter les écarts et détecter les dérives silencieuses.",                                                    T.securiteManagerArbitrage],
     ["securite-nucleaire",         "Culture de sûreté en environnement nucléaire",         "Tous publics — Nucléaire", "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.",                                                T.securiteNucleaire],
