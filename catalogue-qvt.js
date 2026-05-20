@@ -863,518 +863,683 @@
   },
   // ─────────────────────────────────────────────────────────────────────
 
+  // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "cooperation-climat" dans Object.assign(window.CUSTOM_QUESTIONS,
+
   "cooperation-climat": {
+    // ── Chapitre 1 : Désamorcer les irritants du quotidien
     0: [
-        {
-          text: "Vous ressentez une atmosphère moins agréable dans votre équipe depuis une décision récente que certains ont mal vécue. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que ça passe.", score: 0},
-          {text: "J'exprime ma propre opinion sur la décision.", score: 1},
-          {text: "Je cherche à créer un espace où les ressentis peuvent être exprimés de façon constructive.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Depuis plusieurs semaines, Julien envoie systématiquement ses comptes rendus de réunion avec deux jours de retard. Ça vous bloque à chaque fois pour avancer. Vous en avez parlé à un collègue qui vous a dit 'c'est comme ça, Julien a toujours été comme ça.'",
+        tags: ["irritant", "quotidien"],
+        answers: [
+          { text: "Je m'organise différemment pour ne plus dépendre de ses comptes rendus — inutile d'en faire un sujet.", score: 0 },
+          { text: "Je l'en informe par mail pour garder une trace, sans attendre de réponse.", score: 0.5 },
+          { text: "Je lui en parle directement, en lui montrant concrètement en quoi ça me bloque.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il recadre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
         },
-        {
-          text: "Deux collègues ne se parlent plus depuis un désaccord la semaine dernière. L'équipe fait comme si de rien n'était. Que faites-vous ?",
-          answers: [
-          {text: "Je m'aligne sur la norme collective : on n'en parle pas.", score: 0},
-          {text: "Je parle à l'un d'eux discrètement.", score: 1},
-          {text: "Je propose à l'équipe un moment pour clarifier la situation.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "En réunion d'équipe, les échanges dérivent régulièrement sur des discussions de couloir qui n'avancent à rien. Tout le monde s'en plaint après, mais personne ne dit rien pendant. Vous êtes en réunion et ça repart.",
+        tags: ["irritant", "normes de groupe"],
+        answers: [
+          { text: "Je laisse — si l'animateur ne recadre pas, ce n'est pas à moi de le faire.", score: 0 },
+          { text: "Je sors mon téléphone en attendant que ça revienne sur le sujet.", score: 0 },
+          { text: "Je ramène la réunion au sujet en posant une question sur l'ordre du jour.", score: 2 },
+          { text: "J'en parle après la réunion à l'animateur pour qu'il gère mieux la prochaine fois.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
         },
-        {
-          text: "Lors d'une réunion, quelqu'un fait une remarque qui blesse visiblement un collègue mais tout le monde continue comme si rien ne s'était passé. Que faites-vous ?",
-          answers: [
-          {text: "Je continue aussi — ce n'est pas le moment de créer un incident.", score: 0},
-          {text: "Je vérifie que mon collègue va bien après la réunion.", score: 1},
-          {text: "Je nomme ce que j'ai observé dans le moment, de façon factuelle et calme.", score: 2}
-          ]
+      },
+      {
+        type: "likert",
+        text: "Vous abordez les irritants du quotidien avec les personnes concernées plutôt que d'en parler autour de vous sans jamais aller à la source.",
+        tags: ["irritant", "dialogue"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
         },
-        {
-          text: "Le ton des échanges dans votre équipe est devenu de plus en plus sec et formel depuis quelques semaines. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte au ton du groupe.", score: 0},
-          {text: "Je continue à être chaleureux dans mes propres échanges.", score: 1},
-          {text: "Je propose un moment informel pour recréer du lien.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Marie et vous avez eu un désaccord assez vif en réunion la semaine dernière. Depuis, les échanges sont devenus formels et distants. Personne n'a repris le sujet.",
+        tags: ["tension", "relations"],
+        answers: [
+          { text: "Je laisse le temps faire son travail — ça finira par se normaliser.", score: 0 },
+          { text: "Je lui envoie un message neutre sur un sujet de travail pour relancer le contact.", score: 1 },
+          { text: "Je lui propose un moment informel pour reprendre l'échange, sans agenda précis.", score: 2 },
+          { text: "Je me comporte normalement en réunion — si elle veut reprendre le dialogue, elle le fera.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
         },
-        {
-          text: "Vous constatez qu'une personne de votre équipe est régulièrement mise à l'écart des échanges informels. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas mon rôle de gérer ça.", score: 0},
-          {text: "Je l'inclus dans mes propres échanges.", score: 1},
-          {text: "J'essaie de comprendre ce qui crée cette mise à l'écart et agis en conséquence.", score: 2}
-          ]
-        }
+      },
+      {
+        type: "choix",
+        text: "Pierre monopolise systématiquement la parole lors des points d'équipe. Les autres s'impatientent visiblement mais ne disent rien. Vous trouvez ça contre-productif.",
+        tags: ["irritant", "peur du conflit"],
+        answers: [
+          { text: "Je laisse — ce serait humiliant pour lui de lui faire remarquer devant tout le monde.", score: 0.5 },
+          { text: "Je prends la parole dès qu'il s'arrête pour empêcher qu'il reprenne.", score: 0 },
+          { text: "Je lui en parle après la réunion, en privé, avec un exemple précis.", score: 2 },
+          { text: "J'en parle à l'animateur pour qu'il gère mieux la distribution de la parole.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous traitez les petits irritants relationnels tôt, avant qu'ils ne s'accumulent et ne deviennent plus difficiles à aborder.",
+        tags: ["irritant", "précocité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "L'ambiance dans votre équipe s'est dégradée progressivement. Tout le monde s'en accommode sans en parler. Votre responsable ne semble pas le percevoir.",
+        tags: ["ambiance", "normes de groupe"],
+        answers: [
+          { text: "Si mon responsable ne voit rien, c'est peut-être que je suis trop sensible à l'atmosphère.", score: 0 },
+          { text: "Je compense par ma propre bonne humeur — ça aide toujours un peu.", score: 0.5 },
+          { text: "J'en parle à mon responsable en lui donnant des observations concrètes.", score: 2 },
+          { text: "J'attends qu'un collègue lève le sujet — je ne veux pas être le seul à faire des vagues.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Sarah vous fait un retour assez sec sur un livrable devant trois collègues. Le fond est juste, mais le ton vous a heurté·e.",
+        tags: ["feedback", "relations"],
+        answers: [
+          { text: "Je prends le fond et j'ignore le ton — ce serait mesquin d'en faire un sujet.", score: 1 },
+          { text: "Je lui réponds sur le fond, factuellement, sans réagir au ton en public.", score: 2 },
+          { text: "Je lui dis après la réunion, calmement, que la forme ne m'avait pas convenu.", score: 1.5 },
+          { text: "J'encaisse sans rien dire — répondre en public ne ferait qu'aggraver.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand quelque chose vous dérange dans une relation de travail, vous le dites à la personne concernée plutôt qu'à ses voisins de bureau.",
+        tags: ["irritant", "courage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Karim oublie régulièrement de vous inclure dans les mails de synthèse alors que vous êtes directement concerné·e. Vous le lui avez déjà signalé une fois, il y a trois semaines. Ça recommence.",
+        tags: ["irritant", "répétition"],
+        answers: [
+          { text: "Je l'ajoute moi-même en copie à chaque fois — c'est plus simple que de recommencer la conversation.", score: 0.5 },
+          { text: "Je le lui signale à nouveau en lui rappelant l'accord qu'on avait trouvé.", score: 2 },
+          { text: "Je lâche — il le fait probablement sans mauvaise intention et ça ne vaut pas la peine d'insister.", score: 0 },
+          { text: "J'en parle à notre responsable pour qu'il soit recadré plus formellement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants s'accumulent parce que vous préférez contourner plutôt qu'aborder", desc: "Contourner un irritant, adapter son organisation pour ne plus en dépendre, attendre que ça se tasse : c'est souvent la voie de la moindre résistance. Le problème, c'est qu'un irritant non traité ne disparaît pas — il s'installe, s'épaissit, et devient de plus en plus difficile à aborder. Parler tôt, sur un fait précis, demande moins de courage qu'on ne le croit." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'accumulent encore sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les petits agacements récurrents, les malaises discrets, les tensions qui ne se sont pas encore déclarées — vous les laissez encore traîner en espérant qu'ils se résorbent. L'enjeu est d'intervenir plus tôt, sur des situations moins visibles, là où l'effort est encore faible." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants tôt et directement, sans attendre qu'ils deviennent des conflits", desc: "Vous abordez ce qui vous dérange avec la personne concernée, directement, avec des exemples précis et sans mise en cause. Vous ne laissez pas les petits agacements s'accumuler jusqu'à ce qu'ils deviennent des sujets lourds. Cette façon de faire préserve les relations bien mieux que le silence — et elle demande souvent moins de courage qu'on ne le croit avant de commencer." },
+        },
+      }
     ],
-    1: [
-        {
-          text: "Vous avez un désaccord professionnel avec un collègue qui devient un peu personnel. Que faites-vous ?",
-          answers: [
-          {text: "Je maintiens ma position sans me préoccuper du relationnel.", score: 0},
-          {text: "Je recule pour préserver la relation.", score: 1},
-          {text: "Je cherche à séparer le désaccord professionnel de la relation personnelle et à traiter les deux.", score: 2}
-          ]
-        },
-        {
-          text: "Un membre de l'équipe qui a du retard rejette la faute sur les autres en réunion. L'accusation est injuste. Que faites-vous ?",
-          answers: [
-          {text: "Je ne réagis pas — pas la peine de créer un conflit.", score: 0},
-          {text: "Je rectifie les faits calmement.", score: 1},
-          {text: "Je rectifie les faits et propose de traiter le problème de fond ensemble.", score: 2}
-          ]
-        },
-        {
-          text: "Vous réalisez que vous avez contribué à une tension avec un collègue par une réaction un peu sèche. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que ça se passe tout seul.", score: 0},
-          {text: "Je lui dis que je n'avais pas l'intention d'être sec.", score: 1},
-          {text: "Je reviens vers lui pour reconnaître ma réaction et m'assurer que ça n'a pas affecté notre relation de travail.", score: 2}
-          ]
-        },
-        {
-          text: "Une décision collective a été prise mais vous n'y adhérez pas vraiment. Que faites-vous ?",
-          answers: [
-          {text: "Je fais semblant d'adhérer pour que ça avance.", score: 0},
-          {text: "Je continue à défendre ma position après la décision.", score: 1},
-          {text: "Je m'engage à appliquer la décision tout en gardant un espace pour faire remonter mon point de vue par les voies appropriées.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe a du mal à prendre des décisions collectives : les réunions tournent en rond. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse les choses se décanter naturellement.", score: 0},
-          {text: "Je prends la main et impose une décision.", score: 1},
-          {text: "Je propose une méthode pour structurer la prise de décision et avancer.", score: 2}
-          ]
-        }
-    ],
-    2: [
-        {
-          text: "Les échanges dans votre équipe restent très superficiels. Les vrais problèmes ne sont jamais nommés. Que faites-vous ?",
-          answers: [
-          {text: "Je m'accommode — c'est le style de l'équipe.", score: 0},
-          {text: "Je pose les vrais sujets quand l'occasion se présente.", score: 1},
-          {text: "Je propose un espace dédié pour que les sujets de fond puissent être abordés.", score: 2}
-          ]
-        },
-        {
-          text: "Une friction récurrente entre deux personnes de l'équipe nuit à la qualité du travail. Tout le monde le sait mais personne n'intervient. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse les managers gérer.", score: 0},
-          {text: "Je parle à chacun séparément pour les aider.", score: 1},
-          {text: "Je nomme la situation à l'équipe ou au responsable selon le contexte et propose d'y travailler.", score: 2}
-          ]
-        },
-        {
-          text: "Un bon résultat collectif n'est pas reconnu. Les personnes qui ont contribué semblent déçues. Que faites-vous ?",
-          answers: [
-          {text: "C'est à la hiérarchie de reconnaître — pas à moi.", score: 0},
-          {text: "Je félicite mes proches collaborateurs.", score: 1},
-          {text: "Je cherche à rendre visible la contribution collective, à mon niveau.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe a tendance à se plaindre collectivement mais sans jamais chercher à changer les choses. Que faites-vous ?",
-          answers: [
-          {text: "Je me plains avec eux — ça aide à évacuer.", score: 0},
-          {text: "Je ne me plains pas mais je n'interviens pas non plus.", score: 1},
-          {text: "Je cherche à transformer les plaintes en problèmes à résoudre.", score: 2}
-          ]
-        },
-        {
-          text: "Vous observez que certains membres de l'équipe font plus d'efforts que d'autres. L'inégalité crée des tensions silencieuses. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas mon problème à régler.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "J'essaie de comprendre les causes de cet écart et d'agir à mon niveau sur ce qui est de mon ressort.", score: 2}
-          ]
-        }
-    ],
-    3: [
-        {
-          text: "Un conflit dans l'équipe dépasse ce que vous pouvez gérer seul. Que faites-vous ?",
-          answers: [
-          {text: "Je tente encore de gérer de mon côté.", score: 0},
-          {text: "J'en informe le responsable.", score: 1},
-          {text: "Je remonte la situation clairement et demande un soutien approprié — RH, médiation, responsable.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe traverse une crise et vous vous sentez seul à essayer de maintenir le cap. Que faites-vous ?",
-          answers: [
-          {text: "Je continue à porter le collectif de mon mieux.", score: 0},
-          {text: "Je cherche du soutien auprès d'un collègue de confiance.", score: 1},
-          {text: "Je cherche un appui adapté — responsable, RH — pour ne pas porter seul une situation qui dépasse mon périmètre.", score: 2}
-          ]
-        },
-        {
-          text: "Vous réalisez que le problème de coopération dans votre équipe est lié à un problème organisationnel plus profond (rôles flous, objectifs contradictoires). Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — je ne peux pas changer l'organisation.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je formule clairement l'analyse et la remonte pour que les causes structurelles soient traitées.", score: 2}
-          ]
-        },
-        {
-          text: "Une personne de votre équipe vous confie être épuisée et penser à s'arrêter. Que faites-vous ?",
-          answers: [
-          {text: "Je l'écoute et lui dis que tout le monde traverse des phases difficiles.", score: 0},
-          {text: "Je lui conseille de prendre des vacances.", score: 1},
-          {text: "Je l'écoute vraiment, l'encourage à chercher un soutien professionnel et, avec son accord, en informe le responsable.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez été le relais d'un problème de l'équipe auprès de la hiérarchie et rien n'a changé. Votre crédibilité en souffre. Que faites-vous ?",
-          answers: [
-          {text: "Je cesse d'être le relais — c'est trop risqué.", score: 0},
-          {text: "Je continue mais je préviens l'équipe que les changements prennent du temps.", score: 1},
-          {text: "Je relance la hiérarchie avec des éléments plus précis et plus concrets sur les conséquences de l'inaction.", score: 2}
-          ]
-        }
-    ],
-  },
 
-  "manager-qvt-rps": {
-    0: [
-        {
-          text: "Un membre de votre équipe a un comportement inhabituel depuis quelques jours : moins disponible, plus irritable, travail moins soigné. Que faites-vous ?",
-          answers: [
-          {text: "J'attends de voir si c'est passager.", score: 0},
-          {text: "Je lui demande directement si tout va bien.", score: 1},
-          {text: "Je crée une occasion naturelle d'échange en dehors du flux habituel de travail.", score: 2}
-          ]
-        },
-        {
-          text: "Deux membres de votre équipe sont en tension ouverte. L'ambiance générale en pâtit. Que faites-vous ?",
-          answers: [
-          {text: "Je les laisse régler ça entre eux.", score: 0},
-          {text: "Je parle à chacun séparément pour les calmer.", score: 1},
-          {text: "Je rencontre chacun, comprends les enjeux et propose un cadre pour traiter le problème.", score: 2}
-          ]
-        },
-        {
-          text: "Lors d'une réunion d'équipe, le silence sur un sujet sensible est éloquent. Personne ne s'exprime. Que faites-vous ?",
-          answers: [
-          {text: "Je passe au point suivant — le silence signifie accord.", score: 0},
-          {text: "Je pose une question ouverte pour relancer.", score: 1},
-          {text: "Je nomme le silence et crée les conditions pour que les personnes puissent s'exprimer si elles le souhaitent.", score: 2}
-          ]
-        },
-        {
-          text: "Vous constatez qu'un collaborateur très impliqué ne délègue rien et accumule. Il dit que tout va bien. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse gérer — il est adulte.", score: 0},
-          {text: "Je lui propose de l'aide ponctuellement.", score: 1},
-          {text: "J'ouvre un échange sur sa charge réelle et l'aide à réfléchir à comment mieux répartir.", score: 2}
-          ]
-        },
-        {
-          text: "Un membre de l'équipe fait régulièrement des heures supplémentaires non demandées. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — si c'est son choix, c'est son droit.", score: 0},
-          {text: "Je lui dis que ce n'est pas nécessaire.", score: 1},
-          {text: "Je comprends pourquoi il fait ces heures et j'agis sur les causes si elles sont organisationnelles.", score: 2}
-          ]
-        }
-    ],
+    // ── Chapitre 2 : Coopérer sans se défausser
     1: [
-        {
-          text: "Votre équipe est en surcharge depuis trois semaines. Vous attendez une décision de la direction pour alléger. Elle n'arrive pas. Que faites-vous ?",
-          answers: [
-          {text: "J'attends la décision — je ne peux rien faire seul.", score: 0},
-          {text: "Je protège mes collaborateurs des sollicitations les plus évitables.", score: 1},
-          {text: "Je prends des mesures provisoires à mon niveau ET je remonte avec insistance le besoin de décision.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un projet commun prend du retard à cause d'un blocage dans votre périmètre. Votre interlocuteur principal sur ce projet, Élodie, commence à s'impatienter.",
+        tags: ["coopération", "responsabilité"],
+        answers: [
+          { text: "Je lui explique que le blocage vient de contraintes qui ne dépendent pas de moi.", score: 0 },
+          { text: "Je lui présente la situation telle qu'elle est et ce que je fais concrètement pour la débloquer.", score: 2 },
+          { text: "Je lui demande de patienter encore un peu — ça devrait se résoudre rapidement.", score: 0.5 },
+          { text: "Je lui propose de reprendre le sujet une fois le blocage levé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
         },
-        {
-          text: "Vous devez donner une charge supplémentaire à quelqu'un de votre équipe déjà chargée. Que faites-vous ?",
-          answers: [
-          {text: "Je lui donne — c'est la meilleure personne pour cette tâche.", score: 0},
-          {text: "Je lui explique que c'est temporaire et important.", score: 1},
-          {text: "J'explique le contexte, je donne la tâche ET je retrace avec lui ce qui peut être décalé ou délégué pour compenser.", score: 2}
-          ]
+      },
+      {
+        type: "likert",
+        text: "Quand vous prenez un engagement envers un·e collègue, vous le tenez ou vous le renégociez avant l'échéance — jamais en retard sans prévenir.",
+        tags: ["coopération", "fiabilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
         },
-        {
-          text: "Un projet est en retard et vous devez demander un effort supplémentaire à votre équipe. Comment le faites-vous ?",
-          answers: [
-          {text: "Je leur dis simplement ce qui est attendu.", score: 0},
-          {text: "Je leur explique pourquoi c'est important.", score: 1},
-          {text: "J'explique pourquoi, je reconnais l'effort demandé et je cherche avec eux ce qui peut être allégé ailleurs.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Une autre équipe vous demande de l'aide sur un sujet qui n'est pas dans votre périmètre officiel. Vous avez la compétence mais pas le temps. Votre responsable ne vous a pas explicitement dit de le faire.",
+        tags: ["coopération", "silo"],
+        answers: [
+          { text: "Je décline — si c'était dans mes attributions, on me l'aurait demandé officiellement.", score: 0 },
+          { text: "J'aide sans en parler à mon responsable — ça n'a pas besoin d'être officiel.", score: 1 },
+          { text: "Je leur dis ce que je peux faire dans le temps dont je dispose et je leur propose ça.", score: 2 },
+          { text: "Je leur conseille de passer par les voies officielles pour que ça soit formalisé.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
         },
-        {
-          text: "Votre équipe travaille sous pression depuis longtemps sans reconnaissance visible. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas mon rôle de compenser les silences de la direction.", score: 0},
-          {text: "Je les remercie personnellement.", score: 1},
-          {text: "Je cherche à rendre visible leur travail auprès de la direction ET je leur témoigne ma reconnaissance directement.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Vous avez contribué significativement à un livrable présenté en réunion de direction. Votre responsable présente le résultat sans mentionner votre contribution.",
+        tags: ["coopération", "reconnaissance"],
+        answers: [
+          { text: "Je ne dis rien — ce serait malvenu de me mettre en avant devant la direction.", score: 0 },
+          { text: "J'en parle à mon responsable après la réunion pour qu'il sache que j'ai besoin que ma contribution soit visible.", score: 2 },
+          { text: "Je le mentionne moi-même en réunion au bon moment.", score: 1.5 },
+          { text: "Je l'accepte — la reconnaissance passe rarement par les grandes réunions de toute façon.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
         },
-        {
-          text: "Vous réalisez que certains membres de votre équipe portent une charge invisible (coordination, soutien aux autres) non reconnue. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — cette charge fait partie du travail en équipe.", score: 0},
-          {text: "Je les remercie en privé.", score: 1},
-          {text: "Je rends cette contribution visible, la nomme collectivement et cherche à équilibrer la charge si elle est excessive.", score: 2}
-          ]
-        }
+      },
+      {
+        type: "likert",
+        text: "Vous anticipez les besoins de vos collègues proches et vous leur proposez votre aide avant qu'ils aient à la demander.",
+        tags: ["coopération", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "David et vous travaillez sur des objectifs qui se recoupent partiellement. Dans un contexte de ressources limitées, avancer l'un peut bloquer l'autre. Vous avez une réunion de planification demain.",
+        tags: ["coopération", "conflit d'intérêt"],
+        answers: [
+          { text: "Je défends mes propres objectifs en réunion — c'est à la hiérarchie d'arbitrer ensuite.", score: 0.5 },
+          { text: "Je lui propose qu'on se parle avant la réunion pour voir si on peut s'organiser.", score: 2 },
+          { text: "J'attends de voir ce qu'il propose en réunion avant de me positionner.", score: 0 },
+          { text: "Je lui envoie un mail avant la réunion pour lui signaler que nos objectifs se chevauchent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez connaissance d'une information utile pour Baptiste, qui travaille sur un dossier connexe au vôtre. La partager lui faciliterait la tâche mais ne vous apporte rien directement.",
+        tags: ["coopération", "information"],
+        answers: [
+          { text: "Je la garde pour l'instant — je la partagerai si la question vient naturellement.", score: 0 },
+          { text: "Je lui transmets directement — l'information utile ne doit pas attendre.", score: 2 },
+          { text: "Je lui envoie un message pour lui signaler que j'ai peut-être quelque chose d'utile.", score: 1.5 },
+          { text: "Je la mentionne en réunion pour que tout le monde en profite.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous signalez proactivement à vos collègues les blocages de votre côté qui risquent d'impacter leur travail, sans attendre qu'ils vous le demandent.",
+        tags: ["coopération", "transparence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe traverse une période intense. Laura, une collègue, est visiblement plus en difficulté que les autres face à la charge. Elle n'a rien demandé.",
+        tags: ["coopération", "charge partagée"],
+        answers: [
+          { text: "Chacun gère sa propre charge — si elle avait besoin d'aide, elle le dirait.", score: 0 },
+          { text: "Je lui propose spontanément de prendre une de ses tâches si j'ai de la marge.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il rééquilibre la distribution.", score: 1 },
+          { text: "Je lui dis que je la vois débordée, au cas où elle voudrait en parler.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous rendez les services qu'on vous a rendus, spontanément, sans attendre qu'on vous le rappelle.",
+        tags: ["coopération", "réciprocité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous coopérez quand c'est dans votre périmètre, vous vous défaussez dès que ça dépasse", desc: "Se défausser sur les contraintes, attendre la demande officielle avant d'aider, rester dans son périmètre quand l'autre en a besoin : ce sont des comportements défendables individuellement mais qui détériorent progressivement la qualité de la coopération. La fiabilité et la disponibilité se construisent sur les petits gestes, pas sur les grandes déclarations." },
+          moyen: { label: "Pratiques en développement", titre: "Vous coopérez bien dans votre périmètre, vous hésitez encore au-delà", desc: "Vous êtes fiable dans votre périmètre et vous coopérez bien avec vos interlocuteurs directs. Mais dès que la coopération implique de dépasser votre zone de confort — une équipe voisine, un sujet hors attributions officielles — vous hésitez. L'enjeu est d'étendre cette fiabilité au-delà des frontières formelles." },
+          haut: { label: "Réflexes installés", titre: "Votre coopération ne s'arrête pas aux frontières de votre périmètre officiel", desc: "Vous tenez vos engagements, vous signalez vos blocages avant qu'ils n'impactent les autres, vous partagez les informations utiles sans attendre qu'on vous les demande, et vous proposez votre aide au-delà de votre périmètre quand c'est utile. C'est cette disponibilité quotidienne, discrète, qui constitue le socle de la coopération réelle dans une équipe." },
+        },
+      }
     ],
-    2: [
-        {
-          text: "Un collaborateur a un conflit avec un autre service. Il vous demande d'intervenir. Que faites-vous ?",
-          answers: [
-          {text: "Je l'envoie gérer seul — il est adulte.", score: 0},
-          {text: "Je l'écoute et interviens à sa demande.", score: 1},
-          {text: "Je comprends les enjeux, évalue si mon intervention est la bonne réponse et agis en conséquence.", score: 2}
-          ]
-        },
-        {
-          text: "Un collaborateur exprime ouvertement qu'il n'est plus motivé. Que faites-vous ?",
-          answers: [
-          {text: "Je lui rappelle ses obligations professionnelles.", score: 0},
-          {text: "Je cherche à comprendre ce qui ne va pas.", score: 1},
-          {text: "Je crée un vrai espace d'échange sur ses attentes, ses difficultés et les marges de manœuvre disponibles.", score: 2}
-          ]
-        },
-        {
-          text: "Lors d'un entretien individuel, un collaborateur évoque des tensions avec un collègue. Que faites-vous ?",
-          answers: [
-          {text: "Je note l'information et passe à autre chose.", score: 0},
-          {text: "Je lui demande de gérer directement avec l'autre personne.", score: 1},
-          {text: "J'explore le sujet pour comprendre si c'est une tension ponctuelle ou quelque chose qui doit être traité.", score: 2}
-          ]
-        },
-        {
-          text: "Vous êtes vous-même sous pression et ne vous sentez pas en état d'accompagner votre équipe comme vous le souhaiteriez. Que faites-vous ?",
-          answers: [
-          {text: "Je gère les deux en parallèle — c'est mon rôle.", score: 0},
-          {text: "Je priorise l'équipe et je gère ma propre charge après.", score: 1},
-          {text: "Je cherche du soutien pour ma propre situation ET j'adapte mon disponibilité à ce qui est réellement tenable.", score: 2}
-          ]
-        },
-        {
-          text: "Un collaborateur demande une mutation interne parce qu'il ne se sent plus bien dans l'équipe. Que faites-vous ?",
-          answers: [
-          {text: "Je l'aide dans sa démarche — s'il veut partir, c'est son choix.", score: 0},
-          {text: "Je cherche à le retenir.", score: 1},
-          {text: "Je comprends les raisons profondes, cherche si quelque chose est réparable ET respecte sa décision si ce n'est pas le cas.", score: 2}
-          ]
-        }
-    ],
-    3: [
-        {
-          text: "Un collaborateur en souffrance vous demande de garder la situation confidentielle. Vous êtes préoccupé. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte sa demande — la confidentialité est sacrée.", score: 0},
-          {text: "Je lui dis que je dois en parler à quelqu'un.", score: 1},
-          {text: "J'évalue la gravité de la situation et agis en conséquence, en lui expliquant clairement ce que je peux et ne peux pas garder pour moi.", score: 2}
-          ]
-        },
-        {
-          text: "Vous pensez qu'un collaborateur a besoin d'un soutien psychologique mais il refuse toute aide. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte son refus.", score: 0},
-          {text: "Je continue à insister pour l'aider.", score: 1},
-          {text: "Je reste disponible, lui laisse l'information sur ce qui existe et, si la situation se dégrade, je consulte les RH ou le médecin du travail.", score: 2}
-          ]
-        },
-        {
-          text: "Votre propre hiérarchie minimise les signaux de mal-être que vous remontez sur votre équipe. Que faites-vous ?",
-          answers: [
-          {text: "Je cesse de remonter — inutile d'insister.", score: 0},
-          {text: "Je continue à remonter informellement.", score: 1},
-          {text: "Je documente les signaux et les remonte formellement, en demandant une position claire.", score: 2}
-          ]
-        },
-        {
-          text: "Un membre de l'équipe est en arrêt depuis plusieurs semaines. L'équipe n'en parle pas mais c'est présent. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse les choses se dérouler naturellement.", score: 0},
-          {text: "Je prépare son retour quand il sera prêt.", score: 1},
-          {text: "Je prépare les conditions du retour ET je gère l'absence de façon équitable et transparente avec le reste de l'équipe.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe accumule des signaux de fatigue collective depuis des mois. Vous êtes convaincu qu'une décision organisationnelle est nécessaire. Que faites-vous ?",
-          answers: [
-          {text: "J'attends — les décisions organisationnelles ne dépendent pas de moi.", score: 0},
-          {text: "Je remonte le problème.", score: 1},
-          {text: "Je construis un argumentaire factuel et demande une décision formelle avec des délais clairs.", score: 2}
-          ]
-        }
-    ],
-  },
 
-  "teletravail-hybridation": {
-    0: [
-        {
-          text: "En télétravail, vous finissez régulièrement votre journée deux heures après l'horaire habituel sans que rien ne l'exige vraiment. Que faites-vous ?",
-          answers: [
-          {text: "Je profite de l'absence de transport pour travailler plus.", score: 0},
-          {text: "Je remarque le phénomène mais ne change pas mes habitudes.", score: 1},
-          {text: "Je pose des limites horaires claires et les tiens comme si j'étais au bureau.", score: 2}
-          ]
-        },
-        {
-          text: "Votre espace de télétravail n'est pas adapté (bruit, manque de lumière, espace insuffisant). Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — c'est temporaire.", score: 0},
-          {text: "Je signale le problème à mon responsable.", score: 1},
-          {text: "Je cherche une solution concrète (autre lieu, équipement) et informe mon responsable des contraintes.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez du mal à démarrer la journée en télétravail — vous repoussez les tâches et perdez du temps le matin. Que faites-vous ?",
-          answers: [
-          {text: "J'attends d'être dans l'élan.", score: 0},
-          {text: "Je commence par les tâches les plus faciles pour démarrer.", score: 1},
-          {text: "Je mets en place un rituel de démarrage pour structurer ma journée à distance.", score: 2}
-          ]
-        },
-        {
-          text: "Les notifications de vos outils de travail vous distraient en permanence en télétravail. Que faites-vous ?",
-          answers: [
-          {text: "Je les laisse actives — je dois être disponible.", score: 0},
-          {text: "Je les coupe pendant mes plages de travail focalisé.", score: 1},
-          {text: "J'organise ma disponibilité de façon explicite et j'informe mon équipe de mes plages de concentration.", score: 2}
-          ]
-        },
-        {
-          text: "En fin de semaine de télétravail, vous réalisez que vous avez encore moins bien récupéré que lors des semaines au bureau. Que faites-vous ?",
-          answers: [
-          {text: "J'accepte — le télétravail est plus fatiguant pour moi.", score: 0},
-          {text: "Je cherche à faire plus de pauses.", score: 1},
-          {text: "J'analyse ce qui génère cette fatigue supplémentaire et cherche à modifier mes habitudes.", score: 2}
-          ]
-        }
-    ],
-    1: [
-        {
-          text: "En semaine entièrement à distance, vous n'avez eu aucun échange informel avec vos collègues. Que faites-vous ?",
-          answers: [
-          {text: "Je me concentre sur le travail — les échanges informels ne sont pas prioritaires.", score: 0},
-          {text: "Je profite d'une réunion pour glisser un échange informel.", score: 1},
-          {text: "Je crée délibérément des occasions d'échange informel avec mes collègues.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez l'impression de passer sous le radar en télétravail. Votre travail n'est pas visible. Que faites-vous ?",
-          answers: [
-          {text: "Je travaille plus pour compenser.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je prends des initiatives pour rendre mon travail visible sans avoir besoin de me sur-justifier.", score: 2}
-          ]
-        },
-        {
-          text: "Lors d'une réunion hybride, les participants à distance n'ont pas accès aux mêmes informations que ceux en présentiel (tableau, conversations de couloir). Que faites-vous ?",
-          answers: [
-          {text: "J'essaie de suivre du mieux que je peux.", score: 0},
-          {text: "Je demande à quelqu'un de retranscrire les informations importantes.", score: 1},
-          {text: "Je nomme le problème et propose une organisation qui équilibre la participation entre présents et distants.", score: 2}
-          ]
-        },
-        {
-          text: "Vous êtes à distance et votre équipe prend des décisions sans vous lors de réunions informelles au bureau. Que faites-vous ?",
-          answers: [
-          {text: "J'accepte — ce n'est pas évitable.", score: 0},
-          {text: "Je demande à être tenu informé.", score: 1},
-          {text: "Je propose un cadre de décision qui inclut explicitement les personnes à distance.", score: 2}
-          ]
-        },
-        {
-          text: "Vous sentez que votre engagement est moins perceptible depuis que vous êtes davantage à distance. Que faites-vous ?",
-          answers: [
-          {text: "J'envoie plus de messages pour montrer que je travaille.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je cherche à contribuer de façon visible sur les sujets importants sans surinvestir en quantité.", score: 2}
-          ]
-        }
-    ],
+    // ── Chapitre 3 : Gérer les désaccords sans les laisser traîner
     2: [
-        {
-          text: "En mode hybride, vous constatez que certains échanges se passent en français pour les présents et en anglais pour les distants — métaphoriquement : deux niveaux d'information. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — c'est inévitable.", score: 0},
-          {text: "Je mets en place mes propres canaux d'information.", score: 1},
-          {text: "Je propose que les canaux de communication soient uniformisés pour que tout le monde ait le même niveau d'accès.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "En réunion, vous n'êtes pas d'accord avec la décision qui vient d'être prise mais vous êtes le seul. Tout le monde semble s'aligner.",
+        tags: ["désaccord", "dialogue"],
+        answers: [
+          { text: "Je m'aligne — si tout le monde est d'accord, c'est que j'ai peut-être raté quelque chose.", score: 0 },
+          { text: "Je dis ce que j'en pense, brièvement, en restant factuel.", score: 2 },
+          { text: "Je laisse passer en réunion et j'en parle à mon responsable après.", score: 1 },
+          { text: "Je pose une question pour faire apparaître mon doute sans prendre de position.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
         },
-        {
-          text: "Vous avez du mal à vous faire entendre lors des réunions hybrides. Votre temps de parole est réduit. Que faites-vous ?",
-          answers: [
-          {text: "Je fais des efforts pour m'imposer.", score: 0},
-          {text: "Je compense en envoyant mes contributions par écrit.", score: 1},
-          {text: "Je nomme le problème en réunion et propose des ajustements de format.", score: 2}
-          ]
+      },
+      {
+        type: "likert",
+        text: "Vous exprimez vos désaccords en réunion, même quand vous êtes seul·e à ne pas être d'accord.",
+        tags: ["désaccord", "courage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
         },
-        {
-          text: "Les messages écrits dans vos outils collaboratifs sont souvent mal interprétés par rapport à ce que vous souhaitiez dire. Que faites-vous ?",
-          answers: [
-          {text: "Je fais plus attention à la formulation.", score: 0},
-          {text: "Je passe au téléphone quand les sujets sont sensibles.", score: 1},
-          {text: "Je réfléchis à quels sujets méritent un échange oral et lesquels peuvent rester à l'écrit, et j'adapte.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Votre responsable a pris une décision avec laquelle vous n'êtes pas d'accord. Elle a été annoncée à l'équipe. Vous pensez qu'elle va créer des problèmes opérationnels concrets.",
+        tags: ["désaccord", "hiérarchie"],
+        answers: [
+          { text: "Je l'applique sans rien dire — une fois la décision prise et annoncée, c'est trop tard.", score: 0 },
+          { text: "Je lui en parle en privé en lui exposant les problèmes opérationnels que j'anticipe.", score: 2 },
+          { text: "J'en parle à mes collègues pour savoir s'ils partagent mon analyse.", score: 0.5 },
+          { text: "J'attends que les problèmes apparaissent et je lui en parle à ce moment-là.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
         },
-        {
-          text: "Un désaccord naît par message interposé et s'emballe. Que faites-vous ?",
-          answers: [
-          {text: "Je continue à argumenter par écrit pour clarifier ma position.", score: 0},
-          {text: "Je propose de faire un point téléphonique.", score: 1},
-          {text: "Je stoppe l'échange écrit et propose un appel rapide pour clarifier de vive voix.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Vous et Jonathan avez un désaccord de fond sur la façon d'aborder un dossier commun. Chacun reste sur sa position depuis deux semaines. Ça bloque l'avancement.",
+        tags: ["désaccord", "tension"],
+        answers: [
+          { text: "Je lui présente à nouveau mes arguments — il finira par comprendre.", score: 0 },
+          { text: "Je propose qu'on tranche en impliquant notre responsable commun.", score: 1 },
+          { text: "Je lui propose un échange structuré pour comprendre sa logique avant de reprendre la mienne.", score: 2 },
+          { text: "J'avance de mon côté — le temps montrera qui avait raison.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
         },
-        {
-          text: "Vous réalisez que vous passez votre journée à répondre à des messages en temps réel et n'avancez plus sur vos sujets de fond. Que faites-vous ?",
-          answers: [
-          {text: "Je réponds en temps réel — c'est ce qu'on attend de moi.", score: 0},
-          {text: "Je coupe les notifications par moments.", score: 1},
-          {text: "Je clarifie avec mon équipe mes temps de disponibilité et mes plages de travail focalisé.", score: 2}
-          ]
-        }
+      },
+      {
+        type: "likert",
+        text: "Face à un désaccord, vous cherchez à comprendre la logique de l'autre avant de reposer la vôtre.",
+        tags: ["désaccord", "écoute"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Deux membres de votre équipe sont en désaccord ouvert depuis une semaine sur un sujet de méthode. Personne ne tranche. Le reste de l'équipe commence à prendre parti.",
+        tags: ["désaccord", "passivité"],
+        answers: [
+          { text: "Je laisse — les désaccords de méthode se règlent généralement d'eux-mêmes.", score: 0 },
+          { text: "Je prends parti pour la position qui me semble la plus solide.", score: 0.5 },
+          { text: "Je crée un moment pour qu'ils exposent leurs positions et cherchent un terrain commun.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il tranche.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous recevez un mail de Rayan qui remet en cause votre travail sur un point, avec des collègues en copie. Le ton est neutre mais vous trouvez la démarche déplacée.",
+        tags: ["désaccord", "mail"],
+        answers: [
+          { text: "Je lui réponds en détaillant mes arguments — en copie des mêmes collègues.", score: 0.5 },
+          { text: "Je lui réponds factuellement sur le fond, sans commenter la forme.", score: 1 },
+          { text: "Je lui propose de s'appeler pour traiter le fond, et je lui dis que je préfère ce mode d'échange.", score: 2 },
+          { text: "Je l'appelle directement sans répondre au mail.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous cherchez à résoudre les désaccords avec les personnes concernées directement, sans passer par des intermédiaires sauf si c'est vraiment nécessaire.",
+        tags: ["désaccord", "résolution"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Une décision a été prise en réunion et vous l'avez publiquement soutenue. Hors réunion, vous continuez à en douter et à en parler négativement avec certains collègues.",
+        tags: ["désaccord", "après décision"],
+        answers: [
+          { text: "C'est normal d'avoir des doutes — je ne mens pas en les exprimant.", score: 0 },
+          { text: "Je me tais sur le sujet hors réunion — j'ai donné mon accord, je l'assume.", score: 1 },
+          { text: "Je reviens vers mon responsable pour lui signaler que mes doutes persistent.", score: 2 },
+          { text: "Je cherche des appuis parmi mes collègues pour que la décision soit réexaminée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Votre position en réunion est la même que votre position hors réunion — vous ne dites pas une chose en public et une autre en privé.",
+        tags: ["désaccord", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez les désaccords en public et les laissez traîner en privé", desc: "Se taire en réunion pour éviter d'être le seul à ne pas être d'accord, parler en coulisses plutôt qu'en face, laisser un désaccord traîner deux semaines : ce sont des façons de gérer le malaise à court terme qui créent des nœuds à moyen terme. Exprimer un désaccord directement, sur les faits, est presque toujours moins coûteux que de le laisser pourrir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous exprimez vos désaccords dans les situations simples, vous reculez encore sous pression forte", desc: "Vous dites ce que vous pensez quand l'enjeu est limité. Mais quand vous êtes le seul à ne pas être d'accord face à la direction, ou que le désaccord risque de créer un inconfort durable, votre parole se raréfie. L'enjeu est de tenir cette posture précisément dans les moments où elle coûte quelque chose." },
+          haut: { label: "Réflexes installés", titre: "Vous exprimez vos désaccords en face, au bon moment, sur les faits", desc: "Vous dites ce que vous pensez en réunion même quand vous êtes seul·e à le penser, vous revenez vers votre responsable quand une décision vous pose problème, et votre position en public est la même qu'en privé. Cette constance donne aux gens autour de vous un interlocuteur fiable — quelqu'un dont ils savent ce qu'il pense vraiment." },
+        },
+      }
     ],
+
+    // ── Chapitre 4 : Maintenir la qualité relationnelle sous pression
     3: [
-        {
-          text: "L'organisation hybride crée des tensions entre ceux qui viennent souvent et ceux qui viennent peu. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — ce n'est pas mon rôle de gérer les frustrations des autres.", score: 0},
-          {text: "Je pose la question à mon responsable.", score: 1},
-          {text: "Je nomme le sujet et propose un échange collectif sur les attentes et les règles du jeu.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre équipe est en période de rush depuis trois semaines. Les échanges sont devenus plus secs, les remerciements ont disparu, chacun est dans son tunnel. Vous le ressentez.",
+        tags: ["pression", "relations"],
+        answers: [
+          { text: "C'est inévitable en période de charge — les relations reprendront leur cours quand la pression retombera.", score: 0 },
+          { text: "Je maintiens mes propres habitudes relationnelles même si ce n'est pas réciproque.", score: 2 },
+          { text: "Je le soulève en réunion pour qu'on prenne conscience de la dégradation collective.", score: 1 },
+          { text: "Je compense par plus d'énergie dans les interactions pour remonter l'ambiance.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
         },
-        {
-          text: "Vous n'arrivez pas à déconnecter le week-end à cause des outils collaboratifs accessibles en permanence. Que faites-vous ?",
-          answers: [
-          {text: "Je reste connecté — c'est la réalité du travail aujourd'hui.", score: 0},
-          {text: "Je désactive les notifications le week-end.", score: 1},
-          {text: "Je pose des règles claires de disponibilité et les communique à mon entourage professionnel.", score: 2}
-          ]
+      },
+      {
+        type: "likert",
+        text: "Vous maintenez la qualité de vos relations de travail en période de charge intense, sans vous retrancher dans votre périmètre.",
+        tags: ["pression", "présence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
         },
-        {
-          text: "Un collègue vous sollicite régulièrement en dehors des heures de travail via les outils collaboratifs. Que faites-vous ?",
-          answers: [
-          {text: "Je réponds — il a peut-être une bonne raison.", score: 0},
-          {text: "Je réponds quand je le veux mais sans explication.", score: 1},
-          {text: "Je lui explique mes règles de disponibilité et cherche à comprendre pourquoi il contacte en dehors des heures habituelles.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "Vous êtes agacé·e par quelque chose qu'a fait Céline et vous lui répondez sèchement dans un échange par messagerie. Vous vous en rendez compte juste après l'envoi.",
+        tags: ["pression", "frustration"],
+        answers: [
+          { text: "Je laisse — elle comprendra que je suis sous pression en ce moment.", score: 0 },
+          { text: "Je lui envoie un message pour corriger le ton de ma réponse précédente.", score: 2 },
+          { text: "Je l'appelle pour m'expliquer et m'excuser.", score: 2 },
+          { text: "Je fais comme si de rien n'était — trop insister attirerait l'attention sur l'incident.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
         },
-        {
-          text: "L'organisation hybride génère chez vous un sentiment de ne jamais être vraiment ni au bureau ni chez vous. Que faites-vous ?",
-          answers: [
-          {text: "J'accepte — c'est le prix du télétravail.", score: 0},
-          {text: "Je cherche à mieux séparer les deux environnements.", score: 1},
-          {text: "J'analyse ce qui crée ce flou et cherche à construire des rituels qui délimitent clairement les deux espaces.", score: 2}
-          ]
+      },
+      {
+        type: "choix",
+        text: "En période de rush, votre collègue Théo a fait un effort particulier pour vous aider sur un point bloquant. Vous êtes vous-même très pris·e.",
+        tags: ["pression", "reconnaissance"],
+        answers: [
+          { text: "Je le remercie quand les choses se calmeront — il comprend que ce n'est pas le moment.", score: 0 },
+          { text: "Je lui envoie un message court pour lui signifier que j'ai remarqué et que j'apprécie.", score: 2 },
+          { text: "Je garde ça en tête pour lui rendre la pareille quand l'occasion se présentera.", score: 1 },
+          { text: "Je le remercie rapidement de vive voix au prochain croisement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
         },
-        {
-          text: "Vous vous sentez moins bien dans l'équipe depuis que l'organisation hybride est en place. Le lien est moins fort. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que les choses s'arrangent.", score: 0},
-          {text: "J'en parle à quelqu'un de confiance.", score: 1},
-          {text: "Je l'exprime à mon équipe ou à mon responsable et propose des pistes pour recréer du lien.", score: 2}
-          ]
-        }
+      },
+      {
+        type: "likert",
+        text: "Votre façon de traiter vos collègues ne change pas significativement selon que vous êtes sous pression ou non.",
+        tags: ["pression", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Vous avez eu une matinée particulièrement difficile. L'après-midi, vous avez deux réunions avec des collègues qui ne sont pas impliqués dans ce qui vous a mis sous tension.",
+        tags: ["pression", "humeur"],
+        answers: [
+          { text: "Mon humeur du moment transparaît forcément — ce serait artificiel de faire semblant.", score: 0 },
+          { text: "Je préviens mes collègues en début de réunion que j'ai eu une matinée compliquée.", score: 1 },
+          { text: "Je fais l'effort de mettre de côté ma matinée pour ces réunions.", score: 2 },
+          { text: "Je reporte les réunions si je sens que je ne suis pas en état.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Votre équipe traverse une période difficile. Vous, vous vous en sortez mieux que les autres. Personne ne vous demande rien.",
+        tags: ["pression", "solidarité"],
+        answers: [
+          { text: "Je me concentre sur mon propre travail — en période difficile, chacun doit gérer le sien.", score: 0 },
+          { text: "Je propose spontanément un coup de main à ceux qui semblent le plus en difficulté.", score: 2 },
+          { text: "Je reste disponible si quelqu'un me sollicite, sans m'imposer.", score: 1 },
+          { text: "J'en parle à notre responsable pour qu'il rééquilibre la charge.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Quand vous avez mal géré une interaction sous pression, vous revenez vers la personne concernée pour le reconnaître.",
+        tags: ["pression", "réparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      },
+      {
+        type: "choix",
+        text: "Un·e collègue vous dit qu'il ou elle ne supporte plus l'ambiance de l'équipe en ce moment. Vous partagez ce ressenti mais vous gérez. Vous êtes en plein rush.",
+        tags: ["pression", "limites"],
+        answers: [
+          { text: "Je lui dis que c'est temporaire et que ça ira mieux quand la pression retombera.", score: 0 },
+          { text: "Je l'écoute sans chercher à minimiser ce qu'il ou elle ressent.", score: 2 },
+          { text: "Je lui conseille d'en parler à notre responsable si c'est vraiment difficile.", score: 1 },
+          { text: "Je lui dis que moi aussi je trouve ça difficile — au moins il ou elle ne se sent pas seul·e.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      },
+      {
+        type: "likert",
+        text: "Vous réglez vos propres états émotionnels avant d'entrer dans une interaction difficile plutôt que de les laisser déborder sur vos collègues.",
+        tags: ["pression", "régulation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression détériore rapidement la qualité de vos échanges sans que vous le réguliiez", desc: "Des réponses plus sèches, des remerciements qui disparaissent, une humeur difficile qui déborde sur les interactions : la pression révèle les habitudes relationnelles. Ce n'est pas une question de bonne volonté — c'est une question de régulation. Maintenir la qualité de ses échanges sous pression demande un effort délibéré, pas juste de la bienveillance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la qualité relationnelle dans les pressions modérées, les pics vous déstabilisent encore", desc: "Vous gérez correctement la plupart des situations. Mais lors des pics intenses, la qualité de vos interactions peut se dégrader — réponses plus sèches, remerciements oubliés, irritabilité — sans que vous ne le réguliiez vraiment. L'enjeu est de mettre en place des mécanismes de régulation délibérés pour ces moments." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la qualité de vos échanges même sous pression, et vous réparez quand vous avez mal géré", desc: "Vous maintenez la qualité de vos échanges même sous forte pression, et quand vous avez mal géré une interaction, vous y revenez pour le reconnaître. Cette régulation n'est pas naturelle — elle demande un effort délibéré — mais elle fait une différence visible sur le climat d'équipe, particulièrement dans les périodes difficiles." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "epuisement-prevention": {
     0: [
