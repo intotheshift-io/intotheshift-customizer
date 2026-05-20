@@ -79,12 +79,16 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
 
 
-/* ── Pack passations client ───────────────────── */
-.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18375d 0%,#007883 100%);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px;color:#fff;box-shadow:0 18px 45px rgba(24,55,93,.18)}
-.its-quota-card::after{content:"";position:absolute;right:-50px;top:-60px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.13)}
-.its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;opacity:.75;margin-bottom:4px}.its-quota-title{font-size:20px;font-weight:900;line-height:1.15}.its-quota-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;white-space:nowrap}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}.its-quota-box{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;text-align:center}.its-quota-box strong{display:block;font-size:25px;line-height:1;color:#fff}.its-quota-box span{display:block;font-size:11px;margin-top:5px;opacity:.82}.its-quota-bar{height:9px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:12px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc744;width:0%;transition:width .4s ease}.its-quota-note{font-size:12px;line-height:1.45;opacity:.88;margin-top:10px}.its-quota-nudge{background:#fff;color:#18375d;border-radius:14px;padding:10px 12px;margin-top:12px;font-size:12px;line-height:1.45;font-weight:700}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
-.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
-@media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
+
+/* ── Pack passations client — design partagé ───────────────────── */
+.its-pack-card{position:relative;overflow:hidden;border-radius:26px;padding:22px;color:#fff;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#00a0a6 100%);box-shadow:0 18px 45px rgba(13,76,114,.22);border:1px solid rgba(255,255,255,.22)}
+.its-pack-card::before{content:"";position:absolute;right:-70px;top:-86px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.15)}
+.its-pack-card::after{content:"";position:absolute;left:-56px;bottom:-82px;width:180px;height:180px;border-radius:50%;background:rgba(255,199,68,.22)}
+.its-pack-card>*{position:relative;z-index:1}.its-pack-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}.its-pack-heading{display:flex;align-items:center;gap:12px}.its-pack-icon{width:48px;height:48px;border-radius:17px;background:#fff;color:#0d4c72;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 10px 22px rgba(0,0,0,.10)}.its-pack-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.76;margin-bottom:4px}.its-pack-title{font-size:22px;font-weight:900;line-height:1.12}.its-pack-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;white-space:nowrap}.its-pack-grid{display:grid;grid-template-columns:1.05fr .95fr .95fr;gap:10px;margin:14px 0}.its-pack-metric{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:13px;text-align:left}.its-pack-metric .mi{width:30px;height:30px;border-radius:11px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:9px;font-size:16px}.its-pack-metric strong{display:block;font-size:27px;line-height:1;color:#fff}.its-pack-metric span{display:block;font-size:11px;margin-top:6px;opacity:.84;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.its-pack-progress{height:11px;border-radius:999px;background:rgba(255,255,255,.23);overflow:hidden;margin-top:12px}.its-pack-progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffc744,#ffffff);width:0%;transition:width .4s ease}.its-pack-bottom{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:12px}.its-pack-nudge{background:#fff;color:#18375d;border-radius:16px;padding:11px 13px;font-size:12px;line-height:1.45;font-weight:800}.its-pack-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#ffc744;color:#18375d;text-decoration:none;border-radius:14px;padding:11px 13px;font-size:12px;font-weight:900;white-space:nowrap}.its-pack-card.warn{background:linear-gradient(135deg,#9a6100 0%,#eb6366 100%)}.its-pack-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}.its-pack-card.unlimited{background:linear-gradient(135deg,#18375d 0%,#5b3bbd 52%,#007883 100%)}
+.its-pack-inline{display:flex;align-items:flex-start;gap:12px;background:#f0f8f7;border:1px solid #b8dfe0;border-radius:16px;padding:13px 14px;margin:10px 0;color:#18375d}.its-pack-inline .ico{width:34px;height:34px;border-radius:12px;background:#007883;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}.its-pack-inline strong{color:#007883}.its-pack-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}.its-pack-inline.empty{background:#f8fafc;border-color:#d8e0ea}.its-pack-inline.empty .ico{background:#94a3b8}.its-pack-prices{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 8px 20px rgba(24,55,93,.05)}.its-pack-prices-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.its-pack-prices-ico{width:36px;height:36px;border-radius:13px;background:#fff4d5;color:#9a6100;display:flex;align-items:center;justify-content:center;font-size:18px}.its-pack-prices-title{font-size:14px;font-weight:900;color:#18375d}.its-pack-prices-sub{font-size:11px;color:#64748b;margin-top:2px}.its-pack-prices-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.its-pack-price{border:1px solid #e2e8f0;background:#f8fafc;border-radius:13px;padding:9px}.its-pack-price strong{display:block;color:#18375d;font-size:13px}.its-pack-price span{display:block;color:#007883;font-size:12px;font-weight:900;margin-top:2px}.its-pack-price.pop{background:#fff8ec;border-color:#ffd490}.its-pack-price.pop strong::after{content:"Populaire";font-size:9px;margin-left:6px;background:#ffc744;color:#18375d;border-radius:999px;padding:2px 5px;vertical-align:middle}.its-pack-price.enterprise{background:#eef6fb;border-color:#b8d8ec}.its-pack-price.enterprise strong::after{content:"Entreprise";font-size:9px;margin-left:6px;background:#0d4c72;color:#fff;border-radius:999px;padding:2px 5px;vertical-align:middle}
+@media(max-width:760px){.its-pack-grid,.its-pack-bottom,.its-pack-prices-grid{grid-template-columns:1fr}.its-pack-top{flex-direction:column}.its-pack-pill,.its-pack-link{white-space:normal;width:100%}}
+
+.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
 
 </style>
 </head>
@@ -129,10 +133,11 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="field"><label>Description interne</label><input class="inp" id="desc" type="text" oninput="updateParam('desc',this.value)"></div>
         <div class="inp-row">
           <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Écrivez ce nom sans espace, tout attaché. Il sera intégré dans l’URL de passation.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
-          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
+          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">Pack en cours</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="700">700 passations</option><option value="1200">1 200 passations</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
         </div>
         <div id="paramQuotaInline" class="partner-hide"></div>
+        <div id="paramPackPrices" class="partner-hide"></div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
           <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
@@ -206,7 +211,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
       <div id="paramQuotaCardSide" class="partner-hide" style="margin-bottom:12px"></div>
 
-      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
+      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">Pack en cours</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="700">700 passations</option><option value="1200">1 200 passations</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
     </div>
   </div>
 </div>
@@ -233,72 +238,112 @@ function getToken(){
   return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
 }
 
+
 function itsFormatQuotaNumber(v){
   const n=Number(v||0);
   return Number.isFinite(n)?n.toLocaleString('fr-FR'):'0';
 }
+function itsNormalizePackValue(pack){
+  const p=String(pack ?? '').trim().toLowerCase();
+  if(['illimité','illimite','unlimited','infinite','∞'].includes(p)) return 'illimite';
+  if(['current_pack','current','pack_en_cours','en_cours','existing'].includes(p)) return 'current_pack';
+  const clean=p.replace(/\s/g,'');
+  return clean;
+}
+function itsPackPriceMap(){
+  return {50:'250 € HT',100:'450 € HT',200:'700 € HT',500:'1 500 € HT',700:'1 900 € HT',1200:'3 000 € HT',1500:'3 500 € HT',1700:'3 800 € HT',2000:'4 000 € HT',2500:'4 800 € HT',3000:'5 400 € HT',4000:'6 600 € HT',5000:'7 500 € HT',7000:'9 100 € HT',illimite:'15 000 € HT'};
+}
+function itsPackPrice(pack, quota){
+  const p=itsNormalizePackValue(pack || quota || '');
+  return itsPackPriceMap()[p] || '';
+}
 function itsReadQuotaFromObject(obj){
   if(!obj||typeof obj!=='object') return null;
-  const quota = obj.passationsQuota ?? obj.passations_quota ?? obj.quota ?? obj.passations_total ?? obj.passationsTotal ?? obj.passations_achetees ?? obj.passationsAchetees;
-  const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
-  const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
-  const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
+  const quota = obj.passationsQuota ?? obj.passations_quota ?? obj.passationsTotal ?? obj.passations_total ?? obj.passationsAchetees ?? obj.passations_achetees ?? obj.quota ?? obj.quota_total;
+  const used = obj.passationsUsed ?? obj.passations_used ?? obj.passationsUtilisees ?? obj.passations_utilisees ?? obj.used ?? obj.quota_used ?? 0;
+  const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.passationsRestantes ?? obj.passations_restantes ?? obj.remaining ?? obj.quota_remaining;
+  const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? obj.selectedPack ?? obj.selected_pack ?? '';
   if(quota===undefined && remainingRaw===undefined && !pack) return null;
+  const normalizedPack=itsNormalizePackValue(pack);
   const q=Number(quota||0), u=Number(used||0);
   const r=remainingRaw!==undefined && remainingRaw!==null && remainingRaw!=='' ? Number(remainingRaw) : Math.max(q-u,0);
-  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack||'')};
+  return {quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:normalizedPack};
 }
 function itsPickQuotaPayload(data){
-  const candidates=[data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.account,data?.user,data?.partner,data];
+  const candidates=[
+    data?.organization,data?.organisation,data?.clientOrganization,data?.client_organization,data?.clientOrganisation,data?.client_organisation,
+    data?.account,data?.user,data?.me,data?.client,data?.partner,data?.currentOrganization,data?.current_organization,data
+  ];
   for(const c of candidates){const q=itsReadQuotaFromObject(c); if(q) return q;}
-  if(Array.isArray(data?.organizations)){for(const c of data.organizations){const q=itsReadQuotaFromObject(c); if(q) return q;}}
+  const arrays=[data?.organizations,data?.organisations,data?.clients,data?.items,data?.data];
+  for(const arr of arrays){ if(Array.isArray(arr)){ for(const c of arr){const q=itsReadQuotaFromObject(c); if(q) return q;} } }
   return {quota:0,used:0,remaining:0,pack:''};
 }
 async function itsLoadClientQuota(){
   const token=(localStorage.getItem('its_token')||localStorage.getItem('token')||localStorage.getItem('auth_token')||'');
-  const role=(localStorage.getItem('its_user_role')||'').toLowerCase();
+  const role=(getUserRole()||localStorage.getItem('its_user_role')||'').toLowerCase();
   const base=(typeof API_BASE_URL!=='undefined'?API_BASE_URL:(typeof API_BASE!=='undefined'?API_BASE:(typeof API_URL!=='undefined'?API_URL:'https://into-the-shift-studio-api.osc-fr1.scalingo.io')));
-  const cached=JSON.parse(localStorage.getItem('its_client_quota_cache')||'null');
+  const cacheKey='its_client_quota_cache_'+(token ? token.slice(-18) : 'public');
+  let cached=null;
+  try{cached=JSON.parse(localStorage.getItem(cacheKey)||localStorage.getItem('its_client_quota_cache')||'null');}catch(e){}
   async function get(path){const r=await fetch(base+path,{headers:{Authorization:'Bearer '+token}}); if(!r.ok) throw new Error(path+' '+r.status); return await r.json();}
-  try{
-    let data=null;
-    if(role==='partner') data=await get('/api/partner/me');
-    else data=await get('/api/me');
-    const quota=itsPickQuotaPayload(data);
-    localStorage.setItem('its_client_quota_cache',JSON.stringify(quota));
-    return quota;
-  }catch(e){
-    return cached || {quota:0,used:0,remaining:0,pack:''};
+  const paths = role==='partner'
+    ? ['/api/partner/me','/api/me']
+    : ['/api/me/organization-quota','/api/me'];
+  for(const path of paths){
+    try{
+      const data=await get(path);
+      const quota=itsPickQuotaPayload(data);
+      if(quota && (quota.quota || quota.pack || quota.remaining)){
+        localStorage.setItem(cacheKey,JSON.stringify(quota));
+        localStorage.setItem('its_client_quota_cache',JSON.stringify(quota));
+        return quota;
+      }
+    }catch(e){console.warn('Quota non trouvé sur '+path, e);}
   }
+  return cached || {quota:0,used:0,remaining:0,pack:''};
 }
 function itsQuotaLabel(q){
   if(!q||(!q.pack&&!q.quota)) return 'Pack non renseigné';
-  if(String(q.pack)==='illimite') return 'Pack illimité';
-  if(String(q.pack)==='existing') return 'Pack en cours';
-  const n=Number(q.pack||q.quota||0);
-  return n?('Pack '+n.toLocaleString('fr-FR')):'Pack en cours';
+  const pack=itsNormalizePackValue(q.pack || q.quota || '');
+  if(pack==='illimite') return 'Pack illimité';
+  if(pack==='current_pack') return 'Pack en cours';
+  const n=Number(pack||q.quota||0);
+  return n?('Pack '+n.toLocaleString('fr-FR')+' passations'):'Pack en cours';
 }
 function itsQuotaNudge(q){
-  if(!q||!q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
+  if(!q||(!q.quota && !q.pack)) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
+  const pack=itsNormalizePackValue(q.pack);
+  if(pack==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
   const ratio=q.quota? q.remaining/q.quota : 0;
-  if(String(q.pack)==='illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
   if(ratio<=0) return 'Votre solde est épuisé : contactez Into The Shift pour recharger votre pack avant une nouvelle campagne.';
   if(ratio<.2) return 'Votre solde devient bas : pensez à anticiper une recharge pour éviter de bloquer une campagne.';
   return 'Votre pack est actif : vous pouvez continuer à créer et diffuser vos autodiagnostics.';
 }
-function itsQuotaCardHTML(q,compact=false){
-  const quota=Number(q?.quota||0), used=Number(q?.used||0), remaining=String(q?.pack)==='illimite'?'∞':Number(q?.remaining||Math.max(quota-used,0));
-  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q.remaining||0)/quota)*100))):0;
-  const cls=!quota&&!q?.pack?'empty':(pct<20&&String(q?.pack)!=='illimite'?'warn':'ok');
-  return `<div class="its-quota-card ${cls}">
-    <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${itsQuotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
-    <div class="its-quota-main"><div class="its-quota-box"><strong>${itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
-    <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
-    <div class="its-quota-nudge">${itsQuotaNudge(q)}</div>
+function itsQuotaCardHTML(q){
+  const pack=itsNormalizePackValue(q?.pack);
+  const quota=Number(q?.quota||0), used=Number(q?.used||0);
+  const remaining=pack==='illimite'?'∞':Number(q?.remaining ?? Math.max(quota-used,0));
+  const pct=quota?Math.max(0,Math.min(100,Math.round((Number(q?.remaining ?? remaining)/quota)*100))):0;
+  const cls=pack==='illimite'?'unlimited':(!quota&&!pack?'empty':(pct<20?'warn':''));
+  const price=itsPackPrice(pack, quota);
+  const pill=pack==='illimite'?'Illimité':(!quota&&!pack?'À renseigner':pct+'% restant');
+  return `<div class="its-pack-card ${cls}">
+    <div class="its-pack-top"><div class="its-pack-heading"><div class="its-pack-icon">🎟️</div><div><div class="its-pack-kicker">Pack de passations</div><div class="its-pack-title">${itsQuotaLabel(q)}</div></div></div><div class="its-pack-pill">✨ ${pill}</div></div>
+    <div class="its-pack-grid"><div class="its-pack-metric"><div class="mi">🛒</div><strong>${pack==='illimite'?'∞':itsFormatQuotaNumber(quota)}</strong><span>Achetées</span></div><div class="its-pack-metric"><div class="mi">✅</div><strong>${itsFormatQuotaNumber(used)}</strong><span>Utilisées</span></div><div class="its-pack-metric"><div class="mi">⚡</div><strong>${remaining==='∞'?'∞':itsFormatQuotaNumber(remaining)}</strong><span>Restantes</span></div></div>
+    <div class="its-pack-progress"><div class="its-pack-progress-fill" style="width:${pack==='illimite'?100:pct}%"></div></div>
+    <div class="its-pack-bottom"><div class="its-pack-nudge">${itsQuotaNudge(q)}${price?`<br><span style="font-weight:900;color:#007883">Tarif indicatif : ${price}</span>`:''}</div><a class="its-pack-link" href="mailto:contact@intotheshift.io?subject=Pack%20de%20passations">Recharger / tarifs →</a></div>
   </div>`;
 }
 function itsQuotaInlineHTML(q){
-  return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
+  const pack=itsNormalizePackValue(q?.pack);
+  const empty=!q||(!q.quota&&!pack);
+  const price=itsPackPrice(pack, q?.quota);
+  return `<div class="its-pack-inline ${empty?'empty':''}"><div class="ico">🎟️</div><div><strong>${itsQuotaLabel(q)}</strong><div class="mini">${pack==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}${price?' · Tarif indicatif : '+price:''}.</div></div></div>`;
+}
+function itsPackPricesHTML(){
+  const items=[['50','250 € HT'],['100','450 € HT'],['200','700 € HT'],['500','1 500 € HT','pop'],['700','1 900 € HT'],['1 200','3 000 € HT','enterprise'],['1 500','3 500 € HT'],['1 700','3 800 € HT'],['2 000','4 000 € HT'],['2 500','4 800 € HT'],['3 000','5 400 € HT'],['4 000','6 600 € HT'],['5 000','7 500 € HT'],['7 000','9 100 € HT'],['Illimité','15 000 € HT']];
+  return `<div class="its-pack-prices"><div class="its-pack-prices-head"><div class="its-pack-prices-ico">💶</div><div><div class="its-pack-prices-title">Tarifs indicatifs des packs</div><div class="its-pack-prices-sub">HT — à confirmer selon le contexte de déploiement.</div></div></div><div class="its-pack-prices-grid">${items.map(i=>`<div class="its-pack-price ${i[2]||''}"><strong>${i[0]} passations</strong><span>${i[1]}</span></div>`).join('')}</div></div>`;
 }
 
 let itsCurrentClientQuota = null;
@@ -307,8 +352,10 @@ async function renderParamQuota(){
   itsCurrentClientQuota = await itsLoadClientQuota();
   const inline=document.getElementById('paramQuotaInline');
   const side=document.getElementById('paramQuotaCardSide');
+  const prices=document.getElementById('paramPackPrices');
   if(inline) inline.innerHTML=itsQuotaInlineHTML(itsCurrentClientQuota);
-  if(side) side.innerHTML=itsQuotaCardHTML(itsCurrentClientQuota,true);
+  if(side) side.innerHTML=itsQuotaCardHTML(itsCurrentClientQuota);
+  if(prices) prices.innerHTML=itsPackPricesHTML();
   if(itsCurrentClientQuota && (itsCurrentClientQuota.quota || itsCurrentClientQuota.pack)){
     const p=state.parametrage||{};
     if(!p.pack_choisi){ updatePack('current_pack', true); }
@@ -506,7 +553,7 @@ function updatePack(v, shouldSave=true){
   if(a) a.value=state.parametrage.pack_choisi;
   if(b) b.value=state.parametrage.pack_choisi;
   const bar=document.getElementById('pack-bar');
-  if(bar){ const map={200:12,500:20,1200:35,2000:48,3000:60,5000:75,7000:88,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
+  if(bar){ const map={50:8,100:10,200:12,500:20,700:26,1200:35,1500:40,1700:44,2000:48,2500:55,3000:60,4000:68,5000:75,7000:88,illimite:100,current_pack:65}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
   if(shouldSave) save();
 }
 function updateSidebar(){ const p=state.parametrage; document.getElementById('sb-theme').textContent=themeTitle(); document.getElementById('sb-chap').textContent=(state.chapters||[]).length; document.getElementById('sb-q').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.questions||[]).length),0); document.getElementById('sb-profils').textContent=(state.chapters||[]).reduce((a,c)=>a+((c.profiles||c.profils||[]).length),0); document.getElementById('sb-lancement').textContent=p.date_lancement?formatDateFr(p.date_lancement):'À renseigner'; document.getElementById('sb-cloture').textContent=p.date_cloture?formatDateFr(p.date_cloture):'—'; }
