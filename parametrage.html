@@ -114,7 +114,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
-          <div class="field"><label>Date de clôture</label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar()"></div>
+          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
         </div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
@@ -467,14 +467,79 @@ function clearPassationLogo(){
   if(input) input.value = "";
 }
 
-function checkContinue(){
-  const p=state.parametrage;
-  const baseOk=(p.nom||'').trim()&&(p.titre||'').trim()&&(p.slug||'').trim()&&(p.intro||'').trim()&&(p.date_lancement||'').trim()&&(p.entreprise||'').trim()&&(p.sociodemo||[]).length>0;
-  const packOk = isPartnerMode() ? Number(p.volume_prevu || 0) > 0 : (p.pack_choisi||'').trim();
-  const ok = baseOk && packOk;
-  document.getElementById('btn-continue').disabled=!ok;
+function getFieldValue(id){
+  const el = document.getElementById(id);
+  return String((el && el.value !== undefined ? el.value : '') || '').trim();
 }
 
+function markFieldMissing(id, missing){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.toggle('missing', Boolean(missing));
+  el.style.borderColor = missing ? '#ffd490' : '';
+  el.style.background = missing ? '#fff8ec' : '';
+}
+
+function clearMissingFields(){
+  ['nom','titre','entreprise','pack_choisi','volume_prevu','date_lancement','date_cloture','slug','intro','nb_repondants'].forEach(id => markFieldMissing(id, false));
+}
+
+function getMissingParametrageFields(){
+  const p = state.parametrage || {};
+  const missing = [];
+
+  const nom = getFieldValue('nom') || p.nom || '';
+  const titre = getFieldValue('titre') || p.titre || '';
+  const entreprise = getFieldValue('entreprise') || p.entreprise || '';
+  const slug = getFieldValue('slug') || p.slug || '';
+  const intro = getFieldValue('intro') || p.intro || '';
+  const lancement = getFieldValue('date_lancement') || p.date_lancement || p.dateLancement || '';
+  const cloture = getFieldValue('date_cloture') || p.date_cloture || p.dateCloture || '';
+  const nbRepondants = Number(getFieldValue('nb_repondants') || p.nb_repondants || 0);
+  const socio = Array.isArray(p.sociodemo) ? p.sociodemo : [];
+
+  if(!String(nom).trim()) missing.push({ id:'nom', label:"Nom de l'autodiagnostic" });
+  if(!String(titre).trim()) missing.push({ id:'titre', label:"Titre visible par les répondants" });
+  if(!String(entreprise).trim()) missing.push({ id:'entreprise', label:"Nom de l'entreprise / espace client" });
+  if(!String(slug).trim()) missing.push({ id:'slug', label:"Slug de l'URL" });
+  if(!String(lancement).trim()) missing.push({ id:'date_lancement', label:"Date de lancement souhaitée" });
+  if(!String(cloture).trim()) missing.push({ id:'date_cloture', label:"Date de clôture" });
+  if(lancement && cloture && String(lancement) > String(cloture)) missing.push({ id:'date_cloture', label:"Date de clôture postérieure à la date de lancement" });
+  if(!String(intro).trim()) missing.push({ id:'intro', label:"Texte d'introduction" });
+  if(!nbRepondants || nbRepondants < 1) missing.push({ id:'nb_repondants', label:"Nombre total de répondants estimé" });
+  if(!socio.length) missing.push({ id:'socio-list', label:"Au moins une donnée socio-démo" });
+
+  if(isPartnerMode()){
+    const volume = Number(getFieldValue('volume_prevu') || p.volume_prevu || 0);
+    if(!volume || volume < 1) missing.push({ id:'volume_prevu', label:"Volume prévu pour cette campagne" });
+  } else {
+    const pack = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || p.pack_choisi || '';
+    if(!String(pack).trim()) missing.push({ id:'pack_choisi', label:"Pack choisi" });
+  }
+
+  return missing;
+}
+
+function showMissingParametrageAlert(missing){
+  if(!missing || !missing.length) return;
+  clearMissingFields();
+  missing.forEach(item => markFieldMissing(item.id, true));
+  const first = document.getElementById(missing[0].id);
+  if(first && typeof first.scrollIntoView === 'function'){
+    first.scrollIntoView({ behavior:'smooth', block:'center' });
+    if(typeof first.focus === 'function') setTimeout(() => first.focus(), 250);
+  }
+  alert("Impossible de continuer pour le moment.\n\nÀ compléter ou corriger :\n- " + missing.map(item => item.label).join("\n- "));
+}
+
+function checkContinue(){
+  const btn = document.getElementById('btn-continue');
+  if(!btn) return false;
+  const missing = getMissingParametrageFields();
+  btn.disabled = false;
+  btn.title = missing.length ? "Cliquez pour voir les champs à compléter." : "";
+  return missing.length === 0;
+}
 
 function getCurrentProjectIdForSave(){
   return state.currentAdId || state.project_id || state.projectId ||
@@ -521,17 +586,8 @@ async function persistProjectDraft(step, status){
     });
     const saved = await response.json().catch(()=>({}));
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){
-      state.currentAdId = id;
-      state.project_id = id;
-      state.projectId = id;
-      localStorage.setItem('its_current_project_id', String(id));
-      localStorage.setItem('its_current_ad_id', String(id));
-      save();
-      return id;
-    }
+    if(id){ state.currentAdId = id; state.project_id = id; state.projectId = id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); save(); }
   }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
-  return getCurrentProjectIdForSave();
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
@@ -541,7 +597,36 @@ async function goNext(){
     state.parametrage.mode_quota = "partner";
     state.parametrage.partner_client_id = localStorage.getItem("its_selected_partner_client_id") || "";
   }
+
+  state.parametrage.nom = getFieldValue('nom') || state.parametrage.nom || '';
+  state.parametrage.titre = getFieldValue('titre') || state.parametrage.titre || '';
+  state.parametrage.desc = getFieldValue('desc') || state.parametrage.desc || '';
+  state.parametrage.entreprise = getFieldValue('entreprise') || state.parametrage.entreprise || '';
+  state.parametrage.slug = getFieldValue('slug') || state.parametrage.slug || '';
+  state.parametrage.intro = getFieldValue('intro') || state.parametrage.intro || '';
+  state.parametrage.date_lancement = getFieldValue('date_lancement') || state.parametrage.date_lancement || '';
+  state.parametrage.dateLancement = state.parametrage.date_lancement;
+  state.parametrage.date_cloture = getFieldValue('date_cloture') || state.parametrage.date_cloture || '';
+  state.parametrage.dateCloture = state.parametrage.date_cloture;
+  state.parametrage.nb_repondants = Number(getFieldValue('nb_repondants') || state.parametrage.nb_repondants || 0);
+
+  if(!isPartnerMode()){
+    state.parametrage.pack_choisi = getFieldValue('pack_choisi') || getFieldValue('pack_choisi_sidebar') || state.parametrage.pack_choisi || '';
+  } else {
+    state.parametrage.volume_prevu = Number(getFieldValue('volume_prevu') || state.parametrage.volume_prevu || 0);
+  }
+
   normalizeCampaignDatesInState();
+
+  const missing = getMissingParametrageFields();
+  if(missing.length){
+    showMissingParametrageAlert(missing);
+    checkContinue();
+    save();
+    return;
+  }
+
+  clearMissingFields();
   state.parametrage.done=true;
   save();
   const savedProjectId = await persistProjectDraft('parametrage','draft');

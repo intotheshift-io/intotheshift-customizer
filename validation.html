@@ -309,10 +309,57 @@ function slugify(text){
     .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     .replace(/&/g,'et').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
+function normalizeDateOnly(value){
+  if(!value) return '';
+  const s = String(value).trim();
+  if(!s) return '';
+  const match = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(match) return `${match[1]}-${match[2]}-${match[3]}`;
+  const d = new Date(s);
+  if(Number.isNaN(d.getTime())) return s;
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
 function formatDateFr(s){
-  if(!s) return '—';
-  const p = String(s).split('-');
-  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : s;
+  const normalized = normalizeDateOnly(s);
+  if(!normalized) return '—';
+  const p = normalized.split('-');
+  return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : normalized;
+}
+function getCampaignStartDate(){
+  const param = getParam();
+  return normalizeDateOnly(
+    param.date_lancement || param.dateLancement ||
+    state.campaignStartDate || state.campaign_start_date || state.startDate || state.start_date ||
+    state.meta?.date_lancement || state.meta?.dateLancement || ''
+  );
+}
+function getCampaignEndDate(){
+  const param = getParam();
+  return normalizeDateOnly(
+    param.date_cloture || param.dateCloture ||
+    state.campaignEndDate || state.campaign_end_date || state.endDate || state.end_date ||
+    state.meta?.date_cloture || state.meta?.dateCloture || ''
+  );
+}
+function syncCampaignDatesForValidation(){
+  const param = getParam();
+  const start = getCampaignStartDate();
+  const end = getCampaignEndDate();
+  param.date_lancement = start;
+  param.dateLancement = start;
+  param.date_cloture = end;
+  param.dateCloture = end;
+  state.campaignStartDate = start;
+  state.campaign_start_date = start;
+  state.startDate = start;
+  state.start_date = start;
+  state.campaignEndDate = end;
+  state.campaign_end_date = end;
+  state.endDate = end;
+  state.end_date = end;
 }
 function formatPack(pack){
   if(!pack) return '—';
@@ -409,6 +456,7 @@ function profileMin(ch,p,i){ return p.min ?? (ch.seuils?.[i]?.min ?? ''); }
 function profileMax(ch,p,i){ return p.max ?? (ch.seuils?.[i]?.max ?? ''); }
 
 function buildExcelHtml(){
+  syncCampaignDatesForValidation();
   const chapters = getChapters();
   const param = getParam();
   const client = getClientInfo();
@@ -883,8 +931,9 @@ function refresh(){
   const pCount = chapters.reduce((a,c)=>a+(c.profiles||[]).length,0);
   const title = getThemeTitle();
   const company = getCompany();
-  const launch = param.date_lancement || param.dateLancement || '';
-  const close = param.date_cloture || param.dateCloture || '';
+  syncCampaignDatesForValidation();
+  const launch = getCampaignStartDate();
+  const close = getCampaignEndDate();
   const pack = formatPack(getPackChoice());
   const url = getUrl();
 

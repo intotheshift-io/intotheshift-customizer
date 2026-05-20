@@ -301,6 +301,10 @@
       ).toLowerCase();
     }
 
+    function getProjectId(project) {
+      return String(project?.id || project?.project_id || project?.projectId || project?.data?.project_id || project?.data?.projectId || "");
+    }
+
     function resumeLabel(project) {
       const status = normalizeStatus(project);
       if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
@@ -314,7 +318,7 @@
 
     function resumeUrl(project) {
       const status = normalizeStatus(project);
-      const id = project.id || project.project_id || "";
+      const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
       if (status === "published" || status === "unpublished" || status === "archived") return "validation.html" + suffix;
@@ -328,23 +332,47 @@
 
     function restoreProjectLocally(project) {
       const data = getProjectData(project);
+      const projectId = getProjectId(project);
       if (!data || typeof data !== "object") return false;
+
+      if (projectId) {
+        localStorage.setItem("its_current_project_id", projectId);
+        localStorage.setItem("its_current_ad_id", projectId);
+      }
 
       if (typeof itsRestoreProject === "function") {
         return itsRestoreProject(project);
       }
 
-      localStorage.setItem("its_current_project_id", String(project.id || project.project_id || ""));
-      localStorage.setItem("its_current_ad_id", String(project.id || project.project_id || ""));
       localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(data));
       return true;
     }
 
-    function resumeProjectByIndex(index) {
-      const project = projects[index];
+    async function fetchFreshProject(projectId) {
+      if (!projectId || !token()) return null;
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}`, {
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+        if (!res.ok) return null;
+        const json = await res.json();
+        return json.project || json.data || json;
+      } catch(e) {
+        return null;
+      }
+    }
+
+    async function resumeProjectById(projectId) {
+      let project = projects.find(p => getProjectId(p) === String(projectId));
       if (!project) return alert("Projet introuvable.");
-      restoreProjectLocally(project);
-      window.location.href = resumeUrl(project);
+
+      const fresh = await fetchFreshProject(projectId);
+      if (fresh) project = fresh;
+
+      const restored = restoreProjectLocally(project);
+      if (!restored) return alert("Le contenu de ce projet est introuvable.");
+
+      window.location.assign(resumeUrl(project));
     }
 
     function canCloneProject(project) {
@@ -404,6 +432,7 @@
         const hasShare = status === "published" && Boolean(shareUrl);
         const hasResults = (status === "published" || status === "unpublished") && Boolean(resultsUrl);
         const canClone = canCloneProject(p);
+        const projectId = getProjectId(p);
 
         return `
           <article class="card">
@@ -430,7 +459,7 @@
             <div class="actions">
               <span class="status ${status}">${statusLabel(status)}</span>
               <div class="row-actions">
-                <button class="btn btn-blue" onclick="resumeProjectByIndex(${index})">
+                <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
                   ${resumeLabel(p)}
                 </button>
                 ${hasShare ? `
@@ -454,7 +483,7 @@
 
             ${status === "draft" ? `
               <div class="menu" id="menu-${index}">
-                <button class="danger" onclick="archiveProject('${p.id || p.project_id || ""}')">Archiver</button>
+                <button class="danger" onclick="archiveProject('${escapeAttr(projectId)}')">Archiver</button>
               </div>
             ` : ""}
           </article>
