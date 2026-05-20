@@ -3061,15 +3061,80 @@
   //  ENREGISTREMENT DU DOMAINE
   // ─────────────────────────────────────────────────────────────────────────
 
+
+  // ─────────────────────────────────────────────────────────────────────────
+  //  ENREGISTREMENT DU DOMAINE
+  //  Chaque AD rédigé utilise un template inline avec ses vrais titres.
+  //  Les ADs sans contenu rédigé conservent les templates génériques.
+  // ─────────────────────────────────────────────────────────────────────────
+
   window.ITS_registerTheme("qvt", "QVT & RPS", "🌿", [
-    ["rps-signaux-faibles",    "Repérer les signaux faibles de RPS",          "Tous publics",          "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",                                                                     T.qvtRps],
-    ["charge-priorites",       "Charge de travail et priorisation",           "Tous publics",          "Prendre du recul sur l'urgence, les arbitrages et les limites soutenables.",                                                                                      T.qvtRps],
-    ["cooperation-climat",     "Coopération et climat de travail",            "Collaborateurs",        "Agir dans les irritants du quotidien, désamorcer et préserver la qualité relationnelle.",                                                                         T.qvtRps],
-    ["manager-qvt-rps",        "Manager la charge et les tensions d'équipe",  "Managers",              "Identifier, réguler et orienter sans porter seul les situations sensibles.",                                                                                       T.qvtRps],
-    ["teletravail-hybridation","Télétravail et travail hybride",              "Collaborateurs",        "Organiser sa présence à distance, maintenir le lien collectif et gérer les irritants de l'hybridation.",                                                          T.qvtTeletravail],
-    ["epuisement-prevention",  "Prévenir l'épuisement professionnel",        "Collaborateurs",        "Reconnaître ses signaux d'alerte, réguler sa charge dans la durée et oser chercher un appui.",                                                                    T.qvtEpuisement],
-    ["retour-apres-absence",   "Reprendre le travail après une absence",      "Tous publics",          "Préparer son retour, réintégrer son collectif et calibrer la reprise en charge sans surcompenser.",                                                               T.qvtRetourAbsence],
-    ["manager-signaux-rps",    "Détecter et orienter sans psychologiser",     "Managers / Encadrants", "Repérer les signaux faibles, intervenir sur le travail et orienter vers les bons relais sans se substituer aux spécialistes.",                                    T.qvtManagerSignaux]
+
+    ["rps-signaux-faibles", "Repérer les signaux faibles de RPS", "Tous publics",
+      "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",
+      { domain: "qvt", chapters: [
+        ["Repérer les signaux faibles",    "Observer ce qui change autour de soi et sentir quand une situation mérite attention."],
+        ["Réguler la charge",              "Prioriser, demander de l'aide et clarifier les urgences avant d'être à bout."],
+        ["Préserver les relations de travail", "Désamorcer les irritants et maintenir un dialogue constructif."],
+        ["Mobiliser les bons relais",      "Savoir quand passer la main et comment le faire sans exposer inutilement."]
+      ]}
+    ],
+
+    ["charge-priorites", "Charge de travail et priorisation", "Tous publics",
+      "Prendre du recul sur l'urgence, les arbitrages et les limites soutenables.",
+      { domain: "qvt", chapters: [
+        ["Réguler les urgences",                   "Identifier ce qui est vraiment urgent et organiser sa charge sans tout absorber."],
+        ["Dire non et négocier les délais",         "Formuler ses contraintes et renégocier un engagement sans se dévaluer."],
+        ["Déléguer et faire confiance",             "Confier un résultat à atteindre plutôt qu'une façon de faire à reproduire."],
+        ["Prioriser sous pression hiérarchique",    "Tenir ses arbitrages quand les demandes contradictoires s'accumulent."]
+      ]}
+    ],
+
+    ["cooperation-climat", "Coopération et climat de travail", "Collaborateurs",
+      "Agir dans les irritants du quotidien, désamorcer et préserver la qualité relationnelle.",
+      { domain: "qvt", chapters: [
+        ["Désamorcer les irritants du quotidien",        "Nommer ce qui dérange, à la source, avant que ça ne s'installe."],
+        ["Coopérer sans se défausser",                   "Tenir ses engagements et rester disponible au-delà de son périmètre officiel."],
+        ["Gérer les désaccords sans les laisser traîner","Exprimer une position en face, sur les faits, au bon moment."],
+        ["Maintenir la qualité relationnelle sous pression", "Préserver la qualité de ses échanges même quand la charge est forte."]
+      ]}
+    ],
+
+    ["manager-qvt-rps", "Manager la charge et les tensions d'équipe", "Managers",
+      "Identifier, réguler et orienter sans porter seul les situations sensibles.",
+      T.qvtRps
+    ],
+
+    ["teletravail-hybridation", "Télétravail et travail hybride", "Collaborateurs",
+      "Organiser sa présence à distance, maintenir le lien collectif et gérer les irritants de l'hybridation.",
+      { domain: "qvt", chapters: [
+        ["S'organiser en mode hybride",            "Structurer ses journées, protéger son temps de fond et piloter sa présence."],
+        ["Maintenir le lien en mode hybride",      "Créer délibérément les conditions du lien collectif, quel que soit le mode de présence."],
+        ["Gérer les irritants de l'hybridation",   "Traiter les dysfonctionnements propres au travail hybride sans les normaliser."],
+        ["Naviguer les inégalités du distanciel",  "Repérer et corriger les inégalités créées par le mode de travail à son niveau."]
+      ]}
+    ],
+
+    ["epuisement-prevention", "Prévenir l'épuisement professionnel", "Collaborateurs",
+      "Reconnaître ses signaux d'alerte, réguler sa charge dans la durée et oser chercher un appui.",
+      { domain: "qvt", chapters: [
+        ["Reconnaître ses propres signaux d'alerte", "Identifier les signes précoces avant qu'ils ne s'aggravent."],
+        ["Réguler avant d'être à bout",              "Agir sur les leviers concrets sans attendre le point de rupture."],
+        ["Oser chercher un appui",                   "Franchir le pas sans attendre d'être en situation de crise."],
+        ["Repérer l'épuisement chez les autres",     "Créer des occasions de parler pour ses collègues en difficulté."]
+      ]}
+    ],
+
+    ["retour-apres-absence", "Reprendre le travail après une absence", "Tous publics",
+      "Préparer son retour, réintégrer son collectif et calibrer la reprise en charge sans surcompenser.",
+      T.qvtRetourAbsence
+    ],
+
+    ["manager-signaux-rps", "Détecter et orienter sans psychologiser", "Managers / Encadrants",
+      "Repérer les signaux faibles, intervenir sur le travail et orienter vers les bons relais sans se substituer aux spécialistes.",
+      T.qvtManagerSignaux
+    ]
+
   ]);
 
 })();
