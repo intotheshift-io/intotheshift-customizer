@@ -368,6 +368,7 @@ function formatNumber(v){return num(v).toLocaleString("fr-FR");}
 function formatDate(value){if(!value)return"—";const d=new Date(value);if(isNaN(d.getTime()))return value;return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function escapeHtml(str){return String(str??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
 function escapeAttr(str){return escapeHtml(str).replace(/`/g,"&#096;");}
+function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
 function statusBadge(status){const s=String(status||"brouillon").toLowerCase();if(s.includes("dépub")||s.includes("depub")||s.includes("unpublished"))return`<span class="badge badge-unpublished">Dépublié</span>`;if(s.includes("publi")||s.includes("published"))return`<span class="badge badge-published">Publié</span>`;if(s.includes("transmis")||s.includes("sent")||s.includes("submitted"))return`<span class="badge badge-sent">${escapeHtml(status||"transmis")}</span>`;if(s.includes("brouillon")||s.includes("draft"))return`<span class="badge badge-draft">${escapeHtml(status||"brouillon")}</span>`;return`<span class="badge badge-status">${escapeHtml(status||"actif")}</span>`;}
@@ -845,7 +846,7 @@ function renderProjects(){
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
-    const title=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre"));
+    const rawTitle=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre")); const title=cleanAdTitle(rawTitle);
     const organization=val(p,["organizationName","organization_name"],"—");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
