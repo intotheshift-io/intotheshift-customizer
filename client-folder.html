@@ -79,6 +79,43 @@
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10000;opacity:0;pointer-events:none;transition:all .18s ease}
     .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
+
+
+    /* V1 cockpit AD : filtres, nudges et alertes */
+    .watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
+    .watch-card{border-radius:20px;padding:14px 15px;border:1px solid #e4edf5;background:#f9fbfd;display:flex;gap:11px;align-items:flex-start;min-height:86px}
+    .watch-ico{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto}
+    .watch-card.orange{background:#fff8ec;border-color:#ffd9a3}.watch-card.orange .watch-ico{background:#ffe9c7}
+    .watch-card.blue{background:#eef6ff;border-color:#cfe3ff}.watch-card.blue .watch-ico{background:#dcecff}
+    .watch-card.green{background:#eefbf3;border-color:#c8ebd4}.watch-card.green .watch-ico{background:#d9f4e3}
+    .watch-title{font-size:13px;font-weight:900;color:#17375d;margin-bottom:3px}
+    .watch-text{font-size:12px;color:#61738a;line-height:1.35}
+    .ads-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;flex-wrap:wrap;background:#f7fafd;border:1px solid #e4edf5;border-radius:20px;padding:12px}
+    .ad-filters{display:flex;gap:7px;flex-wrap:wrap}
+    .ad-filter{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;font-family:'Asap',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+    .ad-filter:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(15,45,80,.07)}
+    .ad-filter.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
+    .ad-filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900}
+    .ad-filter.active .ad-filter-count{background:rgba(255,255,255,.22);color:#fff}
+    .ad-search{min-width:230px;flex:1;max-width:330px;position:relative}
+    .ad-search input{width:100%;border:1px solid #d8e2ec;border-radius:999px;padding:10px 14px 10px 34px;font-family:'Asap',sans-serif;font-size:13px;color:#17375d;outline:none;background:#fff}
+    .ad-search input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
+    .ad-search:before{content:'🔎';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.72}
+    .alert-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+    .alert-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;border:1px solid}
+    .alert-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#a06400}
+    .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+    .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
+    .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .resource-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+    .resource-cat{background:#f9fbfd;border:1px solid #e4edf5;border-radius:20px;padding:15px;display:flex;gap:12px;align-items:flex-start}
+    .resource-cat-ico{width:42px;height:42px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef6fb;flex:0 0 auto}
+    .resource-cat h3{margin:0 0 4px;font-size:15px;color:#17375d}
+    .resource-cat p{margin:0;color:#61738a;font-size:12px;line-height:1.4}
+    .resource-cat small{display:block;margin-top:8px;color:#0d4c72;font-weight:900;font-size:11px}
+
+    @media(max-width:900px){.watch-grid,.resource-cats{grid-template-columns:1fr}.ads-toolbar{align-items:stretch}.ad-search{max-width:none;width:100%}}
+
     @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
     @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
   </style>
@@ -125,6 +162,11 @@
             <h2>Autodiagnostics</h2>
             <div class="panel-sub">Tous les AD rattachés à ce client, avec leur statut de traitement.</div>
           </div>
+        </div>
+        <div id="watchList" class="watch-grid"></div>
+        <div class="ads-toolbar">
+          <div id="adFilters" class="ad-filters"></div>
+          <div class="ad-search"><input id="adSearchInput" type="search" placeholder="Rechercher un AD, une thématique…" oninput="renderAds(currentClient?.projects || [])"></div>
         </div>
         <div id="adsList" class="cards"></div>
       </div>
@@ -194,6 +236,7 @@
     let currentClient = null;
     let projectToPublish = null;
     let projectToLogo = null;
+    let currentAdFilter = "all";
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -523,6 +566,7 @@
 
     function normalizeStatus(status){
       const s = String(status || "").toLowerCase();
+      if(s === "archived" || s.includes("archiv")) return "archived";
       if(s === "unpublished" || s.includes("dépub") || s.includes("depub")) return "unpublished";
       if(s === "sent" || s === "transmis" || s === "submitted") return "sent";
       if(s === "published" || s === "publie" || s === "publié" || s === "ligne" || s === "en ligne") return "published";
@@ -534,6 +578,7 @@
       if(s === "sent") return "Transmis";
       if(s === "published") return "Publié";
       if(s === "unpublished") return "Dépublié";
+      if(s === "archived") return "Archivé";
       return "Brouillon";
     }
 
@@ -542,6 +587,7 @@
       if(s === "sent") return "status-sent";
       if(s === "published") return "status-published";
       if(s === "unpublished") return "status-unpublished";
+      if(s === "archived") return "status-unpublished";
       return "status-draft";
     }
 
@@ -572,15 +618,110 @@
       renderResources(projects);
     }
 
+    function getDaysUntil(dateValue){
+      const iso = normalizeDateInputValue(dateValue);
+      if(!iso) return null;
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const target = new Date(iso + "T00:00:00");
+      if(Number.isNaN(target.getTime())) return null;
+      return Math.ceil((target - today) / 86400000);
+    }
+
+    function getProjectAlerts(project){
+      const status = normalizeStatus(project.status);
+      const endDate = getProjectEndDate(project);
+      const daysLeft = getDaysUntil(endDate);
+      const share = getProjectShareUrl(project);
+      const results = getProjectResultsUrl(project);
+      const alerts = [];
+
+      if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
+      if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 7) alerts.push({kind:"warn", icon:"⏳", text:`Clôture dans ${daysLeft} jour${daysLeft>1?'s':''}`});
+      if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
+      if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
+      if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
+      if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
+      if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
+      if(status === "archived") alerts.push({kind:"neutral", icon:"📦", text:"Archivé"});
+      return alerts;
+    }
+
+    function renderAlertBadges(project){
+      const alerts = getProjectAlerts(project);
+      if(!alerts.length) return "";
+      return `<div class="alert-badges">${alerts.map(a => `<span class="alert-badge ${a.kind}">${a.icon} ${escapeHtml(a.text)}</span>`).join("")}</div>`;
+    }
+
+    function getAdFilterCounts(projects){
+      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0};
+      projects.forEach(project => {
+        const s = normalizeStatus(project.status);
+        counts[s] = (counts[s] || 0) + 1;
+      });
+      return counts;
+    }
+
+    function renderAdFilters(projects){
+      const wrap = document.getElementById("adFilters");
+      if(!wrap) return;
+      const counts = getAdFilterCounts(projects);
+      const filters = [
+        ["all","✨ Tous"],
+        ["draft","✏️ Brouillons"],
+        ["sent","🚀 Transmis"],
+        ["published","🟢 Publiés"],
+        ["unpublished","🛑 Dépubliés"],
+        ["archived","📦 Archivés"]
+      ];
+      wrap.innerHTML = filters.map(([key,label]) => `
+        <button class="ad-filter ${currentAdFilter===key?'active':''}" type="button" onclick="setAdFilter('${key}')">
+          <span>${label}</span><span class="ad-filter-count">${counts[key] || 0}</span>
+        </button>
+      `).join("");
+    }
+
+    function setAdFilter(filter){
+      currentAdFilter = filter || "all";
+      renderAds(currentClient?.projects || []);
+    }
+
+    function renderWatchList(projects){
+      const el = document.getElementById("watchList");
+      if(!el) return;
+      const endingSoon = projects.filter(p => normalizeStatus(p.status)==="published" && getDaysUntil(getProjectEndDate(p)) !== null && getDaysUntil(getProjectEndDate(p)) >= 0 && getDaysUntil(getProjectEndDate(p)) <= 7).length;
+      const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
+      const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
+      el.innerHTML = `
+        <div class="watch-card orange"><div class="watch-ico">⏳</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">À surveiller pour relances, clôture ou dépublication.</div></div></div>
+        <div class="watch-card blue"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">À publier dès que les URLs de diffusion et résultats sont prêtes.</div></div></div>
+        <div class="watch-card green"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Accès directs disponibles dans l’onglet Résultats.</div></div></div>
+      `;
+    }
+
     function renderAds(projects){
       const adsList = document.getElementById("adsList");
+      renderWatchList(projects);
+      renderAdFilters(projects);
 
       if(!projects.length){
         adsList.innerHTML = `<div class="empty">Aucun autodiagnostic n’est encore rattaché à ce client.</div>`;
         return;
       }
 
-      adsList.innerHTML = projects.map(project => {
+      const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
+      const filtered = projects.filter(project => {
+        const statusOk = currentAdFilter === "all" || normalizeStatus(project.status) === currentAdFilter;
+        const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
+        return statusOk && (!search || text.includes(search));
+      });
+
+      if(!filtered.length){
+        adsList.innerHTML = `<div class="empty">Aucun autodiagnostic ne correspond à ce filtre.</div>`;
+        return;
+      }
+
+      adsList.innerHTML = filtered.map(project => {
         const normalizedStatus = normalizeStatus(project.status);
         const projectTitle = getProjectTitle(project);
         const startDate = getProjectStartDate(project);
@@ -591,6 +732,7 @@
             <h3>${escapeHtml(projectTitle)}</h3>
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderAlertBadges(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -713,7 +855,14 @@
           </div>
         </div>
         <div class="empty" style="text-align:left">
-          Les ressources documentaires pourront ensuite rassembler les logos, fichiers client, exports Excel, kits de communication et livrables de restitution.
+          <strong style="display:block;color:#17375d;margin-bottom:6px">Médiathèque client — V1</strong>
+          Cet espace regroupera les ressources génériques du client, visibles ensuite côté client final dans son espace : branding, kits de communication, affiches, QR codes et visuels de profils.
+        </div>
+        <div class="resource-cats">
+          <div class="resource-cat"><div class="resource-cat-ico">🏷️</div><div><h3>Branding client</h3><p>Logo principal, logos alternatifs et éléments d’identité visuelle.</p><small>À brancher en upload admin</small></div></div>
+          <div class="resource-cat"><div class="resource-cat-ico">📣</div><div><h3>Kits de communication</h3><p>Affiches, messages de relance, supports internes et visuels de campagne.</p><small>Idéal pour booster la participation</small></div></div>
+          <div class="resource-cat"><div class="resource-cat-ico">🧩</div><div><h3>Images de profils</h3><p>Illustrations ou avatars réutilisables pour les profils de résultat.</p><small>Relié ensuite à questions.html</small></div></div>
+          <div class="resource-cat"><div class="resource-cat-ico">📄</div><div><h3>Documents utiles</h3><p>Guides, PDF, exports, restitutions et documents de suivi client.</p><small>Bibliothèque générique client</small></div></div>
         </div>
       `;
     }
