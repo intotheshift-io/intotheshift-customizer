@@ -258,7 +258,27 @@ async function itsSyncProjectToApi(state) {
       body: JSON.stringify(body)
     });
 
-    if (!res.ok) return;
+    if (!res.ok) {
+      let errorPayload = {};
+      try { errorPayload = await res.json(); } catch(e) {}
+
+      if (res.status === 404 && errorPayload?.code === "PROJECT_NOT_FOUND_NO_RECREATE") {
+        const staleProjectId = String(projectId || "");
+
+        try {
+          localStorage.removeItem(itsGetStorageKey());
+          if (staleProjectId) {
+            localStorage.removeItem("intotheshift_customizer_state_v1_" + itsGetCurrentUserKey() + "_project_" + staleProjectId);
+            sessionStorage.removeItem("its_project_cache_" + staleProjectId);
+          }
+        } catch(e) {}
+
+        itsClearCurrentProjectId();
+        console.warn("Projet supprimé côté API : sauvegarde locale nettoyée", staleProjectId);
+      }
+
+      return;
+    }
 
     const json = await res.json();
     const savedId = json?.project?.id || json?.id || json?.project_id;
