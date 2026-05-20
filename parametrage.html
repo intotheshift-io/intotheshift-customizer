@@ -114,7 +114,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
-          <div class="field"><label>Date de clôture</label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar()"></div>
+          <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
         </div>
         <div class="field"><label>Slug de l'URL<span class="req">*</span></label><input class="inp" id="slug" type="text" oninput="updateSlug(this.value);checkContinue()" placeholder="ex: securite-culture-surete"><div class="url-preview"><span class="url-label">URL</span><span class="url-val" id="url-preview"></span></div><div class="url-note">Le slug compose l'adresse de passation. Il doit être court, lisible et sans espace.</div></div>
         <div class="block-divider"></div>
@@ -467,12 +467,62 @@ function clearPassationLogo(){
   if(input) input.value = "";
 }
 
+function getParametrageBlockingErrors(){
+  const p = state.parametrage || {};
+  const errors = [];
+
+  if(!(p.nom || '').trim()) errors.push("Nom de l’autodiagnostic manquant.");
+  if(!(p.titre || '').trim()) errors.push("Titre visible par les répondants manquant.");
+  if(!(p.entreprise || '').trim()) errors.push("Nom de l’entreprise / espace client manquant.");
+  if(!(p.slug || '').trim()) errors.push("Slug de l’URL manquant.");
+  if(!(p.intro || '').trim()) errors.push("Texte d’introduction manquant.");
+  if(!(p.date_lancement || '').trim()) errors.push("Date de lancement souhaitée obligatoire.");
+  if(!(p.date_cloture || '').trim()) errors.push("Date de clôture obligatoire.");
+
+  if((p.date_lancement || '').trim() && (p.date_cloture || '').trim() && p.date_lancement > p.date_cloture){
+    errors.push("La date de lancement ne peut pas être postérieure à la date de clôture.");
+  }
+
+  if(!(p.sociodemo || []).length) errors.push("Au moins une donnée socio-démo est nécessaire.");
+
+  if(isPartnerMode()){
+    if(!(Number(p.volume_prevu || 0) > 0)) errors.push("Volume prévu obligatoire.");
+  }else if(!(p.pack_choisi || '').trim()){
+    errors.push("Pack choisi obligatoire.");
+  }
+
+  return errors;
+}
+
+function markRequiredField(id, isMissing){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.toggle('missing', Boolean(isMissing));
+}
+
 function checkContinue(){
-  const p=state.parametrage;
-  const baseOk=(p.nom||'').trim()&&(p.titre||'').trim()&&(p.slug||'').trim()&&(p.intro||'').trim()&&(p.date_lancement||'').trim()&&(p.entreprise||'').trim()&&(p.sociodemo||[]).length>0;
-  const packOk = isPartnerMode() ? Number(p.volume_prevu || 0) > 0 : (p.pack_choisi||'').trim();
-  const ok = baseOk && packOk;
-  document.getElementById('btn-continue').disabled=!ok;
+  const p = state.parametrage || {};
+  const errors = getParametrageBlockingErrors();
+  const ok = errors.length === 0;
+
+  markRequiredField('nom', !(p.nom || '').trim());
+  markRequiredField('titre', !(p.titre || '').trim());
+  markRequiredField('entreprise', !(p.entreprise || '').trim());
+  markRequiredField('slug', !(p.slug || '').trim());
+  markRequiredField('intro', !(p.intro || '').trim());
+  markRequiredField('date_lancement', !(p.date_lancement || '').trim());
+  markRequiredField('date_cloture', !(p.date_cloture || '').trim() || ((p.date_lancement || '').trim() && (p.date_cloture || '').trim() && p.date_lancement > p.date_cloture));
+  markRequiredField('pack_choisi', !isPartnerMode() && !(p.pack_choisi || '').trim());
+  markRequiredField('pack_choisi_sidebar', !isPartnerMode() && !(p.pack_choisi || '').trim());
+  markRequiredField('volume_prevu', isPartnerMode() && !(Number(p.volume_prevu || 0) > 0));
+
+  const btn = document.getElementById('btn-continue');
+  if(btn){
+    btn.disabled = !ok;
+    btn.title = ok ? '' : errors.join('\n');
+  }
+
+  return ok;
 }
 
 
@@ -527,6 +577,14 @@ async function persistProjectDraft(step, status){
 
 function goBack(){ save(); window.location.href='questions.html'; }
 async function goNext(){
+  if(!checkContinue()){
+    const errors = getParametrageBlockingErrors();
+    alert("Impossible de passer à la campagne :\n\n" + errors.join("\n"));
+    const firstMissing = document.querySelector('.inp.missing');
+    if(firstMissing) firstMissing.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
     state.parametrage.mode_quota = "partner";

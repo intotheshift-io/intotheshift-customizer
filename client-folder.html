@@ -670,7 +670,13 @@
       const alerts = [];
 
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
-      if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 7) alerts.push({kind:"warn", icon:"⏳", text:`Clôture dans ${daysLeft} jour${daysLeft>1?'s':''}`});
+      if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 7) {
+        alerts.push({kind:"warn", icon:"🔴", text:`Fin imminente : ${daysLeft} jour${daysLeft>1?'s':''}`});
+      } else if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 14) {
+        alerts.push({kind:"warn", icon:"🟠", text:`Fin proche : ${daysLeft} jour${daysLeft>1?'s':''}`});
+      } else if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 30) {
+        alerts.push({kind:"info", icon:"🟡", text:`À anticiper : ${daysLeft} jour${daysLeft>1?'s':''}`});
+      }
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
       if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
@@ -722,11 +728,23 @@
     function renderWatchList(projects){
       const el = document.getElementById("watchList");
       if(!el) return;
-      const endingSoon = projects.filter(p => normalizeStatus(p.status)==="published" && getDaysUntil(getProjectEndDate(p)) !== null && getDaysUntil(getProjectEndDate(p)) >= 0 && getDaysUntil(getProjectEndDate(p)) <= 7).length;
+      const publishedWithEndDate = projects.filter(p => normalizeStatus(p.status) === "published" && getDaysUntil(getProjectEndDate(p)) !== null);
+      const ending30 = publishedWithEndDate.filter(p => {
+        const d = getDaysUntil(getProjectEndDate(p));
+        return d >= 0 && d <= 30;
+      }).length;
+      const ending14 = publishedWithEndDate.filter(p => {
+        const d = getDaysUntil(getProjectEndDate(p));
+        return d >= 0 && d <= 14;
+      }).length;
+      const ending7 = publishedWithEndDate.filter(p => {
+        const d = getDaysUntil(getProjectEndDate(p));
+        return d >= 0 && d <= 7;
+      }).length;
       const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
-        <div class="watch-card orange"><div class="watch-ico">⏳</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">À surveiller pour relances, clôture ou dépublication.</div></div></div>
+        <div class="watch-card orange"><div class="watch-ico">⏳</div><div><div class="watch-title">${ending30} campagne${ending30>1?'s':''} à anticiper &lt; 30 jours</div><div class="watch-text">Dont ${ending14} à moins de 14 jours et ${ending7} à moins de 7 jours.</div></div></div>
         <div class="watch-card blue"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">À publier dès que les URLs de diffusion et résultats sont prêtes.</div></div></div>
         <div class="watch-card green"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Accès directs disponibles dans l’onglet Résultats.</div></div></div>
       `;
