@@ -2570,7 +2570,16 @@
 ],
            
     
-    ["presquaccidents-signalement","Signaler les incidents et presqu'accidents",            "Tous publics",             "Transformer les signaux faibles en actions utiles, sans culpabiliser ni banaliser.",                                                                            T.securiteSignalement],
+["presquaccidents-signalement", "Signaler les incidents et presqu'accidents", "Tous publics",
+  "Transformer les signaux faibles en actions utiles, sans culpabiliser ni banaliser.",
+  { domain: "securite", chapters: [
+    ["Reconnaître ce qui mérite d'être signalé", "Abaisser son seuil de signalement aux anomalies, doutes et presqu'accidents."],
+    ["Surmonter les freins au signalement",       "Résister à la peur des conséquences, à la pression collective et à la hiérarchie."],
+    ["Qualifier et transmettre un signalement utile", "Décrire les faits et leur contexte complet, sans atténuer ni interpréter."],
+    ["Utiliser les retours d'expérience",         "Contribuer activement aux REX et vérifier que leurs conclusions se traduisent en pratiques."]
+  ]}
+],   
+         
     ["acces-sites-surete",         "Sûreté des sites, accès et comportements inhabituels", "Tous publics",             "Réagir face aux accès non autorisés, intrusions, objets suspects ou situations atypiques.",                                                                     T.securiteAccesSites],
     ["managers-securite",          "Manager la sécurité sans créer de tension",            "Managers",                 "Faire vivre les règles, traiter les écarts et soutenir les équipes dans les moments à risque.",                                                                  T.securiteManagers],
     ["coactivite-sous-traitance",  "Travailler en coactivité et gérer les prestataires",   "Équipes terrain",          "Coordonner les interventions simultanées, intégrer les sous-traitants et gérer les zones partagées.",                                                           T.securiteCoactivite],
