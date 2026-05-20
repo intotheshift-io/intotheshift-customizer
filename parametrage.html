@@ -551,15 +551,16 @@ async function persistProjectDraft(step, status){
   save();
   state.status = status || state.status || 'draft';
   state.current_step = step || 'parametrage';
+  state.step = step || 'parametrage';
   save();
-
-  const fallbackId = getCurrentProjectIdForSave();
   const token = getToken();
-  if(!token) return fallbackId;
-
+  if(!token) return getCurrentProjectIdForSave();
   try{
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2500);
     const response = await fetch(`${API_URL}/api/projects`, {
       method:'POST',
+      signal: controller.signal,
       headers:{'Content-Type':'application/json', Authorization:`Bearer ${token}`},
       body: JSON.stringify({
         projectId: getCurrentProjectIdForSave() || undefined,
@@ -587,13 +588,8 @@ async function persistProjectDraft(step, status){
         })
       })
     });
-
+    clearTimeout(timeout);
     const saved = await response.json().catch(()=>({}));
-    if(!response.ok){
-      console.warn('Sauvegarde backend refusée sur Paramétrage', response.status, saved);
-      return getCurrentProjectIdForSave() || fallbackId;
-    }
-
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
     if(id){
       state.currentAdId = id;
@@ -602,22 +598,13 @@ async function persistProjectDraft(step, status){
       localStorage.setItem('its_current_project_id', String(id));
       localStorage.setItem('its_current_ad_id', String(id));
       save();
-      return id;
+      return String(id);
     }
-  }catch(e){
-    console.error('Sauvegarde backend impossible pour le paramétrage', e);
-  }
-
-  return getCurrentProjectIdForSave() || fallbackId;
+  }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
+  return getCurrentProjectIdForSave();
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
-
-function goToCampagne(projectId){
-  const id = projectId || getCurrentProjectIdForSave();
-  window.location.assign(id ? 'campagne.html?projectId=' + encodeURIComponent(id) : 'campagne.html');
-}
-
 async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
@@ -654,31 +641,35 @@ async function goNext(){
   }
 
   clearMissingFields();
-  state.parametrage.done = true;
+  state.parametrage.done=true;
   state.current_step = 'campagne';
   state.step = 'campagne';
-  state.status = 'draft';
   save();
 
   const btn = document.getElementById('btn-continue');
   if(btn){
-    btn.disabled = true;
     btn.textContent = 'Ouverture de la campagne…';
+    btn.disabled = true;
   }
 
-  const currentId = getCurrentProjectIdForSave();
+  let targetId = getCurrentProjectIdForSave();
+  const fallbackUrl = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
+
+  // On ne bloque plus la navigation sur la réponse du backend.
+  // Si l'API est lente ou indisponible, le client avance quand même avec la sauvegarde locale.
+  const navigationTimer = setTimeout(() => {
+    window.location.href = fallbackUrl;
+  }, 350);
 
   try{
-    const timeout = new Promise(resolve => setTimeout(() => resolve(currentId || ''), 1800));
-    const savedProjectId = await Promise.race([
-      persistProjectDraft('campagne','draft'),
-      timeout
-    ]);
-    goToCampagne(savedProjectId || currentId);
+    const savedProjectId = await persistProjectDraft('campagne','draft');
+    if(savedProjectId) targetId = savedProjectId;
   }catch(e){
-    console.error('Erreur passage vers campagne', e);
-    goToCampagne(currentId);
+    console.error('Erreur passage campagne', e);
   }
+
+  clearTimeout(navigationTimer);
+  window.location.href = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
 }
 async function bootParametragePage(){
   if(typeof itsBootstrapProjectFromUrl === "function"){
