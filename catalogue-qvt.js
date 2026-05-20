@@ -183,7 +183,677 @@
         }
     ],
   },
+  // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "manager-qvt-rps" dans Object.assign(window.CUSTOM_QUESTIONS,
 
+  "manager-qvt-rps": {
+    0: [
+      {
+        type: "choix",
+        text: "Antoine, l'un de vos collaborateurs les plus fiables, rend des livrables en retard depuis trois semaines. C'est inhabituel. Il n'a rien dit.",
+        tags: ["signaux", "observation"],
+        answers: [
+          { text: "J'attends qu'il vienne me voir — s'il avait un problème, il m'en parlerait.", score: 0 },
+          { text: "Je lui signale les retards en lui demandant ce qui se passe.", score: 2 },
+          { text: "Je lui parle des retards et je lui propose de revoir sa charge si nécessaire.", score: 2 },
+          { text: "Je le surveille plus attentivement les prochaines semaines pour voir si ça se confirme.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Depuis deux semaines, le niveau d'irritabilité de votre équipe a visiblement monté — échanges plus secs, moins d'entraide spontanée. Tout le monde est sous pression.",
+        tags: ["signaux", "collectif"],
+        answers: [
+          { text: "C'est une période difficile pour tout le monde — l'ambiance reviendra quand la pression retombera.", score: 0 },
+          { text: "J'en parle en réunion d'équipe pour nommer ce que j'observe sans dramatiser.", score: 2 },
+          { text: "Je vois individuellement les personnes qui semblent les plus affectées.", score: 1.5 },
+          { text: "Je renforce les moments collectifs pour recréer du lien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites des points individuels réguliers avec chacun de vos collaborateurs, pas seulement sur l'avancement des dossiers mais aussi sur leur façon de vivre la charge.",
+        tags: ["signaux", "régularité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lucie vous dit qu'elle va bien quand vous lui posez la question directement. Mais ses comportements récents — erreurs inhabituelles, moins de participation, arrivées plus tôt et départs plus tard — ne correspondent pas à ce qu'elle dit.",
+        tags: ["signaux", "déni"],
+        answers: [
+          { text: "Je la crois — elle sait mieux que moi comment elle va.", score: 0 },
+          { text: "Je lui partage ce que j'observe concrètement, sans interpréter, et je lui laisse l'espace de répondre.", score: 2 },
+          { text: "Je lui pose la question différemment lors d'un prochain entretien.", score: 1 },
+          { text: "Je demande à un collègue proche d'elle d'avoir un échange informel.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe travaille régulièrement le soir et le week-end depuis deux mois. Personne ne s'en plaint officiellement. Vous trouvez ça normal compte tenu du contexte.",
+        tags: ["signaux", "charge collective"],
+        answers: [
+          { text: "Si personne ne se plaint, c'est que l'équipe assume — je ne dois pas créer un problème qui n'existe pas.", score: 0 },
+          { text: "J'aborde le sujet en réunion pour nommer ce que j'observe et voir comment l'équipe le vit.", score: 2 },
+          { text: "Je cherche des leviers pour réduire la charge sans que l'équipe ait à me le demander.", score: 1.5 },
+          { text: "J'en parle à ma propre hiérarchie pour que la charge soit régulée à un niveau supérieur.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes attentif·ve aux changements de comportement de vos collaborateurs — présence, participation, qualité du travail — sans attendre qu'ils vous signalent eux-mêmes un problème.",
+        tags: ["signaux", "présence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Deux membres de votre équipe, Mathieu et Sandra, semblent éviter de se parler directement depuis une réunion difficile il y a deux semaines. Les autres ont remarqué.",
+        tags: ["signaux", "tension interpersonnelle"],
+        answers: [
+          { text: "Je les laisse régler ça entre eux — les adultes savent gérer leurs conflits.", score: 0 },
+          { text: "Je vois chacun séparément pour comprendre ce qui s'est passé avant de décider quoi faire.", score: 2 },
+          { text: "Je les réunis pour qu'ils s'expliquent — mieux vaut crever l'abcès.", score: 0.5 },
+          { text: "J'attends encore une semaine — ça peut se résorber seul.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Nicolas a pris quatre jours d'arrêt maladie en deux mois, par courtes périodes. C'est inhabituel pour lui. À son retour, vous ne savez pas quoi dire.",
+        tags: ["signaux", "absentéisme"],
+        answers: [
+          { text: "Je ne dis rien — c'est sa vie privée et je ne veux pas être indiscret.", score: 0 },
+          { text: "Je fais un entretien de retour pour prendre des nouvelles et voir si quelque chose a changé côté travail.", score: 2 },
+          { text: "Je lui demande si tout va bien de façon informelle, sans faire d'entretien formel.", score: 1 },
+          { text: "Je surveille si ça se reproduit avant d'agir.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous repérez les situations de tension ou de surcharge dans votre équipe avant qu'elles ne vous soient signalées formellement.",
+        tags: ["signaux", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un point individuel, Isabelle vous dit qu'elle supporte mal la charge en ce moment mais ajoute aussitôt qu'elle 'gère'. Vous n'avez que 10 minutes devant vous.",
+        tags: ["signaux", "feedback"],
+        answers: [
+          { text: "Je prends note et je reprends le sujet lors du prochain point — elle gère pour l'instant.", score: 0.5 },
+          { text: "Je lui dis que j'ai entendu ce qu'elle vient de dire et je lui propose un vrai échange dans les prochains jours.", score: 2 },
+          { text: "Je lui demande ce que 'gérer' veut dire concrètement avant de passer à autre chose.", score: 1.5 },
+          { text: "Je lui fais confiance — si elle dit qu'elle gère, c'est qu'elle gère.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez encore que vos collaborateurs viennent à vous plutôt que de créer les occasions d'observer", desc: "Attendre que les collaborateurs signalent eux-mêmes leurs difficultés, surveiller plutôt qu'intervenir, ne pas creuser quand quelqu'un dit 'je gère' alors que ses comportements disent autre chose : ces postures laissent des situations se dégrader silencieusement. La détection précoce ne vient pas de l'observation passive — elle vient de la régularité des échanges et de la capacité à poser des questions sur ce qu'on observe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux évidents mais les changements discrets vous échappent encore", desc: "Vous faites des points individuels réguliers et vous intervenez quand les signaux sont visibles. Mais les changements plus discrets — un collaborateur qui dit 'je gère' alors que ses comportements changent, une tension collective qui s'installe progressivement — ne déclenchent pas encore une réaction systématique de votre part. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les conditions pour que les signaux remontent, sans attendre qu'ils vous soient signalés", desc: "Vous faites des points réguliers qui vont au-delà des livrables, vous creusez quand quelqu'un dit 'je gère', vous intervenez sur les tensions collectives sans attendre la crise. Cette posture proactive — qui suppose d'observer activement et de créer les occasions d'échange — est ce qui permet de gérer les situations au stade où elles sont encore simples à traiter." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Vous voulez parler à Charlotte de ce que vous observez depuis quelques semaines. Vous craignez d'être maladroit·e et de dire quelque chose de blessant.",
+        tags: ["intervention", "factuel"],
+        answers: [
+          { text: "Je renonce — mieux vaut ne rien dire que risquer une maladresse.", score: 0 },
+          { text: "Je m'appuie sur des faits observables et je lui laisse l'espace d'interpréter elle-même.", score: 2 },
+          { text: "Je lui dis directement que je la sens épuisée et que ça m'inquiète.", score: 0.5 },
+          { text: "Je lui pose une question ouverte sur son travail pour voir si elle ouvre le sujet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous intervenez sur une situation difficile dans votre équipe, vous vous appuyez sur des comportements observés plutôt que sur votre interprétation de l'état de la personne.",
+        tags: ["intervention", "faits"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Paul traverse visiblement une période difficile. Vous voulez lui parler mais vous ne savez pas si c'est lié au travail ou à sa vie personnelle.",
+        tags: ["intervention", "travail"],
+        answers: [
+          { text: "Je n'interviens pas — si c'est personnel, ce n'est pas mon rôle.", score: 0 },
+          { text: "Je lui parle de ce que j'observe sur son travail et je lui laisse la liberté d'aller plus loin s'il le souhaite.", score: 2 },
+          { text: "Je lui pose directement la question sur sa vie personnelle — mieux vaut être direct.", score: 0 },
+          { text: "J'en parle aux RH pour qu'ils gèrent.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Emma vous confie lors d'un entretien qu'elle a du mal à dormir à cause du travail. Vous avez 20 minutes devant vous.",
+        tags: ["intervention", "rythme"],
+        answers: [
+          { text: "Je l'écoute et je lui donne des conseils sur la gestion du stress.", score: 0 },
+          { text: "Je l'écoute, je lui demande ce qui pèse le plus dans son travail, et je lui propose un vrai point la semaine prochaine.", score: 2 },
+          { text: "Je l'écoute et je lui dis de consulter son médecin si ça continue.", score: 1 },
+          { text: "Je prends note et j'en parle à la médecine du travail sans lui dire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous savez faire la différence entre ce qui relève de votre rôle de manager et ce qui dépasse votre périmètre — sans pour autant vous défausser sur les relais avant d'avoir écouté.",
+        tags: ["intervention", "périmètre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après un entretien avec Hugo, vous pensez comprendre ce dont il souffre. Vous avez envie de lui nommer ce que vous voyez.",
+        tags: ["intervention", "diagnostic"],
+        answers: [
+          { text: "Je lui dis ce que j'observe et ce que je pense de sa situation — il appréciera ma franchise.", score: 0 },
+          { text: "Je lui décris ce que j'ai observé et je lui pose une question ouverte — le diagnostic, c'est son affaire.", score: 2 },
+          { text: "Je lui pose des questions pour l'amener lui-même à formuler ce qui se passe.", score: 1.5 },
+          { text: "Je garde mon analyse pour moi et j'agis sur ce que je peux faire concrètement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre propre responsable vous dit qu'Alice a l'air à bout et vous demande de 'régler ça'. Vous n'avez rien observé de votre côté.",
+        tags: ["intervention", "pression hiérarchique"],
+        answers: [
+          { text: "Je la convoque pour un entretien et je lui dis que ma hiérarchie est inquiète.", score: 0 },
+          { text: "Je crée une occasion de lui parler de façon informelle pour prendre la température.", score: 2 },
+          { text: "Je lui fais confiance — si elle ne m'a rien dit, c'est qu'elle gère.", score: 0 },
+          { text: "J'en parle à mes autres collaborateurs pour comprendre si quelque chose m'échappe.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez prévu de parler à Adrien de ce que vous observez chez lui. Juste avant votre entretien, vous apprenez qu'un dossier important est en retard à cause de lui.",
+        tags: ["intervention", "timing"],
+        answers: [
+          { text: "Je commence par le dossier en retard — c'est la priorité opérationnelle.", score: 0 },
+          { text: "Je sépare les deux sujets — le dossier dans un échange dédié, l'entretien de soutien dans un autre moment.", score: 2 },
+          { text: "J'aborde les deux dans le même entretien — c'est peut-être lié.", score: 0.5 },
+          { text: "Je reporte l'entretien de soutien — ce n'est plus le bon moment.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous séparez les entretiens de performance des entretiens de soutien — vous n'abordez pas la situation personnelle d'un collaborateur en même temps que ses résultats.",
+        tags: ["intervention", "séparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Julie vous a confié quelque chose de difficile lors d'un entretien individuel. Elle ne vous a pas demandé de le garder pour vous mais n'a pas non plus dit que vous pouviez en parler.",
+        tags: ["intervention", "confidentialité"],
+        answers: [
+          { text: "Je le partage avec les RH — ils doivent être informés.", score: 0 },
+          { text: "Je lui demande ce qu'elle souhaite que je fasse avec ce qu'elle m'a dit.", score: 2 },
+          { text: "Je garde ça pour moi et j'agis discrètement.", score: 1 },
+          { text: "Je le mentionne à ma propre hiérarchie au cas où c'est nécessaire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur d'être maladroit·e ou de dépasser votre rôle", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, faire un diagnostic à la place de la personne : ces comportements soit bloquent l'intervention, soit la rendent contre-productive. Intervenir sur les faits observés, laisser la personne interpréter elle-même, séparer les sujets : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez quand la situation est claire. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, hésiter sur le bon moment — votre intervention peut encore se bloquer ou se mélanger avec un sujet de performance. L'enjeu est de simplifier votre façon d'intervenir : faits observés, question ouverte, disponibilité." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez de façon factuelle et calibrée, en séparant les sujets et en laissant la personne interpréter", desc: "Vous vous appuyez sur des faits observés, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — simple, factuelle, sans psychologiser — est accessible à tout manager et efficace dans la grande majorité des situations." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Votre équipe est en surcharge depuis six semaines. Vous avez identifié des tâches à enlever de la charge collective, mais elles ont été demandées par votre propre hiérarchie.",
+        tags: ["charge collective", "arbitrage"],
+        answers: [
+          { text: "Je ne touche pas aux demandes hiérarchiques — ma marge de manœuvre s'arrête là.", score: 0 },
+          { text: "Je remonte la situation à ma hiérarchie en rendant visible le lien entre leurs demandes et la charge de mon équipe.", score: 2 },
+          { text: "Je réduis discrètement certaines de ces tâches sans en parler — je gère ma propre équipe.", score: 0.5 },
+          { text: "Je demande à mon équipe de prioriser elles-mêmes entre les demandes hiérarchiques.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous rendez visible à votre propre hiérarchie l'impact de ses demandes sur la charge de votre équipe, plutôt que de l'absorber silencieusement.",
+        tags: ["charge collective", "visibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, Vincent absorbe systématiquement plus que les autres parce qu'il est plus rapide et ne refuse jamais. Les autres le savent et n'interviennent pas.",
+        tags: ["charge collective", "répartition"],
+        answers: [
+          { text: "C'est sa façon de fonctionner — tant qu'il ne se plaint pas, je respecte son choix.", score: 0 },
+          { text: "Je rééquilibre la distribution des tâches proactivement, sans attendre qu'il soulève le problème.", score: 2 },
+          { text: "Je lui en parle pour lui demander s'il veut que les choses changent.", score: 1.5 },
+          { text: "Je sensibilise l'équipe à la répartition, sans cibler Vincent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un client important exerce une pression pour livrer plus vite. Votre équipe est déjà au maximum. Votre responsable vous demande de 'trouver une solution'.",
+        tags: ["charge collective", "délai"],
+        answers: [
+          { text: "Je répercute la pression sur mon équipe — c'est à eux de s'organiser pour tenir.", score: 0 },
+          { text: "Je remonte à ma hiérarchie ce que signifie concrètement 'trouver une solution' pour mon équipe.", score: 2 },
+          { text: "Je négocie le délai avec le client sans en parler à mon équipe.", score: 0.5 },
+          { text: "Je cherche avec mon équipe ce qu'il est réellement possible de faire.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous protégez votre équipe des demandes qui ne sont pas compatibles avec sa charge réelle, plutôt que de tout accepter en laissant l'équipe absorber.",
+        tags: ["charge collective", "protection"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe passe beaucoup de temps en réunions internes qui semblent peu utiles. La charge de travail réel ne diminue pas pour autant.",
+        tags: ["charge collective", "organisation"],
+        answers: [
+          { text: "Les réunions font partie du travail — elles ne s'enlèvent pas facilement.", score: 0 },
+          { text: "Je revois le format et la fréquence des réunions pour libérer du temps de fond.", score: 2 },
+          { text: "Je demande à chacun de noter le temps passé en réunion cette semaine pour objectiver.", score: 1 },
+          { text: "J'en parle à mon équipe pour qu'elle propose elle-même des améliorations.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Anne vous signale qu'elle ne peut plus tenir son rythme. Elle vous demande une réduction de charge. Vous n'avez pas les marges pour le faire sans impacter les autres.",
+        tags: ["charge collective", "signalement"],
+        answers: [
+          { text: "Je lui dis que ce n'est pas possible pour l'instant — tout le monde est dans la même situation.", score: 0 },
+          { text: "On identifie ensemble ce qui pèse le plus et on cherche des solutions réalisables — même imparfaites.", score: 2 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle arbitre.", score: 1 },
+          { text: "Je lui propose de prendre des congés pour récupérer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez sur les surcharges individuelles avant qu'elles ne deviennent des situations de crise visibles de toute l'équipe.",
+        tags: ["charge collective", "régulation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes vous-même en surcharge depuis trois semaines. Vous le savez mais vous ne l'avez signalé à personne.",
+        tags: ["charge collective", "exemplarité"],
+        answers: [
+          { text: "Je gère — les managers ne peuvent pas se plaindre de leur charge devant leur équipe.", score: 0 },
+          { text: "Je le remonte à ma propre hiérarchie en rendant visible l'impact sur ma capacité à manager.", score: 2 },
+          { text: "J'en parle à un pair manager pour valider mon ressenti avant d'agir.", score: 1 },
+          { text: "Je redouble d'efficacité pour absorber sans que ça se voie.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a trop de projets en cours simultanément. Chacun est prioritaire selon la source qui le demande. Personne ne veut trancher.",
+        tags: ["charge collective", "priorisation"],
+        answers: [
+          { text: "Je laisse chacun gérer ses propres priorités — je ne veux pas créer de hiérarchie artificielle.", score: 0 },
+          { text: "Je prends la décision de priorisation moi-même et j'assume la responsabilité de ce choix.", score: 2 },
+          { text: "Je réunis les demandeurs pour qu'ils s'alignent entre eux.", score: 1.5 },
+          { text: "Je remonte à ma hiérarchie pour qu'elle arbitre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous absorbez les demandes extérieures sans les filtrer, laissant l'équipe subir la charge", desc: "Répercuter la pression hiérarchique sur l'équipe, laisser une personne absorber systématiquement plus que les autres, accepter toutes les demandes extérieures sans les arbitrer : ces comportements protègent la relation vers le haut mais fragilisent l'équipe. Le rôle de manager inclut de rendre visible la charge réelle et de filtrer ce qui arrive à son équipe." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez votre équipe des surcharges visibles mais les mécanismes profonds restent en place", desc: "Vous défendez votre équipe dans les situations de surcharge visibles. Mais les mécanismes profonds — une personne qui absorbe systématiquement plus, des réunions qui consomment du temps de fond, une pression hiérarchique que vous n'escaladez pas — restent en place. L'enjeu est d'intervenir sur ces mécanismes avant qu'ils créent des situations de crise." },
+          haut: { label: "Réflexes installés", titre: "Vous filtrez et arbitrez la charge de votre équipe en la rendant visible à votre hiérarchie", desc: "Vous arbitrez ce qui arrive à votre équipe, vous rééquilibrez proactivement les charges déséquilibrées, et vous escaladez à votre hiérarchie quand ses demandes ne sont pas compatibles avec la capacité de votre équipe. Cette posture de filtrage actif — qui suppose de tenir des positions inconfortables vers le haut — est ce qui protège durablement les équipes des surcharges structurelles." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous pensez que Diane traverse quelque chose qui dépasse votre rôle de manager. Elle n'a rien demandé.",
+        tags: ["relais", "décision"],
+        answers: [
+          { text: "Je ne fais rien — sans demande de sa part, je n'ai pas de légitimité à intervenir.", score: 0 },
+          { text: "Je lui parle de ce que j'observe et je lui mentionne les ressources disponibles dans l'organisation.", score: 2 },
+          { text: "Je contacte directement les RH ou la médecine du travail pour les mettre en alerte.", score: 0.5 },
+          { text: "Je lui demande directement si elle a besoin d'aide professionnelle.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez les ressources disponibles dans votre organisation pour accompagner vos collaborateurs — médecine du travail, service d'écoute, RH, dispositifs spécifiques.",
+        tags: ["relais", "ressources"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Alexis a évoqué lors d'un entretien des difficultés personnelles graves qui semblent affecter son travail. Vous ne savez pas comment gérer ça.",
+        tags: ["relais", "RH"],
+        answers: [
+          { text: "Je l'écoute et je lui dis que ce n'est pas du ressort professionnel — je ne peux pas l'aider sur ça.", score: 0 },
+          { text: "Je l'écoute, je lui pose des questions sur l'impact sur son travail, et je lui parle des ressources disponibles.", score: 2 },
+          { text: "Je contacte immédiatement les RH pour leur passer le relais.", score: 0.5 },
+          { text: "Je lui donne les coordonnées du service d'écoute sans plus m'impliquer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Margot accumule des signaux préoccupants depuis un mois. Vous avez eu plusieurs entretiens. Elle refuse d'aller voir la médecine du travail — 'ça ne sert à rien'.",
+        tags: ["relais", "médecine du travail"],
+        answers: [
+          { text: "Je respecte son refus — je ne peux pas l'obliger.", score: 0.5 },
+          { text: "Je lui explique à nouveau ce que la médecine du travail peut faire concrètement pour elle.", score: 2 },
+          { text: "Je le signale aux RH sans lui dire — pour me couvrir.", score: 0 },
+          { text: "Je lui demande ce qui la retient et j'essaie de lever ses résistances.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous orientez vers les relais professionnels au bon moment — ni trop tôt en vous défaussant, ni trop tard en gardant tout pour vous.",
+        tags: ["relais", "dosage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez orienté François vers la médecine du travail il y a deux semaines. Il ne vous a pas dit s'il y était allé. Vous n'avez pas relancé.",
+        tags: ["relais", "suivi"],
+        answers: [
+          { text: "Je le laisse gérer — si je repose la question, je risque d'être intrusif.", score: 0 },
+          { text: "Je lui demande de façon naturelle comment il va depuis notre dernier échange.", score: 2 },
+          { text: "Je contacte la médecine du travail pour vérifier s'il a pris rendez-vous.", score: 0 },
+          { text: "J'attends la prochaine occasion d'un point individuel pour relancer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous portez seul·e depuis plusieurs semaines la gestion de situations difficiles dans votre équipe. Vous vous sentez vous-même épuisé·e par cela.",
+        tags: ["relais", "propre état"],
+        answers: [
+          { text: "C'est mon rôle de manager — je dois tenir.", score: 0 },
+          { text: "J'en parle à ma propre hiérarchie ou à un pair manager pour ne pas rester seul·e.", score: 2 },
+          { text: "Je cherche un soutien extérieur — supervision, coaching — pour m'aider à tenir.", score: 1.5 },
+          { text: "Je gère à court terme et je me repose sur les vacances pour récupérer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous cherchez vous-même un soutien quand la gestion des situations difficiles de votre équipe vous pèse, sans attendre d'être à bout.",
+        tags: ["relais", "soutien propre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un entretien, Hélène dit quelque chose qui vous inquiète sérieusement pour elle. Vous ne savez pas si c'est une situation d'urgence ou une expression de mal-être.",
+        tags: ["relais", "urgence"],
+        answers: [
+          { text: "Je minimise — elle a l'air de gérer et je ne veux pas dramatiser.", score: 0 },
+          { text: "Je lui pose des questions directes pour évaluer la situation et je l'oriente immédiatement si nécessaire.", score: 2 },
+          { text: "Je contacte les RH après l'entretien pour leur signaler.", score: 1 },
+          { text: "Je lui demande si elle va bien et je lui donne les coordonnées du service d'écoute.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous tracez les échanges importants avec vos collaborateurs en difficulté pour ne pas perdre le fil et pouvoir rendre compte si nécessaire.",
+        tags: ["relais", "traçabilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gardez les situations difficiles pour vous sans mobiliser les relais disponibles", desc: "Gérer seul·e des situations qui dépassent votre périmètre, ne pas savoir quand orienter, ne pas vous-même chercher de soutien quand vous portez trop : ces comportements épuisent les managers et laissent les collaborateurs sans les ressources adaptées. Connaître les relais disponibles et les utiliser au bon moment est une compétence managériale, pas un aveu de limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les relais mais vous tardez encore à les mobiliser ou à vous en servir vous-même", desc: "Vous connaissez les relais et vous les mobilisez quand la situation est clairement au-delà de votre périmètre. Mais dans les zones intermédiaires — la personne qui refuse d'y aller, le suivi après l'orientation, votre propre épuisement à porter les situations difficiles — votre réaction peut encore être insuffisante. L'enjeu est d'utiliser les relais plus tôt et pour vous-même aussi." },
+          haut: { label: "Réflexes installés", titre: "Vous mobilisez les relais au bon moment et vous vous appuyez vous-même sur un soutien", desc: "Vous orientez vers les relais avant que les situations ne soient en crise, vous faites un suivi après l'orientation, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de traiter votre propre état comme une ressource à préserver est ce qui permet de manager dans la durée sans s'épuiser." },
+        },
+      }
+    ],
+
+  },
+  // ─────────────────────────────────────────────────────────────────────
 // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
   // Clé : "charge-priorites" dans Object.assign(window.CUSTOM_QUESTIONS, {
 
@@ -3600,7 +4270,12 @@
 
     ["manager-qvt-rps", "Manager la charge et les tensions d'équipe", "Managers",
       "Identifier, réguler et orienter sans porter seul les situations sensibles.",
-      T.qvtRps
+      { domain: "qvt", chapters: [
+        ["Identifier les signaux de charge et de tension", "Observer sans attendre que ça remonte, et créer les conditions pour que ça remonte."],
+        ["Intervenir sans psychologiser",                  "Agir sur les faits observés, laisser la personne interpréter, séparer les sujets."],
+        ["Réguler la charge collective",                   "Filtrer, arbitrer et rendre visible ce que l'équipe peut réellement absorber."],
+        ["Orienter vers les bons relais",                  "Savoir quand passer la main et chercher soi-même un soutien quand on porte trop."]
+      ]}
     ],
 
     ["teletravail-hybridation", "Réussir le travail hybride sans créer d’inégalités", "Collaborateurs",
