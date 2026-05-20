@@ -4034,175 +4034,671 @@
     ],
 
   },
-  "securite-manager-arbitrage": {
+    "securite-manager-arbitrage": {
     0: [
-        {
-          text: "Un délai client est avancé de deux jours et votre hiérarchie vous demande d'absorber cette contrainte. Une étape de vérification sécurité risque d'être sacrifiée. Que faites-vous ?",
-          answers: [
-          {text: "Je supprime la vérification — le client est prioritaire.", score: 0},
-          {text: "Je la raccourcis pour gagner du temps.", score: 1},
-          {text: "Je maintiens la vérification et signale à ma hiérarchie l'arbitrage qu'implique ce délai.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un client stratégique vous appelle directement et menace de résilier le contrat si la livraison n'est pas faite vendredi. Respecter la procédure de vérification finale implique un retard de deux jours. Votre direction vous dit de 'trouver une solution'.",
+        tags: ["pression client", "arbitrage"],
+        answers: [
+          { text: "Je cherche un contournement de la procédure — la relation client et la direction ont arbitré.", score: 0 },
+          { text: "Je maintiens la procédure et j'aide ma direction à présenter les contraintes réelles au client.", score: 2 },
+          { text: "Je compresse la procédure sans en supprimer les étapes critiques.", score: 0.5 },
+          { text: "Je documente le dilemme par écrit et je remonte à ma direction pour qu'elle assume l'arbitrage.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
         },
-        {
-          text: "Votre équipe a pris du retard à cause d'aléas extérieurs. La pression est forte pour rattraper le temps perdu. Des opérations qui nécessitent normalement deux personnes sont réalisées seul pour aller plus vite. Quelle est votre position ?",
-          answers: [
-          {text: "J'accepte — c'est une situation exceptionnelle.", score: 0},
-          {text: "Je tolère pour certaines tâches mais pas pour les plus risquées.", score: 1},
-          {text: "Je maintiens les effectifs requis pour toute opération identifiée comme nécessitant deux personnes.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre client propose un bonus significatif si vous réduisez les délais de trois jours. Pour y parvenir, votre équipe devrait sauter des vérifications non réglementairement obligatoires mais inscrites dans votre procédure interne.",
+        tags: ["pression client", "bonus"],
+        answers: [
+          { text: "J'accepte l'objectif — ces vérifications ne sont pas réglementaires donc l'arbitrage est légitime.", score: 0 },
+          { text: "Je refuse si ces vérifications ont une vraie utilité sécurité, même sans obligation réglementaire.", score: 2 },
+          { text: "J'analyse quelles vérifications peuvent être allégées sans impact réel sur la sécurité.", score: 0.5 },
+          { text: "Je soumets la question à mon responsable sécurité pour qu'il tranche.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
         },
-        {
-          text: "Un directeur de site vous dit que le niveau de vigilance de vos équipes est 'excessif' et ralentit la production. Que faites-vous ?",
-          answers: [
-          {text: "Je cherche comment alléger les procédures.", score: 0},
-          {text: "J'écoute mais ne change rien sans avoir analysé ce qui est réellement excessif.", score: 1},
-          {text: "Je défends la pertinence des pratiques actuelles et propose un échange factuel sur les arbitrages.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez vos exigences de sécurité face aux clients qui font pression, même quand la relation commerciale est à risque.",
+        tags: ["pression client", "fermeté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
         },
-        {
-          text: "Vous êtes sollicité pour valider une opération qui respecte la lettre des procédures mais qui vous semble risquée dans les conditions du jour. Que faites-vous ?",
-          answers: [
-          {text: "Je valide — les procédures ont été respectées.", score: 0},
-          {text: "Je valide avec des réserves orales.", score: 1},
-          {text: "Je refuse de valider et explique pourquoi les conditions du jour changent le niveau de risque.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un client demande que ses propres équipes interviennent sur votre site pour accélérer une livraison. Elles n'ont pas suivi votre accueil sécurité.",
+        tags: ["pression client", "équipes client"],
+        answers: [
+          { text: "J'accepte — ce sont ses équipes et c'est lui le responsable de leur sécurité.", score: 0 },
+          { text: "Je conditionne leur accès à la réalisation de l'accueil sécurité même si ça retarde la livraison.", score: 2 },
+          { text: "Je les laisse intervenir dans les zones les moins risquées en les supervisant.", score: 0 },
+          { text: "Je leur fait signer une décharge de responsabilité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
         },
-        {
-          text: "Un de vos collaborateurs vous propose une méthode plus rapide pour une opération. Elle ne viole pas les règles mais vous n'êtes pas sûr qu'elle ait été validée. Que faites-vous ?",
-          answers: [
-          {text: "Je l'autorise — si ce n'est pas interdit, c'est permis.", score: 0},
-          {text: "Je l'autorise avec prudence en demandant qu'on reste attentifs.", score: 1},
-          {text: "Je vérifie si cette méthode a été évaluée avant de l'autoriser.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une réunion avec votre client, il évoque les 'lourdeurs procédurales' qui ralentissent les délais. Il suggère que certaines vérifications pourraient être 'rationalisées'. Vos collègues semblent d'accord.",
+        tags: ["pression client", "visibilité"],
+        answers: [
+          { text: "Je m'aligne — le client a une vision externe utile et mes collègues valident.", score: 0 },
+          { text: "Je maintiens ma position et j'explique pourquoi ces procédures existent.", score: 2 },
+          { text: "Je propose d'analyser ensemble quelles procédures peuvent être améliorées sans compromettre la sécurité.", score: 1.5 },
+          { text: "Je dis que j'en parlerai en interne sans m'engager sur quoi que ce soit.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lorsqu'un client fait pression sur les délais, vous lui présentez les contraintes de sécurité comme des données non négociables et vous cherchez avec lui des alternatives qui ne les compromettent pas.",
+        tags: ["pression client", "argumentation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident mineur lié à un contournement de procédure a eu lieu chez un concurrent. Votre client qui le sait vous demande si 'ça peut arriver chez vous aussi'. Votre équipe a des pratiques similaires.",
+        tags: ["pression client", "réputation"],
+        answers: [
+          { text: "Je le rassure sans mentionner nos propres pratiques — pas la peine de créer de l'inquiétude.", score: 0 },
+          { text: "Je prends cet incident comme un signal pour revoir nos propres pratiques avant de lui répondre.", score: 2 },
+          { text: "Je lui explique nos procédures officielles sans mentionner les écarts réels.", score: 0 },
+          { text: "Je lui réponds honnêtement que nous avons des points similaires en cours de traitement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre client accepte finalement le délai que vous lui avez imposé pour des raisons de sécurité. Mais il vous dit que si ça se reproduit, il cherchera un autre fournisseur.",
+        tags: ["pression client", "long terme"],
+        answers: [
+          { text: "Je lui assure que ça ne se reproduira pas — la prochaine fois je trouverai une solution.", score: 0 },
+          { text: "Je lui explique que nos standards de sécurité sont un engagement permanent, pas une variable selon le client.", score: 2 },
+          { text: "Je lui propose d'optimiser nos processus ensemble pour réduire les délais sans compromettre la sécurité.", score: 1.5 },
+          { text: "J'en parle à ma direction pour savoir jusqu'où je peux aller avec ce client.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre position sur la sécurité est la même face aux petits clients et aux clients stratégiques.",
+        tags: ["pression client", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez tenu votre position sécurité face au client. Votre direction vous appelle pour vous demander d'être 'plus flexible'. Elle n'était pas au courant de l'échange.",
+        tags: ["pression client", "escalade"],
+        answers: [
+          { text: "Je deviens plus flexible — ma direction a une vision stratégique que je n'ai pas.", score: 0 },
+          { text: "Je lui présente les faits et le dilemme réel pour qu'elle arbitre en connaissance de cause.", score: 2 },
+          { text: "Je maintiens ma position en lui expliquant les risques concrets d'une flexibilité sur ce point.", score: 2 },
+          { text: "Je lui demande de se positionner par écrit avant de changer quoi que ce soit.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos arbitrages sécurité cèdent encore sous la pression commerciale ou contractuelle forte", desc: "Contourner une procédure parce que le client menace, accepter des équipes non formées parce que c'est urgent, devenir 'plus flexible' parce que votre direction vous le demande : ces comportements signalent au client et à votre organisation que les exigences de sécurité sont un curseur, pas une limite. Ce signal est plus puissant que n'importe quel discours sur la culture sécurité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez face aux pressions commerciales ordinaires mais vous pouvez encore céder sous pression maximale", desc: "Vous tenez vos positions sécurité face aux clients qui font pression dans les situations ordinaires. Mais quand le DG est en copie, quand le contrat est clairement à risque, quand vos collègues s'alignent : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations de pression maximale — c'est là que votre position a le plus d'impact." },
+          haut: { label: "Réflexes installés", titre: "Vous présentez les exigences de sécurité comme non négociables face à tous les clients, quelle que soit la pression", desc: "Vous ne contournez pas de procédure parce qu'un client menace, vous ne devenez pas 'plus flexible' parce que votre direction vous le demande, et votre position est la même avec un petit client et avec le client stratégique. Et vous cherchez avec eux des alternatives qui ne compromettent pas la sécurité plutôt que de les opposer à une fin de non-recevoir. Cette cohérence absolue est ce qui crée une crédibilité durable — commercialement aussi." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Votre équipe a eu un comportement à risque qui n'a pas causé d'incident. Comment traitez-vous le sujet ?",
-          answers: [
-          {text: "Je ne dis rien — il n'y a pas eu de conséquences.", score: 0},
-          {text: "Je fais un rappel général lors d'une réunion.", score: 1},
-          {text: "J'aborde le sujet directement avec les personnes concernées en cherchant à comprendre ce qui s'est passé.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Une panne critique arrête la production. Chaque heure coûte plusieurs dizaines de milliers d'euros. La réparation nécessite une intervention à chaud que votre procédure interdit normalement. Vos techniciens sont prêts.",
+        tags: ["crise", "coût"],
+        answers: [
+          { text: "J'autorise — le coût est prohibitif et mes techniciens sont expérimentés.", score: 0 },
+          { text: "Je refuse et je cherche une solution alternative même si elle prend plus de temps.", score: 2 },
+          { text: "J'autorise avec des mesures compensatoires renforcées et une supervision directe.", score: 0.5 },
+          { text: "Je documente le refus et je remonte à ma direction pour qu'elle arbitre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
         },
-        {
-          text: "Un collaborateur a réalisé une opération seul en dehors du cadre prévu. Il l'a bien gérée. Comment réagissez-vous ?",
-          answers: [
-          {text: "Je le félicite pour l'initiative.", score: 0},
-          {text: "Je lui rappelle qu'il n'aurait pas dû faire seul.", score: 1},
-          {text: "Je cherche d'abord à comprendre pourquoi il a pris cette décision avant de traiter l'écart.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "En situation de crise opérationnelle avec un coût élevé à chaque heure perdue, vous refusez d'autoriser des interventions qui contreviennent aux procédures de sécurité fondamentales.",
+        tags: ["crise", "fermeté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
         },
-        {
-          text: "Vous découvrez qu'une pratique courante dans votre équipe ne respecte pas strictement une procédure, sans que ça n'ait posé de problème jusqu'ici. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse faire — l'expérience montre que ça marche.", score: 0},
-          {text: "Je rappelle la procédure sans analyser pourquoi l'écart s'est installé.", score: 1},
-          {text: "J'analyse pourquoi l'écart s'est installé et je remonte si la procédure doit être révisée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un incident peut dégénérer si vous n'intervenez pas rapidement. L'intervention sécurisée prend trois fois plus de temps. Deux de vos techniciens expérimentés se portent volontaires pour prendre le risque.",
+        tags: ["crise", "volontariat"],
+        answers: [
+          { text: "J'autorise — le volontariat et l'expérience justifient l'arbitrage dans cette situation.", score: 0 },
+          { text: "Je maintiens l'intervention sécurisée — le volontariat ne change pas le niveau de risque réel.", score: 2 },
+          { text: "J'évalue si l'intervention rapide peut être réalisée avec des précautions renforcées.", score: 0.5 },
+          { text: "Je laisse mes techniciens décider — ils connaissent mieux que moi le risque réel.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
         },
-        {
-          text: "Un collaborateur a fait une erreur qui a failli causer un accident. Il est très affecté. Comment gérez-vous le moment ?",
-          answers: [
-          {text: "Je lui explique clairement l'erreur commise pour que ce soit clair.", score: 0},
-          {text: "Je gère la situation administrative d'abord et parle à la personne ensuite.", score: 1},
-          {text: "Je m'assure d'abord qu'elle va bien, puis j'analyse la situation ensemble dans un cadre constructif.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En pleine crise, votre direction vous demande de prendre une décision de sécurité dans les cinq minutes. Il vous manque des informations importantes pour décider sereinement.",
+        tags: ["crise", "information"],
+        answers: [
+          { text: "Je prends la décision demandée — en crise, une décision imparfaite vaut mieux que l'attente.", score: 0.5 },
+          { text: "Je demande les dix minutes nécessaires pour obtenir les informations manquantes.", score: 2 },
+          { text: "Je prends la décision la plus conservative possible en attendant d'avoir les éléments.", score: 1 },
+          { text: "Je délègue la décision à mon expert technique le plus disponible.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
         },
-        {
-          text: "Deux membres de votre équipe ont des interprétations différentes d'une procédure et se disputent sur le sujet. Que faites-vous ?",
-          answers: [
-          {text: "Je tranche en faveur de l'un des deux.", score: 0},
-          {text: "Je leur demande de se mettre d'accord entre eux.", score: 1},
-          {text: "Je clarifie la procédure officielle et, si elle est ambiguë, je remonte pour qu'elle soit précisée.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Pour résoudre rapidement une crise, vous avez autorisé une procédure dégradée. La situation s'améliore mais la procédure dégradée est toujours en place trois jours plus tard.",
+        tags: ["crise", "enchaînement"],
+        answers: [
+          { text: "Je laisse — ça fonctionne et changer en cours de route créerait plus de risques.", score: 0 },
+          { text: "Je reviens à la procédure normale dès que la situation le permet et je formalise le retour.", score: 2 },
+          { text: "Je prolonge la procédure dégradée jusqu'à ce que la situation soit complètement résolue.", score: 0 },
+          { text: "Je documente la procédure dégradée pour qu'elle devienne une option officielle.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous autorisez une mesure dégradée en situation de crise, vous fixez une durée limite et vous revenez à la procédure normale dès que possible.",
+        tags: ["crise", "temporaire"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre directeur général est sur site pendant la crise et pousse personnellement pour que vous autorisiez une intervention que vous jugez trop risquée.",
+        tags: ["crise", "pression hiérarchique"],
+        answers: [
+          { text: "J'autorise — le DG a la responsabilité globale et une vision que je n'ai pas.", score: 0 },
+          { text: "Je maintiens mon refus en lui expliquant précisément les risques que j'évalue.", score: 2 },
+          { text: "Je lui demande de me donner son accord par écrit avant d'autoriser.", score: 1.5 },
+          { text: "Je cherche un compromis pour lui montrer ma bonne volonté.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La crise est résolue. Votre équipe est soulagée et voudrait 'tourner la page'. Vous estimez qu'un REX approfondi est nécessaire car des arbitrages discutables ont été faits.",
+        tags: ["crise", "REX"],
+        answers: [
+          { text: "Je laisse l'équipe souffler — le REX peut attendre quelques semaines.", score: 0 },
+          { text: "Je maintiens le REX rapide dans la semaine, tant que les mémoires sont fraîches.", score: 2 },
+          { text: "Je fais un REX allégé pour ne pas alourdir une équipe fatiguée.", score: 0.5 },
+          { text: "Je fais le REX seul et je partage les conclusions sans réunion collective.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En situation de crise, vous documentez les décisions de sécurité que vous prenez, y compris les refus et les arbitrages, pour que la traçabilité soit assurée.",
+        tags: ["crise", "documentation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après une crise difficile à gérer, vous réalisez que votre équipe n'avait pas les procédures dégradées nécessaires pour répondre à ce type de situation.",
+        tags: ["crise", "préparation"],
+        answers: [
+          { text: "J'attends que la prochaine crise arrive pour voir si c'est vraiment utile.", score: 0 },
+          { text: "Je travaille avec mon équipe à l'élaboration de procédures dégradées officielles pour les situations similaires.", score: 2 },
+          { text: "Je note la leçon pour moi sans lancer un chantier qui mobiliserait l'équipe.", score: 0 },
+          { text: "Je remonte la suggestion à ma hiérarchie pour qu'elle lance les travaux.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos décisions sécurité en crise sont encore influencées par le coût économique et la pression hiérarchique", desc: "Autoriser une intervention à chaud parce que le coût horaire est élevé, céder face au DG sur site, laisser la procédure dégradée en place après la crise : la pression de crise est précisément le contexte dans lequel les accidents graves surviennent — parce que la vigilance est mobilisée par l'urgence économique et non par le risque physique. L'enjeu est de maintenir les refus précisément dans ces moments." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les refus dans les crises ordinaires mais les situations extrêmes vous mettent encore en difficulté", desc: "Vous refusez les arbitrages sécurité dans la plupart des crises. Mais face à un coût économique très élevé, à un DG qui pousse en direct, à une équipe volontaire pour prendre le risque : votre résistance peut encore être mise en défaut. L'enjeu est de préparer mentalement ces situations — savoir d'avance ce que vous ferez quand la pression sera maximale." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez vos refus en crise, vous documentez vos décisions et vous revenez à la norme dès que possible", desc: "Vous refusez l'intervention à chaud même avec un coût élevé à chaque heure. Vous documentez vos décisions. Vous remettez en place la procédure normale dès que la crise le permet. Et après la crise, vous faites le REX même si l'équipe veut tourner la page. Ce niveau de rigueur dans les situations les plus difficiles est la mesure réelle d'une culture sécurité managériale." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Votre équipe est fatiguée après plusieurs semaines de forte activité. Les incidents n'ont pas augmenté mais vous ressentez une baisse d'attention. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — tout le monde est fatigué par moment.", score: 0},
-          {text: "J'en parle informellement lors d'une réunion.", score: 1},
-          {text: "Je nomme la situation à mon équipe et prends des mesures concrètes pour soulager la pression.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous réalisez que votre équipe a développé une pratique qui s'écarte d'une procédure de sécurité. Personne n'a décidé de le faire — c'est arrivé progressivement sous pression. Aucun incident n'est survenu.",
+        tags: ["contournement collectif", "déviance"],
+        answers: [
+          { text: "Je laisse — l'absence d'incident prouve que la procédure était surdimensionnée.", score: 0 },
+          { text: "J'interviens sur la pratique et j'implique l'équipe pour trouver une solution durable.", score: 2 },
+          { text: "Je remets la procédure en place sans chercher à comprendre pourquoi elle a été contournée.", score: 1 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle décide si la procédure doit être modifiée.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
         },
-        {
-          text: "Sur les deux derniers mois, votre équipe n'a signalé aucun incident ni presqu'accident. Vous trouvez cela suspect. Que faites-vous ?",
-          answers: [
-          {text: "Je suis satisfait — les bons résultats parlent d'eux-mêmes.", score: 0},
-          {text: "J'en parle lors d'une réunion pour rappeler l'importance du signalement.", score: 1},
-          {text: "Je cherche activement à comprendre pourquoi les signalements ont diminué.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez sur les déviances collectives dans votre équipe même quand personne n'en souffre visiblement et quand la pression opérationnelle semble les justifier.",
+        tags: ["contournement collectif", "intervention"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
         },
-        {
-          text: "Votre site traverse une phase de grands travaux avec beaucoup de rotation d'intervenants. La vigilance collective baisse. Que faites-vous ?",
-          answers: [
-          {text: "Je renforce les contrôles sans changer les rituels.", score: 0},
-          {text: "J'augmente la fréquence des rappels sécurité.", score: 1},
-          {text: "Je renforce les rituels de coordination ET je crée des moments spécifiques pour maintenir l'attention dans ce contexte particulier.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre meilleur technicien, référent informel de l'équipe, entraîne progressivement ses collègues dans des raccourcis de sécurité. Sa légitimité dans l'équipe est très forte.",
+        tags: ["contournement collectif", "leader"],
+        answers: [
+          { text: "Je le laisse — son impact positif global dépasse le coût des raccourcis.", score: 0 },
+          { text: "Je lui parle individuellement pour qu'il comprenne l'effet d'entraînement qu'il a.", score: 2 },
+          { text: "Je traite le sujet en équipe sans le cibler nommément.", score: 1.5 },
+          { text: "Je renforce les contrôles sur l'ensemble de l'équipe sans intervenir sur lui directement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
         },
-        {
-          text: "Un collaborateur très expérimenté a commencé à s'épargner certaines vérifications. Il dit qu'avec son expérience, il sait quand c'est vraiment nécessaire. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse faire — son expérience est un argument valable.", score: 0},
-          {text: "Je lui rappelle les règles sans approfondir.", score: 1},
-          {text: "J'aborde le sujet directement : l'expérience ne remplace pas les procédures, elle aide à les appliquer mieux.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez corrigé une déviance collective il y a trois semaines. Vous constatez qu'elle réapparaît progressivement.",
+        tags: ["contournement collectif", "récidive"],
+        answers: [
+          { text: "Je recadre à nouveau — la répétition finira par ancrer le bon comportement.", score: 0.5 },
+          { text: "Je cherche pourquoi la correction n'a pas tenu avant de recadrer à nouveau.", score: 2 },
+          { text: "Je conclus que la procédure est inadaptée et je propose de la modifier.", score: 1 },
+          { text: "Je renforce les contrôles pour rendre le contournement impossible.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
         },
-        {
-          text: "Vous revenez de congés et constatez que plusieurs petits glissements se sont produits pendant votre absence. Votre remplaçant n'en a pas parlé. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends là où je suis et laisse passer — ce qui est fait est fait.", score: 0},
-          {text: "Je recadre discrètement les comportements observés.", score: 1},
-          {text: "Je fais un point équipe pour remettre les pratiques à niveau et comprendre pourquoi ces glissements ont eu lieu.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est épuisée après six semaines de rush intense. Les gestes de sécurité se dégradent progressivement. Tout le monde comprend pourquoi sans en parler.",
+        tags: ["contournement collectif", "fatigue"],
+        answers: [
+          { text: "Je comprends — dans cet état, on ne peut pas exiger la même rigueur qu'en conditions normales.", score: 0 },
+          { text: "Je renforce au contraire ma vigilance sécurité — la fatigue est un facteur de risque accru.", score: 2 },
+          { text: "Je maintiens les standards en réduisant la charge si possible.", score: 1.5 },
+          { text: "Je remonte à ma hiérarchie le lien entre l'épuisement et la dégradation des pratiques.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un contournement réapparaît après correction, vous cherchez d'abord la cause profonde avant de recadrer à nouveau.",
+        tags: ["contournement collectif", "causes"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a d'excellents résultats opérationnels depuis plusieurs mois. Des raccourcis de sécurité ont contribué à ces résultats. Votre direction valorise la performance sans mentionner les raccourcis.",
+        tags: ["contournement collectif", "bilan positif"],
+        answers: [
+          { text: "Je valorise les résultats sans mentionner les raccourcis — ce n'est pas le moment de créer des tensions.", score: 0 },
+          { text: "Je traite les raccourcis séparément des résultats — la performance n'excuse pas les déviances.", score: 2 },
+          { text: "Je remonte à ma direction que les résultats ont été obtenus au prix de raccourcis sécurité.", score: 1.5 },
+          { text: "J'attends de voir si un incident vient relativiser ces bons résultats.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un de vos collaborateurs refuse de participer à une pratique déviante que l'équipe a adoptée. Certains collègues mal à l'aise lui mettent une pression sociale.",
+        tags: ["contournement collectif", "refus"],
+        answers: [
+          { text: "Je le laisse gérer — c'est une dynamique entre adultes.", score: 0 },
+          { text: "Je le protège activement et je traite la pression sociale comme un sujet managérial.", score: 2 },
+          { text: "Je lui conseille de s'aligner le temps que je règle le fond du problème.", score: 0 },
+          { text: "Je traite la déviance collective sans mentionner son refus.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous protégez activement les collaborateurs qui résistent aux pratiques déviantes collectives de votre équipe.",
+        tags: ["contournement collectif", "protection"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe transmet ses déviances aux nouveaux arrivants dans le cadre du compagnonnage. Les anciens ne voient pas de problème à ça.",
+        tags: ["contournement collectif", "transmission"],
+        answers: [
+          { text: "Je laisse — le compagnonnage est une transmission naturelle des pratiques réelles.", score: 0 },
+          { text: "J'interviens sur le contenu transmis et je structure un compagnonnage basé sur les pratiques conformes.", score: 2 },
+          { text: "Je sensibilise les anciens à l'effet de leur transmission sans revoir le processus.", score: 1 },
+          { text: "Je supervise les périodes de compagnonnage pour corriger les écarts au fil de l'eau.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les déviances collectives de votre équipe sous pression restent sans intervention durable", desc: "Laisser une déviance collective en place parce que ça fonctionne, intervenir sur le symptôme sans chercher la cause, protéger l'équipe en ne nommant pas le problème : une déviance collective non traitée devient la nouvelle norme. Elle se transmet aux nouveaux, elle s'accentue sous pression, et elle prépare les conditions d'un accident que personne n'aura vu venir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez sur les déviances collectives mais votre traitement ne va pas encore jusqu'aux causes profondes", desc: "Vous intervenez quand vous constatez une déviance collective. Mais corriger sans chercher pourquoi ça a dérivé, laisser passer les raccourcis du meilleur élément, ne pas protéger celui qui résiste : ces comportements font que la correction ne tient pas dans le temps. L'enjeu est d'aller jusqu'aux causes pour que la correction soit durable." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les déviances collectives en cherchant les causes et en protégeant ceux qui résistent", desc: "Vous intervenez sur le meilleur élément qui entraîne l'équipe. Vous cherchez pourquoi une correction n'a pas tenu avant de recadrer à nouveau. Vous protégez le collaborateur qui résiste à la pression collective. Et vous ne laissez pas les déviances se transmettre dans le compagnonnage. Cette façon de traiter les déviances collectives en profondeur est ce qui évite qu'elles deviennent des normes." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Votre équipe réalise des opérations de façon légèrement différente de la procédure écrite depuis des mois. Le résultat est bon. Vous venez de vous en rendre compte. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse faire — si la pratique fonctionne, c'est qu'elle est adaptée.", score: 0},
-          {text: "Je remets la procédure officielle en application sans chercher à comprendre.", score: 1},
-          {text: "Je documente la pratique réelle et remonte pour que la procédure soit révisée si elle est pertinente.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre entreprise traverse une restructuration. L'équipe est anxieuse, l'attention est ailleurs. Les pratiques de sécurité se dégradent silencieusement. Ce n'est pas le bon moment pour insister.",
+        tags: ["période difficile", "restructuration"],
+        answers: [
+          { text: "J'attends la fin de la restructuration pour remettre la sécurité en priorité.", score: 0 },
+          { text: "Je renforce ma vigilance sécurité — les restructurations sont des périodes à risque accru.", score: 2 },
+          { text: "Je maintiens les standards en évitant d'ajouter une pression supplémentaire.", score: 1 },
+          { text: "Je remonte à ma hiérarchie le lien entre la restructuration et la dégradation observée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
         },
-        {
-          text: "Un nouveau collaborateur pose des questions sur des pratiques que l'équipe a habituellement 'normalisées'. Il trouve certaines choses étranges. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je lui explique que c'est comme ça que ça marche ici.", score: 0},
-          {text: "Je prends note de ses questions sans y donner suite immédiatement.", score: 1},
-          {text: "Je prends ses observations comme un point de vue extérieur précieux et examine s'il a raison.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez les exigences de sécurité de votre équipe dans les périodes difficiles — restructuration, sous-effectif, moral bas — sans attendre que les conditions s'améliorent.",
+        tags: ["période difficile", "priorité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
         },
-        {
-          text: "Votre équipe a tendance à minimiser les presqu'accidents en disant que 'ça fait partie du métier'. Que faites-vous ?",
-          answers: [
-          {text: "Je partage cet état d'esprit — certains risques sont inhérents au métier.", score: 0},
-          {text: "Je rappelle que tout doit être signalé mais sans aborder la culture sous-jacente.", score: 1},
-          {text: "Je travaille sur la culture de signalement pour que les presqu'accidents soient vus comme des opportunités d'apprentissage.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est en sous-effectif depuis deux mois. La pression est forte. Plusieurs collaborateurs montrent des signes d'épuisement qui commencent à affecter leur vigilance.",
+        tags: ["période difficile", "sous-effectif"],
+        answers: [
+          { text: "Je maintiens les standards en leur faisant confiance pour gérer leur état.", score: 0.5 },
+          { text: "Je remonte à ma hiérarchie le lien entre le sous-effectif et le risque sécurité avec des données concrètes.", score: 2 },
+          { text: "Je renforce les contrôles pour compenser la baisse de vigilance.", score: 1 },
+          { text: "Je réduis temporairement les exigences sur les points les moins critiques.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
         },
-        {
-          text: "Vous détectez qu'une personne de votre équipe dissimule des informations par peur de la sanction. Comment réagissez-vous ?",
-          answers: [
-          {text: "Je lui rappelle ses obligations sans aborder la question de la peur.", score: 0},
-          {text: "Je lui explique qu'il n'y aura pas de sanction pour ce cas précis.", score: 1},
-          {text: "Je travaille à créer un environnement où la transparence est valorisée et le signalement, sans conséquence pour l'erreur non intentionnelle.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a un turn-over élevé depuis plusieurs mois. Les nouveaux n'ont pas encore les réflexes sécurité. Les anciens portent une charge plus lourde et commencent à baisser leur garde.",
+        tags: ["période difficile", "turn-over"],
+        answers: [
+          { text: "Je me concentre sur l'intégration des nouveaux et j'espère que les anciens se ressaisiront.", score: 0 },
+          { text: "Je gère simultanément l'intégration sécurité des nouveaux et la vigilance des anciens.", score: 2 },
+          { text: "Je demande aux anciens de prendre les nouveaux sous leur aile — ça les responsabilisera.", score: 0.5 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle stabilise l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
         },
-        {
-          text: "Vous avez signalé à plusieurs reprises des situations à risque à votre hiérarchie sans retour. Que faites-vous ?",
-          answers: [
-          {text: "J'arrête de signaler — ça ne sert à rien.", score: 0},
-          {text: "Je continue à signaler mais sans espérer de retour.", score: 1},
-          {text: "Je demande formellement un retour sur mes signalements et escalade si nécessaire.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a un excellent bilan sécurité depuis 18 mois. Votre direction réduit les ressources allouées à la sécurité en citant ce bon résultat. Vous savez que c'est précisément grâce à ces ressources.",
+        tags: ["période difficile", "bon bilan"],
+        answers: [
+          { text: "J'accepte — les bons résultats prouvent qu'on n'a plus besoin du même niveau d'investissement.", score: 0 },
+          { text: "Je remonte à ma direction le lien de causalité entre les ressources et les bons résultats.", score: 2 },
+          { text: "Je compense avec les ressources disponibles sans créer de tension.", score: 0 },
+          { text: "Je documente la situation pour me protéger en cas de dégradation future.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand les conditions de travail créent un risque sécurité accru, vous le rendez visible à votre hiérarchie avec des éléments factuels plutôt que de l'absorber seul·e.",
+        tags: ["période difficile", "escalade"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction tient un discours fort sur la sécurité mais ses décisions opérationnelles la contredisent régulièrement. Votre équipe a remarqué le décalage et commence à se désinvestir.",
+        tags: ["période difficile", "discours vs pratique"],
+        answers: [
+          { text: "Je traduis le discours de la direction sans commenter l'écart avec les décisions.", score: 0 },
+          { text: "Je remonte le décalage à ma direction en montrant l'effet sur l'engagement de mon équipe.", score: 2 },
+          { text: "Je maintiens ma propre cohérence pour préserver la crédibilité de la sécurité dans mon périmètre.", score: 1.5 },
+          { text: "Je dis à mon équipe de se concentrer sur les règles concrètes sans écouter les discours.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous portez seul·e depuis plusieurs semaines une charge managériale lourde en matière de sécurité. Vous commencez à vous-même baisser votre garde par épuisement.",
+        tags: ["période difficile", "propre état"],
+        answers: [
+          { text: "Je tiens — un manager ne peut pas montrer ses limites sur un sujet aussi important.", score: 0 },
+          { text: "Je remonte ma situation à ma hiérarchie et je cherche un soutien pour ne pas rester seul·e.", score: 2 },
+          { text: "Je cherche un soutien pair — un autre manager qui peut partager la charge.", score: 1.5 },
+          { text: "Je prends quelques jours de congé pour récupérer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous surveillez votre propre niveau de vigilance et de rigueur sécurité, pas seulement celui de votre équipe.",
+        tags: ["période difficile", "propre vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur de votre équipe, Nadia, vient vous dire qu'elle n'arrive plus à tenir les standards de sécurité dans les conditions actuelles. Elle risque de craquer.",
+        tags: ["période difficile", "signal"],
+        answers: [
+          { text: "Je lui dis de tenir encore un peu — les conditions vont s'améliorer.", score: 0 },
+          { text: "Je prends son alerte au sérieux et je remonte immédiatement la situation à ma hiérarchie.", score: 2 },
+          { text: "Je lui allège sa charge dans mon périmètre et j'en parle à ma hiérarchie.", score: 1.5 },
+          { text: "Je lui suggère de prendre quelques jours pour récupérer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité s'adapte encore selon les conditions — restructuration, bon bilan, sous-effectif", desc: "Attendre la fin de la restructuration pour remettre la sécurité à l'ordre du jour, accepter la réduction des ressources sécurité après un bon bilan, laisser votre propre vigilance baisser sous épuisement : les périodes difficiles sont précisément celles où le cap sécurité doit être le plus tenu — parce que les conditions sont réunies pour un accident et que la vigilance collective est au plus bas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez les standards dans les périodes difficiles mais vous absorbez encore les tensions seul·e", desc: "Vous maintenez les exigences dans les périodes difficiles. Mais vous absorbez seul·e la charge de tenir le cap sécurité quand tout pousse contre : vous ne remontez pas systématiquement le lien entre les conditions dégradées et le risque sécurité, vous ne cherchez pas de soutien pour vous-même quand vous êtes épuisé·e. L'enjeu est de rendre ces tensions visibles plutôt que de les porter seul·e." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité dans les périodes difficiles et vous rendez les tensions visibles à votre hiérarchie", desc: "Vous renforcez votre vigilance dans les restructurations et les périodes de sous-effectif. Vous remontez à votre hiérarchie le lien entre les ressources sécurité et les bons résultats. Vous cherchez du soutien quand vous portez trop. Et vous prenez au sérieux l'alerte de Nadia qui ne tient plus. Cette façon de traiter les périodes difficiles comme des périodes à risque accru — pas comme des circonstances atténuantes — est ce qui distingue un management sécurité solide d'un management sécurité de façade." },
+        },
+      }
     ],
+
   },
 
   "securite-nucleaire": {
@@ -4615,7 +5111,16 @@
   ]}
 ],    
     
-    ["securite-manager-arbitrage", "Arbitrer entre sécurité et pression opérationnelle",   "Managers / Encadrants",    "Tenir les exigences de sécurité face aux délais, traiter les écarts et détecter les dérives silencieuses.",                                                    T.securiteManagerArbitrage],
+["securite-manager-arbitrage", "Arbitrer entre sécurité et pression opérationnelle", "Managers / Encadrants",
+  "Tenir les exigences de sécurité face aux délais, traiter les écarts et détecter les dérives silencieuses.",
+  { domain: "securite", chapters: [
+    ["Tenir face à la pression client et contractuelle", "Maintenir les exigences sécurité quelle que soit la relation commerciale."],
+    ["Arbitrer en situation de crise opérationnelle",    "Refuser les raccourcis même à coût élevé, documenter et revenir à la norme."],
+    ["Gérer une équipe qui contourne sous pression",     "Traiter les déviances collectives en profondeur et protéger ceux qui résistent."],
+    ["Maintenir le cap dans les périodes difficiles",    "Tenir les standards dans les restructurations et rendre les tensions visibles."]
+  ]}
+],    
+    
     ["securite-nucleaire",         "Culture de sûreté en environnement nucléaire",         "Tous publics — Nucléaire", "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.",                                                T.securiteNucleaire],
     ["securite-chantier-btp",      "Sécurité sur chantier BTP",                            "Équipes terrain — BTP",    "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",                                                               T.securiteChantierBTP]
   ]);
