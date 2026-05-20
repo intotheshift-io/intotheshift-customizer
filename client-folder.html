@@ -22,6 +22,8 @@
     .hero .btn{background:#fff;color:#0d4c72}
     .btn.light{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
     .btn.publish,.small-btn.publish{background:#16774a;color:#fff;border-color:#16774a}
+    .small-btn.unpublish{background:#eef2f6;color:#475569;border-color:#cbd5e1}
+    .small-btn.archive{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
     .btn:disabled,.small-btn:disabled{opacity:.55;cursor:not-allowed}
 
     .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 22px}
@@ -66,6 +68,13 @@
     .modal-close{border:none;background:rgba(255,255,255,.16);color:#fff;width:34px;height:34px;border-radius:999px;font-size:20px;cursor:pointer;flex:0 0 auto}
     .modal-body{padding:22px 24px;color:#60758a;line-height:1.45}
     .modal-highlight{background:#eef6fb;border:1px solid #d7e8f1;color:#0d4c72;border-radius:14px;padding:12px;margin-top:14px;font-weight:800}
+    .modal-form{display:grid;gap:12px;margin-top:14px}
+    .modal-field label{display:block;font-size:12px;font-weight:900;color:#17375d;margin-bottom:6px}
+    .modal-field input{width:100%;border:1px solid #d8e2ec;border-radius:14px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#17375d;outline:none;background:#fff}
+    .modal-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
+    .modal-field small{display:block;margin-top:5px;color:#74899a;font-size:11px;line-height:1.35}
+    .modal-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    @media(max-width:620px){.modal-form-grid{grid-template-columns:1fr}}
     .modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
     .success-inline{display:none;margin-top:12px;background:#eefbf3;color:#176239;border:1px solid #bee8cd;border-radius:14px;padding:11px 12px;font-weight:800;font-size:13px}
     .success-inline.on{display:block}
@@ -215,6 +224,30 @@
       <div class="modal-body">
         Confirmez uniquement si l’autodiagnostic est prêt côté Into The Shift.
         <div id="publishProjectTitle" class="modal-highlight"></div>
+
+        <div class="modal-form">
+          <div class="modal-field">
+            <label for="publishShareUrl">URL de diffusion</label>
+            <input id="publishShareUrl" type="url" placeholder="https://selfdiag-mayt.meandyoutoo.app/...">
+            <small>Lien que le client partage aux répondants.</small>
+          </div>
+          <div class="modal-field">
+            <label for="publishResultsUrl">URL résultats</label>
+            <input id="publishResultsUrl" type="url" placeholder="https://...">
+            <small>Lien du tableau de bord ou de restitution des résultats.</small>
+          </div>
+          <div class="modal-form-grid">
+            <div class="modal-field">
+              <label for="publishStartDate">Date de début</label>
+              <input id="publishStartDate" type="date">
+            </div>
+            <div class="modal-field">
+              <label for="publishEndDate">Date de fin</label>
+              <input id="publishEndDate" type="date">
+            </div>
+          </div>
+        </div>
+
         <div id="publishSuccess" class="success-inline">✓ Autodiagnostic publié.</div>
       </div>
       <div class="modal-footer">
@@ -747,7 +780,17 @@
               }
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">Marquer comme publié</button>`
+                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
+                  : ""
+              }
+              ${
+                normalizedStatus === "published" && isAdmin()
+                  ? `<button class="small-btn unpublish" onclick="changeProjectStatus('${escapeAttr(project.id)}','unpublished','dépublier')">🛑 Dépublier</button>`
+                  : ""
+              }
+              ${
+                ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
+                  ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
                   : ""
               }
             </div>
@@ -934,6 +977,14 @@
 
       document.getElementById("publishProjectTitle").textContent = projectToPublish.title;
       document.getElementById("publishSuccess").classList.remove("on");
+      const shareInput = document.getElementById("publishShareUrl");
+      const resultsInput = document.getElementById("publishResultsUrl");
+      const startInput = document.getElementById("publishStartDate");
+      const endInput = document.getElementById("publishEndDate");
+      if(shareInput) shareInput.value = projectToPublish.shareUrl || "";
+      if(resultsInput) resultsInput.value = projectToPublish.resultsUrl || "";
+      if(startInput) startInput.value = projectToPublish.campaignStartDate || "";
+      if(endInput) endInput.value = projectToPublish.campaignEndDate || "";
       document.getElementById("publishModal").classList.add("open");
       document.getElementById("publishModal").setAttribute("aria-hidden", "false");
     }
@@ -953,8 +1004,17 @@
       try{
         if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
 
-        if(!projectToPublish.shareUrl || !projectToPublish.resultsUrl){
-          throw new Error("Renseigne d’abord l’URL de diffusion et l’URL résultats dans Admin > Autodiags, puis enregistre l’AD comme publié.");
+        const shareUrl = String(document.getElementById("publishShareUrl")?.value || "").trim();
+        const resultsUrl = String(document.getElementById("publishResultsUrl")?.value || "").trim();
+        const startDate = String(document.getElementById("publishStartDate")?.value || "").trim();
+        const endDate = String(document.getElementById("publishEndDate")?.value || "").trim();
+
+        if(!shareUrl || !resultsUrl){
+          throw new Error("Renseigne l’URL de diffusion et l’URL résultats avant de publier.");
+        }
+
+        if(startDate && endDate && startDate > endDate){
+          throw new Error("La date de début ne peut pas être postérieure à la date de fin.");
         }
 
         const response = await fetch(`${API_URL}/api/admin/projects/${projectToPublish.id}/publication`, {
@@ -965,10 +1025,10 @@
           },
           body: JSON.stringify({
             status: "published",
-            share_url: projectToPublish.shareUrl,
-            results_url: projectToPublish.resultsUrl,
-            campaign_start_date: projectToPublish.campaignStartDate || null,
-            campaign_end_date: projectToPublish.campaignEndDate || null
+            share_url: shareUrl,
+            results_url: resultsUrl,
+            campaign_start_date: startDate || null,
+            campaign_end_date: endDate || null
           })
         });
 
@@ -987,6 +1047,40 @@
         alert(err.message || "Impossible de publier cet autodiagnostic.");
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
+      }
+    }
+
+    async function changeProjectStatus(projectId, nextStatus, actionLabel){
+      if(!projectId || !nextStatus) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const ok = confirm(`Confirmer : ${actionLabel} « ${title} » ?`);
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`
+          },
+          body: JSON.stringify({
+            status: nextStatus,
+            share_url: project ? (getProjectShareUrl(project) || null) : null,
+            results_url: project ? (getProjectResultsUrl(project) || null) : null,
+            campaign_start_date: project ? (getProjectStartDate(project) || null) : null,
+            campaign_end_date: project ? (getProjectEndDate(project) || null) : null
+          })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur changement de statut");
+
+        showToast(nextStatus === "unpublished" ? "AD dépublié" : "AD archivé");
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de changer le statut de cet autodiagnostic.");
       }
     }
 
