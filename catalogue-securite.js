@@ -4701,175 +4701,671 @@
 
   },
 
-  "securite-nucleaire": {
+    "culture-surete-nucleaire": {
     0: [
-        {
-          text: "Vous réalisez une opération que vous connaissez parfaitement depuis des années. La gamme indique une étape que vous avez toujours faite de façon légèrement différente sans conséquence. Que faites-vous ?",
-          answers: [
-          {text: "J'applique ma méthode habituelle — l'expérience prime.", score: 0},
-          {text: "J'applique la gamme mais je note mentalement la différence.", score: 1},
-          {text: "J'applique la gamme telle qu'elle est écrite et remonte l'écart si ma pratique semble meilleure.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous vous apprêtez à réaliser une gamme d'intervention que vous avez effectuée des dizaines de fois. Une étape de vérification préalable vous semble désormais une formalité.",
+        tags: ["questionnement", "rigueur"],
+        answers: [
+          { text: "Je la passe — ma maîtrise de cette gamme rend la vérification redondante.", score: 0 },
+          { text: "Je réalise la vérification à chaque intervention, comme si c'était la première fois.", score: 2 },
+          { text: "Je la fais rapidement — l'essentiel est de garder le bon état d'esprit.", score: 0.5 },
+          { text: "Je la fais uniquement sur les étapes que je considère vraiment critiques.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
         },
-        {
-          text: "Lors d'une opération, vous avez un doute sur l'interprétation d'un paramètre. Votre collègue, plus expérimenté, vous dit que c'est normal. Que faites-vous ?",
-          answers: [
-          {text: "Je lui fais confiance et continue.", score: 0},
-          {text: "Je note le paramètre mais continue en restant attentif.", score: 1},
-          {text: "Je stoppe et cherche une confirmation formelle avant de reprendre.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En cours d'intervention, quelque chose vous semble légèrement différent de d'habitude sur l'équipement. Vous ne pouvez pas identifier précisément ce qui a changé. Votre planning est serré.",
+        tags: ["questionnement", "doute"],
+        answers: [
+          { text: "Je continue — si je ne sais pas ce qui est différent, c'est peut-être une impression.", score: 0 },
+          { text: "Je m'arrête et je signale mon observation avant de poursuivre.", score: 2 },
+          { text: "Je termine l'étape en cours et j'en parle à mon chef d'équipe ensuite.", score: 0.5 },
+          { text: "Je demande à un collègue de vérifier avec moi avant de continuer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
         },
-        {
-          text: "Une vérification de routine vous semble donner un résultat légèrement en dehors de la plage habituelle, mais toujours dans les limites admissibles. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — c'est dans les limites.", score: 0},
-          {text: "Je note l'écart dans mon calepin personnel.", score: 1},
-          {text: "Je le documente formellement et le signale pour analyse de tendance.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les procédures dans leur intégralité même sur les interventions que vous connaissez parfaitement, en traitant chaque situation comme si c'était la première fois.",
+        tags: ["questionnement", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
         },
-        {
-          text: "En prenant votre poste, votre collègue vous dit qu'il y a eu une 'petite anomalie' qu'il a gérée mais pas signalée. Que faites-vous ?",
-          answers: [
-          {text: "Je prends note pour moi mais respecte sa décision.", score: 0},
-          {text: "Je lui suggère de le signaler sans insister.", score: 1},
-          {text: "Je lui explique pourquoi c'est important et l'aide à faire le signalement si nécessaire.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes en zone contrôlée, en train de réaliser une opération délicate selon votre gamme. Votre dosimètre opérationnel émet une alarme sonore.",
+        tags: ["questionnement", "interruption"],
+        answers: [
+          { text: "Je termine l'étape en cours avant d'évacuer — interrompre maintenant créerait plus de risques.", score: 0 },
+          { text: "Je quitte immédiatement la zone et je contacte le chargé de radioprotection.", score: 2 },
+          { text: "Je vérifie si l'alarme est réelle avant de m'arrêter.", score: 0 },
+          { text: "Je demande à mon binôme de vérifier la situation pendant que je termine.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
         },
-        {
-          text: "Vous réalisez que la gamme que vous utilisez n'a pas été mise à jour suite à une modification technique récente. L'opération vous semble maîtrisée quand même. Que faites-vous ?",
-          answers: [
-          {text: "Je réalise l'opération — je connais la modification.", score: 0},
-          {text: "Je réalise l'opération en tenant compte de la modification mentalement.", score: 1},
-          {text: "Je stoppe et remonte que la gamme doit être mise à jour avant toute utilisation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre chef d'équipe vous demande d'accélérer une intervention en zone pour tenir le planning d'arrêt de tranche. Pour gagner du temps, il suggère de sauter une vérification radiologique préalable.",
+        tags: ["questionnement", "pression hiérarchique"],
+        answers: [
+          { text: "Je saute la vérification — c'est mon chef qui demande et la zone est connue.", score: 0 },
+          { text: "Je réalise la vérification même si ça contrarie mon chef, et j'explique pourquoi.", score: 2 },
+          { text: "Je fais une vérification allégée pour trouver un compromis.", score: 0.5 },
+          { text: "Je demande à mon chef de me confirmer par écrit que je peux sauter cette étape.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous arrêtez une intervention et signalez immédiatement dès que quelque chose vous semble anormal, sans attendre de pouvoir expliquer précisément ce qui pose problème.",
+        tags: ["questionnement", "stop"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un briefing, Youssef, technicien très expérimenté, propose de simplifier une procédure jugée trop lourde pour ce type d'intervention. Il a 20 ans d'expérience sur cette installation.",
+        tags: ["questionnement", "expérience"],
+        answers: [
+          { text: "Je valide — son expérience sur cette installation est une garantie suffisante.", score: 0 },
+          { text: "Je pose la question : est-ce que la procédure a été établie en tenant compte de situations que l'expérience ne peut pas anticiper ?", score: 2 },
+          { text: "Je lui demande de faire remonter sa suggestion par les voies officielles.", score: 1.5 },
+          { text: "Je suis sa proposition ce coup-ci et je remonte la simplification possible à notre responsable.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une étape de votre gamme d'intervention est formulée de façon ambiguë. Vous pensez comprendre ce qu'elle signifie. Votre interprétation vous permettrait de gagner du temps.",
+        tags: ["questionnement", "clarté"],
+        answers: [
+          { text: "J'applique mon interprétation — elle est cohérente avec le reste de la gamme.", score: 0 },
+          { text: "Je m'arrête et je demande une clarification avant de continuer.", score: 2 },
+          { text: "Je prends l'interprétation la plus conservative pour minimiser le risque.", score: 1.5 },
+          { text: "Je note l'ambiguïté et je la remonte après l'intervention.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à une ambiguïté dans une procédure ou une gamme, vous demandez une clarification avant d'agir plutôt que d'interpréter seul·e.",
+        tags: ["questionnement", "ambiguïté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre binôme lors d'une intervention en zone contrôlée réalise une étape d'une façon qui vous semble différente de la gamme. Il est plus expérimenté que vous.",
+        tags: ["questionnement", "entraide"],
+        answers: [
+          { text: "Je le laisse faire — il est plus expérimenté et connaît peut-être une subtilité que j'ignore.", score: 0 },
+          { text: "Je lui pose la question pour comprendre pourquoi il procède différemment.", score: 2 },
+          { text: "Je note ce que j'observe et j'en parle à notre chef d'équipe après l'intervention.", score: 1 },
+          { text: "Je lui fais signe de s'arrêter et je vérifie la gamme avec lui.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'assouplit encore face à l'expérience, la familiarité et la pression de planning", desc: "Sauter une vérification sur une gamme connue, continuer après une alarme pour finir l'étape, suivre l'interprétation d'un ancien sans poser de question : la familiarité avec une installation et l'expérience sont les deux facteurs les plus fréquemment cités dans les événements nucléaires significatifs. La posture de questionnement n'est pas réservée aux débutants — c'est précisément quand on maîtrise qu'elle est la plus difficile à maintenir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la posture de questionnement dans la plupart des situations mais elle peut encore fléchir sous forte pression", desc: "Vous posez des questions sur ce qui vous semble anormal, vous ne sautez pas d'étapes dans les situations ordinaires. Mais sous pression de planning fort, face à un chef d'équipe qui demande d'aller vite, ou sur une gamme que vous avez réalisée des centaines de fois : votre posture peut encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus fréquentes dans les événements nucléaires." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la posture de questionnement même sur les interventions les plus familières et sous pression de planning", desc: "Vous arrêtez une intervention et signalez dès que quelque chose vous semble différent, même sans pouvoir l'expliquer. Vous questionnez Youssef sur sa façon de procéder même si vous êtes moins expérimenté·e. Vous refusez de sauter la vérification préalable même à la demande de votre chef d'équipe. Cette posture de questionnement permanente — qui suppose d'accepter parfois d'être celui ou celle qui ralentit — est ce qui définit la culture de sûreté nucléaire." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "La pression de remise en service est forte. Une question technique reste ouverte mais tout le monde pense que c'est sans conséquence. Votre responsable vous demande de continuer. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — la pression est légitime et la question est probablement mineure.", score: 0},
-          {text: "Je continue mais je documente ma réserve.", score: 1},
-          {text: "Je refuse de continuer tant que la question technique n'est pas formellement tranchée.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous devez intervenir sur un équipement. La procédure prévoit une consignation complète à cinq étapes. Votre chef d'équipe dit que pour cette intervention courte, les trois premières étapes suffisent.",
+        tags: ["procédure", "consignation"],
+        answers: [
+          { text: "Je fais les trois étapes — mon chef connaît les exigences de cette installation.", score: 0 },
+          { text: "Je réalise la consignation complète à cinq étapes même si mon chef dit que trois suffisent.", score: 2 },
+          { text: "Je fais les trois étapes et je note le raccourci pour le signaler au responsable sécurité.", score: 1 },
+          { text: "Je demande à mon chef de me montrer où c'est écrit que trois étapes sont acceptables.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
         },
-        {
-          text: "Une situation non prévue dans la gamme se présente. Vous pensez avoir la solution mais elle n'est pas documentée. Que faites-vous ?",
-          answers: [
-          {text: "J'applique ma solution — c'est ce pour quoi je suis formé.", score: 0},
-          {text: "J'applique ma solution et le documente après.", score: 1},
-          {text: "Je stoppe, documente la situation non prévue et attends une décision formelle avant de reprendre.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous réalisez les procédures dans leur intégralité, sans en sauter d'étapes même à la demande de votre hiérarchie directe.",
+        tags: ["procédure", "intégrité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
         },
-        {
-          text: "Vous réalisez qu'un équipement que vous venez de remettre en service a peut-être une configuration incertaine. L'essai de démarrage semblait normal. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse en service — le démarrage était normal.", score: 0},
-          {text: "Je note l'incertitude et continue sous surveillance.", score: 1},
-          {text: "Je remets l'équipement en arrêt et éclaircis la configuration avant de remettre en service.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous venez de terminer une intervention en zone contrôlée. En quittant la zone, vous réalisez que vous n'avez pas pointé votre sortie sur le registre. Vous êtes pressé·e.",
+        tags: ["procédure", "traçabilité"],
+        answers: [
+          { text: "Je régularise demain matin — la sortie a bien eu lieu et c'est l'essentiel.", score: 0 },
+          { text: "Je retourne pointer ma sortie avant de quitter le bâtiment.", score: 2 },
+          { text: "J'appelle quelqu'un pour qu'il pointe à ma place.", score: 0 },
+          { text: "Je le signale à mon responsable pour qu'il régularise dans le registre.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
         },
-        {
-          text: "Un chef d'équipe vous demande de commencer une étape avant la fin de la consignation pour gagner du temps. Il dit être sûr que c'est sécurisé. Que faites-vous ?",
-          answers: [
-          {text: "Je commence — il est responsable et il connaît le sujet.", score: 0},
-          {text: "Je commence prudemment en restant attentif.", score: 1},
-          {text: "Je refuse de commencer avant que la consignation soit complète et formellement validée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre intervention, vous avez dépassé de quelques minutes le temps autorisé en zone. L'exposition dosimétrique reste dans les limites réglementaires. Vous êtes le seul à le savoir.",
+        tags: ["procédure", "DES"],
+        answers: [
+          { text: "Je ne le déclare pas — l'exposition est dans les limites et le dépassement est mineur.", score: 0 },
+          { text: "Je déclare l'écart en DES — même mineur, tout dépassement doit être tracé.", score: 2 },
+          { text: "Je le signale à mon chef d'équipe verbalement pour qu'il décide de la suite.", score: 1 },
+          { text: "Je le note dans mon carnet personnel sans déclaration formelle.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
         },
-        {
-          text: "Votre équipe a trouvé une façon plus rapide de réaliser une opération. Elle ne viole pas de règle explicite. Tout le monde l'utilise. Que faites-vous ?",
-          answers: [
-          {text: "J'utilise la méthode de l'équipe — elle a fait ses preuves.", score: 0},
-          {text: "Je continue à utiliser la méthode officielle sans intervenir.", score: 1},
-          {text: "J'utilise la méthode officielle et propose que la nouvelle méthode soit formellement évaluée et intégrée si elle est validée.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une revue post-intervention, il apparaît qu'une étape de votre gamme a été réalisée dans un ordre différent de celui prescrit. Le résultat final est conforme. Vous êtes concerné·e.",
+        tags: ["procédure", "REX"],
+        answers: [
+          { text: "Je ne le mentionne pas — le résultat est conforme et ça ne sert à rien de créer des complications.", score: 0 },
+          { text: "Je le mentionne lors de la revue — l'écart à la gamme doit être tracé même si le résultat est correct.", score: 2 },
+          { text: "J'en parle à mon chef d'équipe en privé avant la revue.", score: 1 },
+          { text: "Je le note pour adapter ma pratique la prochaine fois sans en faire un sujet.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous déclarez tous les écarts à la procédure, même mineurs et même sans conséquence visible sur le résultat.",
+        tags: ["procédure", "déclaration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre gamme d'intervention vient d'être mise à jour. Les modifications semblent mineures par rapport à ce que vous faisiez avant. Vous avez un délai court pour vous y conformer.",
+        tags: ["procédure", "mise à jour"],
+        answers: [
+          { text: "Je continue avec mes habitudes — les modifications sont mineures et ma façon de faire est éprouvée.", score: 0 },
+          { text: "Je prends le temps de lire la nouvelle gamme et d'identifier précisément ce qui a changé.", score: 2 },
+          { text: "Je lis les modifications marquées et j'adapte uniquement ces points.", score: 1 },
+          { text: "Je demande à un collègue qui a déjà lu la nouvelle gamme de me l'expliquer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En cours d'intervention, vous rencontrez une situation non couverte par votre gamme. Vous pensez savoir comment gérer. Le technicien de quart est disponible.",
+        tags: ["procédure", "situation dégradée"],
+        answers: [
+          { text: "Je gère seul — ma solution est logique et solliciter le technicien de quart prendrait trop de temps.", score: 0 },
+          { text: "J'arrête l'intervention et je contacte le technicien de quart avant de prendre la moindre décision.", score: 2 },
+          { text: "J'applique la solution que je pense correcte en la documentant pour le retour d'expérience.", score: 0 },
+          { text: "Je contacte mon chef d'équipe pour qu'il valide ma solution.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à une situation non prévue par votre gamme, vous vous arrêtez et contactez le niveau de compétence approprié avant d'agir.",
+        tags: ["procédure", "situation non couverte"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le planning d'arrêt de tranche est très tendu. Votre responsable vous demande de réaliser deux interventions en parallèle sur deux équipements adjacents. Ce n'est pas prévu dans vos gammes.",
+        tags: ["procédure", "pression planning"],
+        answers: [
+          { text: "Je m'organise pour les réaliser en parallèle — mon responsable a évalué le risque.", score: 0 },
+          { text: "Je lui explique que mes gammes ne prévoient pas de réalisation en parallèle et que je dois les réaliser séquentiellement.", score: 2 },
+          { text: "Je fais les deux en parallèle en faisant très attention.", score: 0 },
+          { text: "Je demande si une analyse de risque a été faite pour autoriser cette réalisation en parallèle.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous appliquez les procédures mais des adaptations s'installent progressivement sous pression hiérarchique ou planning", desc: "Sauter une étape de consignation à la demande du chef d'équipe, ne pas déclarer un dépassement de temps mineur parce que l'exposition reste dans les limites, gérer seul·e une situation non couverte par la gamme : chaque accommodation à la procédure crée un précédent. En sûreté nucléaire, la procédure n'est pas un guide — c'est une limite." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les procédures rigoureusement mais des zones grises persistent sur les écarts mineurs", desc: "Vous réalisez les procédures dans leur intégralité dans la plupart des cas. Mais les écarts mineurs — le pointage de sortie oublié, le dépassement de quelques minutes dans les limites, la situation non couverte gérée seul·e : votre traitement de ces zones grises peut encore manquer de rigueur. En sûreté nucléaire, il n'y a pas de 'petit écart' — il y a des écarts tracés et des écarts non tracés." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures dans leur intégralité sans exception, y compris sur les écarts les plus mineurs", desc: "Vous retournez pointer votre sortie même si vous êtes pressé·e. Vous déclarez l'écart de temps même dans les limites. Vous arrêtez et contactez le technicien de quart face à une situation non couverte par la gamme. En sûreté nucléaire, la procédure est une limite non négociable — pas un cadre à adapter selon le contexte ou la demande hiérarchique." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Lors d'une opération, vous rencontrez une configuration qui n'est pas exactement celle décrite dans la gamme. La situation semble maîtrisable. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — je connais suffisamment bien le système.", score: 0},
-          {text: "J'adapte et je le note pour en parler après.", score: 1},
-          {text: "Je stoppe et traite la situation comme une dérive de gamme à remonter avant toute décision.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "En sortant de zone contrôlée, le portique de contrôle de contamination vous détecte positif. C'est la première fois que ça vous arrive. Vous n'avez pas de symptôme physique.",
+        tags: ["DES", "seuil"],
+        answers: [
+          { text: "Je repasse — les portiques font parfois des fausses alertes.", score: 0 },
+          { text: "Je me signale immédiatement au chargé de radioprotection sans repasser le portique.", score: 2 },
+          { text: "Je contacte mon chef d'équipe pour qu'il évalue la situation.", score: 0.5 },
+          { text: "J'attends quelques minutes dans le sas pour voir si une autre personne confirme l'anomalie.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
         },
-        {
-          text: "Une équipe extérieure intervient sur un équipement que vous supervisiez. Leur intervention modifie légèrement l'état du système. Ils disent que c'est prévu. Que faites-vous ?",
-          answers: [
-          {text: "Je les crois — ils sont compétents.", score: 0},
-          {text: "Je vérifie que leur intervention était prévue.", score: 1},
-          {text: "Je vérifie la traçabilité de l'autorisation avant de remettre le système dans son état nominal.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement tout événement anormal — même mineur, même incertain — sans attendre d'avoir une confirmation ou une explication.",
+        tags: ["DES", "réactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
         },
-        {
-          text: "Vous constatez que deux gammes donnent des instructions contradictoires pour une même situation. Que faites-vous ?",
-          answers: [
-          {text: "J'applique celle qui me semble la plus logique.", score: 0},
-          {text: "J'en parle à mon responsable avant de continuer.", score: 1},
-          {text: "Je stoppe et remonte immédiatement l'incohérence pour qu'une décision formelle soit prise.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez commis une erreur de procédure en zone dont vous êtes le seul à avoir connaissance. Elle n'a pas eu de conséquence visible. La déclarer en DES implique une investigation.",
+        tags: ["DES", "peur"],
+        answers: [
+          { text: "Je ne déclare pas — sans conséquence, une DES créerait des complications pour rien.", score: 0 },
+          { text: "Je déclare l'événement — même sans conséquence, c'est un précurseur qui doit être analysé.", score: 2 },
+          { text: "J'en parle à mon chef d'équipe pour qu'il décide si une DES est nécessaire.", score: 1 },
+          { text: "Je déclare anonymement si le système le permet.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
         },
-        {
-          text: "Lors d'une inspection, un point de contrôle donne un résultat à la limite de l'acceptable. Votre responsable dit que c'est OK. Que faites-vous ?",
-          answers: [
-          {text: "Je suis son avis — il a le niveau pour décider.", score: 0},
-          {text: "Je note ma réserve mais je continue.", score: 1},
-          {text: "Je documente formellement que le résultat est à la limite et demande une décision écrite.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un REX d'équipe, un événement précurseur est évoqué que plusieurs membres avaient observé mais que personne n'avait déclaré. Vous en faisiez partie.",
+        tags: ["DES", "collectif"],
+        answers: [
+          { text: "Je ne dis rien — l'événement est passé et une DES maintenant ne servirait à rien.", score: 0 },
+          { text: "J'indique que j'ai aussi observé cet événement et je comprends pourquoi une DES était nécessaire.", score: 2 },
+          { text: "Je confirme l'observation sans mentionner que j'aurais dû déclarer.", score: 0.5 },
+          { text: "J'explique pourquoi je n'avais pas déclaré pour contribuer à l'amélioration du système.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
         },
-        {
-          text: "Un prestataire suggère une modification sur un équipement pour simplifier une opération future. La proposition semble intéressante. Que faites-vous ?",
-          answers: [
-          {text: "J'autorise — si c'est pertinent, autant le faire maintenant.", score: 0},
-          {text: "Je lui dis de soumettre ça à mon responsable.", score: 1},
-          {text: "Je lui explique que toute modification doit suivre le processus de gestion des modifications, même si elle semble simple.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre chef d'équipe vous dit qu'une DES sur cet événement nuirait à l'indicateur de performance de votre équipe en fin de mois. Il vous demande de ne pas la faire.",
+        tags: ["DES", "pression"],
+        answers: [
+          { text: "Je ne déclare pas — mon chef a ses raisons et les indicateurs comptent.", score: 0 },
+          { text: "Je déclare quand même — les DES ne sont pas soumises à l'appréciation hiérarchique.", score: 2 },
+          { text: "Je lui demande de me confirmer par écrit que je n'ai pas à déclarer.", score: 1.5 },
+          { text: "Je déclare en précisant que la décision de ne pas déclarer m'a été demandée.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous réalisez les déclarations d'événements significatifs (DES) indépendamment des demandes de votre hiérarchie ou de leur impact sur les indicateurs.",
+        tags: ["DES", "indépendance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez qu'un sous-traitant qui intervient sur votre installation a eu un événement anormal pendant son intervention. Il ne l'a pas déclaré et semble vouloir l'oublier.",
+        tags: ["DES", "tiers"],
+        answers: [
+          { text: "Je laisse — c'est son événement et sa responsabilité de déclarer.", score: 0 },
+          { text: "Je lui explique l'obligation de déclaration et je l'encourage à faire la DES.", score: 2 },
+          { text: "Je déclare moi-même l'événement que j'ai observé.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il gère avec le donneur d'ordre du sous-traitant.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez rédiger une DES sur un événement complexe. La rédaction complète et précise vous prendrait deux heures. Une version allégée prendrait 20 minutes.",
+        tags: ["DES", "qualité"],
+        answers: [
+          { text: "Je fais la version allégée — l'essentiel est que l'événement soit déclaré.", score: 0.5 },
+          { text: "Je prends le temps nécessaire pour une rédaction complète — une DES incomplète est moins utile qu'une DES bien faite.", score: 2 },
+          { text: "Je fais une version intermédiaire en gardant les éléments que je juge les plus importants.", score: 1 },
+          { text: "Je fais la version allégée maintenant et je complète les détails dans les 24 heures.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos déclarations d'événements sont complètes et honnêtes sur le contexte, y compris les éléments qui pourraient mettre en cause votre propre pratique.",
+        tags: ["DES", "exhaustivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez réalisé une DES il y a trois semaines. Vous n'avez reçu aucun retour sur son traitement. La situation précurseur identifiée est toujours présente.",
+        tags: ["DES", "suivi"],
+        answers: [
+          { text: "J'attends — les processus de traitement des DES ont leurs délais.", score: 0.5 },
+          { text: "Je relance pour avoir un retour et je revérifie que ma DES a bien été reçue.", score: 2 },
+          { text: "Je fais une nouvelle DES si l'événement se reproduit.", score: 1 },
+          { text: "J'en parle à mon responsable pour accélérer le traitement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements importants mais évitez encore les déclarations qui vous impliquent ou impactent les indicateurs", desc: "Ne pas déclarer une erreur sans conséquence, ne pas faire de DES pour ne pas affecter les indicateurs, donner une information incomplète dans une DES pour protéger le contexte : le système de retour d'expérience nucléaire ne fonctionne que si les événements sont déclarés honnêtement. Une DES non faite ou incomplète est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais hésitez encore sur ceux qui vous impliquent directement", desc: "Vous déclarez les événements dont vous êtes témoin. Mais quand vous êtes directement en cause, quand la déclaration impacte l'indicateur de votre équipe, quand votre chef vous demande de ne pas déclarer : votre indépendance dans la déclaration peut encore être mise en question. L'enjeu est de maintenir cette indépendance précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous déclarez tous les événements précurseurs de façon complète et honnête, indépendamment des conséquences", desc: "Vous déclarez vos propres erreurs même sans conséquence. Vous vous signalez immédiatement au chargé de radioprotection sur le premier signal du portique. Vous maintenez vos déclarations même quand votre hiérarchie vous demande de ne pas les faire. Cette indépendance dans la déclaration est ce qui garantit l'intégrité du système de retour d'expérience — qui ne vaut que si tout le monde joue le jeu." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Un événement significatif de sûreté vient de se produire dans votre équipe. Votre responsable pense que ça peut ne pas être déclaré. Que faites-vous ?",
-          answers: [
-          {text: "Je lui fais confiance — il a l'expérience pour juger.", score: 0},
-          {text: "Je note ma réserve mais respecte sa décision.", score: 1},
-          {text: "Je maintiens que la déclaration est nécessaire si les critères sont remplis, quelle que soit la pression.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Lors d'un REX suite à un événement précurseur, il apparaît que plusieurs personnes avaient des éléments d'information qui, mis ensemble, auraient permis d'éviter l'événement. Vous en faisiez partie.",
+        tags: ["culture sûreté", "REX"],
+        answers: [
+          { text: "Je reste discret — pointer mon manque de communication ne ferait que me mettre en difficulté.", score: 0 },
+          { text: "Je partage ce que je savais et je contribue à comprendre pourquoi cette information n'a pas circulé.", score: 2 },
+          { text: "Je donne l'information maintenant sans mentionner que je l'avais avant.", score: 0 },
+          { text: "J'explique que j'avais ces éléments mais que je ne voyais pas leur pertinence à ce moment-là.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Vous réalisez a posteriori qu'une opération réalisée la semaine dernière aurait dû être documentée comme écart. Personne ne s'en souvient clairement. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — c'est trop tard.", score: 0},
-          {text: "J'en parle informellement à mon responsable.", score: 1},
-          {text: "Je documente ce dont je me souviens et remonte l'information, même tardivement.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous partagez proactivement les informations qui pourraient être utiles à la sûreté, même quand leur pertinence n'est pas évidente au moment où vous les détenez.",
+        tags: ["culture sûreté", "partage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "L'analyse d'un événement conclut à une 'erreur humaine' mais vous pensez que des facteurs organisationnels ont contribué. Que faites-vous ?",
-          answers: [
-          {text: "J'accepte la conclusion — les experts ont décidé.", score: 0},
-          {text: "Je note ma réserve sans la formuler.", score: 1},
-          {text: "Je formule ma perspective dans les échanges de REX pour que l'analyse soit complète.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous encadrez Léa, nouvellement arrivée sur l'installation. Elle vous pose des questions sur des pratiques de l'équipe qui s'écartent des procédures officielles.",
+        tags: ["culture sûreté", "nouveau"],
+        answers: [
+          { text: "Je lui explique que 'dans la vraie vie, on s'adapte' — la procédure est un cadre théorique.", score: 0 },
+          { text: "Je lui dis que les écarts qu'elle observe sont des problèmes et que la procédure est la référence.", score: 2 },
+          { text: "Je lui explique l'historique des pratiques sans les cautionner.", score: 1 },
+          { text: "Je lui conseille d'appliquer la procédure et de signaler les écarts qu'elle observe.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Votre équipe a une culture où les questions sont mal vues. Vous constatez que les agents hésitent à formuler des doutes. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte à la culture en place.", score: 0},
-          {text: "Je continue à poser des questions moi-même sans intervenir sur la dynamique.", score: 1},
-          {text: "Je nommer le problème auprès de mon responsable et cherche à créer un espace où la questioning attitude est valorisée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre installation a un excellent bilan sécurité depuis 24 mois. Les réunions de culture de sûreté commencent à être expédiées. Votre responsable dit que 'l'équipe est mûre'.",
+        tags: ["culture sûreté", "pression bilan"],
+        answers: [
+          { text: "Je valide — un bilan exceptionnel prouve que la culture est intégrée.", score: 0 },
+          { text: "Je soulève le sujet : un bon bilan est le résultat de la vigilance collective, pas la preuve qu'on peut la réduire.", score: 2 },
+          { text: "Je maintiens ma vigilance personnelle sans chercher à changer l'attitude de l'équipe.", score: 1 },
+          { text: "J'en parle à la fonction sécurité-sûreté pour qu'elle remotive les réunions.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Suite à un REX, des actions correctives ont été définies mais elles ne sont pas mises en œuvre. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que la hiérarchie reprenne le sujet.", score: 0},
-          {text: "Je relance informellement.", score: 1},
-          {text: "Je demande formellement un état d'avancement et escalade si nécessaire.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un échange informel, un sous-traitant vous dit qu'il trouve les procédures de votre installation 'excessivement lourdes' comparées à d'autres sites nucléaires où il intervient.",
+        tags: ["culture sûreté", "tiers"],
+        answers: [
+          { text: "Je lui donne raison — les procédures sont effectivement parfois surdimensionnées.", score: 0 },
+          { text: "Je lui explique pourquoi les procédures de cette installation ont été établies ainsi.", score: 2 },
+          { text: "Je lui dis qu'il peut en parler à notre responsable sécurité s'il a des suggestions.", score: 1 },
+          { text: "Je reste neutre — je ne suis pas en position de défendre ou critiquer nos procédures.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre façon de travailler en zone et d'appliquer les procédures est un exemple que vous seriez à l'aise de montrer à n'importe quel auditeur externe.",
+        tags: ["culture sûreté", "exemplarité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous lisez dans une revue professionnelle un compte rendu d'événement survenu sur une installation similaire à la vôtre. Certaines causes ressemblent à des pratiques que vous observez chez vous.",
+        tags: ["culture sûreté", "incident tiers"],
+        answers: [
+          { text: "Je lis l'article pour ma culture personnelle sans en tirer de conséquence immédiate.", score: 0 },
+          { text: "Je remonte l'information à mon responsable et à la fonction sécurité-sûreté pour qu'on analyse les similitudes.", score: 2 },
+          { text: "J'en parle à mes collègues lors du prochain briefing.", score: 1 },
+          { text: "J'attends que l'information soit diffusée par les canaux officiels de l'installation.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous identifiez une amélioration possible d'une procédure de sûreté. La démarche officielle pour la proposer est longue. Votre chef d'équipe dit que 'ce n'est pas la peine'.",
+        tags: ["culture sûreté", "amélioration"],
+        answers: [
+          { text: "Je renonce — si mon chef dit que ce n'est pas la peine, c'est probablement le cas.", score: 0 },
+          { text: "Je la soumets quand même par les voies officielles.", score: 2 },
+          { text: "Je l'applique à mon niveau sans la formaliser.", score: 0 },
+          { text: "Je contacte directement la fonction sécurité-sûreté pour la proposer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous contribuez activement à l'amélioration des procédures et à la culture de sûreté de votre installation, pas seulement à votre conformité individuelle.",
+        tags: ["culture sûreté", "contribution"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez qu'une des barrières de sûreté de votre installation est dégradée depuis plusieurs jours. Plusieurs personnes le savent. La situation n'a pas été déclarée.",
+        tags: ["culture sûreté", "défense en profondeur"],
+        answers: [
+          { text: "Je laisse — si les personnes compétentes ne déclarent pas, c'est que ça ne nécessite pas de DES.", score: 0 },
+          { text: "Je déclare la situation — une barrière dégradée est un événement précurseur quelle que soit son ancienneté.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il évalue si une DES est nécessaire.", score: 1 },
+          { text: "Je signale à la personne la plus compétente que la situation devrait être déclarée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous appliquez sans influencer le collectif", desc: "Laisser un nouveau s'aligner sur les pratiques déviantes, valider tacitement qu'un bon bilan justifie de réduire la vigilance, ne pas remonter les informations utiles venant d'autres installations : la culture de sûreté est un bien collectif qui se construit ou s'érode à travers les comportements individuels quotidiens. Y contribuer activement n'est pas une option — c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais votre influence sur les pratiques collectives reste limitée", desc: "Vous donnez l'exemple dans votre pratique personnelle. Mais transmettre les bonnes pratiques à Léa qui observe les déviances de l'équipe, soulever le sujet quand les réunions de culture de sûreté s'expédient, remonter les informations d'événements tiers : ces comportements d'influence collective sont encore insuffisants. L'enjeu est de passer de la conformité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté collective par votre pratique, vos échanges et vos remontées", desc: "Vous transmettez les bonnes pratiques à Léa dès qu'elle arrive. Vous remontez les informations d'événements tiers quand elles ressemblent à vos pratiques. Vous maintenez la vigilance de l'équipe même après 24 mois de bon bilan. Cette façon de traiter la culture de sûreté comme une responsabilité collective — pas seulement individuelle — est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }
     ],
+
   },
 
   "securite-chantier-btp": {
@@ -5121,7 +5617,16 @@
   ]}
 ],    
     
-    ["securite-nucleaire",         "Culture de sûreté en environnement nucléaire",         "Tous publics — Nucléaire", "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.",                                                T.securiteNucleaire],
+["culture-surete-nucleaire", "Culture de sûreté en environnement nucléaire", "Tous publics — Nucléaire",
+  "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.",
+  { domain: "securite", chapters: [
+    ["Adopter la posture de questionnement",     "Traiter chaque intervention comme si c'était la première fois, même sur les gammes maîtrisées."],
+    ["Appliquer la rigueur procédurale",         "Respecter les procédures dans leur intégralité sans adaptation, même mineure, même à la demande hiérarchique."],
+    ["Déclarer les événements précurseurs",      "Faire les DES de façon complète et indépendante, y compris quand on est soi-même impliqué."],
+    ["Contribuer à la culture de sûreté collective", "Transmettre les bonnes pratiques, partager les informations utiles et maintenir la vigilance collective."]
+  ]}
+],    
+    
     ["securite-chantier-btp",      "Sécurité sur chantier BTP",                            "Équipes terrain — BTP",    "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",                                                               T.securiteChantierBTP]
   ]);
 
