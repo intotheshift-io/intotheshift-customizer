@@ -2882,179 +2882,677 @@
     ],
 
   },
-  // ─────────────────────────────────────────────────────────────────────
+    // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "retour-apres-absence" dans Object.assign(window.CUSTOM_QUESTIONS,
 
-  "manager-signaux-rps": {
+  "retour-apres-absence": {
     0: [
-        {
-          text: "Un collaborateur qui était toujours à l'heure commence à arriver en retard régulièrement. Il ne donne pas d'explication. Que faites-vous ?",
-          answers: [
-          {text: "Je note le retard et lui rappelle les règles.", score: 0},
-          {text: "Je lui demande si tout va bien.", score: 1},
-          {text: "Je crée un espace pour échanger sur sa situation sans le mettre en difficulté.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous revenez lundi après trois semaines d'absence maladie. Vous n'avez eu aucun contact avec votre équipe pendant cette période. Le week-end avant votre reprise, vous pensez à votre retour.",
+        tags: ["retour", "anticipation"],
+        answers: [
+          { text: "J'attends lundi pour voir comment ça se passe — mieux vaut ne pas y penser à l'avance.", score: 0 },
+          { text: "Je consulte rapidement mes mails pour ne pas arriver complètement dans le noir.", score: 0.5 },
+          { text: "Je contacte mon responsable vendredi pour avoir un point rapide sur ce qui a changé.", score: 2 },
+          { text: "Je prépare mentalement une liste de ce que je vais devoir reprendre en main.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
         },
-        {
-          text: "Un collaborateur habitué à contribuer activement en réunion ne dit plus rien depuis deux semaines. Que faites-vous ?",
-          answers: [
-          {text: "J'attends de voir si ça change.", score: 0},
-          {text: "Je lui pose la question en réunion pour le faire participer.", score: 1},
-          {text: "Je crée un moment en dehors des réunions pour lui demander comment il se sent.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable ne vous a pas contacté avant votre retour prévu. Vous ignorez si un entretien de retour est prévu, si votre charge a évolué, si des décisions ont été prises en votre absence.",
+        tags: ["retour", "manager"],
+        answers: [
+          { text: "J'attends qu'il prenne l'initiative — s'il ne l'a pas fait, c'est peut-être qu'il n'y a rien d'urgent.", score: 0 },
+          { text: "Je lui envoie un message la veille pour lui proposer un point rapide le matin de mon retour.", score: 2 },
+          { text: "Je lui envoie un mail pour signaler ma reprise et lui demander si un point est prévu.", score: 1.5 },
+          { text: "Je reviens et je prends la température directement sur place.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
         },
-        {
-          text: "Vous constatez que la qualité du travail d'un collaborateur a baissé sans raison apparente. Que faites-vous ?",
-          answers: [
-          {text: "Je lui fais un retour sur la qualité de son travail.", score: 0},
-          {text: "Je lui demande si quelque chose le perturbe.", score: 1},
-          {text: "Je crée un espace d'échange sur sa charge et son vécu avant d'aborder la performance.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Avant de reprendre le travail après une absence, vous prenez le temps d'identifier ce qui a pu changer pour ne pas arriver complètement à l'improviste.",
+        tags: ["retour", "préparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
         },
-        {
-          text: "Un collaborateur est de plus en plus absent pour des arrêts courts et répétitifs. Que faites-vous ?",
-          answers: [
-          {text: "Je note les absences et les suis administrativement.", score: 0},
-          {text: "Je lui demande si quelque chose ne va pas.", score: 1},
-          {text: "Je crée un espace d'échange bienveillant et, si nécessaire, je l'oriente vers le médecin du travail.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre médecin vous a recommandé un retour progressif — mi-temps thérapeutique ou aménagement de poste. Vous hésitez à en parler à votre responsable, de peur que ça complique les choses.",
+        tags: ["retour", "médical"],
+        answers: [
+          { text: "Je reviens à temps plein directement — je ne veux pas créer de contrainte organisationnelle.", score: 0 },
+          { text: "Je lui en parle en lui présentant comme une recommandation médicale, pas comme une demande personnelle.", score: 2 },
+          { text: "J'en parle aux RH d'abord pour qu'ils gèrent la conversation avec mon responsable.", score: 1.5 },
+          { text: "J'attends de voir comment se passe la première semaine avant d'évoquer le sujet.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
         },
-        {
-          text: "Un collaborateur est de plus en plus irritable avec ses collègues. Ça commence à affecter l'ambiance. Que faites-vous ?",
-          answers: [
-          {text: "Je lui rappelle l'importance du respect dans l'équipe.", score: 0},
-          {text: "Je l'aborde sur l'impact de son comportement.", score: 1},
-          {text: "Je l'aborde d'abord sur comment il va lui, avant de parler de l'impact sur l'équipe.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre absence, plusieurs dossiers ont avancé sans vous. Certains vous reviendront, d'autres ont été redistribués. Vous ne savez pas encore lesquels.",
+        tags: ["retour", "charge"],
+        answers: [
+          { text: "Je reprends tout ce qui était à moi avant — c'est mon périmètre.", score: 0 },
+          { text: "Je fais le point avec mon responsable sur ce qui me revient et dans quel délai.", score: 2 },
+          { text: "J'attends que mes collègues me passent ce qu'ils ont géré.", score: 0.5 },
+          { text: "Je regarde ce qui traîne et je reprends ce qui semble urgent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant votre retour, vous prévenez votre responsable de votre reprise et vous demandez un point pour cadrer les premières journées.",
+        tags: ["retour", "communication"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous reprenez après un congé maternité de cinq mois. Avant votre départ, vous occupiez un poste avec des responsabilités importantes. Vous ignorez si les choses ont changé.",
+        tags: ["retour", "attentes"],
+        answers: [
+          { text: "Je reprends comme si rien n'avait changé — mon poste est le mien.", score: 0 },
+          { text: "Je demande un entretien avec mon responsable avant la reprise pour faire le point sur mon périmètre.", score: 2 },
+          { text: "Je reprends progressivement en observant comment les choses se sont réorganisées.", score: 1 },
+          { text: "J'en parle aux RH pour m'assurer que mes droits sont respectés.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous revenez d'un arrêt pour épuisement. Vous vous sentez mieux mais pas encore à 100%. Vous hésitez entre signaler votre état réel et faire comme si tout allait bien.",
+        tags: ["retour", "état"],
+        answers: [
+          { text: "Je fais comme si tout allait bien — montrer sa vulnérabilité au travail est risqué.", score: 0 },
+          { text: "Je dis à mon responsable que je suis en phase de reprise et que j'ai besoin d'un rythme progressif.", score: 2 },
+          { text: "Je le dis aux RH sans en parler à mon responsable.", score: 1 },
+          { text: "J'attends de voir si le rythme normal est tenable avant de décider si j'en parle.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes réaliste sur votre état avant de reprendre — vous ne vous forcez pas à projeter un retour à 100% si ce n'est pas le cas.",
+        tags: ["retour", "réalisme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue, Jonathan, reprend après un arrêt long. Vous travaillez étroitement avec lui. Personne dans l'équipe n'a été informé des conditions de son retour.",
+        tags: ["retour", "entourage"],
+        answers: [
+          { text: "J'attends que ce soit lui qui en parle — c'est son histoire, pas la mienne.", score: 0 },
+          { text: "Je lui envoie un message avant son retour pour lui dire que je suis content de le retrouver.", score: 2 },
+          { text: "J'en parle à notre responsable pour savoir comment accueillir Jonathan.", score: 1 },
+          { text: "Je l'accueille normalement le jour J — trop de prévenances pourraient être maladroites.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous arrivez à votre retour sans avoir préparé le terrain, ce qui amplifie le choc de la reprise", desc: "Ne pas contacter son responsable avant la reprise, revenir sans savoir ce qui a changé, hésiter à mentionner un retour progressif recommandé par le médecin : ces comportements transforment le premier jour en choc plutôt qu'en transition. Une reprise bien préparée — même avec un simple message la veille — change significativement l'expérience des premières journées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez votre retour dans les grandes lignes mais les zones d'ombre restent nombreuses", desc: "Vous prenez contact avant de reprendre et vous anticipez les grandes lignes. Mais les zones plus délicates — mentionner un état qui n'est pas encore à 100%, clarifier ce qui vous revient, préparer l'accueil de la tension collective accumulée en votre absence — restent encore dans l'angle mort. L'enjeu est de préparer la reprise jusqu'aux détails inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez votre retour activement, y compris sur les points inconfortables", desc: "Vous contactez votre responsable avant de reprendre, vous clarifiez votre état réel, vous anticipez ce qui vous revient et ce qui a évolué, et vous mentionnez les recommandations médicales même quand c'est inconfortable. Cette préparation active transforme le premier jour d'une épreuve en une transition gérée." },
+        },
+      }
     ],
-    1: [
-        {
-          text: "Un collaborateur vous dit que tout va bien mais son comportement dit le contraire. Que faites-vous ?",
-          answers: [
-          {text: "Je le crois sur parole.", score: 0},
-          {text: "Je continue à observer sans intervenir.", score: 1},
-          {text: "Je lui reflète ce que j'observe de façon factuelle et lui laisse l'espace de s'exprimer.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez la conviction qu'un collaborateur est en souffrance mais il nie toute difficulté. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte sa version.", score: 0},
-          {text: "J'insiste pour qu'il reconnaisse la situation.", score: 1},
-          {text: "Je reste disponible, lui fais savoir que la porte est ouverte et reste attentif à la situation.", score: 2}
-          ]
-        },
-        {
-          text: "Un collaborateur partage avec vous une difficulté personnelle qui affecte son travail. Que faites-vous ?",
-          answers: [
-          {text: "Je l'écoute et lui dis d'essayer de séparer vie personnelle et vie professionnelle.", score: 0},
-          {text: "Je l'écoute et lui propose de prendre des congés.", score: 1},
-          {text: "Je l'écoute vraiment, j'évalue avec lui ce que l'organisation peut faire et je l'oriente vers les bons relais si nécessaire.", score: 2}
-          ]
-        },
-        {
-          text: "Un collaborateur vous demande de ne rien dire à personne d'une situation difficile qu'il traverse. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte sa demande totalement.", score: 0},
-          {text: "Je lui promets la confidentialité et respecte cela.", score: 1},
-          {text: "Je l'écoute, lui explique ce que je peux et ne peux pas garder pour moi selon la gravité, et je prends une décision responsable.", score: 2}
-          ]
-        },
-        {
-          text: "Vous intervenez sur la situation d'un collaborateur et vous réalisez que ça dépasse vos compétences. Que faites-vous ?",
-          answers: [
-          {text: "Je continue à gérer — c'est mon rôle de manager.", score: 0},
-          {text: "Je lui suggère de consulter un médecin.", score: 1},
-          {text: "Je passe clairement la main au bon interlocuteur (médecin du travail, RH) en lui expliquant pourquoi.", score: 2}
-          ]
-        }
-    ],
-    2: [
-        {
-          text: "Vous voulez orienter un collaborateur vers le médecin du travail mais il vit cela comme une mise à l'écart. Que faites-vous ?",
-          answers: [
-          {text: "Je renonce — il n'est pas prêt.", score: 0},
-          {text: "Je lui explique que c'est obligatoire.", score: 1},
-          {text: "Je lui explique le rôle du médecin du travail et en quoi c'est une ressource pour lui, pas une sanction.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez des doutes sur un collaborateur mais vous ne voulez pas le stigmatiser en intervenant trop tôt. Que faites-vous ?",
-          answers: [
-          {text: "J'attends d'être certain.", score: 0},
-          {text: "J'observe plus attentivement.", score: 1},
-          {text: "Je trouve une façon d'ouvrir la discussion sans poser de diagnostic, de façon naturelle et factuelle.", score: 2}
-          ]
-        },
-        {
-          text: "Le service RH que vous devriez solliciter n'est pas facilement accessible. Que faites-vous ?",
-          answers: [
-          {text: "Je gère seul.", score: 0},
-          {text: "Je cherche une autre personne de confiance.", score: 1},
-          {text: "Je cherche le bon canal formel et j'insiste pour accéder aux ressources nécessaires.", score: 2}
-          ]
-        },
-        {
-          text: "Votre propre hiérarchie vous dit de ne pas trop chercher à comprendre les difficultés personnelles des collaborateurs. Que faites-vous ?",
-          answers: [
-          {text: "Je suis la consigne — je ne veux pas créer de conflit.", score: 0},
-          {text: "Je continue discrètement à être attentif.", score: 1},
-          {text: "Je défends ma vision de ce qu'implique mon rôle et j'explique en quoi ignorer ces signaux a des conséquences.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez orienté un collaborateur vers un soutien externe mais il ne s'y est pas rendu. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse — c'est son choix.", score: 0},
-          {text: "Je lui redemande d'y aller.", score: 1},
-          {text: "Je comprends ce qui l'a empêché d'y aller et je cherche à lever les obstacles avec lui.", score: 2}
-          ]
-        }
-    ],
-    3: [
-        {
-          text: "L'organisation de votre équipe génère structurellement de la surcharge. Que faites-vous au-delà de gérer les symptômes individuels ?",
-          answers: [
-          {text: "Je gère les cas au fil de l'eau.", score: 0},
-          {text: "Je remonte la situation à ma hiérarchie.", score: 1},
-          {text: "Je construis une analyse factuelle des causes organisationnelles et demande une décision sur la structure.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe a des objectifs qui conduisent mécaniquement à des situations de surcharge. Que faites-vous ?",
-          answers: [
-          {text: "J'aide chacun à s'organiser mieux.", score: 0},
-          {text: "J'en parle à ma hiérarchie.", score: 1},
-          {text: "Je formalise le lien entre objectifs et surcharge et demande un arbitrage sur les objectifs eux-mêmes.", score: 2}
-          ]
-        },
-        {
-          text: "Vous vous rendez compte que vous n'avez pas les connaissances suffisantes pour détecter les signaux de RPS correctement. Que faites-vous ?",
-          answers: [
-          {text: "Je fais de mon mieux avec ce que je sais.", score: 0},
-          {text: "Je cherche des informations en ligne.", score: 1},
-          {text: "Je demande une formation ou un appui à ma hiérarchie ou aux RH.", score: 2}
-          ]
-        },
-        {
-          text: "Vous constatez que les alertes RPS dans votre équipe se multiplient et que les ressources disponibles sont insuffisantes. Que faites-vous ?",
-          answers: [
-          {text: "Je gère avec ce que j'ai.", score: 0},
-          {text: "J'en informe les RH.", score: 1},
-          {text: "Je construis un argumentaire factuel pour demander des ressources supplémentaires adaptées.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez géré plusieurs situations difficiles de RPS en peu de temps. Vous êtes vous-même épuisé. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — les collaborateurs ont besoin de moi.", score: 0},
-          {text: "Je cherche à déléguer certaines responsabilités.", score: 1},
-          {text: "Je cherche un soutien pour moi-même : ma hiérarchie, les RH, ou un professionnel.", score: 2}
-          ]
-        }
-    ],
-  },
 
+    1: [
+      {
+        type: "choix",
+        text: "Le premier jour de votre retour, vos collègues vous accueillent chaleureusement mais certains semblent mal à l'aise — ils ne savent pas quoi dire ni quoi ne pas dire sur votre absence.",
+        tags: ["réintégration", "collectif"],
+        answers: [
+          { text: "Je laisse l'atmosphère se détendre d'elle-même — c'est normal au début.", score: 0.5 },
+          { text: "Je prends l'initiative de dire quelques mots sur mon retour pour lever l'ambiguïté.", score: 2 },
+          { text: "Je me comporte normalement et j'attends que ça se passe naturellement.", score: 1 },
+          { text: "Je parle de mon absence en détail pour que tout soit clair.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lors d'un retour d'absence, vous prenez l'initiative de remettre du lien avec vos collègues plutôt que d'attendre qu'ils fassent le premier pas.",
+        tags: ["réintégration", "initiative"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En réunion le premier jour, vous réalisez que l'équipe a pris des habitudes de travail différentes pendant votre absence. Certaines décisions ont été prises sans vous.",
+        tags: ["réintégration", "décalage"],
+        answers: [
+          { text: "Je questionne les décisions qui me semblent discutables — elles ont été prises sans moi.", score: 0 },
+          { text: "Je prends le temps de comprendre la logique des changements avant de me positionner.", score: 2 },
+          { text: "Je m'adapte sans commentaire — les choses ont évolué, c'est normal.", score: 1 },
+          { text: "Je demande à mon responsable un résumé de ce qui a changé avant de réagir.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre absence, Camille a géré vos dossiers principaux. Elle a bien travaillé mais avec des méthodes différentes des vôtres. Elle est prête à vous faire un transfert complet.",
+        tags: ["réintégration", "information"],
+        answers: [
+          { text: "Je reprends mes dossiers en remettant mes méthodes en place — c'est mon périmètre.", score: 0 },
+          { text: "Je l'écoute, je comprends ce qu'elle a fait et pourquoi, avant de décider comment reprendre.", score: 2 },
+          { text: "Je reprends les dossiers sans débrief — les notes suffisent.", score: 0 },
+          { text: "Je lui propose de continuer à travailler ensemble sur la transition.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "À votre retour, vous acceptez que les choses aient évolué sans vous et vous vous informez avant de remettre vos repères en place.",
+        tags: ["réintégration", "humilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre absence, une tension est née entre deux membres de l'équipe. Tout le monde sait que vous entendrez parler des deux versions. Chacun essaie de vous raconter la sienne.",
+        tags: ["réintégration", "relation"],
+        answers: [
+          { text: "J'écoute les deux versions et je donne mon avis — je suis neutre, je n'ai pas été impliqué.", score: 0 },
+          { text: "Je dis clairement que je ne veux pas être l'arbitre d'une situation qui s'est développée sans moi.", score: 2 },
+          { text: "J'écoute sans m'impliquer et j'en parle à notre responsable.", score: 1 },
+          { text: "Je change de sujet dès que quelqu'un commence à me raconter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "À votre retour après une longue absence, votre responsable vous demande d'être opérationnel·le à 100% dès la première semaine. Vous estimez avoir besoin de deux semaines pour retrouver votre rythme.",
+        tags: ["réintégration", "rythme"],
+        answers: [
+          { text: "Je m'aligne sur ses attentes — c'est lui qui décide du rythme.", score: 0 },
+          { text: "Je lui explique mon estimation et on cherche un compromis.", score: 2 },
+          { text: "Je fais de mon mieux la première semaine et je vois si je tiens.", score: 0.5 },
+          { text: "J'accepte verbalement et je gère mon rythme réel sans le lui dire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous négociez le rythme de votre reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner.",
+        tags: ["réintégration", "ajustement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez l'impression que certains collègues vous regardent différemment depuis votre retour d'arrêt maladie — moins de responsabilités confiées, moins inclus dans certaines décisions.",
+        tags: ["réintégration", "légitimité"],
+        answers: [
+          { text: "Je laisse le temps faire son travail — ma légitimité se reconstruira par mon travail.", score: 1 },
+          { text: "J'en parle directement à mon responsable pour comprendre si quelque chose a changé.", score: 2 },
+          { text: "Je fais le dos rond — pointer ces comportements ne ferait qu'aggraver la situation.", score: 0 },
+          { text: "J'en parle aux RH pour que la situation soit formellement clarifiée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après une longue absence, vous sentez que votre place dans l'équipe a bougé. Quelqu'un d'autre a pris de l'importance sur vos anciens sujets. C'est inconfortable.",
+        tags: ["réintégration", "identité"],
+        answers: [
+          { text: "Je reprends le terrain sur mes anciens sujets pour retrouver ma place.", score: 0 },
+          { text: "Je prends le temps de comprendre la nouvelle configuration avant de me repositionner.", score: 2 },
+          { text: "J'accepte que les choses aient changé et je cherche un nouveau positionnement.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour qu'il clarifie les rôles.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que le collectif vienne à vous plutôt que de prendre l'initiative du réancrage", desc: "Attendre que les collègues fassent le premier pas, laisser le malaise collectif se dissiper seul, subir les deux versions d'une tension née pendant votre absence sans prendre position : la réintégration ne se fait pas toute seule. L'initiative de remettre du lien, même maladroitement, est presque toujours mieux reçue que le silence." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vous réintégrez correctement mais vous peinez encore à négocier le rythme qui vous convient", desc: "Vous prenez l'initiative de réancrage et vous acceptez que les choses aient évolué. Mais quand votre responsable exprime des attentes rapides, ou que la configuration de l'équipe a changé, vous pouvez encore vous aligner sans négocier. L'enjeu est de tenir la conversation sur le rythme réel même quand la pression pousse à aller vite." },
+          haut: { label: "Réflexes installés", titre: "Vous prenez l'initiative du réancrage collectif et vous négociez le rythme qui vous convient", desc: "Vous prenez l'initiative de remettre du lien avec vos collègues, vous acceptez que les choses aient évolué sans vous avant de vous repositionner, et vous négociez le rythme de reprise avec votre responsable plutôt que de vous aligner sur ses attentes sans les questionner. Cette posture active de réintégration est ce qui reconstruit la place dans un collectif." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Pour prouver que votre retour est solide, vous vous engagez sur des délais très courts et vous acceptez plusieurs missions en même temps dès la première semaine.",
+        tags: ["reprise", "surcompensation"],
+        answers: [
+          { text: "C'est le bon moyen de montrer que je suis de retour à 100%.", score: 0 },
+          { text: "Je reconnais ce réflexe de surcompensation et je calibre mes engagements sur ma capacité réelle.", score: 2 },
+          { text: "J'accepte ce qui vient mais je me donne la permission de lever la main si c'est trop.", score: 1 },
+          { text: "Je refuse toutes les nouvelles missions la première semaine — je me laisse le temps.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "À votre retour, vous calibrez vos engagements sur votre capacité réelle du moment, pas sur celle d'avant votre absence.",
+        tags: ["reprise", "calibration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin de première semaine de retour, vous réalisez que vous êtes plus fatigué·e que vous ne l'aviez anticipé. La semaine suivante s'annonce encore plus chargée.",
+        tags: ["reprise", "signalement"],
+        answers: [
+          { text: "Je continue — c'est normal d'être fatigué la première semaine, ça ira mieux.", score: 0 },
+          { text: "Je le signale à mon responsable et je lui demande si on peut alléger la semaine suivante.", score: 2 },
+          { text: "Je gère le week-end pour récupérer et j'attends de voir comment se passe la deuxième semaine.", score: 0.5 },
+          { text: "Je prends un jour de congé au début de la deuxième semaine sans en parler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le lendemain de votre retour, votre agenda est déjà plein de réunions de rattrapage — tout le monde veut vous briefer. Vous sentez que vous n'arrivez pas à traiter ce que vous entendez.",
+        tags: ["reprise", "réunions"],
+        answers: [
+          { text: "Je tiens l'agenda — c'est le prix du retour, il faut tout rattraper rapidement.", score: 0 },
+          { text: "Je revois l'agenda avec mon responsable pour étaler les briefings sur deux semaines.", score: 2 },
+          { text: "Je délègue les briefings les moins critiques à quelqu'un qui peut me faire un résumé.", score: 1 },
+          { text: "Je vais aux réunions mais je n'essaie pas de tout retenir — je ferai le tri ensuite.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez à votre responsable quand la reprise est plus lourde que prévu, sans attendre que ce soit visible de l'extérieur.",
+        tags: ["reprise", "limite"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre absence, certains de vos sujets ont été bien gérés par d'autres. Vous avez du mal à laisser certaines choses en place plutôt que de tout reprendre.",
+        tags: ["reprise", "délégation"],
+        answers: [
+          { text: "Je reprends tout — c'est mon périmètre et je dois le maîtriser.", score: 0 },
+          { text: "Je garde ce qui fonctionne en place et je reprends uniquement ce qui a besoin de moi.", score: 2 },
+          { text: "Je reprends progressivement, sujet par sujet, selon mes priorités.", score: 1.5 },
+          { text: "Je laisse tout en place pour l'instant et je vois ce qui remonte vers moi.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous dit qu'il a besoin de vous à pleine capacité rapidement — un projet important démarre dans deux semaines. Vous êtes en reprise progressive.",
+        tags: ["reprise", "pression"],
+        answers: [
+          { text: "J'accélère ma reprise — les besoins du projet priment.", score: 0 },
+          { text: "Je lui explique ma situation de reprise et on cherche ensemble comment couvrir les besoins du projet autrement.", score: 2 },
+          { text: "Je fais de mon mieux en espérant que ça suffira.", score: 0 },
+          { text: "Je lui demande plus de temps — deux semaines supplémentaires.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous augmentez votre charge progressivement à votre retour plutôt que de retrouver d'un coup le rythme d'avant l'absence.",
+        tags: ["reprise", "progressivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En revenant, vous avez envie de vous réimpliquer sur tout rapidement. Votre liste de 'choses à rattraper' est très longue.",
+        tags: ["reprise", "priorités"],
+        answers: [
+          { text: "Je m'y attaque dans l'ordre — tout est important.", score: 0 },
+          { text: "Je priorise avec mon responsable ce qui a vraiment besoin de moi en premier.", score: 2 },
+          { text: "Je commence par ce qui me semble le plus urgent selon moi.", score: 1 },
+          { text: "Je laisse mes collègues me dire ce dont ils ont besoin de ma part.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Sarah, qui vient de reprendre après un congé parental, semble vouloir tout rattraper en même temps. En une semaine, elle a pris des engagements sur trois mois de travail.",
+        tags: ["reprise", "observation"],
+        answers: [
+          { text: "Je la laisse faire — elle sait mieux que moi ce qu'elle peut assumer.", score: 0 },
+          { text: "Je lui dis ce que j'observe, en privé, sans lui donner de leçon.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il ajuste sa charge.", score: 1 },
+          { text: "Je lui propose de l'aider sur certains sujets pour alléger.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous reprenez à pleine charge trop vite, par volonté de prouver que vous êtes de retour", desc: "Accepter trop d'engagements dès la première semaine, vouloir tout rattraper d'un coup, tenir l'agenda de rattrapage sans lever la main : la surcompensation au retour est l'une des causes les plus fréquentes de rechute. Prouver qu'on est de retour par le volume est moins efficace que prouver qu'on est de retour par la qualité des arbitrages." },
+          moyen: { label: "Pratiques en développement", titre: "Vous évitez la surcompensation évidente mais les glissements progressifs vous échappent encore", desc: "Vous ne vous lancez pas dans une reprise héroïque à plein régime dès le premier jour. Mais le glissement progressif — les engagements qui s'accumulent semaine après semaine, l'agenda de rattrapage qui déborde, la charge qui revient à son niveau d'avant sans que vous l'ayez décidé — peut encore vous échapper. L'enjeu est de surveiller la courbe sur plusieurs semaines, pas seulement les premiers jours." },
+          haut: { label: "Réflexes installés", titre: "Vous calibrez votre reprise sur votre capacité réelle et vous signalez quand ça ne tient pas", desc: "Vous résistez au réflexe de surcompensation, vous signalez quand la reprise est plus lourde que prévu, et vous ajustez vos engagements sur votre capacité réelle du moment. Vous avez compris que reprendre à 80% de façon durable vaut mieux que reprendre à 120% pendant deux semaines et rechuter." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous êtes de retour depuis trois semaines. Vous dormez encore mal et vous vous sentez régulièrement dépassé·e par des situations que vous gériez sans problème avant. Vous mettez ça sur le compte de la reprise.",
+        tags: ["signaux persistants", "vigilance"],
+        answers: [
+          { text: "La reprise est toujours longue — je me laisse encore un mois.", score: 0 },
+          { text: "Je prends ces signaux au sérieux et j'en parle à mon médecin.", score: 2 },
+          { text: "J'en parle à mon responsable pour alléger ma charge encore un peu.", score: 1.5 },
+          { text: "Je redouble d'efforts pour récupérer mon niveau d'avant — c'est une question de volonté.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Après votre retour, vous restez attentif·ve à votre état réel semaine après semaine, sans vous convaincre que 'ça va mieux' si ce n'est pas le cas.",
+        tags: ["signaux persistants", "lucidité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez repris depuis un mois après un burnout. Vous sentez que vous reproduisez progressivement les mêmes comportements qu'avant votre arrêt — longues journées, difficulté à dire non, irritabilité.",
+        tags: ["signaux persistants", "rechute"],
+        answers: [
+          { text: "Je me surveille et j'essaie de corriger — je connais maintenant ces signaux.", score: 1 },
+          { text: "J'en parle à mon médecin ou à mon accompagnant, et à mon responsable si nécessaire.", score: 2 },
+          { text: "J'attends de voir si ça se stabilise tout seul — je suis peut-être trop sensible.", score: 0 },
+          { text: "Je réduis ma charge de moi-même sans en parler à personne.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre médecin vous a dit de revenir le voir un mois après votre reprise. Vous vous sentez 'assez bien' et vous hésitez à y aller — vous ne voulez pas dramatiser.",
+        tags: ["signaux persistants", "médecin"],
+        answers: [
+          { text: "Je n'y vais pas — je vais bien et ça prendrait du temps pour rien.", score: 0 },
+          { text: "J'y vais — c'est précisément quand on va 'assez bien' que ce suivi a le plus de valeur.", score: 2 },
+          { text: "Je reporte le rendez-vous de quelques semaines pour voir comment évolue ma situation.", score: 0.5 },
+          { text: "J'y vais mais je minimise — je ne veux pas qu'il me prolonge l'arrêt.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez le suivi médical ou l'accompagnement prévu après votre retour, même quand vous vous sentez suffisamment bien pour penser que ce n'est plus nécessaire.",
+        tags: ["signaux persistants", "suivi"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vos proches vous disent que vous semblez encore fatigué·e depuis votre retour au travail, deux mois après votre reprise. Vous ne le ressentez pas vraiment.",
+        tags: ["signaux persistants", "entourage"],
+        answers: [
+          { text: "Mes proches voient les choses de l'extérieur — leur regard n'est pas objectif.", score: 0 },
+          { text: "Je prends leur observation au sérieux même si je ne ressens pas ce qu'ils décrivent.", score: 2 },
+          { text: "J'en parle à mon médecin lors de la prochaine consultation.", score: 1.5 },
+          { text: "Je les rassure — ils s'inquiètent naturellement après mon absence.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez repris à plein régime depuis six semaines. Les mesures d'aménagement prises au retour ont été abandonnées progressivement — plus de départ à l'heure, agenda surchargé.",
+        tags: ["signaux persistants", "organisation"],
+        answers: [
+          { text: "C'est normal — on ne peut pas maintenir indéfiniment des aménagements.", score: 0 },
+          { text: "Je fais le point sur ce que j'ai abandonné et je réintègre ce qui était utile.", score: 2 },
+          { text: "Je l'accepte — si je tiens, c'est que je suis vraiment récupéré·e.", score: 0 },
+          { text: "J'en parle à mon responsable pour formaliser ces aménagements dans la durée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites régulièrement le point sur votre état depuis votre retour, pas seulement la première semaine.",
+        tags: ["signaux persistants", "régularité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Rayan est revenu d'un long arrêt il y a deux mois. Il semble de plus en plus sous pression mais dit que tout va bien quand on lui demande. Vous avez observé des signaux inquiétants.",
+        tags: ["signaux persistants", "collègue"],
+        answers: [
+          { text: "Il dit que ça va — je lui fais confiance.", score: 0 },
+          { text: "Je lui crée une occasion de parler, en dehors des moments formels, en m'appuyant sur ce que j'observe.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il fasse un point avec lui.", score: 1 },
+          { text: "Je lui propose mon aide sur les dossiers urgents pour réduire sa pression.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Si votre état ne s'améliore pas après votre retour, vous agissez concrètement — médecin, responsable, RH — plutôt que d'attendre que ça passe.",
+        tags: ["signaux persistants", "action"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous ignorez les signaux qui persistent après le retour en espérant qu'ils disparaissent seuls", desc: "Attribuer les signaux persistants à la fatigue normale de la reprise, ne pas honorer le suivi médical prévu, abandonner progressivement les aménagements mis en place : ces comportements laissent une situation fragile se ré-installer silencieusement. Les signaux qui durent après un retour ont besoin d'attention, pas d'attente." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez la vigilance les premières semaines mais vous vous relâchez ensuite", desc: "Vous faites le point sur votre état les premières semaines avec soin. Mais une fois que vous vous sentez 'assez bien', la vigilance peut se relâcher — suivi médical reporté, aménagements abandonnés, signaux des proches minimisés. L'enjeu est de maintenir cette attention au-delà de la phase de reprise visible." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez la vigilance dans la durée et vous agissez sur les signaux qui persistent", desc: "Vous maintenez le suivi médical même quand vous vous sentez suffisamment bien, vous prenez au sérieux les observations de vos proches même quand vous ne les ressentez pas, et vous agissez concrètement si les signaux persistent. Cette vigilance dans la durée est ce qui transforme un retour en vraie stabilisation." },
+        },
+      }
+    ],
+
+  },
+  // ─────────────────────────────────────────────────────────────────────
   }); // fin Object.assign CUSTOM_QUESTIONS
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -3127,7 +3625,12 @@
 
     ["retour-apres-absence", "Reprendre le travail après une absence", "Tous publics",
       "Préparer son retour, réintégrer son collectif et calibrer la reprise en charge sans surcompenser.",
-      T.qvtRetourAbsence
+      { domain: "qvt", chapters: [
+        ["Préparer les conditions du retour",  "Anticiper ce qui a changé et cadrer la reprise avant le premier jour."],
+        ["Réintégrer son collectif de travail","Prendre l'initiative du réancrage sans attendre que le collectif vienne à soi."],
+        ["Réguler la reprise en charge",       "Calibrer ses engagements sur sa capacité réelle et signaler quand ça ne tient pas."],
+        ["Détecter les signaux qui persistent","Rester vigilant·e dans la durée et agir si la stabilisation n'est pas au rendez-vous."]
+      ]}
     ],
 
     ["manager-signaux-rps", "Détecter et orienter sans psychologiser", "Managers / Encadrants",
