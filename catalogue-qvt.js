@@ -13,176 +13,676 @@
   // ─────────────────────────────────────────────────────────────────────────
 
   Object.assign(window.CUSTOM_QUESTIONS, {
-  "rps-signaux-faibles": {
+    // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "manager-signaux-rps" dans Object.assign(window.CUSTOM_QUESTIONS,
+
+  "manager-signaux-rps": {
     0: [
-        {
-          text: "Vous êtes habituellement quelqu'un d'impliqué. Depuis quelques semaines, vous avez du mal à vous concentrer et les tâches simples vous prennent deux fois plus de temps. Que faites-vous ?",
-          answers: [
-          {text: "Je pousse encore un peu — c'est probablement temporaire.", score: 0},
-          {text: "J'en parle à un proche mais pas dans le contexte professionnel.", score: 1},
-          {text: "Je prends cela comme un signal sérieux et cherche à en comprendre la cause.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "David, habituellement moteur dans les réunions, n'a pratiquement pas pris la parole depuis deux semaines. Il répond aux sollicitations mais ne prend plus d'initiatives. Rien de visible ne s'est passé.",
+        tags: ["signaux faibles", "observation"],
+        answers: [
+          { text: "Je laisse — certaines personnes ont des phases moins actives, c'est normal.", score: 0 },
+          { text: "Je lui crée un prétexte professionnel pour échanger en dehors des réunions.", score: 2 },
+          { text: "Je lui pose la question directement en réunion pour lui redonner de la place.", score: 0 },
+          { text: "J'observe encore une semaine pour voir si c'est une tendance qui se confirme.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
         },
-        {
-          text: "Vous observez qu'un collègue habituellement positif fait des remarques de plus en plus acerbes en réunion depuis plusieurs semaines. Que faites-vous ?",
-          answers: [
-          {text: "Je lui dis de se calmer.", score: 0},
-          {text: "Je note le changement mais n'interviens pas.", score: 1},
-          {text: "Je prends un moment pour lui demander comment il va, en dehors des réunions.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Toute votre équipe est sous pression depuis un mois. Sarah semble plus affectée que les autres mais quand vous en parlez à vos pairs managers, ils vous répondent que 'tout le monde est dans le même état'.",
+        tags: ["signaux faibles", "normes"],
+        answers: [
+          { text: "Je m'aligne sur leur lecture — si des managers expérimentés ne s'inquiètent pas, c'est que c'est gérable.", score: 0 },
+          { text: "Je reste attentif à Sarah indépendamment de ce que vivent les autres.", score: 2 },
+          { text: "J'en parle aux RH pour avoir un avis extérieur.", score: 1 },
+          { text: "Je lui allège sa charge sans lui en parler — elle appréciera.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
         },
-        {
-          text: "Vous sentez une tension latente dans votre équipe depuis quelques semaines. Les échanges sont cordiaux en surface mais les non-dits s'accumulent. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que ça se désamorce seul.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je cherche à créer un espace où les vrais sujets peuvent être mis sur la table.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous observez le comportement de vos collaborateurs au-delà des livrables — participation, énergie, qualité des échanges — lors de vos interactions quotidiennes.",
+        tags: ["signaux faibles", "régularité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
         },
-        {
-          text: "Un collègue que vous voyez tous les jours s'est isolé progressivement. Il mange seul et répond de façon courte. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte son besoin d'espace.", score: 0},
-          {text: "Je lui demande rapidement si tout va bien.", score: 1},
-          {text: "Je crée une occasion d'échange non forcée et reste disponible sur la durée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Jonathan a pris trois arrêts courts en six semaines. À chaque retour, il dit que tout va bien. Ses livrables sont rendus dans les délais.",
+        tags: ["signaux faibles", "absentéisme"],
+        answers: [
+          { text: "Les livrables sont là — tant que la qualité est au rendez-vous, les absences sont son affaire.", score: 0 },
+          { text: "Je fais un entretien de retour à chaque absence, même courte, pour maintenir le contact.", score: 2 },
+          { text: "Je note la tendance et j'en parle aux RH si ça continue.", score: 0.5 },
+          { text: "Je lui demande discrètement si tout va bien lors d'un prochain échange.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
         },
-        {
-          text: "Vous avez du mal à récupérer le week-end. Le dimanche soir, vous êtes déjà épuisé à l'idée du lundi. Que faites-vous ?",
-          answers: [
-          {text: "C'est la période — ça va passer.", score: 0},
-          {text: "Je cherche à mieux gérer mon temps le week-end.", score: 1},
-          {text: "Je prends cela comme un signal de surcharge durable et cherche à en parler.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous demandez à Amira comment elle va lors de votre point hebdomadaire. Elle répond 'très bien' mais son ton est plat, elle n'a pas souri et elle a raccourci l'entretien. C'est inhabituel.",
+        tags: ["signaux faibles", "déni"],
+        answers: [
+          { text: "Je la crois — si elle dit que ça va, je respecte ça.", score: 0 },
+          { text: "Je lui dis ce que j'ai observé dans cet échange et je lui laisse la porte ouverte.", score: 2 },
+          { text: "Je lui repose la question différemment lors du prochain point.", score: 1 },
+          { text: "J'en parle à un collègue proche d'elle pour avoir un autre éclairage.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites la différence entre une mauvaise journée et un changement qui s'installe dans la durée chez l'un de vos collaborateurs.",
+        tags: ["signaux faibles", "discernement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un déjeuner d'équipe, plusieurs collaborateurs font des blagues sur le fait d'être 'tous à bout'. L'ambiance est légère mais le fond vous interpelle.",
+        tags: ["signaux faibles", "collectif"],
+        answers: [
+          { text: "Je ris avec eux — l'humour est une façon saine de gérer la pression.", score: 0.5 },
+          { text: "Je prends note de ce signal collectif et j'en tiens compte dans ma façon de gérer les semaines suivantes.", score: 2 },
+          { text: "Je leur dis directement que j'ai entendu ce qu'ils viennent d'exprimer.", score: 1 },
+          { text: "Je laisse passer — les blagues ne sont pas des signaux sérieux.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Kevin, qui télétravaille quatre jours par semaine, coupe sa caméra depuis deux semaines et répond aux messages avec deux heures de retard. C'est nouveau.",
+        tags: ["signaux faibles", "télétravail"],
+        answers: [
+          { text: "Je respecte — le télétravail donne de l'autonomie et il n'est pas obligé d'être disponible en permanence.", score: 0 },
+          { text: "Je lui propose un appel rapide pour prendre des nouvelles, sans lien avec les livrables.", score: 2 },
+          { text: "Je lui rappelle les règles de disponibilité en télétravail.", score: 0 },
+          { text: "Je le surveille plus attentivement et j'attends de voir si ça s'améliore.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Face à un signal qui vous interpelle chez un collaborateur, vous créez une occasion d'échange plutôt que d'attendre qu'il vienne à vous.",
+        tags: ["signaux faibles", "initiative"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Rachel, l'une de vos meilleures collaboratrices, a rendu deux livrables en dessous de son niveau habituel ce mois-ci. Elle n'a pas mentionné de difficulté.",
+        tags: ["signaux faibles", "performance"],
+        answers: [
+          { text: "Je lui signale les livrables insuffisants lors de notre prochain point — c'est mon rôle.", score: 0.5 },
+          { text: "Je lui parle des livrables ET je lui pose une question ouverte sur comment elle vit sa charge en ce moment.", score: 2 },
+          { text: "Je lui signale les livrables et j'attends sa réaction pour voir si elle ouvre un autre sujet.", score: 1 },
+          { text: "Je laisse passer — tout le monde a des mois moins bons.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous attendez que les signaux soient évidents avant d'intervenir", desc: "Attendre que le collaborateur vienne vous voir, observer sans créer d'occasion d'échange, s'aligner sur l'avis de vos pairs si personne d'autre ne s'inquiète : ces comportements laissent des situations se dégrader silencieusement. La détection précoce ne repose pas sur une formation spécialisée — elle repose sur la régularité des échanges et sur la capacité à creuser quand quelque chose ne cadre pas." },
+          moyen: { label: "Pratiques en développement", titre: "Vous repérez les signaux nets, les changements discrets vous échappent encore parfois", desc: "Vous intervenez quand les signaux sont visibles et vous faites des points réguliers. Mais les changements plus discrets — un 'je gère' dont le ton ne correspond pas, une légère mise à distance dans les échanges — ne déclenchent pas encore une réaction systématique. L'enjeu est d'abaisser votre seuil d'attention sans tomber dans la surveillance." },
+          haut: { label: "Réflexes installés", titre: "Vous créez les occasions pour que les signaux remontent et vous intervenez tôt", desc: "Vous ne vous contentez pas d'observer — vous créez des occasions d'échange régulières, vous creusez quand quelque chose ne cadre pas, vous intervenez sur les tensions collectives avant qu'elles ne s'aggravent. Cette posture proactive de détection précoce est ce qui permet de traiter les situations quand elles sont encore simples." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Vos priorités changent deux fois par semaine et vous ne savez plus quoi traiter en premier. Que faites-vous ?",
-          answers: [
-          {text: "Je jongle avec tout et m'adapte.", score: 0},
-          {text: "Je reviens vers mon responsable pour qu'il tranche.", score: 1},
-          {text: "Je clarifie avec mon responsable les critères de priorisation pour les semaines à venir.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous voulez parler à Baptiste de ce que vous observez depuis trois semaines. Vous ne savez pas si c'est lié au travail ou à quelque chose de personnel, et vous avez peur d'être maladroit·e.",
+        tags: ["intervention", "factuel"],
+        answers: [
+          { text: "Je renonce — sans savoir d'où vient le problème, je risque de dire quelque chose de blessant.", score: 0 },
+          { text: "Je m'appuie uniquement sur ce que j'observe dans le travail et je laisse Baptiste décider d'aller plus loin.", score: 2 },
+          { text: "Je lui demande directement si quelque chose ne va pas dans sa vie personnelle.", score: 0 },
+          { text: "Je lui pose une question ouverte sur sa charge pour voir s'il ouvre un autre sujet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
         },
-        {
-          text: "Vous avez dit oui à trop de demandes cette semaine. Vous êtes saturé. Que faites-vous ?",
-          answers: [
-          {text: "Je travaille plus longtemps pour tout tenir.", score: 0},
-          {text: "Je préviens les personnes concernées que j'aurai du retard.", score: 1},
-          {text: "Je priorise avec mon responsable et reviens vers les demandeurs pour redéfinir les délais.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous intervenez sur une situation difficile, vous vous appuyez sur des comportements observés dans le travail — pas sur votre lecture de l'état émotionnel de la personne.",
+        tags: ["intervention", "travail"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
         },
-        {
-          text: "Une urgence imprévue tombe alors que vous avez déjà une journée chargée. Votre manager vous demande d'absorber. Que faites-vous ?",
-          answers: [
-          {text: "J'absorbe — c'est mon rôle d'être flexible.", score: 0},
-          {text: "Je demande ce qui peut être décalé pour intégrer l'urgence.", score: 1},
-          {text: "Je lui expose l'impact sur les autres engagements et demande qu'un arbitrage soit fait.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un point individuel, Élodie commence à vous parler de quelque chose de difficile dans sa vie personnelle. Vous avez 15 minutes devant vous.",
+        tags: ["intervention", "écoute"],
+        answers: [
+          { text: "Je l'écoute jusqu'au bout et je lui donne des conseils sur sa situation.", score: 0 },
+          { text: "Je l'écoute, je lui pose quelques questions sur l'impact sur son travail, et je lui propose un vrai moment dédié.", score: 2 },
+          { text: "Je lui dis gentiment que ça dépasse mon rôle et je lui donne les coordonnées du service d'écoute.", score: 0.5 },
+          { text: "Je l'écoute en silence et je lui demande ce dont elle a besoin de ma part.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
         },
-        {
-          text: "Vous réalisez que vous avez beaucoup de tâches qui durent depuis longtemps sans avancer vraiment, faute de temps pour les traiter. Que faites-vous ?",
-          answers: [
-          {text: "Je les garde dans ma liste en espérant trouver du temps.", score: 0},
-          {text: "Je les délègue à quelqu'un de disponible.", score: 1},
-          {text: "Je les remets sur la table avec mon responsable pour décider lesquelles sont encore pertinentes.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Après votre échange avec Rayan, vous pensez comprendre ce dont il souffre. L'envie de le lui nommer est forte.",
+        tags: ["intervention", "diagnostic"],
+        answers: [
+          { text: "Je lui dis ce que je vois — il appréciera que je mette des mots dessus.", score: 0 },
+          { text: "Je lui décris ce que j'ai observé et je lui pose une question — le diagnostic, c'est son affaire et celle de professionnels.", score: 2 },
+          { text: "Je pose des questions pour l'amener lui-même à formuler ce qui se passe.", score: 1.5 },
+          { text: "Je garde mon analyse pour moi et j'agis sur ce que je peux faire concrètement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
         },
-        {
-          text: "Votre charge de travail a augmenté progressivement sans que les ressources évoluent. Vous tenez mais à la limite. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — si ça tenait jusqu'ici, ça peut durer.", score: 0},
-          {text: "J'en parle à mon responsable en passant.", score: 1},
-          {text: "Je formalise la situation et demande un échange dédié pour trouver une solution durable.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous savez où s'arrête votre rôle — vous intervenez sur le travail et vous orientez pour le reste, sans vous substituer à des professionnels.",
+        tags: ["intervention", "périmètre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez entamé un échange avec Marie sur ce que vous observez. Elle répond sur la défensive et dit que vous exagérez. L'entretien tourne court.",
+        tags: ["intervention", "résistance"],
+        answers: [
+          { text: "Je m'aligne sur sa version — si elle dit que ça va, c'est probablement le cas.", score: 0 },
+          { text: "Je ne renonce pas mais je change d'angle — je lui dis que ma porte reste ouverte et je reviendrai vers elle.", score: 2 },
+          { text: "J'escalade aux RH — si elle ne veut pas parler, je dois me couvrir.", score: 0 },
+          { text: "Je lui donne du temps et je reviens vers elle deux semaines plus tard.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez prévu de parler à Ibrahim de ce que vous observez. Juste avant l'entretien, un dossier urgent arrive sur lequel il a une responsabilité.",
+        tags: ["intervention", "timing"],
+        answers: [
+          { text: "Je commence par le dossier urgent — c'est la priorité du moment.", score: 0 },
+          { text: "Je sépare les deux : l'entretien de soutien aujourd'hui, le dossier dans un échange dédié.", score: 2 },
+          { text: "J'aborde les deux dans le même entretien — ça fait gagner du temps.", score: 0 },
+          { text: "Je reporte l'entretien de soutien — ce n'est plus le bon moment.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un entretien, Pierre vous confie quelque chose de difficile. Il ne vous a pas demandé de garder ça pour vous mais ne vous a pas dit non plus que vous pouviez en parler.",
+        tags: ["intervention", "confidentialité"],
+        answers: [
+          { text: "Je le partage avec les RH — ils doivent être au courant.", score: 0 },
+          { text: "Je lui demande explicitement ce qu'il souhaite que je fasse avec ce qu'il m'a dit.", score: 2 },
+          { text: "Je garde ça pour moi et j'agis discrètement.", score: 1 },
+          { text: "Je le mentionne à ma propre hiérarchie au cas où c'est nécessaire.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne mélangez pas les entretiens de soutien avec les entretiens de performance — vous traitez ces sujets séparément.",
+        tags: ["intervention", "séparation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Julien revient après cinq jours d'arrêt maladie. C'est son premier arrêt depuis deux ans. Vous n'avez rien préparé.",
+        tags: ["intervention", "entretien retour"],
+        answers: [
+          { text: "Je l'accueille normalement — faire un entretien de retour pour cinq jours d'absence serait disproportionné.", score: 0 },
+          { text: "Je prends 15 minutes avec lui pour prendre des nouvelles et voir si quelque chose a changé côté travail.", score: 2 },
+          { text: "Je lui demande informellement si tout va bien lors de notre prochain croisement.", score: 1 },
+          { text: "J'attends de voir si ça se reproduit avant de m'en préoccuper.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous hésitez encore à intervenir par peur de dépasser votre rôle ou d'être maladroit·e", desc: "Ne pas intervenir par peur d'être maladroit·e, mélanger soutien et performance dans le même entretien, nommer ce qu'on pense que la personne ressent : ces comportements bloquent l'intervention ou la rendent contre-productive. Intervenir sur des faits de travail observés, laisser la personne interpréter, séparer les entretiens : c'est à la portée de tout manager sans formation spécialisée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous intervenez dans les situations claires mais vous hésitez encore dans les zones grises", desc: "Vous intervenez sur les faits observés dans les situations claires. Mais dans les zones grises — ne pas savoir si c'est personnel ou professionnel, craindre d'être maladroit·e, un entretien qui tourne court parce que le collaborateur se ferme — votre réaction peut encore se bloquer. L'enjeu est de simplifier : faits observés, question ouverte, disponibilité affichée." },
+          haut: { label: "Réflexes installés", titre: "Vous intervenez sur les faits, vous laissez la personne interpréter et vous séparez les sujets", desc: "Vous vous appuyez sur des comportements observés dans le travail, vous posez des questions ouvertes, vous séparez les entretiens de soutien des entretiens de performance, et vous ne faites pas le diagnostic à la place de la personne. Cette façon d'intervenir — sobre, factuelle, respectueuse du périmètre — est efficace dans la grande majorité des situations." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Deux collègues ont une tension ouverte depuis une semaine et ça affecte le travail de toute l'équipe. Que faites-vous ?",
-          answers: [
-          {text: "Je les laisse gérer entre eux.", score: 0},
-          {text: "Je parle à l'un des deux pour l'aider.", score: 1},
-          {text: "Je leur propose un espace de discussion factuel sur les points qui bloquent leur coopération.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Sophie traverse visiblement quelque chose de difficile. Vous avez eu plusieurs échanges. Vous pensez que ça dépasse votre rôle de manager. Elle ne vous a rien demandé de concret.",
+        tags: ["orientation", "moment"],
+        answers: [
+          { text: "J'attends qu'elle me le demande — sans sollicitation de sa part, je n'ai pas de légitimité.", score: 0 },
+          { text: "Je lui parle de ce que j'observe et je lui mentionne les ressources disponibles, sans l'y obliger.", score: 2 },
+          { text: "Je contacte directement les RH pour les mettre en alerte.", score: 0.5 },
+          { text: "Je lui pose la question directement — 'est-ce que tu penses à consulter quelqu'un ?'", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
         },
-        {
-          text: "Lors d'une réunion, un collègue vous coupe la parole systématiquement. Ça arrive régulièrement. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte et attends qu'il ait fini.", score: 0},
-          {text: "Je lui en parle discrètement après la réunion.", score: 1},
-          {text: "Je lui en parle directement avec des faits précis et en cherchant à comprendre sa perspective.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez les ressources disponibles dans votre organisation — médecine du travail, service d'écoute, RH — et vous sauriez les présenter concrètement à un collaborateur.",
+        tags: ["orientation", "ressources"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
         },
-        {
-          text: "Une décision vient d'être prise sans que votre équipe soit consultée. Les réactions sont vives. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que l'agitation se calme.", score: 0},
-          {text: "J'exprime ma frustration à mes collègues.", score: 1},
-          {text: "Je cherche à comprendre le contexte de la décision et crée un espace pour que l'équipe puisse s'exprimer de façon constructive.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez suggéré à Lucas de contacter la médecine du travail. Il refuse — 'ça ne sert à rien, de toute façon'. La situation continue de se dégrader.",
+        tags: ["orientation", "refus"],
+        answers: [
+          { text: "Je respecte son refus — il est adulte et c'est son choix.", score: 0.5 },
+          { text: "Je lui explique concrètement ce que la médecine du travail peut faire pour lui et ce que ça implique.", score: 2 },
+          { text: "Je le signale aux RH pour me couvrir.", score: 0 },
+          { text: "Je lui laisse du temps et je reviens sur le sujet dans deux semaines.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
         },
-        {
-          text: "Votre équipe traverse une période difficile et le climat est tendu. Vous avez vous-même du mal à rester positif. Que faites-vous ?",
-          answers: [
-          {text: "Je mets de côté mes propres émotions pour être disponible pour les autres.", score: 0},
-          {text: "Je me concentre sur ce que je peux contrôler directement.", score: 1},
-          {text: "Je cherche à la fois un appui pour moi et des façons de soutenir le collectif sans porter seul le poids de l'ambiance.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Il y a trois semaines, vous avez orienté Yasmine vers le service d'écoute. Elle ne vous a pas dit si elle y était allée. Vous n'avez pas relancé.",
+        tags: ["orientation", "suivi"],
+        answers: [
+          { text: "Je la laisse gérer — si je repose la question, je risque d'être intrusif·ve.", score: 0 },
+          { text: "Je lui demande comment elle va depuis notre dernier échange, sans mentionner le service d'écoute.", score: 2 },
+          { text: "Je contacte le service d'écoute pour vérifier si elle a appelé.", score: 0 },
+          { text: "J'attends notre prochain point individuel pour aborder le sujet.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
         },
-        {
-          text: "Vous constatez qu'une personne de l'équipe est souvent la cible de remarques ironiques lors des réunions. Personne ne réagit. Que faites-vous ?",
-          answers: [
-          {text: "Je n'interviens pas — c'est entre eux.", score: 0},
-          {text: "Je lui exprime mon soutien en privé.", score: 1},
-          {text: "Je nomme les comportements que j'observe et recadre dans le moment si c'est possible.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous orientez vers les relais au bon moment — ni trop tôt pour vous défausser, ni trop tard parce que vous avez voulu tout gérer seul·e.",
+        tags: ["orientation", "dosage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un entretien, Mehdi dit quelque chose qui vous inquiète sérieusement pour lui. Vous ne savez pas si c'est une situation d'urgence ou une expression de mal-être.",
+        tags: ["orientation", "urgence"],
+        answers: [
+          { text: "Je minimise — il a l'air de gérer et je ne veux pas dramatiser.", score: 0 },
+          { text: "Je lui pose des questions directes pour évaluer la situation et je l'oriente immédiatement si nécessaire.", score: 2 },
+          { text: "Je contacte les RH après l'entretien pour leur signaler.", score: 1 },
+          { text: "Je lui donne les coordonnées du service d'écoute à la fin de l'entretien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez signalé une situation préoccupante à votre propre responsable. Il vous dit de 'continuer à gérer' sans vous donner de directive claire.",
+        tags: ["orientation", "hiérarchie"],
+        answers: [
+          { text: "Je m'en remets à lui — s'il ne bouge pas, c'est qu'il estime que ce n'est pas si grave.", score: 0 },
+          { text: "Je lui demande ce que 'continuer à gérer' signifie concrètement et quels relais je peux activer.", score: 2 },
+          { text: "Je contacte les RH directement sans en reparler à mon responsable.", score: 0.5 },
+          { text: "Je continue à gérer seul·e et je documente pour me protéger.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous suivez verbalement plusieurs situations difficiles dans votre équipe. Vous n'avez rien écrit nulle part.",
+        tags: ["orientation", "traçabilité"],
+        answers: [
+          { text: "La traçabilité écrite, c'est bureaucratique — je préfère le contact direct.", score: 0 },
+          { text: "Je note les points essentiels de mes échanges — dates, faits observés, ce que j'ai dit, ce qui a été décidé.", score: 2 },
+          { text: "Je note uniquement les situations qui me semblent sérieuses.", score: 1 },
+          { text: "J'en parle verbalement aux RH pour qu'ils aient une trace de leur côté.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous gardez une trace des échanges importants avec vos collaborateurs en difficulté — dates, faits, décisions — pour ne pas perdre le fil.",
+        tags: ["orientation", "traçabilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous gérez seul·e depuis plusieurs semaines une situation complexe dans votre équipe. Vous n'en avez parlé à personne par discrétion envers votre collaborateur.",
+        tags: ["orientation", "limite"],
+        answers: [
+          { text: "Je continue — ma discrétion est une marque de respect envers lui.", score: 0 },
+          { text: "Je remonte la situation à ma hiérarchie ou aux RH — protéger ma discrétion ne doit pas se faire à mon détriment.", score: 2 },
+          { text: "J'en parle à un pair manager en anonymisant la situation.", score: 1.5 },
+          { text: "Je cherche un soutien externe — supervision, coach — pour ne pas rester seul·e.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous orientez tard et vous gérez souvent seul·e des situations qui gagneraient à être partagées", desc: "Attendre que la demande soit explicite avant d'orienter, ne pas faire de suivi après une orientation, gérer seul·e par discrétion envers le collaborateur : ces comportements laissent des personnes sans les ressources adaptées et épuisent le manager. Orienter est une compétence managériale — pas un aveu que vous ne savez pas faire votre travail." },
+          moyen: { label: "Pratiques en développement", titre: "Vous orientez quand c'est évident mais le suivi et votre propre soutien restent insuffisants", desc: "Vous orientez quand la situation est clairement au-delà de votre périmètre. Mais le suivi après l'orientation, la relance quand le collaborateur résiste, et surtout votre propre soutien quand vous portez trop — sont encore insuffisants. L'enjeu est de traiter l'orientation comme un processus avec un début, un suivi et une fin." },
+          haut: { label: "Réflexes installés", titre: "Vous orientez au bon moment, vous faites un suivi et vous cherchez vous-même un soutien", desc: "Vous orientez avant la crise, vous faites un suivi après l'orientation, vous relancez quand le collaborateur résiste, et vous cherchez vous-même un soutien quand vous portez trop. Cette façon de gérer les situations difficiles comme un processus — avec un début, un suivi et une fin — protège à la fois vos collaborateurs et vous-même." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Vous traversez une période difficile et avez besoin d'aide mais vous ne savez pas à qui vous adresser. Que faites-vous ?",
-          answers: [
-          {text: "Je gère seul — ce sont des affaires personnelles.", score: 0},
-          {text: "Je cherche quelqu'un de confiance dans mon entourage proche.", score: 1},
-          {text: "Je me renseigne sur les dispositifs d'écoute disponibles dans mon organisation.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous savez que la prochaine période sera intense pour votre équipe. Personne n'a encore signalé de difficulté mais vous anticipez une surcharge réelle dans six semaines.",
+        tags: ["prévention", "organisation"],
+        answers: [
+          { text: "J'attends de voir — inutile d'inquiéter l'équipe pour quelque chose qui n'est pas encore là.", score: 0 },
+          { text: "Je prépare maintenant les conditions pour que la période soit tenable — charge, priorités, soutien.", score: 2 },
+          { text: "J'en parle à mon équipe pour qu'elle s'organise.", score: 1 },
+          { text: "J'en parle à ma hiérarchie pour voir si la charge peut être allégée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
         },
-        {
-          text: "Un collègue vous confie qu'il pense à démissionner à cause du stress. Vous le trouvez vraiment épuisé. Que faites-vous ?",
-          answers: [
-          {text: "Je l'écoute et lui dis que ça va passer.", score: 0},
-          {text: "Je lui conseille de prendre des congés.", score: 1},
-          {text: "Je l'écoute vraiment et l'oriente vers les ressources adaptées tout en lui laissant la décision.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez sur les conditions de travail de votre équipe avant que les situations difficiles apparaissent, pas seulement quand elles sont déclarées.",
+        tags: ["prévention", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
         },
-        {
-          text: "Votre responsable est disponible mais vous avez peur que signaler votre charge soit perçu comme un manque de compétence. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien pour éviter d'être jugé.", score: 0},
-          {text: "Je laisse entendre que c'est chargé sans formaliser.", score: 1},
-          {text: "Je me prépare à formuler clairement la situation en termes factuels et je demande un échange dédié.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, les périmètres de responsabilité ne sont pas très clairs. Certains collaborateurs font des tâches qui ne sont officiellement à personne. Des tensions silencieuses émergent.",
+        tags: ["prévention", "clarté des rôles"],
+        answers: [
+          { text: "Je laisse — les flous de périmètre se règlent généralement d'eux-mêmes dans le temps.", score: 0 },
+          { text: "Je clarifie les rôles et les périmètres pour supprimer les zones de friction.", score: 2 },
+          { text: "Je traite les tensions au cas par cas quand elles remontent.", score: 0.5 },
+          { text: "J'en parle à mon équipe pour qu'elle s'organise elle-même.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
         },
-        {
-          text: "Vous avez alerté votre responsable il y a deux semaines sur une situation difficile. Rien n'a changé. Que faites-vous ?",
-          answers: [
-          {text: "Je lâche l'affaire — il n'y a rien à faire.", score: 0},
-          {text: "J'en reparle informellement.", score: 1},
-          {text: "Je relance formellement et clarifie ce dont j'ai besoin.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vos points individuels sont principalement consacrés aux dossiers en cours. La dimension 'comment tu vas' n'a pas vraiment de place.",
+        tags: ["prévention", "feedback régulier"],
+        answers: [
+          { text: "C'est normal — les points individuels sont des moments de travail, pas de développement personnel.", score: 0 },
+          { text: "Je réserve systématiquement quelques minutes en début ou fin de point pour cette dimension.", score: 2 },
+          { text: "J'aborde le sujet quand j'ai l'impression que quelque chose ne va pas.", score: 1 },
+          { text: "Je fais des entretiens dédiés à la dimension 'bien-être' une fois par trimestre.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
         },
-        {
-          text: "Vous sentez que vous avez besoin de soutien psychologique mais vous ne savez pas si votre organisation le propose. Que faites-vous ?",
-          answers: [
-          {text: "Je ne cherche pas — c'est une démarche personnelle qui n'a pas à passer par l'entreprise.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je me renseigne auprès des RH sur ce qui existe sans forcément exposer ma situation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vos collaborateurs savent qu'ils peuvent venir vous parler d'une difficulté sans que ça soit interprété comme un manque de performance ou d'engagement.",
+        tags: ["prévention", "espace de parole"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous distribuez naturellement les nouvelles missions aux collaborateurs les plus fiables et les plus disponibles. Ce sont souvent les mêmes personnes.",
+        tags: ["prévention", "charge"],
+        answers: [
+          { text: "C'est logique — je dois m'appuyer sur ceux qui sont performants.", score: 0 },
+          { text: "Je fais attention à ne pas surcharger toujours les mêmes, même si c'est plus efficace à court terme.", score: 2 },
+          { text: "Je demande à chacun s'il peut absorber avant d'attribuer.", score: 1.5 },
+          { text: "Je compense en valorisant davantage les personnes sollicitées.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez régulièrement le soir et le week-end. Vos collaborateurs le savent parce que vous envoyez des mails tardifs. Vous n'avez jamais demandé à quiconque de faire pareil.",
+        tags: ["prévention", "exemplarité"],
+        answers: [
+          { text: "Je n'ai jamais demandé qu'on me suive — chacun est libre de gérer ses horaires.", score: 0 },
+          { text: "Je prends conscience que mes comportements visibles créent une norme implicite et j'ajuste.", score: 2 },
+          { text: "Je programme l'envoi de mes mails pour qu'ils partent aux horaires de bureau.", score: 1.5 },
+          { text: "J'envoie un message pour dire explicitement que je n'attends pas de réponse en dehors des heures de travail.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ajustez l'organisation de votre équipe quand vous détectez des signaux de tension collective — avant que des collaborateurs vous sollicitent formellement.",
+        tags: ["prévention", "signaux collectifs"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur rejoint votre équipe dans un contexte de forte charge. Vous n'avez pas le temps de l'accompagner comme vous le souhaiteriez.",
+        tags: ["prévention", "nouveau"],
+        answers: [
+          { text: "Je lui confie un référent dans l'équipe et je fais confiance au collectif.", score: 1 },
+          { text: "Je dégage du temps pour les moments clés de son intégration même si ça me coûte ailleurs.", score: 2 },
+          { text: "Je l'intègre progressivement en lui donnant moins de charge au départ.", score: 1.5 },
+          { text: "Je l'intègre au même rythme que les autres — la surprotection n'aide pas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous portez depuis plusieurs semaines une équipe sous pression, des situations individuelles difficiles et une charge managériale élevée. Vous ne l'avez signalé à personne.",
+        tags: ["prévention", "propre état"],
+        answers: [
+          { text: "Je gère — les managers ne peuvent pas se plaindre de leur charge devant leur équipe ou leur direction.", score: 0 },
+          { text: "Je le remonte à ma propre hiérarchie en rendant visible l'impact sur ma capacité à manager.", score: 2 },
+          { text: "J'en parle à un pair manager pour ne pas rester seul·e.", score: 1.5 },
+          { text: "J'attends les vacances pour récupérer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez les situations quand elles arrivent sans agir sur les conditions qui les produisent", desc: "Traiter les tensions quand elles remontent, distribuer les missions toujours aux mêmes, envoyer des mails tardifs sans mesurer l'effet que ça produit : ces comportements créent ou entretiennent les conditions des difficultés que vous gérez ensuite. Agir sur l'organisation est le levier le plus puissant et le moins utilisé en prévention." },
+          moyen: { label: "Pratiques en développement", titre: "Vous ajustez l'organisation sur les situations déclarées, la prévention en amont est encore partielle", desc: "Vous ajustez les conditions de travail quand des tensions remontent. Mais la prévention en amont — clarifier les rôles avant que les frictions apparaissent, aménager du temps pour les entretiens individuels avant la surcharge, mesurer l'effet de vos propres comportements — est encore partielle. L'enjeu est d'agir sur les causes avant les symptômes." },
+          haut: { label: "Réflexes installés", titre: "Vous agissez sur les conditions de travail en amont, avant que les situations difficiles apparaissent", desc: "Vous clarifiez les rôles avant que les frictions apparaissent, vous aménagez du temps pour les dimensions relationnelles avant d'en avoir besoin, vous mesurez l'effet de vos propres comportements sur l'équipe. Cette capacité à agir sur les causes plutôt que sur les symptômes est ce qui distingue le management préventif du management réactif." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
   // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
   // Clé : "manager-qvt-rps" dans Object.assign(window.CUSTOM_QUESTIONS,
 
@@ -4238,13 +4738,13 @@
 
   window.ITS_registerTheme("qvt", "QVT & RPS", "🌿", [
 
-    ["rps-signaux-faibles", "Repérer les signaux faibles de RPS", "Tous publics",
-      "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",
+    ["manager-signaux-rps", "Détecter et orienter sans psychologiser", "Managers / Encadrants",
+      "Repérer les signaux faibles, intervenir sur le travail et orienter vers les bons relais sans se substituer aux spécialistes.",
       { domain: "qvt", chapters: [
-        ["Repérer les signaux faibles",    "Observer ce qui change autour de soi et sentir quand une situation mérite attention."],
-        ["Réguler la charge",              "Prioriser, demander de l'aide et clarifier les urgences avant d'être à bout."],
-        ["Préserver les relations de travail", "Désamorcer les irritants et maintenir un dialogue constructif."],
-        ["Mobiliser les bons relais",      "Savoir quand passer la main et comment le faire sans exposer inutilement."]
+        ["Repérer les signaux faibles dans son équipe", "Observer sans attendre que ça remonte, et créer les occasions pour que ça remonte."],
+        ["Intervenir sur le travail, pas sur la personne", "Agir sur les faits observés, laisser la personne interpréter, séparer les sujets."],
+        ["Orienter sans se défausser",                    "Mobiliser les relais au bon moment et faire un suivi après l'orientation."],
+        ["Prévenir par l'organisation",                   "Agir sur les conditions de travail en amont, avant que les situations difficiles apparaissent."]
       ]}
     ],
 
