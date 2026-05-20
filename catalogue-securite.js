@@ -2060,7 +2060,17 @@
   // ─────────────────────────────────────────────────────────────────────────
 
   window.ITS_registerTheme("securite-surete", "Sécurité & sûreté au travail", "🦺", [
-    ["culture-securite-terrain",   "Sécurité & culture de sûreté au quotidien",           "Équipes terrain",          "Identifier les risques, respecter les consignes et signaler les situations sensibles.",                                                                          T.securiteSurete],
+    ["culture-securite-terrain", "Sécurité & culture de sûreté au quotidien", "Équipes terrain",
+  "Identifier les risques, respecter les consignes et signaler les situations sensibles.",
+  { domain: "securite", chapters: [
+    ["Respecter les consignes sans surveillance",     "Appliquer les procédures dans leur intégralité, indépendamment du contexte et de l'observation."],
+    ["Résister à la normalisation des déviances",     "Identifier et traiter les pratiques qui se sont écartées des procédures sans avoir causé d'incident."],
+    ["Surmonter le coût social du signalement",       "Signaler ce qu'on observe sans attendre la certitude, le consensus ou une demande explicite."],
+    ["Contribuer à la culture sécurité de l'équipe", "Influencer les pratiques collectives par l'exemple, la parole et la transmission."]
+  ]}
+],
+           
+    
     ["presquaccidents-signalement","Signaler les incidents et presqu'accidents",            "Tous publics",             "Transformer les signaux faibles en actions utiles, sans culpabiliser ni banaliser.",                                                                            T.securiteSignalement],
     ["acces-sites-surete",         "Sûreté des sites, accès et comportements inhabituels", "Tous publics",             "Réagir face aux accès non autorisés, intrusions, objets suspects ou situations atypiques.",                                                                     T.securiteAccesSites],
     ["managers-securite",          "Manager la sécurité sans créer de tension",            "Managers",                 "Faire vivre les règles, traiter les écarts et soutenir les équipes dans les moments à risque.",                                                                  T.securiteManagers],
