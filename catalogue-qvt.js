@@ -3080,7 +3080,7 @@
       ]}
     ],
 
-    ["charge-priorites", "Charge de travail et priorisation", "Tous publics",
+    ["charge-priorites", "Réguler la charge et prioriser sous pression", "Tous publics",
       "Prendre du recul sur l'urgence, les arbitrages et les limites soutenables.",
       { domain: "qvt", chapters: [
         ["Réguler les urgences",                   "Identifier ce qui est vraiment urgent et organiser sa charge sans tout absorber."],
@@ -3090,7 +3090,7 @@
       ]}
     ],
 
-    ["cooperation-climat", "Coopération et climat de travail", "Collaborateurs",
+    ["cooperation-climat", "Coopérer sans laisser les tensions s’installer", "Collaborateurs",
       "Agir dans les irritants du quotidien, désamorcer et préserver la qualité relationnelle.",
       { domain: "qvt", chapters: [
         ["Désamorcer les irritants du quotidien",        "Nommer ce qui dérange, à la source, avant que ça ne s'installe."],
@@ -3105,7 +3105,7 @@
       T.qvtRps
     ],
 
-    ["teletravail-hybridation", "Télétravail et travail hybride", "Collaborateurs",
+    ["teletravail-hybridation", "Réussir le travail hybride sans créer d’inégalités", "Collaborateurs",
       "Organiser sa présence à distance, maintenir le lien collectif et gérer les irritants de l'hybridation.",
       { domain: "qvt", chapters: [
         ["S'organiser en mode hybride",            "Structurer ses journées, protéger son temps de fond et piloter sa présence."],
