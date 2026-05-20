@@ -66,6 +66,18 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   .step-circle{width:24px;height:24px;font-size:11px;}
   .step-connector{margin:0 7px;min-width:12px;}
 }
+
+.param-modal-overlay{position:fixed;inset:0;background:rgba(15,30,55,.48);z-index:9999;display:none;align-items:center;justify-content:center;padding:22px}
+.param-modal-overlay.on{display:flex}
+.param-modal{width:min(520px,94vw);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 24px 70px rgba(15,30,55,.26);padding:26px 28px;color:#18375d}
+.param-modal-icon{width:48px;height:48px;border-radius:16px;background:#fff8ec;color:#b7840a;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.param-modal h3{font-size:20px;margin:0 0 8px;color:#18375d}
+.param-modal p{font-size:13px;line-height:1.55;color:#64748b;margin:0 0 14px}
+.param-modal-list{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;margin:12px 0 18px;color:#18375d;font-size:13px;line-height:1.7}
+.param-modal-actions{display:flex;justify-content:flex-end;gap:10px}
+.param-modal-btn{border:none;border-radius:10px;background:#18375d;color:#fff;padding:10px 16px;font-size:13px;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer}
+.btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
+
 </style>
 </head>
 <body>
@@ -188,6 +200,19 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   </div>
 </div>
 
+
+<div class="param-modal-overlay" id="paramMissingModal" aria-hidden="true">
+  <div class="param-modal" role="dialog" aria-modal="true" aria-labelledby="paramMissingTitle">
+    <div class="param-modal-icon">⚠️</div>
+    <h3 id="paramMissingTitle">Paramétrage incomplet</h3>
+    <p>Complétez les éléments obligatoires avant de passer à la préparation de campagne.</p>
+    <div class="param-modal-list" id="paramMissingList"></div>
+    <div class="param-modal-actions">
+      <button type="button" class="param-modal-btn" onclick="closeMissingParametrageModal()">Compris</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const API_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 
@@ -285,7 +310,7 @@ function ensureDefaults(){
   if(!p.nb_repondants) p.nb_repondants = 120;
   if(!Array.isArray(p.resources)) p.resources = [];
 }
-function save(){ itsSave(state); }
+function save(){ try{ itsSave(state); }catch(e){ console.warn('Sauvegarde locale impossible, navigation non bloquée', e); } }
 function normalizeCampaignDatesInState(){
   const start = state.parametrage?.date_lancement || state.parametrage?.dateLancement || state.campaignStartDate || state.campaign_start_date || '';
   const end = state.parametrage?.date_cloture || state.parametrage?.dateCloture || state.campaignEndDate || state.campaign_end_date || '';
@@ -520,16 +545,37 @@ function getMissingParametrageFields(){
   return missing;
 }
 
+function closeMissingParametrageModal(){
+  const modal = document.getElementById('paramMissingModal');
+  if(modal){
+    modal.classList.remove('on');
+    modal.setAttribute('aria-hidden','true');
+  }
+}
+
 function showMissingParametrageAlert(missing){
   if(!missing || !missing.length) return;
   clearMissingFields();
   missing.forEach(item => markFieldMissing(item.id, true));
+
+  const list = document.getElementById('paramMissingList');
+  if(list){
+    list.innerHTML = missing.map(item => '• ' + item.label).join('<br>');
+  }
+
+  const modal = document.getElementById('paramMissingModal');
+  if(modal){
+    modal.classList.add('on');
+    modal.setAttribute('aria-hidden','false');
+  }
+
   const first = document.getElementById(missing[0].id);
   if(first && typeof first.scrollIntoView === 'function'){
-    first.scrollIntoView({ behavior:'smooth', block:'center' });
-    if(typeof first.focus === 'function') setTimeout(() => first.focus(), 250);
+    setTimeout(() => {
+      first.scrollIntoView({ behavior:'smooth', block:'center' });
+      if(typeof first.focus === 'function') first.focus();
+    }, 180);
   }
-  alert("Impossible de continuer pour le moment.\n\nÀ compléter ou corriger :\n- " + missing.map(item => item.label).join("\n- "));
 }
 
 function checkContinue(){
@@ -537,7 +583,8 @@ function checkContinue(){
   if(!btn) return false;
   const missing = getMissingParametrageFields();
   btn.disabled = false;
-  btn.title = missing.length ? "Cliquez pour voir les champs à compléter." : "";
+  btn.classList.toggle('blocked', missing.length > 0);
+  btn.title = missing.length ? "Cliquez pour voir les champs à compléter." : "Continuer vers la campagne";
   return missing.length === 0;
 }
 

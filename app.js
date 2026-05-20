@@ -193,6 +193,54 @@ function itsProjectTitleFromState(state) {
   );
 }
 
+function itsCompactStateForLocalStorage(value) {
+  if (!value || typeof value !== "object") return value || {};
+  const cloned = JSON.parse(JSON.stringify(value));
+
+  function walk(obj) {
+    if (!obj || typeof obj !== "object") return;
+    Object.keys(obj).forEach((key) => {
+      const v = obj[key];
+      const lowerKey = String(key).toLowerCase();
+      const isHeavyImageKey = lowerKey.includes("dataurl") || lowerKey.includes("data_url") || lowerKey.includes("base64");
+      const isHeavyValue = typeof v === "string" && (v.startsWith("data:image/") || v.length > 250000);
+
+      if (isHeavyImageKey || isHeavyValue) {
+        obj[key] = "";
+        return;
+      }
+
+      if (v && typeof v === "object") walk(v);
+    });
+  }
+
+  walk(cloned);
+  cloned.localStorageCompacted = true;
+  cloned.localStorageCompactedAt = new Date().toISOString();
+  return cloned;
+}
+
+function itsSafeSetLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (err) {
+    if (err && err.name === "QuotaExceededError") {
+      try {
+        const compact = itsCompactStateForLocalStorage(value);
+        localStorage.setItem(key, JSON.stringify(compact));
+        console.warn("État local allégé : images/base64 retirées pour éviter le quota localStorage.");
+        return true;
+      } catch (err2) {
+        console.warn("Sauvegarde locale impossible même après allègement. Navigation non bloquée.", err2);
+        return false;
+      }
+    }
+    console.warn("Sauvegarde locale impossible. Navigation non bloquée.", err);
+    return false;
+  }
+}
+
 function itsSave(state) {
   const safeState = itsCanonicalizeCampaignDates(itsUnwrapProjectData(state || {}));
   const step = safeState.current_step || safeState.currentStep || safeState.step || itsInferCurrentStep();
@@ -209,7 +257,7 @@ function itsSave(state) {
     itsSetCurrentProjectId(projectId);
   }
 
-  localStorage.setItem(itsGetStorageKey(), JSON.stringify(safeState));
+  itsSafeSetLocalStorage(itsGetStorageKey(), safeState);
 
   if (!itsIsRestoringProject) {
     itsScheduleProjectSync(safeState);
@@ -289,7 +337,7 @@ async function itsSyncProjectToApi(state) {
         latest.project_id = savedId;
         latest.projectId = savedId;
         itsSetCurrentProjectId(savedId);
-        localStorage.setItem(itsGetStorageKey(), JSON.stringify(latest));
+        itsSafeSetLocalStorage(itsGetStorageKey(), latest);
       } catch(e) {
         itsSetCurrentProjectId(savedId);
       }
@@ -393,7 +441,7 @@ function itsRestoreProject(project) {
   itsCanonicalizeCampaignDates(data);
 
   itsIsRestoringProject = true;
-  localStorage.setItem(itsGetStorageKey(), JSON.stringify(data));
+  itsSafeSetLocalStorage(itsGetStorageKey(), data);
   if (projectId) {
     sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(realProject));
   }
