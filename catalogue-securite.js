@@ -14,176 +14,676 @@
   // ─────────────────────────────────────────────────────────────────────────
 
   Object.assign(window.CUSTOM_QUESTIONS, {
+    // ─── À coller dans catalogue-securite.js ──────────────────────────────
+  // Clé : "culture-securite-terrain" dans Object.assign(window.CUSTOM_QUESTIONS,
+
   "culture-securite-terrain": {
     0: [
-        {
-          text: "Vous arrivez sur un poste de travail qu'un collègue vient de quitter. Il dit que tout est en ordre. Que faites-vous avant de démarrer ?",
-          answers: [
-          {text: "Je fais confiance à son évaluation et commence directement.", score: 0},
-          {text: "Je fais un tour d'œil rapide sur les points qui me semblent essentiels.", score: 1},
-          {text: "Je réalise ma propre vérification systématique, quelle que soit l'information transmise.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous devez réaliser une opération de maintenance sur une machine. La procédure prévoit une consignation complète avant intervention. Votre chef d'équipe est absent ce matin et personne ne vous surveille. La machine tourne depuis des années sans incident.",
+        tags: ["consignes", "autonomie"],
+        answers: [
+          { text: "Je réalise l'opération sans consignation — la machine est connue et le risque est maîtrisé.", score: 0 },
+          { text: "Je consigne la machine comme prévu, même sans surveillance.", score: 2 },
+          { text: "Je fais une consignation partielle pour gagner du temps — les étapes critiques sont respectées.", score: 0.5 },
+          { text: "J'attends le retour de mon chef d'équipe avant d'intervenir.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
         },
-        {
-          text: "En cours d'opération, vous remarquez que l'éclairage de votre zone a baissé significativement. Ce n'est pas dangereux immédiatement, mais c'est inhabituellement sombre. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je continue — ce n'est pas un risque direct.", score: 0},
-          {text: "Je note le problème pour en parler à la fin de mon poste.", score: 1},
-          {text: "Je signale immédiatement et attends que la situation soit clarifiée avant de reprendre.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre atelier, tout le monde court-circuite une étape de vérification jugée trop longue pour des opérations courtes. Ça fait des années que ça se passe comme ça, sans accident. Un nouveau collègue vous demande si c'est normal.",
+        tags: ["consignes", "normalisation"],
+        answers: [
+          { text: "Je lui explique que c'est la pratique ici — la procédure est trop contraignante pour ce type d'opération.", score: 0 },
+          { text: "Je lui dis de suivre la procédure complète et je soulève le sujet avec mon responsable.", score: 2 },
+          { text: "Je lui dis de faire comme tout le monde pour l'instant et qu'on verra si ça change.", score: 0 },
+          { text: "Je lui explique le raccourci tout en lui précisant que ce n'est pas vraiment conforme.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
         },
-        {
-          text: "Vous observez qu'un produit chimique est stocké à côté d'un équipement électrique, contrairement aux consignes. Personne d'autre ne semble y prêter attention. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — ce n'est pas ma zone directe.", score: 0},
-          {text: "J'en parle à un collègue proche sans formaliser.", score: 1},
-          {text: "Je signale l'anomalie et m'assure qu'elle est corrigée ou remontée.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez les procédures de sécurité dans leur intégralité, y compris quand personne ne regarde et quand la tâche vous semble bien connue.",
+        tags: ["consignes", "régularité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
         },
-        {
-          text: "Un collègue vous explique qu'il a modifié légèrement une procédure pour gagner du temps. Selon lui, le résultat est identique et c'est plus pratique. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je l'imite si la méthode semble efficace.", score: 0},
-          {text: "Je l'écoute mais continue avec la procédure officielle sans intervenir.", score: 1},
-          {text: "Je lui signale que tout écart à la procédure doit être validé avant d'être appliqué.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre chef vous demande d'accélérer une opération pour tenir un délai client. Pour gagner 20 minutes, il faudrait sauter une étape de vérification non obligatoire réglementairement mais inscrite dans votre procédure interne.",
+        tags: ["consignes", "pression"],
+        answers: [
+          { text: "Je saute l'étape — mon chef a demandé et elle n'est pas réglementairement obligatoire.", score: 0 },
+          { text: "Je maintiens la procédure complète et j'explique à mon chef pourquoi cette étape est là.", score: 2 },
+          { text: "Je réalise une version allégée de la vérification pour trouver un compromis.", score: 0.5 },
+          { text: "Je fais l'opération sans l'étape mais je le note dans mon compte rendu.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
         },
-        {
-          text: "Une zone habituellement interdite est accessible car le cadenas est cassé. Vous devez passer à côté. Que faites-vous ?",
-          answers: [
-          {text: "Je passe sans m'arrêter — je ne vais pas y entrer.", score: 0},
-          {text: "Je fais attention en passant et en informe un collègue.", score: 1},
-          {text: "Je signale immédiatement que l'accès n'est plus sécurisé.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Mehdi, 20 ans d'expérience sur ce type d'installation, réalise une opération sans certaines protections collectives. Il dit qu'il connaît trop bien la machine pour avoir besoin de ça.",
+        tags: ["consignes", "expérience"],
+        answers: [
+          { text: "Je ne dis rien — il est bien plus expérimenté que moi et sait ce qu'il fait.", score: 0 },
+          { text: "Je lui signale ce que j'observe, sans le mettre en cause devant le groupe.", score: 2 },
+          { text: "Je l'observe encore un moment pour voir s'il prend d'autres risques avant de réagir.", score: 0 },
+          { text: "J'en parle à notre responsable après la fin de l'opération.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez les procédures complètes même quand votre hiérarchie vous demande d'accélérer et même quand vos collègues expérimentés font autrement.",
+        tags: ["consignes", "résistance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Il est 17h45, vous finissez dans 15 minutes. Une opération courante reste à faire. La procédure prévoit une vérification préalable qui prend 10 minutes. Vous l'avez faite des dizaines de fois.",
+        tags: ["consignes", "fin de journée"],
+        answers: [
+          { text: "Je réalise l'opération sans la vérification — je la connais par cœur et je finis à l'heure.", score: 0 },
+          { text: "Je fais la vérification complète même si ça me fait finir en retard.", score: 2 },
+          { text: "Je fais une vérification rapide des points essentiels pour tenir les horaires.", score: 0.5 },
+          { text: "Je laisse l'opération pour demain matin — mieux vaut ne pas commencer une tâche qu'on ne peut pas finir correctement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a développé une façon de faire qui s'écarte légèrement d'une consigne mais que tout le monde trouve plus pratique. Aucun incident n'est survenu depuis deux ans.",
+        tags: ["consignes", "collectif"],
+        answers: [
+          { text: "Je continue comme l'équipe — deux ans sans incident, c'est la preuve que ça fonctionne.", score: 0 },
+          { text: "Je soulève le sujet avec mon responsable pour régulariser ou modifier la procédure officiellement.", score: 2 },
+          { text: "Je suis l'équipe mais je signale l'écart lors du prochain audit.", score: 1 },
+          { text: "Je suis la consigne officielle tout seul — je ne peux pas forcer l'équipe à faire pareil.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous observez un écart entre la pratique réelle et la procédure officielle, vous le signalez même si l'écart paraît mineur et que personne d'autre ne réagit.",
+        tags: ["consignes", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous pénétrez dans une zone que vous connaissez parfaitement. L'affichage indique qu'un EPI spécifique est requis. Vous l'avez oublié à votre poste, à 5 minutes.",
+        tags: ["consignes", "zone connue"],
+        answers: [
+          { text: "J'entre quand même — je connais la zone et mon intervention sera courte.", score: 0 },
+          { text: "Je retourne chercher mon EPI avant d'entrer.", score: 2 },
+          { text: "Je demande à un collègue de me prêter le sien.", score: 1 },
+          { text: "Je vérifie d'abord si l'EPI est vraiment obligatoire pour mon type d'intervention.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore votre niveau d'exigence selon le contexte et la surveillance", desc: "Zone connue, chef absent, fin de journée, collègue expérimenté qui fait autrement : autant de contextes où vos standards de sécurité peuvent s'adapter. C'est précisément dans ces situations que les accidents surviennent — la familiarité avec le risque et l'absence de surveillance sont des facteurs aggravants, pas des facteurs protecteurs. L'enjeu est d'appliquer les procédures complètes indépendamment du contexte." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les procédures dans la plupart des situations mais vous cédez encore dans les contextes de pression forte", desc: "Vous appliquez les procédures sans problème dans les situations ordinaires. Mais sous pression directe de votre hiérarchie, en fin de journée, ou face à un collègue expérimenté qui fait autrement, vos standards peuvent encore s'adapter. L'enjeu est de tenir ces situations précisément parce qu'elles sont les plus courantes dans les contextes d'accident." },
+          haut: { label: "Réflexes installés", titre: "Vous appliquez les procédures complètes dans tous les contextes, sans adaptation selon la surveillance ou la pression", desc: "Vous retournez chercher votre EPI même pour une intervention courte en zone connue. Vous maintenez la vérification complète en fin de journée. Vous suivez la procédure même quand votre chef expérimenté fait autrement. Cette constance absolue — qui suppose d'accepter parfois d'être le seul à la tenir — est le fondement d'une culture de sécurité solide." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Vous portez vos EPI depuis plusieurs heures. Ils sont inconfortables et vous avez chaud. Vous êtes seul dans la zone pour quelques minutes. Que faites-vous ?",
-          answers: [
-          {text: "Je retire ce qui me gêne le plus — juste quelques minutes.", score: 0},
-          {text: "Je tiens encore un peu mais c'est difficile.", score: 1},
-          {text: "Je maintiens l'ensemble de mes EPI : l'inconfort ne justifie pas de s'exposer.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Dans votre service, une alarme se déclenche régulièrement pour des raisons techniques sans rapport avec un danger réel. Tout le monde a pris l'habitude de l'ignorer. Elle se déclenche à nouveau.",
+        tags: ["déviance", "normalisation"],
+        answers: [
+          { text: "Je l'ignore comme d'habitude — c'est une fausse alarme chronique, tout le monde le sait.", score: 0 },
+          { text: "Je sors de la zone et je signale le déclenchement, même si c'est probablement une fausse alarme.", score: 2 },
+          { text: "Je vérifie rapidement si quelque chose d'anormal est visible avant de décider.", score: 1 },
+          { text: "J'attends de voir si mes collègues réagissent avant de faire quoi que ce soit.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
         },
-        {
-          text: "Votre responsable vous demande d'accélérer pour rattraper le retard du planning. Une étape de vérification prend habituellement 10 minutes. Il dit qu'on peut l'alléger cette fois. Que faites-vous ?",
-          answers: [
-          {text: "J'allège la vérification pour tenir le délai.", score: 0},
-          {text: "Je fais une vérification rapide sans appliquer toute la procédure.", score: 1},
-          {text: "Je maintiens la procédure complète et informe mon responsable du délai que ça implique.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous traitez chaque alarme et chaque signal de sécurité avec la même attention, même si des déclenchements répétés vous ont appris qu'ils sont souvent sans danger réel.",
+        tags: ["déviance", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
         },
-        {
-          text: "Vous devez réaliser une tâche avec un équipement que vous connaissez bien mais dont la vérification périodique est dépassée de quelques jours. L'équipement fonctionne normalement. Que faites-vous ?",
-          answers: [
-          {text: "Je l'utilise — il a l'air en bon état.", score: 0},
-          {text: "Je l'utilise en faisant attention et signale le problème après.", score: 1},
-          {text: "Je refuse de l'utiliser et remonte la situation avant de démarrer.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Kevin, un ancien de l'équipe, vous explique une façon de faire plus rapide qui s'écarte de la procédure officielle. 'On fait tous comme ça depuis des années et ça n'a jamais posé de problème.'",
+        tags: ["déviance", "anciens"],
+        answers: [
+          { text: "Je suis son conseil — il connaît le terrain mieux que la procédure théorique.", score: 0 },
+          { text: "Je lui pose des questions sur pourquoi la procédure officielle prévoit autre chose.", score: 1.5 },
+          { text: "Je suis la procédure officielle et je signale l'écart à mon responsable.", score: 2 },
+          { text: "Je fais comme lui pour l'instant et je me renseigne plus tard.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
         },
-        {
-          text: "Lors d'une intervention en hauteur, vous réalisez que votre harnais n'est pas correctement ajusté. Vous avez déjà commencé à monter. Que faites-vous ?",
-          answers: [
-          {text: "Je fais attention et redescends dès que j'ai terminé.", score: 0},
-          {text: "Je m'arrête à mi-hauteur et tente de réajuster sur place.", score: 1},
-          {text: "Je redescends immédiatement pour ajuster l'équipement avant de remonter.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire qui intervient régulièrement sur votre site ne porte pas systématiquement ses EPI. Personne ne lui a jamais rien dit. Vous le croisez à nouveau sans protection.",
+        tags: ["déviance", "pression"],
+        answers: [
+          { text: "Je laisse — il intervient depuis longtemps ici, ce n'est pas à moi de le recadrer.", score: 0 },
+          { text: "Je lui signale que les EPI sont obligatoires sur ce site, poliment mais clairement.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il intervienne.", score: 1 },
+          { text: "Je le note et j'en parle lors du prochain point sécurité.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
         },
-        {
-          text: "Un outil que vous utilisez régulièrement présente un léger défaut que vous avez appris à contourner. Personne d'autre n'est au courant. Que faites-vous ?",
-          answers: [
-          {text: "Je continue avec mon habitude de contournement — ça marche.", score: 0},
-          {text: "J'en parle à un collègue mais sans le remonter officiellement.", score: 1},
-          {text: "Je signale le défaut et utilise un autre outil jusqu'à réparation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Une étape de nettoyage après intervention est souvent sautée par manque de temps. Vous l'avez vous-même évitée plusieurs fois. Un collègue vient de glisser sur une zone non nettoyée.",
+        tags: ["déviance", "habitude"],
+        answers: [
+          { text: "Je signale l'accident mais je ne mentionne pas que l'étape était régulièrement sautée.", score: 0 },
+          { text: "Je signale l'accident et je mentionne la pratique collective de sauter cette étape — c'est la cause réelle.", score: 2 },
+          { text: "Je signale l'accident sans entrer dans les détails — l'enquête fera son travail.", score: 0.5 },
+          { text: "Je nettoie la zone et je m'assure que ça ne se reproduit pas sans en faire un sujet formel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous intervenez auprès d'un collègue ou d'un prestataire qui ne respecte pas une règle de sécurité, même quand personne d'autre ne réagit et même si la relation peut être inconfortable.",
+        tags: ["déviance", "courage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable réalise lui-même régulièrement une opération sans les protections requises. Il est pressé et compétent. Vous l'observez.",
+        tags: ["déviance", "hiérarchie"],
+        answers: [
+          { text: "Je ne dis rien — on ne reprend pas son chef sur la sécurité.", score: 0 },
+          { text: "Je lui signale ce que j'observe après l'opération, en privé.", score: 2 },
+          { text: "Je l'observe et j'attends qu'un incident survienne pour que le sujet soit traité.", score: 0 },
+          { text: "J'en parle au responsable sécurité sans en parler à mon chef directement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un REX sur un presqu'accident, il apparaît clairement qu'une pratique non conforme était répandue dans l'équipe depuis longtemps. Plusieurs personnes hésitent à le dire ouvertement.",
+        tags: ["déviance", "REX"],
+        answers: [
+          { text: "Je me tais aussi — dénoncer une pratique collective ferait porter la responsabilité sur tout le monde.", score: 0 },
+          { text: "Je confirme que la pratique était répandue — le REX ne peut être utile que s'il repose sur les faits réels.", score: 2 },
+          { text: "Je dis que j'ai parfois vu des écarts sans préciser que c'était systématique.", score: 0.5 },
+          { text: "J'attends que quelqu'un d'autre le dise en premier.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lors des retours d'expérience, vous décrivez ce qui s'est réellement passé, y compris les pratiques déviantes collectives, même si c'est inconfortable.",
+        tags: ["déviance", "REX"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que depuis six mois, votre propre niveau d'exigence sur certaines vérifications a glissé — vous faites les choses moins rigoureusement qu'avant, sans vous en être rendu compte.",
+        tags: ["déviance", "glissement"],
+        answers: [
+          { text: "Je me dis que c'est l'expérience qui parle — je sais ce qui est vraiment important.", score: 0 },
+          { text: "Je reconnais ce glissement et je me réimpose les standards complets, sans attendre un incident.", score: 2 },
+          { text: "Je surveille si ça a des conséquences et j'ajusterai si nécessaire.", score: 0 },
+          { text: "J'en parle à mon responsable pour qu'il m'aide à recadrer.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez sur les pratiques du groupe même quand elles s'écartent des procédures", desc: "Deux ans sans incident, tout le monde fait comme ça, l'ancien qui connaît mieux que la procédure : la normalisation des déviances est l'un des mécanismes les plus documentés dans les accidents industriels graves. Le fait qu'une pratique non conforme n'ait pas encore causé d'accident n'est pas une preuve de sa sécurité — c'est une accumulation de chance. L'enjeu est de traiter chaque écart comme un signal, indépendamment du bilan." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux déviances évidentes mais les glissements progressifs vous échappent encore", desc: "Vous intervenez quand les déviances sont visibles et récentes. Mais les pratiques qui se sont installées progressivement — le raccourci que tout le monde a fini par adopter, la vérification que vous avez vous-même commencé à alléger — sont plus difficiles à voir et à traiter. L'enjeu est de maintenir un regard critique sur vos propres pratiques dans la durée." },
+          haut: { label: "Réflexes installés", titre: "Vous résistez à la normalisation des déviances et vous intervenez sur les pratiques non conformes, même anciennement installées", desc: "Vous intervenez quand vous observez un écart chez un collègue ou un prestataire. Vous signalez les pratiques collectives déviantes lors des REX même quand c'est inconfortable. Vous reconnaissez vos propres glissements et vous les corrigez sans attendre un incident. Cette résistance active à la normalisation est le comportement qui évite que les 'petits écarts sans conséquence' deviennent des accidents graves." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Vous êtes le plus expérimenté de votre équipe et un junior hésite à signaler une situation qu'il trouve risquée. Il vous demande si c'est vraiment nécessaire. Que lui répondez-vous ?",
-          answers: [
-          {text: "Je lui dis que si ça ne semble pas grave, inutile d'en faire une montagne.", score: 0},
-          {text: "Je lui dis que c'est à lui de décider.", score: 1},
-          {text: "Je l'encourage à signaler et l'aide à formuler son observation.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous observez une situation qui vous semble dangereuse mais qui n'a pas déclenché d'alerte chez vos collègues. Vous n'êtes pas sûr·e d'avoir raison et vous ne voulez pas passer pour quelqu'un qui exagère.",
+        tags: ["signalement", "courage"],
+        answers: [
+          { text: "Je ne dis rien — si personne d'autre ne réagit, c'est que le risque est probablement gérable.", score: 0 },
+          { text: "Je signale ce que j'observe en restant factuel sur ce que j'ai vu, sans interprétation.", score: 2 },
+          { text: "Je pose une question à un collègue pour valider mon ressenti avant de décider.", score: 1 },
+          { text: "Je note mentalement pour en parler plus tard si la situation se reproduit.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
         },
-        {
-          text: "Votre équipe a développé une habitude informelle de ne pas faire le point sécurité quand la journée est chargée. Tout le monde a l'air de trouver ça normal. Quelle est votre position ?",
-          answers: [
-          {text: "Je m'aligne — si tout le monde fait pareil, c'est que c'est raisonnable.", score: 0},
-          {text: "Je continue à faire mon propre point sans intervenir sur la dynamique collective.", score: 1},
-          {text: "Je signale cette dérive à mon responsable ou la soulève lors d'un moment collectif.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les situations qui vous semblent anormales même quand vous n'êtes pas certain·e que le risque est réel et même quand personne d'autre ne l'a fait.",
+        tags: ["signalement", "initiative"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
         },
-        {
-          text: "Vous observez qu'un collègue réalise une tâche sans les protections adaptées. Il est plus ancien que vous et semble agacé quand on lui en parle. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — il connaît mieux le métier que moi.", score: 0},
-          {text: "Je lui en parle rapidement sans insister.", score: 1},
-          {text: "Je lui signale le risque de façon factuelle et, si nécessaire, je remonte la situation.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé un écart de sécurité impliquant un collègue avec qui vous avez une bonne relation. Signaler pourrait lui créer des ennuis.",
+        tags: ["signalement", "peur"],
+        answers: [
+          { text: "Je lui en parle directement pour lui laisser l'opportunité de régulariser lui-même.", score: 1.5 },
+          { text: "Je ne signale pas — la relation est plus importante que cette entorse ponctuelle.", score: 0 },
+          { text: "Je signale les faits sans nommer mon collègue si le système le permet.", score: 2 },
+          { text: "Je le signale avec son nom — la sécurité prime sur les relations.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
         },
-        {
-          text: "Après un incident mineur sans blessure, votre équipe reprend le travail rapidement. Personne ne parle de signalement. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends le travail comme tout le monde.", score: 0},
-          {text: "J'en parle discrètement à mon responsable.", score: 1},
-          {text: "Je propose que l'incident soit formellement signalé, même sans blessure.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "La dernière fois que vous avez signalé une situation, ça n'a pas eu de suite visible. Vous observez aujourd'hui une situation similaire.",
+        tags: ["signalement", "réaction"],
+        answers: [
+          { text: "Je ne signale pas — ça ne sert à rien puisque rien ne change.", score: 0 },
+          { text: "Je signale à nouveau et je demande un retour sur ce qui a été fait.", score: 2 },
+          { text: "Je signale encore une fois, sans grand espoir.", score: 1 },
+          { text: "J'en parle à un collègue pour savoir s'il a eu le même sentiment.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
         },
-        {
-          text: "Un visiteur ou stagiaire dans votre zone ne porte pas ses EPI. Son accompagnateur ne réagit pas. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — ce n'est pas mon rôle de gérer les visiteurs.", score: 0},
-          {text: "Je regarde si l'accompagnateur finit par intervenir.", score: 1},
-          {text: "J'interpelle poliment le visiteur ou l'accompagnateur pour corriger la situation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez commis une erreur de procédure qui aurait pu avoir des conséquences graves mais qui n'en a pas eu. Vous êtes la seule personne à le savoir.",
+        tags: ["signalement", "honte"],
+        answers: [
+          { text: "Je ne le signale pas — puisqu'il n'y a pas eu de conséquence, ça ne sert à rien.", score: 0 },
+          { text: "Je le signale — même sans conséquence, l'erreur doit être connue pour éviter qu'elle se reproduise.", score: 2 },
+          { text: "Je le signale anonymement si le système le permet.", score: 1.5 },
+          { text: "J'ajuste mes pratiques sans signaler — je saurai éviter ça la prochaine fois.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez vos propres erreurs ou presqu'accidents même quand personne d'autre ne les a vus et même si ça peut vous mettre en difficulté.",
+        tags: ["signalement", "propre erreur"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après un incident, votre équipe s'accorde tacitement sur une version des faits qui minimise les responsabilités collectives. On vous demande implicitement d'aller dans ce sens.",
+        tags: ["signalement", "pression groupe"],
+        answers: [
+          { text: "Je m'aligne — le groupe a besoin de cohésion et je ne vais pas être celui qui complique.", score: 0 },
+          { text: "Je décris les faits tels que je les ai vécus, même si ça diverge de la version collective.", score: 2 },
+          { text: "Je reste vague dans mon témoignage pour ne ni mentir ni contredire le groupe.", score: 0 },
+          { text: "J'en parle au responsable sécurité en privé avant de témoigner officiellement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose il y a trois jours mais vous avez attendu pour le signaler en espérant que ça s'arrange seul. La situation est toujours présente.",
+        tags: ["signalement", "délai"],
+        answers: [
+          { text: "Je ne signale plus — j'aurais dû le faire à temps, il est trop tard maintenant.", score: 0 },
+          { text: "Je signale maintenant en expliquant pourquoi j'ai attendu.", score: 2 },
+          { text: "Je signale en occultant que j'avais vu la situation plus tôt.", score: 0 },
+          { text: "Je signale de façon anonyme pour éviter qu'on me demande pourquoi j'ai attendu.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les situations dangereuses sans attendre de voir si elles se résolvent seules ou si quelqu'un d'autre le fait à votre place.",
+        tags: ["signalement", "rapidité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le système de signalement de votre entreprise est perçu comme lourd et peu efficace. Vos collègues l'utilisent rarement. Vous avez quelque chose à signaler.",
+        tags: ["signalement", "futilité perçue"],
+        answers: [
+          { text: "Je ne l'utilise pas non plus — si le système est inefficace, ça ne changera rien.", score: 0 },
+          { text: "Je l'utilise quand même et je formule mon signalement de façon à ce qu'il soit exploitable.", score: 2 },
+          { text: "Je le signale verbalement à mon responsable plutôt que par le système officiel.", score: 1 },
+          { text: "Je participe à améliorer le système en signalant ET en suggérant des améliorations.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous évitez encore de signaler par peur du coût social ou par doute sur votre légitimité", desc: "Ne pas signaler parce que personne d'autre ne réagit, parce que ça pourrait créer des ennuis à un collègue, parce que le système semble inefficace : ces raisonnements laissent des situations dangereuses sans traitement. Signaler ce qu'on observe — même en étant le seul, même sans être certain — est le comportement qui permet aux systèmes de sécurité de fonctionner." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les situations graves, vous hésitez encore sur les situations ambiguës ou à coût social élevé", desc: "Vous signalez les situations clairement dangereuses. Mais quand vous n'êtes pas sûr·e, quand ça peut créer un inconfort relationnel, quand le système semble peu efficace : votre signalement peut encore hésiter. L'enjeu est d'abaisser ce seuil — signaler sur le doute est toujours plus utile qu'attendre la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez ce que vous observez sans attendre la certitude, le consensus ou la demande explicite", desc: "Vous signalez ce que vous observez même quand personne d'autre ne réagit, même quand vous n'êtes pas certain·e, même quand ça peut créer un inconfort relationnel. Vous signalez vos propres erreurs même sans conséquence visible. Cette posture de signalement systématique est ce qui permet aux systèmes de sécurité de détecter les situations à risque avant qu'elles dégénèrent." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Vous avez observé une situation potentiellement dangereuse mais vous n'êtes pas certain qu'elle le soit vraiment. Vous hésitez à la signaler par peur de sembler alarmiste. Que faites-vous ?",
-          answers: [
-          {text: "Je ne signale pas — si je n'en suis pas sûr, mieux vaut ne rien dire.", score: 0},
-          {text: "J'en parle informellement à un collègue.", score: 1},
-          {text: "Je signale quand même en précisant mon niveau de certitude — c'est aux experts d'évaluer.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre équipe n'a eu aucun accident depuis 18 mois. Les points sécurité ont commencé à être expédiés en quelques minutes. Personne ne s'en plaint.",
+        tags: ["culture", "bon bilan"],
+        answers: [
+          { text: "C'est normal — quand ça va bien, on n'a pas besoin de s'attarder sur la sécurité.", score: 0 },
+          { text: "Je soulève le sujet : le bon bilan est le résultat des bonnes pratiques, pas la preuve qu'on peut les alléger.", score: 2 },
+          { text: "Je maintiens mes propres pratiques sans chercher à changer l'attitude de l'équipe.", score: 1 },
+          { text: "J'en parle à notre responsable pour qu'il redonne de l'importance aux points sécurité.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Vous signalez une anomalie et on vous répond que c'est connu et pas prioritaire. L'anomalie est toujours là deux semaines plus tard. Que faites-vous ?",
-          answers: [
-          {text: "J'attends — la décision appartient à la hiérarchie.", score: 0},
-          {text: "J'en reparle à mon responsable en passant.", score: 1},
-          {text: "Je relance formellement et demande un retour sur le traitement du signalement.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous adoptez les comportements de sécurité que vous attendez de vos collègues, sans exception, y compris dans les situations où personne ne vous observe.",
+        tags: ["culture", "exemplarité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Lors d'un retour d'expérience collectif, l'ambiance pousse à ne pas trop creuser pour ne pas embarrasser quelqu'un. Comment réagissez-vous ?",
-          answers: [
-          {text: "Je reste silencieux — le collectif a décidé de passer à autre chose.", score: 0},
-          {text: "Je soulève mon point discrètement après la réunion.", score: 1},
-          {text: "J'insiste pour que les causes réelles soient examinées, même si c'est inconfortable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un·e nouveau·elle arrivant·e dans votre équipe observe les pratiques réelles et les compare aux procédures affichées. Il/elle constate des écarts et vous pose des questions.",
+        tags: ["culture", "nouveau"],
+        answers: [
+          { text: "Je lui explique que la pratique réelle est adaptée au contexte — les procédures sont souvent trop théoriques.", score: 0 },
+          { text: "Je lui dis que les écarts qu'il/elle observe sont un problème et que la procédure officielle est la référence.", score: 2 },
+          { text: "Je lui conseille de faire comme l'équipe pour l'intégration et de poser des questions plus tard.", score: 0 },
+          { text: "Je lui explique les raisons historiques des écarts sans les cautionner.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Un presqu'accident s'est produit dans votre équipe et personne ne veut le mettre par écrit de peur des conséquences. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte la décision collective — ce n'est pas à moi de prendre ce risque seul.", score: 0},
-          {text: "Je le signale anonymement si je peux.", score: 1},
-          {text: "Je signale formellement et explique à mes collègues pourquoi c'est important.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe vient d'avoir un presqu'accident. Le REX est prévu pour vendredi. Certains collègues voudraient qu'il soit rapide et qu'on 'tourne la page'.",
+        tags: ["culture", "REX"],
+        answers: [
+          { text: "Je m'aligne — un REX trop long et trop détaillé crée de la culpabilité sans valeur ajoutée.", score: 0 },
+          { text: "Je propose qu'on prenne le temps nécessaire pour vraiment comprendre ce qui s'est passé.", score: 2 },
+          { text: "Je participe au REX sans me prononcer sur sa durée ou sa profondeur.", score: 0.5 },
+          { text: "Je prépare des éléments factuels pour que le REX soit le plus utile possible.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
         },
-        {
-          text: "Votre entreprise a mis en place un outil de signalement numérique mais personne ne s'en sert vraiment. Que faites-vous ?",
-          answers: [
-          {text: "Je fais comme tout le monde et ne l'utilise pas.", score: 0},
-          {text: "Je l'utilise pour moi mais n'en parle pas aux autres.", score: 1},
-          {text: "Je l'utilise et partage avec mes collègues pourquoi ça aide l'équipe entière.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est évaluée sur sa productivité. La sécurité ralentit parfois le rythme. Certains collègues font le lien explicitement entre moins de sécurité et meilleurs résultats.",
+        tags: ["culture", "concurrence"],
+        answers: [
+          { text: "Je les comprends — il faut bien concilier les deux contraintes.", score: 0 },
+          { text: "Je dis clairement que la sécurité n'est pas une variable d'ajustement de la productivité.", score: 2 },
+          { text: "Je reste sur mes pratiques sans entrer dans ce débat.", score: 1 },
+          { text: "J'en parle à notre responsable pour qu'il clarifie les priorités.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous transmettez activement les bonnes pratiques de sécurité aux nouveaux arrivants et aux collègues moins expérimentés, sans attendre qu'on vous le demande.",
+        tags: ["culture", "transmission"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous identifiez une amélioration possible d'une procédure de sécurité. La démarche pour la proposer officiellement est longue et administrative.",
+        tags: ["culture", "amélioration"],
+        answers: [
+          { text: "Je renonce — le jeu n'en vaut pas la chandelle.", score: 0 },
+          { text: "Je la propose quand même par les voies officielles, même si c'est long.", score: 2 },
+          { text: "Je l'applique à mon niveau sans la formaliser.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour qu'il la porte à ma place.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous apprenez qu'un incident grave s'est produit dans une entreprise similaire à la vôtre, sur un équipement identique. L'information circule de façon informelle.",
+        tags: ["culture", "incident tiers"],
+        answers: [
+          { text: "Je prends note mais ça ne concerne pas directement notre entreprise.", score: 0 },
+          { text: "Je remonte l'information à mon responsable et au responsable sécurité pour qu'elle soit traitée.", score: 2 },
+          { text: "J'en parle à mes collègues pour qu'on soit vigilants.", score: 1 },
+          { text: "J'attends que l'information arrive par les canaux officiels.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous contribuez activement à l'amélioration des pratiques de sécurité de votre équipe — signalements, suggestions, participation aux REX — sans attendre d'y être obligé·e.",
+        tags: ["culture", "amélioration continue"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un client important est sur site et observe votre travail. Pour faire bonne impression sur la productivité, certains collègues accélèrent et allègent quelques vérifications.",
+        tags: ["culture", "pression client"],
+        answers: [
+          { text: "Je fais pareil — c'est un client important et l'image de l'entreprise compte.", score: 0 },
+          { text: "Je maintiens mes pratiques habituelles — la sécurité ne change pas selon le public.", score: 2 },
+          { text: "Je fais attention à ce que le client ne voie pas les raccourcis.", score: 0 },
+          { text: "J'en parle discrètement à mes collègues après la visite.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture sécurité reste passive — vous suivez sans influencer", desc: "S'aligner sur les pratiques du groupe sans les questionner, ne pas prendre la parole sur les écarts observés, ne pas transmettre les bonnes pratiques aux nouveaux : la culture sécurité d'une équipe se construit ou s'érode à travers les comportements individuels quotidiens. Rester passif dans une équipe dont les standards glissent, c'est contribuer à ce glissement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture sécurité par l'exemple mais vous intervenez peu sur les pratiques collectives", desc: "Vous donnez l'exemple dans vos propres pratiques. Mais prendre la parole sur les écarts collectifs, questionner un bilan sans incident comme preuve de bonne santé, transmettre activement les bonnes pratiques : ces comportements d'influence sur la culture collective sont encore peu présents. L'enjeu est de passer de l'exemplarité individuelle à la contribution collective." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture sécurité de votre équipe par l'exemple, la parole et la transmission", desc: "Vous questionnez un bon bilan sans incident comme preuve de santé, vous transmettez les bonnes pratiques aux nouveaux, vous prenez la parole sur les écarts collectifs, vous remontez les informations utiles venant d'autres entreprises. Cette contribution active à la culture collective est ce qui fait qu'une équipe maintient ses standards dans le temps." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "presquaccidents-signalement": {
     0: [
