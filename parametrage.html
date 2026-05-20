@@ -552,8 +552,11 @@ async function persistProjectDraft(step, status){
   state.status = status || state.status || 'draft';
   state.current_step = step || 'parametrage';
   save();
+
+  const fallbackId = getCurrentProjectIdForSave();
   const token = getToken();
-  if(!token) return;
+  if(!token) return fallbackId;
+
   try{
     const response = await fetch(`${API_URL}/api/projects`, {
       method:'POST',
@@ -584,13 +587,37 @@ async function persistProjectDraft(step, status){
         })
       })
     });
+
     const saved = await response.json().catch(()=>({}));
+    if(!response.ok){
+      console.warn('Sauvegarde backend refusée sur Paramétrage', response.status, saved);
+      return getCurrentProjectIdForSave() || fallbackId;
+    }
+
     const id = saved.id || saved.project_id || saved.projectId || saved.project?.id;
-    if(id){ state.currentAdId = id; state.project_id = id; state.projectId = id; localStorage.setItem('its_current_project_id', String(id)); localStorage.setItem('its_current_ad_id', String(id)); save(); }
-  }catch(e){ console.error('Sauvegarde backend impossible pour le paramétrage', e); }
+    if(id){
+      state.currentAdId = id;
+      state.project_id = id;
+      state.projectId = id;
+      localStorage.setItem('its_current_project_id', String(id));
+      localStorage.setItem('its_current_ad_id', String(id));
+      save();
+      return id;
+    }
+  }catch(e){
+    console.error('Sauvegarde backend impossible pour le paramétrage', e);
+  }
+
+  return getCurrentProjectIdForSave() || fallbackId;
 }
 
 function goBack(){ save(); window.location.href='questions.html'; }
+
+function goToCampagne(projectId){
+  const id = projectId || getCurrentProjectIdForSave();
+  window.location.assign(id ? 'campagne.html?projectId=' + encodeURIComponent(id) : 'campagne.html');
+}
+
 async function goNext(){
   if(isPartnerMode()){
     state.parametrage.pack_choisi = "";
@@ -627,11 +654,31 @@ async function goNext(){
   }
 
   clearMissingFields();
-  state.parametrage.done=true;
+  state.parametrage.done = true;
+  state.current_step = 'campagne';
+  state.step = 'campagne';
+  state.status = 'draft';
   save();
-  const savedProjectId = await persistProjectDraft('parametrage','draft');
-  const targetId = savedProjectId || getCurrentProjectIdForSave();
-  window.location.href = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
+
+  const btn = document.getElementById('btn-continue');
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = 'Ouverture de la campagne…';
+  }
+
+  const currentId = getCurrentProjectIdForSave();
+
+  try{
+    const timeout = new Promise(resolve => setTimeout(() => resolve(currentId || ''), 1800));
+    const savedProjectId = await Promise.race([
+      persistProjectDraft('campagne','draft'),
+      timeout
+    ]);
+    goToCampagne(savedProjectId || currentId);
+  }catch(e){
+    console.error('Erreur passage vers campagne', e);
+    goToCampagne(currentId);
+  }
 }
 async function bootParametragePage(){
   if(typeof itsBootstrapProjectFromUrl === "function"){
