@@ -5370,173 +5370,669 @@
 
   "securite-chantier-btp": {
     0: [
-        {
-          text: "Vous arrivez sur votre poste de travail le matin et le balisage installé la veille a été modifié ou déplacé. Que faites-vous avant de démarrer ?",
-          answers: [
-          {text: "Je démarre — le chantier évolue chaque jour.", score: 0},
-          {text: "Je replace le balisage et commence.", score: 1},
-          {text: "Je stoppe et vérifie qui a modifié le balisage et pour quelle raison avant de reprendre.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous commencez une intervention sur un chantier actif. Le balisage de votre zone de travail prend 20 minutes. Votre chef de chantier vous dit d'attaquer directement — 'tout le monde sait que tu es là'.",
+        tags: ["poste de travail", "balisage"],
+        answers: [
+          { text: "Je commence sans balisage — mon chef a validé et tout le monde est prévenu.", score: 0 },
+          { text: "Je balize ma zone avant toute intervention, même si ça retarde le démarrage.", score: 2 },
+          { text: "Je fais un balisage minimal pour délimiter l'essentiel rapidement.", score: 0.5 },
+          { text: "Je demande à un collègue de faire le balisage pendant que je commence les travaux.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
         },
-        {
-          text: "Vous devez travailler à une hauteur de 3 mètres. Le point d'ancrage prévu est difficilement accessible. Que faites-vous ?",
-          answers: [
-          {text: "Je m'accroche au point le plus proche disponible.", score: 0},
-          {text: "Je travaille sans m'accrocher — c'est une intervention courte.", score: 1},
-          {text: "Je stoppe et demande un ajustement de l'installation d'ancrage avant de démarrer.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez intervenir sur un plancher de travail temporaire à 4 mètres. Un garde-corps conforme à la norme NF EN 13374 devrait être installé. Il n'est pas là. L'intervention dure 30 minutes.",
+        tags: ["poste de travail", "travaux en hauteur"],
+        answers: [
+          { text: "J'interviens quand même — 30 minutes en hauteur sur une surface stable, je maîtrise.", score: 0 },
+          { text: "Je refuse d'intervenir sans protection collective et je signale l'absence de garde-corps.", score: 2 },
+          { text: "Je mets mon harnais et je m'accroche à ce que je trouve en attendant une solution.", score: 0.5 },
+          { text: "Je demande à un collègue de rester au sol et de surveiller pendant mon intervention.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
         },
-        {
-          text: "Le sol de votre zone de travail est détrempé après une nuit de pluie. La tâche prévue nécessite de se déplacer. Que faites-vous ?",
-          answers: [
-          {text: "Je fais attention et commence.", score: 0},
-          {text: "Je demande si des planches ou passages temporaires peuvent être posés.", score: 1},
-          {text: "Je signale la situation et attends qu'une décision soit prise sur les conditions de travail avant de démarrer.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez systématiquement que votre zone de travail est correctement balisée et sécurisée avant de commencer toute intervention, même courte.",
+        tags: ["poste de travail", "ordre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
         },
-        {
-          text: "Votre chef d'équipe vous demande de démarrer des terrassements alors que le marquage de réseaux souterrains n'a pas encore été réalisé. Il dit que dans ce secteur il n'y a pas de réseau. Que faites-vous ?",
-          answers: [
-          {text: "Je démarre — il connaît le chantier.", score: 0},
-          {text: "Je commence prudemment en restant attentif.", score: 1},
-          {text: "Je refuse de démarrer les terrassements sans le marquage préalable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez réaliser une soudure sur le chantier. Le permis de feu n'a pas encore été signé par le CSPS. Votre chef de chantier dit de commencer — 'c'est une formalité, il signera après'.",
+        tags: ["poste de travail", "permis de feu"],
+        answers: [
+          { text: "Je commence — mon chef assume la responsabilité et le CSPS régularisera.", score: 0 },
+          { text: "Je refuse de démarrer sans le permis de feu signé par le CSPS.", score: 2 },
+          { text: "Je fais les préparatifs sans allumer avant que le CSPS ne soit là.", score: 1 },
+          { text: "Je contacte directement le CSPS pour accélérer la signature.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
         },
-        {
-          text: "Une livraison de matériaux est déposée dans votre zone de circulation. Le chauffeur est déjà reparti. Que faites-vous ?",
-          answers: [
-          {text: "Je travaille autour — on n'a pas le temps de déplacer ça maintenant.", score: 0},
-          {text: "Je déplace moi-même la livraison.", score: 1},
-          {text: "Je signale la situation et organise le déplacement de façon coordonnée avec les responsables.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "À 17h45, votre zone de travail est dans un état qui représente un risque pour ceux qui passeront demain matin. La mise en sécurité complète prend 30 minutes. Vous finissez à 18h.",
+        tags: ["poste de travail", "fin de journée"],
+        answers: [
+          { text: "Je pars à 18h — demain on sécurisera avant de reprendre.", score: 0 },
+          { text: "Je fais la mise en sécurité complète même si ça me fait dépasser les horaires.", score: 2 },
+          { text: "Je fais une mise en sécurité minimale pour les risques les plus évidents.", score: 0.5 },
+          { text: "Je demande à l'équipe qui reste plus tard de finir la mise en sécurité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En fin de journée, vous laissez votre poste de travail dans un état qui ne crée aucun risque pour les personnes qui passeront ou travailleront dans la zone avant votre retour.",
+        tags: ["poste de travail", "mise en sécurité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre zone de travail accumule des déchets et des matériaux en désordre qui créent des risques de trébuchement. Un rangement complet prendrait une heure. Votre planning est serré.",
+        tags: ["poste de travail", "ordre et propreté"],
+        answers: [
+          { text: "Je continue — le chantier est toujours un peu encombré, tout le monde en est conscient.", score: 0 },
+          { text: "Je range les éléments les plus dangereux immédiatement et je programme le rangement complet.", score: 1.5 },
+          { text: "Je signale le problème à mon chef de chantier pour qu'il intègre le rangement dans le planning.", score: 2 },
+          { text: "Je délimite mieux la zone pour que les autres ne passent pas dedans.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez ouvrir une tranchée sur le chantier. Votre AIPR (Autorisation d'Intervention à Proximité des Réseaux) n'est plus valide — elle a expiré il y a deux semaines.",
+        tags: ["poste de travail", "AIPR"],
+        answers: [
+          { text: "Je commence quand même — je connais bien les réseaux de cette zone.", score: 0 },
+          { text: "Je refuse d'intervenir jusqu'à ce que ma recertification AIPR soit faite.", score: 2 },
+          { text: "Je fais intervenir un collègue avec un AIPR valide.", score: 1.5 },
+          { text: "Je signale l'expiration à mon responsable pour qu'il gère.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez que vos habilitations et autorisations sont à jour avant toute intervention qui les requiert.",
+        tags: ["poste de travail", "habilitations"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les conditions météorologiques se dégradent en cours de journée — vent fort, pluie. Vous êtes en train de réaliser des travaux en hauteur sur une nacelle élévatrice.",
+        tags: ["poste de travail", "conditions météo"],
+        answers: [
+          { text: "Je continue — j'en ai encore pour une heure et je maîtrise ma nacelle.", score: 0 },
+          { text: "Je redescends et j'attends que les conditions s'améliorent.", score: 2 },
+          { text: "Je travaille plus vite pour finir avant que ça empire.", score: 0 },
+          { text: "Je contacte mon chef de chantier pour qu'il décide.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous sécurisez votre poste mais avec des raccourcis selon la durée, la pression de planning ou le regard du chef", desc: "Commencer sans balisage parce que le chef valide, sauter le permis de feu parce qu'il sera régularisé, continuer une intervention en hauteur par vent fort parce qu'on en a encore pour une heure : ces comportements sont courants sur les chantiers et sont la cause principale des accidents BTP. La pression de planning et l'autorité hiérarchique ne modifient pas le risque réel." },
+          moyen: { label: "Pratiques en développement", titre: "Vous sécurisez correctement votre poste dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous balisez votre zone, vous vérifiez vos habilitations, vous faites la mise en sécurité en fin de journée. Mais sous pression de planning, à la demande d'un chef de chantier, ou en conditions météo dégradées : quelques situations créent encore des exceptions. L'enjeu est d'éliminer ces exceptions — c'est précisément dans ces moments de pression que les accidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous sécurisez votre poste sans exception, quelles que soient la durée, la pression et les conditions", desc: "Vous balisez votre zone avant de commencer même si votre chef dit que ce n'est pas nécessaire. Vous refusez l'intervention en hauteur sans garde-corps conforme NF EN 13374. Vous ne démarrez pas sans permis de feu signé. Vous redescendez de la nacelle quand le vent forcit. Cette constance absolue — qui suppose d'assumer des retards et des tensions — est ce qui rend la sécurité BTP réellement efficace." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Un engin de chantier manœuvre dans votre zone sans signalement préalable. Le chauffeur vous voit. Que faites-vous ?",
-          answers: [
-          {text: "Je me déplace pour lui laisser de la place.", score: 0},
-          {text: "Je l'arrête et lui demande de faire attention.", score: 1},
-          {text: "Je le fais stopper et signale que la coordination des engins n'a pas été faite.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous êtes en train de réaliser une intervention au sol. Une équipe commence à travailler en hauteur juste au-dessus de votre zone sans vous en avoir informé au préalable.",
+        tags: ["coactivité", "interférence"],
+        answers: [
+          { text: "Je continue prudemment en évitant de me mettre directement sous eux.", score: 0 },
+          { text: "Je leur demande d'arrêter jusqu'à ce qu'on ait coordonné nos interventions.", score: 2 },
+          { text: "Je me décale légèrement et je suis leurs mouvements.", score: 0 },
+          { text: "Je signale la situation à mon chef de chantier.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
         },
-        {
-          text: "Deux corps de métier travaillent en parallèle dans une zone restreinte sans coordination visible. Des interférences commencent à apparaître. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — les autres s'arrangeront.", score: 0},
-          {text: "Je parle directement au responsable de l'autre équipe.", score: 1},
-          {text: "Je remonte au coordinateur de chantier pour qu'une coordination formelle soit organisée.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Avant de démarrer une intervention sur un chantier actif, vous vérifiez quelles autres équipes travaillent dans votre zone ou à proximité.",
+        tags: ["coactivité", "coordination"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
         },
-        {
-          text: "Un autre intervenant abandonne un outil dans votre zone sans le sécuriser. Que faites-vous ?",
-          answers: [
-          {text: "Je le range à un endroit qui me convient.", score: 0},
-          {text: "Je le signale à son propriétaire.", score: 1},
-          {text: "Je le sécurise et signale la situation pour éviter que ça se reproduise.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Le phasage du PGCSPS prévoit que votre intervention doit être terminée avant que l'équipe de gros œuvre reprenne dans votre zone. Votre intervention est en retard.",
+        tags: ["coactivité", "phasage"],
+        answers: [
+          { text: "Je laisse l'équipe de gros œuvre reprendre — je finirai en coactivité, on fera attention.", score: 0 },
+          { text: "Je remonte le retard à mon chef de chantier pour que le phasage soit ajusté officiellement.", score: 2 },
+          { text: "J'accélère pour finir avant que l'équipe de gros œuvre ne revienne.", score: 1 },
+          { text: "Je négocie directement avec le chef de l'autre équipe pour trouver un arrangement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
         },
-        {
-          text: "Une fouille est ouverte dans votre zone et des personnes passent près du bord sans protection. Vous n'êtes pas responsable de cette fouille. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas ma fouille — c'est au responsable de gérer.", score: 0},
-          {text: "Je dis aux personnes de faire attention.", score: 1},
-          {text: "Je signale immédiatement au responsable de la fouille pour que la zone soit sécurisée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un sous-traitant qui intervient dans votre zone ne respecte pas les règles de sécurité définies dans le PPSPS. Il n'est pas de votre entreprise.",
+        tags: ["coactivité", "sous-traitant"],
+        answers: [
+          { text: "Je le laisse — ce n'est pas mon sous-traitant, sa sécurité est la responsabilité de son chef.", score: 0 },
+          { text: "Je lui signale les règles applicables dans cette zone et je remonte à mon chef si ça continue.", score: 2 },
+          { text: "Je le signale à mon chef de chantier pour qu'il gère avec le responsable du sous-traitant.", score: 1 },
+          { text: "Je m'éloigne de sa zone pour ne pas être impacté par ses pratiques.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
         },
-        {
-          text: "Vous devez travailler sur une toiture pendant qu'une autre équipe travaille en dessous. Aucune protection contre la chute d'objets n'est en place. Que faites-vous ?",
-          answers: [
-          {text: "Je fais attention en travaillant.", score: 0},
-          {text: "Je préviens l'équipe en dessous de se tenir à l'écart.", score: 1},
-          {text: "Je stoppe et demande qu'une protection contre la chute d'objets soit mise en place avant de reprendre.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "En début de poste, on vous informe que vos zones d'intervention ont été modifiées par rapport au phasage prévu. Vous n'êtes pas sûr·e que toutes les équipes sur le chantier ont été informées du changement.",
+        tags: ["coactivité", "information"],
+        answers: [
+          { text: "Je commence — si la modification a été décidée, c'est que tout a été communiqué.", score: 0 },
+          { text: "Je vérifie que les équipes susceptibles d'être impactées ont bien été informées avant de démarrer.", score: 2 },
+          { text: "Je préviens les équipes adjacentes moi-même avant de commencer.", score: 1.5 },
+          { text: "Je signale mon doute à mon chef de chantier avant toute chose.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement toute situation de coactivité non prévue ou toute interférence avec d'autres équipes, sans attendre que la situation dégénère.",
+        tags: ["coactivité", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La voie de circulation principale du chantier est partiellement bloquée par votre matériel. C'est plus pratique pour votre intervention. Des engins passent régulièrement.",
+        tags: ["coactivité", "voie de circulation"],
+        answers: [
+          { text: "Je laisse — les conducteurs d'engins sont habitués à contourner les obstacles.", score: 0 },
+          { text: "Je dégaze immédiatement la voie principale et je réorganise mon stockage.", score: 2 },
+          { text: "Je mets un signaleur le temps de mon intervention.", score: 1 },
+          { text: "Je le signale à mon chef de chantier pour qu'il arbitre.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une entreprise extérieure arrive pour une intervention non planifiée dans votre zone. Son chef vous demande de commencer directement. Le plan de prévention n'a pas été établi.",
+        tags: ["coactivité", "plan de prévention"],
+        answers: [
+          { text: "Je les laisse commencer — c'est une urgence et mon chef de chantier est au courant.", score: 0 },
+          { text: "Je leur dis que le plan de prévention est obligatoire avant toute intervention dans ma zone.", score: 2 },
+          { text: "Je les laisse commencer en zone sécurisée le temps d'établir le plan.", score: 0 },
+          { text: "Je contacte immédiatement mon chef de chantier pour qu'il gère.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez toute coactivité dans votre zone sans que le plan de prévention ou la coordination de sécurité appropriée ait été formalisée.",
+        tags: ["coactivité", "plan de prévention"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous terminez votre intervention avant une autre équipe qui doit reprendre dans la même zone. En partant, vous réalisez que vous n'avez pas transmis à l'autre équipe les informations sur l'état de la zone.",
+        tags: ["coactivité", "fin d'intervention"],
+        answers: [
+          { text: "Je pars — ils verront bien dans quel état est la zone en arrivant.", score: 0 },
+          { text: "Je reviens transmettre les informations nécessaires à l'équipe qui reprend.", score: 2 },
+          { text: "J'envoie un message à mon chef de chantier pour qu'il transmette.", score: 1 },
+          { text: "Je laisse un mot sur la zone avec les informations essentielles.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous gérez la coactivité quand elle vous concerne directement mais laissez passer les situations qui ne vous impliquent pas", desc: "Continuer prudemment quand une équipe commence à travailler au-dessus de vous sans coordination, laisser un sous-traitant d'une autre entreprise gérer ses propres problèmes de sécurité, partir sans transmettre l'état de la zone : la coactivité chantier est la situation de risque la plus fréquente dans les accidents BTP graves. Tout ce qui se passe autour de vous fait partie de votre périmètre de vigilance." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez la coactivité dans votre périmètre direct mais votre vigilance s'étend moins bien aux situations périphériques", desc: "Vous coordonnez bien les coactivités planifiées dans votre zone. Mais une équipe qui commence à travailler au-dessus de vous sans prévenir, un sous-traitant d'une autre entreprise qui prend des risques, une information non transmise en fin d'intervention : ces situations périphériques créent encore des angles morts dans votre vigilance. L'enjeu est d'étendre votre périmètre d'attention au-delà de votre intervention directe." },
+          haut: { label: "Réflexes installés", titre: "Votre vigilance coactivité s'étend à tout ce qui se passe autour de vous, pas seulement dans votre périmètre direct", desc: "Vous arrêtez l'équipe qui commence à travailler au-dessus de vous sans coordination. Vous signalez le sous-traitant d'une autre entreprise qui prend des risques dans votre zone. Vous transmettez l'état de votre zone avant de partir. Vous refusez la coactivité sans plan de prévention formalisé. Cette vigilance qui dépasse votre périmètre d'intervention direct est ce qui prévient les accidents de coactivité — les plus fréquents et les plus graves du secteur BTP." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Un intérimaire nouveau sur le chantier n'a pas reçu l'accueil sécurité. Il attend ses instructions de travail. Que faites-vous ?",
-          answers: [
-          {text: "Je lui donne ses instructions — on manque de temps.", score: 0},
-          {text: "Je lui donne un accueil rapide sur les points essentiels.", score: 1},
-          {text: "Je m'assure qu'il reçoit l'accueil sécurité complet avant de démarrer la moindre tâche.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous arrivez sur un nouveau chantier. Le PPSPS est disponible mais personne ne vous a fait de briefing dessus. Votre chef de chantier dit de commencer — 'c'est un chantier standard'.",
+        tags: ["PPSPS", "connaissance"],
+        answers: [
+          { text: "Je commence — mon expérience sur des chantiers similaires suffit.", score: 0 },
+          { text: "Je prends le temps de lire les éléments du PPSPS spécifiques à ma zone avant de démarrer.", score: 2 },
+          { text: "Je demande un briefing rapide sur les points spécifiques à mon intervention.", score: 1.5 },
+          { text: "Je lis le PPSPS pendant ma pause de midi.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
         },
-        {
-          text: "Vous constatez qu'un permis de travail a expiré mais les travaux n'ont pas encore repris. L'équipe attend votre feu vert. Que faites-vous ?",
-          answers: [
-          {text: "Je les autorise à reprendre — le permis était valide et les conditions n'ont pas changé.", score: 0},
-          {text: "Je leur demande d'attendre que le permis soit renouvelé.", score: 1},
-          {text: "Je stoppe toute activité et m'assure que le permis est renouvelé avant toute reprise.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous lisez et respectez les dispositions du PPSPS propres à votre intervention sur chaque nouveau chantier, même quand votre expérience vous permettrait de travailler sans.",
+        tags: ["PPSPS", "application"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
         },
-        {
-          text: "Le PPSPS prévoit un nombre minimum de personnes pour une opération. Ce matin, vous êtes en sous-effectif. Que faites-vous ?",
-          answers: [
-          {text: "Je commence avec l'équipe disponible — on fera attention.", score: 0},
-          {text: "Je commence avec les tâches qui peuvent se faire seul.", score: 1},
-          {text: "Je ne démarre pas l'opération qui nécessite un effectif minimum et remonte la situation.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "La méthode de travail prévue dans votre PPSPS s'avère difficile à appliquer sur le terrain tel qu'il se présente réellement. Une solution alternative vous semble plus pratique.",
+        tags: ["PPSPS", "écart"],
+        answers: [
+          { text: "J'applique la méthode alternative — elle est plus adaptée à la réalité du terrain.", score: 0 },
+          { text: "J'arrête et je remonte l'incompatibilité pour que le PPSPS soit mis à jour avant de continuer.", score: 2 },
+          { text: "J'applique la méthode alternative en la documentant pour la régulariser ensuite.", score: 0.5 },
+          { text: "Je contacte le CSPS pour avoir son accord avant d'utiliser la méthode alternative.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
         },
-        {
-          text: "Vous devez réaliser des travaux nécessitant une habilitation que vous n'avez pas. Le titulaire de l'habilitation est absent. Que faites-vous ?",
-          answers: [
-          {text: "Je réalise les travaux — j'en suis capable même sans habilitation formelle.", score: 0},
-          {text: "Je commence la préparation et attends le titulaire pour la phase critique.", score: 1},
-          {text: "Je ne réalise pas les travaux et remonte la situation pour qu'une solution soit trouvée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Une réunion de coordination de sécurité avec le CSPS est prévue demain matin. Votre chef de chantier vous dit qu'elle n'est pas prioritaire et que vous pouvez la sauter pour avancer.",
+        tags: ["PPSPS", "réunion"],
+        answers: [
+          { text: "Je la saute — mon chef a évalué les priorités et la réunion peut attendre.", score: 0 },
+          { text: "Je participe à la réunion — la coordination de sécurité n'est pas optionnelle.", score: 2 },
+          { text: "Je participe à la partie qui concerne directement mon intervention.", score: 1.5 },
+          { text: "Je demande les comptes rendus de la réunion pour être informé·e.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
         },
-        {
-          text: "Le plan de prévention prévoit des mesures pour des travaux par points chauds. Vous réalisez que les moyens de lutte contre l'incendie sont insuffisants par rapport au plan. Que faites-vous ?",
-          answers: [
-          {text: "Je commence avec ce que j'ai — les risques semblent limités.", score: 0},
-          {text: "Je fais les travaux et compense par plus d'attention.", score: 1},
-          {text: "Je stoppe et demande que les moyens prévus au plan de prévention soient mis en place avant de démarrer.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Un changement dans votre méthode d'intervention va modifier les risques identifiés dans votre PPSPS. Le délai pour mettre à jour le PPSPS est d'une semaine. Vous devez intervenir demain.",
+        tags: ["PPSPS", "modification"],
+        answers: [
+          { text: "J'interviens demain — le changement est mineur et je ferai la mise à jour ensuite.", score: 0 },
+          { text: "J'attends la mise à jour du PPSPS avant d'intervenir avec la nouvelle méthode.", score: 2 },
+          { text: "Je demande une dérogation au CSPS pour intervenir en attendant la mise à jour.", score: 1.5 },
+          { text: "J'interviens avec la méthode originale pour tenir le délai.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement toute évolution de votre intervention susceptible de modifier les risques identifiés dans le PPSPS pour qu'il soit mis à jour.",
+        tags: ["PPSPS", "mise à jour"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident se produit sur votre chantier. Les premières secondes sont confuses. Vous connaissez les procédures d'urgence mais vous ne les avez jamais pratiquées sur ce site spécifique.",
+        tags: ["PPSPS", "procédure urgence"],
+        answers: [
+          { text: "Je gère avec mon expérience — les procédures d'urgence sont les mêmes partout.", score: 0.5 },
+          { text: "J'applique les procédures d'urgence affichées sur ce chantier, même si elles diffèrent de mes habitudes.", score: 2 },
+          { text: "J'improvise en attendant que quelqu'un de plus familier du site prenne les choses en main.", score: 0 },
+          { text: "Je contacte les secours et je me conforme aux instructions du CSPS.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un intérimaire arrive sur votre chantier sans avoir fait son accueil sécurité spécifique au site. Votre chef de chantier dit de le mettre directement au travail — il fera l'accueil demain.",
+        tags: ["PPSPS", "accueil"],
+        answers: [
+          { text: "Je le mets au travail — un intérimaire expérimenté n'a pas besoin d'un accueil long.", score: 0 },
+          { text: "Je refuse — l'accueil sécurité doit être fait avant toute intervention sur ce chantier.", score: 2 },
+          { text: "Je fais un accueil rapide sur les points les plus critiques avant qu'il commence.", score: 0.5 },
+          { text: "Je le mets sur des tâches sans risque en attendant l'accueil demain.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez de travailler avec un intervenant qui n'a pas réalisé l'accueil sécurité spécifique au chantier, quelle que soit la pression de planning.",
+        tags: ["PPSPS", "accueil"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous estimez que votre intervention vous met dans une situation de danger grave et imminent non couverte par votre PPSPS. Votre chef de chantier dit que le risque est maîtrisé.",
+        tags: ["PPSPS", "droit d'alerte"],
+        answers: [
+          { text: "Je lui fais confiance — il connaît le chantier mieux que moi.", score: 0 },
+          { text: "J'exerce mon droit de retrait et je le documente.", score: 2 },
+          { text: "Je continue en étant très prudent·e.", score: 0 },
+          { text: "Je contacte le CSPS pour avoir son avis avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez le PPSPS mais vos pratiques s'en écartent encore sous pression ou par habitude sectorielle", desc: "Commencer sans lire le PPSPS parce que c'est 'un chantier standard', appliquer une méthode alternative sans mise à jour du PPSPS, mettre un intérimaire au travail sans accueil sécurité : le PPSPS n'est pas un document administratif — c'est l'analyse de risque spécifique à votre intervention sur ce chantier précis. Ce qui a fonctionné sur le chantier précédent ne s'applique pas automatiquement ici." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez le PPSPS globalement mais des zones grises persistent sur les modifications et les situations non prévues", desc: "Vous lisez le PPSPS et vous le respectez dans la plupart des cas. Mais face à une incompatibilité terrain-PPSPS, un changement de méthode à la dernière minute, une situation non couverte par les procédures : votre réaction peut encore manquer de rigueur. L'enjeu est de maintenir le réflexe d'arrêt et de remontée dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez le PPSPS intégralement et vous signalez toute incompatibilité avant d'agir", desc: "Vous lisez le PPSPS sur chaque nouveau chantier avant de démarrer. Vous signalez toute incompatibilité terrain-procédure pour que le PPSPS soit mis à jour avant d'agir. Vous attendez la mise à jour avant d'utiliser une méthode alternative. Vous exercez votre droit de retrait face à un danger grave et imminent. Cette rigueur procédurale — qui suppose de tenir des positions inconfortables sur le chantier — est ce qui fait que les accidents à haute énergie ne se produisent pas." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Un accident survient sur votre zone. Plusieurs personnes regardent. Que faites-vous en premier ?",
-          answers: [
-          {text: "J'évalue la gravité avant d'appeler les secours.", score: 0},
-          {text: "J'appelle les secours et préviens mon responsable.", score: 1},
-          {text: "Je sécurise la zone, appelle les secours, ne déplace pas la victime sauf danger immédiat et préserve les éléments de l'incident.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un collègue se blesse en tombant d'une échelle. La blessure semble sérieuse mais il dit qu'il peut continuer. Le planning de la journée est tendu.",
+        tags: ["incident BTP", "premier secours"],
+        answers: [
+          { text: "Je lui fais confiance — il sait mieux que moi ce qu'il peut faire.", score: 0 },
+          { text: "J'arrête le travail dans la zone, j'appelle les secours et j'applique le protocole d'urgence du chantier.", score: 2 },
+          { text: "Je lui demande de s'asseoir et d'attendre un moment avant de décider.", score: 0.5 },
+          { text: "Je contacte mon chef de chantier pour qu'il prenne la décision.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
         },
-        {
-          text: "Après un incident, votre chef de chantier vous demande de reprendre rapidement pour ne pas perdre davantage de temps. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends — la situation est stabilisée.", score: 0},
-          {text: "Je reprends mais en faisant très attention.", score: 1},
-          {text: "Je refuse de reprendre tant qu'une analyse de la situation n'a pas été faite et que les conditions de reprise ne sont pas définies.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "En cas de blessure sur votre chantier, vous appliquez immédiatement le protocole d'urgence du site sans attendre l'instruction de votre chef de chantier.",
+        tags: ["incident BTP", "réflexe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
         },
-        {
-          text: "Votre chantier a eu un incident et vous devez témoigner auprès des enquêteurs. Que faites-vous ?",
-          answers: [
-          {text: "Je dis ce qui arrange le mieux la situation de l'équipe.", score: 0},
-          {text: "Je dis les choses telles que je les ai vécues.", score: 1},
-          {text: "Je témoigne avec précision sur les faits, en distinguant ce que j'ai observé de ce que j'interprète.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un bloc de béton glisse et tombe à quelques mètres d'un passage fréquenté. Personne n'est blessé. Le bloc a été stabilisé. Tout le monde veut reprendre rapidement.",
+        tags: ["incident BTP", "presqu'accident"],
+        answers: [
+          { text: "Je reprends — personne n'est blessé et la cause immédiate est traitée.", score: 0 },
+          { text: "Je fais sécuriser la zone et je documente le presqu'accident avant de reprendre.", score: 2 },
+          { text: "J'en parle à mon chef de chantier pour qu'il décide de la suite.", score: 1 },
+          { text: "Je note l'incident mentalement pour le mentionner lors du prochain briefing sécurité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
         },
-        {
-          text: "Suite à un incident, une procédure est modifiée. La nouvelle procédure est plus contraignante. Votre équipe se plaint. Que faites-vous ?",
-          answers: [
-          {text: "Je leur dis qu'ils ont raison — la procédure est peut-être excessive.", score: 0},
-          {text: "Je leur dis que c'est obligatoire et qu'ils doivent s'adapter.", score: 1},
-          {text: "Je leur explique le lien entre la procédure et l'incident, et je remonte si elle est vraiment inadaptée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un effondrement partiel s'est produit dans une zone adjacente à votre chantier. L'incident est maîtrisé mais des fissures sont visibles dans la structure proche de votre zone de travail.",
+        tags: ["incident BTP", "périmètre"],
+        answers: [
+          { text: "Je continue à surveiller mais je maintiens mon intervention — ma zone est différente.", score: 0 },
+          { text: "J'arrête immédiatement et je quitte la zone en attendant qu'une expertise soit réalisée.", score: 2 },
+          { text: "Je contacte mon chef de chantier pour qu'il évalue si je peux continuer.", score: 1 },
+          { text: "Je recule de quelques mètres et je continue prudemment.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
         },
-        {
-          text: "Un incident s'est produit sur un chantier voisin avec des conditions similaires au vôtre. Que faites-vous ?",
-          answers: [
-          {text: "Je m'en informe mais mon chantier est différent.", score: 0},
-          {text: "Je prends note des informations disponibles.", score: 1},
-          {text: "J'analyse si des mesures préventives doivent être prises sur mon chantier en lien avec cet incident.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes témoin d'un accident sur le chantier. L'enquête va commencer. Votre témoignage implique de mentionner des pratiques de votre équipe qui contribuaient au contexte de l'accident.",
+        tags: ["incident BTP", "témoignage"],
+        answers: [
+          { text: "Je décris l'accident sans mentionner les pratiques de l'équipe — ce n'est pas le moment.", score: 0 },
+          { text: "Je décris ce que j'ai observé de façon complète, y compris le contexte de pratiques.", score: 2 },
+          { text: "J'en parle d'abord à mon chef d'équipe avant de témoigner.", score: 0.5 },
+          { text: "Je décris les faits directement liés à l'accident sans entrer dans le contexte général.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Dans le cadre d'une enquête ou d'un retour d'expérience post-incident, vous décrivez les faits de façon complète et honnête, y compris les éléments qui pourraient mettre en cause votre équipe.",
+        tags: ["incident BTP", "honnêteté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez une fissure dans un mur de soutènement que vous n'avez pas vue hier. Elle est de faible ampleur mais inhabituelle.",
+        tags: ["incident BTP", "signalement"],
+        answers: [
+          { text: "Je surveille son évolution — une petite fissure n'est pas forcément dangereuse.", score: 0 },
+          { text: "Je le signale immédiatement au chef de chantier et à l'ingénieur structure si disponible.", score: 2 },
+          { text: "J'en parle à mes collègues pour voir si quelqu'un a une explication.", score: 0 },
+          { text: "Je le signale en fin de journée lors du compte rendu.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le CSPS arrive sur le chantier pour une visite de contrôle. Il identifie un risque sur votre zone de travail que vous n'avez pas signalé. Vous l'aviez observé mais jugé gérable.",
+        tags: ["incident BTP", "CSPS"],
+        answers: [
+          { text: "Je me justifie — j'avais évalué que le risque était sous contrôle.", score: 0 },
+          { text: "Je reconnais que j'aurais dû le signaler et je m'engage à mettre à jour ma façon de traiter les situations similaires.", score: 2 },
+          { text: "Je lui explique pourquoi je n'avais pas jugé nécessaire de le signaler.", score: 0.5 },
+          { text: "Je prends note de son observation sans commenter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les anomalies structurelles, les situations dangereuses et les presqu'accidents même quand aucun blessé n'est à déplorer et quand ça crée une interruption de chantier.",
+        tags: ["incident BTP", "seuil"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre chantier a eu un incident mineur la semaine dernière. Un REX a été prévu vendredi matin. Votre chef de chantier dit que 'tout le monde sait ce qui s'est passé' et propose de l'annuler.",
+        tags: ["incident BTP", "retour d'expérience"],
+        answers: [
+          { text: "Je suis d'accord — tout le monde est au courant, le REX ne servirait à rien.", score: 0 },
+          { text: "Je maintiens que le REX est utile — ce qu'on sait et ce qu'on analyse formellement sont deux choses différentes.", score: 2 },
+          { text: "Je propose un REX plus court — 30 minutes au lieu d'une heure.", score: 1 },
+          { text: "Je laisse mon chef décider — c'est à lui d'arbitrer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous réagissez aux accidents graves mais les presqu'accidents et anomalies mineures passent encore sans traitement", desc: "Reprendre après un presqu'accident une fois la cause immédiate traitée, ne pas signaler une fissure 'de faible ampleur', annuler le REX parce que 'tout le monde sait ce qui s'est passé' : les accidents graves sur chantier sont presque toujours précédés de signaux qui n'ont pas été traités. La chaîne de sécurité ne fonctionne que si chaque maillon — y compris les plus mineurs — est tenu." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents significatifs mais vos réflexes sur les presqu'accidents et les anomalies mineurs sont encore à renforcer", desc: "Vous réagissez aux accidents avérés et aux presqu'accidents visibles. Mais les anomalies de faible ampleur, les fissures 'de surveiller', les REX qu'on pourrait annuler parce que 'tout le monde sait' : votre traitement de ces situations intermédiaires est encore insuffisant. L'enjeu est d'abaisser votre seuil de signalement et de maintenir les temps de REX même sur les incidents mineurs." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez presqu'accidents et anomalies mineures avec le même sérieux que les accidents avérés", desc: "Vous documentez le presqu'accident avant de reprendre le travail. Vous signalez la fissure 'de faible ampleur' immédiatement. Vous participez et défendez la tenue du REX même sur les incidents mineurs. Vous témoignez de façon complète, y compris sur le contexte de pratiques. Cette façon de traiter les signaux faibles avec le même sérieux que les événements graves est ce qui construit une culture de sécurité BTP durable." },
+        },
+      }
     ],
+
   },
 
   }); // fin Object.assign CUSTOM_QUESTIONS
@@ -5627,7 +6123,14 @@
   ]}
 ],    
     
-    ["securite-chantier-btp",      "Sécurité sur chantier BTP",                            "Équipes terrain — BTP",    "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",                                                               T.securiteChantierBTP]
-  ]);
+    ["securite-chantier-btp", "Sécurité sur chantier BTP", "Équipes terrain — BTP",
+  "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",
+  { domain: "securite", chapters: [
+    ["Sécuriser son poste de travail",       "Balisage, protections collectives, habilitations et mise en sécurité sans exception."],
+    ["Gérer la coactivité sur chantier",     "Coordonner les interventions simultanées et maintenir la vigilance au-delà de son périmètre direct."],
+    ["Respecter le PPSPS et les procédures", "Lire, appliquer et faire évoluer le PPSPS face aux réalités du terrain."],
+    ["Réagir aux incidents et presqu'accidents", "Appliquer les protocoles d'urgence et traiter les signaux faibles avec le même sérieux que les accidents avérés."]
+  ]}
+],
 
 })();
