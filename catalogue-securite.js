@@ -2026,176 +2026,676 @@
   },
   // ─────────────────────────────────────────────────────────────────────
 
+    // ─── À coller dans catalogue-securite.js ──────────────────────────────
+  // Clé : "managers-securite"
+
   "managers-securite": {
     0: [
-        {
-          text: "Votre équipe démarre chaque journée sans que vous fassiez un point sécurité formalisé. La réunion de chantier se concentre sur la production. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse les choses comme elles sont — tout le monde connaît les règles.", score: 0},
-          {text: "Je glisse un mot sur la sécurité quand une situation particulière le justifie.", score: 1},
-          {text: "J'intègre un point sécurité systématique dans les rituels d'équipe, même court.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous traversez votre atelier en urgence pour gérer une situation. Les EPI requis sont à votre bureau à 40 mètres. Votre équipe vous regarde partir.",
+        tags: ["exemplarité", "manager"],
+        answers: [
+          { text: "Je traverse sans EPI — c'est une urgence et mon équipe comprend le contexte.", score: 0 },
+          { text: "Je prends 90 secondes pour aller chercher mes EPI avant d'entrer dans la zone.", score: 2 },
+          { text: "Je traverse rapidement en signalant à mon équipe que c'est exceptionnel.", score: 0 },
+          { text: "Je demande à un collègue de gérer pendant que je récupère mes EPI.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
         },
-        {
-          text: "Une nouvelle règle de sécurité vient d'être introduite. Elle est contraignante et votre équipe ne comprend pas pourquoi elle existe. Que faites-vous ?",
-          answers: [
-          {text: "Je leur dis d'appliquer sans poser de question — c'est la règle.", score: 0},
-          {text: "Je leur explique que c'est obligatoire sans rentrer dans les détails.", score: 1},
-          {text: "Je leur explique le contexte et la raison de cette règle pour qu'ils l'appliquent en comprenant.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En réunion de direction, un responsable propose de court-circuiter une procédure de sécurité pour tenir un délai client stratégique. Plusieurs managers acquiescent.",
+        tags: ["exemplarité", "procédure"],
+        answers: [
+          { text: "Je m'aligne — la décision a été prise collectivement par des gens responsables.", score: 0 },
+          { text: "Je maintiens mon opposition et je demande que ma position soit consignée.", score: 2 },
+          { text: "Je pose des questions sur les risques sans m'opposer frontalement.", score: 1 },
+          { text: "Je dis que je préfère une autre solution mais je m'aligne si la majorité tranche.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
         },
-        {
-          text: "Vous constatez que deux procédures de sécurité sont contradictoires dans leur formulation. Votre équipe les applique de façons différentes selon les personnes. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse chaque personne faire comme elle l'entend.", score: 0},
-          {text: "Je tranche moi-même pour harmoniser la pratique.", score: 1},
-          {text: "Je remonte l'incohérence au service compétent pour qu'une clarification officielle soit apportée.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous appliquez vous-même les règles de sécurité que vous demandez à votre équipe de respecter, sans exception, y compris quand personne ne vous regarde.",
+        tags: ["exemplarité", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
         },
-        {
-          text: "Un collaborateur vous demande si une règle de sécurité s'applique vraiment à son cas précis. Vous n'êtes pas sûr. Que faites-vous ?",
-          answers: [
-          {text: "Je lui dis d'appliquer par précaution sans chercher à vérifier.", score: 0},
-          {text: "Je lui donne mon interprétation personnelle.", score: 1},
-          {text: "Je cherche la réponse auprès du bon interlocuteur avant de trancher.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Il fait très chaud et vous retirez votre EPI pendant une pause dans la zone. Vos collaborateurs vous observent. Vous estimez que le risque est temporairement négligeable.",
+        tags: ["exemplarité", "chaleur"],
+        answers: [
+          { text: "Je le retire — je suis dans une zone à faible risque à ce moment et mon confort est légitime.", score: 0 },
+          { text: "Je le garde — mon équipe va reproduire ce qu'elle m'observe faire, pas ce que je dis.", score: 2 },
+          { text: "Je le retire mais je précise clairement que je m'autorise quelque chose que je n'attends pas d'eux.", score: 0 },
+          { text: "Je l'enlève discrètement en m'éloignant du groupe.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
         },
-        {
-          text: "Votre équipe applique correctement les règles de sécurité. Personne ne les questionne. Vous avez l'impression que c'est par conformisme plutôt que par conviction. Que faites-vous ?",
-          answers: [
-          {text: "Peu importe la raison — le résultat est bon.", score: 0},
-          {text: "Je continue comme ça — la conformité est suffisante.", score: 1},
-          {text: "Je cherche à créer des moments d'échange sur le sens des règles pour ancrer une vraie culture.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est sous pression pour livrer un chantier. Pour récupérer deux heures, vous pourriez sauter une vérification intermédiaire non réglementairement obligatoire mais inscrite dans votre procédure interne.",
+        tags: ["exemplarité", "délai"],
+        answers: [
+          { text: "Je saute la vérification — ce n'est pas réglementaire et le délai compte.", score: 0 },
+          { text: "Je maintiens la vérification et j'explique à ma hiérarchie pourquoi le délai ne peut pas être tenu.", score: 2 },
+          { text: "Je fais une version allégée de la vérification pour trouver un équilibre.", score: 0.5 },
+          { text: "Je délègue la vérification à un collaborateur pendant que je prépare la suite.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lorsqu'une décision de votre direction compromet la sécurité, vous maintenez votre opposition formellement même si vous êtes seul·e contre la majorité.",
+        tags: ["exemplarité", "hiérarchie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une visite d'un grand client, votre équipe allège quelques vérifications pour paraître plus efficace. Vous l'observez sans intervenir.",
+        tags: ["exemplarité", "prise de parole"],
+        answers: [
+          { text: "Je laisse passer — c'est une visite exceptionnelle et ça ne remet pas en cause nos pratiques habituelles.", score: 0 },
+          { text: "J'interviens immédiatement pour rétablir les pratiques normales, même devant le client.", score: 2 },
+          { text: "Je laisse passer et j'en parle à l'équipe après la visite.", score: 0.5 },
+          { text: "Je fais signe discrètement à mon équipe de revenir aux pratiques habituelles.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez établi une règle de sécurité dans votre équipe mais vous-même ne l'avez pas respectée lors d'une intervention récente. Un collaborateur vous le fait remarquer.",
+        tags: ["exemplarité", "communication"],
+        answers: [
+          { text: "Je lui explique que j'avais une bonne raison — le contexte était différent.", score: 0 },
+          { text: "Je reconnais l'écart et je lui confirme que la règle s'applique à moi aussi.", score: 2 },
+          { text: "Je lui dis qu'il a raison sans entrer dans les détails.", score: 1 },
+          { text: "Je lui demande de ne pas en faire un sujet devant l'équipe.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre comportement en matière de sécurité est identique que vous soyez observé·e par votre équipe, votre hiérarchie, ou seul·e.",
+        tags: ["exemplarité", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un nouveau collaborateur, Julien, prend ses marques dans l'équipe. Il observe que certains anciens s'autorisent des raccourcis que vous leur avez pourtant interdit formellement.",
+        tags: ["exemplarité", "nouveau"],
+        answers: [
+          { text: "Je laisse les anciens gérer leur pratique — ils connaissent les risques réels.", score: 0 },
+          { text: "Je traite l'écart des anciens de la même façon que je le ferais pour Julien.", score: 2 },
+          { text: "Je rappelle la règle à Julien pour qu'il ne reproduise pas ce qu'il observe.", score: 0.5 },
+          { text: "Je parle aux anciens en privé pour qu'ils fassent attention devant le nouveau.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre exemplarité sécurité s'adapte encore selon le contexte, la pression ou les regards", desc: "Traverser l'atelier sans EPI parce que c'est urgent, retirer sa protection parce qu'il fait chaud, s'aligner sur la majorité quand une décision risquée est proposée : votre équipe observe et reproduit ces comportements, pas les consignes affichées. L'exemplarité managériale en sécurité ne se négocie pas selon les circonstances — c'est précisément dans les moments difficiles qu'elle compte le plus." },
+          moyen: { label: "Pratiques en développement", titre: "Votre exemplarité est cohérente dans les situations normales mais peut fléchir sous pression forte", desc: "Vous donnez l'exemple dans les situations ordinaires. Mais sous très forte pression opérationnelle, face à une décision collective de votre hiérarchie, lors d'une visite client importante : votre exemplarité peut encore fléchir. L'enjeu est de tenir précisément dans ces moments — c'est là qu'elle est la plus visible et la plus influente pour votre équipe." },
+          haut: { label: "Réflexes installés", titre: "Votre exemplarité sécurité est absolue et constante — aucune exception selon le contexte ou les regards", desc: "Vous allez chercher vos EPI même pour une urgence avec votre équipe qui regarde. Vous maintenez votre opposition formelle dans une réunion de direction même seul·e contre la majorité. Votre comportement en sécurité est identique que vous soyez observé·e ou non. Cette constance absolue est la seule base crédible pour exiger de votre équipe ce que vous exigez d'elle." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Un collaborateur expérimenté ne met pas son EPI dans une zone où c'est obligatoire. Il dit que dans son cas c'est inutile. Que faites-vous ?",
-          answers: [
-          {text: "Je lui fais confiance — il connaît les risques mieux que moi.", score: 0},
-          {text: "Je lui rappelle la règle sans trop insister.", score: 1},
-          {text: "Je lui rappelle la règle fermement et cherche à comprendre ce qui rend l'EPI inconfortable pour lui.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Laura vous signale un presqu'accident impliquant une pratique que votre équipe utilise depuis longtemps. Reconnaître ce risque va nécessiter une formation et ralentir l'activité.",
+        tags: ["remontées", "réception"],
+        answers: [
+          { text: "Je minimise — je connais bien cette pratique et le risque est gérable.", score: 0 },
+          { text: "Je remonte le signalement sans délai et je remercie Laura d'avoir eu le courage de le faire.", score: 2 },
+          { text: "Je prends note pour le traiter lors du prochain point sécurité de l'équipe.", score: 1 },
+          { text: "Je lui demande d'approfondir son analyse avant de remonter quoi que ce soit.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
         },
-        {
-          text: "Un écart de procédure vous est signalé par un membre de votre équipe. En enquêtant, vous réalisez que cet écart est collectif et ancien. Que faites-vous ?",
-          answers: [
-          {text: "Je sanctionne la personne qui a signalé pour que ça s'arrête.", score: 0},
-          {text: "Je rappelle la règle à tout le monde.", score: 1},
-          {text: "Je cherche à comprendre pourquoi cet écart s'est installé avant de décider comment agir.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous remerciez visiblement les collaborateurs qui font des signalements de sécurité, même quand le signalement crée des contraintes opérationnelles.",
+        tags: ["remontées", "valorisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
         },
-        {
-          text: "Un collaborateur vous dit avoir commis un écart de sécurité par erreur. Il est visiblement gêné. Comment gérez-vous ce moment ?",
-          answers: [
-          {text: "Je le reprends sèchement pour que le message soit clair.", score: 0},
-          {text: "Je note l'incident et lui rappelle la règle.", score: 1},
-          {text: "Je commence par comprendre ce qui s'est passé avant d'aborder les conséquences.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "David vous signale fréquemment des situations à risque. Certains de ses signalements concernent des situations ordinaires. Ça prend du temps à traiter. Il revient avec un nouveau signalement.",
+        tags: ["remontées", "volume"],
+        answers: [
+          { text: "Je lui fais remarquer que ses signalements sont souvent disproportionnés et je lui demande de mieux filtrer.", score: 0 },
+          { text: "Je traite ce signalement normalement et j'explique séparément comment améliorer la précision de ses remontées.", score: 2 },
+          { text: "Je traite le signalement en montrant discrètement que je trouve le volume excessif.", score: 0 },
+          { text: "Je lui délègue la vérification de ses propres signalements avant de me les soumettre.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
         },
-        {
-          text: "Votre équipe a eu un accident sans gravité. L'ambiance est tendue. Certains se renvoient la responsabilité. Que faites-vous en premier ?",
-          answers: [
-          {text: "J'identifie le responsable pour clarifier les choses.", score: 0},
-          {text: "Je calme les tensions et remets la discussion à plus tard.", score: 1},
-          {text: "Je stabilise l'ambiance et oriente vers une analyse collective des causes sans chercher à désigner quelqu'un.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous dit qu'il hésite à signaler une situation parce qu'une remontée précédente n'a pas eu de suite visible. Il perd confiance.",
+        tags: ["remontées", "suite"],
+        answers: [
+          { text: "Je lui dis que les signalements sont traités même si ce n'est pas toujours visible.", score: 0.5 },
+          { text: "Je lui explique ce qui a été fait suite à son signalement précédent et je confirme l'importance du prochain.", score: 2 },
+          { text: "Je reconnais que le suivi n'a pas été suffisant et je lui propose de faire le point ensemble.", score: 1.5 },
+          { text: "Je lui demande de continuer à signaler — la confiance dans le système se construit dans le temps.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
         },
-        {
-          text: "Un collaborateur contourne régulièrement une procédure mais ses résultats sont bons et sans incident. Vous le savez depuis un moment. Que faites-vous ?",
-          answers: [
-          {text: "Je ferme les yeux — il s'en sort bien.", score: 0},
-          {text: "Je lui en parle discrètement sans formaliser.", score: 1},
-          {text: "J'aborde le sujet clairement : les bons résultats ne valident pas un écart de procédure.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur vous signale un écart de sécurité commis par un collègue plus ancien. Il craint des représailles de la part du groupe.",
+        tags: ["remontées", "protection"],
+        answers: [
+          { text: "Je lui dis que les représailles ne font pas partie de notre culture — il peut signaler sans risque.", score: 1 },
+          { text: "Je le rassure sur ma protection et je traite le signalement sans exposer sa source inutilement.", score: 2 },
+          { text: "Je lui conseille de signaler anonymement pour se protéger.", score: 1 },
+          { text: "Je traite moi-même l'écart sans mentionner le signalement.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous donnez un retour visible à vos collaborateurs sur ce qui a été fait suite à leurs signalements sécurité.",
+        tags: ["remontées", "retour"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous demande de 'calmer' les signalements de votre équipe qui sont 'trop nombreux' et 'créent de l'inquiétude inutile'. Vous avez une équipe qui signale bien.",
+        tags: ["remontées", "hiérarchie"],
+        answers: [
+          { text: "Je demande à mon équipe de mieux filtrer ses signalements — mon responsable a ses raisons.", score: 0 },
+          { text: "Je lui explique que le volume de signalements est un indicateur positif de culture sécurité.", score: 2 },
+          { text: "Je lui demande ce qu'il entend par 'trop nombreux' avant de décider quoi faire.", score: 1.5 },
+          { text: "Je m'aligne sans en parler à mon équipe — c'est une question de management interne.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un signalement de sécurité vient d'un collaborateur qui a tendance à exagérer. Le contenu vous semble peu crédible. Vous avez d'autres priorités ce matin.",
+        tags: ["remontées", "biais"],
+        answers: [
+          { text: "Je le mets de côté pour plus tard — sa tendance à exagérer suggère que ce n'est pas urgent.", score: 0 },
+          { text: "Je traite le signalement sur les faits, indépendamment de qui l'a fait.", score: 2 },
+          { text: "Je lui demande des précisions avant de décider si ça mérite traitement.", score: 1 },
+          { text: "Je délègue la vérification à un autre collaborateur.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous traitez tous les signalements de sécurité avec le même sérieux, quelle que soit la personne qui les fait.",
+        tags: ["remontées", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un REX sur un presqu'accident révèle que plusieurs membres de votre équipe savaient depuis des semaines que la situation était risquée mais n'ont pas signalé.",
+        tags: ["remontées", "REX"],
+        answers: [
+          { text: "Je comprends — le système de signalement est complexe et les gens ont peur des conséquences.", score: 0.5 },
+          { text: "Je cherche à comprendre pourquoi ils n'ont pas signalé avant d'envisager toute autre action.", score: 2 },
+          { text: "Je rappelle les règles de signalement à l'ensemble de l'équipe.", score: 1 },
+          { text: "Je recadre individuellement les personnes qui n'ont pas signalé.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous recevez les signalements mais votre traitement n'encourage pas encore suffisamment les suivants", desc: "Minimiser un signalement parce qu'il crée des contraintes, montrer implicitement qu'un volume élevé est excessif, ne pas donner de retour visible sur les suites : ces comportements envoient à l'équipe le message que signaler est coûteux et peu utile. La culture de signalement se construit ou se détruit réponse par réponse, à chaque interaction avec un collaborateur qui remonte quelque chose." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les signalements sérieusement mais le suivi visible et la protection des signalants sont encore insuffisants", desc: "Vous recevez et traitez les signalements. Mais le retour visible sur ce qui a été fait, la protection active des collaborateurs qui ont signalé malgré une pression collective, le traitement équitable indépendamment de qui a signalé : ces dimensions du management des remontées sont encore insuffisamment développées. L'enjeu est de construire une vraie culture de signalement, pas seulement de recevoir les remontées." },
+          haut: { label: "Réflexes installés", titre: "Votre management des remontées construit activement la culture de signalement de votre équipe", desc: "Vous remerciez visiblement les signalements, vous donnez un retour sur les suites, vous protégez les collaborateurs qui signalent sous pression collective, vous traitez tous les signalements avec le même sérieux. Cette façon de gérer les remontées transforme progressivement votre équipe en équipe qui signale naturellement — parce qu'elle a appris que ça sert à quelque chose et que ça ne coûte rien." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Votre hiérarchie vous demande d'accélérer sur un chantier qui accumule du retard. La pression est forte. Une étape de sécurité va prendre du temps. Que faites-vous ?",
-          answers: [
-          {text: "J'allège l'étape de sécurité pour tenir le délai.", score: 0},
-          {text: "Je fais l'étape de sécurité mais plus rapidement.", score: 1},
-          {text: "Je maintiens l'étape de sécurité et signale à ma hiérarchie l'arbitrage que ça implique.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous observez un collaborateur, Rayan, qui prend un raccourci sur une procédure de sécurité. C'est la première fois que vous le voyez faire ça. Plusieurs collègues sont présents.",
+        tags: ["écart", "intervention"],
+        answers: [
+          { text: "Je le reprends immédiatement devant tout le monde — la règle s'applique à tous.", score: 0 },
+          { text: "Je lui parle en privé après pour comprendre pourquoi et corriger sans humilier.", score: 2 },
+          { text: "Je lui fais signe discrètement pour qu'il corrige sans que les autres voient.", score: 1.5 },
+          { text: "Je laisse passer cette fois — c'est la première et il va probablement se corriger seul.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
         },
-        {
-          text: "Un client ou une direction vous pousse à prendre une décision opérationnelle qui, selon vous, met en jeu la sécurité. Que faites-vous ?",
-          answers: [
-          {text: "Je m'exécute — la pression extérieure est légitime.", score: 0},
-          {text: "Je soulève la question mais je cède si la pression persiste.", score: 1},
-          {text: "Je maintiens ma position et escalade si nécessaire — la sécurité ne se négocie pas.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous traitez les écarts de sécurité que vous observez rapidement, sans attendre qu'ils se reproduisent ou qu'un incident survienne.",
+        tags: ["écart", "timing"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
         },
-        {
-          text: "Votre équipe est en pleine activité et un collaborateur vient vous signaler une anomalie mineure. Vous êtes très occupé. Que faites-vous ?",
-          answers: [
-          {text: "Je lui dis de revenir plus tard.", score: 0},
-          {text: "Je l'écoute rapidement et lui dis de gérer.", score: 1},
-          {text: "Je prends le temps d'évaluer l'information même si je suis sous pression.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un collaborateur que vous avez déjà repris sur un écart de sécurité recommence. C'est la troisième fois en deux mois.",
+        tags: ["écart", "récidive"],
+        answers: [
+          { text: "Je le reprends à nouveau de la même façon — la répétition finira par porter ses fruits.", score: 0.5 },
+          { text: "Je cherche à comprendre ce qui empêche la correction durable avant de décider comment escalader.", score: 2 },
+          { text: "J'escalade directement aux RH — la répétition justifie une procédure formelle.", score: 0.5 },
+          { text: "Je renforce la supervision sur ce collaborateur pour éviter que ça se reproduise.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
         },
-        {
-          text: "Un pic d'activité force votre équipe à travailler dans des conditions dégradées depuis plusieurs jours. Que faites-vous ?",
-          answers: [
-          {text: "Je gère l'urgence et on analysera les conditions après.", score: 0},
-          {text: "Je surveille de près mais j'attends que la charge diminue.", score: 1},
-          {text: "Je signale à ma hiérarchie que les conditions dégradées créent un risque sécurité croissant.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que toute votre équipe a progressivement adopté une pratique déviante — personne ne l'a décidé, c'est arrivé progressivement. Aucun incident n'est survenu.",
+        tags: ["écart", "collectif"],
+        answers: [
+          { text: "Je laisse — si tout le monde fait comme ça et qu'il n'y a pas d'incident, c'est que la procédure est inadaptée.", score: 0 },
+          { text: "Je traite l'écart collectif et j'implique l'équipe dans la recherche d'une solution durable.", score: 2 },
+          { text: "Je remets la procédure en place et j'explique pourquoi l'écart est dangereux.", score: 1.5 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle décide si la procédure doit être modifiée.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
         },
-        {
-          text: "Un sous-traitant travaille dans votre zone sans avoir reçu les consignes de sécurité spécifiques au site. Son responsable n'est pas joignable. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse travailler — ce n'est pas ma responsabilité.", score: 0},
-          {text: "Je lui donne quelques consignes de base rapidement.", score: 1},
-          {text: "Je l'informe qu'il ne peut pas démarrer sans les consignes complètes et je gère la situation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre meilleur collaborateur, Élodie, prend régulièrement des raccourcis sur la sécurité. Sa productivité est exceptionnelle et l'équipe l'admire. Vous hésitez à intervenir.",
+        tags: ["écart", "performance"],
+        answers: [
+          { text: "Je ne dis rien — son impact global positif est bien supérieur aux risques de ses raccourcis.", score: 0 },
+          { text: "Je lui parle exactement comme je le ferais avec n'importe qui d'autre.", score: 2 },
+          { text: "Je lui en parle en privé en valorisant sa performance mais en maintenant l'exigence.", score: 2 },
+          { text: "Je lui demande d'être plus discret dans ses raccourcis pour ne pas donner le mauvais exemple.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous traitez les écarts de sécurité de la même façon quelle que soit la personne concernée — meilleur élément, ancien, nouveau, peu importe.",
+        tags: ["écart", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez repris un collaborateur sur un écart. Il vous explique que la procédure est inadaptée au contexte réel — son argument tient la route.",
+        tags: ["écart", "compréhension"],
+        answers: [
+          { text: "Je maintiens la procédure en attendant qu'elle soit officiellement modifiée.", score: 2 },
+          { text: "Je lui accorde une dérogation provisoire en attendant de modifier la procédure.", score: 0 },
+          { text: "Je remonte son argument à ma hiérarchie tout en maintenant la procédure en attendant.", score: 2 },
+          { text: "Je lui dis d'appliquer la procédure et de faire remonter son observation par le bon canal.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après avoir traité un écart de sécurité, vous constatez que l'ambiance s'est refroidie dans l'équipe. Certains semblent avoir peur de faire des erreurs.",
+        tags: ["écart", "peur"],
+        answers: [
+          { text: "C'est normal après un recadrage — ça se détendra dans quelques jours.", score: 0.5 },
+          { text: "Je prends le temps d'expliquer la différence entre traiter un écart et punir une personne.", score: 2 },
+          { text: "Je renforce les moments positifs pour compenser le refroidissement.", score: 1 },
+          { text: "Je laisse passer — la peur de faire des erreurs n'est pas forcément mauvaise en sécurité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous traitez un écart de sécurité, vous expliquez le risque derrière la règle plutôt que de vous appuyer uniquement sur l'autorité de la procédure.",
+        tags: ["écart", "pédagogie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire important prend régulièrement des libertés avec les règles de sécurité de votre site. La relation commerciale est stratégique et votre responsable préfère ne pas créer de tension.",
+        tags: ["écart", "prestataire"],
+        answers: [
+          { text: "Je laisse — mon responsable a arbitré et la relation commerciale prime.", score: 0 },
+          { text: "J'interviens sur les écarts du prestataire comme je le ferais pour mes propres équipes.", score: 2 },
+          { text: "Je lui signale les écarts mais sans aller jusqu'à stopper son intervention.", score: 1 },
+          { text: "Je documente les écarts pour me couvrir en cas d'incident.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous traitez les écarts de façon inégale selon la personne concernée ou la pression du moment", desc: "Ne pas intervenir sur le meilleur élément qui prend des raccourcis, laisser passer un prestataire parce que la relation est stratégique, recadrer plus sévèrement les moins expérimentés : l'inégalité dans le traitement des écarts détruit la crédibilité des exigences sécurité. La règle qui ne s'applique qu'à certains n'est plus une règle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les écarts régulièrement mais votre approche reste encore principalement corrective", desc: "Vous intervenez sur les écarts quand vous les observez. Mais intervenir différemment selon que c'est le meilleur élément ou un nouveau, comprendre la cause d'une récidive avant d'escalader, traiter un écart collectif en impliquant l'équipe : ces dimensions plus nuancées du traitement des écarts sont encore en développement. L'enjeu est de passer d'une approche corrective à une approche qui prévient la récidive." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les écarts de façon équitable, pédagogique et en cherchant les causes de fond", desc: "Vous intervenez sur le meilleur élément exactement comme sur le moins expérimenté. Vous cherchez la cause d'une récidive avant d'escalader. Vous impliquez l'équipe dans la correction d'un écart collectif. Et vous expliquez le risque derrière la règle plutôt que de vous appuyer sur l'autorité de la procédure. Ce management des écarts — équitable, pédagogique et orienté causes — est ce qui ancre durablement les comportements sécurité." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Votre site n'a pas eu d'incident depuis 6 mois. L'équipe est fière mais commence à relâcher certaines vigilances. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse faire — les bons résultats parlent d'eux-mêmes.", score: 0},
-          {text: "Je rappelle les règles en réunion sans lier ça à la baisse de vigilance.", score: 1},
-          {text: "Je nomme la dynamique observée et crée un moment d'échange sur ce que l'absence d'incident ne garantit pas.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un client stratégique menace de rompre le contrat si la livraison n'est pas faite dans les délais. Respecter la procédure de sécurité implique un retard de deux jours. Votre direction vous dit de 'trouver une solution'.",
+        tags: ["pression", "délai"],
+        answers: [
+          { text: "Je cherche un contournement de la procédure — la relation client doit être préservée.", score: 0 },
+          { text: "Je maintiens la procédure et j'aide ma direction à expliquer les contraintes réelles au client.", score: 2 },
+          { text: "Je tente de compresser la procédure sans en supprimer les étapes critiques.", score: 0.5 },
+          { text: "Je remonte la situation par écrit à ma direction en documentant le dilemme.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
         },
-        {
-          text: "Un collaborateur vous dit que les points sécurité hebdomadaires sont redondants et inutiles. Il suggère de les supprimer. Que faites-vous ?",
-          answers: [
-          {text: "Je les supprime si l'équipe est d'accord.", score: 0},
-          {text: "Je maintiens mais en réduisant la durée.", score: 1},
-          {text: "J'utilise cette question comme opportunité de retravailler le format pour le rendre plus utile.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez les exigences de sécurité de votre équipe face aux pressions de délai et de performance, même quand ça vous met en difficulté avec votre hiérarchie.",
+        tags: ["pression", "fermeté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
         },
-        {
-          text: "Après plusieurs mois calmes, vous observez de petits glissements : EPI mal portés, vérifications bâclées. Personne ne dit rien. Quelle est votre réaction ?",
-          answers: [
-          {text: "J'attends un événement déclencheur pour agir.", score: 0},
-          {text: "J'en parle en réunion de façon générale.", score: 1},
-          {text: "Je nomme les comportements observés et remets le sujet sur la table avant qu'un incident se produise.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est en sous-effectif. Pour tenir le planning, des opérations normalement réalisées à deux devront être faites seul. Vos collaborateurs sont prêts à le faire.",
+        tags: ["pression", "sous-effectif"],
+        answers: [
+          { text: "J'autorise — ils sont compétents et le sous-effectif est temporaire.", score: 0 },
+          { text: "Je refuse les opérations qui requièrent impérativement deux personnes et je réorganise les priorités.", score: 2 },
+          { text: "J'autorise avec des mesures de compensation — supervision accrue, check intermédiaire.", score: 0.5 },
+          { text: "Je remonte le problème à ma hiérarchie pour qu'elle arbitre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
         },
-        {
-          text: "Un collaborateur vous remonte qu'un collègue a eu peur lors d'une opération mais n'a rien dit par gêne. Que faites-vous ?",
-          answers: [
-          {text: "Je ne fais rien — si rien ne s'est passé, c'est que c'était géré.", score: 0},
-          {text: "Je parle à ce collègue pour voir s'il va bien.", score: 1},
-          {text: "J'en fais l'occasion d'un échange d'équipe sur le droit d'exprimer un doute sans crainte.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre indicateur sécurité est excellent depuis 18 mois. Votre direction réduit progressivement les ressources allouées à la sécurité en estimant que 'ça tourne'. Vous voyez les risques que ça crée.",
+        tags: ["pression", "résultat"],
+        answers: [
+          { text: "Je laisse — les indicateurs donnent raison à la direction et ce n'est pas le bon moment pour contester.", score: 0 },
+          { text: "Je remonte à ma direction le lien entre les ressources sécurité et les bons indicateurs.", score: 2 },
+          { text: "Je compense avec les ressources disponibles sans créer de tension.", score: 0.5 },
+          { text: "Je documente les risques créés pour me protéger en cas d'incident futur.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
         },
-        {
-          text: "Vous réalisez que votre équipe signale moins qu'avant, sans raison apparente. Que faites-vous ?",
-          answers: [
-          {text: "J'attends de voir si ça se confirme dans le temps.", score: 0},
-          {text: "Je rappelle l'obligation de signalement en réunion.", score: 1},
-          {text: "Je cherche à comprendre ce qui a changé et si quelque chose freine la parole.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a eu un très bon bilan sécurité cette année. Les points sécurité sont de plus en plus expédiés. Personne ne soulève le sujet.",
+        tags: ["pression", "bilan"],
+        answers: [
+          { text: "Je laisse — le bon bilan prouve que l'équipe a intégré les bonnes pratiques.", score: 0 },
+          { text: "Je maintiens la rigueur des points sécurité et j'explique que le bon bilan est leur résultat, pas une raison de les alléger.", score: 2 },
+          { text: "Je réduis légèrement la fréquence tout en maintenant la qualité.", score: 0.5 },
+          { text: "Je demande à l'équipe comment elle souhaite faire évoluer les points sécurité.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Lorsque les pressions opérationnelles vous mettent en situation de devoir choisir entre sécurité et performance, vous rendez le dilemme visible à votre hiérarchie plutôt que de l'absorber seul·e.",
+        tags: ["pression", "escalade"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un accident léger survient dans votre équipe pendant une période de forte pression opérationnelle. L'analyse préliminaire montre que la pression a contribué à l'accident.",
+        tags: ["pression", "incident"],
+        answers: [
+          { text: "Je gère l'accident sans mentionner la pression opérationnelle — ça ne ferait que créer des tensions.", score: 0 },
+          { text: "Je documente le lien entre la pression opérationnelle et l'accident dans mon rapport.", score: 2 },
+          { text: "J'en parle à ma direction en privé sans le formaliser.", score: 0.5 },
+          { text: "Je mentionne la pression opérationnelle dans le REX sans en faire la cause principale.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction tient un discours très engagé sur la sécurité mais ses décisions opérationnelles la contredisent régulièrement. Votre équipe commence à décrocher.",
+        tags: ["pression", "discours"],
+        answers: [
+          { text: "Je traduis le discours de la direction sans commenter l'écart avec les décisions.", score: 0 },
+          { text: "Je remonte le décalage observé à ma direction en lui montrant l'effet sur l'équipe.", score: 2 },
+          { text: "Je compense en étant moi-même très cohérent·e dans mon management.", score: 1 },
+          { text: "Je dis à l'équipe de se concentrer sur les règles concrètes et de ne pas écouter les discours.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre discours sur la sécurité et vos décisions opérationnelles sont alignés — vous n'avez pas un discours sécurité et une pratique de gestion qui le contredit.",
+        tags: ["pression", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise traverse une restructuration. L'attention de l'équipe est ailleurs. Le niveau de rigueur sécurité a visiblement baissé. Ce n'est pas le bon moment pour insister.",
+        tags: ["pression", "période difficile"],
+        answers: [
+          { text: "J'attends que la restructuration soit terminée pour remettre la sécurité à l'ordre du jour.", score: 0 },
+          { text: "Je renforce au contraire ma vigilance sécurité — les périodes de perturbation sont celles où les accidents surviennent.", score: 2 },
+          { text: "Je maintiens les standards sans en faire un sujet — l'équipe a assez de pression.", score: 1 },
+          { text: "Je remonte la situation à ma hiérarchie pour qu'elle donne des signaux clairs à l'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre cap sécurité cède encore sous la pression opérationnelle, commerciale ou hiérarchique", desc: "Contourner une procédure sous pression client, autoriser les opérations solo faute d'effectifs, réduire les ressources sécurité après un bon bilan : ces décisions semblent pragmatiques à court terme mais construisent les conditions des accidents à venir. La pression opérationnelle n'est pas une circonstance atténuante — elle est souvent la cause identifiée dans les accidents industriels graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous tenez le cap sécurité dans les pressions modérées mais vous absorbez encore les pressions fortes seul·e", desc: "Vous maintenez le cap sécurité dans la plupart des situations. Mais quand la pression vient simultanément du client, de la direction et des délais, ou quand la restructuration distrait l'équipe : vous pouvez encore absorber seul·e une pression que vous devriez rendre visible. L'enjeu est d'escalader systématiquement les situations où la sécurité et la performance sont en tension." },
+          haut: { label: "Réflexes installés", titre: "Vous maintenez le cap sécurité sous toutes les pressions et vous rendez les dilemmes visibles à votre hiérarchie", desc: "Vous ne contournez pas les procédures sous pression client, vous refusez les opérations solo qui l'interdisent même sous-effectif, et vous rendez visible à votre hiérarchie le dilemme quand sécurité et performance entrent en tension. Vous renforcez votre vigilance dans les périodes difficiles plutôt que de l'alléger. C'est cette posture — ferme, cohérente et visible — qui donne à votre management sécurité sa crédibilité dans la durée." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "coactivite-sous-traitance": {
     0: [
@@ -3090,7 +3590,16 @@
   ]}
 ],    
       
-    ["managers-securite",          "Manager la sécurité sans créer de tension",            "Managers",                 "Faire vivre les règles, traiter les écarts et soutenir les équipes dans les moments à risque.",                                                                  T.securiteManagers],
+["managers-securite", "Manager la sécurité sans créer de tension", "Managers",
+  "Faire vivre les règles, traiter les écarts et soutenir les équipes dans les moments à risque.",
+  { domain: "securite", chapters: [
+    ["Donner l'exemple au quotidien",               "Aligner son propre comportement sur les exigences qu'on pose à son équipe, sans exception."],
+    ["Traiter les remontées sécurité de l'équipe",  "Recevoir et valoriser les signalements pour construire une vraie culture de remontée."],
+    ["Traiter les écarts sans créer de peur",       "Intervenir équitablement, comprendre les causes et expliquer le risque derrière la règle."],
+    ["Maintenir le cap sécurité sous pression",     "Tenir les exigences face aux délais, aux clients et à la hiérarchie, et rendre les dilemmes visibles."]
+  ]}
+],    
+    
     ["coactivite-sous-traitance",  "Travailler en coactivité et gérer les prestataires",   "Équipes terrain",          "Coordonner les interventions simultanées, intégrer les sous-traitants et gérer les zones partagées.",                                                           T.securiteCoactivite],
     ["epi-gestes-securite",        "EPI et gestes de sécurité au quotidien",               "Collaborateurs",           "Porter les bons équipements, maintenir ses réflexes sous contrainte et signaler les anomalies matérielles.",                                                    T.securiteEPI],
     ["securite-manager-arbitrage", "Arbitrer entre sécurité et pression opérationnelle",   "Managers / Encadrants",    "Tenir les exigences de sécurité face aux délais, traiter les écarts et détecter les dérives silencieuses.",                                                    T.securiteManagerArbitrage],
