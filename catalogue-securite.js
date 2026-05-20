@@ -685,177 +685,676 @@
   },
   // ─────────────────────────────────────────────────────────────────────
 
+    // ─── À coller dans catalogue-securite.js ──────────────────────────────
+  // Clé : "presquaccidents-signalement"
+
   "presquaccidents-signalement": {
     0: [
-        {
-          text: "Vous glissez légèrement sur le sol mouillé mais vous vous rattrapez sans vous blesser. Personne n'a vu. Que faites-vous ?",
-          answers: [
-          {text: "Rien — je ne me suis pas blessé.", score: 0},
-          {text: "J'en parle à un collègue de façon informelle.", score: 1},
-          {text: "Je signale formellement l'anomalie (sol glissant non signalé) pour prévenir un futur incident.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "En manipulant une pièce, vous glissez légèrement et perdez l'équilibre une seconde. Vous vous rattrapez, il n'y a aucune blessure ni dégât. L'opération s'est poursuivie normalement.",
+        tags: ["signalement", "seuil"],
+        answers: [
+          { text: "Je ne signale pas — il ne s'est rien passé, personne n'a été blessé.", score: 0 },
+          { text: "Je signale comme presqu'accident — ce qui a failli se passer mérite d'être connu.", score: 2 },
+          { text: "J'en parle à mon collègue mais je ne fais pas de déclaration formelle.", score: 0.5 },
+          { text: "Je surveille si ça se reproduit avant de décider si c'est worth signaler.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
         },
-        {
-          text: "Vous oubliez de réenclencher un dispositif de sécurité après une intervention. Vous vous en rendez compte quelques minutes plus tard après l'avoir réactivé. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — j'ai corrigé moi-même.", score: 0},
-          {text: "J'en parle à mon responsable de façon informelle.", score: 1},
-          {text: "Je le consigne formellement comme presqu'accident pour que l'analyse soit faite.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez qu'un cache de protection sur une machine présente une légère fissure. La machine fonctionne normalement. Votre prochain contrôle préventif est dans trois semaines.",
+        tags: ["signalement", "anomalie matérielle"],
+        answers: [
+          { text: "J'attends le contrôle préventif prévu — la fissure est légère et la machine tourne bien.", score: 0 },
+          { text: "Je signale la fissure immédiatement pour qu'elle soit évaluée avant la prochaine utilisation.", score: 2 },
+          { text: "Je note la fissure dans mon carnet et j'en parle lors du prochain briefing.", score: 1 },
+          { text: "Je vérifie si la fissure s'agrandit dans les prochains jours avant de décider.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
         },
-        {
-          text: "Votre collègue vous raconte qu'une machine a failli lui tomber dessus mais qu'il a eu le bon réflexe. Il rigole en en parlant. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je ris avec lui — tout va bien.", score: 0},
-          {text: "Je lui dis qu'il a eu de la chance mais je n'insiste pas.", score: 1},
-          {text: "Je l'encourage à signaler l'incident même si tout va bien — la chance n'est pas une barrière de sécurité.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les situations qui auraient pu mal tourner, pas seulement celles qui ont causé un dommage réel.",
+        tags: ["signalement", "seuil bas"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
         },
-        {
-          text: "Lors d'une opération, vous devez utiliser un équipement dont la sécurité n'était pas enclenchée. L'opération s'est bien passée. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — l'opération a réussi.", score: 0},
-          {text: "Je m'assure de bien l'enclencher la prochaine fois.", score: 1},
-          {text: "Je documente la situation comme presqu'accident pour analyser pourquoi la sécurité n'était pas en place.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Une situation anormale récurrente s'est produite une fois de plus — une fuite mineure sur un circuit, troisième fois ce mois-ci. Chaque fois, ça a été colmaté sans conséquence.",
+        tags: ["signalement", "habitude"],
+        answers: [
+          { text: "Je colmate à nouveau — c'est récurrent mais jamais grave, ça fait partie du quotidien.", score: 0 },
+          { text: "Je signale la récurrence comme un signal faible qui mérite une analyse de fond.", score: 2 },
+          { text: "Je le mentionne à mon chef mais sans déclaration formelle.", score: 1 },
+          { text: "Je signale uniquement si ça devient plus fréquent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
         },
-        {
-          text: "Votre équipe vient de terminer un chantier sans accident. Vous vous souvenez d'au moins deux situations qui auraient pu mal tourner. Que faites-vous dans le bilan final ?",
-          answers: [
-          {text: "Je ne les mentionne pas — tout s'est bien terminé.", score: 0},
-          {text: "J'en mentionne une, la plus sérieuse.", score: 1},
-          {text: "Je les mentionne toutes les deux avec les détails utiles à l'analyse.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une manœuvre complexe impliquant plusieurs personnes, une erreur de coordination aurait pu créer une situation grave. Tout s'est bien terminé. L'équipe est soulagée et passée à autre chose.",
+        tags: ["signalement", "situation collective"],
+        answers: [
+          { text: "Je ne reviens pas dessus — l'équipe est soulagée et ça n'a pas mal tourné.", score: 0 },
+          { text: "Je propose qu'on documente ce qui s'est passé pendant qu'on s'en souvient.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il décide si un REX est nécessaire.", score: 1.5 },
+          { text: "Je note les éléments pour moi mais je laisse l'équipe décider collectivement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une même anomalie se répète, vous la signalez comme un problème structurel même si chaque occurrence individuelle est mineure.",
+        tags: ["signalement", "récurrence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez un presqu'accident impliquant un collègue d'une autre équipe. Il n'a rien dit et semble vouloir passer à autre chose.",
+        tags: ["signalement", "tiers"],
+        answers: [
+          { text: "Je le laisse gérer — c'est lui le concerné, c'est à lui de décider s'il signale.", score: 0 },
+          { text: "Je l'encourage à signaler et je lui propose de le faire avec lui si nécessaire.", score: 2 },
+          { text: "Je signale moi-même ce que j'ai observé si lui ne le fait pas.", score: 2 },
+          { text: "J'attends de voir s'il en parle à son chef.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez observé quelque chose qui vous a semblé anormal mais vous n'êtes pas certain·e de ce que vous avez vu. Vous ne voulez pas déclencher une alerte inutile.",
+        tags: ["signalement", "doute"],
+        answers: [
+          { text: "Je ne signale pas — un doute ne suffit pas pour déclencher une procédure.", score: 0 },
+          { text: "Je signale le doute en précisant que je n'en suis pas sûr·e — c'est mieux qu'un silence.", score: 2 },
+          { text: "J'en parle à un collègue pour voir s'il a observé la même chose.", score: 1 },
+          { text: "Je retourne sur les lieux pour vérifier avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez même quand vous n'êtes pas certain·e de la gravité — vous préférez une alerte inutile à un silence risqué.",
+        tags: ["signalement", "incertitude"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En début de poste, vous constatez qu'une signalétique de sécurité est illisible — décolorée, partiellement arrachée. L'installation concernée est connue de tout le monde.",
+        tags: ["signalement", "condition matérielle"],
+        answers: [
+          { text: "Je laisse — tout le monde connaît déjà la zone, la signalétique est une formalité.", score: 0 },
+          { text: "Je la signale pour qu'elle soit remplacée — elle est là pour les situations où les habitudes ne suffisent pas.", score: 2 },
+          { text: "Je préviens verbalement mes collègues lors du briefing.", score: 0.5 },
+          { text: "Je la remplace moi-même si j'ai le matériel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les accidents avérés mais pas encore les presqu'accidents et les signaux faibles", desc: "Signaler uniquement quand il y a un blessé ou un dégât visible, c'est intervenir en fin de chaîne — quand la prévention n'a plus d'utilité. Les presqu'accidents et les anomalies récurrentes sont les signaux qui permettent d'agir avant l'accident grave. Chaque situation non signalée est une opportunité d'apprentissage collectif perdue." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les événements significatifs mais votre seuil de signalement est encore trop élevé", desc: "Vous signalez les incidents clairement dangereux et les presqu'accidents visibles. Mais les anomalies mineures récurrentes, les situations qui 'auraient pu mal tourner' sans y être proches, les doutes non confirmés : votre seuil est encore trop élevé pour capturer les signaux faibles. L'enjeu est de traiter chaque situation qui vous interpelle comme méritant d'être signalée." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez les presqu'accidents, les anomalies mineures et les doutes — pas seulement les incidents avérés", desc: "Vous signalez les presqu'accidents sans blessé, les anomalies récurrentes mineures, les doutes sur ce que vous avez observé. Cette façon d'abaisser votre seuil de signalement est ce qui permet au système de sécurité d'identifier les causes profondes avant qu'elles produisent un accident grave. Chaque signalement précoce est une intervention en amont de la chaîne." },
+        },
+      }
     ],
-    1: [
-        {
-          text: "Vous voulez signaler un presqu'accident mais vous savez que ça va ralentir le planning du jour et votre responsable est sous pression. Que faites-vous ?",
-          answers: [
-          {text: "Je reporte le signalement à plus tard pour ne pas aggraver la situation.", score: 0},
-          {text: "Je le signale mais en minimisant les détails pour que ça passe vite.", score: 1},
-          {text: "Je le signale normalement — l'urgence opérationnelle ne change pas l'obligation de documenter.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez failli blesser un collègue par inattention. Il dit que ce n'est pas grave et qu'il n'y a pas besoin d'en faire une histoire. Que faites-vous ?",
-          answers: [
-          {text: "Je respecte son souhait — il est concerné au premier chef.", score: 0},
-          {text: "Je lui demande de reconsidérer mais je m'arrête si il insiste.", score: 1},
-          {text: "Je signale quand même l'incident — le signalement n'est pas une sanction, c'est une précaution.", score: 2}
-          ]
-        },
-        {
-          text: "Vous connaissez une zone à risque récurrent dans votre environnement de travail. Personne ne l'a encore officiellement signalé. Que faites-vous ?",
-          answers: [
-          {text: "J'attends qu'il y ait un incident pour que le signalement soit pris au sérieux.", score: 0},
-          {text: "Je le mentionne verbalement à mon responsable.", score: 1},
-          {text: "Je le documente formellement comme signal de risque récurrent.", score: 2}
-          ]
-        },
-        {
-          text: "Un prestataire dit ne pas être au courant qu'il devait remplir une fiche de signalement après un incident mineur. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse repartir — c'est à lui de connaître les règles.", score: 0},
-          {text: "Je lui dis qu'il aurait dû mais ne l'aide pas davantage.", score: 1},
-          {text: "Je lui explique le process et l'aide à remplir le document nécessaire.", score: 2}
-          ]
-        },
-        {
-          text: "Vous hésitez à signaler une situation parce que vous n'êtes pas sûr qu'elle entre dans la définition d'un presqu'accident. Que faites-vous ?",
-          answers: [
-          {text: "Je ne signale pas — mieux vaut ne pas créer de faux positifs.", score: 0},
-          {text: "Je note l'information pour moi-même, sans la transmettre.", score: 1},
-          {text: "Je signale en indiquant mon incertitude — c'est à la personne compétente de qualifier.", score: 2}
-          ]
-        }
-    ],
-    2: [
-        {
-          text: "Vous devez rédiger un signalement mais vous ne vous souvenez plus précisément de certains détails. Que faites-vous ?",
-          answers: [
-          {text: "J'attends de me souvenir mieux avant de remplir le document.", score: 0},
-          {text: "Je remplis avec ce dont je me souviens sans préciser les zones d'incertitude.", score: 1},
-          {text: "Je remplis avec ce que je sais et j'indique clairement ce que je ne suis pas certain de mémoriser exactement.", score: 2}
-          ]
-        },
-        {
-          text: "Dans votre signalement, vous devez mentionner qu'un collègue n'avait pas appliqué une procédure. Il est ami avec votre responsable. Que faites-vous ?",
-          answers: [
-          {text: "Je n'en fais pas mention pour préserver la relation.", score: 0},
-          {text: "Je mentionne l'écart de façon vague pour ne pas trop engager quelqu'un.", score: 1},
-          {text: "Je décris les faits tels qu'ils se sont passés — factuel, sans jugement sur la personne.", score: 2}
-          ]
-        },
-        {
-          text: "Vous relisez un signalement rempli par un collègue et vous réalisez que des causes probables ont été omises. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse passer — ce n'est pas mon signalement.", score: 0},
-          {text: "Je lui signale en privé qu'il a oublié des éléments.", score: 1},
-          {text: "Je lui propose de compléter ensemble pour que l'analyse soit exploitable.", score: 2}
-          ]
-        },
-        {
-          text: "Vous signalez un presqu'accident et votre responsable vous demande de retirer certains éléments qui 'pourraient mal passer'. Que faites-vous ?",
-          answers: [
-          {text: "Je modifie le document — mon responsable a le dernier mot.", score: 0},
-          {text: "Je modifie en faisant une version moins détaillée.", score: 1},
-          {text: "Je maintiens les éléments factuels et signale si nécessaire que ma description est contestée.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez rédigé un signalement mais vous ne savez pas à qui l'envoyer ni comment. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse le document de côté en attendant de savoir.", score: 0},
-          {text: "Je l'envoie à la première personne que je trouve.", score: 1},
-          {text: "Je prends le temps de trouver le bon canal avant d'envoyer — même si ça prend un peu de temps.", score: 2}
-          ]
-        }
-    ],
-    3: [
-        {
-          text: "Un incident a été signalé il y a plusieurs semaines mais aucune action corrective n'a été visible. Que faites-vous ?",
-          answers: [
-          {text: "J'attends — les décisions appartiennent à la direction.", score: 0},
-          {text: "J'en parle à mon responsable en passant.", score: 1},
-          {text: "Je relance formellement et demande un retour sur le suivi du signalement.", score: 2}
-          ]
-        },
-        {
-          text: "Un retour d'expérience est organisé mais l'analyse reste en surface et personne ne questionne les causes profondes. Que faites-vous ?",
-          answers: [
-          {text: "Je suis le rythme de la réunion — ce n'est pas à moi de pousser plus loin.", score: 0},
-          {text: "Je pose une question supplémentaire mais sans insister.", score: 1},
-          {text: "Je propose d'explorer les causes systémiques plutôt que de s'arrêter à la cause immédiate.", score: 2}
-          ]
-        },
-        {
-          text: "Vous participez à un retour d'expérience et vous avez un élément d'analyse qui met en cause une décision collective. Vous hésitez à le dire. Que faites-vous ?",
-          answers: [
-          {text: "Je ne le dis pas — ça risque de froisser des gens.", score: 0},
-          {text: "Je le dis de façon très indirecte pour ne pas vexer.", score: 1},
-          {text: "Je l'exprime factuellement : l'objectif est d'apprendre, pas de trouver un coupable.", score: 2}
-          ]
-        },
-        {
-          text: "Après un accident, votre entreprise met en place une nouvelle procédure que votre équipe trouve trop contraignante. Que faites-vous ?",
-          answers: [
-          {text: "Je me range à l'avis de l'équipe — si tout le monde la trouve inutile, elle l'est probablement.", score: 0},
-          {text: "Je l'applique pour moi mais je ne soutiens pas la décision auprès des autres.", score: 1},
-          {text: "Je l'applique et propose par les voies officielles une révision si elle n'est pas adaptée.", score: 2}
-          ]
-        },
-        {
-          text: "Vous avez contribué à un REX et les recommandations ont été archivées sans suite. Que faites-vous dans cette situation ?",
-          answers: [
-          {text: "J'arrête de participer — c'est une perte de temps.", score: 0},
-          {text: "Je continue à participer mais sans trop m'investir.", score: 1},
-          {text: "Je pose la question du suivi des recommandations lors d'une prochaine réunion.", score: 2}
-          ]
-        }
-    ],
-  },
 
+    1: [
+      {
+        type: "choix",
+        text: "Vous avez commis une erreur lors d'une opération. Elle ne s'est pas traduite par un incident mais elle aurait pu. Signaler implique de reconnaître votre propre responsabilité.",
+        tags: ["freins", "peur conséquences"],
+        answers: [
+          { text: "Je ne signale pas — la situation s'est résolue et me mettre en cause serait inutile.", score: 0 },
+          { text: "Je signale en décrivant les faits, y compris ma part dans l'erreur.", score: 2 },
+          { text: "Je signale l'événement sans mentionner ma responsabilité directe.", score: 0.5 },
+          { text: "J'en parle à mon responsable en privé avant de décider si je fais une déclaration officielle.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les incidents dans lesquels vous avez vous-même une part de responsabilité, même si c'est inconfortable.",
+        tags: ["freins", "courage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez fait plusieurs signalements ces derniers mois. Aucun n'a eu de suite visible — pas de retour, pas d'action corrective communiquée. Un nouvel événement se produit.",
+        tags: ["freins", "inutilité perçue"],
+        answers: [
+          { text: "Je ne signale plus — si rien ne change, ça ne sert à rien.", score: 0 },
+          { text: "Je signale et je demande explicitement un retour sur ce signalement.", score: 2 },
+          { text: "Je signale en espérant que cette fois ça serve à quelque chose.", score: 1 },
+          { text: "J'en parle directement à mon responsable plutôt que par le système officiel.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a tacitement décidé de ne pas signaler un incident pour ne pas 'attirer les ennuis'. On vous demande implicitement de faire pareil.",
+        tags: ["freins", "collectif"],
+        answers: [
+          { text: "Je m'aligne — l'équipe a ses raisons et la solidarité compte.", score: 0 },
+          { text: "Je signale quand même — je ne peux pas garantir la sécurité des autres si les informations ne circulent pas.", score: 2 },
+          { text: "Je ne signale pas mais je m'assure que les collègues concernés prennent les mesures correctives.", score: 0 },
+          { text: "J'en parle à mon responsable sans passer par le système officiel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'incident que vous devez signaler implique directement Sophie, une collègue avec qui vous avez une excellente relation. Elle vous demande de ne pas le faire.",
+        tags: ["freins", "relation"],
+        answers: [
+          { text: "Je ne signale pas — notre relation compte et elle prendra les précautions nécessaires.", score: 0 },
+          { text: "Je lui explique pourquoi je dois signaler et je le fais.", score: 2 },
+          { text: "Je lui laisse le temps de le signaler elle-même avant d'agir.", score: 1 },
+          { text: "Je signale l'événement sans mentionner son nom si le format le permet.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les incidents même quand votre équipe ou un collègue vous demande de ne pas le faire.",
+        tags: ["freins", "indépendance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre chef vous dit que ce type d'événement 'n'a pas besoin d'être remonté' — il préfère gérer ça en interne sans laisser de trace. Vous estimez que ça devrait être signalé.",
+        tags: ["freins", "hiérarchie"],
+        answers: [
+          { text: "Je m'aligne — c'est lui le responsable et il connaît les enjeux.", score: 0 },
+          { text: "Je lui demande de me confirmer par écrit que je n'ai pas à le signaler.", score: 2 },
+          { text: "Je signale quand même par le canal habituel.", score: 2 },
+          { text: "J'attends et j'observe si la situation évolue avant de décider.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident mineur s'est produit. Votre responsable dit que 'ce n'est pas la peine d'en faire un plat' et que ce type d'événement est courant dans votre métier.",
+        tags: ["freins", "gravité minimisée"],
+        answers: [
+          { text: "Je m'aligne — il a l'expérience et sait ce qui mérite d'être signalé ou non.", score: 0 },
+          { text: "Je signale quand même — la fréquence d'un événement ne réduit pas son risque.", score: 2 },
+          { text: "Je demande à un collègue expérimenté son avis avant de décider.", score: 0.5 },
+          { text: "Je note l'événement dans mon carnet sans déclaration formelle.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les événements courants et récurrents, même si tout le monde considère que 'ça fait partie du métier'.",
+        tags: ["freins", "normalisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le processus de déclaration dans votre entreprise est long et administratif. Signaler un presqu'accident mineur prend 30 minutes. Vous êtes en plein rush.",
+        tags: ["freins", "charge"],
+        answers: [
+          { text: "Je ne signale pas — pour un presqu'accident mineur, 30 minutes n'est pas proportionné.", score: 0 },
+          { text: "Je note les éléments essentiels maintenant et je fais la déclaration complète dès que j'ai 30 minutes.", score: 2 },
+          { text: "Je le signale verbalement à mon chef pour qu'il le fasse à ma place.", score: 1 },
+          { text: "Je fais une déclaration rapide et incomplète pour respecter les délais.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les freins au signalement — peur des conséquences, inutilité perçue, pression collective — l'emportent encore souvent", desc: "Ne pas signaler parce que personne d'autre ne l'a fait, parce qu'un collègue vous demande de ne pas le faire, parce que votre chef minimise l'événement : ces freins transforment la culture du signalement en culture du silence. Le silence collectif sur les incidents est le terrain commun des accidents graves." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux freins évidents mais vous cédez encore dans les situations à coût social élevé", desc: "Vous signalez sans vous laisser influencer par la pression collective ordinaire. Mais quand votre chef vous demande de ne pas remonter, quand un bon collègue vous demande de protéger sa version, quand ça implique de reconnaître votre propre responsabilité dans l'événement : votre résistance peut encore fléchir. L'enjeu est de tenir précisément dans ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous surmontez les freins au signalement quelle que soit leur nature — peur, pression collective, hiérarchie", desc: "Vous signalez même quand ça implique de reconnaître votre part de responsabilité, même quand votre chef préfère gérer en interne, même quand un collègue vous demande de ne pas le faire. Cette indépendance dans le signalement — qui suppose d'accepter parfois un inconfort relationnel ou hiérarchique — est le comportement qui rend un système de signalement vraiment fiable." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous rédigez un signalement. Vous pensez savoir pourquoi l'incident s'est produit. Vous hésitez à inclure votre interprétation dans le document.",
+        tags: ["qualification", "faits"],
+        answers: [
+          { text: "J'inclus mon interprétation — elle peut aider à comprendre les causes.", score: 0.5 },
+          { text: "Je décris uniquement les faits observés et je mentionne séparément mes hypothèses.", score: 2 },
+          { text: "Je décris les faits et j'omets mon interprétation pour rester neutre.", score: 1.5 },
+          { text: "Je laisse les experts interpréter — mon rôle est juste de décrire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos signalements contiennent les éléments factuels essentiels — quoi, quand, où, dans quelles conditions — sans interprétation ni jugement.",
+        tags: ["qualification", "précision"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un presqu'accident s'est produit il y a deux heures. Vous êtes en fin de poste et vous devez partir. Le signalement peut attendre demain.",
+        tags: ["qualification", "délai"],
+        answers: [
+          { text: "Je laisse pour demain — les faits seront toujours là et j'aurai plus de temps.", score: 0 },
+          { text: "Je prends 10 minutes maintenant pour noter les éléments essentiels avant que les détails s'estompent.", score: 2 },
+          { text: "J'en parle oralement à mon remplaçant pour qu'il fasse le signalement.", score: 1 },
+          { text: "Je fais le signalement demain matin en premier — c'est encore frais.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous signalez un incident. En rédigeant, vous réalisez que mentionner le contexte complet implique d'indiquer que vous étiez en retard sur un délai et que vous aviez accéléré le rythme.",
+        tags: ["qualification", "contexte"],
+        answers: [
+          { text: "Je décris l'incident sans mentionner le contexte de délai — ce n'est pas directement lié.", score: 0 },
+          { text: "Je mentionne le contexte complet, y compris la pression de délai — c'est potentiellement une cause.", score: 2 },
+          { text: "Je mentionne que 'les conditions de travail étaient inhabituelles' sans préciser.", score: 0.5 },
+          { text: "J'en parle verbalement à mon responsable mais je ne l'écris pas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos signalements incluent le contexte complet — y compris les éléments qui pourraient mettre en cause votre organisation ou votre propre comportement.",
+        tags: ["qualification", "honnêteté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez une situation dangereuse imminente — pas encore un accident, mais quelque chose qui peut mal tourner dans les prochaines minutes. Vous ne savez pas quel canal utiliser.",
+        tags: ["qualification", "canal"],
+        answers: [
+          { text: "Je cherche le bon formulaire avant d'agir — un signalement doit suivre la procédure.", score: 0 },
+          { text: "J'interviens immédiatement pour sécuriser la situation, le signalement formel viendra après.", score: 2 },
+          { text: "Je préviens verbalement les personnes concernées et je fais le signalement en parallèle.", score: 2 },
+          { text: "Je préviens mon chef pour qu'il décide de la marche à suivre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En rédigeant votre signalement, vous réalisez que certains détails vous manquent — vous n'êtes plus sûr·e de l'heure exacte ni d'un élément technique précis.",
+        tags: ["qualification", "exactitude"],
+        answers: [
+          { text: "Je complète avec ce qui me semble le plus probable — mieux vaut un signalement complet.", score: 0 },
+          { text: "Je signale ce dont je suis certain·e en indiquant clairement ce qui est approximatif.", score: 2 },
+          { text: "J'attends d'avoir les détails exacts avant de soumettre le signalement.", score: 0 },
+          { text: "Je demande à un collègue présent de compléter les éléments qui me manquent.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous venez de finir de rédiger un signalement détaillé. Votre responsable vous demande de le 'simplifier' avant de le transmettre — certains éléments lui semblent trop détaillés.",
+        tags: ["qualification", "transmission"],
+        answers: [
+          { text: "Je simplifie comme il demande — c'est lui qui valide et il connaît les usages.", score: 0 },
+          { text: "Je lui demande ce qui le gêne précisément avant de modifier quoi que ce soit.", score: 2 },
+          { text: "Je garde mon signalement complet et je lui envoie à lui une version allégée séparément.", score: 1 },
+          { text: "Je simplifie en retirant les éléments les moins critiques selon moi.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous résistez aux demandes de modification de vos signalements qui en réduiraient la portée ou en masqueraient des éléments importants.",
+        tags: ["qualification", "intégrité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez fait un signalement il y a deux semaines. Vous n'avez reçu aucun retour. La situation signalée est toujours présente.",
+        tags: ["qualification", "retour"],
+        answers: [
+          { text: "J'attends — les équipes sécurité ont leurs processus et ça prend du temps.", score: 0.5 },
+          { text: "Je relance pour avoir un retour et je revérifie que mon signalement a bien été reçu.", score: 2 },
+          { text: "Je signale à nouveau en espérant que cette fois ça remonte.", score: 1 },
+          { text: "Je gère la situation moi-même puisque personne ne s'en occupe.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos signalements sont incomplets ou atténués par crainte d'exposer le contexte réel", desc: "Omettre la pression de délai qui a précédé l'incident, décrire les faits sans leur contexte, accepter de 'simplifier' un signalement à la demande de votre hiérarchie : un signalement incomplet ou atténué ne permet pas d'identifier les vraies causes. Ce qui n'est pas écrit n'est pas traité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos signalements sont généralement complets mais vous atténuez encore dans les situations inconfortables", desc: "Vos signalements sont honnêtes et factuels dans la plupart des situations. Mais mentionner la pression de délai qui a précédé l'incident, résister à une demande de 'simplification' hiérarchique, inclure votre propre part dans la cause : ces situations peuvent encore amener à des signalements incomplets. L'enjeu est d'aller jusqu'au bout de l'honnêteté même dans ces zones inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos signalements sont complets et honnêtes, y compris sur les éléments qui vous impliquent ou exposent le contexte", desc: "Vos signalements incluent le contexte complet — y compris la pression de délai, vos propres erreurs, les pratiques déviantes collectives. Vous résistez aux demandes de simplification ou d'atténuation. Ce niveau d'honnêteté dans le signalement est ce qui permet d'identifier les vraies causes et pas seulement les causes de surface." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Un REX est organisé sur un incident qui ne vous implique pas directement. Vous avez observé des éléments pertinents mais votre participation n'est pas obligatoire.",
+        tags: ["REX", "participation"],
+        answers: [
+          { text: "Je n'y assiste pas — je n'étais pas impliqué et ma présence n'est pas requise.", score: 0 },
+          { text: "Je participe et je partage ce que j'ai observé — ma perspective peut être utile.", score: 2 },
+          { text: "J'envoie mes observations par écrit sans assister.", score: 1.5 },
+          { text: "J'en parle à un collègue qui y sera pour qu'il transmette mes éléments.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous lisez les REX et les comptes rendus d'incidents — y compris ceux qui ne vous concernent pas directement — pour en tirer des enseignements pour votre propre pratique.",
+        tags: ["REX", "apprentissage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un REX, il apparaît que votre façon de réaliser l'opération concernée n'est pas conforme à la procédure. La question vous est posée directement.",
+        tags: ["REX", "honnêteté"],
+        answers: [
+          { text: "Je dis que je respecte la procédure — ce n'est pas le moment de me mettre en difficulté.", score: 0 },
+          { text: "Je décris ma pratique réelle, même si elle s'écarte de la procédure.", score: 2 },
+          { text: "Je réponds de façon vague pour ne ni mentir ni m'exposer.", score: 0 },
+          { text: "Je dis que j'ai parfois des adaptations mais sans entrer dans les détails.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un REX sur un incident survenu dans une autre entreprise de votre secteur est diffusé dans votre organisation. Votre responsable ne le mentionne pas en réunion d'équipe.",
+        tags: ["REX", "tiers"],
+        answers: [
+          { text: "Je le lis pour moi mais je ne le mets pas sur la table — si mon chef n'en parle pas, c'est qu'il n'est pas pertinent.", score: 0 },
+          { text: "Je le lis et je propose qu'on en discute en équipe en faisant le lien avec nos pratiques.", score: 2 },
+          { text: "Je le partage avec mes collègues par message pour qu'ils le lisent.", score: 1 },
+          { text: "J'en parle à mon chef pour savoir s'il en est informé.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand un REX identifie une cause ou une pratique à améliorer qui concerne votre poste, vous ajustez concrètement votre façon de travailler.",
+        tags: ["REX", "application"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les conclusions d'un REX sur un incident récent vous semblent incomplètes — vous pensez que la cause profonde n'a pas été identifiée.",
+        tags: ["REX", "conclusions"],
+        answers: [
+          { text: "Je fais confiance aux experts qui ont conduit le REX.", score: 0 },
+          { text: "Je formule mes observations et je les soumets aux responsables du REX.", score: 2 },
+          { text: "J'en parle à mes collègues mais sans remettre formellement en cause les conclusions.", score: 1 },
+          { text: "J'attends de voir si un incident similaire se reproduit pour valider mon hypothèse.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un REX, une mesure corrective a été décidée mais elle n'est pas encore mise en place deux mois après. La situation à risque identifiée est toujours présente.",
+        tags: ["REX", "mesures correctives"],
+        answers: [
+          { text: "J'attends — la mise en place prend du temps et ce n'est pas de ma responsabilité.", score: 0 },
+          { text: "Je le signale à mon responsable en m'appuyant sur le REX et la décision prise.", score: 2 },
+          { text: "Je prends des mesures compensatoires à mon niveau en attendant.", score: 1 },
+          { text: "J'en parle aux collègues pour qu'on soit tous vigilants en attendant la correction.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous revenez d'une formation où un incident grave survenu dans une entreprise similaire a été présenté. Les causes ressemblent à des pratiques que vous observez chez vous.",
+        tags: ["REX", "transfert"],
+        answers: [
+          { text: "Je reste vigilant pour moi mais je ne remonte pas l'information — un cas isolé ne prouve rien.", score: 0 },
+          { text: "Je partage l'information avec mon responsable et je propose qu'on regarde si les causes s'appliquent à notre contexte.", score: 2 },
+          { text: "J'en parle à mes collègues lors du prochain briefing.", score: 1 },
+          { text: "J'attends que quelqu'un d'autre fasse le lien officiellement.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous remontez les informations de sécurité venant de l'extérieur — formations, REX d'autres entreprises, incidents sectoriels — sans attendre qu'on vous le demande.",
+        tags: ["REX", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un REX auquel vous avez participé a produit des recommandations. Six mois plus tard, vous ne savez pas si elles ont été appliquées.",
+        tags: ["REX", "suivi"],
+        answers: [
+          { text: "Je fais confiance à l'organisation pour suivre les recommandations.", score: 0 },
+          { text: "Je demande un retour sur l'avancement des recommandations qui me concernent.", score: 2 },
+          { text: "Je vérifie dans mon périmètre si ce qui me concernait a bien été mis en place.", score: 1.5 },
+          { text: "Je relance si je constate que la situation à risque est toujours présente.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les REX sont des exercices formels pour vous, pas encore de vrais outils d'apprentissage", desc: "Ne lire que les REX obligatoires, ne pas prendre la parole quand les conclusions semblent incomplètes, ne pas vérifier si les mesures correctives ont été appliquées : le REX n'est utile que si les personnes qui connaissent le terrain y contribuent activement et vérifient que ses conclusions se traduisent en pratiques." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux REX et en tirez des enseignements, mais votre contribution active reste limitée", desc: "Vous participez aux REX qui vous concernent directement et vous appliquez les recommandations dans votre périmètre. Mais participer à des REX qui ne vous impliquent pas directement, questionner des conclusions qui semblent incomplètes, vérifier le suivi des mesures correctives : votre rôle actif dans le système d'apprentissage reste encore limité." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement aux REX, vous questionnez les conclusions incomplètes et vous vérifiez le suivi des mesures", desc: "Vous participez aux REX au-delà de votre périmètre direct, vous formulez des observations quand les conclusions vous semblent incomplètes, vous vérifiez que les mesures correctives ont été appliquées, vous remontez les informations de sécurité venant de l'extérieur. Cette contribution active au système d'apprentissage est ce qui transforme les incidents en améliorations réelles." },
+        },
+      }
+    ],
+
+  },
+  // ─────────────────────────────────────────────────────────────────────
   "acces-sites-surete": {
     0: [
         {
