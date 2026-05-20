@@ -425,7 +425,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
       <div class="sb-total" id="sb-total"></div>
-      <div class="btn-save-hint" id="btn-save-hint">4 questions min. par chapitre</div>
+      <div class="btn-save-hint" id="btn-save-hint">5 questions min. par chapitre</div>
       <button class="btn-save" id="btn-save" onclick="trySave()">Enregistrer le thème</button>
     </div>
   </div>
@@ -464,7 +464,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>4 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
+    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -476,7 +476,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Complétez d’abord les questions</h3>
-    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>4 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
+    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
     </div>
@@ -598,6 +598,10 @@ const profils_config = [
   {couleur:'#77cd8a', bgHead:'#f0fbf2', borderHead:'#b8e8c0', textColor:'#27823a', nom:'Ancré'}
 ];
 
+const MIN_QUESTIONS_PER_CHAPTER = 5;
+const DEFAULT_GENERATED_QUESTIONS = 5;
+const MAX_QUESTIONS_PER_CHAPTER = 10;
+
 function esc(v){
   return String(v ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 }
@@ -711,6 +715,24 @@ function normalizeAnswers(q){
 }
 
 function normalizeChaptersFromState(){
+  // Quand un thème catalogue contient plus de questions, on démarre l'éditeur avec 5 questions par chapitre.
+  // Ensuite, l'utilisateur peut en ajouter jusqu'au maximum autorisé.
+  if (!state.initialQuestionsLimitedToFive && Array.isArray(state.chapters) && !isBlankMode) {
+    let changed = false;
+    state.chapters = state.chapters.map(c => {
+      if (Array.isArray(c.questions) && c.questions.length > DEFAULT_GENERATED_QUESTIONS) {
+        changed = true;
+        return { ...c, questions: c.questions.slice(0, DEFAULT_GENERATED_QUESTIONS) };
+      }
+      return c;
+    });
+    if (changed) {
+      state.initialQuestionsLimitedToFive = true;
+      if (typeof itsSave === 'function') itsSave(state);
+      else localStorage.setItem('its_state', JSON.stringify(state));
+    }
+  }
+
   return state.chapters.map((c, i) => {
     const profiles = c.profiles || c.profils || [];
     return {
@@ -865,7 +887,7 @@ function questionHasValidScoring(q){
 }
 
 function chapterQuestionsReady(c){
-  return c && Array.isArray(c.questions) && c.questions.length >= 4 && c.questions.every(questionHasValidScoring);
+  return c && Array.isArray(c.questions) && c.questions.length >= MIN_QUESTIONS_PER_CHAPTER && c.questions.every(questionHasValidScoring);
 }
 
 function openProfilesLockedModal(){
@@ -1094,7 +1116,7 @@ function renderNav() {
   chapters.forEach((c, i) => {
     const n = c.questions.length;
     const nProfils = c.profils.filter(p => String(p.titre).trim() && String(p.phrase).trim() && stripHtml(p.description).trim()).length;
-    const dotColorQ = n >= 4 ? '#77cd8a' : n > 0 ? '#ffc744' : '#d8e0ea';
+    const dotColorQ = n >= MIN_QUESTIONS_PER_CHAPTER ? '#77cd8a' : n > 0 ? '#ffc744' : '#d8e0ea';
     const dotColorP = nProfils === 3 ? '#77cd8a' : nProfils > 0 ? '#ffc744' : '#d8e0ea';
 
     const div = document.createElement('div');
@@ -1228,7 +1250,7 @@ function emptyActionCard(title, text, onclick, primary, disabled){
 
 function renderQuestions(ch) {
   const n = ch.questions.length;
-  const pct = Math.min(100, Math.round((n / 10) * 100));
+  const pct = Math.min(100, Math.round((n / MAX_QUESTIONS_PER_CHAPTER) * 100));
   const isEmpty = n === 0;
 
   const header = `
@@ -1262,7 +1284,7 @@ function renderQuestions(ch) {
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 4, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
@@ -1541,7 +1563,7 @@ function makeAIQuestion(id){
 }
 
 function addManual() {
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
 
   const id = 'q' + Date.now();
   chapters[activeChap].questions.push({
@@ -1567,7 +1589,7 @@ function addManual() {
 
 function addOneAI() {
   if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
   const q = makeAIQuestion('q' + Date.now());
   chapters[activeChap].questions.push(q);
   openCards[q.id] = true;
@@ -1608,13 +1630,7 @@ function closeRegenModal() {
 function confirmRegen() {
   if (!aiHelpAvailable()) { alert(aiUnavailableMessage()); return; }
   closeRegenModal();
-  chapters[activeChap].questions = [
-    makeAIQuestion('qr1'),
-    makeAIQuestion('qr2'),
-    makeAIQuestion('qr3'),
-    makeAIQuestion('qr4'),
-    makeAIQuestion('qr5')
-  ];
+  chapters[activeChap].questions = Array.from({length: DEFAULT_GENERATED_QUESTIONS}, (_, i) => makeAIQuestion('qr' + (i + 1)));
   refreshThresholdsAfterQuestionChange();
   saveState();
   openCards = {};
@@ -1826,7 +1842,7 @@ function markLibraryAdded(qid){
 }
 
 function addFromLib(qid) {
-  if (chapters[activeChap].questions.length >= 10) return;
+  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
 
   const existing = currentQuestionKeys();
   const bq = bibliothequeQuestions().find(q => q.id === qid);
@@ -1877,8 +1893,8 @@ function addFromLib(qid) {
 function chapProblems(c) {
   const problems = [];
 
-  if(c.questions.length < 4) {
-    problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 4 requises`, tab:'questions'});
+  if(c.questions.length < MIN_QUESTIONS_PER_CHAPTER) {
+    problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 5 requises`, tab:'questions'});
   } else {
     const badQ = c.questions.filter(q => !q.answers || q.answers.length < 3 || q.answers.some(a => isNaN(Number(a.s)) || Number(a.s)<0 || Number(a.s)>2));
     if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — min 3 réponses, scores entre 0 et 2 requis`, tab:'questions'});
@@ -1904,7 +1920,7 @@ function updateSaveButton() {
   btn.disabled = allProblems.length > 0;
   hint.classList.toggle('visible', allProblems.length > 0);
 
-  if(allProblems.length) hint.textContent = 'Questions et/ou profils incomplets sur certains chapitres';
+  if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
 }
 
 function trySave() {
