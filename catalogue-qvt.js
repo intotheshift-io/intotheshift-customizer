@@ -1539,178 +1539,678 @@
     ],
 
   },
-  // ─────────────────────────────────────────────────────────────────────
+  // ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "teletravail-hybridation" dans Object.assign(window.CUSTOM_QUESTIONS,
 
-  "epuisement-prevention": {
+  "teletravail-hybridation": {
     0: [
-        {
-          text: "Depuis plusieurs semaines, vous êtes épuisé dès le matin et les journées vous semblent interminables. Vous vous dites que c'est la période. Que faites-vous ?",
-          answers: [
-          {text: "Je pousse encore — ça va passer.", score: 0},
-          {text: "Je cherche à me ménager un peu plus.", score: 1},
-          {text: "Je prends ce signal au sérieux et cherche à en comprendre les causes réelles.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous travaillez depuis chez vous et vous avez tendance à rester connecté bien au-delà de vos horaires habituels — les sollicitations ne s'arrêtent pas et vous y répondez.",
+        tags: ["organisation", "télétravail"],
+        answers: [
+          { text: "C'est le prix de la flexibilité — le télétravail donne de l'autonomie mais demande de la disponibilité.", score: 0 },
+          { text: "Je fixe une heure de déconnexion et je m'y tiens, comme je le ferais au bureau.", score: 2 },
+          { text: "Je réponds aux urgences réelles et je laisse le reste pour le lendemain.", score: 1.5 },
+          { text: "Je note les messages reçus tard pour y répondre en début de journée suivante.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
         },
-        {
-          text: "Vous avez du mal à vous souvenir de la dernière fois où vous vous êtes senti vraiment récupéré. Que faites-vous ?",
-          answers: [
-          {text: "Je note que je suis fatigué et continue.", score: 0},
-          {text: "Je cherche à mieux dormir.", score: 1},
-          {text: "Je vois cela comme un signe d'épuisement cumulatif et cherche à agir sur les causes.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En télétravail, votre domicile est peu propice à la concentration — interruptions, bruit, espace partagé. Vous avez du travail de fond à faire.",
+        tags: ["organisation", "concentration"],
+        answers: [
+          { text: "Je fais avec — le télétravail, c'est aussi accepter que les conditions ne sont pas toujours idéales.", score: 0 },
+          { text: "Je signale à mon responsable que mes conditions de télétravail posent problème.", score: 1.5 },
+          { text: "Je viens au bureau les jours où j'ai besoin de concentration, même si ce n'est pas prévu.", score: 2 },
+          { text: "J'adapte mon travail aux conditions — je garde le travail de fond pour les jours de présentiel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
         },
-        {
-          text: "Les tâches que vous trouviez stimulantes il y a quelques mois vous semblent maintenant sans intérêt. Que faites-vous ?",
-          answers: [
-          {text: "Je fais le minimum pour avancer.", score: 0},
-          {text: "Je cherche à retrouver de la motivation.", score: 1},
-          {text: "Je prends cela comme un signal de burnout possible et cherche à en parler.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous maintenez des horaires de travail clairs en télétravail, sans déborder régulièrement au-delà de vos fins de journée habituelles.",
+        tags: ["organisation", "frontières"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
         },
-        {
-          text: "Votre irritabilité augmente au travail. Des situations habituellement neutres vous agacent fortement. Que faites-vous ?",
-          answers: [
-          {text: "Je m'excuse après coup et continue.", score: 0},
-          {text: "Je cherche à mieux gérer mes réactions.", score: 1},
-          {text: "J'interprète cela comme un signe de surcharge et cherche à agir en amont.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En télétravail, vous avez tendance à sur-communiquer sur ce que vous faites — plus de messages, plus de mises à jour — pour montrer que vous travaillez.",
+        tags: ["organisation", "visibilité"],
+        answers: [
+          { text: "C'est normal, le télétravail crée un déficit de visibilité qu'il faut compenser.", score: 0 },
+          { text: "Je communique sur les résultats et les blocages, pas sur mon activité minute par minute.", score: 2 },
+          { text: "Je m'en rends compte et j'essaie de le limiter, sans toujours y arriver.", score: 1 },
+          { text: "Je préfère communiquer plus que moins — mieux vaut être visible que transparent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
         },
-        {
-          text: "Vous faites des erreurs inhabituelles dans votre travail depuis quelques semaines. Que faites-vous ?",
-          answers: [
-          {text: "Je redouble d'attention.", score: 0},
-          {text: "Je prends note et cherche à m'organiser différemment.", score: 1},
-          {text: "Je prends ce signal au sérieux : des erreurs inhabituelles peuvent indiquer un épuisement cognitif.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe utilise le présentiel de façon très variable — certains viennent souvent, d'autres rarement. Vous avez l'impression que ceux qui viennent le plus ont plus d'accès à l'information.",
+        tags: ["organisation", "présentiel"],
+        answers: [
+          { text: "C'est inévitable — le présentiel a des avantages naturels, c'est comme ça.", score: 0 },
+          { text: "Je m'assure de créer des canaux équivalents pour les personnes à distance.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il formalise la façon dont l'information circule.", score: 1.5 },
+          { text: "Je viens plus souvent au bureau pour ne pas être désavantagé·e.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous planifiez vos jours de présentiel en fonction des sujets qui bénéficient vraiment d'une présence physique, pas juste par habitude ou par conformité.",
+        tags: ["organisation", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vos journées de télétravail n'ont pas de structure fixe — vous gérez au fil de l'eau selon les sollicitations qui arrivent.",
+        tags: ["organisation", "rituels"],
+        answers: [
+          { text: "C'est justement l'avantage du télétravail — la flexibilité de s'adapter.", score: 0 },
+          { text: "Je bloque des créneaux dédiés pour le travail de fond avant d'ouvrir ma messagerie.", score: 2 },
+          { text: "J'essaie d'avoir une structure mais les sollicitations finissent souvent par l'emporter.", score: 1 },
+          { text: "Je m'aligne sur le rythme des sollicitations — si tout le monde envoie des messages le matin, je suis disponible le matin.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre connexion internet à domicile est instable depuis quelques semaines. Ça crée des problèmes récurrents en réunion à distance.",
+        tags: ["organisation", "équipement"],
+        answers: [
+          { text: "Je m'excuse en début de réunion et je fais avec — ce sont des aléas techniques.", score: 0 },
+          { text: "Je viens au bureau les jours où j'ai des réunions importantes jusqu'à ce que le problème soit résolu.", score: 2 },
+          { text: "Je signale le problème à mon responsable pour voir si l'entreprise peut aider.", score: 1.5 },
+          { text: "Je passe en audio uniquement pour limiter l'impact sur les autres.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous identifiez régulièrement ce qui fonctionne et ce qui fonctionne moins dans votre façon de travailler en mode hybride, et vous ajustez.",
+        tags: ["organisation", "régulation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez tendance à accepter plus de réunions les jours de télétravail parce que 'c'est plus facile à distance'. Votre agenda ne laisse plus de place au travail de fond.",
+        tags: ["organisation", "charge"],
+        answers: [
+          { text: "Les réunions à distance sont moins coûteuses — c'est logique d'en mettre plus ces jours-là.", score: 0 },
+          { text: "Je bloque des plages de travail individuel sur mes journées de télétravail, non négociables.", score: 2 },
+          { text: "Je commence à refuser des réunions à distance quand l'agenda est trop chargé.", score: 1.5 },
+          { text: "Je fais les réunions et je rattrape le travail de fond en dehors des horaires.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous subissez votre organisation hybride plutôt que de la piloter", desc: "Rester connecté bien au-delà des horaires normaux, accepter des conditions de travail inadaptées, multiplier les réunions à distance par facilité : le télétravail sans structure crée une pression diffuse, difficile à localiser. L'enjeu est de piloter activement votre organisation hybride — horaires, espaces, jours de présence — plutôt que de la subir." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez votre organisation hybride correctement, les ajustements fins vous échappent encore", desc: "Vous avez trouvé un fonctionnement hybride qui tient. Mais certains ajustements — protéger du temps de fond contre la multiplication des réunions à distance, communiquer sur vos résultats plutôt que sur votre activité, planifier vos jours de présentiel stratégiquement — ne sont pas encore systématiques. L'enjeu est de passer d'une organisation qui fonctionne à une organisation qui fonctionne bien." },
+          haut: { label: "Réflexes installés", titre: "Vous pilotez activement votre organisation hybride sans la subir", desc: "Vous structurez vos journées de télétravail, vous planifiez vos jours de présence selon les sujets qui en bénéficient, vous communiquez sur vos résultats, vous maintenez des frontières claires entre temps de travail et temps personnel. Cette façon de piloter son organisation hybride permet de profiter des avantages du distanciel sans en subir les dérives." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Vous avez du mal à dire non à de nouvelles demandes même quand vous êtes déjà saturé. Que faites-vous ?",
-          answers: [
-          {text: "Je continue à dire oui — refuser m'est difficile.", score: 0},
-          {text: "Je dis oui mais en précisant que ce sera pour plus tard.", score: 1},
-          {text: "Je cherche à formuler un refus respectueux et à en comprendre les raisons qui me retiennent.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Depuis qu'il télétravaille trois jours par semaine, vous avez beaucoup moins de contact informel avec Jonathan. Vous travaillez pourtant étroitement ensemble.",
+        tags: ["lien", "isolement"],
+        answers: [
+          { text: "C'est inévitable avec le télétravail — le lien informel ne peut pas être recréé artificiellement.", score: 0 },
+          { text: "Je lui propose qu'on synchronise nos jours de présentiel une fois par semaine au minimum.", score: 2 },
+          { text: "Je lui envoie plus de messages pour compenser l'absence de contact informel.", score: 0.5 },
+          { text: "Je profite des jours où on est tous les deux au bureau pour rattraper le lien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
         },
-        {
-          text: "Vous réalisez que vous ne prenez jamais de pause dans la journée. Que faites-vous ?",
-          answers: [
-          {text: "Les pauses me font perdre du temps.", score: 0},
-          {text: "Je prends une pause quand j'ai fini une tâche.", score: 1},
-          {text: "Je planifie des pauses dans ma journée comme des engagements non négociables.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous créez des occasions de contact avec vos collègues à distance, au-delà des réunions de travail formelles.",
+        tags: ["lien", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
         },
-        {
-          text: "Votre charge a augmenté mais vous n'avez pas revu vos priorités ni demandé un arbitrage. Que faites-vous ?",
-          answers: [
-          {text: "J'absorbe — c'est mon rôle de m'adapter.", score: 0},
-          {text: "Je signale que c'est beaucoup.", score: 1},
-          {text: "Je demande explicitement un arbitrage avec des éléments concrets sur ce qui n'est plus tenable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous animez une réunion avec la moitié de l'équipe en salle et l'autre à distance. Vous avez tendance à vous adresser naturellement aux personnes présentes physiquement.",
+        tags: ["lien", "réunion hybride"],
+        answers: [
+          { text: "C'est naturel — on parle d'abord à ceux qui sont devant soi.", score: 0 },
+          { text: "Je fais un effort explicite pour inclure les personnes à distance : je les sollicite, je reformule.", score: 2 },
+          { text: "Je demande à quelqu'un en salle de surveiller le chat pour signaler si quelqu'un à distance veut intervenir.", score: 1.5 },
+          { text: "Je précise en début de réunion que tout le monde doit s'inclure, sans changer ma façon d'animer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
         },
-        {
-          text: "Vous travaillez souvent le soir et le week-end pour tenir votre charge. Que faites-vous ?",
-          answers: [
-          {text: "C'est nécessaire pour livrer ce qui est attendu.", score: 0},
-          {text: "Je cherche à être plus efficace pendant les heures de travail.", score: 1},
-          {text: "Je prends cela comme un signal que ma charge dépasse ma capacité normale et j'en parle à mon responsable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Mehdi a rejoint l'équipe il y a un mois. Il est souvent en télétravail et vous avez l'impression qu'il ne s'est pas encore vraiment intégré au collectif.",
+        tags: ["lien", "nouveau"],
+        answers: [
+          { text: "C'est à lui de faire la démarche — l'intégration demande un effort de la personne qui arrive.", score: 0 },
+          { text: "Je lui propose un café à distance pour mieux se connaître en dehors des réunions de travail.", score: 2 },
+          { text: "Je m'assure qu'il est bien inclus dans les échanges collectifs sans aller au-delà.", score: 1 },
+          { text: "J'en parle à notre responsable pour qu'il organise quelque chose pour le groupe.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
         },
-        {
-          text: "Vous n'avez pas pris de congés depuis plusieurs mois et vous ne savez pas quand vous pourrez en prendre. Que faites-vous ?",
-          answers: [
-          {text: "Quand la charge baisse, je prendrai des congés.", score: 0},
-          {text: "Je pose quelques jours quand c'est possible.", score: 1},
-          {text: "Je pose des congés comme une nécessité, pas comme une récompense, et j'anticipe l'organisation.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous veillez à ce que les personnes à distance aient le même accès à l'information que celles présentes en salle.",
+        tags: ["lien", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a perdu ses moments informels depuis le passage au travail hybride — plus de déjeuners collectifs, plus de pauses café spontanées. Personne n'a proposé d'alternative.",
+        tags: ["lien", "informel"],
+        answers: [
+          { text: "Ces moments informels ne peuvent pas être reconstitués à distance — c'est une perte à accepter.", score: 0 },
+          { text: "Je propose un format régulier et court — un café virtuel optionnel, par exemple — pour recréer de l'informel.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il organise quelque chose.", score: 0.5 },
+          { text: "Je profite des jours de présentiel pour recréer ces moments avec ceux qui sont là.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous sentez qu'une collègue, Claire, est moins engagée depuis qu'elle télétravaille davantage. Elle répond moins vite, participe moins en réunion.",
+        tags: ["lien", "distance"],
+        answers: [
+          { text: "Le désengagement à distance est difficile à gérer — je laisse son manager s'en occuper.", score: 0 },
+          { text: "Je lui envoie plus de messages pour maintenir le contact et la stimuler.", score: 0.5 },
+          { text: "Je lui propose un échange individuel pour voir comment elle vit le télétravail en ce moment.", score: 2 },
+          { text: "J'en parle à notre responsable en lui signalant ce que j'observe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez vos disponibilités à vos collègues en mode hybride pour qu'ils sachent quand vous joindre, sans qu'ils aient à deviner.",
+        tags: ["lien", "disponibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors de vos jours au bureau, vous avez tendance à travailler dans votre bureau avec la porte fermée ou à rester sur vos écrans. La présence physique n'implique pas forcément plus d'échanges.",
+        tags: ["lien", "présentiel"],
+        answers: [
+          { text: "Le présentiel n'est pas obligatoirement synonyme d'échanges — je viens pour travailler.", score: 0 },
+          { text: "Je réserve les jours de présentiel aux sujets qui bénéficient vraiment du contact direct.", score: 2 },
+          { text: "Je fais un effort pour être plus accessible et disponible les jours où je suis au bureau.", score: 1.5 },
+          { text: "Je m'aligne sur ce que font les autres — si tout le monde est sur ses écrans, je fais pareil.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous adaptez votre façon d'animer les échanges collectifs selon que les participants sont tous en salle, tous à distance, ou dans une configuration mixte.",
+        tags: ["lien", "collectif"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Le lien avec vos collègues à distance se maintient par défaut, pas par intention", desc: "Le lien informel disparaît naturellement avec la distance si personne ne crée d'occasions pour le maintenir. Attendre les jours de présentiel, laisser les réunions faire le travail relationnel, ne pas se soucier des personnes à distance dans les échanges collectifs : ce sont des comportements qui érodent progressivement la qualité du collectif, souvent sans qu'on s'en aperçoive avant que ce soit difficile à rattraper." },
+          moyen: { label: "Pratiques en développement", titre: "Vous maintenez le lien avec vos collègues proches, les personnes plus éloignées restent dans l'angle mort", desc: "Vous êtes attentif·ve aux collègues avec qui vous travaillez régulièrement. Mais les personnes plus périphériques — un nouveau qui s'intègre en distanciel, un collègue qui télétravaille beaucoup sans que vous le croisiez — peuvent rester dans l'angle mort. L'enjeu est d'étendre votre vigilance au-delà de votre cercle de travail immédiat." },
+          haut: { label: "Réflexes installés", titre: "Vous créez délibérément les conditions du lien collectif, quel que soit le mode de présence", desc: "Vous synchronisez vos jours de présentiel avec ceux qui comptent, vous incluez activement les personnes à distance dans les réunions mixtes, vous créez des occasions informelles pour maintenir le collectif. Cette intention délibérée — recréer ce que la distance enlève naturellement — est ce qui distingue une équipe hybride qui fonctionne bien d'une équipe hybride qui s'effiloche." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Vous savez que vous devriez récupérer mais dès que vous avez un moment libre, vous pensez au travail. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse aller — c'est difficile à contrôler.", score: 0},
-          {text: "Je cherche des activités pour m'occuper l'esprit.", score: 1},
-          {text: "Je travaille à créer des espaces de déconnexion réels — activité physique, limites numériques.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous êtes seul·e à distance dans une réunion où tous les autres sont en salle. La qualité audio est mauvaise, les gens parlent entre eux sans activer leur micro. Vous perdez la moitié des échanges.",
+        tags: ["irritant hybride", "réunion"],
+        answers: [
+          { text: "Je reste connecté·e et je suis du mieux que je peux — c'est la contrainte du distanciel.", score: 0 },
+          { text: "Je l'interromps pour signaler que je n'entends pas correctement et demander un ajustement.", score: 2 },
+          { text: "Je préviens en début de réunion que je suis à distance et que j'aurai besoin qu'on pense à moi.", score: 1.5 },
+          { text: "Je note ce que je comprends et je demande un compte rendu après.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
         },
-        {
-          text: "Votre sommeil est perturbé par des pensées liées au travail depuis plusieurs semaines. Que faites-vous ?",
-          answers: [
-          {text: "Je m'y habitue — c'est une période tendue.", score: 0},
-          {text: "Je prends des médicaments pour dormir.", score: 1},
-          {text: "Je vois cela comme un signal sérieux et cherche un appui : médecin, psychologue, employeur.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Des décisions importantes sont prises lors de conversations informelles au bureau entre personnes présentes, sans que les collègues à distance en soient informés. Vous l'avez appris après coup.",
+        tags: ["irritant hybride", "information"],
+        answers: [
+          { text: "C'est inévitable — le présentiel génère naturellement des échanges qui échappent au distanciel.", score: 0 },
+          { text: "J'en parle à notre responsable pour qu'on formalise comment les décisions sont documentées et partagées.", score: 2 },
+          { text: "Je demande à un collègue au bureau de me tenir informé·e des échanges importants.", score: 1 },
+          { text: "Je viens plus souvent au bureau pour ne plus rater ce type d'échanges.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
         },
-        {
-          text: "Vous continuez à aller travailler alors que vous vous sentez vraiment au bout du rouleau. Que faites-vous ?",
-          answers: [
-          {text: "Je tiens — les congés arrivent bientôt.", score: 0},
-          {text: "Je travaille à mi-régime sans le dire.", score: 1},
-          {text: "Je prends le problème au sérieux et consulte un médecin pour évaluer ma situation.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Quand une organisation hybride crée des inégalités ou des irritants réels, vous le signalez plutôt que de vous adapter sans rien dire.",
+        tags: ["irritant hybride", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
         },
-        {
-          text: "Vous avez l'habitude de ne jamais demander d'aide même quand vous en avez besoin. Que faites-vous face à une surcharge importante ?",
-          answers: [
-          {text: "Je gère seul — c'est ma façon de fonctionner.", score: 0},
-          {text: "Je cherche à me débrouiller avec les ressources disponibles.", score: 1},
-          {text: "Je travaille à dépasser cet automatisme et à formuler une demande d'aide explicite.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a multiplié les réunions à distance depuis le passage au hybride — chaque sujet devient une réunion. Vous passez plus de temps en réunion qu'en travail réel.",
+        tags: ["irritant hybride", "réunions répétées"],
+        answers: [
+          { text: "Les réunions à distance sont moins coûteuses — c'est normal d'en avoir plus.", score: 0 },
+          { text: "Je propose de traiter certains sujets de façon asynchrone pour réduire le nombre de réunions.", score: 2 },
+          { text: "Je commence à décliner les réunions dont l'objet peut être traité autrement.", score: 1.5 },
+          { text: "J'en parle à notre responsable pour qu'il rationalise le nombre de réunions.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
         },
-        {
-          text: "Des activités qui vous ressourçaient habituellement ne vous font plus d'effet. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que ça revienne.", score: 0},
-          {text: "Je cherche de nouvelles activités.", score: 1},
-          {text: "Je vois cela comme un signe d'épuisement avancé et cherche un soutien professionnel.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue, Sébastien, vous envoie des messages à 22h en télétravail et s'attend à une réponse rapide. Ce n'est pas la première fois.",
+        tags: ["irritant hybride", "asynchrone"],
+        answers: [
+          { text: "Je réponds si je suis encore éveillé·e — il sait que je ne suis pas obligé·e.", score: 0 },
+          { text: "Je lui réponds le lendemain matin sans commenter — il finira par comprendre.", score: 0.5 },
+          { text: "Je lui dis qu'après une certaine heure je ne consulte plus mes messages professionnels.", score: 2 },
+          { text: "Je paramètre des notifications silencieuses la nuit et je ne change rien à ma façon de répondre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous traitez de la même façon vos collègues à distance et ceux présents en salle — même accès à l'information, même temps de parole, même considération.",
+        tags: ["irritant hybride", "équité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, la norme implicite est de venir au bureau au moins trois jours par semaine. Vous avez de bonnes raisons personnelles de ne venir que deux jours. Plusieurs collègues le remarquent.",
+        tags: ["irritant hybride", "norme"],
+        answers: [
+          { text: "Je m'aligne sur la norme — les normes implicites sont là pour une raison.", score: 0 },
+          { text: "Je continue à venir deux jours et j'ignore les remarques — j'ai de bonnes raisons.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour clarifier si la norme est une obligation ou une préférence.", score: 2 },
+          { text: "Je viens trois jours pour éviter les frictions, même si ça ne m'arrange pas.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les outils collaboratifs de votre équipe ne sont pas utilisés de façon cohérente — certains passent par mail, d'autres par Teams, d'autres par WhatsApp. Vous perdez du temps à chercher l'information.",
+        tags: ["irritant hybride", "outils"],
+        answers: [
+          { text: "Je m'adapte aux outils de chaque personne — tout le monde a ses habitudes.", score: 0 },
+          { text: "Je centralise ma propre communication sur un seul outil et j'explique pourquoi.", score: 1 },
+          { text: "Je propose à l'équipe qu'on s'aligne sur un fonctionnement commun.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il impose un outil unique.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous évoquez les irritants liés à l'organisation hybride avec votre équipe ou votre responsable, sans attendre que ça s'accumule.",
+        tags: ["irritant hybride", "régulation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vos journées hybrides sont épuisantes — une série de réunions à distance, des sollicitations constantes, peu de temps de récupération entre les écrans. Vous le ressentez physiquement.",
+        tags: ["irritant hybride", "surcharge cognitive"],
+        answers: [
+          { text: "C'est le prix du télétravail — la flexibilité a un coût et je l'assume.", score: 0 },
+          { text: "J'identifie ce qui génère le plus de fatigue et je cherche à le modifier.", score: 2 },
+          { text: "Je prends des pauses plus régulières entre les réunions pour récupérer.", score: 1.5 },
+          { text: "Je le signale à mon responsable si ça dure trop longtemps.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les irritants de l'hybridation s'accumulent sans être nommés ni traités", desc: "La mauvaise qualité audio en réunion, l'information qui circule d'abord au bureau, les outils utilisés de façon incohérente, les messages tardifs : ces irritants sont réels et traitables. Les accepter comme des fatalités du télétravail est un réflexe compréhensible, mais c'est aussi ce qui permet à des dysfonctionnements évitables de durer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous traitez les irritants visibles, les plus discrets s'installent sans être abordés", desc: "Vous abordez les irritants quand ils sont clairement problématiques. Mais les dysfonctionnements plus insidieux — l'information qui circule différemment selon les modes de présence, les outils utilisés de façon incohérente, les normes implicites sur le présentiel — s'installent sans être traités. L'enjeu est de les nommer plus tôt." },
+          haut: { label: "Réflexes installés", titre: "Vous traitez les irritants de l'hybridation à la source, sans les normaliser", desc: "Vous signalez quand la qualité audio vous empêche de suivre, vous proposez de traiter certains sujets de façon asynchrone pour réduire la surcharge de réunions, vous clarifiez les normes implicites avec votre responsable. Cette façon de traiter les irritants à la source, sans les normaliser, améliore l'expérience de travail pour tout le monde." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Vous savez que vous avez besoin d'aide mais vous avez honte de l'admettre. Que faites-vous ?",
-          answers: [
-          {text: "Je gère seul et personne ne sait.", score: 0},
-          {text: "J'en parle à un proche hors travail.", score: 1},
-          {text: "Je cherche à mettre de côté la honte et à accéder à un soutien adapté, professionnel ou médical.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous avez l'impression que vos collègues qui viennent souvent au bureau progressent plus vite que vous, qui préférez télétravailler. Vous ne savez pas si c'est réel ou perçu.",
+        tags: ["inégalité", "avancement"],
+        answers: [
+          { text: "Je viens plus souvent au bureau pour ne pas être désavantagé·e — mieux vaut prévenir.", score: 0 },
+          { text: "J'en parle directement à mon responsable pour comprendre comment ma présence et ma progression sont évaluées.", score: 2 },
+          { text: "J'observe encore un peu avant de réagir — ça peut être une perception biaisée.", score: 1 },
+          { text: "J'accepte que le présentiel ait des avantages naturels pour la carrière.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
         },
-        {
-          text: "Vous pensez à consulter un médecin ou un psychologue mais vous vous demandez si votre situation est vraiment assez grave. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que ça empire pour être sûr.", score: 0},
-          {text: "J'en parle à un proche pour avoir son avis.", score: 1},
-          {text: "Je consulte — l'anticipation est toujours plus efficace que l'attente.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous nommez les inégalités que vous observez liées au mode de travail (présentiel vs distanciel), sans attendre qu'elles soient officiellement reconnues.",
+        tags: ["inégalité", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
         },
-        {
-          text: "Vous n'êtes pas sûr que votre organisation dispose de ressources d'accompagnement psychologique. Que faites-vous ?",
-          answers: [
-          {text: "Je suppose qu'il n'y a rien et je ne cherche pas.", score: 0},
-          {text: "J'en parle à un collègue.", score: 1},
-          {text: "Je me renseigne directement auprès des RH ou du service de santé au travail.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Nina, une jeune collaboratrice, télétravaille souvent mais n'a pas encore le réseau informel pour savoir ce qui se passe vraiment. Elle rate des informations qui pourraient lui être utiles.",
+        tags: ["inégalité", "jeune"],
+        answers: [
+          { text: "C'est à elle de choisir son organisation — le télétravail a des contreparties.", score: 0 },
+          { text: "Je m'assure de lui transmettre les informations importantes que j'aurais pu avoir au bureau.", score: 2 },
+          { text: "Je lui conseille de venir plus souvent au bureau pour construire son réseau.", score: 1 },
+          { text: "J'en parle à notre responsable pour qu'il structure mieux la circulation de l'information.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
         },
-        {
-          text: "Vous traversez un épuisement sérieux et votre responsable ne l'a pas remarqué. Que faites-vous ?",
-          answers: [
-          {text: "J'attends qu'il le voie.", score: 0},
-          {text: "Je lui laisse entendre que ça va mieux de toute façon.", score: 1},
-          {text: "Je prends l'initiative d'en parler directement à mon responsable ou aux RH.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre collègue Nadia est à temps partiel et télétravaille. Elle n'est pas là lors des réunions informelles importantes du vendredi après-midi. Des décisions sont parfois prises sans elle.",
+        tags: ["inégalité", "temps partiel"],
+        answers: [
+          { text: "Elle a fait un choix d'organisation — elle en assume les conséquences professionnelles.", score: 0 },
+          { text: "Je m'assure qu'elle est informée des décisions prises en son absence et consultée avant si possible.", score: 2 },
+          { text: "Je lui envoie un compte rendu des réunions auxquelles elle n'a pas pu assister.", score: 1.5 },
+          { text: "J'en parle à notre responsable pour qu'il décale les réunions importantes.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
         },
-        {
-          text: "Vous êtes revenu d'un arrêt maladie lié à l'épuisement mais vous ne sentez pas les conditions changer. Que faites-vous ?",
-          answers: [
-          {text: "Je reprends comme avant — ça s'est passé, je passe à autre chose.", score: 0},
-          {text: "Je signale que les conditions n'ont pas changé.", score: 1},
-          {text: "Je prends le temps de redéfinir avec mon responsable les conditions de reprise pour éviter une rechute.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez que vos collègues en télétravail ou à temps partiel ne ratent pas des informations ou des décisions importantes faute d'être présents physiquement.",
+        tags: ["inégalité", "inclusion"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, les contributions des personnes souvent à distance sont moins visibles que celles des personnes au bureau. Personne ne semble s'en préoccuper.",
+        tags: ["inégalité", "reconnaissance"],
+        answers: [
+          { text: "La visibilité se construit en partie par la présence — c'est une réalité à accepter.", score: 0 },
+          { text: "J'en parle à notre responsable pour qu'il réfléchisse à comment rendre ces contributions visibles.", score: 2 },
+          { text: "Je cite explicitement les contributions de mes collègues à distance quand j'en ai l'occasion.", score: 2 },
+          { text: "Je conseille à mes collègues à distance de mieux se mettre en avant.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise dit officiellement que le présentiel et le distanciel sont équivalents, mais en pratique vous observez que les managers valorisent davantage la présence physique.",
+        tags: ["inégalité", "culture"],
+        answers: [
+          { text: "Si c'est la culture réelle, mieux vaut s'y adapter même si le discours officiel est différent.", score: 0 },
+          { text: "Je remonte le décalage entre le discours et la pratique à mon responsable ou aux RH.", score: 2 },
+          { text: "J'en parle à mes collègues pour voir si mon observation est partagée.", score: 1 },
+          { text: "Je l'accepte et j'ajuste mon organisation en conséquence.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes attentif·ve aux signaux qui indiquent que le mode de travail crée des inégalités entre membres de l'équipe, même implicites.",
+        tags: ["inégalité", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez que certains de vos collègues en télétravail avec de jeunes enfants sont souvent interrompus pendant leurs réunions. Personne n'en parle ouvertement.",
+        tags: ["inégalité", "charge mentale"],
+        answers: [
+          { text: "C'est leur organisation personnelle — ce n'est pas à l'équipe de s'en préoccuper.", score: 0 },
+          { text: "Je crée des réunions sans avoir besoin de caméra pour réduire la pression sur eux.", score: 1 },
+          { text: "Je soulève le sujet avec notre responsable pour voir si on peut adapter les formats de réunion.", score: 2 },
+          { text: "Je leur signale en privé que leur situation est visible et que c'est normal.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous identifiez une inégalité liée au mode de travail, vous faites quelque chose pour la corriger à votre niveau — pas seulement l'observer.",
+        tags: ["inégalité", "action"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous acceptez les inégalités créées par le mode de travail comme une fatalité", desc: "Percevoir que le présentiel favorise la progression de carrière et s'y adapter sans nommer ce qu'on observe, laisser des collègues à distance rater des informations ou des décisions importantes : ce sont des façons de faire qui reproduisent des inégalités structurelles. Les nommer, même sans certitude absolue, est la première condition pour qu'elles soient traitées." },
+          moyen: { label: "Pratiques en développement", titre: "Vous remarquez les inégalités mais vous hésitez encore à les nommer ou à agir", desc: "Vous percevez les inégalités liées au mode de travail et vous les comprenez. Mais passer à l'action — en parler à votre responsable, citer les contributions des personnes à distance, proposer des formats plus équitables — est encore difficile. L'enjeu est de convertir l'observation en action concrète, même modeste." },
+          haut: { label: "Réflexes installés", titre: "Vous nommez et corrigez les inégalités créées par le mode de travail à votre niveau", desc: "Vous nommez les inégalités que vous observez — accès à l'information, visibilité des contributions, évaluation de la performance — et vous agissez à votre niveau pour les corriger. Vous ne laissez pas des collègues à distance, à temps partiel ou avec des contraintes personnelles se retrouver structurellement désavantagés sans que personne ne le dise." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "retour-apres-absence": {
     0: [
