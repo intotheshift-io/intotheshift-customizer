@@ -184,176 +184,684 @@
     ],
   },
 
+// ─── À coller dans catalogue-qvt.js ───────────────────────────────────
+  // Clé : "charge-priorites" dans Object.assign(window.CUSTOM_QUESTIONS, {
+
   "charge-priorites": {
+    // ── Chapitre 1 : Réguler les urgences
     0: [
-        {
-          text: "Votre to-do list est pleine et tout semble urgent. Quelle est votre première réaction ?",
-          answers: [
-          {text: "Je prends la première tâche et j'avance.", score: 0},
-          {text: "Je fais une rapide sélection des tâches les plus importantes.", score: 1},
-          {text: "Je prends un moment pour hiérarchiser en distinguant urgent, important et ni l'un ni l'autre.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Trois demandes arrivent en même matinée, toutes présentées comme urgentes — de David, de Sarah et de votre responsable. Vous ne pouvez pas tout traiter avant midi.",
+        tags: ["urgence", "priorisation"],
+        answers: [
+          { text: "Je commence par la demande de mon responsable, c'est la plus risquée à laisser attendre.", score: 0 },
+          { text: "Je contacte chacun pour comprendre ce qui est vraiment bloquant avant de m'organiser.", score: 2 },
+          { text: "Je travaille dans l'ordre d'arrivée — c'est la seule façon d'être équitable.", score: 0.5 },
+          { text: "Je préviens les trois que je ferai ce que je peux dans la journée.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
         },
-        {
-          text: "Vous finissez régulièrement votre journée sans avoir traité les tâches que vous aviez prévues le matin. Que faites-vous ?",
-          answers: [
-          {text: "C'est normal — l'imprévu fait partie du travail.", score: 0},
-          {text: "Je reste plus tard pour rattraper le retard.", score: 1},
-          {text: "J'analyse ce qui génère cet écart et cherche à mieux protéger du temps pour mes priorités.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites la différence entre ce qui est urgent pour les autres et ce qui l'est vraiment pour l'avancement de votre travail.",
+        tags: ["urgence", "discernement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
         },
-        {
-          text: "Vous avez des réunions qui se succèdent sans pause. En fin de journée, vous n'avez rien produit de concret. Que faites-vous ?",
-          answers: [
-          {text: "Je rattrape le travail le lendemain matin.", score: 0},
-          {text: "Je réduis ma participation à certaines réunions.", score: 1},
-          {text: "Je remets en question mon planning de réunions et cherche à dégager des plages de travail.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Il est 18h30. Vous n'avez pas terminé ce que vous aviez prévu pour aujourd'hui, et votre agenda de demain est déjà plein. Élodie du service communication vous relance sur un dossier.",
+        tags: ["charge", "limites"],
+        answers: [
+          { text: "Je reste pour finir — un dossier en retard crée toujours plus de problèmes qu'une soirée longue.", score: 0 },
+          { text: "Je lui réponds que je traiterai ça demain matin en premier, et je pars.", score: 2 },
+          { text: "Je traite rapidement sa demande avant de partir — ça prend dix minutes.", score: 0.5 },
+          { text: "Je lui dis que je suis débordé sans préciser quand je pourrai m'en occuper.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
         },
-        {
-          text: "Plusieurs personnes vous sollicitent en parallèle pour des urgences différentes. Que faites-vous ?",
-          answers: [
-          {text: "Je réponds à tout dans l'ordre d'arrivée.", score: 0},
-          {text: "Je sélectionne celle qui me semble la plus urgente.", score: 1},
-          {text: "Je demande à chacun un délai réel et je priorise en conséquence.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a pris l'habitude de traiter toutes les demandes entrantes dans la journée, quelle que soit la charge. Baptiste vient de rejoindre l'équipe et s'étonne que personne ne priorise.",
+        tags: ["urgence", "normes de groupe"],
+        answers: [
+          { text: "Je lui explique que c'est comme ça que ça fonctionne ici — il s'y fera.", score: 0 },
+          { text: "Je lui donne raison en privé mais je ne change rien — ce n'est pas à moi de remettre en cause le fonctionnement de l'équipe.", score: 0 },
+          { text: "Je profite de sa question pour soulever le sujet en réunion d'équipe.", score: 2 },
+          { text: "Je lui explique comment je gère personnellement ma propre charge sans promettre que l'équipe va changer.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
         },
-        {
-          text: "Une tâche longue et complexe avance peu car vous êtes constamment interrompu. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte — les interruptions font partie du travail.", score: 0},
-          {text: "J'essaie de trouver un endroit plus calme pour travailler.", score: 1},
-          {text: "Je pose des créneaux bloqués dans mon agenda pour avancer sur la tâche sans interruption.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Quand votre charge devient difficile à absorber, vous le signalez avant d'être à bout plutôt qu'après.",
+        tags: ["charge", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un projet que vous avez lancé il y a un mois est devenu moins pertinent. L'abandonner permettrait de dégager du temps, mais ça se verrait.",
+        tags: ["urgence", "visibilité"],
+        answers: [
+          { text: "Je le termine quand même — changer de cap en cours de route serait mal perçu.", score: 0 },
+          { text: "Je le mets en pause discrètement et je le reprends si quelqu'un me le réclame.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour décider ensemble si ça vaut encore la peine de continuer.", score: 2 },
+          { text: "Je le délègue à quelqu'un qui a plus de temps — ça ne se perdra pas.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Nathalie, une collègue, absorbe régulièrement plus de travail que les autres parce qu'elle ne sait pas refuser. L'équipe apprécie sa disponibilité mais personne ne le soulève.",
+        tags: ["urgence", "charge collective"],
+        answers: [
+          { text: "C'est à elle de mettre ses propres limites — si elle voulait en parler, elle le ferait.", score: 0 },
+          { text: "Je lui propose mon aide ponctuellement sur ce qui touche directement notre collaboration.", score: 1 },
+          { text: "Je lui en parle en tête-à-tête pour voir si elle vit ça comme un problème.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il rééquilibre la distribution.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez régulièrement si la charge de vos collègues proches est tenable, pas seulement la vôtre.",
+        tags: ["priorisation", "équipe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez deux tâches importantes pour aujourd'hui. Un imprévu surgit en milieu de matinée et consomme une heure que vous n'aviez pas prévue. Jonathan, qui travaille avec vous, attend une réponse sur un point bloquant.",
+        tags: ["urgence", "décision"],
+        answers: [
+          { text: "Je réponds à Jonathan rapidement puis je récupère l'heure perdue ce soir.", score: 0 },
+          { text: "Je regarde ce qui peut glisser à demain parmi mes deux tâches et je réponds à Jonathan.", score: 2 },
+          { text: "Je finis mes deux tâches d'abord — Jonathan peut attendre jusqu'en fin d'après-midi.", score: 1 },
+          { text: "Je demande à Jonathan si quelqu'un d'autre peut débloquer son point en attendant.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous anticipez les pics de charge plutôt que de les subir au moment où ils arrivent.",
+        tags: ["urgence", "anticipation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gérez les urgences au fur et à mesure sans vraiment les hiérarchiser", desc: "Traiter dans l'ordre d'arrivée, rester plus longtemps, absorber les demandes sans questionner leur urgence réelle : ce sont des réflexes courants qui donnent une impression de dynamisme mais épuisent progressivement. Prioriser, c'est aussi décider ce qu'on ne fera pas — ou pas maintenant — et l'assumer." },
+          moyen: { label: "Pratiques en développement", titre: "Vous priorisez dans les situations simples, vous êtes encore rattrapé·e par les urgences dans les situations complexes", desc: "Vous faites la différence entre l'urgent et l'important dans la plupart des cas. Mais quand plusieurs sources de pression convergent au même moment, la hiérarchie des demandes peut prendre le dessus sur votre propre organisation. L'enjeu est de tenir vos priorités même dans ces moments-là." },
+          haut:  { label: "Réflexes installés", titre: "Vous hiérarchisez activement votre charge et vous protégez votre organisation des urgences non qualifiées", desc: "Vous qualifiez les urgences avant de les traiter, vous signalez les charges insoutenables avant d'être à bout, et vous créez les conditions pour que votre entourage puisse faire de même. Cette posture préventive — qui suppose d'accepter d'être parfois celui ou celle qui dit 'ça ne peut pas se faire comme ça' — est ce qui permet de tenir dans la durée." },
+        },
+      }
     ],
+
+    // ── Chapitre 2 : Dire non et négocier les délais
     1: [
-        {
-          text: "Vous avez trois deadlines majeures la même semaine. Vous ne pourrez pas tout tenir. Que faites-vous ?",
-          answers: [
-          {text: "Je fais de mon mieux sur les trois.", score: 0},
-          {text: "J'en choisis une et je demande un délai sur les autres sans expliquer.", score: 1},
-          {text: "J'alerte les parties prenantes en amont et propose des solutions concrètes pour chaque deadline.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre responsable vous confie un nouveau dossier urgent alors que votre agenda est déjà plein pour les deux prochaines semaines. Elle insiste sur son importance stratégique.",
+        tags: ["limites", "hiérarchie"],
+        answers: [
+          { text: "J'accepte sans rien dire — elle sait mieux que moi ce qui est vraiment prioritaire.", score: 0 },
+          { text: "Je lui dis que je ferai au mieux en réorganisant mes priorités.", score: 0.5 },
+          { text: "Je lui expose ce que j'ai déjà en cours et je lui demande ce qui peut être décalé.", score: 2 },
+          { text: "Je lui dis que c'est impossible — ma charge actuelle ne le permet pas.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
         },
-        {
-          text: "Votre responsable ajoute une nouvelle tâche urgente à votre liste déjà pleine. Que faites-vous ?",
-          answers: [
-          {text: "J'absorbe — c'est mon rôle.", score: 0},
-          {text: "Je lui dis que c'est beaucoup mais je prends la tâche.", score: 1},
-          {text: "Je lui expose ma charge actuelle et lui demande d'arbitrer entre les priorités.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous exprimez vos contraintes de charge à votre responsable sans attendre d'être en situation de crise.",
+        tags: ["limites", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
         },
-        {
-          text: "Votre charge de travail a doublé suite à un départ dans l'équipe. Aucun remplacement n'est prévu à court terme. Que faites-vous ?",
-          answers: [
-          {text: "Je fais ce que je peux.", score: 0},
-          {text: "Je signale à mon responsable que la situation est difficile.", score: 1},
-          {text: "Je fais un bilan factuel de ce qui n'est plus tenable et demande un arbitrage sur les activités à prioriser.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Pierre vous demande un livrable pour vendredi. Vous savez que vous pouvez le faire sérieusement pour lundi, ou le bâcler pour vendredi. Il n'a pas précisé pourquoi vendredi.",
+        tags: ["délai", "négociation"],
+        answers: [
+          { text: "Je livre quelque chose vendredi — un délai, c'est un délai.", score: 0 },
+          { text: "Je lui demande si lundi matin lui convient en lui expliquant ce que ça change en termes de qualité.", score: 2 },
+          { text: "Je travaille le week-end pour lui livrer quelque chose de correct vendredi.", score: 0 },
+          { text: "Je lui envoie une version provisoire vendredi et je complète lundi.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
         },
-        {
-          text: "Un projet important est bloqué en attente d'une décision d'une autre équipe. Vous perdez du temps à attendre. Que faites-vous ?",
-          answers: [
-          {text: "J'attends — ce n'est pas de mon ressort.", score: 0},
-          {text: "Je relance l'autre équipe régulièrement.", score: 1},
-          {text: "Je cherche ce que je peux faire avancer en parallèle et je remonte le blocage à mon responsable.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue d'une autre équipe vous sollicite régulièrement en dehors de vos missions officielles. Ses demandes sont légitimes, mais elles empiètent sérieusement sur votre propre charge.",
+        tags: ["limites", "pression"],
+        answers: [
+          { text: "Je continue de l'aider — refuser serait perçu comme un manque d'esprit d'équipe.", score: 0 },
+          { text: "J'en parle à mon responsable pour qu'il arbitre officiellement.", score: 1 },
+          { text: "Je lui dis que je ne peux plus répondre à ses demandes dans les délais qu'il attend, et je lui propose une alternative.", score: 2 },
+          { text: "Je réponds en prenant plus de temps, pour décourager progressivement sans avoir à refuser.", score: 0 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
         },
-        {
-          text: "En fin de semaine, vous réalisez que vous avez travaillé principalement sur des urgences et rien sur les sujets de fond importants. Que faites-vous ?",
-          answers: [
-          {text: "C'est normal — les urgences passent toujours avant.", score: 0},
-          {text: "Je planifie du temps pour les sujets de fond la semaine suivante.", score: 1},
-          {text: "J'analyse si cette situation est récurrente et cherche à construire un rythme qui protège les deux types de travail.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous annoncez un délai, il reflète ce que vous pouvez réellement faire plutôt que ce que vous pensez que l'autre veut entendre.",
+        tags: ["délai", "réalisme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, tout le monde dit oui à tout — c'est la culture. Quand Claire a essayé de refuser une mission il y a six mois, ça a mal été perçu. On vous demande quelque chose que vous ne pouvez pas assumer.",
+        tags: ["refus", "normes de groupe"],
+        answers: [
+          { text: "J'accepte — la culture de l'équipe compte et je ne veux pas être celui qui fait des vagues.", score: 0 },
+          { text: "J'accepte mais je demande qu'on retire une autre tâche de mon périmètre en échange.", score: 2 },
+          { text: "J'accepte en me disant que je gérerai — les autres y arrivent bien.", score: 0 },
+          { text: "Je refuse en expliquant ma charge actuelle, même si ça crée un inconfort.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez accepté un délai serré il y a deux semaines. Aujourd'hui, vous réalisez que vous ne pouvez pas tenir. Il reste quatre jours.",
+        tags: ["délai", "charge"],
+        answers: [
+          { text: "Je travaille jour et nuit pour tenir — j'ai donné ma parole.", score: 0 },
+          { text: "J'attends le dernier moment pour prévenir — peut-être que je trouverai une solution d'ici là.", score: 0 },
+          { text: "Je préviens maintenant en expliquant la situation et en proposant un nouveau délai réaliste.", score: 2 },
+          { text: "Je livre ce que j'ai dans les délais, même incomplet, et je complète ensuite.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous osez dire non à votre responsable quand une demande est incompatible avec votre charge, en le formulant sur les faits et non sur votre volonté.",
+        tags: ["refus", "hiérarchie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Marc vous contacte un vendredi soir à 19h sur votre téléphone personnel pour une question professionnelle non urgente. Ce n'est pas la première fois.",
+        tags: ["limites", "relations"],
+        answers: [
+          { text: "Je réponds — être disponible fait partie de ma relation de travail avec lui.", score: 0 },
+          { text: "Je réponds ce soir et je lui dis demain matin que je préfère qu'on garde les échanges pro dans les horaires de travail.", score: 2 },
+          { text: "Je lis le message et je réponds lundi — il saura que j'ai vu.", score: 1 },
+          { text: "Je ne réponds pas et je fais comme si je n'avais pas vu.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez votre charge réelle avant d'accepter une nouvelle mission plutôt que d'accepter d'abord et d'évaluer ensuite.",
+        tags: ["délai", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous acceptez plus que vous ne pouvez tenir, par crainte de décevoir ou de paraître peu impliqué·e", desc: "Dire oui quand votre charge est déjà pleine, annoncer des délais que vous savez irréalistes pour ne pas décevoir, rattraper le soir ce que la journée n'a pas permis : ces comportements protègent la relation à court terme mais créent une pression structurelle difficile à tenir. Négocier un délai est toujours plus solide que le rater." },
+          moyen: { label: "Pratiques en développement", titre: "Vous négociez les délais quand c'est évident, vous acceptez encore quand la pression est forte", desc: "Vous savez demander un délai supplémentaire quand c'est raisonnable. Mais sous pression hiérarchique forte ou dans une culture où tout le monde dit oui, vous pouvez encore vous retrouver à accepter ce que vous ne pouvez pas assumer. L'enjeu est de maintenir ce cap précisément dans ces situations." },
+          haut:  { label: "Réflexes installés", titre: "Vous négociez les délais sur les faits, pas sur votre envie de tenir ou de décevoir", desc: "Vous annoncez des délais réalistes, vous les renégociez quand les conditions changent, et vous maintenez cette posture même sous pression hiérarchique. Ce n'est pas du confort — c'est de la fiabilité. Les gens qui travaillent avec vous savent ce qu'ils peuvent attendre de vous, et c'est bien plus précieux qu'un oui qui ne tient pas." },
+        },
+      }
     ],
+
+    // ── Chapitre 3 : Déléguer et faire confiance
     2: [
-        {
-          text: "Votre équipe est sous pression et les tensions montent entre membres. Vous observez des conflits sur les priorités. Que faites-vous ?",
-          answers: [
-          {text: "Je laisse chaque personne gérer ses propres urgences.", score: 0},
-          {text: "Je clarifie mes propres priorités sans intervenir sur les autres.", score: 1},
-          {text: "Je propose un moment de synchronisation collective pour aligner les priorités de l'équipe.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous déléguez un dossier à Inès, une collaboratrice compétente. Trois jours plus tard, elle ne vous a pas rendu compte spontanément. L'échéance est dans une semaine.",
+        tags: ["délégation", "contrôle"],
+        answers: [
+          { text: "Je reprends le dossier discrètement — mieux vaut ne pas risquer un retard.", score: 0 },
+          { text: "Je lui envoie un message pour reprendre le contrôle sur les points clés.", score: 0.5 },
+          { text: "Je lui demande où elle en est et ce dont elle a besoin pour avancer.", score: 2 },
+          { text: "J'attends qu'elle revienne vers moi — si elle ne le fait pas, c'est qu'elle gère.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
         },
-        {
-          text: "Deux collègues vous sollicitent en même temps pour des demandes légitimes mais incompatibles. Que faites-vous ?",
-          answers: [
-          {text: "Je réponds au premier qui m'a contacté.", score: 0},
-          {text: "Je fais la moitié de chaque.", score: 1},
-          {text: "Je les mets en relation pour qu'ils trouvent un accord sur ce qui est prioritaire.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous déléguez une tâche, vous laissez à l'autre la liberté de la faire à sa façon sans intervenir dès que vous auriez fait différemment.",
+        tags: ["délégation", "lâcher-prise"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
         },
-        {
-          text: "La charge de votre équipe empêche toute remontée d'information vers les autres équipes. Des problèmes s'accumulent en silence. Que faites-vous ?",
-          answers: [
-          {text: "Je gère mon côté — la communication, c'est pour les managers.", score: 0},
-          {text: "Je cherche à envoyer des mises à jour sommaires.", score: 1},
-          {text: "Je signale à mon responsable que la surcharge génère des risques d'information et de coordination.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Kevin vous rend un travail correct mais que vous auriez fait différemment sur plusieurs points. Le résultat atteint l'objectif fixé.",
+        tags: ["délégation", "perfectionnisme"],
+        answers: [
+          { text: "Je le refais moi-même — si je dois expliquer chaque correction, autant le faire directement.", score: 0 },
+          { text: "Je corrige les points essentiels avant de le transmettre, sans lui dire.", score: 0 },
+          { text: "Je lui donne un retour précis sur ce qui fonctionne et ce qui pourrait être amélioré la prochaine fois.", score: 2 },
+          { text: "Je valide sans commentaire — le résultat est là, c'est l'essentiel.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
         },
-        {
-          text: "Un collègue dit qu'il gère bien alors qu'il accumule visiblement du retard et du stress. Que faites-vous ?",
-          answers: [
-          {text: "Je le crois — c'est à lui de dire si ça ne va pas.", score: 0},
-          {text: "Je lui demande si je peux l'aider.", score: 1},
-          {text: "Je lui offre un espace pour parler de sa charge de façon factuelle, sans jugement.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous dit qu'il préfère que vous gériez vous-même les dossiers importants plutôt que de les passer à votre équipe. Votre charge ne le permet plus.",
+        tags: ["délégation", "hiérarchie"],
+        answers: [
+          { text: "J'obéis — c'est lui qui voit ce qui est important et je ne vais pas contester.", score: 0 },
+          { text: "Je délègue quand même discrètement en gardant la main visible sur les livrables.", score: 1 },
+          { text: "Je lui explique que ma charge actuelle m'impose de déléguer et je lui propose comment sécuriser la qualité.", score: 2 },
+          { text: "Je lui demande quels dossiers précisément il veut que je garde et je délègue le reste.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
         },
-        {
-          text: "Votre équipe a des réunions qui pourraient être des emails. Elles mobilisent beaucoup de temps. Que faites-vous ?",
-          answers: [
-          {text: "Je continue à participer — c'est décidé par la hiérarchie.", score: 0},
-          {text: "Je manque certaines réunions si elles ne me concernent pas directement.", score: 1},
-          {text: "Je propose une revue du format et de la fréquence pour récupérer du temps de travail.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous déléguez aussi pour développer les compétences de vos collègues, pas seulement pour vous décharger.",
+        tags: ["délégation", "développement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Rachel, à qui vous avez délégué une mission, a fait une erreur qui va vous coûter du temps à corriger. C'est la première fois que ça arrive.",
+        tags: ["délégation", "erreur"],
+        answers: [
+          { text: "Je récupère toutes ses missions importantes — la confiance se mérite.", score: 0 },
+          { text: "Je corrige l'erreur moi-même sans lui en parler pour ne pas la déstabiliser.", score: 0 },
+          { text: "Je corrige avec elle en lui expliquant ce qui s'est passé — c'est le meilleur moyen d'éviter que ça se reproduise.", score: 2 },
+          { text: "Je lui signale l'erreur et je lui demande de corriger elle-même.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez un dossier complexe à traiter. Quelqu'un dans votre équipe pourrait le prendre, mais lui expliquer ce qu'il faut faire prendrait presque autant de temps que de le faire vous-même.",
+        tags: ["délégation", "perfectionnisme"],
+        answers: [
+          { text: "Je le fais moi-même — la délégation n'est rentable que sur des tâches simples.", score: 0 },
+          { text: "Je le délègue quand même — l'investissement initial paie sur les prochaines fois.", score: 2 },
+          { text: "Je découpe le dossier et je délègue la partie la plus simple.", score: 1 },
+          { text: "Je le fais cette fois, mais je note de former cette personne à ce type de dossier.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous déléguez, vous précisez le résultat attendu et la latitude laissée plutôt que de décrire comment faire.",
+        tags: ["délégation", "clarté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Sophie a déjà beaucoup de travail, mais c'est la personne la plus compétente pour une mission que vous devez lui déléguer. Les autres membres de l'équipe pourraient s'en charger avec un peu d'accompagnement.",
+        tags: ["délégation", "charge"],
+        answers: [
+          { text: "Je la donne à Sophie — la qualité prime, et elle saura gérer sa charge.", score: 0 },
+          { text: "Je la donne à Sophie en lui demandant si elle peut l'absorber.", score: 1 },
+          { text: "Je la confie à quelqu'un de moins expérimenté en prévoyant un accompagnement.", score: 2 },
+          { text: "Je la garde moi-même pour ne pas créer de déséquilibre dans l'équipe.", score: 0.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites des points de suivi sur les missions déléguées sans reprendre la main sur la façon dont elles sont menées.",
+        tags: ["délégation", "suivi"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous gardez la main sur ce que vous pourriez déléguer, souvent pour de bonnes raisons", desc: "Reprendre un dossier délégué parce que l'autre n'a pas rendu compte, corriger discrètement sans expliquer, garder les missions importantes pour ne pas risquer la qualité : la délégation demande un vrai lâcher-prise. L'investissement initial paie toujours sur la durée." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déléguez, mais vous reprenez la main dès que le résultat s'éloigne de ce que vous auriez fait", desc: "Vous déléguez régulièrement. Mais le suivi peut virer au contrôle quand le résultat s'éloigne de votre façon de faire. L'enjeu est de distinguer les corrections vraiment nécessaires des préférences personnelles, et de laisser les gens apprendre en faisant." },
+          haut:  { label: "Réflexes installés", titre: "Vous déléguez en faisant confiance au résultat attendu, pas à la méthode", desc: "Vous déléguez en confiant un résultat à atteindre plutôt qu'une façon de faire à reproduire. Vous faites des points sans reprendre la main, et vous utilisez les erreurs comme des occasions d'apprentissage plutôt que des preuves qu'il vaut mieux tout faire soi-même. C'est ce qui développe réellement les personnes autour de vous." },
+        },
+      }
     ],
+
+    // ── Chapitre 4 : Prioriser sous pression hiérarchique
     3: [
-        {
-          text: "Vous êtes régulièrement le dernier à partir et le premier à arriver. Vos collègues font des journées normales. Que faites-vous ?",
-          answers: [
-          {text: "C'est mon rythme — je suis plus efficace ainsi.", score: 0},
-          {text: "Je me demande si je pourrais être plus efficace.", score: 1},
-          {text: "Je prends cela comme un signal et cherche à comprendre si ma charge est réellement différente ou si c'est mon organisation qui est à revoir.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Votre responsable et le directeur commercial vous demandent chacun quelque chose de prioritaire le même jour. Les deux sont convaincus que leur demande est la plus urgente.",
+        tags: ["priorisation", "hiérarchie"],
+        answers: [
+          { text: "Je commence par la demande du directeur commercial — il est plus haut dans la hiérarchie.", score: 0 },
+          { text: "Je traite les deux en parallèle en faisant la moitié de chaque — au moins j'avance sur les deux.", score: 0.5 },
+          { text: "Je les préviens tous les deux et je leur demande de s'aligner sur la priorité entre eux.", score: 2 },
+          { text: "Je choisis selon ce qui me semble le plus urgent et je préviens l'autre que je le traite ensuite.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
         },
-        {
-          text: "Votre responsable n'est jamais disponible pour prioriser avec vous. Vous décidez seul en permanence. Que faites-vous ?",
-          answers: [
-          {text: "Je fais de mon mieux avec les informations disponibles.", score: 0},
-          {text: "Je lui envoie des emails pour le tenir informé.", score: 1},
-          {text: "Je formalise une demande d'entretien régulier et explique pourquoi c'est important pour la qualité de mon travail.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Face à des injonctions contradictoires de plusieurs responsables, vous cherchez à les faire arbitrer entre eux plutôt qu'à absorber la contradiction seul.",
+        tags: ["priorisation", "injonctions contradictoires"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
         },
-        {
-          text: "Vous réalisez que vous n'avez pas pris une vraie pause depuis des semaines. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — je rattrapais un retard important.", score: 0},
-          {text: "Je prends une demi-journée quand je peux.", score: 1},
-          {text: "Je pose une vraie période de déconnexion et en informe mon entourage professionnel.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a accumulé du retard. Votre responsable vous demande de 'rattraper' d'ici vendredi en travaillant sur tout simultanément. Vous savez que ça va produire un travail bâclé sur tout.",
+        tags: ["priorisation", "pression"],
+        answers: [
+          { text: "Je m'exécute — c'est lui qui répond de la situation vis-à-vis de la direction.", score: 0 },
+          { text: "Je fais de mon mieux sur tout sans le contredire — il verra bien le résultat.", score: 0 },
+          { text: "Je lui propose de sélectionner les deux ou trois points les plus critiques et de reporter le reste officiellement.", score: 2 },
+          { text: "Je priorise moi-même sans lui en parler et je lui présente le résultat vendredi.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
         },
-        {
-          text: "Vous avez fait remonter votre surcharge à votre responsable et rien n'a changé deux semaines plus tard. Que faites-vous ?",
-          answers: [
-          {text: "J'arrête de signaler — ça ne sert à rien.", score: 0},
-          {text: "Je relance à nouveau.", score: 1},
-          {text: "Je fais une demande formelle d'arbitrage en précisant les conséquences concrètes de la surcharge.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Une réunion de direction est prévue dans deux jours. Tout le monde se concentre sur la présentation à préparer. Un problème client important qui couve depuis une semaine risque de se dégrader si personne ne s'en occupe aujourd'hui.",
+        tags: ["priorisation", "court terme"],
+        answers: [
+          { text: "Je me concentre sur la présentation comme tout le monde — la réunion est prioritaire pour la hiérarchie.", score: 0 },
+          { text: "Je m'occupe du problème client en espérant que personne ne remarquera que je n'ai pas avancé sur la présentation.", score: 0.5 },
+          { text: "Je signale le problème client à mon responsable et je lui demande comment arbitrer entre les deux.", score: 2 },
+          { text: "Je partage le problème client avec un collègue pour qu'il le prenne pendant que je prépare la présentation.", score: 1.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
         },
-        {
-          text: "Votre charge ne diminue pas et vous commencez à faire des erreurs inhabituelles. Que faites-vous ?",
-          answers: [
-          {text: "Je fais encore plus attention.", score: 0},
-          {text: "J'en parle à mon responsable.", score: 1},
-          {text: "Je traite cela comme un signal d'alarme sérieux et prends les mesures nécessaires, même si c'est inconfortable.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous rendez visibles vos arbitrages de priorité auprès de votre responsable plutôt que de les gérer silencieusement.",
+        tags: ["priorisation", "visibilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Depuis trois mois, la charge de votre équipe est structurellement trop élevée. Tout le monde s'en accommode et votre responsable ne semble pas s'en rendre compte.",
+        tags: ["priorisation", "charge durable"],
+        answers: [
+          { text: "On tient — si ça devenait vraiment insoutenable, quelqu'un d'autre le dirait.", score: 0 },
+          { text: "Je le signale à mon responsable avec des données concrètes sur la charge réelle de l'équipe.", score: 2 },
+          { text: "J'en parle à mes collègues pour voir si eux aussi perçoivent la situation comme moi.", score: 1 },
+          { text: "Je cherche des gains d'efficacité pour que l'équipe absorbe mieux la charge.", score: 0.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez choisir entre finir un travail important à 80% correctement ou en commencer deux nouveaux demandés en urgence. Votre responsable ne sait pas que vous avez ce dilemme.",
+        tags: ["priorisation", "décision"],
+        answers: [
+          { text: "Je commence les deux nouveaux — les urgences passent avant les travaux en cours.", score: 0 },
+          { text: "Je lui soumets le dilemme avant de décider — c'est lui qui doit arbitrer.", score: 2 },
+          { text: "Je finis le premier à 80% puis je commence les deux nouveaux.", score: 1 },
+          { text: "Je jongle entre les trois en avançant un peu sur chaque.", score: 0.5 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous protégez du temps pour les tâches de fond importantes même quand les urgences du moment pourraient les évincer.",
+        tags: ["priorisation", "long terme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un client important insiste pour que son dossier soit traité en priorité. Votre responsable vous dit d'en tenir compte. Deux autres dossiers moins visibles sont pourtant plus urgents objectivement.",
+        tags: ["priorisation", "pression client"],
+        answers: [
+          { text: "Je traite le dossier du client important en premier — mon responsable a tranché.", score: 0 },
+          { text: "Je traite les dossiers dans l'ordre objectif sans mentionner à mon responsable ce que j'ai décidé.", score: 0.5 },
+          { text: "Je lui explique l'ordre de priorité réel et je lui demande de confirmer ou d'assumer l'arbitrage.", score: 2 },
+          { text: "Je traite les trois en parallèle pour que personne ne soit lésé.", score: 1 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos priorités du jour correspondent à ce que vous avez annoncé à votre responsable, pas à ce que les demandes du moment ont fini par imposer.",
+        tags: ["priorisation", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas:   { label: "Repères à consolider", titre: "Vous absorbez les contradictions de priorité sans les rendre visibles à ceux qui pourraient les arbitrer", desc: "Choisir seul entre deux demandes contradictoires, s'exécuter sans dire que c'est incompatible avec la charge existante, gérer silencieusement des arbitrages qui devraient être visibles : ce sont vos responsables qui doivent arbitrer, pas vous absorber. Rendre ces tensions visibles, c'est leur permettre de décider." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les surcharges ponctuelles, les tensions structurelles restent encore silencieuses", desc: "Vous nommez les problèmes de charge quand ils sont aigus. Mais les tensions plus lentes et structurelles — une charge globalement trop élevée, des injonctions contradictoires qui durent — restent encore dans le registre de l'adaptation personnelle. L'enjeu est de les rendre visibles avant qu'elles pèsent sur les personnes." },
+          haut:  { label: "Réflexes installés", titre: "Vous rendez visibles les contradictions de priorité pour que ceux qui peuvent arbitrer le fassent", desc: "Vous ne choisissez pas seul entre des priorités contradictoires quand ce n'est pas votre rôle de le faire. Vous signalez les tensions structurelles avec des faits concrets plutôt que de les absorber. Et vous protégez du temps pour ce qui est important avant que les urgences du moment ne l'évincent complètement." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "cooperation-climat": {
     0: [
