@@ -3368,177 +3368,672 @@
   },
   // ─────────────────────────────────────────────────────────────────────
 
-  "epi-gestes-securite": {
+    "epi-gestes-securite": {
     0: [
-        {
-          text: "Vous êtes à court d'un EPI spécifique et devez attendre son réapprovisionnement. Votre tâche est urgente. Que faites-vous ?",
-          answers: [
-          {text: "Je réalise la tâche — l'urgence prime.", score: 0},
-          {text: "Je fais la tâche en faisant davantage attention.", score: 1},
-          {text: "Je suspends la tâche et signale le manque d'EPI avant de reprendre.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous entrez dans une zone où le port du casque est obligatoire. Votre intervention dure deux minutes et vous connaissez parfaitement cet endroit. Votre casque est à l'entrée.",
+        tags: ["EPI", "port"],
+        answers: [
+          { text: "J'entre sans casque — deux minutes en zone connue, le risque est négligeable.", score: 0 },
+          { text: "Je retourne le chercher avant d'entrer.", score: 2 },
+          { text: "Je fais vite et je reste près de l'entrée pour minimiser le risque.", score: 0 },
+          { text: "Je vérifie d'abord si quelqu'un me regarde avant de décider.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
         },
-        {
-          text: "Vous vérifiez un EPI avant utilisation et vous trouvez un défaut mineur. L'EPI est encore fonctionnel selon vous. Que faites-vous ?",
-          answers: [
-          {text: "Je l'utilise — le défaut est mineur.", score: 0},
-          {text: "Je l'utilise mais je signale le défaut après ma tâche.", score: 1},
-          {text: "Je le mets de côté et en prends un en bon état avant de démarrer.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Il fait 35 degrés sur le chantier. Votre collègue Karim a retiré ses gants de protection pour la troisième fois de la matinée. Il dit que c'est insupportable et que personne ne va l'en empêcher.",
+        tags: ["EPI", "chaleur"],
+        answers: [
+          { text: "Je le laisse — dans cette chaleur, sa décision est compréhensible.", score: 0 },
+          { text: "Je lui rappelle que les gants sont obligatoires et je lui suggère de signaler le problème à notre responsable.", score: 2 },
+          { text: "Je lui prête les miens plus respirants si j'en ai.", score: 1 },
+          { text: "Je le signale à notre chef d'équipe pour qu'il gère.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
         },
-        {
-          text: "Votre EPI habituel est inconfortable et vous ralentit. Un collègue ne porte pas le sien et semble travailler sans difficulté. Que faites-vous ?",
-          answers: [
-          {text: "Je retire également le mien — l'inconfort n'est pas justifié.", score: 0},
-          {text: "Je garde le mien mais je comprends la position du collègue.", score: 1},
-          {text: "Je garde le mien et, si la gêne est réelle, je le signale pour qu'une solution soit trouvée.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous portez tous les EPI requis dans leur intégralité, quelle que soit la durée de l'intervention ou votre familiarité avec la zone.",
+        tags: ["EPI", "systématisme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
         },
-        {
-          text: "Vous êtes pressé de démarrer une tâche et l'EPI requis prend du temps à enfiler correctement. Que faites-vous ?",
-          answers: [
-          {text: "Je le mets rapidement sans trop vérifier l'ajustement.", score: 0},
-          {text: "Je le mets correctement mais plus vite que d'habitude.", score: 1},
-          {text: "Je prends le temps nécessaire pour l'enfiler correctement même si ça retarde le démarrage.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Dans votre équipe, plusieurs anciens ne portent jamais leurs lunettes de protection sur certaines opérations. Quand vous les portez, vous vous sentez regardé·e différemment.",
+        tags: ["EPI", "pression sociale"],
+        answers: [
+          { text: "Je m'aligne progressivement — le regard du groupe compte et ces anciens savent ce qu'ils font.", score: 0 },
+          { text: "Je continue à les porter — ma sécurité ne dépend pas de l'avis de mes collègues.", score: 2 },
+          { text: "Je les porte mais discrètement pour éviter les commentaires.", score: 1.5 },
+          { text: "Je pose la question à notre responsable pour clarifier si c'est vraiment obligatoire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
         },
-        {
-          text: "Un EPI est disponible mais n'est pas obligatoire pour votre tâche selon les procédures, bien qu'il apporte une protection supplémentaire. Que faites-vous ?",
-          answers: [
-          {text: "Je ne le mets pas — ce n'est pas obligatoire.", score: 0},
-          {text: "Je l'utilise quand je sens que le risque est plus élevé.", score: 1},
-          {text: "J'évalue si l'utilisation est pertinente et je l'utilise si elle améliore ma protection sans créer d'autres risques.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez oublié votre harnais de sécurité au vestiaire. Votre intervention en hauteur dure 20 minutes et le vestiaire est à 10 minutes à pied.",
+        tags: ["EPI", "oubli"],
+        answers: [
+          { text: "Je fais l'intervention sans harnais — 20 minutes en hauteur sur une zone connue, je maîtrise.", score: 0 },
+          { text: "Je fais l'aller-retour pour récupérer mon harnais même si ça prend 20 minutes supplémentaires.", score: 2 },
+          { text: "Je cherche un harnais disponible sur place avant de faire l'aller-retour.", score: 1.5 },
+          { text: "Je demande à un collègue de me prêter le sien.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous portez vos EPI même quand vos collègues expérimentés ne le font pas et même quand ça crée un inconfort ou un commentaire.",
+        tags: ["EPI", "résistance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un client fait une visite de votre site. Pour paraître plus à l'aise et professionnel, certains collègues retirent leurs équipements encombrants. Votre responsable ne dit rien.",
+        tags: ["EPI", "visite"],
+        answers: [
+          { text: "Je fais pareil — l'image donnée au client compte et mon responsable valide tacitement.", score: 0 },
+          { text: "Je garde tous mes EPI — les règles sont les mêmes visite ou pas.", score: 2 },
+          { text: "Je garde l'essentiel et retire ce qui est vraiment gênant pour la communication.", score: 0 },
+          { text: "Je demande discrètement à mon responsable ce qu'il attend de nous.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre EPI réglementaire est en mauvais état — une sangle usée sur votre harnais, une fissure sur votre casque. Il n'y a pas de remplacement disponible immédiatement.",
+        tags: ["EPI", "conformité"],
+        answers: [
+          { text: "Je l'utilise quand même — c'est mieux qu'aucun EPI et l'usure est légère.", score: 0 },
+          { text: "Je ne réalise pas l'intervention jusqu'à ce qu'un EPI conforme soit disponible.", score: 2 },
+          { text: "Je fais une inspection rapide pour évaluer si c'est encore utilisable.", score: 0.5 },
+          { text: "Je le signale à mon responsable et j'attends sa décision.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez l'état de vos EPI avant chaque utilisation et vous les remplacez dès qu'ils présentent un défaut, sans attendre qu'on vous le demande.",
+        tags: ["EPI", "état"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les EPI de votre équipe sont mal adaptés à certaines opérations — encombrants, glissants, qui gênent la précision du geste. Tout le monde s'en plaint mais personne ne remonte l'information.",
+        tags: ["EPI", "signalement"],
+        answers: [
+          { text: "Je fais avec — les EPI ont leurs contraintes et il faut s'y adapter.", score: 0 },
+          { text: "Je remonte formellement le problème d'ergonomie pour qu'un EPI plus adapté soit étudié.", score: 2 },
+          { text: "J'adapte moi-même l'EPI pour qu'il soit plus pratique.", score: 0 },
+          { text: "J'en parle à mes collègues pour voir si on peut trouver une solution collective.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous portez vos EPI mais avec des exceptions selon la durée, la zone ou le regard de l'équipe", desc: "Deux minutes en zone connue sans casque, l'oubli du harnais qu'on ne va pas récupérer, l'EPI qu'on retire parce qu'il fait chaud : ces comportements semblent raisonnables situationnellement mais ils représentent précisément les contextes où les accidents surviennent. La durée courte et la familiarité avec la zone sont des facteurs aggravants en termes de baisse de vigilance, pas des facteurs protecteurs." },
+          moyen: { label: "Pratiques en développement", titre: "Vous portez vos EPI correctement dans la plupart des situations mais quelques contextes créent encore des exceptions", desc: "Vous portez vos EPI de façon régulière. Mais certains contextes — l'urgence, la fin de journée, la visite d'un client, un EPI dégradé avec aucun remplacement disponible — peuvent encore créer des exceptions dans votre comportement. L'enjeu est d'éliminer ces exceptions en traitant chaque situation comme une situation normale." },
+          haut: { label: "Réflexes installés", titre: "Vous portez tous vos EPI dans toutes les situations, sans exception ni adaptation selon le contexte", desc: "Vous retournez chercher votre harnais même pour 20 minutes d'intervention. Vous remplacez le casque après un choc même sans dommage visible. Vous ne démarrez pas avec un EPI dégradé même sans remplacement disponible. Cette constance absolue — qui suppose d'assumer des retards et des inconvénients — est ce qui rend le port des EPI réellement protecteur." },
+        },
+      }
     ],
-    1: [
-        {
-          text: "Lors d'une opération difficile et physiquement éprouvante, vous avez l'habitude d'enlever certains EPI dans les moments de pause même si vous restez dans la zone. Quelle est votre pratique ?",
-          answers: [
-          {text: "Je les enlève — la pause est un moment de récupération.", score: 0},
-          {text: "J'enlève les plus contraignants mais garde les essentiels.", score: 1},
-          {text: "Je maintiens l'ensemble de mes EPI tant que je suis dans la zone concernée.", score: 2}
-          ]
-        },
-        {
-          text: "Vous réalisez une tâche identique à celle d'hier mais dans un contexte légèrement différent (météo, luminosité, sol). Vos EPI sont les mêmes. Que faites-vous avant de démarrer ?",
-          answers: [
-          {text: "Je démarre directement — c'est la même tâche.", score: 0},
-          {text: "Je vérifie rapidement si le contexte change quelque chose.", score: 1},
-          {text: "J'évalue si le changement de conditions nécessite des adaptations dans mes protections.", score: 2}
-          ]
-        },
-        {
-          text: "Un EPI collectif (garde-corps, bâche, écran) a été enlevé ou déplacé par une autre équipe pendant votre pause. Que faites-vous ?",
-          answers: [
-          {text: "Je travaille en faisant attention.", score: 0},
-          {text: "Je le remets en place si je peux facilement.", score: 1},
-          {text: "Je le remets en place et signale son déplacement non autorisé.", score: 2}
-          ]
-        },
-        {
-          text: "Vous observez qu'un EPI collectif n'est plus adapté à la configuration du chantier après une modification. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — les autres n'ont pas l'air de voir de problème.", score: 0},
-          {text: "Je le signale à mon responsable directement.", score: 1},
-          {text: "Je signale la non-conformité et suspends les travaux dans la zone jusqu'à correction.", score: 2}
-          ]
-        },
-        {
-          text: "En fin de journée, vous êtes fatigué et il reste une petite tâche. Vous avez déjà rangé vos EPI. Que faites-vous ?",
-          answers: [
-          {text: "Je fais la tâche rapidement — c'est court.", score: 0},
-          {text: "Je réfléchis au risque et décide au cas par cas.", score: 1},
-          {text: "Je remet mes EPI avant de réaliser la tâche, quelle qu'en soit la durée.", score: 2}
-          ]
-        }
-    ],
-    2: [
-        {
-          text: "Vous constatez qu'un EPI présent dans votre zone n'a pas été vérifié depuis longtemps. Il n'est pas en cours d'utilisation. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse — personne n'en a besoin pour l'instant.", score: 0},
-          {text: "Je le mets de côté pour qu'il ne soit pas utilisé.", score: 1},
-          {text: "Je le signale et déclenche sa mise en vérification.", score: 2}
-          ]
-        },
-        {
-          text: "Un extincteur dans votre zone a sa date de contrôle dépassée. Ce n'est pas votre mission principale de le surveiller. Que faites-vous ?",
-          answers: [
-          {text: "Je n'en fais pas mention — ce n'est pas ma responsabilité.", score: 0},
-          {text: "Je l'indique à mon responsable en passant.", score: 1},
-          {text: "Je le signale formellement pour qu'une vérification soit déclenchée rapidement.", score: 2}
-          ]
-        },
-        {
-          text: "Vous découvrez qu'un équipement de protection collective a été accidentellement endommagé lors d'une opération et qu'il n'a pas encore été signalé. Que faites-vous ?",
-          answers: [
-          {text: "J'attends que quelqu'un d'autre le signale.", score: 0},
-          {text: "Je le signale verbalement à mon responsable.", score: 1},
-          {text: "Je le signale immédiatement et m'assure que la zone concernée est sécurisée en attendant la réparation.", score: 2}
-          ]
-        },
-        {
-          text: "Lors d'un contrôle, un EPI qui ne vous appartient pas est identifié comme défectueux. Son propriétaire n'est pas là. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse — le propriétaire le verra quand il reviendra.", score: 0},
-          {text: "Je le mets de côté pour qu'il ne soit pas utilisé par erreur.", score: 1},
-          {text: "Je le mets de côté, le signale et préviens le propriétaire dès que possible.", score: 2}
-          ]
-        },
-        {
-          text: "Un EPI de remplacement que vous avez trouvé n'est pas exactement le même modèle que le vôtre. Il semble adapté mais vous n'en êtes pas sûr. Que faites-vous ?",
-          answers: [
-          {text: "Je l'utilise — il couvre la même zone et semble équivalent.", score: 0},
-          {text: "Je l'utilise mais je le signale après.", score: 1},
-          {text: "Je vérifie sa conformité avec les exigences du poste avant de l'utiliser.", score: 2}
-          ]
-        }
-    ],
-    3: [
-        {
-          text: "Vous êtes le seul à porter systématiquement ses EPI dans votre équipe. Les autres vous taquinent. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je prends cela avec légèreté et m'interroge sur ma propre rigidité.", score: 0},
-          {text: "Je maintiens mes pratiques sans rien dire.", score: 1},
-          {text: "Je maintiens mes pratiques et, si c'est le bon moment, j'explique pourquoi je le fais.", score: 2}
-          ]
-        },
-        {
-          text: "Un collaborateur junior vous demande si les EPI sont vraiment nécessaires pour une tâche courte. Que lui répondez-vous ?",
-          answers: [
-          {text: "Je lui dis que c'est à lui de juger selon la situation.", score: 0},
-          {text: "Je lui dis que c'est obligatoire sans expliquer davantage.", score: 1},
-          {text: "Je lui explique pourquoi les EPI sont importants même pour les tâches courtes et l'aide à les porter correctement.", score: 2}
-          ]
-        },
-        {
-          text: "Vous observez qu'un collègue porte son casque de façon incorrecte (courroie non attachée). C'est habituel chez lui. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — il sait ce qu'il fait.", score: 0},
-          {text: "Je lui en parle une fois mais sans insister.", score: 1},
-          {text: "Je lui signale de façon factuelle et m'assure qu'il comprend l'importance de l'ajustement.", score: 2}
-          ]
-        },
-        {
-          text: "Votre équipe a pris l'habitude de ranger les EPI dans un endroit peu pratique, ce qui décourage leur utilisation. Que faites-vous ?",
-          answers: [
-          {text: "Je m'adapte comme tout le monde.", score: 0},
-          {text: "Je range les miens à un endroit accessible pour moi.", score: 1},
-          {text: "Je propose une solution d'organisation plus pratique pour faciliter leur usage par tous.", score: 2}
-          ]
-        },
-        {
-          text: "Un prestataire travaillant dans votre zone n'a pas les EPI adaptés à votre site. Il dit que les siens sont équivalents. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse travailler — il est responsable de ses propres EPI.", score: 0},
-          {text: "Je lui signale que ses EPI devraient être vérifiés.", score: 1},
-          {text: "Je remonte la situation à mon responsable pour que la conformité soit vérifiée avant qu'il continue.", score: 2}
-          ]
-        }
-    ],
-  },
 
+    1: [
+      {
+        type: "choix",
+        text: "Lors de votre première semaine sur un nouveau poste, vous observez que les gestes de sécurité que vous appliquez sont différents de ceux de l'équipe en place. Jonathan, l'ancien référent, vous dit avec bienveillance que 'dans la vraie vie, on fait différemment'.",
+        tags: ["pression sociale", "anciens"],
+        answers: [
+          { text: "Je m'adapte progressivement aux pratiques de l'équipe — Jonathan connaît ce poste depuis des années.", score: 0 },
+          { text: "Je continue à appliquer ce que j'ai appris et je pose des questions sur les raisons des différences.", score: 2 },
+          { text: "Je fais comme l'équipe pendant la période d'intégration et je réévalue une fois bien installé·e.", score: 0 },
+          { text: "J'en parle à notre responsable pour avoir sa position officielle.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos gestes de sécurité ne changent pas selon que vous êtes nouveau·elle, en période d'intégration, ou sous le regard d'anciens qui font autrement.",
+        tags: ["pression sociale", "autonomie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous portez vos protections auditives alors que vos collègues ne le font pas sur cette opération. L'un d'eux se moque gentiment de votre 'excès de précaution'.",
+        tags: ["pression sociale", "moquerie"],
+        answers: [
+          { text: "Je les retire pour ne pas me distinguer — c'est une moquerie légère mais qui isole.", score: 0 },
+          { text: "Je réponds calmement que je préfère prévenir et je garde mes protections.", score: 2 },
+          { text: "Je les garde sans répondre — mieux vaut ignorer.", score: 1.5 },
+          { text: "Je leur explique les risques liés au bruit pour qu'ils reconsidèrent.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe est évaluée sur sa productivité. Certains collègues ont pris l'habitude de sauter la remise en état des EPI après utilisation pour gagner quelques minutes. L'ambiance est à la performance.",
+        tags: ["pression sociale", "productivité"],
+        answers: [
+          { text: "Je fais pareil — la pression sur les résultats est réelle et quelques minutes comptent.", score: 0 },
+          { text: "Je maintiens la remise en état systématique même si ça me distingue de l'équipe.", score: 2 },
+          { text: "Je fais une remise en état rapide en gardant les étapes critiques.", score: 0.5 },
+          { text: "Je soulève le sujet en réunion d'équipe pour qu'on trouve une solution collective.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Votre façon d'utiliser et d'entretenir vos EPI ne change pas selon la pression de l'équipe, l'ambiance du moment ou ce que font vos collègues.",
+        tags: ["pression sociale", "constance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre chef d'équipe ne porte pas toujours ses EPI et ne s'en cache pas. Certains collaborateurs le prennent comme un signal implicite qu'ils peuvent faire de même.",
+        tags: ["pression sociale", "chef"],
+        answers: [
+          { text: "Je prends la même liberté — si le chef ne les porte pas, c'est que ce n'est pas vraiment obligatoire.", score: 0 },
+          { text: "Je continue à porter les miens indépendamment de ce que fait le chef.", score: 2 },
+          { text: "Je lui en parle discrètement pour qu'il mesure l'effet que ça a sur l'équipe.", score: 1.5 },
+          { text: "J'en parle à son responsable hiérarchique.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "C'est la fin de la journée. Tout le monde est fatigué et certains collègues commencent à bâcler les vérifications d'EPI avant les dernières opérations. L'ambiance est détendue.",
+        tags: ["pression sociale", "fin de journée"],
+        answers: [
+          { text: "Je suis le mouvement — c'est la fin de journée et tout le monde est dans le même état.", score: 0 },
+          { text: "Je maintiens mes vérifications habituelles même si je suis le dernier à le faire.", score: 2 },
+          { text: "Je fais les vérifications essentielles plus rapidement.", score: 0.5 },
+          { text: "Je propose qu'on se regroupe 5 minutes pour finir correctement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une situation urgente nécessite une intervention rapide. Dans l'agitation, plusieurs collègues démarrent sans avoir pris le temps de vérifier leurs EPI. La pression est forte.",
+        tags: ["pression sociale", "urgence"],
+        answers: [
+          { text: "Je suis le mouvement — l'urgence prime et tout le monde fait pareil.", score: 0 },
+          { text: "Je prends 30 secondes pour vérifier mes EPI avant d'intervenir, même dans l'urgence.", score: 2 },
+          { text: "Je vérifie les EPI critiques et je laisse les secondaires.", score: 1 },
+          { text: "Je crie à mes collègues de vérifier leurs EPI en me vérifiant moi-même.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Même dans une situation d'urgence, vous prenez le temps de vérifier vos équipements de protection avant d'intervenir.",
+        tags: ["pression sociale", "urgence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez remarqué que Sarah, une nouvelle arrivante, a rapidement adopté les mauvaises habitudes de l'équipe sur les EPI pour s'intégrer plus vite.",
+        tags: ["pression sociale", "intégration"],
+        answers: [
+          { text: "Je la laisse faire — c'est à elle de trouver son équilibre entre intégration et sécurité.", score: 0 },
+          { text: "Je lui parle en privé pour lui expliquer les risques réels et lui dire comment je gère cette pression.", score: 2 },
+          { text: "Je la laisse pour l'instant et j'en parle à notre responsable.", score: 0.5 },
+          { text: "Je soulève le sujet en équipe sans la désigner.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La pression sociale de votre équipe influence encore vos comportements avec les EPI", desc: "S'aligner sur les anciens qui ne portent pas leurs lunettes, retirer ses protections parce qu'un collègue se moque, suivre le mouvement en fin de journée : ces ajustements sociaux érodent progressivement les comportements de sécurité. Les gestes de sécurité ne doivent pas dépendre de l'approbation du groupe pour être maintenus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous résistez aux pressions sociales ordinaires mais les plus fortes peuvent encore vous affecter", desc: "Vous résistez aux commentaires et aux comportements du groupe dans la plupart des situations. Mais quand la pression vient du chef d'équipe, dans une période d'intégration sur un nouveau poste, ou lors d'une urgence où tout le monde démarre sans vérifier : votre résistance peut encore fléchir. L'enjeu est de maintenir vos comportements précisément dans ces moments de pression forte." },
+          haut: { label: "Réflexes installés", titre: "Vos gestes de sécurité ne varient pas selon la pression sociale, les anciens ou l'ambiance du groupe", desc: "Vous maintenez vos gestes de sécurité quand les anciens font autrement, quand un collègue se moque, quand l'urgence crée une pression collective à aller vite. Vous parlez à Sarah en privé quand vous la voyez s'aligner sur les mauvaises pratiques du groupe. Cette indépendance comportementale est ce qui distingue un opérateur fiable d'un opérateur dont les comportements de sécurité dépendent du contexte social." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "En début de poste, vous constatez que le harnais qui vous a été attribué présente une couture légèrement effilochée sur une sangle secondaire. Il n'y a pas d'autre harnais disponible ce matin.",
+        tags: ["entretien", "vérification"],
+        answers: [
+          { text: "Je l'utilise — la couture est sur une sangle secondaire et le harnais est globalement en bon état.", score: 0 },
+          { text: "Je refuse d'utiliser ce harnais et je signale l'anomalie avant d'intervenir.", score: 2 },
+          { text: "Je fais une inspection complète pour évaluer si le défaut est vraiment problématique.", score: 0.5 },
+          { text: "Je le signale à mon responsable en lui demandant s'il est utilisable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous inspectez systématiquement vos EPI avant chaque utilisation, même pour des équipements que vous n'avez pas utilisés depuis longtemps.",
+        tags: ["entretien", "inspection"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre masque respiratoire filtrant est rangé dans un tiroir depuis trois mois. Vous devez l'utiliser cet après-midi. Vous ne l'avez pas inspecté depuis son rangement.",
+        tags: ["entretien", "stockage"],
+        answers: [
+          { text: "Je l'utilise directement — il était en bon état quand je l'ai rangé.", score: 0 },
+          { text: "Je réalise une inspection complète avant de l'utiliser.", score: 2 },
+          { text: "Je vérifie visuellement qu'il n'est pas endommagé.", score: 0.5 },
+          { text: "Je demande à mon responsable s'il est encore valide.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez qu'un EPI partagé — une cagoule anti-feu — a visiblement été utilisé sans être nettoyé et présente des traces de suie. Il est rangé dans le stock commun.",
+        tags: ["entretien", "signalement"],
+        answers: [
+          { text: "Je le range comme je l'ai trouvé — ce n'est pas mon EPI et je ne suis pas responsable de son entretien.", score: 0 },
+          { text: "Je le signale et je le retire du stock en attendant son nettoyage.", score: 2 },
+          { text: "Je le nettoie moi-même avant de le ranger.", score: 1 },
+          { text: "Je le laisse mais je préviens mon responsable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La date limite d'utilisation de vos cartouches filtrantes approche dans deux semaines. Vous en avez besoin pour une série d'interventions programmées ce mois-ci.",
+        tags: ["entretien", "date"],
+        answers: [
+          { text: "Je les utilise jusqu'à la date limite — elles sont encore valides.", score: 1 },
+          { text: "Je commande les remplacements maintenant pour ne pas me retrouver en rupture.", score: 2 },
+          { text: "J'attends de voir si les interventions sont confirmées avant de commander.", score: 0 },
+          { text: "Je signale la situation à mon responsable pour qu'il gère le réapprovisionnement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous anticipez les besoins de remplacement ou d'entretien de vos EPI sans attendre d'être en rupture ou de tomber en panne lors d'une intervention.",
+        tags: ["entretien", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre casque a subi un choc significatif lors d'une chute d'objet. Aucun dommage visible n'est apparent. Vous avez encore trois heures de travail.",
+        tags: ["entretien", "choc"],
+        answers: [
+          { text: "Je continue à l'utiliser — aucun dommage visible, il est toujours là.", score: 0 },
+          { text: "Je le remplace immédiatement — un casque ayant subi un choc doit être retiré du service même sans dommage visible.", score: 2 },
+          { text: "Je l'inspecte soigneusement et je le remplace s'il présente un défaut.", score: 0.5 },
+          { text: "Je le signale à la fin de ma journée et je le remplace demain.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez utiliser un EPI partagé que vous n'avez pas inspecté vous-même. Le collègue qui l'a utilisé en dernier dit qu'il est en bon état.",
+        tags: ["entretien", "partage"],
+        answers: [
+          { text: "Je lui fais confiance — il l'a utilisé récemment et il n'aurait pas dit qu'il est bon s'il ne l'était pas.", score: 0 },
+          { text: "Je réalise ma propre inspection avant de l'utiliser.", score: 2 },
+          { text: "Je fais une vérification rapide des points les plus visibles.", score: 1 },
+          { text: "Je lui demande de me montrer ce qu'il a vérifié.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous inspectez personnellement tout EPI avant de l'utiliser, même s'il a été inspecté par quelqu'un d'autre ou certifié conforme.",
+        tags: ["entretien", "responsabilité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre organisation a mis en place un registre de suivi des EPI mais beaucoup de collègues ne le renseignent pas par manque de temps. Vous devez enregistrer une utilisation.",
+        tags: ["entretien", "traçabilité"],
+        answers: [
+          { text: "Je ne renseigne pas non plus — si tout le monde évite, le registre ne sert de toute façon plus à rien.", score: 0 },
+          { text: "Je renseigne le registre même si mes collègues ne le font pas.", score: 2 },
+          { text: "Je renseigne les informations essentielles en simplifiant.", score: 1.5 },
+          { text: "J'en parle à mon responsable pour qu'il rappelle l'obligation à l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous utilisez vos EPI sans vérification systématique préalable", desc: "Utiliser un harnais sans inspection préalable parce qu'un collègue dit qu'il est bon, ranger un masque sans vérification après trois mois, réutiliser un casque ayant subi un choc parce qu'il est visuellement intact : un EPI non inspecté est un EPI dont vous ne connaissez pas l'état réel. L'inspection avant utilisation est la seule façon de savoir ce que vous portez réellement." },
+          moyen: { label: "Pratiques en développement", titre: "Vous vérifiez vos EPI dans la plupart des cas mais votre inspection n'est pas encore totalement systématique", desc: "Vous inspectez vos EPI régulièrement. Mais faire confiance à l'inspection d'un collègue, utiliser un EPI rangé depuis longtemps sans vérification, ou évaluer vous-même si un défaut est 'problématique' : ces comportements laissent des zones d'ombre dans votre pratique. L'enjeu est de rendre l'inspection personnelle et systématique, sans exception." },
+          haut: { label: "Réflexes installés", titre: "Vous inspectez systématiquement vos EPI avant toute utilisation et vous retirez tout équipement douteux", desc: "Vous inspectez vos EPI avant chaque utilisation, même s'ils ont été validés par d'autres. Vous retirez du service tout EPI ayant subi un choc même sans dommage visible. Vous renseignez les registres de suivi même quand vos collègues ne le font pas. Cette rigueur d'inspection et de traçabilité est la condition de base pour que les EPI jouent vraiment leur rôle." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Les gants de protection fournis pour votre poste sont trop grands. Ils glissent lors des manipulations fines et vous gênent réellement. Tout le monde a la même taille.",
+        tags: ["signalement EPI", "inadapté"],
+        answers: [
+          { text: "Je m'adapte — la différence de taille est mineure et les gants restent protecteurs.", score: 0 },
+          { text: "Je signale le problème d'adaptation pour qu'une solution soit trouvée.", score: 2 },
+          { text: "Je retire les gants pour les opérations les plus précises et je les reporte pour les autres.", score: 0 },
+          { text: "Je cherche une autre paire dans les stocks qui me conviendrait mieux.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les problèmes d'inadaptation ou d'ergonomie de vos EPI pour que des solutions soient trouvées, plutôt que de vous en accommoder.",
+        tags: ["signalement EPI", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous arrivez sur votre poste et les EPI requis ne sont pas disponibles — rupture de stock non anticipée. Le responsable de la zone dit de 'se débrouiller' pour l'instant.",
+        tags: ["signalement EPI", "rupture"],
+        answers: [
+          { text: "Je me débrouille — l'organisation fait ce qu'elle peut et l'intervention est urgente.", score: 0 },
+          { text: "Je refuse de démarrer sans les EPI requis et je le signale formellement.", score: 2 },
+          { text: "Je cherche des EPI équivalents dans les autres zones.", score: 1 },
+          { text: "Je contacte directement le responsable sécurité pour débloquer la situation.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez que les EPI de votre équipe sont régulièrement en mauvais état à cause d'une mauvaise organisation du stockage. Personne ne soulève le sujet.",
+        tags: ["signalement EPI", "collectif"],
+        answers: [
+          { text: "Je gère mes propres EPI sans me préoccuper de ceux des autres.", score: 0 },
+          { text: "Je remonte le problème organisationnel pour qu'une solution durable soit trouvée.", score: 2 },
+          { text: "Je sensibilise mes collègues à l'entretien de leurs EPI.", score: 1 },
+          { text: "J'en parle à mon responsable lors du prochain point d'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre poste a évolué et vous réalisez qu'une protection supplémentaire serait nécessaire pour une nouvelle opération. Elle n'est pas prévue dans la liste des EPI requis.",
+        tags: ["signalement EPI", "nouveau risque"],
+        answers: [
+          { text: "Je réalise l'opération sans protection supplémentaire — si elle n'est pas listée, c'est qu'elle n'est pas jugée nécessaire.", score: 0 },
+          { text: "Je signale le besoin identifié pour que la liste des EPI requis soit mise à jour.", score: 2 },
+          { text: "Je me procure moi-même la protection sans passer par les canaux officiels.", score: 0.5 },
+          { text: "Je demande à un collègue confirmé si c'est vraiment nécessaire.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les besoins de protection non couverts par les EPI actuellement fournis lorsque votre activité évolue ou qu'un nouveau risque apparaît.",
+        tags: ["signalement EPI", "mise à jour"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez qu'un·e intérimaire nouvellement arrivé·e travaille sans certains EPI obligatoires. Il ou elle ne semble pas avoir été informé·e de l'obligation.",
+        tags: ["signalement EPI", "tiers"],
+        answers: [
+          { text: "Je laisse — c'est à l'encadrement de vérifier l'équipement des intérimaires.", score: 0 },
+          { text: "Je lui signale l'obligation et je m'assure qu'il ou elle dispose des EPI requis.", score: 2 },
+          { text: "Je le signale à notre responsable pour qu'il gère.", score: 1 },
+          { text: "Je lui prête les miens en attendant qu'il ou elle soit équipé·e.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous utilisez régulièrement un EPI qui protège bien mais dont l'ergonomie rend son port inconfortable au point que beaucoup de collègues l'enlèvent. Il existe un modèle plus adapté sur le marché.",
+        tags: ["signalement EPI", "amélioration"],
+        answers: [
+          { text: "Je continue avec ce modèle — il remplit sa fonction de protection.", score: 0.5 },
+          { text: "Je remonte l'information sur le modèle plus adapté avec des arguments concrets sur les bénéfices pour le port.", score: 2 },
+          { text: "J'achète moi-même le modèle plus adapté.", score: 0 },
+          { text: "J'en parle à mes collègues pour évaluer si le problème est partagé avant de remonter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous contribuez à l'amélioration des EPI de votre équipe en remontant les problèmes d'ergonomie, de disponibilité et d'adaptation, sans attendre qu'on vous le demande.",
+        tags: ["signalement EPI", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez signalé deux fois que les EPI fournis sont inadaptés à une opération spécifique. Rien n'a changé. Vous devez réaliser à nouveau cette opération.",
+        tags: ["signalement EPI", "hiérarchie"],
+        answers: [
+          { text: "Je réalise l'opération avec les EPI disponibles — j'ai fait mon signalement, la balle est dans leur camp.", score: 0 },
+          { text: "Je refuse de réaliser l'opération sans EPI adapté et j'escalade le signalement.", score: 2 },
+          { text: "Je réalise l'opération en prenant mes précautions et je resigne une troisième fois.", score: 0.5 },
+          { text: "Je demande à mon responsable de me confirmer par écrit que je dois intervenir avec ces EPI.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous signalez les problèmes d'EPI graves mais vous vous accommodez des problèmes récurrents", desc: "Accepter de travailler avec des EPI inadaptés parce que l'organisation dit de 'se débrouiller', ne pas remonter un problème d'ergonomie parce que tout le monde fait pareil, ne pas escalader après deux signalements sans effet : un problème d'EPI non résolu est un risque accepté collectivement. Escalader et refuser de démarrer sans EPI adapté sont des comportements légitimes et attendus." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les problèmes d'EPI mais vous hésitez encore à refuser de démarrer ou à escalader", desc: "Vous signalez les problèmes d'EPI quand ils sont évidents. Mais refuser formellement de démarrer sans EPI adapté, escalader après plusieurs signalements sans effet, remonter un besoin de protection non listée : ces comportements plus assertifs sont encore insuffisamment développés. L'enjeu est de passer du signalement à l'action si le signalement reste sans effet." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez et escaladez les problèmes d'EPI jusqu'à leur résolution, y compris en refusant de démarrer si nécessaire", desc: "Vous signalez les EPI inadaptés, vous refusez de démarrer sans EPI conformes, et vous escaladez si les signalements restent sans effet. Vous remontez les besoins de protection non couverts quand votre activité évolue. Cette façon de traiter les EPI comme un sujet à faire progresser — pas comme une contrainte à subir — contribue directement à l'amélioration des conditions de sécurité de votre équipe." },
+        },
+      }
+    ],
+
+  },
   "securite-manager-arbitrage": {
     0: [
         {
@@ -4110,7 +4605,16 @@
   ]}
 ],    
         
-    ["epi-gestes-securite",        "EPI et gestes de sécurité au quotidien",               "Collaborateurs",           "Porter les bons équipements, maintenir ses réflexes sous contrainte et signaler les anomalies matérielles.",                                                    T.securiteEPI],
+["epi-gestes-securite", "EPI et gestes de sécurité au quotidien", "Collaborateurs",
+  "Porter les bons équipements, maintenir ses réflexes sous contrainte et signaler les anomalies matérielles.",
+  { domain: "securite", chapters: [
+    ["Porter les EPI dans toutes les situations",    "Appliquer les obligations de port sans exception de durée, de zone ou de contexte."],
+    ["Résister à la pression sociale sur les EPI",   "Maintenir ses gestes de sécurité indépendamment du groupe, des anciens et de l'ambiance."],
+    ["Vérifier et entretenir ses équipements",       "Inspecter systématiquement avant usage et signaler tout défaut sans attendre."],
+    ["Signaler les EPI inadaptés ou manquants",      "Remonter les problèmes d'adaptation et escalader jusqu'à leur résolution."]
+  ]}
+],    
+    
     ["securite-manager-arbitrage", "Arbitrer entre sécurité et pression opérationnelle",   "Managers / Encadrants",    "Tenir les exigences de sécurité face aux délais, traiter les écarts et détecter les dérives silencieuses.",                                                    T.securiteManagerArbitrage],
     ["securite-nucleaire",         "Culture de sûreté en environnement nucléaire",         "Tous publics — Nucléaire", "Adopter la posture de questionnement, appliquer la rigueur procédurale et déclarer les événements précurseurs.",                                                T.securiteNucleaire],
     ["securite-chantier-btp",      "Sécurité sur chantier BTP",                            "Équipes terrain — BTP",    "Sécuriser son poste, gérer la coactivité chantier, respecter le PPSPS et réagir aux incidents.",                                                               T.securiteChantierBTP]
