@@ -1355,176 +1355,676 @@
 
   },
   // ─────────────────────────────────────────────────────────────────────
+    // ─── À coller dans catalogue-securite.js ──────────────────────────────
+  // Clé : "acces-sites-surete"
+
   "acces-sites-surete": {
     0: [
-        {
-          text: "Une personne que vous ne reconnaissez pas se tient devant une porte d'accès sécurisée et attend que quelqu'un lui ouvre. Elle semble attendre un interlocuteur interne. Que faites-vous ?",
-          answers: [
-          {text: "Je lui ouvre — elle attend quelqu'un, ça semble normal.", score: 0},
-          {text: "Je lui demande qui elle attend et si elle a un badge.", score: 1},
-          {text: "Je la redirige vers l'accueil et l'informe qu'elle doit passer par là pour tout accès.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Un livreur se présente à l'accueil avec un colis urgent. Il n'a pas de badge visiteur et dit qu'il est déjà venu plusieurs fois. La réceptionniste est absente ce matin.",
+        tags: ["accès", "contrôle"],
+        answers: [
+          { text: "Je le laisse déposer le colis dans le hall — il connaît le site et c'est urgent.", score: 0 },
+          { text: "Je lui demande d'attendre et je contacte quelqu'un d'habilité à valider son accès.", score: 2 },
+          { text: "Je l'accompagne moi-même jusqu'au bureau concerné pour éviter qu'il circule seul.", score: 1.5 },
+          { text: "Je prends le colis et je le dépose à sa place pour qu'il n'entre pas.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
         },
-        {
-          text: "Votre badge d'accès est en cours de renouvellement depuis plusieurs jours. En attendant, vous entrez grâce à un collègue qui vous ouvre. Quelle est votre attitude ?",
-          answers: [
-          {text: "Je me débrouille avec l'aide des collègues — c'est temporaire.", score: 0},
-          {text: "J'utilise l'aide des collègues mais je relance le service concerné.", score: 1},
-          {text: "Je traite cela comme une priorité : un accès non sécurisé est un problème, même temporaire.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "En arrivant au bureau, vous croisez une personne qui franchit le portique derrière vous sans badger — elle profite de votre passage pour entrer. Vous ne la reconnaissez pas.",
+        tags: ["accès", "badge"],
+        answers: [
+          { text: "Je laisse passer — elle a peut-être oublié son badge et travaille sûrement ici.", score: 0 },
+          { text: "Je lui demande si elle a son badge et je l'oriente vers l'accueil si elle n'en a pas.", score: 2 },
+          { text: "Je la regarde mais je ne dis rien — ce n'est pas mon rôle de contrôler les accès.", score: 0 },
+          { text: "J'en parle à la sécurité après coup en décrivant la personne.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
         },
-        {
-          text: "Vous trouvez un badge d'accès sur le sol dans un couloir. Que faites-vous ?",
-          answers: [
-          {text: "Je le pose sur un bureau visible pour que le propriétaire le retrouve.", score: 0},
-          {text: "Je le dépose à la réception.", score: 1},
-          {text: "Je le remets à la sécurité ou à la personne compétente en signalant où je l'ai trouvé.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous interpellez les personnes que vous ne reconnaissez pas et qui semblent circuler sans être accompagnées dans les zones à accès restreint.",
+        tags: ["accès", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
         },
-        {
-          text: "Un visiteur attendu vous contacte depuis l'extérieur pour que vous veniez l'accueillir directement sans passer par l'accueil officiel. Quelle est votre réponse ?",
-          answers: [
-          {text: "Je vais le chercher — c'est plus pratique et je le connais.", score: 0},
-          {text: "Je lui demande d'aller à l'accueil et vais le rejoindre là-bas.", score: 1},
-          {text: "Je lui explique que la procédure d'enregistrement est obligatoire, même pour les visiteurs connus.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un technicien de maintenance se présente pour une intervention planifiée. Il a un bon de commande mais pas de badge visiteur ni d'escorte. Son intervention est urgente selon lui.",
+        tags: ["accès", "prestataire"],
+        answers: [
+          { text: "Je le laisse intervenir — il a un bon de commande, son intervention est planifiée.", score: 0 },
+          { text: "Je contacte le service qui a commandé l'intervention pour qu'il envoie quelqu'un l'escorter.", score: 2 },
+          { text: "Je l'accompagne moi-même jusqu'à la zone d'intervention.", score: 1.5 },
+          { text: "Je lui donne un badge visiteur temporaire et je lui explique où aller.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
         },
-        {
-          text: "Vous devez travailler tard et constatez qu'une porte coupe-feu est maintenue ouverte avec un objet pour faciliter les allées et venues. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — c'est pratique pour tout le monde.", score: 0},
-          {text: "Je retire l'objet sans en parler à personne.", score: 1},
-          {text: "Je retire l'objet et signale la situation pour qu'elle ne se reproduise pas.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Votre collègue Sarah a oublié son badge. Elle vous demande de la faire entrer avec le vôtre. C'est une personne de confiance que vous côtoyez depuis deux ans.",
+        tags: ["accès", "collègue"],
+        answers: [
+          { text: "Je la fais entrer — elle travaille ici et c'est juste un oubli.", score: 0 },
+          { text: "Je lui dis d'aller à l'accueil pour qu'on lui délivre un badge provisoire.", score: 2 },
+          { text: "Je l'accompagne jusqu'à son bureau et je préviens la sécurité.", score: 1 },
+          { text: "Je refuse mais je l'aide à contacter rapidement quelqu'un qui peut régler la situation.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez de faire entrer quelqu'un sans badge valide, quelle que soit votre relation avec cette personne et quelle que soit l'urgence présentée.",
+        tags: ["accès", "procédure"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez près d'une zone à accès restreint. Vous remarquez qu'une porte de cette zone est entrouverte depuis plusieurs minutes et que personne n'est en vue.",
+        tags: ["accès", "zone sensible"],
+        answers: [
+          { text: "Je la ferme moi-même — c'est probablement un oubli de quelqu'un.", score: 0.5 },
+          { text: "Je contacte la sécurité sans toucher à la porte.", score: 2 },
+          { text: "J'attends encore quelques minutes pour voir si quelqu'un sort.", score: 0 },
+          { text: "Je passe la tête pour vérifier qu'il n'y a personne à l'intérieur avant de fermer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous accompagnez un visiteur client dans vos locaux. En chemin, il vous pose des questions sur le nombre de personnes qui travaillent ici et sur l'organisation des équipes.",
+        tags: ["accès", "visiteur"],
+        answers: [
+          { text: "Je réponds naturellement — c'est un client et ces informations ne sont pas secrètes.", score: 0 },
+          { text: "Je réponds sur les aspects généraux et je dévie les questions qui me semblent trop précises.", score: 2 },
+          { text: "Je lui dis que je préfère qu'il pose ces questions à notre responsable commercial.", score: 1.5 },
+          { text: "Je note mentalement ces questions pour en parler à la sécurité après.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites attention aux informations sur l'organisation et les effectifs que vous partagez avec des personnes extérieures, même dans un contexte commercial.",
+        tags: ["accès", "information"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes en astreinte de nuit. Un individu sonne à l'interphone en disant qu'il est technicien et qu'il a une urgence à traiter. Il n'est pas sur la liste des prestataires autorisés.",
+        tags: ["accès", "nuit"],
+        answers: [
+          { text: "Je le laisse entrer — une urgence technique de nuit ne peut pas attendre la vérification.", score: 0 },
+          { text: "Je refuse l'accès et je contacte mon responsable d'astreinte pour signaler la situation.", score: 2 },
+          { text: "Je lui demande ses coordonnées et je rappelle l'entreprise qu'il prétend représenter avant d'ouvrir.", score: 2 },
+          { text: "Je le laisse entrer en le surveillant de près.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous adaptez encore le contrôle des accès selon votre relation avec la personne ou l'urgence présentée", desc: "Faire entrer un collègue sans badge parce qu'on le connaît, laisser un prestataire circuler seul parce qu'il a un bon de commande, ouvrir une porte sur insistance parce que c'est urgent : ces comportements créent des failles réelles dans des dispositifs de contrôle qui ne valent que si tout le monde les applique sans exception. La familiarité avec une personne ne remplace pas une habilitation valide." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contrôlez les accès correctement dans la plupart des situations mais vous cédez encore sous pression relationnelle", desc: "Vous appliquez les procédures de contrôle d'accès dans les situations ordinaires. Mais face à un collègue proche qui a oublié son badge, un prestataire qui insiste sur l'urgence, ou une demande qui vient de quelqu'un de confiance : votre rigueur peut encore s'adapter. L'enjeu est d'appliquer la même procédure indépendamment de la relation ou de l'urgence présentée." },
+          haut: { label: "Réflexes installés", titre: "Vous contrôlez les accès sans exception, quelle que soit votre relation avec la personne ou l'urgence invoquée", desc: "Vous orientez vers l'accueil le collègue qui a oublié son badge, même s'il est de confiance. Vous refusez l'accès au prestataire non escorté, même si son intervention est urgente. Vous ne franchissez pas une zone sans raison professionnelle, même si votre habilitation le permet. Cette rigueur sans exception est la seule façon de maintenir un dispositif de contrôle d'accès réellement efficace." },
+        },
+      }
     ],
+
     1: [
-        {
-          text: "Vous êtes dans une zone sécurisée et vous voyez une personne que vous ne connaissez pas qui travaille sans accompagnateur visible. Elle semble concentrée. Que faites-vous ?",
-          answers: [
-          {text: "Je continue ma route — elle a l'air de savoir ce qu'elle fait.", score: 0},
-          {text: "Je l'observe depuis à distance pour voir si quelqu'un la rejoint.", score: 1},
-          {text: "Je l'interpelle poliment pour vérifier si elle est bien autorisée à être dans cette zone.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "En passant dans un couloir, vous croisez quelqu'un qui photographie les équipements avec son téléphone. Il a un badge visiteur mais la zone n'est pas une zone de visite habituelle.",
+        tags: ["comportement", "signalement"],
+        answers: [
+          { text: "Je laisse passer — il a un badge visiteur, il est donc autorisé à être là.", score: 0 },
+          { text: "Je l'interpelle poliment pour lui demander l'objet de sa visite et je contacte la sécurité.", score: 2 },
+          { text: "Je contacte discrètement la sécurité sans l'interpeller.", score: 1.5 },
+          { text: "Je note sa description et j'en parle à la fin de ma journée.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
         },
-        {
-          text: "Un technicien de maintenance que vous ne connaissez pas dit être attendu pour une intervention urgente. Il n'a pas de badge visible et son nom n'apparaît pas dans le planning. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse entrer — une intervention urgente, ça ne se reporte pas.", score: 0},
-          {text: "Je lui demande sa carte de visite avant de lui ouvrir.", score: 1},
-          {text: "Je contacte le responsable concerné pour confirmer l'intervention avant tout accès.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement les comportements qui vous semblent anormaux sur votre site, sans attendre de les avoir observés une deuxième fois.",
+        tags: ["comportement", "alerte"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
         },
-        {
-          text: "Vous quittez rapidement votre bureau et oubliez de verrouiller votre écran sur lequel sont affichées des informations confidentielles. Vous vous en rendez compte dans le couloir. Que faites-vous ?",
-          answers: [
-          {text: "Je continue — je reviens dans deux minutes.", score: 0},
-          {text: "Je reviens mais sans y accorder trop d'importance.", score: 1},
-          {text: "Je reviens immédiatement pour verrouiller l'écran.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un véhicule que vous ne reconnaissez pas est garé depuis hier matin sur le parking réservé aux visiteurs. Il est encore là ce matin. Personne ne semble s'en préoccuper.",
+        tags: ["comportement", "véhicule"],
+        answers: [
+          { text: "Je laisse — le parking visiteur est ouvert et un véhicule peut y rester quelques jours.", score: 0 },
+          { text: "Je le signale à la sécurité du site en indiquant depuis quand je l'observe.", score: 2 },
+          { text: "Je regarde s'il y a quelque chose de suspect dans le véhicule avant de décider.", score: 0 },
+          { text: "J'en parle à mes collègues pour voir si quelqu'un le reconnaît.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
         },
-        {
-          text: "Lors d'un événement interne, des visiteurs ont accès à des zones où sont affichés des organigrammes et plans internes. Vous remarquez cela. Que faites-vous ?",
-          answers: [
-          {text: "Ce n'est pas sensible — les visiteurs peuvent voir ça.", score: 0},
-          {text: "Je note l'observation mentalement sans agir.", score: 1},
-          {text: "Je signale la situation pour que les documents soient retirés ou la zone sécurisée.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Un prestataire en intervention vous pose des questions détaillées sur les systèmes de sécurité du bâtiment — cameras, alarmes, rondes de surveillance. Il dit que c'est pour adapter son travail.",
+        tags: ["comportement", "questionnement"],
+        answers: [
+          { text: "Je réponds — il est prestataire autorisé et ses questions semblent liées à son travail.", score: 0 },
+          { text: "Je lui dis que ces informations doivent être demandées au responsable sécurité du site.", score: 2 },
+          { text: "Je réponds de façon vague sans entrer dans les détails.", score: 1 },
+          { text: "Je note ses questions et j'en parle à la sécurité après son départ.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
         },
-        {
-          text: "Un collègue vous demande votre code d'accès car il a oublié le sien. Il est en urgence. Que faites-vous ?",
-          answers: [
-          {text: "Je lui donne — il est fiable et c'est une urgence.", score: 0},
-          {text: "Je lui ouvre moi-même la porte sans lui donner le code.", score: 1},
-          {text: "Je lui ouvre si nécessaire, mais je signale qu'il doit renouveler ses accès plutôt que de partager les miens.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue que vous connaissez bien se comporte de façon inhabituelle depuis quelques jours — nerveux, agité, il évite certaines zones et certaines personnes. Vous ne savez pas quoi penser.",
+        tags: ["comportement", "stress"],
+        answers: [
+          { text: "Je ne dis rien — c'est peut-être personnel et je ne veux pas me mêler de sa vie.", score: 0 },
+          { text: "Je lui demande si tout va bien en tête-à-tête, sans entrer dans les détails de ce que j'ai observé.", score: 1.5 },
+          { text: "Je le signale à la sécurité en décrivant les comportements observés.", score: 2 },
+          { text: "J'en parle à notre responsable pour qu'il fasse le point avec lui.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les comportements qui vous interpellent même quand vous n'êtes pas certain·e qu'ils sont réellement problématiques.",
+        tags: ["comportement", "doute"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous trouvez un colis ou un objet que vous ne reconnaissez pas dans une zone de passage. Il n'y a pas de marquage ni d'indication d'appartenance.",
+        tags: ["comportement", "colis"],
+        answers: [
+          { text: "Je l'ouvre pour identifier son propriétaire.", score: 0 },
+          { text: "Je le signale à la sécurité sans y toucher ni m'en approcher davantage.", score: 2 },
+          { text: "Je le déplace vers l'accueil pour que quelqu'un l'identifie.", score: 0 },
+          { text: "J'attends quelques minutes pour voir si quelqu'un vient le récupérer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous voyez un collègue publier sur ses réseaux sociaux une photo prise dans vos locaux où l'on distingue clairement des équipements sensibles et des informations internes.",
+        tags: ["comportement", "réseaux sociaux"],
+        answers: [
+          { text: "Je ne dis rien — c'est sa vie privée et il ne l'a probablement pas fait intentionnellement.", score: 0 },
+          { text: "Je lui signale ce que j'ai observé et je l'encourage à supprimer la photo.", score: 2 },
+          { text: "Je le signale directement à la sécurité sans en parler à mon collègue.", score: 1.5 },
+          { text: "Je laisse passer — une photo sur les réseaux ne crée pas de risque réel.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous faites attention à ce que vous publiez sur les réseaux sociaux concernant votre lieu de travail, vos équipements et votre organisation.",
+        tags: ["comportement", "information"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En arrivant le matin, vous remarquez des traces qui suggèrent qu'une fenêtre a été forcée. Vos collègues disent que c'est probablement le vent ou une mauvaise fermeture.",
+        tags: ["comportement", "intrusion"],
+        answers: [
+          { text: "Je me range à l'avis de mes collègues — ils ont plus d'expérience du bâtiment.", score: 0 },
+          { text: "Je contacte la sécurité et je ne touche à rien en attendant leur venue.", score: 2 },
+          { text: "Je vérifie si quelque chose manque avant de décider si c'est serious.", score: 0 },
+          { text: "Je ferme la fenêtre et j'en parle au gestionnaire des locaux.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous remarquez les comportements inhabituels mais vous hésitez encore à les signaler", desc: "Ne pas interpeller quelqu'un qui photographie les équipements parce qu'il a un badge, ne pas signaler un véhicule inconnu parce que 'ça fait partie du décor', attendre qu'un comportement se répète avant de réagir : le signalement tardif ou absent est la première cause d'échec des dispositifs de sûreté. L'enjeu est d'agir sur le premier signal, pas sur la confirmation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les comportements clairement anormaux, les signaux plus subtils vous échappent encore", desc: "Vous réagissez quand les comportements sont clairement problématiques. Mais les signaux plus ambigus — quelqu'un qui pose des questions précises sur le dispositif de sécurité, un véhicule inconnu depuis quelques jours, un collègue qui se comporte différemment — ne déclenchent pas encore systématiquement un signalement. L'enjeu est d'abaisser votre seuil d'alerte sur ces situations intermédiaires." },
+          haut: { label: "Réflexes installés", titre: "Vous signalez immédiatement tout comportement qui vous interpelle, même en cas de doute sur sa gravité", desc: "Vous interpellez immédiatement la personne qui photographie, vous signalez le véhicule inconnu dès le premier jour, vous remontez le comportement inhabituel d'un collègue en décrivant les faits. Vous signalez même quand vous n'êtes pas certain·e de la gravité. Cette réactivité sur le premier signal est ce qui permet aux équipes de sûreté de traiter les situations avant qu'elles dégénèrent." },
+        },
+      }
     ],
+
     2: [
-        {
-          text: "Vous avez des documents imprimés contenant des informations sensibles sur votre bureau. Vous partez en réunion pour deux heures. Que faites-vous ?",
-          answers: [
-          {text: "Je les laisse sur mon bureau — je reviens dans l'après-midi.", score: 0},
-          {text: "Je les retourne face contre table.", score: 1},
-          {text: "Je les range dans un tiroir verrouillé ou dans un endroit sécurisé.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "Vous avez accès à une zone dont votre habilitation couvre techniquement l'entrée, mais vous n'avez aucune raison professionnelle d'y être aujourd'hui. Vous voulez récupérer un outil qui s'y trouve.",
+        tags: ["zones sensibles", "habilitation"],
+        answers: [
+          { text: "J'entre — mon habilitation couvre cette zone.", score: 0 },
+          { text: "Je demande à quelqu'un qui a une raison légitime d'y être de me récupérer l'outil.", score: 2 },
+          { text: "J'entre rapidement pour récupérer l'outil et je ressors immédiatement.", score: 0 },
+          { text: "Je vérifie auprès de mon responsable si j'ai le droit d'y aller pour ça.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
         },
-        {
-          text: "Lors d'une conversation informelle avec un prestataire, il vous pose des questions sur l'organisation interne de votre équipe et les responsables en poste. Quelle est votre réaction ?",
-          answers: [
-          {text: "Je réponds normalement — c'est des informations relativement accessibles.", score: 0},
-          {text: "Je reste vague sur les détails sensibles.", score: 1},
-          {text: "Je signale mentalement le caractère inhabituel de ces questions et en informe mon responsable si elles se précisent.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous accédez uniquement aux zones et aux informations dont vous avez réellement besoin pour votre travail, même si votre habilitation vous en donne techniquement l'accès.",
+        tags: ["zones sensibles", "besoin d'en connaître"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
         },
-        {
-          text: "Vous devez envoyer un document interne confidentiel à un partenaire externe. Quelle est votre pratique ?",
-          answers: [
-          {text: "Je l'envoie par email comme d'habitude.", score: 0},
-          {text: "Je demande à mon responsable si c'est OK avant d'envoyer.", score: 1},
-          {text: "J'utilise le canal sécurisé prévu pour ce type de partage et je vérifie les droits du destinataire.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous trouvez sur l'imprimante un document confidentiel oublié par un collègue. Vous connaissez son destinataire.",
+        tags: ["zones sensibles", "document"],
+        answers: [
+          { text: "Je le lis rapidement — il est déjà imprimé et ça peut m'être utile.", score: 0 },
+          { text: "Je le retourne face vers le bas et je préviens immédiatement son propriétaire.", score: 2 },
+          { text: "Je le laisse sur l'imprimante — ce n'est pas à moi de le gérer.", score: 0 },
+          { text: "Je le dépose dans la corbeille sécurisée.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
         },
-        {
-          text: "En télétravail, vous participez à une réunion sensible depuis un espace partagé (café, espace de coworking). Que faites-vous ?",
-          answers: [
-          {text: "Je participe normalement — je suis discret.", score: 0},
-          {text: "Je baisse le son et évite d'afficher des documents à l'écran.", score: 1},
-          {text: "Je préfère déplacer la réunion ou trouver un espace privé — les conversations sensibles ne se tiennent pas dans des espaces publics.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Vous quittez votre poste de travail pour une réunion de deux heures. Votre écran affiche des informations sensibles sur un dossier en cours.",
+        tags: ["zones sensibles", "écran"],
+        answers: [
+          { text: "Je laisse — le bureau est dans un espace sécurisé et mes collègues sont de confiance.", score: 0 },
+          { text: "Je verrouille mon écran avant de partir.", score: 2 },
+          { text: "Je ferme les fenêtres sensibles mais je ne verrouille pas l'écran.", score: 0.5 },
+          { text: "Je demande à un collègue de surveiller mon poste pendant mon absence.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
         },
-        {
-          text: "Votre ordinateur professionnel contient des données confidentielles. Vous le laissez dans votre voiture pendant deux heures pour une réunion. Que faites-vous ?",
-          answers: [
-          {text: "Je le laisse dans la voiture — c'est une courte durée.", score: 0},
-          {text: "Je le laisse mais je m'assure qu'il est verrouillé et dans le coffre.", score: 1},
-          {text: "Je l'emporte avec moi — les données sensibles ne restent pas sans surveillance.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous verrouillez systématiquement votre poste de travail dès que vous vous absentez, même pour quelques minutes.",
+        tags: ["zones sensibles", "écran"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes en déplacement dans un train et vous passez un appel professionnel où vous évoquez des informations sensibles sur un projet en cours. Le wagon est occupé.",
+        tags: ["zones sensibles", "conversation"],
+        answers: [
+          { text: "Je continue l'appel — les informations seront oubliées par les passagers.", score: 0 },
+          { text: "Je reporte l'appel ou je passe dans un espace plus isolé.", score: 2 },
+          { text: "Je baisse la voix et je fais attention à ne pas mentionner les noms.", score: 0.5 },
+          { text: "Je continue en faisant attention à ce que je dis.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez perdu votre badge d'accès. Vous pensez l'avoir laissé dans votre voiture. Vous devez entrer dans le bâtiment rapidement pour une réunion importante.",
+        tags: ["zones sensibles", "badge"],
+        answers: [
+          { text: "J'entre avec un collègue qui valide mon accès — tout le monde me connaît ici.", score: 0 },
+          { text: "Je passe par l'accueil pour déclarer la perte et obtenir un badge provisoire.", score: 2 },
+          { text: "Je retourne chercher mon badge dans la voiture même si je suis en retard.", score: 1.5 },
+          { text: "J'attends devant le bâtiment qu'un collègue passe et m'ouvre.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous déclarez immédiatement la perte ou le vol de votre badge d'accès, sans attendre de vérifier si vous l'avez simplement égaré.",
+        tags: ["zones sensibles", "déclaration"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un visiteur externe pour une réunion. En attendant dans la salle, il se lève et commence à faire le tour de la pièce en regardant les documents affichés au mur.",
+        tags: ["zones sensibles", "visiteur"],
+        answers: [
+          { text: "Je le laisse — les documents au mur ne sont pas confidentiels.", score: 0.5 },
+          { text: "Je lui propose de s'asseoir et je retire discrètement les documents qui pourraient être sensibles.", score: 2 },
+          { text: "Je lui signale que certains documents sont confidentiels.", score: 1.5 },
+          { text: "Je l'accompagne dans ses déplacements dans la salle.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez imprimé par erreur un document confidentiel en double. Le second exemplaire est inutile.",
+        tags: ["zones sensibles", "destruction"],
+        answers: [
+          { text: "Je le jette à la poubelle — il sera mélangé aux autres déchets.", score: 0 },
+          { text: "Je le déchiquette ou je le mets dans la corbeille de destruction sécurisée.", score: 2 },
+          { text: "Je le conserve comme brouillon pour mes notes.", score: 0 },
+          { text: "Je le froisse pour qu'il soit illisible avant de le jeter.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous protégez les informations sensibles de façon sélective plutôt que systématique", desc: "Laisser son écran déverrouillé pour une absence courte, discuter de sujets sensibles dans un train, entrer dans une zone sans raison professionnelle parce que l'habilitation le permet techniquement : la protection de l'information ne repose pas sur des règles ponctuelles mais sur des réflexes quotidiens cohérents. Ce qui est protégé de façon sélective n'est pas vraiment protégé." },
+          moyen: { label: "Pratiques en développement", titre: "Vous protégez les informations sensibles globalement mais quelques réflexes restent encore à ancrer", desc: "Vous verrouillez votre écran, vous faites attention aux zones sensibles, vous déclarez vos badges perdus. Mais certains réflexes peuvent encore manquer — conversation professionnelle dans un lieu public, document imprimé par erreur, visiteur qui s'éloigne de la zone de réunion. L'enjeu est de rendre ces réflexes automatiques dans toutes les situations." },
+          haut: { label: "Réflexes installés", titre: "Vous protégez les informations et les zones sensibles de façon systématique, dans toutes les situations", desc: "Vous verrouillez votre écran systématiquement, vous ne discutez pas de sujets sensibles en public, vous déclarez immédiatement la perte de votre badge, vous détruisez correctement les documents confidentiels. Ces réflexes quotidiens constituent une protection réelle — pas parce qu'ils préviennent tous les incidents, mais parce qu'ils les rendent beaucoup plus difficiles à orchestrer." },
+        },
+      }
     ],
+
     3: [
-        {
-          text: "Vous avez un doute sur une personne vue dans une zone restreinte mais vous n'êtes pas certain. Vous avez peur de vous tromper et de créer un incident pour rien. Que faites-vous ?",
-          answers: [
-          {text: "Je ne dis rien — si ce n'est pas certain, mieux vaut ne pas réagir.", score: 0},
-          {text: "J'en parle à un collègue pour avoir son avis avant d'agir.", score: 1},
-          {text: "Je signale mon observation en précisant mes doutes — c'est à la sécurité de qualifier, pas à moi.", score: 2}
-          ]
+      {
+        type: "choix",
+        text: "L'alarme d'évacuation retentit. Vous êtes en plein milieu d'une opération délicate qui nécessite 5 minutes pour être sécurisée correctement. Certains collègues évacuent déjà.",
+        tags: ["alerte", "procédure"],
+        answers: [
+          { text: "Je termine les 5 minutes de sécurisation — interrompre maintenant créerait un autre risque.", score: 0 },
+          { text: "J'évacue immédiatement en laissant l'opération dans l'état le plus sûr possible en 30 secondes.", score: 2 },
+          { text: "J'envoie un collègue prévenir le responsable d'évacuation et je termine.", score: 0 },
+          { text: "J'attends 1 minute pour voir si c'est une fausse alarme avant d'évacuer.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
         },
-        {
-          text: "Vous avez signalé une situation suspecte qui s'avère anodine. Votre responsable le prend de façon neutre mais vous sentez que certains collègues trouvent cela excessif. Comment réagissez-vous ?",
-          answers: [
-          {text: "Je décide d'être plus discret la prochaine fois pour ne pas me faire remarquer.", score: 0},
-          {text: "Je me dis que j'aurais peut-être dû attendre d'en savoir plus.", score: 1},
-          {text: "Je maintiens ma posture : signaler un doute est la bonne attitude même si l'issue est anodine.", score: 2}
-          ]
+      }, 
+      {
+        type: "likert",
+        text: "Vous évacuez immédiatement sur alarme, sans attendre de confirmer que c'est une vraie alerte ou d'avoir terminé ce que vous êtes en train de faire.",
+        tags: ["alerte", "réflexe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
         },
-        {
-          text: "Un badge d'accès a été perdu mais le collaborateur concerné n'a pas encore signalé sa perte. Il pense le retrouver. Que faites-vous si vous l'apprenez ?",
-          answers: [
-          {text: "J'attends qu'il retrouve ou signale lui-même.", score: 0},
-          {text: "Je lui conseille de signaler mais sans insister.", score: 1},
-          {text: "Je lui rappelle l'obligation de signalement immédiat et lui propose de l'aider à le faire.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une évacuation, vous réalisez qu'un collègue manque au point de rassemblement. Personne d'autre ne semble l'avoir remarqué.",
+        tags: ["alerte", "point de rassemblement"],
+        answers: [
+          { text: "Je pense qu'il est peut-être parti directement chez lui.", score: 0 },
+          { text: "Je le signale immédiatement au responsable d'évacuation.", score: 2 },
+          { text: "J'attends encore quelques minutes pour voir s'il arrive.", score: 0 },
+          { text: "Je retourne dans le bâtiment le chercher.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
         },
-        {
-          text: "Votre site n'a pas eu d'incident de sécurité depuis longtemps. L'équipe est moins vigilante sur les procédures d'accès. Quelle est votre position ?",
-          answers: [
-          {text: "Si ça fait longtemps que tout va bien, c'est que les procédures allégées suffisent.", score: 0},
-          {text: "Je maintiens mes propres habitudes sans chercher à influencer les autres.", score: 1},
-          {text: "Je signale cette tendance à mon responsable — la tranquillité passée ne garantit rien pour l'avenir.", score: 2}
-          ]
+      }, 
+      {
+        type: "choix",
+        text: "Votre site a eu trois fausses alarmes ce mois-ci. L'alarme se déclenche à nouveau. Plusieurs collègues restent à leurs postes en disant que c'est probablement encore une fausse alarme.",
+        tags: ["alerte", "fausse alarme"],
+        answers: [
+          { text: "Je reste aussi — trois fausses alarmes en un mois, c'est clairement un problème technique.", score: 0 },
+          { text: "J'évacue comme prévu et j'encourage mes collègues à faire de même.", score: 2 },
+          { text: "J'évacue mais je ne dis rien à mes collègues — chacun prend sa décision.", score: 1 },
+          { text: "Je vérifie rapidement s'il y a un signal visuel d'alarme avant de décider.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
         },
-        {
-          text: "Votre entreprise vient de renforcer les procédures de contrôle d'accès. Certains collègues les trouvent excessives et les contournent. Que faites-vous ?",
-          answers: [
-          {text: "Je m'aligne — si tout le monde trouve ça excessif, c'est que c'est probablement le cas.", score: 0},
-          {text: "Je les applique pour moi mais je ne dis rien sur les pratiques des autres.", score: 1},
-          {text: "Je les applique et explique si on me le demande pourquoi ces procédures existent.", score: 2}
-          ]
-        }
+      }, 
+      {
+        type: "likert",
+        text: "Vous participez sérieusement aux exercices d'évacuation, sans les traiter comme une interruption sans intérêt.",
+        tags: ["alerte", "entraînement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez connaissance d'une menace verbale formulée contre votre entreprise par un ex-employé, mentionnée dans une conversation informelle. Vous n'êtes pas sûr·e de sa crédibilité.",
+        tags: ["alerte", "signalement"],
+        answers: [
+          { text: "Je n'en parle pas — c'était une conversation informelle et je ne veux pas créer une psychose.", score: 0 },
+          { text: "Je le signale à la sécurité en précisant le contexte et mes doutes sur la crédibilité.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il décide s'il faut alerter.", score: 1.5 },
+          { text: "J'attends de voir si d'autres personnes ont entendu la même chose.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une alerte de confinement est déclenchée dans votre bâtiment. Vous êtes dans le couloir et votre bureau est à 30 secondes. La sortie de secours est à 10 secondes.",
+        tags: ["alerte", "confinement"],
+        answers: [
+          { text: "Je sors par la sortie de secours — c'est le chemin le plus court.", score: 0 },
+          { text: "Je me confine dans la pièce la plus proche et je contacte les secours.", score: 2 },
+          { text: "Je cours jusqu'à mon bureau pour me confiner.", score: 0.5 },
+          { text: "J'attends les instructions avant de bouger.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une évacuation, vous êtes en plein appel téléphonique important avec un client. L'alarme retentit.",
+        tags: ["alerte", "téléphone"],
+        answers: [
+          { text: "Je termine l'appel rapidement — 2 minutes de plus ne changeront rien.", score: 0 },
+          { text: "Je dis à mon client que je dois raccrocher immédiatement pour des raisons de sécurité.", score: 2 },
+          { text: "Je lui dis d'attendre et j'évacue en gardant le téléphone à l'oreille.", score: 0 },
+          { text: "Je mets l'appel en attente le temps d'évaluer si c'est une vraie alarme.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez les procédures d'urgence de votre site — points de rassemblement, responsables d'évacuation, numéros d'urgence internes.",
+        tags: ["alerte", "connaissance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Après une évacuation, vous êtes de retour à votre poste. En rangeant vos affaires, vous trouvez un objet suspect que vous n'avez pas remarqué avant l'évacuation.",
+        tags: ["alerte", "après"],
+        answers: [
+          { text: "Je le prends pour l'examiner de plus près.", score: 0 },
+          { text: "Je n'y touche pas et je contacte immédiatement la sécurité.", score: 2 },
+          { text: "Je le montre à mes collègues pour voir s'ils le reconnaissent.", score: 0 },
+          { text: "Je le mets dans un coin et j'en parle à mon responsable.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre réaction aux alertes sûreté est encore influencée par le contexte ou l'historique des fausses alarmes", desc: "Rester à son poste sur une alarme parce que les dernières étaient des fausses alarmes, terminer une opération avant d'évacuer, attendre de voir si l'alarme persiste : chaque délai dans la réaction à une alerte sûreté est une réduction de la marge de manœuvre des équipes d'intervention. La procédure n'est pas optionnelle selon l'historique des alarmes." },
+          moyen: { label: "Pratiques en développement", titre: "Vous réagissez aux alertes sûreté mais votre réaction peut encore être influencée par le contexte", desc: "Vous évacuez sur alarme dans la plupart des situations. Mais après plusieurs fausses alarmes, en plein milieu d'une opération délicate, lors d'un appel important : votre réaction peut encore être différée. L'enjeu est de traiter chaque alarme comme potentiellement réelle, quel que soit l'historique." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez aux alertes sûreté sans délai ni adaptation selon le contexte ou l'historique", desc: "Vous évacuez immédiatement sur alarme sans attendre de confirmer qu'elle est réelle, sans terminer ce que vous faites, sans regarder si vos collègues réagissent. Vous signalez l'absence d'un collègue au point de rassemblement. Vous ne revenez pas chercher des affaires après une évacuation. Cette réaction sans délai est ce qui donne aux dispositifs d'urgence leur efficacité." },
+        },
+      }
     ],
+
   },
+  // ─────────────────────────────────────────────────────────────────────
 
   "managers-securite": {
     0: [
@@ -2580,7 +3080,16 @@
   ]}
 ],   
          
-    ["acces-sites-surete",         "Sûreté des sites, accès et comportements inhabituels", "Tous publics",             "Réagir face aux accès non autorisés, intrusions, objets suspects ou situations atypiques.",                                                                     T.securiteAccesSites],
+["acces-sites-surete", "Sûreté des sites, accès et comportements inhabituels", "Tous publics",
+  "Réagir face aux accès non autorisés, intrusions, objets suspects ou situations atypiques.",
+  { domain: "securite", chapters: [
+    ["Contrôler les accès entrants",              "Appliquer les procédures d'accès sans exception, quelle que soit la relation ou l'urgence."],
+    ["Gérer les comportements inhabituels sur site","Repérer et signaler immédiatement ce qui interpelle, même en cas de doute."],
+    ["Protéger les zones et informations sensibles","Adopter des réflexes de protection systématiques, pas sélectifs."],
+    ["Réagir à une alerte sûreté",                "Appliquer les procédures d'urgence sans délai ni adaptation selon le contexte."]
+  ]}
+],    
+      
     ["managers-securite",          "Manager la sécurité sans créer de tension",            "Managers",                 "Faire vivre les règles, traiter les écarts et soutenir les équipes dans les moments à risque.",                                                                  T.securiteManagers],
     ["coactivite-sous-traitance",  "Travailler en coactivité et gérer les prestataires",   "Équipes terrain",          "Coordonner les interventions simultanées, intégrer les sous-traitants et gérer les zones partagées.",                                                           T.securiteCoactivite],
     ["epi-gestes-securite",        "EPI et gestes de sécurité au quotidien",               "Collaborateurs",           "Porter les bons équipements, maintenir ses réflexes sous contrainte et signaler les anomalies matérielles.",                                                    T.securiteEPI],
