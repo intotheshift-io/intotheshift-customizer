@@ -4737,7 +4737,16 @@
   // ─────────────────────────────────────────────────────────────────────────
 
   window.ITS_registerTheme("qvt", "QVT & RPS", "🌿", [
-
+    ["rps-signaux-faibles", "Repérer les signaux faibles de RPS", "Tous publics",
+      "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",
+      { domain: "qvt", chapters: [
+        ["Repérer les signaux faibles",        "Observer ce qui change autour de soi et sentir quand une situation mérite attention."],
+        ["Réguler la charge",                  "Prioriser, demander de l'aide et clarifier les urgences avant d'être à bout."],
+        ["Préserver les relations de travail", "Désamorcer les irritants et maintenir un dialogue constructif."],
+        ["Mobiliser les bons relais",          "Savoir quand passer la main et comment le faire sans exposer inutilement."]
+      ]}
+    ],
+    
     ["manager-signaux-rps", "Détecter et orienter sans psychologiser", "Managers / Encadrants",
       "Repérer les signaux faibles, intervenir sur le travail et orienter vers les bons relais sans se substituer aux spécialistes.",
       { domain: "qvt", chapters: [
@@ -4808,11 +4817,5 @@
       ]}
     ],
 
-    ["manager-signaux-rps", "Détecter et orienter sans psychologiser", "Managers / Encadrants",
-      "Repérer les signaux faibles, intervenir sur le travail et orienter vers les bons relais sans se substituer aux spécialistes.",
-      T.qvtManagerSignaux
-    ]
-
-  ]);
-
+  
 })();
