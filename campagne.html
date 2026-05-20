@@ -686,15 +686,23 @@ bootCampagnePage();
   }
 
   function allowedButton(button){
-    const onclick = String(button.getAttribute("onclick") || "");
-    return (
-      button.classList.contains("comm-tab") ||
-      onclick.includes("copyTemplate") ||
-      onclick.includes("copyUrl") ||
-      onclick.includes("copyResultsUrl") ||
-      onclick.includes("downloadQrCode")
-    );
+  const onclick = String(button.getAttribute("onclick") || "");
+
+  // Admin / partner : tout reste utilisable
+  if(isBackofficeRole()){
+    return true;
   }
+
+  // Client final : seules certaines actions restent accessibles
+  return (
+    button.classList.contains("comm-tab") ||
+    onclick.includes("copyTemplate") ||
+    onclick.includes("copyUrl") ||
+    onclick.includes("copyResultsUrl") ||
+    onclick.includes("downloadQrCode") ||
+    onclick.includes("openPassationPreview")
+  );
+}
 
   function applyLockedCampaignMode(){
     document.body.classList.add("campaign-locked");
@@ -758,9 +766,8 @@ bootCampagnePage();
 
     // Admin et partner : page verrouillée, mais sans message client “publié / lecture seule”.
     if(isBackofficeRole()){
-      applyLockedCampaignMode();
       return;
-    }
+  }
 
     // Client final : message de lecture seule uniquement si explicitement demandé.
     if(readonly){
