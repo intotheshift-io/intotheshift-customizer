@@ -2060,7 +2060,7 @@
   //  ENREGISTREMENT DU DOMAINE
   // ─────────────────────────────────────────────────────────────────────────
 
-  window.ITS_registerTheme("qvt-rps", "QVT & RPS", "🌿", [
+  window.ITS_registerTheme("qvt", "QVT & RPS", "🌿", [
     ["rps-signaux-faibles",    "Repérer les signaux faibles de RPS",          "Tous publics",          "Identifier les tensions, alertes et situations d'isolement dans le quotidien professionnel.",                                                                     T.qvtRps],
     ["charge-priorites",       "Charge de travail et priorisation",           "Tous publics",          "Prendre du recul sur l'urgence, les arbitrages et les limites soutenables.",                                                                                      T.qvtRps],
     ["cooperation-climat",     "Coopération et climat de travail",            "Collaborateurs",        "Agir dans les irritants du quotidien, désamorcer et préserver la qualité relationnelle.",                                                                         T.qvtRps],
