@@ -942,40 +942,42 @@ function closeTransmitModal(){
 }
 
 
-async function sendClientRecapEmail(payload, token){
+function getApiBaseUrl(){
+  return window.location.hostname === 'localhost'
+    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+}
+
+async function sendTransmissionEmails(payload, token){
   const email = payload?.client_info?.email || "";
   if(!email){
-    console.warn("Email récap client non envoyé : email client manquant.");
+    console.warn("Transmission email non envoyée : email client manquant.");
     return { ok:false, reason:"MISSING_CLIENT_EMAIL" };
   }
 
   try{
-    const response = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/transmissions/client-recap", {
+    const response = await fetch(getApiBaseUrl() + "/api/transmissions/submit", {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
         "Authorization":"Bearer " + token
       },
-      body: JSON.stringify({
-        client_info: payload.client_info,
-        entreprise: payload.entreprise,
-        titre_autodiag: payload.titre_autodiag,
-        titre_repondants: payload.titre_repondants,
-        pdf_html: payload.pdf_html,
-        recap_html: payload.pdf_html,
-        subject: "Récapitulatif de votre configuration Shift Studio — " + (payload.titre_repondants || payload.titre_autodiag || "autodiagnostic")
-      })
+      body: JSON.stringify(payload)
     });
 
     const json = await response.json().catch(() => ({}));
     if(!response.ok || json.ok === false){
-      console.warn("Email récap client non confirmé", response.status, json);
-      return { ok:false, reason:json.emailStatus || json.error || "SEND_FAILED" };
+      console.warn("Transmission email non confirmée", response.status, json);
+      return {
+        ok:false,
+        reason:json.error || json.emailStatus || json.adminEmailStatus || json.clientEmailStatus || "SEND_FAILED",
+        details: json
+      };
     }
 
-    return { ok:true };
+    return { ok:true, details: json };
   }catch(e){
-    console.warn("Erreur envoi email récap client", e);
+    console.warn("Erreur transmission email backend", e);
     return { ok:false, reason:"REQUEST_FAILED" };
   }
 }
@@ -1066,34 +1068,16 @@ async function transmit(){
 } catch(e) {
   console.error("Erreur sauvegarde projet", e);
 }
-  let sentOk = false;
-  const webhook = 'https://hook.eu1.make.com/cs7ho799lf6mzkfurl1dcp9ai2pn1led';
-  if (webhook) {
-    try {
-      const makeResponse = await fetch(webhook, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
-      });
+  const transmissionResult = await sendTransmissionEmails(payload, token);
+  const sentOk = transmissionResult.ok === true;
 
-      if(!makeResponse.ok){
-        const makeErrorText = await makeResponse.text().catch(() => '');
-        throw new Error('Make webhook error ' + makeResponse.status + ' ' + makeErrorText);
-      }
-
-      state.transmission.status = 'sent';
-      sentOk = true;
-      if (typeof itsSave === 'function') itsSave(state);
-    } catch(e) {
-      state.transmission.status = 'send_error';
-      sentOk = false;
-      if (typeof itsSave === 'function') itsSave(state);
-    }
-  }
-
-  const clientRecapResult = await sendClientRecapEmail(payload, token);
-  state.transmission.client_recap_email_sent = clientRecapResult.ok === true;
-  state.transmission.client_recap_email_status = clientRecapResult.reason || (clientRecapResult.ok ? 'SENT' : 'NOT_SENT');
+  state.transmission.backend_submit_sent = sentOk;
+  state.transmission.backend_submit_status = transmissionResult.reason || (sentOk ? 'SENT' : 'NOT_SENT');
+  state.transmission.backend_submit_details = transmissionResult.details || null;
+  state.transmission.client_recap_email_sent = !!transmissionResult.details?.clientEmailSent;
+  state.transmission.client_recap_email_status = transmissionResult.details?.clientEmailStatus || state.transmission.backend_submit_status;
+  state.transmission.admin_excel_email_sent = !!transmissionResult.details?.adminEmailSent;
+  state.transmission.admin_excel_email_status = transmissionResult.details?.adminEmailStatus || state.transmission.backend_submit_status;
   if (typeof itsSave === 'function') itsSave(state);
 
   if(sentOk){
@@ -1104,14 +1088,17 @@ async function transmit(){
     state.transmission.status = 'sent';
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
-    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Un récapitulatif vient d’être envoyé à l’email renseigné. Pour tout changement, contactez contact@intotheshift.io.');
+    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Le client reçoit son récapitulatif, et Into The Shift reçoit le même récapitulatif avec le fichier Excel de configuration en pièce jointe.');
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
-    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement. Vérifiez votre email et transférez nous le document si nécessaire.');
+    state.transmission.status = 'send_error';
+    if (typeof itsSave === 'function') itsSave(state);
+    showTransmitModal('error', 'Transmission non confirmée', 'La demande n’a pas pu être transmise automatiquement par le backend. Vérifiez la configuration email serveur ou contactez contact@intotheshift.io.');
     document.getElementById('btn-transmit').disabled = false;
   }
 }
+
 
 function isAlreadyTransmitted(){
   return state?.status === 'sent' ||
