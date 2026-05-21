@@ -388,10 +388,14 @@ function startBlankDiagnostic(){
 
   const blankState = buildBlankState();
 
+  if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
+  else {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+  }
+
   if(typeof itsSave === "function") itsSave(blankState);
   else localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(blankState));
-
-  localStorage.removeItem("its_current_ad_id");
 
   window.location.assign("questions.html?mode=blank");
 }

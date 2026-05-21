@@ -56,6 +56,83 @@ function itsGetStorageKey() {
   return projectId ? base + "_project_" + String(projectId) : base;
 }
 
+
+function itsGetCurrentUserSignature() {
+  const tokenUser = itsDecodeJwtPayloadForStorage() || {};
+  const userId =
+    localStorage.getItem("its_user_id") ||
+    localStorage.getItem("user_id") ||
+    tokenUser.id ||
+    tokenUser.user_id ||
+    "";
+  const email =
+    localStorage.getItem("its_user_email") ||
+    localStorage.getItem("user_email") ||
+    tokenUser.email ||
+    "";
+  if (userId) return "user_" + String(userId);
+  if (email) return "email_" + String(email).toLowerCase().trim();
+  return "";
+}
+
+function itsGetUserSignatureFromObject(user) {
+  if (!user || typeof user !== "object") return "";
+  const userId = user.id || user.user_id || user.userId || "";
+  const email = user.email || user.mail || "";
+  if (userId) return "user_" + String(userId);
+  if (email) return "email_" + String(email).toLowerCase().trim();
+  return "";
+}
+
+function itsClearProjectContextOnly() {
+  const currentProjectId = itsGetCurrentProjectId();
+  try {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+    localStorage.removeItem("its_current_project");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem(ITS_LEGACY_KEY);
+    Object.keys(localStorage)
+      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
+      .forEach(key => localStorage.removeItem(key));
+    sessionStorage.removeItem("its_state");
+    sessionStorage.removeItem(ITS_LEGACY_KEY);
+    if (currentProjectId) sessionStorage.removeItem("its_project_cache_" + currentProjectId);
+    Object.keys(sessionStorage)
+      .filter(key => key.indexOf("its_project_cache_") === 0)
+      .forEach(key => sessionStorage.removeItem(key));
+  } catch(e) {}
+  window.ITS_CURRENT_PROJECT_STATE = null;
+}
+
+function itsResetProjectContextForUserSwitch(nextUser) {
+  const before = itsGetCurrentUserSignature();
+  const after = itsGetUserSignatureFromObject(nextUser);
+  if (before && after && before !== after) {
+    itsClearProjectContextOnly();
+  }
+}
+
+function itsProjectBelongsToCurrentFrontendUser(project) {
+  const role = String(localStorage.getItem("its_user_role") || "").toLowerCase();
+  if (role === "admin" || role === "partner") return true;
+
+  const currentUserId = String(
+    localStorage.getItem("its_user_id") ||
+    localStorage.getItem("user_id") ||
+    itsDecodeJwtPayloadForStorage()?.id ||
+    ""
+  );
+  if (!currentUserId) return true;
+
+  const projectUserId = String(project?.user_id || project?.userId || project?.client?.id || "");
+  const createdBy = String(project?.created_by || project?.createdBy || "");
+
+  if (projectUserId && projectUserId !== currentUserId) return false;
+  if (!projectUserId && createdBy && createdBy !== currentUserId) return false;
+  return true;
+}
+
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
 const ITS_API_BASE =
   window.ITS_API_BASE ||
@@ -292,7 +369,12 @@ function itsSave(state) {
     safeState.step = step;
   }
 
-  const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || itsGetCurrentProjectId();
+  const isExplicitNewProject =
+    safeState.mode === "blank" ||
+    safeState.source === "blank" ||
+    Boolean(safeState.selectedAdId && !safeState.currentAdId && !safeState.project_id && !safeState.projectId);
+
+  const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || (isExplicitNewProject ? "" : itsGetCurrentProjectId());
   if (projectId) {
     safeState.currentAdId = projectId;
     safeState.project_id = projectId;
@@ -665,15 +747,25 @@ async function itsFetchProjectById(projectId) {
       }
     );
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      if (res.status === 403 || res.status === 404) {
+        const currentProjectId = itsGetCurrentProjectId();
+        if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+      }
+      return null;
+    }
 
     const json = await res.json();
+    const project = json.project || json.data || json;
 
-    return (
-      json.project ||
-      json.data ||
-      json
-    );
+    if (!itsProjectBelongsToCurrentFrontendUser(project)) {
+      console.warn("Projet ignoré : il n'appartient pas au compte client connecté", { projectId });
+      const currentProjectId = itsGetCurrentProjectId();
+      if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+      return null;
+    }
+
+    return project;
   } catch(e) {
     console.warn("Chargement projet API impossible", e);
     return null;
@@ -695,12 +787,16 @@ async function itsBootstrapProjectFromUrl() {
   try {
     const cached = sessionStorage.getItem("its_project_cache_" + projectId);
     if (cached) {
-      itsRestoreProject(JSON.parse(cached));
-      return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
+      const cachedProject = JSON.parse(cached);
+      if (itsProjectBelongsToCurrentFrontendUser(cachedProject)) {
+        itsRestoreProject(cachedProject);
+        return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
+      }
     }
   } catch(e) {}
 
-  return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
+  itsClearProjectContextOnly();
+  return {};
 }
 
 function itsInjectReadOnlyBanner(message) {

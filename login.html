@@ -513,6 +513,9 @@ document.getElementById("login-form").addEventListener("submit", async function(
     delete userForStorage.passation_logo_data_url;
 
     try {
+      if (typeof window.itsResetProjectContextForUserSwitch === "function") {
+        window.itsResetProjectContextForUserSwitch(data.user || {});
+      }
       localStorage.removeItem("its_user");
       localStorage.removeItem("its_user_logo");
       localStorage.removeItem("its_organization_logo");

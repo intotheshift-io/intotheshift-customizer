@@ -563,8 +563,29 @@ function questionsToken(){
   return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
 }
 
+function questionsExplicitProjectIdFromUrl(){
+  return urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id') || '';
+}
+
 function questionsProjectIdFromUrl(){
-  return urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id') || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+  if(isBlankMode) return questionsExplicitProjectIdFromUrl();
+  return questionsExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+}
+
+function questionsClearStaleProject(projectId){
+  try{
+    if(String(localStorage.getItem('its_current_project_id') || '') === String(projectId || '') ||
+       String(localStorage.getItem('its_current_ad_id') || '') === String(projectId || '')){
+      if(typeof itsClearProjectContextOnly === 'function') itsClearProjectContextOnly();
+      else {
+        localStorage.removeItem('its_current_project_id');
+        localStorage.removeItem('its_current_ad_id');
+        localStorage.removeItem('its_state');
+        localStorage.removeItem('intotheshift_customizer_state_v1');
+      }
+    }
+    sessionStorage.removeItem('its_project_cache_' + projectId);
+  }catch(e){}
 }
 
 function questionsExtractProjectState(project){
@@ -620,9 +641,20 @@ function questionsFetchProjectStateSync(projectId){
     xhr.open('GET', `${questionsApiBase()}/api/projects/${encodeURIComponent(projectId)}`, false);
     xhr.setRequestHeader('Authorization', `Bearer ${questionsToken()}`);
     xhr.send(null);
-    if(xhr.status < 200 || xhr.status >= 300) return null;
+    if(xhr.status < 200 || xhr.status >= 300){
+      if(xhr.status === 403 || xhr.status === 404){
+        window.ITS_PROJECT_LOAD_FORBIDDEN = true;
+        questionsClearStaleProject(projectId);
+      }
+      return null;
+    }
     const json = JSON.parse(xhr.responseText || '{}');
     const project = json.project || json.data || json;
+    if(typeof itsProjectBelongsToCurrentFrontendUser === 'function' && !itsProjectBelongsToCurrentFrontendUser(project)){
+      window.ITS_PROJECT_LOAD_FORBIDDEN = true;
+      questionsClearStaleProject(projectId);
+      return null;
+    }
     const extracted = questionsExtractProjectState(project);
     if(extracted && Array.isArray(extracted.chapters) && extracted.chapters.length){
       localStorage.setItem('its_current_project_id', String(projectId));
@@ -636,8 +668,13 @@ function questionsFetchProjectStateSync(projectId){
 }
 
 const requestedProjectId = questionsProjectIdFromUrl();
+const fetchedProjectState = requestedProjectId ? questionsFetchProjectStateSync(requestedProjectId) : null;
+if(requestedProjectId && window.ITS_PROJECT_LOAD_FORBIDDEN){
+  window.location.href = 'mes-autodiagnostics.html';
+  throw new Error('Projet non autorisé pour ce compte');
+}
 let state = requestedProjectId
-  ? (questionsFetchProjectStateSync(requestedProjectId) || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
+  ? (fetchedProjectState || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
   : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
 
 if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
