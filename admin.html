@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — Shift Studio</title>
+<title>Cockpit — Shift Studio</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -157,8 +157,8 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
 <main class="admin-page">
   <section class="admin-hero">
     <div>
-      <h1>Espace admin Into The Shift</h1>
-      <p>Supervisez les comptes, les partners, les clients finaux, les quotas de passations et les autodiagnostics créés dans Shift Studio.</p>
+      <h1>Cockpit Into The Shift</h1>
+      <p>Supervisez les comptes, les partners, les cockpits clients, les quotas de passations et les autodiagnostics créés dans Shift Studio.</p>
     </div>
     <div class="admin-actions">
       <button class="admin-btn secondary" onclick="window.location.href='dashboard.html'">Dashboard</button>
@@ -172,7 +172,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
   <section class="admin-grid" id="overview">
     <div class="kpi-card"><div class="kpi-label">Utilisateurs</div><div id="kpiUsers" class="kpi-value">—</div><div class="kpi-note">Tous comptes confondus</div></div>
     <div class="kpi-card"><div class="kpi-label">Partners</div><div id="kpiPartners" class="kpi-value">—</div><div class="kpi-note">Organismes / cabinets</div></div>
-    <div class="kpi-card"><div class="kpi-label">Clients finaux</div><div id="kpiOrganizations" class="kpi-value">—</div><div class="kpi-note">Dossiers clients</div></div>
+    <div class="kpi-card"><div class="kpi-label">Cockpits clients</div><div id="kpiOrganizations" class="kpi-value">—</div><div class="kpi-note">Dossiers clients</div></div>
     <div class="kpi-card"><div class="kpi-label">Autodiags</div><div id="kpiProjects" class="kpi-value">—</div><div class="kpi-note">Configurations créées</div></div>
   </section>
 
@@ -183,7 +183,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
       <a class="side-link" data-tab="create" onclick="showTab('create')"><span class="side-left"><span class="side-ico">➕</span>Créer un compte</span></a>
       <a class="side-link" data-tab="accounts" onclick="showTab('accounts')"><span class="side-left"><span class="side-ico">👤</span>Comptes</span><span id="sideUsers" class="side-count">—</span></a>
       <a class="side-link" data-tab="partners" onclick="showTab('partners')"><span class="side-left"><span class="side-ico">🤝</span>Partners</span><span id="sidePartners" class="side-count">—</span></a>
-      <a class="side-link" data-tab="organizations" onclick="showTab('organizations')"><span class="side-left"><span class="side-ico">🏢</span>Clients finaux</span><span id="sideOrganizations" class="side-count">—</span></a>
+      <a class="side-link" data-tab="organizations" onclick="showTab('organizations')"><span class="side-left"><span class="side-ico">🏢</span>Cockpit client</span><span id="sideOrganizations" class="side-count">—</span></a>
       <a class="side-link" data-tab="projects" onclick="showTab('projects')"><span class="side-left"><span class="side-ico">🧩</span>Autodiags</span><span id="sideProjects" class="side-count">—</span></a>
       <div class="side-small">Le quota est porté par le partner, sauf client direct Into The Shift avec pack propre.</div>
     </aside>
@@ -197,7 +197,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           </div>
         </div>
         <div class="notice">
-          Règle métier : un <strong>partner</strong> possède un quota global. Ses clients finaux consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
+          Règle métier : un <strong>partner</strong> possède un quota global. Ses cockpits clients consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
         </div>
         <div class="global-cards">
           <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
@@ -281,7 +281,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <input id="partnerSearch" class="admin-input" placeholder="Rechercher partner..." oninput="renderPartners()">
           </div>
         </div>
-        <div class="notice">Chaque partner dispose d’un quota global. Ses clients finaux n’ont pas de pack propre par défaut.</div>
+        <div class="notice">Chaque partner dispose d’un quota global. Ses cockpits clients n’ont pas de pack propre par défaut.</div>
         <div id="partnersLoading" class="loading">Chargement des partners...</div>
         <div id="partnersGrid" class="partner-card-grid"></div>
         <div id="partnersEmpty" class="empty" style="display:none">Aucun partner trouvé.</div>
@@ -290,16 +290,16 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
       <section id="tab-organizations" class="admin-section">
         <div class="section-head">
           <div>
-            <h2>Clients finaux</h2>
-            <div class="section-sub">Dossiers clients finaux, rattachés à un partner ou directs Into The Shift.</div>
+            <h2>Cockpit client</h2>
+            <div class="section-sub">Dossiers clients, rattachés à un partner ou directs Into The Shift.</div>
           </div>
           <div class="section-tools">
-            <input id="orgSearch" class="admin-input" placeholder="Rechercher client final, partenaire..." oninput="renderOrganizations()">
+            <input id="orgSearch" class="admin-input" placeholder="Rechercher cockpit client, partenaire..." oninput="renderOrganizations()">
           </div>
         </div>
-        <div id="orgsLoading" class="loading">Chargement des clients finaux...</div>
+        <div id="orgsLoading" class="loading">Chargement des cockpits clients...</div>
         <div id="orgCards" class="card-list"></div>
-        <div id="orgsEmpty" class="empty" style="display:none">Aucun client final trouvé.</div>
+        <div id="orgsEmpty" class="empty" style="display:none">Aucun cockpit client trouvé.</div>
       </section>
 
       <section id="tab-projects" class="admin-section">
@@ -448,7 +448,7 @@ function getDirectOrganizations(){
     const creatorId = getOrgCreatorId(o);
     const creator = getUserById(creatorId);
 
-    // On garde uniquement les clients finaux créés par un compte client ITS direct.
+    // On garde uniquement les cockpits clients créés par un compte client ITS direct.
     // On exclut les dossiers créés par un partner ou devenus orphelins après suppression.
     return creator && !isPartnerUser(creator);
   });
@@ -749,7 +749,7 @@ function renderOrganizations(){
         <div class="quota-field"><label>Pack</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer quota</button>
       </div>
-      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Ouvrir cockpit client</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
@@ -857,7 +857,7 @@ function renderProjects(){
     return`<article class="project-card">
       <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
       <div class="info-grid">
-        <div class="info-box"><div class="info-label">Client final</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
+        <div class="info-box"><div class="info-label">Cockpit client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
         <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>
         <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
         <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
@@ -1061,7 +1061,7 @@ async function saveOrganizationPassations(orgId){
     await loadAdminData();
   }catch(err){
     console.error(err);
-    showError("Mise à jour client final impossible. Détail : "+err.message);
+    showError("Mise à jour cockpit client impossible. Détail : "+err.message);
   }
 }
 

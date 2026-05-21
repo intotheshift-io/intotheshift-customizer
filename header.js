@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     : "";
 
   const adminLink = admin
-    ? `<a class="nav-link ${active("admin.html")}" href="admin.html">Admin</a>`
+    ? `<a class="nav-link ${active("admin.html")}" href="admin.html">Cockpit</a>`
     : "";
 
   const partnerLink =
