@@ -141,15 +141,6 @@ td:nth-child(9){width:125px}
 .org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.org-users-panel{background:#f6f9fb;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
-.org-users-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
-.org-users-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900}
-.org-user-list{display:flex;flex-direction:column;gap:7px}
-.org-user-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e7edf2;border-radius:12px;padding:9px 10px}
-.org-user-name{font-size:13px;font-weight:900;color:#18375d}
-.org-user-email{font-size:12px;color:#718497;word-break:break-word}
-.org-user-role{font-size:11px;font-weight:900;color:#0d4c72;background:#eaf3f8;border-radius:999px;padding:4px 8px;white-space:nowrap}
-
 @media(max-width:1100px){.project-publication{grid-template-columns:1fr 1fr}.project-publication button{grid-column:auto}.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.global-cards,.info-grid,.org-quota-panel{grid-template-columns:1fr}.org-card-head,.project-card-head{flex-direction:column}.org-quota-panel button{grid-column:auto}}
 
@@ -226,9 +217,6 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <input id="newLastname" class="admin-input" placeholder="Nom" autocomplete="off">
           <input id="newEmail" class="admin-input" type="email" placeholder="email@entreprise.com" autocomplete="new-email" required>
           <input id="newCompany" class="admin-input" placeholder="Entreprise / organisme" autocomplete="off">
-          <select id="newOrganizationId" class="admin-select" autocomplete="off">
-            <option value="">Nouveau cockpit / aucun rattachement</option>
-          </select>
           <select id="newRole" class="admin-select" autocomplete="off">
             <option value="client">client</option>
             <option value="partner">partner</option>
@@ -263,24 +251,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           </div>
         </div>
         <div id="clientsLoading" class="loading">Chargement des comptes...</div>
-        <div class="table-wrap">
-          <table id="accountsTable" style="display:none">
-            <thead>
-              <tr>
-                <th>Compte</th>
-                <th>Email</th>
-                <th>Entreprise / organisme</th>
-                <th>Logo organisation</th>
-                <th>Rôle</th>
-                <th>Changer rôle</th>
-                <th>Projets</th>
-                <th>Statut</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="accountsBody"></tbody>
-          </table>
-        </div>
+        <div id="accountsCards" class="accounts-card-grid" style="display:none"></div>
         <div id="accountsEmpty" class="empty" style="display:none">Aucun compte trouvé.</div>
       </section>
 
@@ -577,24 +548,6 @@ function goToAccounts(search=""){
   document.getElementById("tab-accounts")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function populateOrganizationSelect(){
-  const select=document.getElementById("newOrganizationId");
-  if(!select)return;
-  const current=select.value;
-  const orgs=getDirectOrganizations();
-  select.innerHTML='<option value="">Nouveau cockpit / aucun rattachement</option>'+orgs.map(o=>`<option value="${escapeAttr(val(o,["id"],""))}">${escapeHtml(getOrgName(o))}</option>`).join("");
-  if(current && orgs.some(o=>String(val(o,["id"],""))===String(current))) select.value=current;
-}
-
-function startCreateUserForOrganization(orgId, orgName){
-  showTab("create");
-  document.getElementById("newRole").value="client";
-  document.getElementById("newOrganizationId").value=String(orgId||"");
-  document.getElementById("newCompany").value=orgName||"";
-  document.getElementById("newEmail").focus();
-  document.getElementById("tab-create")?.scrollIntoView({behavior:"smooth",block:"start"});
-}
-
 function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
@@ -628,7 +581,6 @@ async function loadAdminData(){
 
 function renderAll(){
   renderKpis();
-  populateOrganizationSelect();
   renderAccounts();
   renderPartners();
   renderOrganizations();
@@ -665,6 +617,32 @@ function renderKpis(){
   document.getElementById("sideProjects").textContent=adminState.projects.length;
 }
 
+function organizationOptionsForAccount(currentOrgId){
+  const orgs=getDirectOrganizations();
+  const current=String(currentOrgId||"");
+  return '<option value="">Choisir un cockpit client</option>'+orgs.map(o=>{
+    const id=String(val(o,["id"],""));
+    return `<option value="${escapeAttr(id)}" ${id===current?"selected":""}>${escapeHtml(getOrgName(o))}</option>`;
+  }).join("");
+}
+
+async function attachUserToOrganization(userId){
+  const select=document.getElementById("attach-org-"+String(userId));
+  const organizationId=select?.value || "";
+  if(!organizationId){showError("Choisis d’abord un cockpit client à rattacher.");return;}
+  try{
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
+      organizationId,
+      role:"member"
+    });
+    showSuccess("Utilisateur rattaché au cockpit client.");
+    await loadAdminData();
+  }catch(err){
+    console.error(err);
+    showError("Rattachement impossible. Détail : "+err.message);
+  }
+}
+
 function renderAccounts(){
   const q=(document.getElementById("clientSearch")?.value||"").toLowerCase().trim();
   const rf=document.getElementById("roleFilter")?.value||"";
@@ -672,11 +650,14 @@ function renderAccounts(){
   const rows=adminState.clients.filter(c=>{
     const role=String(val(c,["role"],"client")).toLowerCase();
     const text=JSON.stringify(c).toLowerCase();
-    const specialNoCompany=q==="sans entreprise";return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(!specialNoCompany||!getCompany(c));
+    const specialNoCompany=q==="sans entreprise";
+    return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(!specialNoCompany||!getCompany(c));
   });
 
-  const body=document.getElementById("accountsBody");
-  body.innerHTML=rows.map(c=>{
+  const grid=document.getElementById("accountsCards");
+  if(!grid) return;
+
+  grid.innerHTML=rows.map(c=>{
     const id=val(c,["id","user_id"],"");
     const name=getUserName(c);
     const email=val(c,["email"],"—");
@@ -686,48 +667,73 @@ function renderAccounts(){
     const role=String(val(c,["role"],"client")).toLowerCase();
     const status=val(c,["status","statut"],"actif");
     const logos=getUserLogos(c);
+    const organizationId=val(c,["organizationId","organization_id"],"");
+    const organizationName=val(c,["organizationName","organization_name"],"");
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Supprimer ce compte";
+    const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
+    const canAttach=role==="client";
 
-    return`<tr>
-      <td><div class="cell-title">${escapeHtml(name)}</div><div class="muted">ID ${escapeHtml(id)}</div></td>
-      <td>${escapeHtml(email)}</td>
-      <td>
-        <div class="company-edit">
-          <input id="company-${escapeAttr(id)}" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
-          <button class="mini-btn light" onclick="saveUserCompany('${escapeAttr(id)}')">Enregistrer</button>
-          ${jobTitle?`<div class="muted">Fonction : ${escapeHtml(jobTitle)}</div>`:""}
-          ${sector?`<div class="muted">Secteur : ${escapeHtml(sector)}</div>`:""}
+    return`<article class="account-card">
+      <div class="account-card-head">
+        <div class="account-identity">
+          <div class="account-name">${escapeHtml(name)}</div>
+          <div class="account-email">${escapeHtml(email)}</div>
+          <div class="account-chip-row">
+            <span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>
+            <span class="account-chip ${jobTitle?"":"empty"}">💼 ${escapeHtml(jobTitle || "Fonction non renseignée")}</span>
+            <span class="account-chip ${sector?"":"empty"}">🌐 ${escapeHtml(sector || "Secteur non renseigné")}</span>
+          </div>
         </div>
-      </td>
-      <td>
-        <div class="admin-logo-actions">
-          ${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo organisation</span>`}
+        <div class="account-badges">
+          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
+          ${statusBadge(status)}
         </div>
-      </td>
-      <td id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</td>
-      <td>
-        <select class="role-select" id="role-${escapeAttr(id)}">
-          <option value="client" ${role==="client"?"selected":""}>client</option>
-          <option value="partner" ${role==="partner"?"selected":""}>partner</option>
-          <option value="admin" ${role==="admin"?"selected":""}>admin</option>
-        </select>
-        <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">OK</button>
-      </td>
-      <td>${projectCount}</td>
-      <td>${statusBadge(status)}</td>
-      <td>
-        <div class="actions-cell">
+      </div>
+
+      <div class="account-meta-grid">
+        <div class="account-info-box"><div class="account-info-label">Cockpit client</div><div class="account-info-value">${escapeHtml(currentOrgLabel)}</div></div>
+        <div class="account-info-box"><div class="account-info-label">Projets</div><div class="account-info-value">${escapeHtml(projectCount)} autodiag${Number(projectCount)>1?"s":""}</div></div>
+        <div class="account-info-box"><div class="account-info-label">ID compte</div><div class="account-info-value">${escapeHtml(id)}</div></div>
+        <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
+      </div>
+
+      <div class="account-edit-panel">
+        <div>
+          <div class="account-info-label">Entreprise / organisme du compte</div>
+          <input id="company-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
+        </div>
+        <button class="mini-btn light" onclick="saveUserCompany('${escapeAttr(id)}')">Enregistrer</button>
+      </div>
+
+      ${canAttach?`<div class="account-attach-panel">
+        <div>
+          <div class="account-info-label">Rattachement cockpit client</div>
+          <select id="attach-org-${escapeAttr(id)}" class="admin-select">${organizationOptionsForAccount(organizationId)}</select>
+        </div>
+        <button class="mini-btn" onclick="attachUserToOrganization('${escapeAttr(id)}')">Rattacher</button>
+      </div>`:""}
+
+      <div class="account-card-actions">
+        <div class="account-role-edit">
+          <select class="role-select" id="role-${escapeAttr(id)}">
+            <option value="client" ${role==="client"?"selected":""}>client</option>
+            <option value="partner" ${role==="partner"?"selected":""}>partner</option>
+            <option value="admin" ${role==="admin"?"selected":""}>admin</option>
+          </select>
+          <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">Changer rôle</button>
           ${role==="partner"?`<button class="mini-btn light" onclick="openPartnerFolder('${escapeAttr(id)}')">Dossier partner</button>`:""}
-          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
         </div>
-        ${disableDelete?'<div class="warning-text">Protégé</div>':''}
-      </td>
-    </tr>`;
+        <div>
+          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
+          ${disableDelete?'<div class="account-protected">Protégé</div>':''}
+        </div>
+      </div>
+    </article>`;
   }).join("");
 
-  document.getElementById("accountsTable").style.display=rows.length?"table":"none";
+  grid.style.display=rows.length?"grid":"none";
   document.getElementById("accountsEmpty").style.display=rows.length?"none":"block";
 }
 
@@ -781,19 +787,6 @@ function renderPartners(){
   document.getElementById("partnersEmpty").style.display=partners.length?"none":"block";
 }
 
-function renderOrganizationUsers(org){
-  const users=Array.isArray(org?.users)?org.users.filter(u=>u&&u.id):[];
-  if(!users.length){
-    return '<div class="muted">Aucun utilisateur rattaché pour le moment.</div>';
-  }
-  return users.map(u=>{
-    const name=((u.firstName||u.first_name||'')+' '+(u.lastName||u.last_name||'')).trim() || u.companyName || u.email || 'Utilisateur';
-    const email=u.email || '';
-    const role=u.role || 'membre';
-    return `<div class="org-user-row"><div><div class="org-user-name">${escapeHtml(name)}</div><div class="org-user-email">${escapeHtml(email)}</div></div><span class="org-user-role">${escapeHtml(role)}</span></div>`;
-  }).join('');
-}
-
 function renderOrganizations(){
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
   const rows=getDirectOrganizations().filter(o=>!q||JSON.stringify(o).toLowerCase().includes(q));
@@ -823,13 +816,6 @@ function renderOrganizations(){
         <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
-      </div>
-      <div class="org-users-panel">
-        <div class="org-users-head">
-          <div class="org-users-title">Utilisateurs rattachés</div>
-          <button class="mini-btn light" onclick="startCreateUserForOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">+ Ajouter un utilisateur</button>
-        </div>
-        <div class="org-user-list">${renderOrganizationUsers(o)}</div>
       </div>
       <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
     </article>`;
@@ -1182,7 +1168,6 @@ async function createUser(){
     lastName:document.getElementById("newLastname").value.trim(),
     email:document.getElementById("newEmail").value.trim(),
     companyName:document.getElementById("newCompany").value.trim(),
-    organizationId:document.getElementById("newOrganizationId")?.value || "",
     role:document.getElementById("newRole").value,
     password:document.getElementById("newPassword").value
   };
@@ -1192,7 +1177,6 @@ async function createUser(){
     const emailInfo=created?.emailSent?" L’email d’accès a bien été envoyé.":" Attention : l’email automatique n’a pas été confirmé.";
     document.getElementById("createMsg").textContent="Compte créé. Le client sera invité à choisir son propre mot de passe à la première connexion."+emailInfo;
     ["newFirstname","newLastname","newEmail","newCompany","newPassword"].forEach(id=>document.getElementById(id).value="");
-    document.getElementById("newOrganizationId").value="";
     document.getElementById("newRole").value="client";
     showSuccess("Compte créé avec succès.");
     await loadAdminData();
