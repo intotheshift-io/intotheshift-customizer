@@ -401,8 +401,21 @@ function startBlankDiagnostic(){
 }
 
 function useAd(id){
-  if(typeof window.itsStartFromCatalogue === "function") window.itsStartFromCatalogue(id);
-  else localStorage.setItem("its_current_ad_id", id);
+
+  if(typeof itsClearProjectContextOnly === "function"){
+    itsClearProjectContextOnly();
+  } else {
+    localStorage.removeItem("its_current_project_id");
+    localStorage.removeItem("its_current_ad_id");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+  }
+
+  if(typeof window.itsStartFromCatalogue === "function"){
+    window.itsStartFromCatalogue(id);
+  } else {
+    localStorage.setItem("its_current_ad_id", id);
+  }
 
   if(!isLoggedIn()){
     redirectToLogin("questions.html");
