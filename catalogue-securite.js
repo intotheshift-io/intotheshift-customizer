@@ -6700,6 +6700,672 @@
     ],
 
   },
+    "securite-nucleaire-zone": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous vous apprêtez à intervenir en zone contrôlée pour la troisième fois cette semaine sur le même équipement. Votre chef d'équipe vous dit que vous pouvez y aller directement — 'vous connaissez la gamme'.",
+        tags: ["préparation", "gamme"],
+        answers: [
+          { text: "Je rentre directement — j'ai fait cette gamme deux fois cette semaine, je la maîtrise.", score: 0 },
+          { text: "Je prends le temps de relire la gamme et de faire le briefing préalable avant d'entrer.", score: 2 },
+          { text: "Je parcours rapidement les étapes clés de la gamme avant d'entrer.", score: 0.5 },
+          { text: "Je demande au chargé de travaux si la gamme a été modifiée depuis hier.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Avant d'entrer en zone contrôlée, vous réalisez que votre dosimètre opérationnel affiche une valeur résiduelle inhabituelle par rapport à vos dernières interventions. Votre entrée en zone est prévue dans cinq minutes.",
+        tags: ["préparation", "dosimétrie"],
+        answers: [
+          { text: "Je rentre quand même — la valeur reste dans les limites réglementaires.", score: 0 },
+          { text: "Je signale l'anomalie au chargé de radioprotection avant d'entrer.", score: 2 },
+          { text: "Je demande à un collègue si son dosimètre affiche la même chose.", score: 1 },
+          { text: "Je contacte mon chef d'équipe pour qu'il évalue si je peux entrer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous réalisez le briefing préalable et la vérification de votre équipement avant chaque entrée en zone, même pour des interventions répétées sur les mêmes équipements.",
+        tags: ["préparation", "systématisme"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une intervention en zone contrôlée nécessite une habilitation spécifique que vous n'avez pas. Votre chef d'équipe dit que votre habilitation générale est suffisante pour cette tâche précise.",
+        tags: ["préparation", "qualification"],
+        answers: [
+          { text: "Je rentre — mon chef a évalué que mon habilitation générale couvre cette tâche.", score: 0 },
+          { text: "Je refuse d'entrer sans l'habilitation spécifique requise et je le documente.", score: 2 },
+          { text: "Je rentre en restant strictement dans les tâches couvertes par mon habilitation générale.", score: 0.5 },
+          { text: "Je contacte le chargé de travaux pour clarification avant de décider.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En entrant dans votre zone d'intervention, vous constatez que le balisage radiologique a été modifié depuis votre dernière visite. La nouvelle limite de zone est différente de ce que votre gamme indique.",
+        tags: ["préparation", "balisage radiologique"],
+        answers: [
+          { text: "Je continue selon ma gamme — le balisage est géré par les équipes de radioprotection.", score: 0 },
+          { text: "Je contacte le chargé de radioprotection pour comprendre la modification avant de continuer.", score: 2 },
+          { text: "Je reste dans la zone la plus restrictive entre le balisage actuel et ma gamme.", score: 1 },
+          { text: "Je sors et je remonte l'incohérence à mon chef d'équipe.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous constatez une incohérence entre votre gamme et la situation réelle en zone, vous vous arrêtez et signalez avant de continuer.",
+        tags: ["préparation", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre DATR (Dossier d'Aptitude au Travail en zone Réglementée) mentionne une restriction médicale que vous pensez ne plus être d'actualité. Le médecin du travail est absent cette semaine.",
+        tags: ["préparation", "DATR"],
+        answers: [
+          { text: "Je rentre quand même — la restriction est dépassée et je me connais.", score: 0 },
+          { text: "Je n'entre pas en zone tant que la restriction n'a pas été officiellement levée.", score: 2 },
+          { text: "Je contacte le chargé de radioprotection pour qu'il évalue si je peux entrer.", score: 1 },
+          { text: "J'entre en limitant mon exposition au minimum.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le briefing préalable à votre intervention révèle un point ambigu dans votre gamme. L'animateur du briefing propose de 'faire au mieux' sur place. Le planning est serré.",
+        tags: ["préparation", "briefing"],
+        answers: [
+          { text: "J'accepte — on sera deux en zone et on s'adaptera à la situation réelle.", score: 0 },
+          { text: "Je refuse de rentrer tant que l'ambiguïté de la gamme n'est pas levée formellement.", score: 2 },
+          { text: "Je demande que l'ambiguïté soit documentée avant d'entrer.", score: 1.5 },
+          { text: "J'entre et j'opte pour l'interprétation la plus conservative en cas de doute.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez d'entrer en zone si une condition préalable n'est pas remplie — habilitation manquante, gamme ambiguë, équipement anormal — quelle que soit la pression de planning.",
+        tags: ["préparation", "arrêt"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En vérifiant votre équipement avant l'entrée en zone, vous réalisez que votre combinaison présente une déchirure légère. Le vestiaire ne dispose pas d'autre combinaison disponible à cette taille.",
+        tags: ["préparation", "équipement"],
+        answers: [
+          { text: "Je l'utilise quand même — la déchirure est légère et mon exposition sera courte.", score: 0 },
+          { text: "Je refuse d'entrer et je remonte le problème pour qu'une combinaison conforme soit trouvée.", score: 2 },
+          { text: "Je la répare provisoirement avec du ruban adhésif avant d'entrer.", score: 0 },
+          { text: "Je contacte le chargé de radioprotection pour qu'il évalue si c'est utilisable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous préparez vos interventions en zone mais raccourcissez encore sur les gammes connues et sous pression de planning", desc: "Entrer sans relire la gamme parce qu'on la connaît, passer outre une anomalie du dosimètre parce qu'on est dans les limites, rentrer sans l'habilitation spécifique parce que le chef dit que ça couvre : la préparation en zone nucléaire n'est pas une formalité — c'est la première barrière de sûreté. Ce qui n'est pas vérifié avant l'entrée ne peut pas être géré à l'intérieur." },
+          moyen: { label: "Pratiques en développement", titre: "Vous préparez rigoureusement vos interventions dans la plupart des cas mais quelques situations créent encore des exceptions", desc: "Vous lisez la gamme, vérifiez vos équipements et réalisez le briefing dans la plupart des situations. Mais quand le planning est serré, quand votre chef dit que ce n'est pas nécessaire, quand la gamme vous semble connue : quelques exceptions persistent. En zone nucléaire, la préparation n'a pas d'exception acceptable — c'est dans les situations de pression que les incidents surviennent." },
+          haut: { label: "Réflexes installés", titre: "Vous préparez chaque entrée en zone avec la même rigueur, quelle que soit votre expérience sur l'installation", desc: "Vous relisez la gamme même pour la troisième intervention de la semaine sur le même équipement. Vous signalez l'anomalie dosimétrique avant d'entrer même si vous êtes dans les limites. Vous refusez d'entrer sans l'habilitation spécifique requise même si votre chef dit que votre habilitation générale suffit. Vous sortez si la gamme et le balisage sont incohérents. Cette rigueur absolue dans la préparation est la première barrière de sûreté — et la plus efficace." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Votre dosimètre opérationnel déclenche son alarme d'avertissement en zone contrôlée. Vous êtes en milieu d'une opération délicate. Votre binôme dit d'aller au bout avant de sortir.",
+        tags: ["zone", "alarme dosimètre"],
+        answers: [
+          { text: "Je termine l'opération — interrompre maintenant crée plus de risques qu'aller au bout.", score: 0 },
+          { text: "J'arrête immédiatement, j'informe mon binôme et je quitte la zone.", score: 2 },
+          { text: "Je demande à mon binôme de finir pendant que je sors.", score: 0.5 },
+          { text: "Je contacte rapidement le chargé de radioprotection depuis la zone pour avoir son avis.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Sur alarme de votre dosimètre opérationnel, vous quittez immédiatement la zone sans terminer ce que vous étiez en train de faire.",
+        tags: ["zone", "réactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En zone, vous rencontrez une situation non couverte par votre gamme d'intervention. Vous pensez savoir comment gérer. Votre temps d'exposition est limité.",
+        tags: ["zone", "situation non prévue"],
+        answers: [
+          { text: "Je gère seul·e — ma solution est logique et mon temps d'exposition est limité.", score: 0 },
+          { text: "Je quitte la zone et je remonte la situation avant de retourner intervenir.", score: 2 },
+          { text: "Je contacte le chargé de travaux depuis la zone par radio.", score: 1.5 },
+          { text: "Je prends la décision la plus conservative et je la documente en sortant.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre binôme en zone prend une initiative non prévue dans la gamme. Il est plus expérimenté que vous. Vous êtes au milieu de l'intervention.",
+        tags: ["zone", "binôme"],
+        answers: [
+          { text: "Je le suis — il est plus expérimenté et sait probablement ce qu'il fait.", score: 0 },
+          { text: "Je lui demande de s'arrêter et on sort pour valider sa démarche avec le chargé de travaux.", score: 2 },
+          { text: "Je lui pose la question sur l'écart à la gamme tout en continuant.", score: 0.5 },
+          { text: "Je lui fais signe de s'arrêter et je vérifie la gamme avec lui.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin d'intervention, vous constatez qu'il reste des déchets radioactifs dans votre zone de travail que vous n'avez pas générés. Votre temps d'exposition pour cette intervention est terminé.",
+        tags: ["zone", "déchets"],
+        answers: [
+          { text: "Je les collecte rapidement avant de sortir — quelques minutes de plus ne changent pas grand chose.", score: 0 },
+          { text: "Je sors et je signale immédiatement la présence de déchets non collectés au chargé de radioprotection.", score: 2 },
+          { text: "Je les laisse en place et je les mentionne dans mon compte rendu de fin d'intervention.", score: 1 },
+          { text: "Je contacte mon chef d'équipe depuis la zone pour savoir quoi faire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous respectez strictement votre temps et votre débit de dose autorisés en zone, sans jamais les dépasser pour terminer une opération.",
+        tags: ["zone", "limite d'exposition"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En sortant de la zone, vous remarquez que votre gant est déchiré. Vous ne savez pas si c'est arrivé en zone ou à la sortie.",
+        tags: ["zone", "contamination"],
+        answers: [
+          { text: "Je passe le portique normalement — si la déchirure s'est faite à la sortie, il n'y a pas de risque.", score: 0 },
+          { text: "Je me signale immédiatement au chargé de radioprotection sans passer le portique.", score: 2 },
+          { text: "Je passe le portique et je signale la déchirure uniquement s'il se déclenche.", score: 0 },
+          { text: "Je contacte mon chef d'équipe pour qu'il décide de la procédure.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Il vous reste 20 minutes de temps autorisé en zone. Votre intervention est à 80% mais les 20% restants prennent normalement 35 minutes. Terminer aujourd'hui éviterait un retour demain.",
+        tags: ["zone", "extension de temps"],
+        answers: [
+          { text: "Je travaille plus vite pour finir dans les 20 minutes — c'est faisable.", score: 0 },
+          { text: "Je sors avec l'intervention à 80% et je remonte la situation pour planifier le retour.", score: 2 },
+          { text: "Je contacte le chargé de travaux pour voir si une extension de temps est possible.", score: 1.5 },
+          { text: "Je demande à mon binôme de finir avec son propre quota de temps.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous sortez de zone dès que votre temps autorisé est atteint, même si l'intervention n'est pas terminée.",
+        tags: ["zone", "sortie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une alarme générale retentit en zone contrôlée pendant votre intervention. Vous n'avez pas été briefé sur la signification de cette alarme spécifique à ce site.",
+        tags: ["zone", "alerte collective"],
+        answers: [
+          { text: "J'attends des instructions — si c'était grave, quelqu'un serait venu me chercher.", score: 0 },
+          { text: "Je quitte immédiatement la zone et je suis les consignes d'évacuation affichées.", score: 2 },
+          { text: "Je contacte mon chef d'équipe par radio pour savoir quoi faire.", score: 0.5 },
+          { text: "Je demande à mon binôme s'il sait ce que signifie cette alarme.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos réflexes en zone cèdent encore face à la pression de finir ou à l'avis de collègues plus expérimentés", desc: "Continuer sur alarme du dosimètre pour finir l'opération, suivre l'initiative d'un binôme plus expérimenté sans s'arrêter, travailler plus vite pour finir dans le temps restant : la pression de finir et la déférence envers l'expérience sont deux des facteurs les plus documentés dans les événements en zone nucléaire. En zone, les règles ne s'interprètent pas — elles s'appliquent." },
+          moyen: { label: "Pratiques en développement", titre: "Vous appliquez les règles en zone globalement mais vos réflexes sur les imprévus sont encore perfectibles", desc: "Vous sortez sur alarme dosimétrique et vous signalez les situations anormales que vous observez. Mais face à une situation non couverte par la gamme, quand votre binôme plus expérimenté prend une initiative, quand votre temps en zone est presque écoulé et l'opération presque terminée : votre réaction peut encore être insuffisante. L'enjeu est d'ancrer le réflexe d'arrêt dans ces situations précises." },
+          haut: { label: "Réflexes installés", titre: "Vos réflexes en zone sont immédiats et non négociables — alarme, imprévu, écart à la gamme : vous sortez et signalez", desc: "Vous quittez la zone immédiatement sur alarme dosimétrique, sans terminer l'opération en cours. Vous sortez avec votre binôme s'il se sent 'bizarre'. Vous refusez de continuer sur une situation non couverte par la gamme. Vous signalez au chargé de radioprotection sur le premier déclenchement du portique sans repasser. Ces réflexes d'arrêt immédiat — qui supposent d'accepter de créer un retard — sont ce qui fait la différence entre un intervenant en zone compétent et un intervenant en zone fiable." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Pendant votre intervention, vous avez le choix entre deux positions de travail. L'une est plus confortable mais vous place plus près de la source. L'autre est moins pratique mais plus éloignée.",
+        tags: ["radioprotection", "triangulation"],
+        answers: [
+          { text: "Je choisis la plus confortable — mon temps en zone est court et les deux positions sont dans les limites.", score: 0 },
+          { text: "Je choisis la position plus éloignée — même dans les limites, je minimise mon exposition.", score: 2 },
+          { text: "J'alterne entre les deux positions pour trouver un équilibre.", score: 0.5 },
+          { text: "Je vérifie les débits de dose des deux positions avec mon dosimètre avant de choisir.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Même quand vous êtes dans les limites d'exposition autorisées, vous cherchez à minimiser votre exposition en appliquant le principe ALARA (As Low As Reasonably Achievable).",
+        tags: ["radioprotection", "optimisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En approchant de votre zone d'intervention, votre dosimètre opérationnel indique un débit de dose supérieur à ce qui était prévu dans la fiche d'exposition. Vous avez la gamme en main.",
+        tags: ["radioprotection", "débit de dose"],
+        answers: [
+          { text: "Je continue — c'est le débit de dose mesuré in situ, plus fiable que la prévision.", score: 0 },
+          { text: "Je sors et je remonte l'écart au chargé de radioprotection pour réévaluation.", score: 2 },
+          { text: "Je contacte le chargé de radioprotection par radio depuis la zone.", score: 1.5 },
+          { text: "Je réduis le temps que je passe dans cette zone pour compenser le débit plus élevé.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Il fait très chaud dans la zone. Votre combinaison de protection est inconfortable. Votre collègue suggère d'en retirer une partie pendant les phases sans risque d'éclaboussure.",
+        tags: ["radioprotection", "EPI"],
+        answers: [
+          { text: "Je le fais — pendant les phases sans risque d'éclaboussure, la combinaison est effectivement surdimensionnée.", score: 0 },
+          { text: "Je garde la combinaison complète — les phases 'sans risque' ne dispensent pas du port complet.", score: 2 },
+          { text: "Je consulte la gamme pour voir si un allègement y est prévu.", score: 1.5 },
+          { text: "Je contacte le chargé de radioprotection pour avoir son avis.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le portique de contamination à la sortie de zone se déclenche sur vous. Un collègue vous dit que ce portique a des problèmes et que c'est probablement une fausse alarme.",
+        tags: ["radioprotection", "portique"],
+        answers: [
+          { text: "Je repasse — si le portique a des problèmes, c'est probablement une fausse alarme.", score: 0 },
+          { text: "Je reste dans le sas et j'attends le chargé de radioprotection sans repasser le portique.", score: 2 },
+          { text: "Je contacte le chargé de radioprotection pour qu'il vienne évaluer la situation.", score: 2 },
+          { text: "Je demande à un collègue de vérifier si son propre passage déclenche aussi l'alarme.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Sur déclenchement du portique de contamination, vous restez dans le sas et attendez le chargé de radioprotection, sans repasser ni progresser dans le sas de sortie.",
+        tags: ["radioprotection", "portique"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre débit de dose cumulé sur la semaine approche de votre limite mensuelle. Vous avez encore deux interventions en zone prévues cette semaine.",
+        tags: ["radioprotection", "déclaration"],
+        answers: [
+          { text: "Je réalise les deux interventions — les limites mensuelles sont là pour être respectées sur le mois, pas à la semaine.", score: 0 },
+          { text: "Je remonte ma situation dosimétrique au chargé de radioprotection pour réévaluation de mon planning.", score: 2 },
+          { text: "Je réalise la moins dosante des deux et je reporte l'autre.", score: 1 },
+          { text: "Je contacte mon chef d'équipe pour qu'il arbitre entre les deux interventions.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors de votre briefing pré-intervention, le chargé de radioprotection vous communique une fiche d'exposition que vous trouvez incomplète — un équipement à proximité n'est pas mentionné.",
+        tags: ["radioprotection", "information"],
+        answers: [
+          { text: "Je fais confiance à la fiche — le chargé de radioprotection connaît son travail.", score: 0 },
+          { text: "Je signale l'équipement manquant et je demande que la fiche soit complétée avant mon entrée.", score: 2 },
+          { text: "J'entre avec la fiche telle quelle en restant vigilant à proximité de cet équipement.", score: 0 },
+          { text: "Je note la lacune pour la remonter après l'intervention.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous anticipez et organisez vos interventions en zone pour minimiser votre temps d'exposition — répétition préalable hors zone, organisation optimale du poste de travail.",
+        tags: ["radioprotection", "ALARA"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collègue Thierry vous dit qu'il se sent 'bizarre' pendant votre intervention commune en zone contrôlée. Il ne sait pas décrire précisément son état.",
+        tags: ["radioprotection", "collègue"],
+        answers: [
+          { text: "Je lui dis de tenir encore un peu — on est presque à la fin de l'opération.", score: 0 },
+          { text: "Je sors immédiatement avec lui et je le signale au chargé de radioprotection.", score: 2 },
+          { text: "Je lui demande si c'est grave avant de décider si on sort.", score: 0 },
+          { text: "Je le fais sortir seul et je finis l'intervention.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous respectez les limites réglementaires mais le principe ALARA n'est pas encore ancré dans vos réflexes", desc: "Choisir la position de travail la plus confortable dans les limites, alléger l'EPI pendant les phases 'sans risque', ne pas anticiper l'organisation du poste pour réduire le temps en zone : le principe ALARA n'est pas optionnel — c'est un engagement légal et éthique de tout intervenant en zone réglementée. La limite réglementaire est un plafond, pas un objectif." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les limites dosimétriques et signalez les anomalies mais l'optimisation ALARA est encore partielle", desc: "Vous respectez vos limites dosimétriques et signalez les anomalies au portique. Mais choisir systématiquement la position la plus éloignée, anticiper l'organisation de votre poste de travail pour minimiser le temps en zone, signaler les lacunes de la fiche d'exposition avant l'entrée : ces comportements d'optimisation ALARA active sont encore insuffisamment ancrés." },
+          haut: { label: "Réflexes installés", titre: "Vous minimisez activement votre exposition par une organisation rigoureuse et l'application du principe ALARA", desc: "Vous choisissez la position de travail la plus éloignée même dans les limites. Vous répétez hors zone avant d'entrer pour réduire votre temps d'exposition. Vous sortez dès que votre temps autorisé est atteint même si l'intervention n'est pas terminée. Vous signalez les lacunes de la fiche d'exposition avant d'entrer. Cette application active du principe ALARA — au-delà du simple respect des limites — est l'expression la plus concrète de la responsabilité individuelle en matière de radioprotection." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "En fin d'intervention en zone, vous devez rédiger votre compte rendu. L'intervention a eu un incident mineur — une erreur de séquençage vite rattrapée. Votre chef d'équipe dit que ce n'est pas nécessaire de le mentionner.",
+        tags: ["traçabilité", "compte rendu"],
+        answers: [
+          { text: "Je ne le mentionne pas — mon chef a évalué que c'était sans conséquence.", score: 0 },
+          { text: "Je le mentionne dans mon compte rendu — tout écart à la gamme doit être tracé.", score: 2 },
+          { text: "Je le mentionne verbalement à mon chef sans l'écrire.", score: 0.5 },
+          { text: "Je demande à mon chef de me confirmer par écrit que je n'ai pas à le documenter.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos comptes rendus d'intervention en zone sont complets et mentionnent tous les écarts à la gamme, même mineurs et même sans conséquence visible.",
+        tags: ["traçabilité", "complétude"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Pendant votre intervention, vous avez réalisé une étape dans un ordre différent de celui prescrit par la gamme. Le résultat est conforme. L'écart était mineur selon vous.",
+        tags: ["traçabilité", "DES"],
+        answers: [
+          { text: "Je ne déclare pas — l'écart était mineur et le résultat est conforme.", score: 0 },
+          { text: "Je déclare l'écart à la gamme — tout écart doit être tracé quelle que soit son apparente gravité.", score: 2 },
+          { text: "J'en parle à mon chef d'équipe pour qu'il décide si c'est déclarable.", score: 1 },
+          { text: "Je le mentionne dans mon compte rendu sans faire de DES.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'un REX d'équipe sur une intervention récente, vous réalisez que vous avez des éléments sur la situation qui n'ont pas été évoqués. Les partager implique de reconnaître que vous avez observé quelque chose sans le signaler sur le moment.",
+        tags: ["traçabilité", "REX"],
+        answers: [
+          { text: "Je garde les éléments pour moi — ils n'apporteraient que des complications.", score: 0 },
+          { text: "Je partage tous les éléments et j'explique pourquoi je ne les ai pas signalés sur le moment.", score: 2 },
+          { text: "Je partage les éléments factuels sans mentionner que je les avais au moment de l'intervention.", score: 0.5 },
+          { text: "J'en parle à mon chef d'équipe en privé avant de les partager en réunion.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous réalisez en fin de semaine que votre registre dosimétrique contient une erreur — une intervention a été enregistrée avec une dose inférieure à la réalité.",
+        tags: ["traçabilité", "dosimétrie"],
+        answers: [
+          { text: "Je laisse — l'écart est mineur et corriger rétroactivement est compliqué.", score: 0 },
+          { text: "Je signale immédiatement l'erreur au chargé de radioprotection pour correction.", score: 2 },
+          { text: "Je corrige moi-même l'entrée dans le registre.", score: 0 },
+          { text: "J'en parle à mon chef d'équipe avant de décider.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement toute erreur ou anomalie dans votre suivi dosimétrique, même si la correction est complexe.",
+        tags: ["traçabilité", "dosimétrie"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une révision de gamme, vous réalisez qu'une ambiguïté que vous avez rencontrée lors d'interventions précédentes n'a pas été corrigée. Vous ne l'aviez jamais signalée.",
+        tags: ["traçabilité", "retour"],
+        answers: [
+          { text: "Je la signale maintenant et j'explique que je l'avais rencontrée précédemment.", score: 2 },
+          { text: "Je la signale sans mentionner que je l'avais rencontrée avant — ça ne sert à rien.", score: 1 },
+          { text: "Je la signale en demandant pourquoi elle n'a pas encore été corrigée.", score: 1.5 },
+          { text: "Je vérifie d'abord si d'autres collègues l'ont rencontrée avant de la remonter.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En lisant les comptes rendus de vos collègues sur des interventions similaires aux vôtres, vous remarquez une pratique récurrente qui s'écarte légèrement de la gamme officielle.",
+        tags: ["traçabilité", "information"],
+        answers: [
+          { text: "Je prends note pour adapter ma propre pratique — si tout le monde le fait, ça doit être acceptable.", score: 0 },
+          { text: "Je le remonte au chargé de travaux — un écart récurrent non documenté est un problème systémique.", score: 2 },
+          { text: "J'en parle aux collègues concernés pour comprendre pourquoi ils procèdent ainsi.", score: 1 },
+          { text: "Je l'ignore — ce n'est pas mon rôle d'analyser les comptes rendus des autres.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les problèmes systémiques — gammes ambiguës, pratiques déviantes récurrentes, équipements inadaptés — pas seulement les incidents individuels.",
+        tags: ["traçabilité", "signalement systémique"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez acquis une expérience précieuse sur une installation en arrêt de tranche. La campagne se termine. Les équipes qui interviendront au prochain arrêt de tranche bénéficieraient de ce que vous avez appris.",
+        tags: ["traçabilité", "transmission"],
+        answers: [
+          { text: "Ce sont des informations techniques qui seront transmises si quelqu'un les demande.", score: 0 },
+          { text: "Je formalise mes observations et je les transmets au chargé de travaux pour enrichir les gammes futures.", score: 2 },
+          { text: "J'en parle oralement à mes collègues de l'équipe avant de partir.", score: 1 },
+          { text: "Je les note dans mon carnet personnel pour mes prochaines interventions.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre traçabilité est incomplète — les écarts mineurs et les situations inconfortables ne sont pas systématiquement documentés", desc: "Ne pas mentionner un écart mineur dans le compte rendu parce que le résultat est conforme, ne pas déclarer une erreur de séquençage parce que le chef dit que ce n'est pas nécessaire, ne pas remonter une ambiguïté de gamme rencontrée plusieurs fois : la traçabilité nucléaire repose sur l'honnêteté de chaque acteur. Ce qui n'est pas écrit n'existe pas pour les équipes qui viendront après vous." },
+          moyen: { label: "Pratiques en développement", titre: "Vos comptes rendus sont généralement complets mais les situations qui vous impliquent sont encore sous-documentées", desc: "Vous documentez les incidents significatifs de vos interventions. Mais les écarts mineurs 'sans conséquence', les situations où vous reconnaissez n'avoir pas signalé quelque chose sur le moment, les erreurs dans votre suivi dosimétrique : ces situations inconfortables sont encore sous-documentées. L'enjeu est d'appliquer le même niveau d'honnêteté dans la traçabilité quelle que soit votre implication personnelle." },
+          haut: { label: "Réflexes installés", titre: "Votre traçabilité est complète et honnête, y compris sur les situations qui vous impliquent directement", desc: "Vous mentionnez l'erreur de séquençage dans votre compte rendu même si votre chef dit que ce n'est pas nécessaire. Vous signalez immédiatement une erreur dans votre registre dosimétrique même si la correction est complexe. Vous partagez dans les REX les éléments que vous n'avez pas signalés sur le moment, en l'expliquant. Vous remontez les pratiques déviantes récurrentes que vous observez dans les comptes rendus de vos collègues. Cette traçabilité honnête et systématique est ce qui fait que les systèmes de retour d'expérience nucléaires fonctionnent réellement." },
+        },
+      }
+    ],
+
+  },
 
   }); // fin Object.assign CUSTOM_QUESTIONS
 
@@ -6796,6 +7462,15 @@
     ["Gérer la coactivité sur chantier",     "Coordonner les interventions simultanées et maintenir la vigilance au-delà de son périmètre direct."],
     ["Respecter le PPSPS et les procédures", "Lire, appliquer et faire évoluer le PPSPS face aux réalités du terrain."],
     ["Réagir aux incidents et presqu'accidents", "Appliquer les protocoles d'urgence et traiter les signaux faibles avec le même sérieux que les accidents avérés."]
+  ]}
+],
+["securite-nucleaire-zone", "Intervenir en zone nucléaire", "Équipes terrain — Nucléaire",
+  "Préparer, réaliser et tracer ses interventions en zone contrôlée selon les règles de radioprotection.",
+  { domain: "securite", chapters: [
+    ["Préparer son intervention en zone",        "Gamme, habilitation, dosimètre, équipement — aucune condition préalable ne s'improvise."],
+    ["Travailler en zone et gérer les imprévus", "Appliquer les réflexes d'arrêt et de sortie face à toute anomalie, sans exception."],
+    ["Appliquer les règles de radioprotection",  "Respecter les limites et minimiser l'exposition selon le principe ALARA."],
+    ["Contribuer à la traçabilité et au REX",    "Documenter tous les écarts, y compris mineurs, et remonter les problèmes systémiques."]
   ]}
 ],
 ["securite-nucleaire-zone", "Intervenir en zone nucléaire", "Équipes terrain — Nucléaire",
