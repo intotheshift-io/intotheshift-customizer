@@ -79,11 +79,33 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .btn-continue.blocked{background:#f5c0c1!important;cursor:pointer!important;opacity:.78}
 
 
-/* ── Pack passations client ───────────────────── */
-.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#18375d 0%,#007883 100%);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px;color:#fff;box-shadow:0 18px 45px rgba(24,55,93,.18)}
-.its-quota-card::after{content:"";position:absolute;right:-50px;top:-60px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.13)}
-.its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;opacity:.75;margin-bottom:4px}.its-quota-title{font-size:20px;font-weight:900;line-height:1.15}.its-quota-pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;white-space:nowrap}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}.its-quota-box{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;text-align:center}.its-quota-box strong{display:block;font-size:25px;line-height:1;color:#fff}.its-quota-box span{display:block;font-size:11px;margin-top:5px;opacity:.82}.its-quota-bar{height:9px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:12px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc744;width:0%;transition:width .4s ease}.its-quota-note{font-size:12px;line-height:1.45;opacity:.88;margin-top:10px}.its-quota-nudge{background:#fff;color:#18375d;border-radius:14px;padding:10px 12px;margin-top:12px;font-size:12px;line-height:1.45;font-weight:700}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
-.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
+/* ── Pack passations client — design premium aligné Mes AD ───────────────────── */
+.quota-wrap{margin:0 0 18px}
+.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
+.its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
+.its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
+.its-quota-card>*{position:relative;z-index:1}
+.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}
+.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}
+.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}
+.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
+.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}
+.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}
+.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}
+.its-quota-box:nth-child(1) span::before{content:"🛒"}
+.its-quota-box:nth-child(2) span::before{content:"✅"}
+.its-quota-box:nth-child(3) span::before{content:"🚀"}
+.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}
+.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}
+.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}
+.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}
+.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}
+.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
+.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}
+.its-quota-inline strong{color:#007883}
+.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
 @media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
 
 .pack-tarifs-card{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:15px;margin-top:12px;box-shadow:0 10px 26px rgba(24,55,93,.07)}
