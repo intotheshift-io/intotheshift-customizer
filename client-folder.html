@@ -656,11 +656,44 @@ function getProjectTitle(project){
     function getDaysUntil(dateValue){
       const iso = normalizeDateInputValue(dateValue);
       if(!iso) return null;
+
+      // Comparaison locale jour par jour pour éviter les décalages UTC.
+      const [y,m,d] = iso.split("-").map(Number);
+      const target = new Date(y, m - 1, d);
       const today = new Date();
       today.setHours(0,0,0,0);
-      const target = new Date(iso + "T00:00:00");
+
       if(Number.isNaN(target.getTime())) return null;
-      return Math.ceil((target - today) / 86400000);
+      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    }
+
+    function isMonitorableCampaign(project){
+      const status = normalizeStatus(project.status);
+      const hasResults = Boolean(getProjectResultsUrl(project));
+
+      // On surveille uniquement les campagnes réellement actives côté client :
+      // publiées, ou dépubliées lorsque les résultats restent accessibles.
+      return status === "published" || (status === "unpublished" && hasResults);
+    }
+
+    function getProjectCampaignKey(project){
+      return String(
+        getProjectShareUrl(project) ||
+        getProjectResultsUrl(project) ||
+        project?.id ||
+        getProjectTitle(project)
+      ).trim().toLowerCase();
+    }
+
+    function uniqueCampaignProjects(projects){
+      const seen = new Set();
+      return (projects || []).filter(project => {
+        const key = getProjectCampaignKey(project);
+        if(!key) return true;
+        if(seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
     }
 
     function getProjectAlerts(project){
@@ -672,7 +705,9 @@ function getProjectTitle(project){
       const alerts = [];
 
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
-      if(status === "published" && daysLeft !== null && daysLeft >= 0 && daysLeft <= 7) alerts.push({kind:"warn", icon:"⏳", text:`Clôture dans ${daysLeft} jour${daysLeft>1?'s':''}`});
+      if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft < 0) alerts.push({kind:"neutral", icon:"⚫", text:"Campagne terminée"});
+      else if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft <= 7) alerts.push({kind:"warn", icon:"🟠", text:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`});
+      else if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft < 14) alerts.push({kind:"warn", icon:"🔴", text:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
       if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
@@ -724,11 +759,24 @@ function getProjectTitle(project){
     function renderWatchList(projects){
       const el = document.getElementById("watchList");
       if(!el) return;
-      const endingSoon = projects.filter(p => normalizeStatus(p.status)==="published" && getDaysUntil(getProjectEndDate(p)) !== null && getDaysUntil(getProjectEndDate(p)) >= 0 && getDaysUntil(getProjectEndDate(p)) <= 7).length;
+
+      const monitored = uniqueCampaignProjects((projects || []).filter(isMonitorableCampaign));
+      const endingSoon = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days >= 0 && days < 14;
+      }).length;
+      const endingImminent = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days >= 0 && days < 7;
+      }).length;
+      const ended = monitored.filter(p => {
+        const days = getDaysUntil(getProjectEndDate(p));
+        return days !== null && days < 0;
+      }).length;
       const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
-        <div class="watch-card orange"><div class="watch-ico">⏳</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">À surveiller pour relances, clôture ou dépublication.</div></div></div>
+        <div class="watch-card orange"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
         <div class="watch-card blue"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">À publier dès que les URLs de diffusion et résultats sont prêtes.</div></div></div>
         <div class="watch-card green"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Accès directs disponibles dans l’onglet Résultats.</div></div></div>
       `;
