@@ -661,10 +661,55 @@ function getAccountCompanyFromObject(obj){
   if(!obj || typeof obj !== 'object') return '';
   return obj.company_name || obj.companyName || obj.organizationName || obj.organization_name || obj.enterpriseName || obj.enterprise_name || obj.entreprise || obj.company || obj.organization || obj.organisation || '';
 }
+
+function getAccountUserField(obj, keys){
+  if(!obj || typeof obj !== 'object') return '';
+  for(const key of keys){
+    const value = obj[key];
+    if(value !== undefined && value !== null && String(value).trim() !== '') return String(value).trim();
+  }
+  return '';
+}
+function applyAccountUserToForm(user){
+  if(!user || typeof user !== 'object') return;
+  const mappings = {
+    'client-company': getAccountCompanyFromObject(user),
+    'client-firstname': getAccountUserField(user, ['firstName','first_name','prenom','first_name']),
+    'client-lastname': getAccountUserField(user, ['lastName','last_name','nom']),
+    'client-email': getAccountUserField(user, ['email','mail']),
+    'client-role': getAccountUserField(user, ['jobTitle','job_title','fonction','roleTitle','title'])
+  };
+
+  Object.entries(mappings).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if(el && value && !String(el.value || '').trim()) el.value = value;
+  });
+}
 function getAccountCompanyFallback(){
   const u = getStoredUser();
   return getAccountCompanyFromObject(u) || getAccountCompanyFromObject(state.user) || getAccountCompanyFromObject(state.account) || '';
 }
+async function loadAccountUser(){
+  const token =
+    localStorage.getItem('its_token') ||
+    localStorage.getItem('token') ||
+    localStorage.getItem('auth_token') ||
+    '';
+  if(!token) return getStoredUser();
+
+  try{
+    const response = await fetch(getApiBaseUrl() + '/api/me', {
+      headers:{ Authorization:'Bearer ' + token }
+    });
+    if(!response.ok) throw new Error('api/me ' + response.status);
+    const data = await response.json();
+    return data.user || data.account || data || {};
+  }catch(e){
+    console.warn('Compte non récupéré, fallback local', e);
+    return getStoredUser();
+  }
+}
+
 async function loadAccountCompany(){
   const token =
     localStorage.getItem('its_token') ||
@@ -692,16 +737,20 @@ async function loadAccountCompany(){
   return getAccountCompanyFallback();
 }
 async function applyAccountCompany(){
-  const company = await loadAccountCompany();
-  if(!company) return;
-  const input = document.getElementById('client-company');
-  if(input) input.value = company;
-  const sum = document.getElementById('sum-company');
-  if(sum) sum.textContent = company;
-  state.clientInfo = state.clientInfo || {};
-  state.clientInfo.entreprise = company;
+  const user = await loadAccountUser();
+  applyAccountUserToForm(user);
+
+  const company = getAccountCompanyFromObject(user) || getAccountCompanyFallback();
+  if(company){
+    const input = document.getElementById('client-company');
+    if(input && !String(input.value || '').trim()) input.value = company;
+    const sum = document.getElementById('sum-company');
+    if(sum) sum.textContent = input?.value || company;
+  }
+
+  state.clientInfo = Object.assign({}, state.clientInfo || {}, getClientInfo());
   state.transmission = state.transmission || {};
-  state.transmission.clientInfo = Object.assign({}, state.transmission.clientInfo || {}, { entreprise: company });
+  state.transmission.clientInfo = Object.assign({}, state.transmission.clientInfo || {}, getClientInfo());
   updateReady();
 }
 function isValidEmail(email){
@@ -1112,7 +1161,6 @@ async function transmit(){
   state.transmission.clientInfo = state.clientInfo;
   state.transmission.status = 'ready_to_send';
   state.transmission.submitted_at = payload.submitted_at;
-  state.transmission.payload = payload;
   state.status = 'sent';
   state.configTransmise = true;
   state.config_transmise = true;
@@ -1159,9 +1207,14 @@ async function transmit(){
         step: 'validation',
         current_step: 'validation',
         status: 'sent',
+        clientInfo: getClientInfo(),
+        transmission: Object.assign({}, state.transmission || {}, {
+          clientInfo: getClientInfo(),
+          status: 'ready_to_send',
+          submitted_at: payload.submitted_at
+        }),
         passationLogoName: state.passationLogoName || state.passation_logo_name || getParam().passationLogoName || getParam().passation_logo_name || "",
-        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || "",
-        payload
+        passationLogoDataUrl: state.passationLogoDataUrl || state.passation_logo_data_url || getParam().passationLogoDataUrl || getParam().passation_logo_data_url || ""
       })
     })
   });
@@ -1188,7 +1241,7 @@ async function transmit(){
 
   state.transmission.backend_submit_sent = sentOk;
   state.transmission.backend_submit_status = transmissionResult.reason || (sentOk ? 'SENT' : 'NOT_SENT');
-  state.transmission.backend_submit_details = transmissionResult.details || null;
+  state.transmission.backend_submit_details = transmissionResult.details ? { ok: true } : null;
   state.transmission.client_recap_email_sent = !!transmissionResult.details?.clientEmailSent;
   state.transmission.client_recap_email_status = transmissionResult.details?.clientEmailStatus || state.transmission.backend_submit_status;
   state.transmission.admin_excel_email_sent = !!transmissionResult.details?.adminEmailSent;

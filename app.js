@@ -205,6 +205,20 @@ function itsCompactStateForLocalStorage(value) {
       const isHeavyImageKey = lowerKey.includes("dataurl") || lowerKey.includes("data_url") || lowerKey.includes("base64");
       const isHeavyValue = typeof v === "string" && (v.startsWith("data:image/") || v.length > 250000);
 
+      const isGeneratedAttachmentKey =
+        lowerKey === "payload" ||
+        lowerKey === "excel_html" ||
+        lowerKey === "pdf_html" ||
+        lowerKey === "data" ||
+        lowerKey === "attachments" ||
+        lowerKey === "excel" ||
+        lowerKey === "recap";
+
+      if (isGeneratedAttachmentKey) {
+        obj[key] = "";
+        return;
+      }
+
       if (isHeavyImageKey || isHeavyValue) {
         obj[key] = "";
         return;
@@ -242,7 +256,7 @@ function itsSafeSetLocalStorage(key, value) {
 }
 
 function itsSave(state) {
-  const safeState = itsCanonicalizeCampaignDates(itsUnwrapProjectData(state || {}));
+  const safeState = itsCanonicalizeCampaignDates(itsCompactStateForLocalStorage(itsUnwrapProjectData(state || {})));
   const step = safeState.current_step || safeState.currentStep || safeState.step || itsInferCurrentStep();
 
   if (step) {
@@ -445,7 +459,7 @@ function itsRestoreProject(project) {
   itsCanonicalizeCampaignDates(data);
 
   itsIsRestoringProject = true;
-  itsSafeSetLocalStorage(itsGetStorageKey(), data);
+  itsSafeSetLocalStorage(itsGetStorageKey(), itsCompactStateForLocalStorage(data));
 
   if (projectId) {
     try {
@@ -602,7 +616,7 @@ function itsNormalizeProjectStatus(projectOrState) {
 
 function itsIsProjectReadOnly(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived";
+  return status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted";
 }
 
 async function itsFetchProjectById(projectId) {
