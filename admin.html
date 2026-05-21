@@ -282,7 +282,7 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <input id="partnerSearch" class="admin-input" placeholder="Rechercher partner..." oninput="renderPartners()">
           </div>
         </div>
-        <div class="notice">Chaque partner dispose d’un quota global. Ses clients finaux n’ont pas de pack propre par défaut.</div>
+        <div class="notice">Chaque partner dispose d’un quota global. Ses cockpits clients n’ont pas de pack propre par défaut.</div>
         <div id="partnersLoading" class="loading">Chargement des partners...</div>
         <div id="partnersGrid" class="partner-card-grid"></div>
         <div id="partnersEmpty" class="empty" style="display:none">Aucun partner trouvé.</div>
@@ -366,6 +366,18 @@ async function apiDelete(path){const res=await fetch(API_BASE_URL+path,{method:"
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}
 function formatNumber(v){return num(v).toLocaleString("fr-FR");}
+function clampRemaining(value, quota){
+  const q=Number(quota||0);
+  const r=Number(value||0);
+  if(!Number.isFinite(r)) return 0;
+  if(q>0) return Math.max(0, Math.min(q, r));
+  return Math.max(0, r);
+}
+function remainingToUsed(remaining, quota){
+  const q=Number(quota||0);
+  const r=clampRemaining(remaining, q);
+  return Math.max(0, q-r);
+}
 function getPackQuotaValue(pack, currentQuota=0){
   const quotas={"50":50,"100":100,"200":200,"500":500,"700":700,"1200":1200,"1500":1500,"1700":1700,"2000":2000,"2500":2500,"3000":3000,"4000":4000,"5000":5000,"7000":7000};
   if(Object.prototype.hasOwnProperty.call(quotas,String(pack))) return quotas[String(pack)];
@@ -707,13 +719,13 @@ function renderPartners(){
       <h3>${escapeHtml(name || "Partner sans nom")}</h3>
       <div class="partner-meta">
         ${escapeHtml(email)}<br>
-        ${orgs.length} client${orgs.length>1?"s":""} final${orgs.length>1?"s":""} · ${projectCount} AD
+        ${orgs.length} cockpit${orgs.length>1?"s":""} client${orgs.length>1?"s":""} · ${projectCount} AD
       </div>
 
       <div class="partner-quota">
         <div class="partner-mini"><strong>${formatNumber(quota)}</strong><span>Achetées</span></div>
-        <div class="partner-mini"><strong>${formatNumber(used)}</strong><span>Utilisées</span></div>
         <div class="partner-mini"><strong>${formatNumber(remaining)}</strong><span>Restantes</span></div>
+        <div class="partner-mini"><strong>${formatNumber(used)}</strong><span>Utilisées calculées</span></div>
       </div>
 
       <div class="quota-edit">
@@ -722,10 +734,10 @@ function renderPartners(){
           <input id="quota-${escapeAttr(id)}" type="number" min="0" value="${quota}">
         </div>
         <div class="quota-field">
-          <label>Utilisées</label>
-          <input id="used-${escapeAttr(id)}" type="number" min="0" value="${used}">
+          <label>Restantes</label>
+          <input id="remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}">
         </div>
-        <div class="quota-rest">Restantes calculées : ${formatNumber(remaining)}</div>
+        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">Saisissez ici le solde restant visible dans le moteur Me&YouToo.</span></div>
         <button class="mini-btn light quota-action" onclick="saveUserPassations('${escapeAttr(id)}')">Enregistrer le quota</button>
       </div>
 
@@ -764,8 +776,8 @@ function renderOrganizations(){
       </div>
       <div class="org-quota-panel">
         <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
-        <div class="quota-field"><label>Utilisées</label><input id="org-used-${escapeAttr(id)}" type="number" min="0" value="${used}"></div>
-        <div class="quota-rest">Restantes : ${formatNumber(remaining)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
+        <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
+        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
       </div>
       <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
@@ -1049,14 +1061,15 @@ async function saveUserCompany(userId){
 }
 
 async function saveUserPassations(userId){
-  const quota=document.getElementById("quota-"+String(userId))?.value || 0;
-  const used=document.getElementById("used-"+String(userId))?.value || 0;
+  const quota=Number(document.getElementById("quota-"+String(userId))?.value || 0);
+  const remaining=clampRemaining(document.getElementById("remaining-"+String(userId))?.value || 0, quota);
+  const used=remainingToUsed(remaining, quota);
   try{
     await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/passations`,{
-      passationsQuota:Number(quota||0),
-      passationsUsed:Number(used||0)
+      passationsQuota:quota,
+      passationsUsed:used
     });
-    showSuccess("Quota partner mis à jour.");
+    showSuccess("Quota partner mis à jour : "+formatNumber(remaining)+" passations restantes.");
     await loadAdminData();
   }catch(err){
     console.error(err);
@@ -1067,25 +1080,29 @@ async function saveUserPassations(userId){
 function syncOrganizationPackQuota(orgId){
   const packEl=document.getElementById("org-pack-"+String(orgId));
   const quotaEl=document.getElementById("org-quota-"+String(orgId));
+  const remainingEl=document.getElementById("org-remaining-"+String(orgId));
   if(!packEl || !quotaEl)return;
   const currentQuota=Number(quotaEl.value||0);
   const pack=packEl.value || "";
   if(pack && pack!=="existing" && pack!=="illimite"){
-    quotaEl.value=getPackQuotaValue(pack,currentQuota);
+    const nextQuota=getPackQuotaValue(pack,currentQuota);
+    quotaEl.value=nextQuota;
+    if(remainingEl) remainingEl.value=nextQuota;
   }
 }
 
 async function saveOrganizationPassations(orgId){
   const passationsPack=document.getElementById("org-pack-"+String(orgId))?.value || "";
-  const passationsQuota=document.getElementById("org-quota-"+String(orgId))?.value || 0;
-  const passationsUsed=document.getElementById("org-used-"+String(orgId))?.value || 0;
+  const passationsQuota=Number(document.getElementById("org-quota-"+String(orgId))?.value || 0);
+  const passationsRemaining=clampRemaining(document.getElementById("org-remaining-"+String(orgId))?.value || 0, passationsQuota);
+  const passationsUsed=remainingToUsed(passationsRemaining, passationsQuota);
   try{
     await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/passations`,{
       passationsPack,
-      passationsQuota:Number(passationsQuota||0),
-      passationsUsed:Number(passationsUsed||0)
+      passationsQuota,
+      passationsUsed
     });
-    showSuccess("Pack acheté et passations du client mis à jour.");
+    showSuccess("Pack client mis à jour : "+formatNumber(passationsRemaining)+" passations restantes.");
     await loadAdminData();
   }catch(err){
     console.error(err);
