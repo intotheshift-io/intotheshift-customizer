@@ -141,6 +141,158 @@ td:nth-child(9){width:125px}
 .org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+
+/* Cartes comptes utilisateurs — styles isolés admin */
+.accounts-card-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:14px;
+  align-items:start;
+}
+.account-card{
+  background:#fff;
+  border:1px solid #dfe8ef;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 8px 22px rgba(13,76,114,.05);
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.account-card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+}
+.account-identity{min-width:0;flex:1}
+.account-name{
+  color:#0d4c72;
+  font-size:18px;
+  line-height:1.2;
+  font-weight:900;
+  margin-bottom:3px;
+}
+.account-email{
+  color:#60758a;
+  font-size:13px;
+  font-weight:700;
+  word-break:break-word;
+}
+.account-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-end;
+  flex-shrink:0;
+}
+.account-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+.account-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:#f6f9fb;
+  border:1px solid #e2ebf2;
+  color:#244b63;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:12px;
+  font-weight:800;
+  max-width:100%;
+}
+.account-chip.empty{
+  background:#fbfdfe;
+  color:#7b8c9a;
+  font-weight:700;
+}
+.account-meta-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.account-info-box{
+  background:#f6f9fb;
+  border:1px solid #e2ebf2;
+  border-radius:14px;
+  padding:11px;
+  min-width:0;
+}
+.account-info-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#74899a;
+  font-weight:900;
+  margin-bottom:5px;
+}
+.account-info-value{
+  font-size:13px;
+  color:#18375d;
+  font-weight:900;
+  word-break:break-word;
+  line-height:1.3;
+}
+.account-logo-box{min-height:28px;display:flex;align-items:center}
+.account-edit-panel,
+.account-attach-panel{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:end;
+  background:#fbfdfe;
+  border:1px solid #e2ebf2;
+  border-radius:16px;
+  padding:12px;
+}
+.account-edit-panel .admin-input,
+.account-attach-panel .admin-select{
+  width:100%;
+  min-width:0;
+}
+.account-card-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  border-top:1px solid #edf2f6;
+  padding-top:12px;
+}
+.account-role-edit{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.account-protected{
+  color:#9d2b2b;
+  font-size:12px;
+  margin-top:5px;
+  text-align:right;
+}
+
+@media(max-width:1200px){
+  .accounts-card-grid{grid-template-columns:1fr}
+  .account-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .account-card-head,
+  .account-card-actions{flex-direction:column;align-items:stretch}
+  .account-badges{justify-content:flex-start}
+  .account-meta-grid,
+  .account-edit-panel,
+  .account-attach-panel{grid-template-columns:1fr}
+  .account-edit-panel .mini-btn,
+  .account-attach-panel .mini-btn{width:100%;justify-content:center}
+}
+
 @media(max-width:1100px){.project-publication{grid-template-columns:1fr 1fr}.project-publication button{grid-column:auto}.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.global-cards,.info-grid,.org-quota-panel{grid-template-columns:1fr}.org-card-head,.project-card-head{flex-direction:column}.org-quota-panel button{grid-column:auto}}
 
