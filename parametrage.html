@@ -99,6 +99,36 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 .pack-selected-inline .pack-selected-mini strong{color:#007883}
 
 
+
+/* ── Tarifs packs — encart visible sous le choix du pack ───────── */
+.pack-tarifs-inline{margin:4px 0 18px;background:linear-gradient(135deg,#ffffff 0%,#f8fbfd 100%);border:1px solid #cfe4ea;border-radius:18px;padding:16px;box-shadow:0 12px 30px rgba(24,55,93,.08)}
+.pack-tarifs-title{font-size:14px;font-weight:900;color:#18375d;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.pack-tarifs-sub{font-size:12px;color:#64748b;line-height:1.45;margin-bottom:12px}
+.pack-tarifs-grid-full{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:0}
+.pack-tarif-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:10px 9px;text-align:left;min-height:92px;box-shadow:0 5px 14px rgba(24,55,93,.04)}
+.pack-tarif-chip strong{display:block;font-size:17px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}
+.pack-tarif-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}
+.pack-tarif-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}
+.pack-tarif-chip b{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:950;border-radius:999px;padding:3px 7px;margin-bottom:7px;background:#fff;color:#8a5a00;border:1px solid rgba(255,199,68,.65)}
+.pack-tarif-chip.popular{background:linear-gradient(135deg,#fff9e9 0%,#fff1bd 100%);border-color:#ffc744;box-shadow:0 8px 20px rgba(255,199,68,.18)}
+.pack-tarif-chip.popular strong,.pack-tarif-chip.popular em{color:#8a5a00}
+.pack-tarif-chip.entreprise{background:linear-gradient(135deg,#eef9fb 0%,#dff2f5 100%);border-color:#9fd0e0;box-shadow:0 8px 20px rgba(0,120,131,.12)}
+.pack-tarif-chip.entreprise b{color:#0d4c72;border-color:#9fd0e0;background:#fff}
+.pack-tarif-chip.entreprise strong,.pack-tarif-chip.entreprise em{color:#0d4c72}
+.pack-tarif-chip.illimite{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-color:#18375d}
+.pack-tarif-chip.illimite strong,.pack-tarif-chip.illimite em,.pack-tarif-chip.illimite span{color:#fff}
+.pack-selected-inline{background:linear-gradient(135deg,#ffffff,#f7fbfd);border:1px solid #cfe4ea;border-left:6px solid #007883;border-radius:16px;padding:13px 14px;margin:10px 0;color:#18375d;box-shadow:0 10px 24px rgba(24,55,93,.08)}
+.pack-selected-inline .pack-selected-title{font-size:13px;font-weight:950;color:#18375d;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pack-selected-inline .pack-selected-mini{font-size:12px;color:#64748b;line-height:1.45}
+.pack-selected-inline .pack-selected-mini strong{color:#007883}
+.pack-selected-inline.popular{border-left-color:#ffc744;background:linear-gradient(135deg,#fffdf6,#fff4cf)}
+.pack-selected-inline.entreprise{border-left-color:#0d4c72;background:linear-gradient(135deg,#f8fdff,#eef9fb)}
+.pack-selected-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:950;background:#f0f8f7;color:#007883;border:1px solid #b8dfe0}
+.pack-selected-inline.popular .pack-selected-badge{background:#fff4cf;color:#8a5a00;border-color:#ffc744}
+.pack-selected-inline.entreprise .pack-selected-badge{background:#eef9fb;color:#0d4c72;border-color:#9fd0e0}
+@media(max-width:980px){.pack-tarifs-grid-full{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.pack-tarifs-grid-full{grid-template-columns:repeat(2,minmax(0,1fr))}.pack-tarif-chip{min-height:84px}}
+
 </style>
 </head>
 <body>
@@ -142,10 +172,31 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
         <div class="field"><label>Description interne</label><input class="inp" id="desc" type="text" oninput="updateParam('desc',this.value)"></div>
         <div class="inp-row">
           <div class="field"><label>Nom de l'entreprise / espace client<span class="req">*</span><span class="help-q" data-help="Écrivez ce nom sans espace, tout attaché. Il sera intégré dans l’URL de passation.">?</span></label><input class="inp" id="entreprise" type="text" placeholder="ex : sonora-rh" oninput="updateCompany(this.value);checkContinue()"></div>
-          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">J’ai déjà un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
+          <div class="field partner-hide"><label>Pack choisi<span class="req">*</span></label><select class="inp" id="pack_choisi" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select></div>
           <div class="field partner-only"><label>Volume prévu pour cette campagne<span class="req">*</span></label><input class="inp" id="volume_prevu" type="number" min="1" placeholder="Ex. 200" oninput="updateParam('volume_prevu',parseInt(this.value||0));checkContinue()"></div>
         </div>
         <div id="paramQuotaInline" class="partner-hide"></div>
+        <div class="pack-tarifs-card pack-tarifs-inline partner-hide">
+          <div class="pack-tarifs-title">💶 Tarifs des packs de passations</div>
+          <div class="pack-tarifs-sub">Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Le pack 500 est recommandé pour un déploiement PME ; le pack 1 200 pour les grands comptes ou cabinets.</div>
+          <div class="pack-tarifs-grid pack-tarifs-grid-full">
+            <div class="pack-tarif-chip"><strong>50</strong><em>250 € HT</em><span>Découverte</span></div>
+            <div class="pack-tarif-chip"><strong>100</strong><em>450 € HT</em><span>Mini équipe</span></div>
+            <div class="pack-tarif-chip"><strong>200</strong><em>700 € HT</em><span>Test</span></div>
+            <div class="pack-tarif-chip popular"><b>⭐ Le plus populaire</b><strong>500</strong><em>1 500 € HT</em><span>Déploiement PME</span></div>
+            <div class="pack-tarif-chip"><strong>700</strong><em>1 900 € HT</em><span>Multi-BU</span></div>
+            <div class="pack-tarif-chip entreprise"><b>🏢 Entreprise</b><strong>1 200</strong><em>3 000 € HT</em><span>Grand compte / cabinet</span></div>
+            <div class="pack-tarif-chip"><strong>1 500</strong><em>3 500 € HT</em><span>Grand déploiement</span></div>
+            <div class="pack-tarif-chip"><strong>1 700</strong><em>3 800 € HT</em><span>Organisation étendue</span></div>
+            <div class="pack-tarif-chip"><strong>2 000</strong><em>4 000 € HT</em><span>Groupe</span></div>
+            <div class="pack-tarif-chip"><strong>2 500</strong><em>4 800 € HT</em><span>Groupe +</span></div>
+            <div class="pack-tarif-chip"><strong>3 000</strong><em>5 400 € HT</em><span>Déploiement large</span></div>
+            <div class="pack-tarif-chip"><strong>4 000</strong><em>6 600 € HT</em><span>Large volume</span></div>
+            <div class="pack-tarif-chip"><strong>5 000</strong><em>7 500 € HT</em><span>Très grand compte</span></div>
+            <div class="pack-tarif-chip"><strong>7 000</strong><em>9 100 € HT</em><span>Très large diffusion</span></div>
+            <div class="pack-tarif-chip illimite"><strong>Illimité</strong><em>15 000 € HT</em><span>Usage intensif</span></div>
+          </div>
+        </div>
         <div class="inp-row">
           <div class="field"><label>Date de lancement souhaitée<span class="req">*</span></label><input class="inp" id="date_lancement" type="date" oninput="updateParam('date_lancement',this.value);updateSidebar();checkContinue()"></div>
           <div class="field"><label>Date de clôture<span class="req">*</span></label><input class="inp" id="date_cloture" type="date" oninput="updateParam('date_cloture',this.value);updateSidebar();checkContinue()"></div>
@@ -219,18 +270,7 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
 
       <div id="paramQuotaCardSide" class="partner-hide" style="margin-bottom:12px"></div>
 
-      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">J’ai déjà un pack</option><option value="200">200 passations</option><option value="500">500 passations</option><option value="1200">1 200 passations</option><option value="2000">2 000 passations</option><option value="3000">3 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
-      <div class="pack-tarifs-card partner-hide">
-        <div class="pack-tarifs-title">💬 Tarifs des packs</div>
-        <div class="pack-tarifs-sub">Les passations sont mutualisées pour tous les autodiagnostics de votre entreprise. Sélectionnez un volume ou “J’ai déjà un pack”.</div>
-        <div class="pack-tarifs-grid">
-          <div class="pack-tarif-chip">200<span>starter</span></div>
-          <div class="pack-tarif-chip">500<span>équipe</span></div>
-          <div class="pack-tarif-chip">1 200<span>campagne</span></div>
-          <div class="pack-tarif-chip">2 000+<span>groupe</span></div>
-        </div>
-        <a class="pack-tarifs-contact" href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations">Obtenir les tarifs →</a>
-      </div>
+      <div class="pack-card partner-hide"><div class="pack-head"><div class="pack-head-lbl">Pack passations</div><div class="pack-head-val" id="pack-title">Pack à choisir</div></div><div class="pack-body"><label style="display:block;font-size:10px;font-weight:700;color:#18375d;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Volume de passations</label><select class="inp" id="pack_choisi_sidebar" onchange="updatePack(this.value);checkContinue()"><option value="" selected disabled>Choisissez un pack</option><option value="current_pack">J’ai déjà un pack</option><option value="50">50 passations</option><option value="100">100 passations</option><option value="200">200 passations</option><option value="500">500 passations ⭐</option><option value="700">700 passations</option><option value="1200">1 200 passations 🏢</option><option value="1500">1 500 passations</option><option value="1700">1 700 passations</option><option value="2000">2 000 passations</option><option value="2500">2 500 passations</option><option value="3000">3 000 passations</option><option value="4000">4 000 passations</option><option value="5000">5 000 passations</option><option value="7000">7 000 passations</option><option value="illimite">Illimité</option></select><div class="pack-bar-w" style="margin-top:10px"><div class="pack-bar-f" id="pack-bar"></div></div><div class="pack-note">Ces passations sont mutualisées pour tous les autodiagnostics de votre entreprise.</div><div style="margin-top:10px;padding-top:10px;border-top:1px solid #f0f4f8"><div style="font-size:11px;color:#64748b;margin-bottom:5px">Pour obtenir les tarifs</div><a href="mailto:contact@meandyoutoo.app?subject=Tarifs%20pack%20de%20passations" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#007883;text-decoration:none">Contactez-nous →</a></div></div></div>
     </div>
   </div>
 </div>
@@ -422,6 +462,24 @@ function itsQuotaInlineHTML(q){
   return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
 }
 
+
+const PACK_TARIFFS = {
+  "50": { price:"250 € HT", label:"Découverte" },
+  "100": { price:"450 € HT", label:"Mini équipe" },
+  "200": { price:"700 € HT", label:"Test" },
+  "500": { price:"1 500 € HT", label:"Déploiement PME", badge:"⭐ Le plus populaire", cls:"popular" },
+  "700": { price:"1 900 € HT", label:"Multi-BU" },
+  "1200": { price:"3 000 € HT", label:"Grand compte / cabinet", badge:"🏢 Entreprise", cls:"entreprise" },
+  "1500": { price:"3 500 € HT", label:"Grand déploiement" },
+  "1700": { price:"3 800 € HT", label:"Organisation étendue" },
+  "2000": { price:"4 000 € HT", label:"Groupe" },
+  "2500": { price:"4 800 € HT", label:"Groupe +" },
+  "3000": { price:"5 400 € HT", label:"Déploiement large" },
+  "4000": { price:"6 600 € HT", label:"Large volume" },
+  "5000": { price:"7 500 € HT", label:"Très grand compte" },
+  "7000": { price:"9 100 € HT", label:"Très large diffusion" },
+  "illimite": { price:"15 000 € HT", label:"Usage intensif" }
+};
 function packQuotaFromSelectedValue(value){
   const selected = String(value || '').trim();
   if(!selected || selected === 'current_pack') return null;
@@ -437,11 +495,18 @@ function getDisplayQuota(){
 function packSelectedInlineHTML(q){
   const selected = state?.parametrage?.pack_choisi || '';
   if(!selected || selected === 'current_pack') return itsQuotaInlineHTML(q);
+
+  const tariff = PACK_TARIFFS[selected] || {};
   const label = selected === 'illimite' ? 'Pack illimité' : Number(selected).toLocaleString('fr-FR') + ' passations';
+  const cssClass = tariff.cls || '';
+  const badge = tariff.badge ? '<span class="pack-selected-badge">' + tariff.badge + '</span>' : '';
+  const price = tariff.price ? ' · <strong>' + tariff.price + '</strong>' : '';
+  const usage = tariff.label ? ' · ' + tariff.label : '';
   const mini = selected === 'illimite'
-    ? 'Vous avez sélectionné un pack illimité pour cette campagne.'
-    : '<strong>' + Number(selected).toLocaleString('fr-FR') + '</strong> passations prévues. Ce choix sera repris dans le récapitulatif.';
-  return '<div class="pack-selected-inline"><div class="pack-selected-title">✓ Pack sélectionné : '+label+'</div><div class="pack-selected-mini">'+mini+'</div></div>';
+    ? 'Vous avez sélectionné le pack illimité · <strong>' + (tariff.price || '15 000 € HT') + '</strong> · usage intensif.'
+    : '<strong>' + Number(selected).toLocaleString('fr-FR') + '</strong> passations prévues' + price + usage + '. Ce choix sera repris dans le récapitulatif.';
+
+  return '<div class="pack-selected-inline '+cssClass+'"><div class="pack-selected-title">✓ Pack sélectionné : '+label+' '+badge+'</div><div class="pack-selected-mini">'+mini+'</div></div>';
 }
 function refreshPackDisplay(){
   const displayQuota = getDisplayQuota();
@@ -661,7 +726,7 @@ function updatePack(v, shouldSave=true){
   if(a) a.value=state.parametrage.pack_choisi;
   if(b) b.value=state.parametrage.pack_choisi;
   const bar=document.getElementById('pack-bar');
-  if(bar){ const map={current_pack:8,200:12,500:20,1200:35,2000:48,3000:60,5000:75,7000:88,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
+  if(bar){ const map={current_pack:8,50:6,100:10,200:16,500:28,700:36,1200:48,1500:56,1700:62,2000:68,2500:74,3000:80,4000:88,5000:94,7000:98,illimite:100}; bar.style.width=state.parametrage.pack_choisi?(map[state.parametrage.pack_choisi]||12)+'%':'0%'; }
   refreshPackDisplay();
   if(shouldSave) save();
 }
