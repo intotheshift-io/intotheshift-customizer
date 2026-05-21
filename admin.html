@@ -256,6 +256,7 @@ td:nth-child(9){width:125px}
   padding:12px;
 }
 .account-edit-panel .admin-input,
+.account-edit-panel .admin-select,
 .account-attach-panel .admin-select{
   width:100%;
   min-width:0;
@@ -374,8 +375,44 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <input id="newLastname" class="admin-input" placeholder="Nom" autocomplete="off">
           <input id="newEmail" class="admin-input" type="email" placeholder="email@entreprise.com" autocomplete="new-email" required>
           <input id="newCompany" class="admin-input" placeholder="Entreprise / organisme" autocomplete="off">
-          <input id="newJobTitle" class="admin-input" placeholder="Fonction / poste" autocomplete="off">
-          <input id="newSector" class="admin-input" placeholder="Secteur d’activité" autocomplete="off">
+          <select id="newJobTitle" class="admin-select" autocomplete="off">
+            <option value="">Fonction / poste</option>
+            <option>CEO / Direction générale</option>
+            <option>COO / Direction des opérations</option>
+            <option>DAF / Direction financière</option>
+            <option>DSI / Direction des systèmes d’information</option>
+            <option>Direction RH / DRH</option>
+            <option>Responsable formation</option>
+            <option>Responsable D&I / Diversité & Inclusion</option>
+            <option>Responsable RSE / Développement durable</option>
+            <option>QVT / Santé au travail / Prévention</option>
+            <option>Compliance / Éthique / Risques</option>
+            <option>Communication interne / Engagement</option>
+            <option>Manager / Direction métier</option>
+            <option>Consultant·e / organisme de formation</option>
+            <option>Autre</option>
+          </select>
+          <select id="newSector" class="admin-select" autocomplete="off">
+            <option value="">Secteur d’activité</option>
+            <option>Agriculture / Agroalimentaire</option>
+            <option>Banque / Assurance</option>
+            <option>BTP / Construction / Immobilier</option>
+            <option>Conseil / Audit / Services professionnels</option>
+            <option>Éducation / Formation</option>
+            <option>Énergie / Environnement</option>
+            <option>Industrie</option>
+            <option>Luxe / Mode / Cosmétiques</option>
+            <option>Médias / Communication / Culture</option>
+            <option>Retail / Distribution</option>
+            <option>Santé / Médico-social</option>
+            <option>Secteur public / Collectivités</option>
+            <option>Services</option>
+            <option>Tech / Numérique / Télécoms</option>
+            <option>Transport / Logistique</option>
+            <option>Tourisme / Hôtellerie / Restauration</option>
+            <option>Association / ESS</option>
+            <option>Autre</option>
+          </select>
           <select id="newRole" class="admin-select" autocomplete="off">
             <option value="client">client</option>
             <option value="partner">partner</option>
@@ -481,6 +518,53 @@ const API_BASE_URL = window.location.hostname === 'localhost'
   ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
   : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 let adminState = { summary:{}, clients:[], projects:[], organizations:[] };
+const ADMIN_JOB_OPTIONS = [
+  'CEO / Direction générale',
+  'COO / Direction des opérations',
+  'DAF / Direction financière',
+  'DSI / Direction des systèmes d’information',
+  'Direction RH / DRH',
+  'Responsable formation',
+  'Responsable D&I / Diversité & Inclusion',
+  'Responsable RSE / Développement durable',
+  'QVT / Santé au travail / Prévention',
+  'Compliance / Éthique / Risques',
+  'Communication interne / Engagement',
+  'Manager / Direction métier',
+  'Consultant·e / organisme de formation',
+  'Autre'
+];
+const ADMIN_SECTOR_OPTIONS = [
+  'Agriculture / Agroalimentaire',
+  'Banque / Assurance',
+  'BTP / Construction / Immobilier',
+  'Conseil / Audit / Services professionnels',
+  'Éducation / Formation',
+  'Énergie / Environnement',
+  'Industrie',
+  'Luxe / Mode / Cosmétiques',
+  'Médias / Communication / Culture',
+  'Retail / Distribution',
+  'Santé / Médico-social',
+  'Secteur public / Collectivités',
+  'Services',
+  'Tech / Numérique / Télécoms',
+  'Transport / Logistique',
+  'Tourisme / Hôtellerie / Restauration',
+  'Association / ESS',
+  'Autre'
+];
+
+function optionsHtml(options, currentValue, placeholder){
+  const current = String(currentValue || "").trim();
+  const base = `<option value="">${escapeHtml(placeholder || "Sélectionner")}</option>`;
+  const known = new Set(options.map(v => String(v)));
+  const custom = current && !known.has(current) ? `<option selected>${escapeHtml(current)}</option>` : "";
+  return base + custom + options.map(option => {
+    const selected = String(option) === current ? " selected" : "";
+    return `<option${selected}>${escapeHtml(option)}</option>`;
+  }).join("");
+}
 
 function getToken(){return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";}
 function decodeJwt(token){try{const payload=token.split(".")[1];return JSON.parse(atob(payload.replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return null;}}
@@ -886,11 +970,11 @@ function renderAccounts(){
         </div>
         <div>
           <div class="account-info-label">Fonction / poste</div>
-          <input id="job-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(jobTitle)}" placeholder="Fonction / poste">
+          <select id="job-${escapeAttr(id)}" class="admin-select">${optionsHtml(ADMIN_JOB_OPTIONS, jobTitle, "Fonction / poste")}</select>
         </div>
         <div>
           <div class="account-info-label">Secteur</div>
-          <input id="sector-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(sector)}" placeholder="Secteur d’activité">
+          <select id="sector-${escapeAttr(id)}" class="admin-select">${optionsHtml(ADMIN_SECTOR_OPTIONS, sector, "Secteur d’activité")}</select>
         </div>
         <button class="mini-btn light" onclick="saveUserProfile('${escapeAttr(id)}')">Enregistrer</button>
       </div>
