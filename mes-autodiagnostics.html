@@ -537,8 +537,8 @@
       if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
 
       const step = getProjectStep(project);
-      if (step.includes("validation")) return "Reprendre la transmission";
-      if (step.includes("campagne")) return "Reprendre la campagne";
+      if (step.includes("validation")) return "Transmettre";
+      if (step.includes("campagne")) return "Reprendre le paramétrage";
       if (step.includes("param")) return "Reprendre le paramétrage";
       return "Reprendre la création";
     }
@@ -552,7 +552,7 @@
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
-      if (step.includes("campagne")) return "campagne.html" + suffix;
+      if (step.includes("campagne")) return "parametrage.html" + suffix;
       if (step.includes("param")) return "parametrage.html" + suffix;
       return "questions.html" + suffix;
     }

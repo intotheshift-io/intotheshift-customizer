@@ -105,8 +105,23 @@ document.addEventListener("DOMContentLoaded", function () {
       "its_token",
       "token",
       "auth_token",
-      "its_selected_partner_client_id"
+      "its_selected_partner_client_id",
+      "its_current_project_id",
+      "its_current_ad_id",
+      "its_current_project",
+      "its_user_id",
+      "user_id",
+      "id",
+      "its_user_email",
+      "user_email",
+      "email"
     ].forEach(key => localStorage.removeItem(key));
+
+    try {
+      Object.keys(sessionStorage).forEach(key => {
+        if (key.startsWith("its_project_cache_")) sessionStorage.removeItem(key);
+      });
+    } catch(e) {}
 
     window.location.href = "home.html";
   }

@@ -1,20 +1,46 @@
+function itsDecodeJwtPayloadForStorage() {
+  const token =
+    localStorage.getItem("its_token") ||
+    localStorage.getItem("token") ||
+    localStorage.getItem("auth_token") ||
+    "";
+
+  if (!token || !token.includes(".")) return null;
+
+  try {
+    const payload = token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(payload));
+  } catch(e) {
+    return null;
+  }
+}
+
 function itsGetCurrentUserKey() {
+  const tokenUser = itsDecodeJwtPayloadForStorage();
+
   const userId =
     localStorage.getItem("its_user_id") ||
     localStorage.getItem("user_id") ||
-    localStorage.getItem("id");
+    localStorage.getItem("id") ||
+    tokenUser?.id ||
+    tokenUser?.user_id ||
+    "";
 
   const email =
     localStorage.getItem("its_user_email") ||
     localStorage.getItem("user_email") ||
-    localStorage.getItem("email");
+    localStorage.getItem("email") ||
+    tokenUser?.email ||
+    "";
 
   const role =
     localStorage.getItem("its_user_role") ||
     localStorage.getItem("user_role") ||
-    localStorage.getItem("role");
+    localStorage.getItem("role") ||
+    tokenUser?.role ||
+    "";
 
-  if (userId) return "user_" + userId;
+  if (userId) return "user_" + String(userId);
   if (email) return "email_" + String(email).toLowerCase().trim();
 
   return role ? "role_" + role : "anonymous";
@@ -126,6 +152,8 @@ function itsSetCurrentProjectId(id) {
 function itsClearCurrentProjectId() {
   localStorage.removeItem("its_current_project_id");
   localStorage.removeItem("its_current_ad_id");
+  localStorage.removeItem("its_current_project");
+  window.ITS_CURRENT_PROJECT_STATE = null;
 }
 
 function itsParseMaybeJson(value) {
@@ -497,7 +525,7 @@ function itsResumeUrlForProject(project) {
   }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
-  if (rawStep.includes("campagne")) return "campagne.html" + suffix;
+  if (rawStep.includes("campagne")) return "parametrage.html" + suffix;
   if (rawStep.includes("param")) return "parametrage.html" + suffix;
   return "questions.html" + suffix;
 }
@@ -531,6 +559,9 @@ function itsStartFromCatalogue(adId) {
   if (!ad) return null;
 
   itsClearCurrentProjectId();
+  try {
+    localStorage.removeItem("intotheshift_customizer_state_v1_" + itsGetCurrentUserKey());
+  } catch(e) {}
 
   const state = {
     selectedAdId: ad.id,
@@ -575,6 +606,7 @@ function itsStartFromCatalogue(adId) {
     ],
     resources: [],
     status: "draft",
+    createdAt: new Date().toISOString(),
     step: "questions",
     current_step: "questions"
   };
