@@ -724,7 +724,13 @@ function itsNormalizeProjectStatus(projectOrState) {
   if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
   if (raw.includes("archiv")) return "archived";
   if (raw.includes("publish") || raw.includes("publi") || raw.includes("ligne") || raw.includes("result")) return "published";
-  if (raw.includes("sent") || raw.includes("submitted") || raw.includes("transmis") || sentFlag) return "sent";
+  if (
+    raw === "sent" ||
+    raw === "submitted" ||
+    raw === "transmitted" ||
+    raw === "transmis" ||
+    sentFlag
+  ) return "sent";
   return "draft";
 }
 
