@@ -141,6 +141,15 @@ td:nth-child(9){width:125px}
 .org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.org-users-panel{background:#f6f9fb;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
+.org-users-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.org-users-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900}
+.org-user-list{display:flex;flex-direction:column;gap:7px}
+.org-user-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e7edf2;border-radius:12px;padding:9px 10px}
+.org-user-name{font-size:13px;font-weight:900;color:#18375d}
+.org-user-email{font-size:12px;color:#718497;word-break:break-word}
+.org-user-role{font-size:11px;font-weight:900;color:#0d4c72;background:#eaf3f8;border-radius:999px;padding:4px 8px;white-space:nowrap}
+
 @media(max-width:1100px){.project-publication{grid-template-columns:1fr 1fr}.project-publication button{grid-column:auto}.global-cards{grid-template-columns:1fr 1fr}.org-quota-panel{grid-template-columns:1fr 1fr}.org-quota-panel button{grid-column:1/-1}.info-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.global-cards,.info-grid,.org-quota-panel{grid-template-columns:1fr}.org-card-head,.project-card-head{flex-direction:column}.org-quota-panel button{grid-column:auto}}
 
@@ -217,6 +226,9 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <input id="newLastname" class="admin-input" placeholder="Nom" autocomplete="off">
           <input id="newEmail" class="admin-input" type="email" placeholder="email@entreprise.com" autocomplete="new-email" required>
           <input id="newCompany" class="admin-input" placeholder="Entreprise / organisme" autocomplete="off">
+          <select id="newOrganizationId" class="admin-select" autocomplete="off">
+            <option value="">Nouveau cockpit / aucun rattachement</option>
+          </select>
           <select id="newRole" class="admin-select" autocomplete="off">
             <option value="client">client</option>
             <option value="partner">partner</option>
@@ -565,6 +577,24 @@ function goToAccounts(search=""){
   document.getElementById("tab-accounts")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
+function populateOrganizationSelect(){
+  const select=document.getElementById("newOrganizationId");
+  if(!select)return;
+  const current=select.value;
+  const orgs=getDirectOrganizations();
+  select.innerHTML='<option value="">Nouveau cockpit / aucun rattachement</option>'+orgs.map(o=>`<option value="${escapeAttr(val(o,["id"],""))}">${escapeHtml(getOrgName(o))}</option>`).join("");
+  if(current && orgs.some(o=>String(val(o,["id"],""))===String(current))) select.value=current;
+}
+
+function startCreateUserForOrganization(orgId, orgName){
+  showTab("create");
+  document.getElementById("newRole").value="client";
+  document.getElementById("newOrganizationId").value=String(orgId||"");
+  document.getElementById("newCompany").value=orgName||"";
+  document.getElementById("newEmail").focus();
+  document.getElementById("tab-create")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
 function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
@@ -598,6 +628,7 @@ async function loadAdminData(){
 
 function renderAll(){
   renderKpis();
+  populateOrganizationSelect();
   renderAccounts();
   renderPartners();
   renderOrganizations();
@@ -750,6 +781,19 @@ function renderPartners(){
   document.getElementById("partnersEmpty").style.display=partners.length?"none":"block";
 }
 
+function renderOrganizationUsers(org){
+  const users=Array.isArray(org?.users)?org.users.filter(u=>u&&u.id):[];
+  if(!users.length){
+    return '<div class="muted">Aucun utilisateur rattaché pour le moment.</div>';
+  }
+  return users.map(u=>{
+    const name=((u.firstName||u.first_name||'')+' '+(u.lastName||u.last_name||'')).trim() || u.companyName || u.email || 'Utilisateur';
+    const email=u.email || '';
+    const role=u.role || 'membre';
+    return `<div class="org-user-row"><div><div class="org-user-name">${escapeHtml(name)}</div><div class="org-user-email">${escapeHtml(email)}</div></div><span class="org-user-role">${escapeHtml(role)}</span></div>`;
+  }).join('');
+}
+
 function renderOrganizations(){
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
   const rows=getDirectOrganizations().filter(o=>!q||JSON.stringify(o).toLowerCase().includes(q));
@@ -779,6 +823,13 @@ function renderOrganizations(){
         <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
         <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
         <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
+      </div>
+      <div class="org-users-panel">
+        <div class="org-users-head">
+          <div class="org-users-title">Utilisateurs rattachés</div>
+          <button class="mini-btn light" onclick="startCreateUserForOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">+ Ajouter un utilisateur</button>
+        </div>
+        <div class="org-user-list">${renderOrganizationUsers(o)}</div>
       </div>
       <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
     </article>`;
@@ -1131,6 +1182,7 @@ async function createUser(){
     lastName:document.getElementById("newLastname").value.trim(),
     email:document.getElementById("newEmail").value.trim(),
     companyName:document.getElementById("newCompany").value.trim(),
+    organizationId:document.getElementById("newOrganizationId")?.value || "",
     role:document.getElementById("newRole").value,
     password:document.getElementById("newPassword").value
   };
@@ -1140,6 +1192,7 @@ async function createUser(){
     const emailInfo=created?.emailSent?" L’email d’accès a bien été envoyé.":" Attention : l’email automatique n’a pas été confirmé.";
     document.getElementById("createMsg").textContent="Compte créé. Le client sera invité à choisir son propre mot de passe à la première connexion."+emailInfo;
     ["newFirstname","newLastname","newEmail","newCompany","newPassword"].forEach(id=>document.getElementById(id).value="");
+    document.getElementById("newOrganizationId").value="";
     document.getElementById("newRole").value="client";
     showSuccess("Compte créé avec succès.");
     await loadAdminData();

@@ -837,10 +837,32 @@ function itsQuotaInlineHTML(q){
   return `<div class="its-quota-inline"><strong>${itsQuotaLabel(q)}</strong><div class="mini">${String(q?.pack)==='illimite'?'Passations illimitées':itsFormatQuotaNumber(q?.remaining||0)+' passations restantes sur '+itsFormatQuotaNumber(q?.quota||0)+' achetées'}.</div></div>`;
 }
 
+function getDashboardRole(){
+  const storedRole=(localStorage.getItem('its_user_role')||localStorage.getItem('role')||'').toLowerCase();
+  if(storedRole) return storedRole;
+  const token=(localStorage.getItem('its_token')||localStorage.getItem('token')||localStorage.getItem('auth_token')||'');
+  if(token && token.includes('.')){
+    try{
+      const payload=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+      return String(payload.role||'').toLowerCase();
+    }catch(e){}
+  }
+  return 'client';
+}
+
 async function renderDashboardQuota(){
   const section=document.getElementById('dashboard-quota-section');
   const target=document.getElementById('dashboard-quota-card');
   if(!section||!target) return;
+
+  // Admin Into The Shift : pas de pack affiché, car l'admin ne crée pas d'AD à son nom.
+  // Client/partner : affichage inchangé.
+  if(getDashboardRole()==='admin'){
+    section.style.display='none';
+    target.innerHTML='';
+    return;
+  }
+
   const q=await itsLoadClientQuota();
   target.innerHTML=itsQuotaCardHTML(q);
   section.style.display='block';
