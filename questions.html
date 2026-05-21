@@ -553,7 +553,81 @@ function makeBlankDiagnosticState(){
   };
 }
 
-let state = (typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}');
+function questionsApiBase(){
+  return window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
+    ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+}
+
+function questionsToken(){
+  return localStorage.getItem('its_token') || localStorage.getItem('token') || localStorage.getItem('auth_token') || '';
+}
+
+function questionsProjectIdFromUrl(){
+  return urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id') || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+}
+
+function questionsExtractProjectState(project){
+  if(!project || typeof project !== 'object') return null;
+  const raw = project.data || project.payload || project.configuration || project.state || project;
+  let data = raw;
+  if(typeof data === 'string'){
+    try{ data = JSON.parse(data); }catch(e){ data = {}; }
+  }
+  if(data && data.state && typeof data.state === 'object') data = data.state;
+  if(!data || typeof data !== 'object') data = {};
+
+  const title = project.title || project.name || project.project_name || project.ad_title || data.title || data.name || '';
+  const status = project.status || project.project_status || data.status || 'draft';
+  const step = project.currentStep || project.current_step || data.currentStep || data.current_step || data.step || 'questions';
+  const id = project.id || project.project_id || project.projectId || data.project_id || data.projectId || questionsProjectIdFromUrl();
+
+  const merged = { ...data };
+  if(title && !merged.title) merged.title = title;
+  merged.status = status;
+  merged.step = step;
+  merged.current_step = step;
+  if(id){
+    merged.projectId = id;
+    merged.project_id = id;
+    merged.currentAdId = id;
+  }
+  return merged;
+}
+
+function questionsFetchProjectStateSync(projectId){
+  if(!projectId || !questionsToken()) return null;
+  try{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `${questionsApiBase()}/api/projects/${encodeURIComponent(projectId)}`, false);
+    xhr.setRequestHeader('Authorization', `Bearer ${questionsToken()}`);
+    xhr.send(null);
+    if(xhr.status < 200 || xhr.status >= 300) return null;
+    const json = JSON.parse(xhr.responseText || '{}');
+    const project = json.project || json.data || json;
+    const extracted = questionsExtractProjectState(project);
+    if(extracted && Array.isArray(extracted.chapters) && extracted.chapters.length){
+      localStorage.setItem('its_current_project_id', String(projectId));
+      localStorage.setItem('its_current_ad_id', String(projectId));
+      return extracted;
+    }
+  }catch(e){
+    console.warn('Projet non chargé depuis le serveur', e);
+  }
+  return null;
+}
+
+const requestedProjectId = questionsProjectIdFromUrl();
+let state = requestedProjectId
+  ? (questionsFetchProjectStateSync(requestedProjectId) || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
+  : ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}'));
+
+if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
+  state.projectId = state.projectId || requestedProjectId;
+  state.project_id = state.project_id || requestedProjectId;
+  state.currentAdId = state.currentAdId || requestedProjectId;
+}
+
 
 // Sécurité reprise projet : si une ancienne sauvegarde contient { state: {...} },
 // on récupère le vrai contenu de l'autodiagnostic avant de tester les chapitres.
@@ -583,7 +657,7 @@ if (isBlankMode) {
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
 } else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
-  const hasProjectId = typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId();
+  const hasProjectId = requestedProjectId || (typeof itsGetCurrentProjectId === 'function' && itsGetCurrentProjectId());
   if(hasProjectId && typeof itsBootstrapProjectFromUrl === 'function'){
     document.body.innerHTML = '<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d">Chargement du projet…</div>';
 
@@ -605,7 +679,7 @@ if (isBlankMode) {
       document.body.innerHTML = `<div style="font-family:Asap,sans-serif;padding:40px;color:#18375d;max-width:760px">
         <h2 style="margin:0 0 10px;font-size:20px">Projet non chargé</h2>
         <p style="font-size:14px;line-height:1.6;color:#64748b">La page n’a pas réussi à récupérer le contenu du projet${projectId ? ` <strong>${projectId}</strong>` : ''}. Retournez au dashboard puis ouvrez le projet avec le bouton “Reprendre” ou “Modifier le contenu”.</p>
-        <button onclick="window.location.href='admin.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour admin</button>
+        <button onclick="window.location.href='mes-autodiagnostics.html'" style="margin-top:12px;background:#18375d;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer">Retour à mes autodiagnostics</button>
       </div>`;
     });
     throw new Error('Chargement projet en cours');

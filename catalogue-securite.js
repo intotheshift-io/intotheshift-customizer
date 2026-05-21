@@ -8698,6 +8698,672 @@
     ],
 
   },
+    "securite-convoyeurs": {
+    0: [
+      {
+        type: "choix",
+        text: "En passant près d'un convoyeur à rouleaux en fonctionnement, vous remarquez qu'un collègue s'est approché très près des rouleaux pour regarder un produit coincé. La machine tourne.",
+        tags: ["risques", "coincement"],
+        answers: [
+          { text: "Je ne dis rien — il est expérimenté et sait ce qu'il fait.", score: 0 },
+          { text: "Je lui demande immédiatement de s'écarter et d'arrêter la machine avant toute intervention.", score: 2 },
+          { text: "Je surveille de loin pour intervenir si quelque chose se passe.", score: 0 },
+          { text: "Je lui rappelle verbalement d'être prudent.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez à proximité d'un convoyeur à bande en fonctionnement. Votre veste est ouverte et le pan flotte légèrement vers le tambour d'entraînement.",
+        tags: ["risques", "entraînement"],
+        answers: [
+          { text: "Je fais attention en restant à distance suffisante — je connais les risques.", score: 0 },
+          { text: "Je reboutonne ou rentre immédiatement le pan de ma veste avant de continuer.", score: 2 },
+          { text: "Je me mets en dehors de la zone de risque sans changer ma tenue.", score: 1 },
+          { text: "Je termine ma tâche rapidement et j'ajuste ma tenue après.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous identifiez et évitez spontanément les zones à risque de coincement, d'entraînement et de cisaillement sur les convoyeurs, même en dehors de vos interventions directes.",
+        tags: ["risques", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez déposer un produit en zone de transfert sur un convoyeur courbe. Vous vous penchez légèrement au-dessus de la zone de changement de direction pour mieux positionner le colis.",
+        tags: ["risques", "convoyeur courbe"],
+        answers: [
+          { text: "Je me penche rapidement — c'est une action courte et je connais la machine.", score: 0 },
+          { text: "J'arrête le convoyeur avant d'approcher mes mains de cette zone.", score: 2 },
+          { text: "Je reste dans la position qui me permet d'éviter les zones de pincement.", score: 1 },
+          { text: "Je demande à un collègue de surveiller pendant que je dépose.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez que le carter de protection d'un arbre d'entraînement est légèrement déplacé sur un convoyeur en fonctionnement. L'arbre est partiellement visible.",
+        tags: ["risques", "protections"],
+        answers: [
+          { text: "Je remets le carter en place moi-même — c'est rapide et ça sécurise la situation.", score: 0 },
+          { text: "J'arrête le convoyeur, je signale l'anomalie et j'attends qu'une intervention autorisée soit faite.", score: 2 },
+          { text: "Je balise la zone et je continue mon travail en attendant qu'un technicien passe.", score: 1 },
+          { text: "Je l'éloigne du carter pour éviter tout contact accidentel et je continue.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez immédiatement toute protection manquante ou déplacée sur un convoyeur, sans essayer de la remettre vous-même.",
+        tags: ["risques", "protections"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Des produits tombés au sol s'accumulent le long d'un convoyeur. Votre passage habituel est partiellement encombré. Vous êtes pressé·e.",
+        tags: ["risques", "sol"],
+        answers: [
+          { text: "Je passe quand même en enjambant les produits — ça ira.", score: 0 },
+          { text: "Je prends le chemin de dégagement prévu et je signale l'encombrement.", score: 2 },
+          { text: "Je dégage rapidement les produits en passant pour libérer le couloir.", score: 1 },
+          { text: "Je préviens un collègue de l'encombrement sans m'arrêter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En passant près d'un convoyeur à rouleaux, vous entendez un bruit inhabituel — un grincement régulier que vous n'aviez pas remarqué les jours précédents.",
+        tags: ["risques", "bruit"],
+        answers: [
+          { text: "Je continue — les convoyeurs font du bruit, c'est normal.", score: 0 },
+          { text: "Je signale le bruit inhabituel à mon responsable ou à la maintenance.", score: 2 },
+          { text: "Je surveille pendant quelques minutes pour voir si le bruit se confirme.", score: 0.5 },
+          { text: "Je vérifie visuellement si je vois quelque chose d'anormal avant de signaler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les bruits inhabituels, les vibrations anormales et les comportements inattendus des convoyeurs sans attendre qu'un incident se produise.",
+        tags: ["risques", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez que la station de pesée donne des valeurs incohérentes depuis ce matin. Pour vérifier, vous envisagez de poser la main sur le capteur pendant le fonctionnement.",
+        tags: ["risques", "station de pesée"],
+        answers: [
+          { text: "Je touche rapidement le capteur pour voir — c'est juste une vérification.", score: 0 },
+          { text: "Je signale l'anomalie à la maintenance sans intervenir — les capteurs sont réservés au personnel autorisé.", score: 2 },
+          { text: "J'arrête la ligne et j'examine le capteur depuis l'extérieur.", score: 0.5 },
+          { text: "Je documente les valeurs incohérentes et j'en parle à mon responsable.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous connaissez les risques théoriques mais vos comportements ne les intègrent pas encore complètement", desc: "Passer dans une zone encombrée, ne pas signaler un carter déplacé, s'approcher d'une zone de pincement pour regarder un produit : ces comportements semblent anodins jusqu'au moment où ils ne le sont plus. Sur un convoyeur, l'entraînement d'un vêtement ou d'une main se produit en une fraction de seconde — bien avant qu'on ait le temps de réagir. La distance de sécurité et le signalement immédiat des anomalies ne sont pas optionnels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous identifiez les risques courants mais les situations moins fréquentes créent encore des angles morts", desc: "Vous identifiez les zones de coincement et d'entraînement évidentes et vous maintenez une distance de sécurité. Mais les risques moins visibles — le bruit inhabituel qu'on minimise, le carter légèrement déplacé qu'on n'a pas vu, la zone de la station de pesée qu'on approche par curiosité — créent encore des angles morts. L'enjeu est d'étendre votre vigilance à tous les types d'anomalies, pas seulement celles que vous avez déjà vues." },
+          haut: { label: "Réflexes installés", titre: "Vous identifiez et signalez toutes les anomalies sur les convoyeurs, y compris les plus subtiles", desc: "Vous signalez le bruit inhabituel le jour même, vous interpellez le collègue qui s'approche d'une zone de pincement, vous signalez le carter déplacé sans essayer de le remettre vous-même. Vous n'approchez pas vos mains de la station de pesée et vous redirigez les demandes d'intervention aux personnes habilitées. Cette vigilance constante — qui suppose de s'arrêter sur des détails que d'autres laissent passer — est ce qui prévient les accidents sur les installations de convoyage." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Au démarrage de votre poste, vous entendez quelqu'un dans la zone de convoyage. La procédure prévoit de vérifier l'absence de personnel avant de lancer la ligne.",
+        tags: ["utilisation", "avant démarrage"],
+        answers: [
+          { text: "Je lance quand même — la personne a dû passer, je ne l'entends plus.", score: 0 },
+          { text: "Je vérifie physiquement que la zone est libre avant de démarrer.", score: 2 },
+          { text: "Je lance en criant une alerte pour prévenir que la ligne démarre.", score: 0 },
+          { text: "J'attends deux minutes puis je lance si rien ne se passe.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Avant chaque démarrage, vous vérifiez physiquement l'absence de personnel dans les zones dangereuses et l'état apparent des protections.",
+        tags: ["utilisation", "vérification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un produit s'est coincé entre deux rouleaux. La ligne tourne toujours. Votre chef de production vous demande de dégager rapidement pour ne pas perdre de cadence.",
+        tags: ["utilisation", "produit bloqué"],
+        answers: [
+          { text: "Je dégage le produit avec précaution — je sais comment m'y prendre.", score: 0 },
+          { text: "J'arrête la ligne avant de toucher quoi que ce soit.", score: 2 },
+          { text: "J'utilise un outil pour dégager sans mettre les mains — la machine tourne toujours.", score: 0.5 },
+          { text: "Je demande à mon chef de valider visuellement que c'est faisable machine en marche.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Il fait chaud dans l'atelier. Vous avez envie de remonter vos manches de travail. Vous travaillez à proximité des convoyeurs toute la journée.",
+        tags: ["utilisation", "tenue"],
+        answers: [
+          { text: "Je remonte mes manches — il fait chaud et les manches longues sont moins protectrices que la vigilance.", score: 0 },
+          { text: "Je garde ma tenue réglementaire — les vêtements ajustés sont une protection contre l'entraînement.", score: 2 },
+          { text: "Je remonte légèrement les manches en faisant attention de ne pas m'approcher des parties mobiles.", score: 0 },
+          { text: "J'en parle à mon responsable pour voir si c'est autorisé.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous portez une bague au quotidien. Un nouveau collègue, Karim, vous dit qu'il ne l'enlève jamais non plus et que ça ne pose jamais de problème.",
+        tags: ["utilisation", "bijoux"],
+        answers: [
+          { text: "Je garde ma bague — si lui n'a jamais eu de problème, c'est que le risque est faible.", score: 0 },
+          { text: "Je retire ma bague — le risque d'entraînement existe et l'expérience d'un collègue ne le supprime pas.", score: 2 },
+          { text: "Je retire ma bague uniquement lors des interventions proches des convoyeurs.", score: 0.5 },
+          { text: "Je m'assure de ne pas approcher ma main des zones mobiles et je garde ma bague.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous respectez les règles vestimentaires obligatoires — vêtements ajustés, bijoux retirés, cheveux attachés — tout au long de votre poste, pas seulement en début de journée.",
+        tags: ["utilisation", "EPI"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un produit est mal positionné en hauteur sur le convoyeur. Pour le redresser, vous envisagez de monter sur le bord du convoyeur pour atteindre le produit.",
+        tags: ["utilisation", "montée"],
+        answers: [
+          { text: "Je monte rapidement — c'est une action courte et j'ai l'habitude.", score: 0 },
+          { text: "J'arrête la ligne et j'utilise le moyen d'accès approprié pour atteindre le produit.", score: 2 },
+          { text: "J'arrête la ligne et je tente de redresser le produit depuis le sol avec un outil.", score: 1.5 },
+          { text: "Je demande à un collègue plus grand de s'en occuper.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre ligne est en retard sur la cadence. Pour rattraper, votre chef vous demande de ne pas faire les vérifications habituelles avant démarrage — 'tout le monde le fait en période de rush'.",
+        tags: ["utilisation", "pression cadence"],
+        answers: [
+          { text: "Je suis la consigne — mon chef assume la responsabilité et c'est temporaire.", score: 0 },
+          { text: "Je maintiens les vérifications avant démarrage — elles ne sont pas supprimables sous pression de cadence.", score: 2 },
+          { text: "Je fais une vérification rapide réduite aux points essentiels.", score: 0.5 },
+          { text: "Je demande à mon chef de me confirmer par écrit que je peux sauter les vérifications.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous respectez les interdictions d'utilisation — ne jamais retirer une protection, ne jamais intervenir machine en marche, ne jamais monter sur un convoyeur — même sous pression de production.",
+        tags: ["utilisation", "interdictions"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez nettoyer la zone sous un convoyeur à bande. Le convoyeur tourne toujours. Le nettoyage en marche est plus rapide.",
+        tags: ["utilisation", "nettoyage"],
+        answers: [
+          { text: "Je nettoie la zone en marche en restant à distance de la bande — c'est plus efficace.", score: 0 },
+          { text: "J'arrête le convoyeur avant de nettoyer sous la bande.", score: 2 },
+          { text: "Je nettoie les zones accessibles sans approcher la bande.", score: 0.5 },
+          { text: "Je demande à la maintenance d'arrêter le convoyeur pour que je puisse nettoyer.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre respect des consignes d'utilisation cède encore sous pression de cadence ou d'habitude", desc: "Dégager un produit machine en marche parce que c'est plus rapide, sauter les vérifications avant démarrage sous pression de cadence, remonter ses manches ou garder ses bijoux : ces accommodements quotidiens semblent raisonnables pris un par un. Ensemble, ils construisent des accidents. Les consignes d'utilisation ne sont pas des recommandations — elles sont le résultat d'analyses d'accidents réels." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les consignes dans la plupart des cas mais la pression de production peut encore créer des exceptions", desc: "Vous faites vos vérifications avant démarrage et vous respectez les interdictions d'utilisation dans les situations ordinaires. Mais quand la cadence est en retard, quand votre chef dit qu'on peut faire vite, quand le produit bloqué 'se règle en deux secondes' : votre réaction peut encore s'accommoder. L'enjeu est de tenir ces comportements précisément dans ces moments de pression." },
+          haut: { label: "Réflexes installés", titre: "Vos consignes d'utilisation sont respectées sans exception, quelle que soit la pression de production", desc: "Vous vérifiez l'absence de personnel avant chaque démarrage. Vous refusez de dégager un produit machine en marche, même sous pression. Vous gardez vos vêtements ajustés et retirez vos bijoux. Vous refusez de sauter les vérifications avant démarrage même quand la cadence est en retard. Cette constance dans le respect des consignes — qui suppose d'assumer parfois un retard ou une tension — est ce qui fait que les accidents ne se produisent pas." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "C'est votre première semaine sur cette ligne de production. Vous n'avez pas encore repéré tous les arrêts d'urgence. Un incident mineur survient.",
+        tags: ["arrêt d'urgence", "connaissance"],
+        answers: [
+          { text: "J'improvise — je connais le principe des arrêts d'urgence même si je n'ai pas repéré les emplacements.", score: 0 },
+          { text: "Je demande à un collègue où est le plus proche arrêt d'urgence pendant que je sécurise la situation.", score: 1 },
+          { text: "Je me mets en sécurité et j'attendd que quelqu'un d'autre déclenche l'arrêt.", score: 0 },
+          { text: "Dès ma prise de poste le lendemain, je m'assure de repérer tous les arrêts d'urgence avant de démarrer.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous êtes seul·e sur la ligne quand vous voyez la main de quelqu'un coincée entre deux rouleaux en fonctionnement. L'arrêt d'urgence le plus proche est à 3 mètres.",
+        tags: ["arrêt d'urgence", "utilisation"],
+        answers: [
+          { text: "Je tente de dégager la main coincée — chaque seconde compte.", score: 0 },
+          { text: "J'appuie immédiatement sur l'arrêt d'urgence puis je sécurise et j'appelle les secours.", score: 2 },
+          { text: "Je crie pour alerter les collègues pendant que j'essaie d'arrêter la machine.", score: 0.5 },
+          { text: "J'appelle les secours en premier pendant que je cherche comment arrêter la machine.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous connaissez l'emplacement de tous les arrêts d'urgence de votre zone de travail sans avoir besoin de les chercher.",
+        tags: ["arrêt d'urgence", "localisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un câble d'arrêt d'urgence est passé derrière un équipement et n'est plus facilement accessible. Ça fait plusieurs semaines. Personne n'a signalé.",
+        tags: ["arrêt d'urgence", "condamnation"],
+        answers: [
+          { text: "Je laisse — si quelqu'un l'avait jugé problématique, ça aurait été signalé.", score: 0 },
+          { text: "Je le signale immédiatement — un arrêt d'urgence inaccessible est aussi dangereux qu'un arrêt condamné.", score: 2 },
+          { text: "Je repositionne moi-même le câble pour le rendre accessible.", score: 1 },
+          { text: "Je le signale lors du prochain point sécurité.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue appuie sur un arrêt d'urgence 'pour voir si ça fonctionne encore' pendant que la ligne tourne, sans prévenir personne.",
+        tags: ["arrêt d'urgence", "test"],
+        answers: [
+          { text: "Je ne dis rien — tester les arrêts d'urgence c'est une bonne pratique.", score: 0 },
+          { text: "Je lui signale que les tests d'arrêts d'urgence doivent suivre une procédure autorisée et ne pas se faire de façon impromptue.", score: 2 },
+          { text: "Je surveille la réaction de la ligne pour voir si l'arrêt fonctionne correctement.", score: 0 },
+          { text: "Je préviens les autres collègues que la ligne va s'arrêter.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne testez les arrêts d'urgence que selon la procédure autorisée, jamais de façon improvisée pendant la production.",
+        tags: ["arrêt d'urgence", "procédure"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à un arrêt d'urgence déclenché par un incident, l'incident semble résolu. Votre responsable est absent. Vous pensez pouvoir redémarrer.",
+        tags: ["arrêt d'urgence", "redémarrage"],
+        answers: [
+          { text: "Je redémarre — l'incident est résolu et attendre fait perdre du temps.", score: 0 },
+          { text: "J'attends une autorisation explicite de redémarrage de la part du responsable ou du personnel habilité.", score: 2 },
+          { text: "Je contacte mon responsable par téléphone pour avoir son accord avant de redémarrer.", score: 2 },
+          { text: "Je demande à un collègue expérimenté d'évaluer si on peut redémarrer.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous appuyez sur un arrêt d'urgence coup de poing en situation d'urgence mais la ligne ne s'arrête pas immédiatement. Vous ne comprenez pas pourquoi.",
+        tags: ["arrêt d'urgence", "dysfonctionnement"],
+        answers: [
+          { text: "Je cherche un autre moyen d'arrêter la ligne — disjoncteur, armoire.", score: 1.5 },
+          { text: "J'utilise immédiatement l'arrêt général sur l'armoire et j'alerte les secours.", score: 2 },
+          { text: "Je réappuie plusieurs fois sur le bouton en espérant que ça finisse par fonctionner.", score: 0 },
+          { text: "Je cherche l'interrupteur général le plus proche.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En cas de situation dangereuse sur les convoyeurs, votre premier réflexe est d'appuyer sur l'arrêt d'urgence le plus proche, avant toute autre action.",
+        tags: ["arrêt d'urgence", "réflexe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En longeant un convoyeur à bande, vous voyez que le câble d'arrêt d'urgence est enroulé autour d'un support et ne tire plus librement sur toute sa longueur.",
+        tags: ["arrêt d'urgence", "câble"],
+        answers: [
+          { text: "Je le déroulé moi-même — c'est une action simple et rapide.", score: 0.5 },
+          { text: "Je ne touche pas au câble et je le signale immédiatement pour qu'une vérification soit faite.", score: 2 },
+          { text: "Je teste le câble pour m'assurer qu'il fonctionne encore avant de décider quoi faire.", score: 0 },
+          { text: "Je le signale lors de mon compte rendu de fin de poste.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre connaissance des arrêts d'urgence est insuffisante pour garantir une réaction rapide", desc: "Ne pas connaître l'emplacement de l'arrêt d'urgence le plus proche, hésiter sur la procédure de redémarrage, ne pas signaler un câble d'arrêt inaccessible : en situation d'urgence, le temps de chercher l'arrêt d'urgence peut être le temps de l'accident. La maîtrise des arrêts d'urgence — leur emplacement, leur utilisation, les interdictions qui s'y rattachent — est une compétence de base qui ne souffre pas d'approximation." },
+          moyen: { label: "Pratiques en développement", titre: "Vous connaissez les arrêts d'urgence de votre zone mais votre réflexe n'est pas encore totalement ancré", desc: "Vous connaissez les principaux arrêts d'urgence de votre zone. Mais savoir immédiatement où est le plus proche sans chercher, ne jamais tester un arrêt de façon improvisée, signaler un câble d'arrêt inaccessible le jour même : ces réflexes ne sont pas encore totalement ancrés. L'enjeu est de traiter la maîtrise des arrêts d'urgence comme une priorité absolue, pas comme une connaissance parmi d'autres." },
+          haut: { label: "Réflexes installés", titre: "Votre maîtrise des arrêts d'urgence est immédiate et vos réflexes sont ancrés", desc: "Vous savez immédiatement où est le plus proche arrêt d'urgence. Votre premier réflexe en situation dangereuse est d'appuyer avant toute autre action. Vous ne redémarrez jamais sans autorisation. Vous signalez le jour même tout arrêt inaccessible ou câble mal positionné. Cette maîtrise immédiate et sans hésitation des arrêts d'urgence est la compétence qui fait la différence entre un incident évité et un accident grave." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Un témoin rouge clignote sur l'armoire électrique de la ligne. Vous pensez savoir ce que ça signifie. L'armoire est fermée.",
+        tags: ["limites", "armoire électrique"],
+        answers: [
+          { text: "J'ouvre l'armoire pour voir ce qui se passe — je connais assez l'installation.", score: 0 },
+          { text: "Je ne touche pas à l'armoire et je contacte le personnel habilité.", score: 2 },
+          { text: "J'appelle le technicien de maintenance en lui décrivant ce que j'observe depuis l'extérieur.", score: 2 },
+          { text: "Je coupe le disjoncteur général pour sécuriser la situation.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'intervenez jamais dans l'armoire électrique ni sur les éléments électriques de la ligne, quelle que soit votre intuition sur l'origine du problème.",
+        tags: ["limites", "habilitation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un rouleau tourne moins vite que les autres et semble légèrement désaxé. Vous pensez qu'un réglage rapide suffirait. La machine tourne.",
+        tags: ["limites", "maintenance"],
+        answers: [
+          { text: "Je tente le réglage — c'est mineur et j'ai l'expérience de ces machines.", score: 0 },
+          { text: "Je signale l'anomalie à la maintenance sans toucher au rouleau.", score: 2 },
+          { text: "J'arrête la ligne et je tente de vérifier le rouleau.", score: 0.5 },
+          { text: "J'observe encore quelques minutes pour voir si ça s'arrange seul.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La maintenance doit intervenir sur un convoyeur. Le technicien vous demande de surveiller la zone pendant qu'il travaille, sans procédure de consignation. Il dit que son intervention est courte.",
+        tags: ["limites", "consignation"],
+        answers: [
+          { text: "J'accepte — il est professionnel et ça n'engage que lui.", score: 0 },
+          { text: "Je lui dis que la consignation est obligatoire avant toute intervention, quelle que soit la durée.", score: 2 },
+          { text: "Je surveille comme il demande mais je ne prends aucune décision de redémarrage.", score: 0 },
+          { text: "J'en parle à mon responsable pour qu'il valide ou non.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un produit est coincé dans la transmission chaîne-pignon d'un convoyeur. Votre chef de production vous demande de le dégager pour ne pas arrêter la ligne.",
+        tags: ["limites", "déblocage"],
+        answers: [
+          { text: "Je dégage le produit avec précaution en faisant attention à mes doigts.", score: 0 },
+          { text: "Je refuse d'intervenir sur une transmission en mouvement et j'arrête la ligne avant toute tentative.", score: 2 },
+          { text: "J'utilise un outil pour pousser le produit sans approcher mes mains.", score: 0.5 },
+          { text: "Je lui demande à lui de s'en charger — il en assume la responsabilité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez d'intervenir sur des éléments mécaniques ou électriques qui dépassent votre périmètre d'opérateur, même sous pression de votre responsable.",
+        tags: ["limites", "périmètre"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez qu'une protection a été retirée sur un convoyeur et n'a pas été remise en place après une intervention de maintenance. La ligne est à l'arrêt pour l'instant.",
+        tags: ["limites", "protection retirée"],
+        answers: [
+          { text: "Je remets la protection en place — c'est une action simple qui sécurise la ligne.", score: 0.5 },
+          { text: "Je signale la protection manquante et je m'assure que la ligne ne redémarre pas avant qu'elle soit remise par le personnel habilité.", score: 2 },
+          { text: "Je l'enregistre dans le cahier de bord et je laisse à la maintenance de la remettre.", score: 1 },
+          { text: "Je balise la zone pour que personne n'approche en attendant.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un opérateur vient d'avoir un contact avec un organe en mouvement. Il dit que ce n'est pas grave et vous demande de ne rien dire pour ne pas créer de complications.",
+        tags: ["limites", "incident"],
+        answers: [
+          { text: "Je respecte sa demande — c'est son corps et sa décision.", score: 0 },
+          { text: "Je l'encourage fortement à en parler à son responsable et je le remonte moi-même si nécessaire.", score: 2 },
+          { text: "Je lui dis d'aller voir l'infirmerie au moins, sans en faire un signalement officiel.", score: 1 },
+          { text: "Je le laisse gérer — s'il dit que ce n'est pas grave, c'est qu'il sait.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez tout contact avec un organe en mouvement, même si la personne concernée dit que ce n'est pas grave.",
+        tags: ["limites", "signalement incident"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez que la lubrification d'un arbre d'entraînement semble insuffisante — des traces de frottement sont visibles. La machine tourne.",
+        tags: ["limites", "arbres entraînement"],
+        answers: [
+          { text: "Je mets de la graisse sur l'arbre depuis l'extérieur pendant que la machine tourne — c'est du quotidien.", score: 0 },
+          { text: "Je signale l'anomalie à la maintenance sans intervenir sur l'arbre.", score: 2 },
+          { text: "J'arrête la machine et je lubrifie l'arbre moi-même.", score: 0.5 },
+          { text: "Je surveille l'évolution et je signale si ça s'aggrave.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous dépassez encore votre périmètre d'intervention sous pression ou par initiative personnelle", desc: "Ouvrir l'armoire électrique pour voir ce qui se passe, intervenir sur un rouleau désaxé, lubrifier un arbre d'entraînement machine en marche : ces initiatives sont courantes et souvent bien intentionnées. Elles sont aussi à l'origine d'accidents graves. L'intervention sur les éléments mécaniques et électriques est réservée au personnel habilité — pas en raison d'un manque de confiance, mais parce que la consignation préalable est la seule protection réelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez globalement votre périmètre d'intervention mais certaines situations ambiguës créent encore des hésitations", desc: "Vous n'intervenez pas sur les éléments électriques et vous signalez les anomalies mécaniques. Mais face à un rouleau légèrement désaxé qu'on pourrait 'juste vérifier', une protection manquante qu'on pourrait 'juste remettre', un arbre qu'on lubrifie depuis l'extérieur machine en marche : la limite entre observer et intervenir peut encore être franchie. L'enjeu est de maintenir le réflexe de signalement même pour les interventions qui semblent anodines." },
+          haut: { label: "Réflexes installés", titre: "Vous respectez strictement votre périmètre d'intervention et signalez tout dépassement de la part d'autrui", desc: "Vous ne touchez pas à l'armoire électrique, vous signalez le rouleau désaxé sans y toucher, vous refusez de lubrifier un arbre machine en marche. Vous signalez la protection manquante plutôt que de la remettre vous-même. Vous encouragez le collègue blessé à signaler même s'il dit que ce n'est pas grave. Cette façon de rester dans son périmètre — en signalant tout ce qui en dépasse — est ce qui permet à la chaîne de sécurité de fonctionner." },
+        },
+      }
+    ],
+
+  },
 
   }); // fin Object.assign CUSTOM_QUESTIONS
 
@@ -8824,6 +9490,16 @@
     ["Appliquer le PGCSPS et coordonner avec le CSPS", "Utiliser la coordination SPS comme outil de travail réel, pas comme obligation administrative."],
     ["Gérer les risques spécifiques au gros œuvre", "Réseaux, armatures, amiante, conditions de sol — arrêt et signalement systématiques."],
     ["Tracer, signaler et améliorer",               "Dossiers d'exécution honnêtes incluant non-conformités et difficultés réelles."]
+  ]}
+],
+
+["securite-convoyeurs", "Sécurité autour des convoyeurs", "Opérateurs de production / Conducteurs de ligne",
+  "Identifier les risques, respecter les consignes d'utilisation et réagir correctement en cas d'incident.",
+  { domain: "securite", chapters: [
+    ["Identifier les risques et les zones dangereuses", "Coincement, entraînement, cisaillement — reconnaître et signaler les dangers sur un équipement du quotidien."],
+    ["Appliquer les consignes d'utilisation",           "Vérifications avant démarrage, interdictions, tenue vestimentaire — sans exception sous pression de cadence."],
+    ["Maîtriser les arrêts d'urgence",                  "Connaître les emplacements, agir sans hésitation, ne jamais condamner ni redémarrer sans autorisation."],
+    ["Signaler les anomalies et respecter les limites", "Ce qui relève de l'opérateur et ce qui est strictement réservé au personnel habilité."]
   ]}
 ],
   ]);
