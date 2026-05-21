@@ -58,6 +58,14 @@
     .info-value{font-size:14px;color:#17375d;font-weight:800;word-break:break-word}
     .url-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
     .url-line code{background:#eef6fb;color:#0d4c72;border-radius:10px;padding:7px 9px;font-size:12px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+    .campaign-editor{display:grid;gap:10px;margin-top:12px;background:#fff;border:1px solid #e4edf5;border-radius:18px;padding:14px}
+    .campaign-editor .modal-form-grid{margin:0}
+    .campaign-link-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:end}
+    .campaign-link-row .modal-field{min-width:0}
+    .campaign-link-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .small-btn.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+    .small-btn.danger:hover{background:#ffe4e6}
+    @media(max-width:760px){.campaign-link-row{grid-template-columns:1fr}.campaign-link-actions .small-btn{width:100%;justify-content:center}}
 
     .modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
     .modal-backdrop.open{display:flex}
@@ -93,6 +101,9 @@
     /* V1 cockpit AD : filtres, nudges et alertes */
     .watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
     .watch-card{border-radius:20px;padding:14px 15px;border:1px solid #e4edf5;background:#f9fbfd;display:flex;gap:11px;align-items:flex-start;min-height:86px}
+    .watch-card.clickable{cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .watch-card.clickable:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,45,80,.08)}
+    .watch-card.active{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
     .watch-ico{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto}
     .watch-card.orange{background:#fff8ec;border-color:#ffd9a3}.watch-card.orange .watch-ico{background:#ffe9c7}
     .watch-card.blue{background:#eef6ff;border-color:#cfe3ff}.watch-card.blue .watch-ico{background:#dcecff}
@@ -158,7 +169,6 @@
     <section class="tabs">
       <button class="tab active" onclick="showTab('ads', this)">Autodiagnostics</button>
       <button class="tab" onclick="showTab('campaigns', this)">Campagnes</button>
-      <button class="tab" onclick="showTab('results', this)">Résultats</button>
       <button class="tab" onclick="showTab('resources', this)">Ressources</button>
     </section>
 
@@ -676,6 +686,33 @@ function getProjectTitle(project){
       return status === "published" || (status === "unpublished" && hasResults);
     }
 
+    function getCampaignTiming(project){
+      const daysLeft = getDaysUntil(getProjectEndDate(project));
+      if(daysLeft === null) return null;
+      if(daysLeft < 0) return {key:"ended", kind:"neutral", icon:"⚫", label:"Campagne terminée", daysLeft};
+      if(daysLeft < 7) return {key:"imminent", kind:"warn", icon:"🟠", label:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      if(daysLeft < 14) return {key:"endingSoon", kind:"warn", icon:"🔴", label:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      return null;
+    }
+
+    function projectHasResultsAvailable(project){
+      return ["published","unpublished"].includes(normalizeStatus(project.status)) && Boolean(getProjectResultsUrl(project));
+    }
+
+    function projectIsEndingSoon(project){
+      if(!isMonitorableCampaign(project)) return false;
+      const timing = getCampaignTiming(project);
+      return Boolean(timing && (timing.key === "endingSoon" || timing.key === "imminent"));
+    }
+
+    function projectMatchesCurrentFilter(project){
+      const status = normalizeStatus(project.status);
+      if(currentAdFilter === "all") return true;
+      if(currentAdFilter === "endingSoon") return projectIsEndingSoon(project);
+      if(currentAdFilter === "results") return projectHasResultsAvailable(project);
+      return status === currentAdFilter;
+    }
+
     function getProjectCampaignKey(project){
       return String(
         getProjectShareUrl(project) ||
@@ -705,9 +742,8 @@ function getProjectTitle(project){
       const alerts = [];
 
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
-      if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft < 0) alerts.push({kind:"neutral", icon:"⚫", text:"Campagne terminée"});
-      else if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft <= 7) alerts.push({kind:"warn", icon:"🟠", text:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`});
-      else if(isMonitorableCampaign(project) && daysLeft !== null && daysLeft < 14) alerts.push({kind:"warn", icon:"🔴", text:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`});
+      const timing = isMonitorableCampaign(project) ? getCampaignTiming(project) : null;
+      if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
       if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
@@ -724,10 +760,12 @@ function getProjectTitle(project){
     }
 
     function getAdFilterCounts(projects){
-      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0};
+      const counts = {all:projects.length,draft:0,sent:0,published:0,unpublished:0,archived:0,endingSoon:0,results:0};
       projects.forEach(project => {
         const s = normalizeStatus(project.status);
         counts[s] = (counts[s] || 0) + 1;
+        if(projectIsEndingSoon(project)) counts.endingSoon += 1;
+        if(projectHasResultsAvailable(project)) counts.results += 1;
       });
       return counts;
     }
@@ -738,8 +776,10 @@ function getProjectTitle(project){
       const counts = getAdFilterCounts(projects);
       const filters = [
         ["all","✨ Tous"],
-        ["draft","✏️ Brouillons"],
+        ["endingSoon","🔴 Fin proche"],
         ["sent","🚀 Transmis"],
+        ["results","📊 Résultats dispo"],
+        ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
         ["unpublished","🛑 Dépubliés"],
         ["archived","📦 Archivés"]
@@ -776,9 +816,9 @@ function getProjectTitle(project){
       const toPublish = projects.filter(p => normalizeStatus(p.status)==="sent").length;
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
-        <div class="watch-card orange"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
-        <div class="watch-card blue"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">À publier dès que les URLs de diffusion et résultats sont prêtes.</div></div></div>
-        <div class="watch-card green"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Accès directs disponibles dans l’onglet Résultats.</div></div></div>
+        <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
+        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
+        <div class="watch-card green clickable ${currentAdFilter==='results'?'active':''}" onclick="setAdFilter('results')"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Cliquez pour n’afficher que les AD avec lien résultats.</div></div></div>
       `;
     }
 
@@ -794,9 +834,9 @@ function getProjectTitle(project){
 
       const search = String(document.getElementById("adSearchInput")?.value || "").toLowerCase().trim();
       const filtered = projects.filter(project => {
-        const statusOk = currentAdFilter === "all" || normalizeStatus(project.status) === currentAdFilter;
+        const filterOk = projectMatchesCurrentFilter(project);
         const text = `${getProjectTitle(project)} ${getProjectThemes(project).join(" ")}`.toLowerCase();
-        return statusOk && (!search || text.includes(search));
+        return filterOk && (!search || text.includes(search));
       });
 
       if(!filtered.length){
@@ -823,11 +863,12 @@ function getProjectTitle(project){
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              <button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>
+              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
               ${isAdmin()
                 ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
                 : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
               }
+              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
               ${
                 normalizedStatus === "sent" && isAdmin()
                   ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
@@ -862,37 +903,59 @@ function getProjectTitle(project){
         const title = getProjectTitle(project);
         const share = getProjectShareUrl(project);
         const results = getProjectResultsUrl(project);
+        const startDate = getProjectStartDate(project);
+        const endDate = getProjectEndDate(project);
+        const pid = escapeAttr(project.id);
 
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
             ${renderThemeTags(project)}
             <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            ${renderAlertBadges(project)}
             <div class="card-meta">
-              Début : ${formatDate(getProjectStartDate(project))}<br>
-              Fin : ${formatDate(getProjectEndDate(project))}
+              Début : ${formatDate(startDate)}<br>
+              Fin : ${formatDate(endDate)}
             </div>
 
-            <div style="display:grid;gap:10px;margin-top:10px">
-              <div>
-                <div class="info-label">URL de diffusion</div>
-                ${share
-                  ? `<div class="url-line"><code>${escapeHtml(share)}</code><a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a><button class="small-btn" onclick="copyText('${escapeAttr(share)}')">Copier</button></div>`
-                  : `<div class="empty" style="padding:14px;text-align:left">URL de diffusion non renseignée dans l’onglet AD de l’admin.</div>`
-                }
+            <div class="campaign-editor">
+              <div class="campaign-link-row">
+                <div class="modal-field">
+                  <label for="campaignShare_${pid}">URL de diffusion</label>
+                  <input id="campaignShare_${pid}" type="url" value="${escapeAttr(share)}" placeholder="https://selfdiag-mayt.meandyoutoo.app/...">
+                  <small>Lien visible côté client pour la diffusion aux répondants.</small>
+                </div>
+                <div class="campaign-link-actions">
+                  ${share ? `<a class="small-btn" href="${escapeAttr(share)}" target="_blank" rel="noopener">Ouvrir</a><button class="small-btn" onclick="copyText('${escapeAttr(share)}')">Copier</button>` : ``}
+                </div>
               </div>
 
-              <div>
-                <div class="info-label">URL résultats</div>
-                ${results
-                  ? `<div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a><button class="small-btn" onclick="copyText('${escapeAttr(results)}')">Copier</button></div>`
-                  : `<div class="empty" style="padding:14px;text-align:left">URL résultats non renseignée dans l’onglet AD de l’admin.</div>`
-                }
+              <div class="campaign-link-row">
+                <div class="modal-field">
+                  <label for="campaignResults_${pid}">URL résultats</label>
+                  <input id="campaignResults_${pid}" type="url" value="${escapeAttr(results)}" placeholder="https://...">
+                  <small>Lien du Dashboard statistiques ou de restitution.</small>
+                </div>
+                <div class="campaign-link-actions">
+                  ${results ? `<a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a><button class="small-btn" onclick="copyText('${escapeAttr(results)}')">Copier</button>` : ``}
+                </div>
               </div>
-            </div>
 
-            <div class="card-actions">
-              <button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>
+              <div class="modal-form-grid">
+                <div class="modal-field">
+                  <label for="campaignStart_${pid}">Date de début</label>
+                  <input id="campaignStart_${pid}" type="date" value="${escapeAttr(startDate)}">
+                </div>
+                <div class="modal-field">
+                  <label for="campaignEnd_${pid}">Date de fin</label>
+                  <input id="campaignEnd_${pid}" type="date" value="${escapeAttr(endDate)}">
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
+                <button class="small-btn" onclick="openCampaignPage('${pid}')">Voir campagne</button>
+              </div>
             </div>
           </article>
         `;
@@ -901,28 +964,13 @@ function getProjectTitle(project){
 
     function renderResults(projects){
       const list = document.getElementById("resultsList");
-      const resultProjects = projects.filter(p => {
-        const status = normalizeStatus(p.status);
-        return ["published","unpublished"].includes(status) && !!getProjectResultsUrl(p);
-      });
-
-      if(!resultProjects.length){
-        list.innerHTML = `<div class="empty">Aucun résultat disponible pour le moment. Les liens résultats apparaîtront uniquement pour les AD publiés ou dépubliés avec une URL résultats renseignée.</div>`;
-        return;
-      }
-
-      list.innerHTML = resultProjects.map(project => {
-        const title = getProjectTitle(project);
-        const results = getProjectResultsUrl(project);
-        return `
-          <article class="card">
-            <h3>${escapeHtml(title)}</h3>
-            ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
-            <div class="url-line"><code>${escapeHtml(results)}</code><a class="small-btn main" href="${escapeAttr(results)}" target="_blank" rel="noopener">Voir résultats</a></div>
-          </article>
-        `;
-      }).join("");
+      const resultProjects = projects.filter(projectHasResultsAvailable);
+      list.innerHTML = `
+        <div class="empty" style="text-align:left">
+          <strong style="display:block;color:#17375d;margin-bottom:6px">Les résultats sont maintenant centralisés dans l’onglet Campagnes.</strong>
+          Les liens résultats restent affichés et modifiables au même endroit que les URLs de diffusion, pour éviter les doublons. ${resultProjects.length ? `${resultProjects.length} AD dispose${resultProjects.length>1?'nt':''} actuellement d’un lien résultats.` : `Aucun lien résultats n’est encore renseigné.`}
+        </div>
+      `;
     }
 
     function renderResources(projects){
@@ -969,7 +1017,7 @@ function getProjectTitle(project){
 
     function showTabByName(tabName){
       const buttons = Array.from(document.querySelectorAll(".tab"));
-      const index = ["ads","campaigns","results","resources"].indexOf(tabName);
+      const index = ["ads","campaigns","resources"].indexOf(tabName);
       showTab(tabName, buttons[index] || null);
     }
 
@@ -1132,6 +1180,79 @@ function getProjectTitle(project){
         console.error(err);
         alert(err.message || "Impossible de changer le statut de cet autodiagnostic.");
       }
+    }
+
+    async function saveCampaignLinks(projectId){
+      const project = getCurrentProjectById(projectId);
+      if(!project) return;
+
+      const shareUrl = String(document.getElementById(`campaignShare_${projectId}`)?.value || "").trim();
+      const resultsUrl = String(document.getElementById(`campaignResults_${projectId}`)?.value || "").trim();
+      const startDate = String(document.getElementById(`campaignStart_${projectId}`)?.value || "").trim();
+      const endDate = String(document.getElementById(`campaignEnd_${projectId}`)?.value || "").trim();
+
+      if(startDate && endDate && startDate > endDate){
+        alert("La date de début ne peut pas être postérieure à la date de fin.");
+        return;
+      }
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/publication`, {
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${getToken()}`
+          },
+          body:JSON.stringify({
+            status: normalizeStatus(project.status),
+            share_url: shareUrl || null,
+            results_url: resultsUrl || null,
+            campaign_start_date: startDate || null,
+            campaign_end_date: endDate || null
+          })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur enregistrement des liens");
+        showToast("Liens campagne enregistrés");
+        await loadClientFolder();
+        showTabByName("campaigns");
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible d’enregistrer les liens de campagne.");
+      }
+    }
+
+    async function deleteProjectFromFolder(projectId){
+      if(!projectId) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const status = project ? normalizeStatus(project.status) : "";
+      const msg = status === "published"
+        ? `« ${title} » est publié. Confirmer la suppression définitive ? Cette action retirera aussi la campagne du cockpit client.`
+        : `Confirmer la suppression définitive de « ${title} » ?`;
+      if(!confirm(msg)) return;
+
+      const urls = isAdmin()
+        ? [`${API_URL}/api/admin/projects/${encodeURIComponent(projectId)}`, `${API_URL}/api/projects/${encodeURIComponent(projectId)}`]
+        : [`${API_URL}/api/projects/${encodeURIComponent(projectId)}`];
+
+      let lastError = null;
+      for(const url of urls){
+        try{
+          const response = await fetch(url, { method:"DELETE", headers:{ Authorization:`Bearer ${getToken()}` } });
+          const data = await response.json().catch(() => ({}));
+          if(response.ok){
+            showToast("Autodiagnostic supprimé");
+            await loadClientFolder();
+            return;
+          }
+          lastError = data.error || `Erreur ${response.status}`;
+        }catch(err){
+          lastError = err.message;
+        }
+      }
+      alert(lastError || "Impossible de supprimer cet autodiagnostic depuis ce dossier.");
     }
 
     function chooseProjectLogo(projectId){
