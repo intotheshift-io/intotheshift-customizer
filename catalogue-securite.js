@@ -7366,6 +7366,1338 @@
     ],
 
   },
+    "culture-surete-nucleaire-sectoriel": {
+    0: [
+      {
+        type: "choix",
+        text: "Lors d'une réunion de planification d'arrêt, le planning proposé est ambitieux. Votre expérience vous dit que certaines marges sont trop courtes. Tout le monde acquiesce.",
+        tags: ["questionnement", "organisation"],
+        answers: [
+          { text: "Je m'aligne — le planning a été validé par les experts et la direction assume.", score: 0 },
+          { text: "Je pose la question sur les marges qui me semblent insuffisantes, même si c'est le seul à le faire.", score: 2 },
+          { text: "J'en parle à mon responsable après la réunion pour qu'il remonte mes doutes.", score: 1 },
+          { text: "Je note mes réserves sans les exprimer — si le planning dérape, ça sera documenté.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous observez sur votre installation un événement que vous n'avez jamais vu auparavant. Il ne déclenche aucune alarme et les paramètres restent dans les limites normales.",
+        tags: ["questionnement", "précurseur"],
+        answers: [
+          { text: "Je surveille — si les paramètres sont normaux, ce n'est pas un vrai problème.", score: 0 },
+          { text: "Je le signale immédiatement comme événement potentiellement précurseur, même sans conséquence visible.", score: 2 },
+          { text: "J'en parle au technicien de quart pour qu'il évalue avant de décider.", score: 1 },
+          { text: "Je l'inscris dans le registre de bord sans déclencher de procédure formelle.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous exprimez vos doutes sur la sûreté d'une situation même quand les indicateurs sont dans les limites et quand personne d'autre ne semble préoccupé.",
+        tags: ["questionnement", "expression"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable vous présente une décision technique sur laquelle vous avez des doutes de sûreté. Il a consulté des experts. Votre niveau d'expertise est inférieur au sien.",
+        tags: ["questionnement", "hiérarchie"],
+        answers: [
+          { text: "Je m'aligne — il a plus d'expertise et a consulté des spécialistes.", score: 0 },
+          { text: "Je lui pose mes questions précisément — mon niveau d'expertise ne supprime pas ma responsabilité de questionner.", score: 2 },
+          { text: "J'en parle à un collègue expert pour valider mon doute avant d'aller le voir.", score: 1 },
+          { text: "Je demande à voir la documentation technique sur laquelle la décision est basée.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une procédure que vous appliquez depuis plusieurs années vous semble contenir une ambiguïté. Vous ne l'avez jamais questionnée car tout s'est toujours bien passé.",
+        tags: ["questionnement", "procédure"],
+        answers: [
+          { text: "Je continue — si la procédure a toujours fonctionné, l'ambiguïté est probablement sans importance.", score: 0 },
+          { text: "Je remonte l'ambiguïté maintenant, même si elle n'a jamais causé de problème.", score: 2 },
+          { text: "Je la remonte lors de la prochaine révision périodique de la procédure.", score: 0.5 },
+          { text: "J'en parle à mes collègues pour savoir comment eux interprètent l'ambiguïté.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les anomalies et ambiguïtés des procédures même quand elles n'ont jamais causé de problème dans votre expérience.",
+        tags: ["questionnement", "récurrence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe a développé une compréhension partagée du fonctionnement d'un système. Un nouvel indicateur suggère que cette compréhension est peut-être incomplète.",
+        tags: ["questionnement", "modèle mental"],
+        answers: [
+          { text: "Je fais confiance à notre modèle collectif — il a été validé par des années d'expérience.", score: 0 },
+          { text: "Je prends l'indicateur au sérieux et je remonte la possible remise en cause de notre modèle.", score: 2 },
+          { text: "J'analyse l'indicateur plus avant avant de remettre en cause notre compréhension collective.", score: 1 },
+          { text: "J'en parle à l'ingénieur de sûreté pour qu'il évalue l'indicateur.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre planning est serré. Une vérification de sûreté complémentaire prendrait deux heures supplémentaires. Elle n'est pas obligatoire selon la procédure mais vous la trouvez utile.",
+        tags: ["questionnement", "temps"],
+        answers: [
+          { text: "Je la saute — elle n'est pas obligatoire et le planning est contraint.", score: 0 },
+          { text: "Je la réalise — si je la trouve utile, c'est une information de sûreté à prendre en compte.", score: 2 },
+          { text: "J'en parle à mon responsable pour qu'il arbitre entre le planning et la vérification.", score: 1 },
+          { text: "Je la programme pour la prochaine intervention similaire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand vous jugez qu'une vérification supplémentaire améliore la sûreté, vous la réalisez même si elle n'est pas obligatoire et même si elle allonge le délai.",
+        tags: ["questionnement", "sûreté d'abord"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous constatez que plusieurs membres de votre équipe sont fatigués avant une opération sensible. Les Facteurs Humains et Organisationnels (FHO) sont en jeu. L'opération est planifiée.",
+        tags: ["questionnement", "FHO"],
+        answers: [
+          { text: "Je laisse l'opération se dérouler — la fatigue est normale et l'équipe est professionnelle.", score: 0 },
+          { text: "Je remonte la situation au responsable de l'opération pour évaluation avant de démarrer.", score: 2 },
+          { text: "Je renforce la supervision pendant l'opération pour compenser la fatigue.", score: 0.5 },
+          { text: "Je propose un briefing renforcé avant de démarrer pour alerter l'équipe.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre posture de questionnement s'arrête encore aux limites de la hiérarchie et du consensus", desc: "S'aligner sur la décision d'un expert plus senior, ne pas soulever une ambiguïté de procédure qui n'a jamais causé de problème, remettre à plus tard la vérification complémentaire par pression de planning : en sûreté nucléaire, l'expérience et le consensus ne remplacent pas la posture de questionnement — ils en sont parfois les ennemis les plus dangereux. L'INSAG-4 définit le questionnement comme une posture permanente, pas une option situationnelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous questionnez les situations opérationnelles mais hésitez encore à remettre en cause les décisions organisationnelles", desc: "Vous questionnez les situations opérationnelles et signalez les anomalies. Mais remettre en cause une décision de votre responsable sur la base d'un doute de sûreté, soulever une ambiguïté de procédure ancienne, demander une vérification supplémentaire non obligatoire : ces situations vous mettent encore dans une zone d'hésitation. L'enjeu est d'étendre votre posture de questionnement à toutes les situations, y compris les plus inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vous questionnez toutes les situations — opérationnelles, organisationnelles, hiérarchiques — avec la même posture de sûreté", desc: "Vous posez vos questions à votre responsable sur les décisions techniques qui vous interpellent même s'il est plus expert. Vous signalez une ambiguïté de procédure ancienne même si elle n'a jamais causé de problème. Vous remontez un événement non couvert par les critères formels de DES. Vous demandez une vérification complémentaire même si elle n'est pas obligatoire et si le planning est serré. Cette posture de questionnement permanente — indépendante du niveau hiérarchique, de l'expérience collective et de la pression de planning — est ce que l'INSAG-4 désigne comme le fondement de la culture de sûreté." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Une barrière de sûreté est dégradée sur votre installation depuis plusieurs jours. La situation est connue et suivie. Les deux autres barrières sont intactes.",
+        tags: ["barrières", "défense en profondeur"],
+        answers: [
+          { text: "La défense en profondeur est conçue pour ça — deux barrières intactes suffisent.", score: 0 },
+          { text: "Je remonte que la durée de dégradation de la barrière commence à devenir préoccupante même avec les deux autres intactes.", score: 2 },
+          { text: "Je surveille l'évolution et j'escalade si une deuxième barrière se dégrade.", score: 0.5 },
+          { text: "Je m'assure que la situation est bien enregistrée dans le système de suivi.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Même quand les barrières de sûreté redondantes sont intactes, vous signalez et suivez activement la dégradation de toute barrière, même partielle.",
+        tags: ["barrières", "vigilance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une modification de procédure améliore la productivité mais réduit légèrement la marge de sûreté d'une barrière. Elle est techniquement dans les limites réglementaires.",
+        tags: ["barrières", "arbitrage"],
+        answers: [
+          { text: "J'accepte la modification — elle est dans les limites réglementaires et la productivité compte.", score: 0 },
+          { text: "Je m'interroge : est-ce qu'on réduit la marge de sûreté parce que c'est réellement acceptable ou parce que c'est économiquement intéressant ?", score: 2 },
+          { text: "Je demande l'avis de l'ingénieur de sûreté avant de me positionner.", score: 1.5 },
+          { text: "Je note ma réserve dans les minutes de réunion sans bloquer la décision.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Trois événements mineurs se sont produits cette semaine sur votre installation. Chacun, pris individuellement, ne justifie pas de DES. Ensemble, ils vous interpellent.",
+        tags: ["barrières", "accumulation"],
+        answers: [
+          { text: "Je traite chaque événement séparément — les coïncidences n'indiquent pas forcément un problème systémique.", score: 0 },
+          { text: "Je remonte la convergence de ces trois événements pour analyse, même si chacun est mineur.", score: 2 },
+          { text: "J'en parle au technicien de quart pour qu'il évalue si c'est lié.", score: 1 },
+          { text: "Je surveille si un quatrième événement se produit avant de remonter.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous remontez les accumulations d'événements mineurs quand leur convergence vous interpelle, même si chacun pris isolément ne justifie pas d'alerte.",
+        tags: ["barrières", "convergence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre direction fait pression pour réduire les délais d'arrêt. Une option consiste à réduire le temps alloué à une vérification de l'intégrité d'une barrière.",
+        tags: ["barrières", "pression"],
+        answers: [
+          { text: "J'accepte — la direction a évalué le compromis et assume la responsabilité.", score: 0 },
+          { text: "Je remonte formellement que réduire ce temps augmente le risque de ne pas détecter une dégradation de barrière.", score: 2 },
+          { text: "Je propose des alternatives pour réduire les délais ailleurs sans toucher aux vérifications de barrières.", score: 1.5 },
+          { text: "Je demande à l'ingénieur de sûreté de valider la réduction avant d'accepter.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les principes INSAG-4 définissent la culture de sûreté comme la priorité absolue en toutes circonstances. Lors d'une réunion, la direction évoque des 'circonstances exceptionnelles' qui justifieraient un compromis.",
+        tags: ["barrières", "INSAG"],
+        answers: [
+          { text: "J'accepte que des circonstances exceptionnelles puissent justifier des adaptations.", score: 0 },
+          { text: "Je rappelle que les principes INSAG-4 ne prévoient pas de 'circonstances exceptionnelles' pour la sûreté.", score: 2 },
+          { text: "J'en parle à l'ASN si la direction maintient sa position.", score: 1.5 },
+          { text: "Je documente ma réserve formellement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un événement grave s'est produit sur une installation similaire dans un autre pays. L'analyse préliminaire montre une défaillance d'une barrière de sûreté. Vos propres procédures contiennent une disposition similaire.",
+        tags: ["barrières", "incident tiers"],
+        answers: [
+          { text: "J'attends les conclusions officielles de l'enquête avant de réagir.", score: 0 },
+          { text: "Je remonte immédiatement le parallèle entre cet événement et nos propres procédures pour analyse préventive.", score: 2 },
+          { text: "J'en parle à l'ingénieur de sûreté pour qu'il évalue la pertinence du parallèle.", score: 1.5 },
+          { text: "J'attends que l'ASN ou notre organisation centrale diffuse les enseignements.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous remontez les parallèles entre des événements survenus ailleurs et vos propres pratiques sans attendre la diffusion officielle des enseignements.",
+        tags: ["barrières", "apprentissage externe"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre installation a une légère non-conformité récurrente sur un paramètre de sûreté. Elle est dans les limites tolérées et a fait l'objet d'un suivi régulier depuis deux ans.",
+        tags: ["barrières", "normalisation"],
+        answers: [
+          { text: "C'est une non-conformité connue et suivie — le dispositif de surveillance suffit.", score: 0 },
+          { text: "Je m'interroge : le fait qu'elle soit 'connue depuis deux ans' sans correction est-il acceptable ?", score: 2 },
+          { text: "Je vérifie que la non-conformité est bien enregistrée et suivie dans le système.", score: 0.5 },
+          { text: "J'en parle à l'ingénieur de sûreté lors de la prochaine revue périodique.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous suivez les barrières dégradées mais vous n'interrogez pas encore les arbitrages qui les fragilisent", desc: "Accepter qu'une barrière reste dégradée parce que les deux autres sont intactes, ne pas remettre en cause une modification qui réduit une marge de sûreté 'dans les limites réglementaires', attendre qu'un deuxième événement se produise avant de remonter une convergence : la défense en profondeur n'est pas un filet de sécurité pour les arbitrages économiques — c'est une architecture de sûreté qui suppose que toutes les couches soient maintenues." },
+          moyen: { label: "Pratiques en développement", titre: "Vous suivez les barrières rigoureusement mais certains arbitrages vous semblent encore à la limite de votre périmètre", desc: "Vous signalez les dégradations de barrières et vous suivez leur évolution. Mais interroger un arbitrage qui 'reste dans les limites réglementaires', remonter une non-conformité connue depuis deux ans, traiter une convergence de trois événements mineurs comme un signal : ces situations sont encore dans votre angle mort. L'enjeu est de dépasser la conformité réglementaire pour atteindre la rigueur de sûreté." },
+          haut: { label: "Réflexes installés", titre: "Vous défendez l'intégrité des barrières face à tout arbitrage, y compris ceux qui sont 'dans les limites réglementaires'", desc: "Vous questionnez une modification 'dans les limites réglementaires' qui réduit une marge de sûreté. Vous remontez la durée de dégradation d'une barrière comme préoccupante même avec les deux autres intactes. Vous traitez une convergence de trois événements mineurs comme un signal. Vous rappellez les principes INSAG-4 quand votre direction évoque des 'circonstances exceptionnelles'. Cette façon de traiter les barrières comme non négociables — au-delà de la conformité réglementaire — est ce qui distingue une organisation nucléaire à haute culture de sûreté." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Un événement s'est produit sur votre installation. Il ne remplit pas les critères stricts d'une DES mais vous estimez qu'il constitue un précurseur significatif.",
+        tags: ["DES", "seuil organisation"],
+        answers: [
+          { text: "Je ne le déclare pas — il ne remplit pas les critères d'une DES.", score: 0 },
+          { text: "Je le déclare comme événement précurseur en expliquant pourquoi je le considère significatif.", score: 2 },
+          { text: "J'en parle au responsable de sûreté pour qu'il décide si une DES est nécessaire.", score: 1.5 },
+          { text: "Je le documente en interne sans déclaration externe.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous déclarez les événements précurseurs significatifs même quand ils ne remplissent pas strictement les critères formels d'une DES.",
+        tags: ["DES", "proactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre organisation est évaluée en partie sur son nombre de DES. Une forte augmentation serait mal perçue par la direction. Vous avez plusieurs événements à déclarer ce mois-ci.",
+        tags: ["DES", "pression indicateurs"],
+        answers: [
+          { text: "Je filtre les déclarations pour limiter l'impact sur les indicateurs.", score: 0 },
+          { text: "Je déclare tous les événements qui le méritent et je rappelle que le nombre de DES est un indicateur positif de culture de sûreté.", score: 2 },
+          { text: "J'en parle au responsable de sûreté avant de déclarer pour gérer l'impact collectivement.", score: 1 },
+          { text: "Je déclare en prenant soin de formuler chaque DES de façon à minimiser l'impact perçu.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une DES a identifié une cause technique à un événement. Vous pensez que des Facteurs Humains et Organisationnels (FHO) ont également contribué. La cause FHO n'est pas mentionnée dans l'analyse.",
+        tags: ["DES", "causes profondes"],
+        answers: [
+          { text: "Je laisse — la cause technique a été identifiée et corrigée.", score: 0 },
+          { text: "Je remonte la dimension FHO pour qu'elle soit intégrée à l'analyse et aux actions correctives.", score: 2 },
+          { text: "J'en parle au responsable de l'analyse pour qu'il évalue si c'est pertinent.", score: 1 },
+          { text: "Je la mentionne lors du prochain REX d'équipe sans la formaliser dans la DES.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous remontez la dimension Facteurs Humains et Organisationnels (FHO) dans vos signalements et DES, pas seulement les causes techniques.",
+        tags: ["DES", "FHO"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Suite à une DES ancienne, des actions correctives ont été définies. Six mois après, certaines ne sont pas encore réalisées. La situation qui a généré la DES est toujours présente.",
+        tags: ["DES", "suivi actions"],
+        answers: [
+          { text: "J'attends — les actions correctives ont des délais et je ne suis pas responsable de leur avancement.", score: 0 },
+          { text: "Je remonte le retard des actions correctives en rappelant la situation toujours présente.", score: 2 },
+          { text: "Je contacte les responsables des actions pour comprendre les raisons du retard.", score: 1.5 },
+          { text: "Je fais une nouvelle DES si la situation génère un nouvel événement.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un rapport d'analyse d'un événement survenu sur une installation étrangère similaire à la vôtre est diffusé. Il contient des enseignements directement applicables à votre contexte.",
+        tags: ["DES", "REX externe"],
+        answers: [
+          { text: "Je le lis pour ma culture mais j'attends que notre organisation centrale en tire des conclusions officielles.", score: 0 },
+          { text: "Je remonte les enseignements applicables immédiatement à mon responsable de sûreté.", score: 2 },
+          { text: "Je le partage avec mon équipe lors du prochain briefing sécurité.", score: 1 },
+          { text: "Je vérifie si notre propre procédure est cohérente avec les enseignements et je signale les écarts.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En rédigeant une DES, vous réalisez que mentionner tous les éléments contextuels implique de pointer une décision de votre direction comme facteur contributif.",
+        tags: ["DES", "honnêteté"],
+        answers: [
+          { text: "Je rédige la DES sans mentionner la décision de direction — ça créerait une tension inutile.", score: 0 },
+          { text: "Je mentionne tous les facteurs contributifs, y compris la décision de direction.", score: 2 },
+          { text: "J'en parle à mon responsable avant de finaliser la DES.", score: 1 },
+          { text: "Je formule le facteur organisationnel de façon neutre sans cibler la décision spécifique.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos DES mentionnent tous les facteurs contributifs, y compris les décisions organisationnelles et managériales qui ont pu contribuer à l'événement.",
+        tags: ["DES", "intégrité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un retour d'expérience interne met en évidence un comportement récurrent dans votre équipe qui constitue une déviance latente. Personne ne s'en était rendu compte.",
+        tags: ["DES", "apprentissage"],
+        answers: [
+          { text: "Je prends note pour corriger mes propres pratiques mais je ne remonte pas — personne d'autre n'a réagi.", score: 0 },
+          { text: "Je remonte formellement la déviance identifiée pour qu'elle soit traitée au niveau de l'équipe.", score: 2 },
+          { text: "J'en parle à mon responsable direct pour qu'il traite le sujet avec l'équipe.", score: 1.5 },
+          { text: "J'en parle à mes collègues pour qu'on corrige collectivement avant d'en faire un sujet formel.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous déclarez les événements avérés mais filtrez encore les précurseurs et les facteurs organisationnels", desc: "Déclarer uniquement les événements qui remplissent strictement les critères formels, omettre les facteurs organisationnels dans les DES, filtrer les déclarations pour limiter l'impact sur les indicateurs : le système de retour d'expérience nucléaire ne fonctionne que si les précurseurs et les facteurs organisationnels sont déclarés honnêtement. Ce qui n'est pas déclaré n'est pas analysé et se reproduira." },
+          moyen: { label: "Pratiques en développement", titre: "Vous déclarez les événements significatifs mais les précurseurs subtils et les facteurs organisationnels sont encore sous-déclarés", desc: "Vous déclarez les événements avérés et les précurseurs visibles. Mais les événements qui ne remplissent pas strictement les critères formels, les facteurs organisationnels et managériaux, les actions correctives dont vous ne vérifiez pas l'avancement : votre système de déclaration est encore incomplet. L'enjeu est d'aller jusqu'au bout de la déclaration, y compris dans les situations inconfortables." },
+          haut: { label: "Réflexes installés", titre: "Vos déclarations sont complètes, honnêtes et incluent précurseurs, FHO et facteurs organisationnels", desc: "Vous déclarez les précurseurs qui ne remplissent pas strictement les critères formels. Vous incluez les facteurs FHO et organisationnels dans vos DES même quand ils pointent des décisions de votre direction. Vous remontez le retard des actions correctives. Vous signalez les enseignements d'événements étrangers sans attendre la diffusion officielle. Cette intégrité dans la déclaration — qui suppose d'accepter que vos DES pointent parfois votre organisation — est la condition du retour d'expérience réel." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Lors d'une réunion de direction, la sûreté est présentée comme 'priorité numéro un' mais les décisions qui suivent font clairement passer la production en premier. Vous participez à la réunion.",
+        tags: ["culture sûreté", "priorité absolue"],
+        answers: [
+          { text: "Je note le décalage mentalement mais je ne le soulève pas — ce n'est pas le bon moment.", score: 0 },
+          { text: "Je soulève le décalage entre le discours et les décisions que je viens d'observer.", score: 2 },
+          { text: "J'en parle à mon responsable après la réunion.", score: 1 },
+          { text: "Je le documente pour le partager avec le responsable de sûreté.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les décalages entre le discours institutionnel sur la sûreté et les décisions réelles de votre organisation.",
+        tags: ["culture sûreté", "cohérence"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous accueillez Margot, nouvelle ingénieure sur l'installation. Elle est brillante et vous pose des questions sur les pratiques réelles de l'équipe, qui s'écartent parfois des procédures officielles.",
+        tags: ["culture sûreté", "transmission"],
+        answers: [
+          { text: "Je lui explique que les pratiques réelles sont le reflet de l'expérience du terrain.", score: 0 },
+          { text: "Je lui dis clairement que les procédures officielles sont la référence et que les écarts doivent être remontés.", score: 2 },
+          { text: "Je lui explique les pratiques en nuançant ce qui est acceptable et ce qui ne l'est pas.", score: 1 },
+          { text: "Je lui conseille de poser ses questions à l'ingénieur de sûreté.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre installation a un excellent bilan sur 36 mois. La direction considère que la culture de sûreté est 'mature' et propose de réduire certaines revues périodiques de sûreté.",
+        tags: ["culture sûreté", "pression bilan"],
+        answers: [
+          { text: "Je valide — 36 mois de bon bilan prouve que la culture est solide et que les revues peuvent être allégées.", score: 0 },
+          { text: "Je rappelle qu'un bon bilan est le résultat des revues, pas la preuve qu'on peut s'en passer.", score: 2 },
+          { text: "Je propose de réduire la fréquence mais pas la qualité des revues.", score: 0.5 },
+          { text: "J'en parle à l'ingénieur de sûreté pour qu'il prenne position.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En réunion d'équipe, vous êtes le plus senior. Un sujet de sûreté délicat est soulevé. La plupart de vos collègues semblent attendre votre réaction avant de se positionner.",
+        tags: ["culture sûreté", "rôle modèle"],
+        answers: [
+          { text: "Je reste neutre — je ne veux pas influencer la réflexion collective.", score: 0 },
+          { text: "Je prends position clairement sur la sûreté pour donner le ton, conscient·e de mon rôle de modèle.", score: 2 },
+          { text: "Je pose des questions pour faire émerger les positions sans m'engager moi-même.", score: 1 },
+          { text: "Je renvoie vers le responsable de sûreté pour avoir une position institutionnelle.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous êtes conscient·e de votre rôle de modèle sur la culture de sûreté pour les personnes moins expérimentées de votre équipe, et vous agissez en conséquence.",
+        tags: ["culture sûreté", "modèle"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue vous dit qu'il hésite à faire une DES sur quelque chose qu'il a observé par crainte d'être identifié et de subir des conséquences dans son équipe.",
+        tags: ["culture sûreté", "protection"],
+        answers: [
+          { text: "Je lui dis que s'il a peur des conséquences, c'est probablement que ce n'est pas si grave.", score: 0 },
+          { text: "Je l'encourage à déclarer et je lui explique les mécanismes de protection des déclarants.", score: 2 },
+          { text: "Je lui propose de déclarer de façon anonyme si le système le permet.", score: 1 },
+          { text: "Je remonte à sa hiérarchie que des craintes existent sur les représailles liées aux DES.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un inspecteur de l'ASN réalise une visite inopinée. Votre responsable vous dit de 'bien vous tenir' et de ne pas évoquer spontanément les problèmes en cours.",
+        tags: ["culture sûreté", "ASN"],
+        answers: [
+          { text: "Je suis la consigne — mon responsable sait mieux que moi comment gérer les relations avec l'ASN.", score: 0 },
+          { text: "Je réponds honnêtement à toutes les questions de l'inspecteur, y compris sur les problèmes en cours.", score: 2 },
+          { text: "Je réponds honnêtement mais je reste sur ce qu'on me demande sans aller au-delà.", score: 1 },
+          { text: "J'en parle à l'ingénieur de sûreté avant la visite pour clarifier ce que je dois dire.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous répondez honnêtement aux questions des inspecteurs et régulateurs, y compris sur les difficultés et les problèmes en cours, sans chercher à minimiser.",
+        tags: ["culture sûreté", "régulateur"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre organisation a atteint un niveau de conformité élevé. Certains membres de la direction estiment qu'il n'y a plus grand chose à améliorer. Un collègue vous demande votre avis.",
+        tags: ["culture sûreté", "amélioration continue"],
+        answers: [
+          { text: "Je suis d'accord — atteindre un haut niveau de conformité est l'objectif et c'est atteint.", score: 0 },
+          { text: "Je dis que la culture de sûreté n'a pas de point d'arrivée — la vigilance se maintient, elle ne se capitalise pas.", score: 2 },
+          { text: "Je relativise — il reste toujours des marges de progrès, même à haut niveau.", score: 1 },
+          { text: "Je laisse cette évaluation aux experts de sûreté.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Votre contribution à la culture de sûreté reste individuelle — vous ne signalez pas encore les décalages institutionnels", desc: "Laisser passer le décalage entre le discours et les décisions en réunion de direction, transmettre à Margot les pratiques déviantes sans les questionner, rester neutre quand l'équipe attend votre position : la culture de sûreté se construit ou s'érode à travers ces moments précis. Y contribuer activement — y compris en nommant les décalages institutionnels — n'est pas une option, c'est une responsabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vous contribuez à la culture de sûreté par l'exemple mais les décalages institutionnels restent encore sans réaction de votre part", desc: "Vous donnez l'exemple dans vos pratiques personnelles et vous transmettez les bonnes pratiques aux nouveaux. Mais soulever le décalage entre un discours institutionnel et les décisions réelles, s'opposer à la réduction des revues périodiques après un bon bilan, répondre honnêtement à l'ASN sur les problèmes en cours sans filtre managérial : ces comportements de contribution active à la culture institutionnelle sont encore insuffisants." },
+          haut: { label: "Réflexes installés", titre: "Vous contribuez activement à la culture de sûreté institutionnelle — y compris en nommant les décalages et en protégeant les déclarants", desc: "Vous soulevez le décalage entre discours et décisions en réunion de direction. Vous transmettez à Margot que les écarts aux procédures sont des problèmes, pas de l'expérience. Vous maintenez les revues périodiques après 36 mois de bon bilan. Vous répondez honnêtement à l'ASN. Vous protégez votre collègue qui hésite à faire une DES. Cette contribution active à la culture de sûreté institutionnelle — qui suppose d'accepter des positions inconfortables — est ce qui fait qu'une organisation nucléaire maintient sa sûreté dans le temps." },
+        },
+      }
+    ],
+
+  },
+    "securite-chantier-btp-gros-oeuvre": {
+    0: [
+      {
+        type: "choix",
+        text: "Vous devez creuser une tranchée de 2 mètres de profondeur. Le terrain est argileux. Le blindage prévu dans votre PPSPS n'est pas encore arrivé sur le chantier. Votre chef de chantier dit de commencer à la pelle mécanique en attendant.",
+        tags: ["gros oeuvre", "fouilles"],
+        answers: [
+          { text: "Je commence — le blindage arrivera pendant que j'avance et je l'installerai en descendant.", score: 0 },
+          { text: "Je refuse de creuser au-delà de 1,30 m sans blindage en place.", score: 2 },
+          { text: "Je creuse en talutant les parois au maximum pour réduire le risque en attendant le blindage.", score: 0.5 },
+          { text: "J'en parle au CSPS pour qu'il arbitre entre commencer et attendre.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous vérifiez un coffrage avant coulage du béton. Vous constatez que les étais ne sont pas espacés conformément au plan de coffrage. La coulée est prévue dans deux heures. L'équipe dit que 'c'est toujours fait comme ça'.",
+        tags: ["gros oeuvre", "coffrage"],
+        answers: [
+          { text: "Je laisse — l'équipe a l'habitude de ce type de coffrage et ça a toujours tenu.", score: 0 },
+          { text: "Je refuse le coulage et j'exige la mise en conformité avec le plan avant de procéder.", score: 2 },
+          { text: "Je fais venir le chef de chantier pour qu'il évalue et décide.", score: 1 },
+          { text: "Je réduis la hauteur de coulée pour limiter la pression sur les étais non conformes.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vérifiez la conformité des ouvrages provisoires — blindages, coffrages, étais, étaiements — par rapport aux plans avant chaque opération à risque.",
+        tags: ["gros oeuvre", "vérification"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez réaliser des travaux de ferraillage sur un plancher en construction à 6 mètres. Les garde-corps n'ont pas encore été posés sur un côté. La pose prend 45 minutes.",
+        tags: ["gros oeuvre", "travaux en hauteur"],
+        answers: [
+          { text: "Je commence les travaux en faisant attention — 45 minutes pour les garde-corps c'est trop long.", score: 0 },
+          { text: "J'attends que les garde-corps soient posés sur toute la périphérie avant de commencer.", score: 2 },
+          { text: "Je commence sur la partie sécurisée et je progresse vers le côté non protégé une fois les garde-corps posés.", score: 1 },
+          { text: "Je mets mon harnais et je m'accroche à une structure existante.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un plancher existant doit être étayé avant démolition d'un voile porteur. Le plan d'étaiement prévoit 6 rangées d'étais. Pour gagner de la place, le chef de chantier propose d'en mettre 4.",
+        tags: ["gros oeuvre", "étaiement"],
+        answers: [
+          { text: "J'accepte — le chef de chantier a l'expérience pour évaluer la marge.", score: 0 },
+          { text: "Je refuse — le plan d'étaiement a été calculé par un bureau d'études, je ne le modifie pas sans validation écrite.", score: 2 },
+          { text: "Je contacte le bureau d'études pour qu'il valide la réduction avant de commencer.", score: 2 },
+          { text: "Je mets 5 rangées comme compromis.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne modifiez pas les dispositions des plans d'étaiement ou de coffrage sans validation écrite du bureau d'études, quelle que soit la pression du chef de chantier.",
+        tags: ["gros oeuvre", "bureau d'études"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous devez démolir une cloison. En amorçant les travaux, vous constatez que la cloison semble porteuse — contrairement à ce que les plans indiquent.",
+        tags: ["gros oeuvre", "démolition"],
+        answers: [
+          { text: "Je continue — les plans ont été vérifiés et ils font foi.", score: 0 },
+          { text: "J'arrête immédiatement et je demande une vérification technique avant de reprendre.", score: 2 },
+          { text: "Je frappe la cloison pour évaluer si elle est bien creuse avant de continuer.", score: 0 },
+          { text: "Je démolle prudemment en progressant lentement pour détecter tout problème.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre engin de chantier doit circuler à proximité d'une fouille ouverte. La distance de sécurité minimale n'est pas respectée selon votre estimation.",
+        tags: ["gros oeuvre", "sol"],
+        answers: [
+          { text: "Je continue — l'opérateur est expérimenté et évalue lui-même les distances.", score: 0 },
+          { text: "J'arrête la circulation de l'engin et je fais vérifier la stabilité du bord de fouille.", score: 2 },
+          { text: "Je signale ma préoccupation à l'opérateur et je le laisse décider.", score: 0.5 },
+          { text: "Je remonte la situation à mon chef de chantier.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous arrêtez les travaux quand vous constatez une non-conformité par rapport aux plans ou une situation qui vous semble dangereuse, sans attendre l'accord de votre chef de chantier.",
+        tags: ["gros oeuvre", "arrêt"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Une coulée de béton est planifiée demain matin. Les prévisions météo indiquent une température nocturne de -3°C. Le planning ne prévoit pas de mesures de protection contre le gel.",
+        tags: ["gros oeuvre", "conditions météo"],
+        answers: [
+          { text: "Je laisse — les températures légèrement négatives ne compromettent pas forcément une coulée.", score: 0 },
+          { text: "Je remonte la situation avant la coulée pour que des mesures de protection soient planifiées.", score: 2 },
+          { text: "Je contacte le bureau d'études pour qu'il évalue l'impact sur la résistance du béton.", score: 1.5 },
+          { text: "Je fais la coulée et je surveille la température pendant les premières heures.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous laissez encore passer des non-conformités aux plans sous pression de planning ou d'autorité", desc: "Creuser au-delà de 1,30 m sans blindage 'en attendant', couler avec une élingue sous-dimensionnée parce que le gruiste dit que c'est 'dans la marge', accepter un ferraillage non conforme parce que le ferrailleur est le professionnel : ces comportements sont extrêmement courants sur les chantiers de gros œuvre et sont à l'origine de la majorité des accidents graves. Les plans et calculs du bureau d'études ne sont pas des recommandations — ce sont des données de sécurité structurelle." },
+          moyen: { label: "Pratiques en développement", titre: "Vous respectez les plans dans la plupart des cas mais quelques situations de pression créent encore des exceptions", desc: "Vous vérifiez la conformité des ouvrages et vous refusez les non-conformités évidentes. Mais quand le planning est très serré, quand le chef de chantier dit que ça 'rentre dans la marge', quand le professionnel spécialisé dit que 'c'est toujours fait comme ça' : votre refus peut encore hésiter. L'enjeu est de traiter les plans et calculs comme des limites absolues dans toutes ces situations." },
+          haut: { label: "Réflexes installés", titre: "Vous refusez toute non-conformité aux plans, quelle que soit la pression du chef de chantier ou du professionnel spécialisé", desc: "Vous refusez le creusement sans blindage même si le chef de chantier dit d'attendre. Vous refusez le levage avec une élingue sous-dimensionnée même si le gruiste dit que c'est 'dans la marge'. Vous arrêtez le ferraillage non conforme et demandez la validation du bureau d'études. Vous ne modifiez pas le plan d'étaiement sans validation écrite. Cette constance absolue dans le respect des plans et calculs — qui suppose d'assumer des retards et des tensions — est ce qui rend le gros œuvre réellement sûr." },
+        },
+      }
+    ],
+
+    1: [
+      {
+        type: "choix",
+        text: "Le PGCSPS de votre chantier fait 120 pages. Votre chef de chantier vous dit de vous concentrer sur les parties qui concernent directement votre lot. Vous commencez dans deux jours.",
+        tags: ["PGCSPS", "lecture"],
+        answers: [
+          { text: "Je lis uniquement les parties qui concernent mon lot — c'est ce qu'on m'a demandé.", score: 0.5 },
+          { text: "Je lis l'ensemble du PGCSPS pour comprendre les interactions avec les autres lots.", score: 2 },
+          { text: "Je lis mon lot et les lots avec lesquels j'aurai des coactivités.", score: 1.5 },
+          { text: "Je demande au CSPS un résumé des points critiques pour mon lot.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous lisez le PGCSPS dans son intégralité avant de démarrer sur un nouveau chantier, pas seulement les parties qui concernent directement votre lot.",
+        tags: ["PGCSPS", "maîtrise"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le CSPS vous signale lors d'une visite une non-conformité dans votre méthode de travail par rapport au PGCSPS. Vous êtes convaincu que votre méthode est équivalente en termes de sécurité.",
+        tags: ["PGCSPS", "CSPS"],
+        answers: [
+          { text: "Je lui explique que ma méthode est équivalente et je continue.", score: 0 },
+          { text: "Je m'aligne sur le PGCSPS et je demande au CSPS comment faire évoluer le document si ma méthode est réellement équivalente.", score: 2 },
+          { text: "Je demande au CSPS de me montrer par écrit la non-conformité avant de changer quoi que ce soit.", score: 1 },
+          { text: "Je contacte le maître d'ouvrage pour arbitrage entre le CSPS et ma méthode.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un changement dans votre phasage crée une nouvelle interface avec un autre lot qui n'est pas prévue dans le PGCSPS. Votre chef de chantier dit de gérer directement avec l'autre lot.",
+        tags: ["PGCSPS", "modification"],
+        answers: [
+          { text: "Je gère directement avec l'autre lot — une coordination informelle est suffisante.", score: 0 },
+          { text: "Je contacte le CSPS pour qu'il formalise la nouvelle interface dans le PGCSPS avant qu'on démarre.", score: 2 },
+          { text: "Je coordonne directement avec l'autre lot et j'informe le CSPS après coup.", score: 0.5 },
+          { text: "Je remonte à mon chef de chantier que cette interface devrait passer par le CSPS.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "La réunion de coordination mensuelle avec le CSPS est prévue cette semaine. Votre chef de chantier vous dit qu'elle n'est pas prioritaire — 'le CSPS n'a qu'une vision théorique du chantier'.",
+        tags: ["PGCSPS", "réunion"],
+        answers: [
+          { text: "Je ne vais pas à la réunion — mon chef a probablement raison sur la valeur ajoutée du CSPS.", score: 0 },
+          { text: "Je vais à la réunion — la coordination avec le CSPS est une obligation légale, pas optionnelle.", score: 2 },
+          { text: "Je vais à la réunion et je lui remonte après les éléments utiles.", score: 1.5 },
+          { text: "J'envoie un représentant à ma place pour que le lot soit représenté.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous participez aux réunions de coordination avec le CSPS sans les considérer comme optionnelles, quelle que soit l'appréciation de votre chef de chantier sur leur utilité.",
+        tags: ["PGCSPS", "obligation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre lot prend du retard. Pour rattraper, votre chef de chantier propose de compresser une phase de transition qui dans le PGCSPS sert à sécuriser la coactivité avec un autre lot.",
+        tags: ["PGCSPS", "phasage"],
+        answers: [
+          { text: "J'accepte — le retard est une réalité et on compensera par la vigilance.", score: 0 },
+          { text: "Je refuse — cette phase de transition a été intégrée dans le PGCSPS pour une raison, je n'y touche pas sans validation du CSPS.", score: 2 },
+          { text: "Je contacte l'autre lot pour voir si une coordination renforcée peut compenser la compression.", score: 1 },
+          { text: "Je soumets la proposition au CSPS pour qu'il évalue les risques.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un de vos sous-traitants arrive sur le chantier sans avoir reçu ni lu le PGCSPS. Il dit que son chef lui a dit qu'on lui expliquerait sur place.",
+        tags: ["PGCSPS", "sous-traitant"],
+        answers: [
+          { text: "Je l'intègre et je lui explique les points essentiels — il apprendra le reste au fil de l'eau.", score: 0 },
+          { text: "Je conditionne son démarrage à la remise et à la lecture des parties du PGCSPS qui le concernent.", score: 2 },
+          { text: "Je transmets le PGCSPS à son chef et je le laisse gérer.", score: 1 },
+          { text: "Je l'accompagne moi-même dans la lecture des parties essentielles.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous vous assurez que vos sous-traitants ont bien reçu et lu les parties du PGCSPS qui les concernent avant qu'ils démarrent sur votre lot.",
+        tags: ["PGCSPS", "sous-traitants"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous constatez qu'un autre lot travaille en dehors du phasage prévu au PGCSPS, ce qui crée un risque de coactivité non anticipée avec vos équipes.",
+        tags: ["PGCSPS", "non-conformité"],
+        answers: [
+          { text: "Je préviens mes équipes d'être vigilantes et je continue.", score: 0 },
+          { text: "J'arrête mes équipes dans la zone concernée et je contacte immédiatement le CSPS.", score: 2 },
+          { text: "Je contacte directement le chef de l'autre lot pour qu'il revienne dans le phasage.", score: 1 },
+          { text: "Je remonte la situation à mon chef de chantier pour qu'il gère.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vous vous alignez encore sur votre chef de chantier face au CSPS et au PGCSPS", desc: "Contester les réserves du CSPS parce que le chef de chantier les juge cosmétiques, ne pas aller à la réunion de coordination parce qu'elle n'est pas 'prioritaire', gérer une nouvelle interface de coactivité directement sans passer par le CSPS : le CSPS et le PGCSPS ne sont pas de la bureaucratie optionnelle — ce sont des outils légaux de coordination qui protègent à la fois les travailleurs et l'entreprise." },
+          moyen: { label: "Pratiques en développement", titre: "Vous participez aux processus CSPS/PGCSPS mais votre réflexe de signalement des écarts est encore insuffisant", desc: "Vous participez aux réunions de coordination et vous connaissez les grandes lignes du PGCSPS. Mais signaler immédiatement quand un autre lot sort du phasage, refuser de commencer une nouvelle interface sans validation du CSPS, exiger que vos sous-traitants aient lu leurs parties du PGCSPS : ces réflexes de rigueur procédurale sont encore insuffisamment automatiques." },
+          haut: { label: "Réflexes installés", titre: "Vous utilisez le CSPS et le PGCSPS comme des outils de travail réels, pas comme des obligations administratives", desc: "Vous lisez le PGCSPS dans son intégralité. Vous arrêtez vos équipes quand un autre lot sort du phasage. Vous contactez le CSPS pour toute nouvelle interface non prévue. Vous conditionnez le démarrage de vos sous-traitants à la lecture du PGCSPS. Vous participez aux réunions de coordination sans les considérer comme optionnelles. Cette façon de traiter la coordination SPS comme un outil de travail réel — pas comme de la bureaucratie — est ce qui prévient les accidents de coactivité." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Une grue doit soulever un élément préfabriqué. Le plan de levage prévoit une élingue spécifique. Sur le chantier, seule une élingue de capacité légèrement inférieure est disponible. L'élément est 'dans la marge' selon le gruiste.",
+        tags: ["risques gros oeuvre", "levage"],
+        answers: [
+          { text: "Je laisse le gruiste décider — c'est son équipement et son évaluation professionnelle.", score: 0 },
+          { text: "Je refuse le levage jusqu'à ce que l'élingue conforme soit disponible.", score: 2 },
+          { text: "Je fais valider par écrit par le chef de chantier avant de procéder.", score: 1 },
+          { text: "Je réduis la vitesse de levage pour compenser la moindre capacité.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous refusez tout levage qui s'écarte du plan de levage validé, quelle que soit l'évaluation empirique du gruiste ou du chef de chantier.",
+        tags: ["risques gros oeuvre", "plan de levage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En posant des armatures pour une fondation, vous constatez que les espacements entre les aciers ne correspondent pas aux plans du bureau d'études. Le ferrailleur dit que 'c'est une question de mise en œuvre'.",
+        tags: ["risques gros oeuvre", "armatures"],
+        answers: [
+          { text: "Je lui fais confiance — il est le professionnel du ferraillage.", score: 0 },
+          { text: "Je fais arrêter le ferraillage et je demande une vérification par rapport aux plans avant de reprendre.", score: 2 },
+          { text: "Je demande au bureau d'études de valider la mise en œuvre avant coulage.", score: 2 },
+          { text: "Je photographie la disposition et je l'envoie au bureau d'études pour validation.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En creusant une fouille, vous découvrez un réseau souterrain non répertorié sur les plans. Il semble inactif.",
+        tags: ["risques gros oeuvre", "réseau"],
+        answers: [
+          { text: "Je continue — le réseau semble inactif et ne gêne pas mon intervention.", score: 0 },
+          { text: "J'arrête immédiatement et je contacte le coordonnateur des réseaux pour identification.", score: 2 },
+          { text: "Je prends des photos et je remonte l'information à mon chef de chantier.", score: 1 },
+          { text: "Je contourne le réseau et je continue la fouille dans la zone dégagée.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Sur découverte de tout réseau non répertorié, vous arrêtez les travaux et signalez avant de reprendre, quelle que soit l'apparence d'inactivité du réseau.",
+        tags: ["risques gros oeuvre", "réseau"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Les matériaux livrés sur le chantier présentent des signes de dégradation — aciers rouillés, béton prêt à l'emploi arrivé avec un retard inhabituel. Votre chef de chantier dit d'utiliser.",
+        tags: ["risques gros oeuvre", "matériaux"],
+        answers: [
+          { text: "J'utilise — mon chef a évalué et la livraison est là.", score: 0 },
+          { text: "Je refuse d'incorporer des matériaux dont l'état me semble non conforme et je le signale.", score: 2 },
+          { text: "Je fais des tests rapides sur les matériaux avant de décider.", score: 1 },
+          { text: "J'en parle au bureau de contrôle pour qu'il évalue la conformité.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En démolissant une paroi dans un bâtiment ancien, vous constatez la présence d'un matériau qui ressemble à de l'amiante dans les joints. La démolition n'est pas classifiée 'amiante' dans votre PPSPS.",
+        tags: ["risques gros oeuvre", "amiante"],
+        answers: [
+          { text: "Je continue — si le PPSPS ne classifie pas ce chantier 'amiante', c'est que les diagnostics ont conclu à l'absence d'amiante.", score: 0 },
+          { text: "J'arrête immédiatement les travaux et j'alerte le CSPS et le maître d'ouvrage.", score: 2 },
+          { text: "Je fais une pause et j'appelle mon chef de chantier pour qu'il vienne voir.", score: 1 },
+          { text: "Je protège la zone et je contacte un organisme de diagnostic pour prélèvement.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le sol sur lequel vous installez une grue à tour présente des conditions différentes de celles prévues dans l'étude de sol. Le massif de fondation a été dimensionné pour les conditions initiales.",
+        tags: ["risques gros oeuvre", "conditions sol"],
+        answers: [
+          { text: "J'installe la grue — l'étude de sol est une approximation et les ingénieurs prennent des marges.", score: 0 },
+          { text: "Je suspends l'installation et je contacte le bureau d'études pour réévaluation.", score: 2 },
+          { text: "J'en parle à mon chef de chantier pour qu'il arbitre.", score: 1 },
+          { text: "Je renforce le massif de fondation par mesure de précaution avant d'installer la grue.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous contactez le bureau d'études dès que les conditions réelles de chantier s'écartent significativement des hypothèses de calcul, sans attendre que le problème soit visible.",
+        tags: ["risques gros oeuvre", "bureau d'études"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous constatez des fissurations dans un ouvrage que vous venez de réaliser. L'ouvrage n'est pas encore chargé. Les fissures semblent superficielles.",
+        tags: ["risques gros oeuvre", "désordres"],
+        answers: [
+          { text: "Je surveille — des micro-fissures de retrait sont normales dans le béton frais.", score: 0 },
+          { text: "Je les signale immédiatement au bureau d'études pour évaluation, même si elles semblent superficielles.", score: 2 },
+          { text: "J'en parle à mon chef de chantier pour qu'il décide si c'est signalable.", score: 1 },
+          { text: "Je les photographie et j'attends 48h pour voir si elles évoluent avant de signaler.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Les risques spécifiques au gros œuvre sont gérés empiriquement plutôt que selon les calculs et les plans", desc: "Laisser le gruiste évaluer lui-même si l'élingue est 'dans la marge', continuer après découverte d'un réseau non répertorié, utiliser des matériaux dégradés parce que le chef dit que c'est bon, modifier le plan d'étaiement par commodité : ces comportements éloignent progressivement l'exécution des calculs sur lesquels la sécurité structurelle est fondée. En gros œuvre, les marges de sécurité sont dans les calculs, pas dans l'expérience empirique." },
+          moyen: { label: "Pratiques en développement", titre: "Vous gérez les risques courants rigoureusement mais les situations moins fréquentes créent encore des zones grises", desc: "Vous gérez les risques courants de gros œuvre avec rigueur. Mais les situations moins fréquentes — découverte d'amiante potentiel, conditions de sol différentes des hypothèses de calcul, réseau non répertorié — peuvent encore vous mettre dans une position d'hésitation. L'enjeu est d'ancrer le réflexe d'arrêt et de signalement dans toutes ces situations, même inhabituelles." },
+          haut: { label: "Réflexes installés", titre: "Vous arrêtez les travaux et signalez face à tout risque non anticipé dans les calculs ou les plans", desc: "Vous arrêtez sur découverte de réseau non répertorié. Vous suspendez l'installation de grue si les conditions de sol diffèrent de l'étude. Vous stoppez la démolition si la paroi semble porteuse. Vous alertez sur la présence de matériau potentiellement amiantifère. Ces réflexes d'arrêt face aux risques non anticipés — même quand tout semble aller bien — sont ce qui évite que les 'bonnes surprises' deviennent des accidents graves." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "Vous avez coulé une dalle dont le béton a été vibré moins longtemps que prévu à cause d'une panne de vibreur. La dalle semble correcte visuellement. Vous êtes le seul à le savoir.",
+        tags: ["traçabilité BTP", "non-conformité"],
+        answers: [
+          { text: "Je ne le signale pas — la dalle est visuellement correcte et le défaut de vibration est mineur.", score: 0 },
+          { text: "Je le signale et je demande une vérification de la résistance avant chargement.", score: 2 },
+          { text: "J'en parle à mon chef de chantier pour qu'il évalue si c'est signalable.", score: 1 },
+          { text: "Je le note dans mon carnet pour le mentionner si un problème apparaît plus tard.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les non-conformités d'exécution même mineures et même quand le résultat apparent est satisfaisant.",
+        tags: ["traçabilité BTP", "honnêteté"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors de la réception d'un ouvrage, votre bureau de contrôle émet des réserves sur des points que votre chef de chantier juge 'cosmétiques'. Il vous demande de les contester.",
+        tags: ["traçabilité BTP", "réserves"],
+        answers: [
+          { text: "Je les conteste — mon chef connaît la différence entre un défaut structurel et un défaut cosmétique.", score: 0 },
+          { text: "Je transmets les réserves au bureau de contrôle sans les contester — c'est son rôle de les émettre.", score: 2 },
+          { text: "Je demande au bureau de contrôle de classer les réserves par niveau de criticité avant de me positionner.", score: 1.5 },
+          { text: "Je fais lever les réserves avant la réception plutôt que de les contester.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un compacteur trop lourd a circulé à proximité d'une tranchée, créant une surcharge non prévue dans les calculs. Il n'y a pas eu de désordre visible. La situation est passée inaperçue.",
+        tags: ["traçabilité BTP", "incident"],
+        answers: [
+          { text: "Je ne signale pas — aucun désordre n'est apparu et la situation est passée.", score: 0 },
+          { text: "Je le signale et je demande une vérification structurelle avant de reprendre les travaux dans la zone.", score: 2 },
+          { text: "Je surveille la zone pendant quelques jours et je signale si quelque chose apparaît.", score: 0 },
+          { text: "J'en parle à mon chef de chantier pour qu'il évalue si c'est à signaler.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin de chantier, vous devez fournir le Dossier des Ouvrages Exécutés (DOE). Plusieurs non-conformités mineures ont été réalisées et rectifiées en cours de chantier. Certaines n'ont pas été documentées.",
+        tags: ["traçabilité BTP", "DOE"],
+        answers: [
+          { text: "Je fournis le DOE sans mentionner les non-conformités rectifiées — elles ont été corrigées.", score: 0 },
+          { text: "Je reconstitue la documentation des non-conformités et je les inclus dans le DOE avec les corrections.", score: 2 },
+          { text: "Je mentionne dans le DOE qu'il peut y avoir des non-conformités non documentées.", score: 1 },
+          { text: "Je fournis le DOE tel quel et je me tiens disponible si des questions surgissent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos dossiers d'exécution incluent les non-conformités rencontrées et les mesures correctives prises, pas seulement la description de l'ouvrage tel qu'il aurait dû être réalisé.",
+        tags: ["traçabilité BTP", "DOE"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un incident de levage a eu lieu sur votre chantier. Le REX interne va se tenir. Vous avez observé des éléments qui suggèrent que le plan de levage était sous-dimensionné, mais ce n'est pas la version officielle.",
+        tags: ["traçabilité BTP", "REX"],
+        answers: [
+          { text: "Je ne contredis pas la version officielle — le REX doit être constructif, pas conflictuel.", score: 0 },
+          { text: "Je partage mes observations factuelles lors du REX, même si elles contredisent la version officielle.", score: 2 },
+          { text: "J'en parle en privé à l'animateur du REX avant de décider si je le partage.", score: 1 },
+          { text: "Je les transmets par écrit à l'animateur pour qu'il les intègre s'il le juge utile.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez identifié une amélioration possible dans la méthode de mise en œuvre d'un ouvrage courant qui réduirait le risque de chute. La démarche pour la faire valider est longue.",
+        tags: ["traçabilité BTP", "amélioration"],
+        answers: [
+          { text: "Je l'applique à mon équipe sans la formaliser — si ça marche, ça se diffusera.", score: 0.5 },
+          { text: "Je la propose formellement même si le processus est long.", score: 2 },
+          { text: "J'en parle à mon chef de chantier pour qu'il décide de la suite.", score: 1 },
+          { text: "Je l'applique et je la mentionne dans le bilan de fin de chantier.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez les non-conformités d'exécution par rapport aux plans, quelle que soit leur apparente bénignité et même quand elles ont été rectifiées.",
+        tags: ["traçabilité BTP", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Lors d'une visite de contrôle du maître d'œuvre, il vous pose des questions sur l'avancement et les difficultés rencontrées. Votre chef de chantier préférerait que vous restiez vague sur certains points.",
+        tags: ["traçabilité BTP", "interlocuteur"],
+        answers: [
+          { text: "Je reste vague — mon chef a ses raisons et la relation avec le maître d'œuvre, c'est son affaire.", score: 0 },
+          { text: "Je réponds honnêtement à toutes les questions — le maître d'œuvre a le droit de connaître l'état réel du chantier.", score: 2 },
+          { text: "Je réponds sur les points techniques et je renvoie les points sensibles vers mon chef.", score: 0.5 },
+          { text: "Je réponds factuellement sans porter de jugement sur les difficultés.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos dossiers d'exécution reflètent l'ouvrage tel qu'il aurait dû être, pas tel qu'il a été réalisé", desc: "Ne pas signaler un défaut de vibration parce que la dalle est visuellement correcte, ne pas documenter les non-conformités rectifiées dans le DOE, rester vague avec le maître d'œuvre sur les difficultés rencontrées : ces comportements laissent des informations essentielles hors des dossiers de l'ouvrage. Un ouvrage dont l'historique d'exécution n'est pas tracé honnêtement est un ouvrage dont personne ne peut garantir la durabilité." },
+          moyen: { label: "Pratiques en développement", titre: "Vos dossiers d'exécution sont globalement complets mais les non-conformités inconfortables restent encore sous-documentées", desc: "Vous signalez les non-conformités importantes et vos dossiers d'exécution sont généralement complets. Mais les non-conformités qui ont été rectifiées et dont vous n'avez pas gardé de trace, les observations qui contredisent la version officielle dans un REX, les réponses prudentes au maître d'œuvre sur les difficultés rencontrées : ces zones restent encore sous-documentées." },
+          haut: { label: "Réflexes installés", titre: "Vos dossiers d'exécution tracent honnêtement ce qui s'est réellement passé, y compris les non-conformités et les difficultés", desc: "Vous signalez le défaut de vibration même si la dalle est visuellement correcte. Vous incluez les non-conformités rectifiées dans le DOE. Vous partagez vos observations factuelles dans les REX même si elles contredisent la version officielle. Vous répondez honnêtement au maître d'œuvre. Cette traçabilité honnête de l'exécution — qui suppose d'accepter que les dossiers pointent parfois des difficultés — est la condition de la durabilité des ouvrages et de la responsabilité professionnelle." },
+        },
+      }
+    ],
+
+  },
 
   }); // fin Object.assign CUSTOM_QUESTIONS
 
@@ -7464,6 +8796,7 @@
     ["Réagir aux incidents et presqu'accidents", "Appliquer les protocoles d'urgence et traiter les signaux faibles avec le même sérieux que les accidents avérés."]
   ]}
 ],
+
 ["securite-nucleaire-zone", "Intervenir en zone nucléaire", "Équipes terrain — Nucléaire",
   "Préparer, réaliser et tracer ses interventions en zone contrôlée selon les règles de radioprotection.",
   { domain: "securite", chapters: [
@@ -7473,13 +8806,24 @@
     ["Contribuer à la traçabilité et au REX",    "Documenter tous les écarts, y compris mineurs, et remonter les problèmes systémiques."]
   ]}
 ],
-["securite-nucleaire-zone", "Intervenir en zone nucléaire", "Équipes terrain — Nucléaire",
-  "Préparer, réaliser et tracer ses interventions en zone contrôlée selon les règles de radioprotection.",
+
+["culture-surete-nucleaire-sectoriel", "Culture de sûreté nucléaire", "Tous publics — Orano / CEA / Framatome",
+  "Posture de questionnement, défense des barrières de sûreté et déclaration honnête des événements précurseurs.",
   { domain: "securite", chapters: [
-    ["Préparer son intervention en zone",        "Gamme, habilitation, dosimètre, équipement — aucune condition préalable ne s'improvise."],
-    ["Travailler en zone et gérer les imprévus", "Appliquer les réflexes d'arrêt et de sortie face à toute anomalie, sans exception."],
-    ["Appliquer les règles de radioprotection",  "Respecter les limites et minimiser l'exposition selon le principe ALARA."],
-    ["Contribuer à la traçabilité et au REX",    "Documenter tous les écarts, y compris mineurs, et remonter les problèmes systémiques."]
+    ["Adopter la posture de questionnement",          "Questionner toutes les situations — opérationnelles, organisationnelles, hiérarchiques."],
+    ["Comprendre et défendre les barrières de sûreté","Maintenir l'intégrité des barrières face à tout arbitrage, y compris 'dans les limites'."],
+    ["Déclarer et apprendre des événements précurseurs","DES complètes incluant précurseurs, FHO et facteurs organisationnels."],
+    ["Ancrer la culture de sûreté dans les pratiques", "Nommer les décalages institutionnels et contribuer activement à la culture collective."]
+  ]}
+],
+
+["securite-chantier-btp-gros-oeuvre", "Sécurité chantier BTP — gros œuvre", "Équipes terrain — BTP gros œuvre",
+  "Maîtriser les risques structurels, appliquer le PGCSPS et tracer honnêtement l'exécution.",
+  { domain: "securite", chapters: [
+    ["Maîtriser les risques du gros œuvre",        "Blindages, coffrages, étaiements, levages — conformité aux plans sans exception."],
+    ["Appliquer le PGCSPS et coordonner avec le CSPS", "Utiliser la coordination SPS comme outil de travail réel, pas comme obligation administrative."],
+    ["Gérer les risques spécifiques au gros œuvre", "Réseaux, armatures, amiante, conditions de sol — arrêt et signalement systématiques."],
+    ["Tracer, signaler et améliorer",               "Dossiers d'exécution honnêtes incluant non-conformités et difficultés réelles."]
   ]}
 ],
   ]);
