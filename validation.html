@@ -309,15 +309,15 @@ body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18
   </div>
 </div>
 
-<div class="missing-modal-overlay" id="missing-modal" aria-hidden="true">
-  <div class="missing-modal" role="dialog" aria-modal="true" aria-labelledby="missing-modal-title">
+<div class="missing-modal-overlay" id="missing-modal" aria-hidden="true" onclick="closeMissingModal()">
+  <div class="missing-modal" role="dialog" aria-modal="true" aria-labelledby="missing-modal-title" onclick="event.stopPropagation()">
     <div class="missing-modal-icon">⚠️</div>
     <div class="missing-modal-title" id="missing-modal-title">Quelques informations sont encore nécessaires</div>
     <div class="missing-modal-text">Pour transmettre votre autodiagnostic à Into The Shift, complétez les éléments manquants ci-dessous.</div>
     <div class="missing-list" id="missing-modal-list"></div>
     <div class="missing-modal-actions">
-      <button class="missing-modal-btn secondary" type="button" onclick="closeMissingModal()">Fermer</button>
-      <button class="missing-modal-btn" type="button" onclick="focusFirstMissingField()">Compléter maintenant</button>
+      <button class="missing-modal-btn secondary pass-close" type="button" onclick="closeMissingModal()">Fermer</button>
+      <button class="missing-modal-btn preview-close" type="button" onclick="focusFirstMissingField()">Compléter maintenant</button>
     </div>
   </div>
 </div>
@@ -1122,6 +1122,11 @@ function showMissingModal(){
   if(modal){
     modal.classList.add('on');
     modal.setAttribute('aria-hidden','false');
+    modal.querySelectorAll('button').forEach(btn => {
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = 'pointer';
+    });
   }
 }
 
@@ -1421,6 +1426,11 @@ async function initValidationPage(){
     setTimeout(() => itsApplyReadOnlyMode(), 50);
   }
 }
+
+
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeMissingModal();
+});
 
 initValidationPage();
 </script>
