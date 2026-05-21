@@ -100,6 +100,38 @@
     .its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
     .its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}.its-quota-box:nth-child(1) span::before{content:"🛒"}.its-quota-box:nth-child(2) span::before{content:"✅"}.its-quota-box:nth-child(3) span::before{content:"🚀"}.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
 
+
+    /* Présentation cockpit client — Mes AD */
+    .panel{background:#fff;border:1px solid #e1e8f0;border-radius:26px;padding:22px;box-shadow:0 12px 28px rgba(15,45,80,.06);margin-top:18px}
+    .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
+    .panel h2{margin:0 0 4px;font-size:23px;color:#17375d}
+    .panel-sub{font-size:14px;color:#61738a;line-height:1.45}
+    .watch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
+    .watch-card{border-radius:20px;padding:14px 15px;border:1px solid #e4edf5;background:#f9fbfd;display:flex;gap:11px;align-items:flex-start;min-height:86px;cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .watch-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,45,80,.08)}
+    .watch-card.active{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}
+    .watch-ico{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto}
+    .watch-card.orange{background:#fff8ec;border-color:#ffd9a3}.watch-card.orange .watch-ico{background:#ffe9c7}
+    .watch-card.blue{background:#eef6ff;border-color:#cfe3ff}.watch-card.blue .watch-ico{background:#dcecff}
+    .watch-card.green{background:#eefbf3;border-color:#c8ebd4}.watch-card.green .watch-ico{background:#d9f4e3}
+    .watch-title{font-size:13px;font-weight:900;color:#17375d;margin-bottom:3px}
+    .watch-text{font-size:12px;color:#61738a;line-height:1.35}
+    .filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900;margin-left:6px}
+    .tab.active .filter-count{background:rgba(255,255,255,.22);color:#fff}
+    .alert-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+    .alert-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;border:1px solid}
+    .alert-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#a06400}
+    .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+    .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
+    .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .card.draft-card{border-color:#d8e2ec}
+    .card.published-card{border-color:#b8dfe0}
+    .card.submitted-card{border-color:#ffdf8a}
+    .card.unpublished-card{border-color:#d8e2ec}
+    .btn-danger-soft{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+    .btn-danger-soft:hover{background:#ffe4e6}
+    @media(max-width:900px){.watch-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.search{max-width:none;width:100%}}
+
     @media(max-width:850px){
       .hero{flex-direction:column}
       .stats{grid-template-columns:repeat(2,1fr)}
@@ -127,48 +159,53 @@
       <button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button>
     </section>
 
-    <section class="quick-note" aria-label="Information archivage">
-      <span>✨</span> Vous pouvez suivre l’avancement de chaque autodiagnostic ici. L’archivage arrive bientôt : le bouton est prêt, mais aucune donnée ne sera modifiée pour le moment.
+    <section class="quick-note" aria-label="Information espace client">
+      <span>✨</span> Vous pouvez suivre l’avancement de vos autodiagnostics ici. Les brouillons peuvent être supprimés directement depuis cette page. Les campagnes publiées restent verrouillées pour éviter toute modification accidentelle.
     </section>
 
     <section class="quota-wrap" id="mesAdQuotaWrap" style="display:none">
       <div id="mesAdQuotaCard"></div>
     </section>
 
-    <section class="stats">
-      <div class="stat"><strong id="countAll">0</strong><span>Total</span></div>
-      <div class="stat"><strong id="countDraft">0</strong><span>Brouillons</span></div>
-      <div class="stat"><strong id="countSubmitted">0</strong><span>Transmis</span></div>
-      <div class="stat"><strong id="countPublished">0</strong><span>Publiés</span></div>
-      <div class="stat"><strong id="countUnpublished">0</strong><span>Dépubliés</span></div>
-    </section>
-
-    <section class="toolbar">
-      <div class="tabs">
-        <button class="tab active" data-filter="all">Tous</button>
-        <button class="tab" data-filter="draft">Brouillons</button>
-        <button class="tab" data-filter="submitted">Transmis</button>
-        <button class="tab" data-filter="published">Publiés</button>
-        <button class="tab" data-filter="unpublished">Dépubliés</button>
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Autodiagnostics</h2>
+          <div class="panel-sub">Vos brouillons, configurations transmises, campagnes publiées et liens disponibles.</div>
+        </div>
       </div>
-      <div class="search">
-        <input id="searchInput" type="search" placeholder="Rechercher un autodiagnostic..." />
-      </div>
-    </section>
 
-    <section class="list" id="adList"></section>
+      <div id="watchList" class="watch-grid"></div>
+
+      <section class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-filter="all">✨ Tous <span class="filter-count" id="countAll">0</span></button>
+          <button class="tab" data-filter="endingSoon">🔴 Fin proche <span class="filter-count" id="countEndingSoon">0</span></button>
+          <button class="tab" data-filter="submitted">🚀 Transmis <span class="filter-count" id="countSubmitted">0</span></button>
+          <button class="tab" data-filter="results">📊 Résultats dispo <span class="filter-count" id="countResults">0</span></button>
+          <button class="tab" data-filter="draft">✏️ Brouillons <span class="filter-count" id="countDraft">0</span></button>
+          <button class="tab" data-filter="published">🟢 Publiés <span class="filter-count" id="countPublished">0</span></button>
+          <button class="tab" data-filter="unpublished">🛑 Dépubliés <span class="filter-count" id="countUnpublished">0</span></button>
+        </div>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="🔎 Rechercher un autodiagnostic..." />
+        </div>
+      </section>
+
+      <section class="list" id="adList"></section>
+    </section>
   </main>
 
 
 
   <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
-      <div class="modal-icon">🗄️</div>
-      <h2 id="archiveModalTitle">Archiver cet autodiagnostic ?</h2>
-      <p>L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.</p>
+      <div class="modal-icon">🗑️</div>
+      <h2 id="archiveModalTitle">Supprimer ce brouillon ?</h2>
+      <p>Cette action supprimera définitivement le brouillon de votre espace. Elle ne concerne que les autodiagnostics encore au statut brouillon.</p>
       <div class="modal-actions">
         <button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button>
-        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>
+        <button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Supprimer</button>
       </div>
     </div>
   </div>
@@ -382,6 +419,88 @@
       return `Campagne : ${formatDate(start)} → ${formatDate(end)}`;
     }
 
+    function getCampaignStartDate(p){
+      const data = getProjectData(p);
+      const param = data.parametrage || {};
+      return p.campaign_start_date || p.campaignStartDate || p.start_date || data.campaign_start_date || data.campaignStartDate || data.date_lancement || param.date_lancement || "";
+    }
+
+    function getCampaignEndDate(p){
+      const data = getProjectData(p);
+      const param = data.parametrage || {};
+      return p.campaign_end_date || p.campaignEndDate || p.end_date || data.campaign_end_date || data.campaignEndDate || data.date_cloture || param.date_cloture || "";
+    }
+
+    function normalizeDateInputValue(value){
+      if(!value) return "";
+      const s = String(value).trim();
+      if(!s) return "";
+      if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+      const d = new Date(s);
+      if(Number.isNaN(d.getTime())) return "";
+      return d.toISOString().slice(0,10);
+    }
+
+    function getDaysUntil(dateValue){
+      const iso = normalizeDateInputValue(dateValue);
+      if(!iso) return null;
+      const [y,m,d] = iso.split("-").map(Number);
+      const target = new Date(y, m - 1, d);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      if(Number.isNaN(target.getTime())) return null;
+      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    }
+
+    function hasResultsAvailable(p){
+      const status = normalizeStatus(p);
+      const data = getProjectData(p);
+      const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
+      return (status === "published" || status === "unpublished") && Boolean(resultsUrl);
+    }
+
+    function isMonitorableCampaign(p){
+      const status = normalizeStatus(p);
+      return status === "published" || (status === "unpublished" && hasResultsAvailable(p));
+    }
+
+    function getCampaignTiming(p){
+      const daysLeft = getDaysUntil(getCampaignEndDate(p));
+      if(daysLeft === null) return null;
+      if(daysLeft < 0) return {key:"ended", kind:"neutral", icon:"⚫", label:"Campagne terminée", daysLeft};
+      if(daysLeft < 7) return {key:"imminent", kind:"warn", icon:"🟠", label:`Fin imminente · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      if(daysLeft < 14) return {key:"endingSoon", kind:"warn", icon:"🔴", label:`Fin proche · ${daysLeft} jour${daysLeft>1?'s':''}`, daysLeft};
+      return null;
+    }
+
+    function isEndingSoon(p){
+      if(!isMonitorableCampaign(p)) return false;
+      const timing = getCampaignTiming(p);
+      return Boolean(timing && (timing.key === "endingSoon" || timing.key === "imminent"));
+    }
+
+    function getAlertBadges(p){
+      const status = normalizeStatus(p);
+      const data = getProjectData(p);
+      const shareUrl = p.shareUrl || p.share_url || p.ad_url || p.public_url || data.shareUrl || data.share_url || "";
+      const resultsUrl = p.resultsUrl || p.results_url || p.result_url || data.resultsUrl || data.results_url || "";
+      const alerts = [];
+      if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
+      const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
+      if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
+      if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
+      if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
+      if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
+      return alerts;
+    }
+
+    function renderAlertBadges(p){
+      const alerts = getAlertBadges(p);
+      if(!alerts.length) return "";
+      return `<div class="alert-badges">${alerts.map(a => `<span class="alert-badge ${a.kind}">${a.icon} ${escapeHtml(a.text)}</span>`).join("")}</div>`;
+    }
+
     function getProjectData(project) {
       const raw = project?.data || project?.payload || project?.configuration || {};
       if (typeof raw === "string") {
@@ -480,14 +599,60 @@
     }
 
     function renderStats() {
-      const counts = { draft:0, submitted:0, published:0, unpublished:0 };
-      projects.forEach(p => counts[normalizeStatus(p)] = (counts[normalizeStatus(p)] || 0) + 1);
+      const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
+      projects.forEach(p => {
+        const status = normalizeStatus(p);
+        counts[status] = (counts[status] || 0) + 1;
+        if(isEndingSoon(p)) counts.endingSoon += 1;
+        if(hasResultsAvailable(p)) counts.results += 1;
+      });
 
-      document.getElementById("countAll").textContent = projects.length;
-      document.getElementById("countDraft").textContent = counts.draft || 0;
-      document.getElementById("countSubmitted").textContent = counts.submitted || 0;
-      document.getElementById("countPublished").textContent = counts.published || 0;
-      document.getElementById("countUnpublished").textContent = counts.unpublished || 0;
+      const setCount = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = value;
+      };
+
+      setCount("countAll", projects.length);
+      setCount("countDraft", counts.draft || 0);
+      setCount("countSubmitted", counts.submitted || 0);
+      setCount("countPublished", counts.published || 0);
+      setCount("countUnpublished", counts.unpublished || 0);
+      setCount("countEndingSoon", counts.endingSoon || 0);
+      setCount("countResults", counts.results || 0);
+      renderWatchList(counts);
+    }
+
+    function renderWatchList(counts){
+      const el = document.getElementById("watchList");
+      if(!el) return;
+      el.innerHTML = `
+        <div class="watch-card orange ${currentFilter==='endingSoon'?'active':''}" onclick="setFilterFromCard('endingSoon')">
+          <div class="watch-ico">🔴</div>
+          <div><div class="watch-title">${counts.endingSoon || 0} campagne${(counts.endingSoon||0)>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture.</div></div>
+        </div>
+        <div class="watch-card blue ${currentFilter==='submitted'?'active':''}" onclick="setFilterFromCard('submitted')">
+          <div class="watch-ico">🚀</div>
+          <div><div class="watch-title">${counts.submitted || 0} AD transmis</div><div class="watch-text">En attente de traitement ou publication par Into The Shift.</div></div>
+        </div>
+        <div class="watch-card green ${currentFilter==='results'?'active':''}" onclick="setFilterFromCard('results')">
+          <div class="watch-ico">📊</div>
+          <div><div class="watch-title">${counts.results || 0} résultat${(counts.results||0)>1?'s':''} disponible${(counts.results||0)>1?'s':''}</div><div class="watch-text">Liens résultats disponibles dans les cartes concernées.</div></div>
+        </div>
+      `;
+    }
+
+    function setFilterFromCard(filter){
+      currentFilter = currentFilter === filter ? "all" : filter;
+      document.querySelectorAll(".tab").forEach(t => {
+        t.classList.toggle("active", t.dataset.filter === currentFilter);
+      });
+      const active = document.querySelector(`.tab[data-filter="${currentFilter}"]`);
+      if(!active){
+        const all = document.querySelector('.tab[data-filter="all"]');
+        if(all) all.classList.add("active");
+      }
+      renderStats();
+      renderProjects();
     }
 
     function renderProjects() {
@@ -497,7 +662,12 @@
       const filtered = projects.filter(p => {
         const status = normalizeStatus(p);
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
-        return (currentFilter === "all" || status === currentFilter) && (!q || text.includes(q));
+        const filterOk =
+          currentFilter === "all" ||
+          status === currentFilter ||
+          (currentFilter === "endingSoon" && isEndingSoon(p)) ||
+          (currentFilter === "results" && hasResultsAvailable(p));
+        return filterOk && (!q || text.includes(q));
       });
 
       if (!filtered.length) {
@@ -524,7 +694,7 @@
         const projectId = getProjectId(p);
 
         return `
-          <article class="card">
+          <article class="card ${status}-card">
             <div class="bar ${status}"></div>
 
             <div>
@@ -535,6 +705,7 @@
                 Lien de diffusion : ${hasShare ? "disponible" : "en attente admin"} ·
                 Résultats : ${hasResults ? "disponibles" : "non disponibles"}
               </div>
+              ${renderAlertBadges(p)}
               <div class="url-lines">
                 ${hasShare ? `<div class="url-line"><strong>URL diffusion :</strong> <a href="${escapeAttr(shareUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(shareUrl)}</a></div>` : ""}
                 ${hasResults ? `<div class="url-line"><strong>URL résultats :</strong> <a href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resultsUrl)}</a></div>` : ""}
@@ -561,20 +732,15 @@
                     Résultats
                   </button>
                 ` : ""}
-                ${canClone ? `
-                  <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}')" title="Archivage bientôt disponible">
-                    🗄️ Archiver
+                ${status === "draft" ? `
+                  <button class="btn btn-danger-soft" onclick="deleteDraftProject('${escapeAttr(projectId)}')">
+                    🗑️ Supprimer
                   </button>
                 ` : ""}
-                ${status === "draft" ? `<button class="btn" onclick="toggleMenu(${index})">···</button>` : ""}
               </div>
             </div>
 
-            ${status === "draft" ? `
-              <div class="menu" id="menu-${index}">
-                <button class="danger" onclick="archiveProject('${escapeAttr(projectId)}')">🗄️ Archiver</button>
-              </div>
-            ` : ""}
+            ${""}
           </article>
         `;
       }).join("");
@@ -598,6 +764,7 @@
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
         currentFilter = tab.dataset.filter;
+        renderStats();
         renderProjects();
       });
     });
@@ -650,12 +817,21 @@
       }
     }
 
-    function archiveProject(id) {
+    function deleteDraftProject(id) {
       if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project || normalizeStatus(project) !== "draft") {
+        return alert("Seuls les brouillons peuvent être supprimés depuis cet espace.");
+      }
+
       pendingArchiveProjectId = String(id);
-      document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       const modal = document.getElementById("archiveModal");
       if (modal) {
+        const title = getTitle(project);
+        modal.querySelector(".modal-icon").textContent = "🗑️";
+        modal.querySelector("#archiveModalTitle").textContent = "Supprimer ce brouillon ?";
+        modal.querySelector("p").innerHTML = `Vous allez supprimer définitivement :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Cette action ne concerne que ce brouillon et ne peut pas être annulée.`;
+        modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Supprimer</button>';
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");
       }
@@ -670,31 +846,31 @@
       }
     }
 
-    function confirmArchiveProject() {
+    async function confirmArchiveProject() {
       if (!pendingArchiveProjectId) return closeArchiveModal();
-      closeArchiveModal();
-      showArchiveNotice();
-    }
+      const projectId = pendingArchiveProjectId;
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if (!project || normalizeStatus(project) !== "draft") {
+        closeArchiveModal();
+        return alert("Seuls les brouillons peuvent être supprimés depuis cet espace.");
+      }
 
-    function showArchiveNotice() {
-      const modal = document.getElementById("archiveModal");
-      if (!modal) return alert("Cette action n’est pas encore disponible dans votre espace.");
-      modal.querySelector(".modal-icon").textContent = "ℹ️";
-      modal.querySelector("#archiveModalTitle").textContent = "Archivage indisponible pour le moment";
-      modal.querySelector("p").textContent = "Cette action n’est pas encore disponible dans votre espace. Aucun changement n’a été appliqué pour le moment.";
-      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn danger" type="button" onclick="resetArchiveModal()">Compris</button>';
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-    }
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
 
-    function resetArchiveModal() {
-      const modal = document.getElementById("archiveModal");
-      if (!modal) return;
-      modal.querySelector(".modal-icon").textContent = "🗄️";
-      modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
-      modal.querySelector("p").textContent = "L’autodiagnostic sera retiré de vos brouillons actifs. Vous pourrez le retrouver ou demander sa réactivation si besoin.";
-      modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveProject()">Archiver</button>';
-      closeArchiveModal();
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Suppression impossible");
+
+        projects = projects.filter(p => getProjectId(p) !== String(projectId));
+        closeArchiveModal();
+        renderStats();
+        renderProjects();
+      } catch(e) {
+        alert(e.message || "Suppression impossible pour le moment.");
+      }
     }
 
     function escapeHtml(str) {
