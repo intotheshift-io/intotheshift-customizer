@@ -32,7 +32,7 @@
     .kpi span{font-size:13px;color:#61738a}
 
     .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-    .tab{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .tab{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif}
     .tab.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
     .panel{background:#fff;border:1px solid #e1e8f0;border-radius:26px;padding:22px;box-shadow:0 12px 28px rgba(15,45,80,.06)}
     .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap}
@@ -133,6 +133,29 @@
     .resource-cat h3{margin:0 0 4px;font-size:15px;color:#17375d}
     .resource-cat p{margin:0;color:#61738a;font-size:12px;line-height:1.4}
     .resource-cat small{display:block;margin-top:8px;color:#0d4c72;font-weight:900;font-size:11px}
+
+
+
+    /* Modale de confirmation cockpit client */
+    .confirm-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.58);z-index:10001;display:none;align-items:center;justify-content:center;padding:20px;font-family:'Asap',sans-serif}
+    .confirm-backdrop.open{display:flex}
+    .confirm-modal{width:min(540px,100%);background:#fff;border-radius:26px;box-shadow:0 26px 80px rgba(0,0,0,.28);overflow:hidden;border:1px solid #d8e2ec}
+    .confirm-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:#f8fafc;border-bottom:1px solid #e4edf5}
+    .confirm-icon{width:44px;height:44px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;background:#eef6fb;color:#0d4c72}
+    .confirm-icon.danger{background:#fff1f2;color:#be123c}
+    .confirm-icon.warn{background:#fff7ed;color:#9a3412}
+    .confirm-title{margin:0 0 5px;color:#17375d;font-size:21px;line-height:1.15;font-weight:900}
+    .confirm-sub{margin:0;color:#61738a;font-size:13px;line-height:1.45;font-weight:700}
+    .confirm-body{padding:20px 24px;color:#60758a;font-size:14px;line-height:1.5}
+    .confirm-project{margin-top:12px;background:#eef6fb;border:1px solid #d7e8f1;border-radius:16px;padding:12px 13px;color:#0d4c72;font-weight:900}
+    .confirm-warning{margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:16px;padding:12px 13px;color:#9a5b00;font-weight:800;font-size:13px;line-height:1.45}
+    .confirm-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
+    .confirm-btn{border:none;border-radius:999px;padding:11px 17px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+    .confirm-btn.secondary{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
+    .confirm-btn.primary{background:#0d4c72;color:#fff}
+    .confirm-btn.danger{background:#be123c;color:#fff}
+    .confirm-btn.warn{background:#9a3412;color:#fff}
+    @media(max-width:620px){.confirm-footer .confirm-btn{width:100%}.confirm-head{padding:20px}.confirm-body{padding:18px 20px}.confirm-footer{padding:0 20px 20px}}
 
     @media(max-width:900px){.watch-grid,.resource-cats{grid-template-columns:1fr}.ads-toolbar{align-items:stretch}.ad-search{max-width:none;width:100%}}
 
@@ -267,6 +290,29 @@
     </div>
   </div>
 
+
+
+  <div id="confirmModal" class="confirm-backdrop" aria-hidden="true">
+    <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+      <div class="confirm-head">
+        <div id="confirmModalIcon" class="confirm-icon">⚠️</div>
+        <div>
+          <h3 id="confirmModalTitle" class="confirm-title">Confirmer l’action</h3>
+          <p id="confirmModalSubtitle" class="confirm-sub">Cette action va modifier le cockpit client.</p>
+        </div>
+      </div>
+      <div class="confirm-body">
+        <div id="confirmModalText"></div>
+        <div id="confirmModalProject" class="confirm-project" style="display:none"></div>
+        <div id="confirmModalWarning" class="confirm-warning" style="display:none"></div>
+      </div>
+      <div class="confirm-footer">
+        <button id="confirmCancelBtn" class="confirm-btn secondary" type="button" onclick="closeConfirmModal(false)">Annuler</button>
+        <button id="confirmOkBtn" class="confirm-btn primary" type="button" onclick="closeConfirmModal(true)">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
   <script src="header.js"></script>
   <input id="projectLogoInput" type="file" accept="image/*" hidden onchange="uploadProjectLogo(event)">
   <div id="clientFolderToast" class="toast" aria-live="polite"></div>
@@ -286,7 +332,10 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if(event.key === "Escape") closePublishModal();
+      if(event.key === "Escape"){
+        closePublishModal();
+        closeConfirmModal(false);
+      }
     });
 
     function getToken(){
@@ -1152,7 +1201,18 @@ function getProjectTitle(project){
       if(!projectId || !nextStatus) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
-      const ok = confirm(`Confirmer : ${actionLabel} « ${title} » ?`);
+      const isArchive = nextStatus === "archived";
+      const isUnpublish = nextStatus === "unpublished";
+      const ok = await openConfirmModal({
+        tone: isArchive ? "warn" : "primary",
+        icon: isArchive ? "📦" : "🛑",
+        title: isArchive ? "Archiver cet autodiagnostic ?" : "Dépublier cet autodiagnostic ?",
+        subtitle: isArchive ? "L’AD sera retiré de la vue active du cockpit client." : "La campagne ne sera plus considérée comme publiée.",
+        text: isArchive ? "Confirmez-vous l’archivage de cet autodiagnostic ?" : "Confirmez-vous la dépublication de cet autodiagnostic ?",
+        project: title,
+        warning: isUnpublish ? "Les liens de résultats peuvent rester visibles si l’URL résultats est renseignée." : "Cette action ne supprime pas définitivement le contenu, mais le classe en archive.",
+        confirmText: isArchive ? "Archiver" : "Dépublier"
+      });
       if(!ok) return;
 
       try{
@@ -1228,10 +1288,17 @@ function getProjectTitle(project){
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const status = project ? normalizeStatus(project.status) : "";
-      const msg = status === "published"
-        ? `« ${title} » est publié. Confirmer la suppression définitive ? Cette action retirera aussi la campagne du cockpit client.`
-        : `Confirmer la suppression définitive de « ${title} » ?`;
-      if(!confirm(msg)) return;
+      const ok = await openConfirmModal({
+        tone: "danger",
+        icon: "🗑️",
+        title: "Supprimer définitivement cet autodiagnostic ?",
+        subtitle: status === "published" ? "Attention : cet AD est publié." : "Cette action retirera l’AD du cockpit client.",
+        text: "Confirmez-vous la suppression définitive de cet autodiagnostic ?",
+        project: title,
+        warning: status === "published" ? "La campagne associée sera aussi retirée du cockpit client. Cette action est définitive." : "Cette action est définitive.",
+        confirmText: "Supprimer"
+      });
+      if(!ok) return;
 
       const urls = isAdmin()
         ? [`${API_URL}/api/admin/projects/${encodeURIComponent(projectId)}`, `${API_URL}/api/projects/${encodeURIComponent(projectId)}`]
@@ -1253,6 +1320,69 @@ function getProjectTitle(project){
         }
       }
       alert(lastError || "Impossible de supprimer cet autodiagnostic depuis ce dossier.");
+    }
+
+
+    let confirmModalResolver = null;
+
+    function openConfirmModal(options = {}){
+      const modal = document.getElementById("confirmModal");
+      const icon = document.getElementById("confirmModalIcon");
+      const title = document.getElementById("confirmModalTitle");
+      const subtitle = document.getElementById("confirmModalSubtitle");
+      const text = document.getElementById("confirmModalText");
+      const project = document.getElementById("confirmModalProject");
+      const warning = document.getElementById("confirmModalWarning");
+      const okBtn = document.getElementById("confirmOkBtn");
+
+      if(!modal || !title || !text || !okBtn){
+        return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
+      }
+
+      const tone = options.tone || "primary";
+      icon.className = "confirm-icon " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "");
+      icon.textContent = options.icon || (tone === "danger" ? "🗑️" : tone === "warn" ? "⚠️" : "ℹ️");
+      title.textContent = options.title || "Confirmer l’action";
+      subtitle.textContent = options.subtitle || "Cette action va modifier le cockpit client.";
+      text.innerHTML = escapeHtml(options.text || "Confirmez-vous cette action ?");
+
+      if(options.project){
+        project.style.display = "block";
+        project.textContent = options.project;
+      }else{
+        project.style.display = "none";
+        project.textContent = "";
+      }
+
+      if(options.warning){
+        warning.style.display = "block";
+        warning.textContent = options.warning;
+      }else{
+        warning.style.display = "none";
+        warning.textContent = "";
+      }
+
+      okBtn.textContent = options.confirmText || "Confirmer";
+      okBtn.className = "confirm-btn " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "primary");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+
+      return new Promise(resolve => {
+        confirmModalResolver = resolve;
+      });
+    }
+
+    function closeConfirmModal(result){
+      const modal = document.getElementById("confirmModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+      if(confirmModalResolver){
+        const resolve = confirmModalResolver;
+        confirmModalResolver = null;
+        resolve(Boolean(result));
+      }
     }
 
     function chooseProjectLogo(projectId){
