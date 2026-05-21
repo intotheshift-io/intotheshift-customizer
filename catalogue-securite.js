@@ -6131,6 +6131,7 @@
     ["Respecter le PPSPS et les procédures", "Lire, appliquer et faire évoluer le PPSPS face aux réalités du terrain."],
     ["Réagir aux incidents et presqu'accidents", "Appliquer les protocoles d'urgence et traiter les signaux faibles avec le même sérieux que les accidents avérés."]
   ]}
-],
+]
+  ]);
 
 })();
