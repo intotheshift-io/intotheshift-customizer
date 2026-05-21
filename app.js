@@ -373,6 +373,10 @@ function itsRestoreProject(project) {
 
   if (!data || typeof data !== "object") return false;
 
+  // Source de vérité immédiate en mémoire : la navigation avec ?projectId=
+  // ne doit pas dépendre du localStorage, qui peut être plein sur de gros projets.
+  window.ITS_CURRENT_PROJECT_STATE = data;
+
   if (projectId) {
     data.currentAdId = projectId;
     data.project_id = projectId;
@@ -442,10 +446,21 @@ function itsRestoreProject(project) {
 
   itsIsRestoringProject = true;
   itsSafeSetLocalStorage(itsGetStorageKey(), data);
+
   if (projectId) {
-    sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(realProject));
+    try {
+      const compactProject = {
+        ...realProject,
+        data: itsCompactStateForLocalStorage(data)
+      };
+      sessionStorage.setItem("its_project_cache_" + projectId, JSON.stringify(compactProject));
+    } catch(e) {
+      console.warn("Cache session projet non enregistré. Navigation non bloquée.", e);
+    }
   }
+
   itsIsRestoringProject = false;
+  window.ITS_CURRENT_PROJECT_STATE = data;
 
   return true;
 }
@@ -587,7 +602,7 @@ function itsNormalizeProjectStatus(projectOrState) {
 
 function itsIsProjectReadOnly(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted";
+  return status === "published" || status === "unpublished" || status === "archived";
 }
 
 async function itsFetchProjectById(projectId) {
@@ -621,25 +636,25 @@ async function itsFetchProjectById(projectId) {
 
 async function itsBootstrapProjectFromUrl() {
   const projectId = itsGetCurrentProjectId();
-  if (!projectId) return itsLoad();
+  if (!projectId) return window.ITS_CURRENT_PROJECT_STATE || itsLoad();
 
   // Priorité au backend : cela évite qu'un ancien localStorage sans dates
   // écrase les dates enregistrées dans le projet après Paramétrage.
   const project = await itsFetchProjectById(projectId);
   if (project) {
     itsRestoreProject(project);
-    return itsLoad();
+    return window.ITS_CURRENT_PROJECT_STATE || itsUnwrapProjectData(project.data || project.payload || project.configuration || project) || {};
   }
 
   try {
     const cached = sessionStorage.getItem("its_project_cache_" + projectId);
     if (cached) {
       itsRestoreProject(JSON.parse(cached));
-      return itsLoad();
+      return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
     }
   } catch(e) {}
 
-  return itsLoad() || {};
+  return window.ITS_CURRENT_PROJECT_STATE || itsLoad() || {};
 }
 
 function itsInjectReadOnlyBanner(message) {
@@ -659,7 +674,7 @@ function itsInjectReadOnlyBanner(message) {
 }
 
 function itsApplyReadOnlyMode(options = {}) {
-  const state = itsLoad();
+  const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
 
   document.body.classList.add("its-readonly-mode");
