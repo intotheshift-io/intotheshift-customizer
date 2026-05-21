@@ -363,18 +363,16 @@ function syncCampaignDatesForValidation(){
 }
 function formatPack(pack){
   if(!pack) return '—';
-  if(typeof pack === 'string' || typeof pack === 'number') return String(pack);
-  if(typeof pack === 'object'){
-    const val = pack.value || pack.label || pack.nom || pack.name || pack.pack || pack.nb || pack.nombre || '';
-    if(val) return String(val);
-    try {
-      const values = Object.values(pack).filter(v => typeof v === 'string' || typeof v === 'number');
-      return values.length ? String(values[0]) : '—';
-    } catch(e) {
-      return '—';
-    }
-  }
-  return String(pack);
+  const raw = (typeof pack === 'object')
+    ? (pack.value || pack.label || pack.nom || pack.name || pack.pack || pack.nb || pack.nombre || '')
+    : pack;
+  const v = String(raw || '').trim();
+  if(!v) return '—';
+  if(v === 'current_pack' || v === 'existing') return 'Pack déjà en cours';
+  if(v === 'illimite') return 'Illimité';
+  const n = Number(v);
+  if(Number.isFinite(n) && n > 0) return n.toLocaleString('fr-FR') + ' passations';
+  return v;
 }
 
 function pickFirstDefined(values){
@@ -646,6 +644,66 @@ function getClientInfo(){
     commentaire: byId('client-comment')
   };
 }
+
+function getStoredUser(){
+  const keys = ['its_user','user','auth_user'];
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key);
+      if(!raw) continue;
+      const parsed = JSON.parse(raw);
+      return parsed.user || parsed;
+    }catch(e){}
+  }
+  return {};
+}
+function getAccountCompanyFromObject(obj){
+  if(!obj || typeof obj !== 'object') return '';
+  return obj.company_name || obj.companyName || obj.organizationName || obj.organization_name || obj.enterpriseName || obj.enterprise_name || obj.entreprise || obj.company || obj.organization || obj.organisation || '';
+}
+function getAccountCompanyFallback(){
+  const u = getStoredUser();
+  return getAccountCompanyFromObject(u) || getAccountCompanyFromObject(state.user) || getAccountCompanyFromObject(state.account) || '';
+}
+async function loadAccountCompany(){
+  const token =
+    localStorage.getItem('its_token') ||
+    localStorage.getItem('token') ||
+    localStorage.getItem('auth_token') ||
+    '';
+  if(!token) return getAccountCompanyFallback();
+
+  try{
+    const response = await fetch(getApiBaseUrl() + '/api/me', {
+      headers:{ Authorization:'Bearer ' + token }
+    });
+    if(!response.ok) throw new Error('api/me ' + response.status);
+    const data = await response.json();
+    const user = data.user || data.account || data;
+    const company =
+      getAccountCompanyFromObject(user) ||
+      getAccountCompanyFromObject(data.organization) ||
+      getAccountCompanyFromObject(data.organisation) ||
+      getAccountCompanyFromObject(data);
+    if(company) return String(company).trim();
+  }catch(e){
+    console.warn('Entreprise compte non récupérée, fallback local', e);
+  }
+  return getAccountCompanyFallback();
+}
+async function applyAccountCompany(){
+  const company = await loadAccountCompany();
+  if(!company) return;
+  const input = document.getElementById('client-company');
+  if(input) input.value = company;
+  const sum = document.getElementById('sum-company');
+  if(sum) sum.textContent = company;
+  state.clientInfo = state.clientInfo || {};
+  state.clientInfo.entreprise = company;
+  state.transmission = state.transmission || {};
+  state.transmission.clientInfo = Object.assign({}, state.transmission.clientInfo || {}, { entreprise: company });
+  updateReady();
+}
 function isValidEmail(email){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim());
 }
@@ -667,7 +725,7 @@ function validateClientInfo(showErrors){
 function restoreClientInfo(){
   const info = state.clientInfo || state.transmission?.clientInfo || {};
   const map = {
-    'client-company': info.entreprise || getParam().entreprise || getParam().company || state.company || '',
+    'client-company': info.entreprise || getAccountCompanyFallback() || '',
     'client-firstname': info.prenom || '',
     'client-lastname': info.nom || '',
     'client-email': info.email || '',
@@ -1183,7 +1241,10 @@ function applyTransmittedView(){
 
 restoreClientInfo();
 refresh();
-applyTransmittedView();
+applyAccountCompany().then(() => {
+  refresh();
+  applyTransmittedView();
+});
 </script>
 </body>
 </html>
