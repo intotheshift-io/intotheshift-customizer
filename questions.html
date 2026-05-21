@@ -595,6 +595,24 @@ function questionsExtractProjectState(project){
   return merged;
 }
 
+function questionsReadLocalStateFallback(){
+  const keys = [
+    'its_state',
+    'intotheshift_customizer_state_v1',
+    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
+  ].filter(Boolean);
+  for(const key of keys){
+    try{
+      const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
+      if(!raw) continue;
+      let data = JSON.parse(raw);
+      if(data && data.state && typeof data.state === 'object') data = data.state;
+      if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+    }catch(e){}
+  }
+  return null;
+}
+
 function questionsFetchProjectStateSync(projectId){
   if(!projectId || !questionsToken()) return null;
   try{
@@ -619,8 +637,8 @@ function questionsFetchProjectStateSync(projectId){
 
 const requestedProjectId = questionsProjectIdFromUrl();
 let state = requestedProjectId
-  ? (questionsFetchProjectStateSync(requestedProjectId) || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
-  : ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}'));
+  ? (questionsFetchProjectStateSync(requestedProjectId) || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
+  : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
 
 if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
   state.projectId = state.projectId || requestedProjectId;
@@ -886,6 +904,7 @@ function persistQuestionsStateForNextStep(){
     localStorage.setItem('intotheshift_customizer_state_v1', serialized);
     sessionStorage.setItem('its_state', serialized);
     sessionStorage.setItem('intotheshift_customizer_state_v1', serialized);
+    if(typeof itsGetStorageKey === 'function') localStorage.setItem(itsGetStorageKey(), serialized);
   }catch(e){
     console.warn('État courant non persisté pour le paramétrage', e);
   }
