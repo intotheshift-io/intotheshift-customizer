@@ -741,11 +741,6 @@
                 <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
                   ${resumeLabel(p)}
                 </button>
-                ${hasShare ? `
-                  <button class="btn btn-green" onclick="openExternal('${escapeAttr(shareUrl)}')">
-                    Voir l’AD
-                  </button>
-                ` : ""}
                 ${hasResults ? `
                   <button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">
                     Résultats

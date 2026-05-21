@@ -1050,9 +1050,11 @@ function closeTransmitModal(){
 
 
 function getApiBaseUrl(){
-  return window.location.hostname === 'localhost'
-    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+  return window.ITS_API_BASE ||
+    localStorage.getItem('its_api_base') ||
+    (window.location.hostname === 'localhost'
+      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
 }
 
 async function sendTransmissionEmails(payload, token){
@@ -1111,6 +1113,12 @@ async function transmit(){
   state.transmission.status = 'ready_to_send';
   state.transmission.submitted_at = payload.submitted_at;
   state.transmission.payload = payload;
+  state.status = 'sent';
+  state.configTransmise = true;
+  state.config_transmise = true;
+  state.submitted = true;
+  state.current_step = 'validation';
+  state.step = 'validation';
 
   try {
     if (typeof itsSave === 'function') itsSave(state);
@@ -1123,7 +1131,7 @@ async function transmit(){
   "";
 
  try {
-  const projectResponse = await fetch("https://into-the-shift-studio-api.osc-fr1.scalingo.io/api/projects", {
+  const projectResponse = await fetch(getApiBaseUrl() + "/api/projects", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -1243,12 +1251,27 @@ function applyTransmittedView(){
   }
 }
 
-restoreClientInfo();
-refresh();
-applyAccountCompany().then(() => {
+async function initValidationPage(){
+  if(typeof itsBootstrapProjectFromUrl === 'function'){
+    try {
+      state = await itsBootstrapProjectFromUrl();
+    } catch(e) {
+      console.warn('Chargement projet validation impossible', e);
+    }
+  }
+
+  restoreClientInfo();
+  refresh();
+  await applyAccountCompany();
   refresh();
   applyTransmittedView();
-});
+
+  if(typeof itsApplyReadOnlyMode === 'function'){
+    setTimeout(() => itsApplyReadOnlyMode(), 50);
+  }
+}
+
+initValidationPage();
 </script>
 </body>
 </html>
