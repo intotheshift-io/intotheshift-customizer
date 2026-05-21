@@ -62,6 +62,9 @@ td:nth-child(9){width:125px}
 .badge-sent{background:#e6f7ef;color:#20784b}
 .badge-draft{background:#fff2d8;color:#996700}
 .badge-status{background:#edf2f7;color:#506477}
+.badge-user-active{background:#e6f7ef;color:#20784b}
+.badge-user-disabled{background:#fff2d8;color:#996700}
+.badge-user-deleted{background:#fff0f0;color:#a32b2b;border:1px solid #ffd1d1}
 .badge-published{background:#eaf3f8;color:#0d4c72}
 .badge-results{background:#efe9ff;color:#5b3bbd}.badge-unpublished{background:#eef2f6;color:#64748b}
 .empty,.loading{padding:22px;text-align:center;color:#718497}
@@ -257,6 +260,7 @@ td:nth-child(9){width:125px}
   width:100%;
   min-width:0;
 }
+.account-profile-panel{grid-template-columns:repeat(3,minmax(0,1fr)) auto}
 .account-card-actions{
   display:flex;
   justify-content:space-between;
@@ -288,7 +292,8 @@ td:nth-child(9){width:125px}
   .account-badges{justify-content:flex-start}
   .account-meta-grid,
   .account-edit-panel,
-  .account-attach-panel{grid-template-columns:1fr}
+  .account-attach-panel,
+  .account-profile-panel{grid-template-columns:1fr}
   .account-edit-panel .mini-btn,
   .account-attach-panel .mini-btn{width:100%;justify-content:center}
 }
@@ -369,6 +374,8 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           <input id="newLastname" class="admin-input" placeholder="Nom" autocomplete="off">
           <input id="newEmail" class="admin-input" type="email" placeholder="email@entreprise.com" autocomplete="new-email" required>
           <input id="newCompany" class="admin-input" placeholder="Entreprise / organisme" autocomplete="off">
+          <input id="newJobTitle" class="admin-input" placeholder="Fonction / poste" autocomplete="off">
+          <input id="newSector" class="admin-input" placeholder="Secteur d’activité" autocomplete="off">
           <select id="newRole" class="admin-select" autocomplete="off">
             <option value="client">client</option>
             <option value="partner">partner</option>
@@ -399,6 +406,12 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
               <option value="admin">Admin</option>
               <option value="client">Client</option>
               <option value="partner">Partner</option>
+            </select>
+            <select id="userStatusFilter" class="admin-select" onchange="renderAccounts()">
+              <option value="active" selected>Actifs uniquement</option>
+              <option value="disabled">Désactivés</option>
+              <option value="deleted">Supprimés</option>
+              <option value="all">Tous les statuts</option>
             </select>
           </div>
         </div>
@@ -533,7 +546,12 @@ function escapeAttr(str){return escapeHtml(str).replace(/`/g,"&#096;");}
 function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
-function statusBadge(status){const s=String(status||"brouillon").toLowerCase();if(s.includes("dépub")||s.includes("depub")||s.includes("unpublished"))return`<span class="badge badge-unpublished">Dépublié</span>`;if(s.includes("publi")||s.includes("published"))return`<span class="badge badge-published">Publié</span>`;if(s.includes("transmis")||s.includes("sent")||s.includes("submitted"))return`<span class="badge badge-sent">${escapeHtml(status||"transmis")}</span>`;if(s.includes("brouillon")||s.includes("draft"))return`<span class="badge badge-draft">${escapeHtml(status||"brouillon")}</span>`;return`<span class="badge badge-status">${escapeHtml(status||"actif")}</span>`;}
+function statusBadge(status){
+  const s=String(status||"active").toLowerCase();
+  if(s==="disabled"||s==="inactive"||s==="inactif"||s==="désactivé"||s==="desactive")return`<span class="badge badge-user-disabled">Désactivé</span>`;
+  if(s==="deleted"||s==="supprimé"||s==="supprime")return`<span class="badge badge-user-deleted">Supprimé</span>`;
+  return`<span class="badge badge-user-active">Actif</span>`;
+}
 function isConfigSent(project){const sent=val(project,["config_transmise","configSent","submitted","is_submitted"],false);const status=String(val(project,["status","statut"],"")).toLowerCase();return sent===true||sent==="true"||status.includes("transmis")||status.includes("submitted");}
 function getCompany(c){return val(c,["companyName","company_name","company","organization","organisation","entreprise"],"");}
 function getUserName(c){return (val(c,["firstName","first_name"],"") + " " + val(c,["lastName","last_name"],"")).trim() || val(c,["name","full_name"],"—");}
@@ -694,8 +712,10 @@ function goToAccounts(search=""){
   showTab("accounts");
   const clientSearch=document.getElementById("clientSearch");
   const roleFilter=document.getElementById("roleFilter");
+  const userStatusFilter=document.getElementById("userStatusFilter");
   if(clientSearch)clientSearch.value=search||"";
   if(roleFilter)roleFilter.value="";
+  if(userStatusFilter)userStatusFilter.value="active";
   renderAccounts();
   document.getElementById("tab-accounts")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
@@ -704,8 +724,10 @@ function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
   const statusFilter=document.getElementById("statusFilter");
+  const userStatusFilter=document.getElementById("userStatusFilter");
   if(roleFilter)roleFilter.value="";
   if(statusFilter)statusFilter.value="";
+  if(userStatusFilter)userStatusFilter.value="active";
 }
 
 async function loadAdminData(){
@@ -739,8 +761,12 @@ function renderAll(){
   renderProjects();
 }
 
+function getUserStatus(c){return String(val(c,["status","statut"],"active")).toLowerCase();}
+function isActiveUser(c){return getUserStatus(c)==="active";}
+
 function renderKpis(){
-  const partners=adminState.clients.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner");
+  const visibleUsers=adminState.clients.filter(c=>getUserStatus(c)!=="deleted");
+  const partners=visibleUsers.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner");
   const partnerQuota=partners.reduce((sum,p)=>sum+num(val(p,["passationsQuota","passations_quota"],0)),0);
   const partnerUsed=partners.reduce((sum,p)=>sum+num(val(p,["passationsUsed","passations_used"],0)),0);
   const finalOrgs=getFinalOrganizations();
@@ -751,9 +777,9 @@ function renderKpis(){
   const sentNoShare=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="sent"&&!getProjectShareUrl(p)).length;
   const noShare=adminState.projects.filter(p=>["sent","published","unpublished"].includes(getProjectEffectiveStatus(p))&&!getProjectShareUrl(p)).length;
   const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="unpublished").length;
-  const noCompany=adminState.clients.filter(c=>!getCompany(c)).length;
+  const noCompany=visibleUsers.filter(c=>isActiveUser(c)&&!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
-  document.getElementById("kpiUsers").textContent=val(adminState.summary,["users","usersCount","totalUsers"],adminState.clients.length);
+  document.getElementById("kpiUsers").textContent=visibleUsers.length;
   document.getElementById("kpiPartners").textContent=partners.length;
   document.getElementById("kpiOrganizations").textContent=directOrgs;
   document.getElementById("kpiProjects").textContent=adminState.projects.length;  document.getElementById("kpiPartnerUsed").textContent=formatNumber(partnerUsed);
@@ -763,7 +789,7 @@ function renderKpis(){
   set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalUnpublished",statusCounts.unpublished||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
   set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
-  document.getElementById("sideUsers").textContent=adminState.clients.length;
+  document.getElementById("sideUsers").textContent=visibleUsers.length;
   document.getElementById("sidePartners").textContent=partners.length;
   document.getElementById("sideOrganizations").textContent=directOrgs;
   document.getElementById("sideProjects").textContent=adminState.projects.length;
@@ -798,12 +824,14 @@ async function attachUserToOrganization(userId){
 function renderAccounts(){
   const q=(document.getElementById("clientSearch")?.value||"").toLowerCase().trim();
   const rf=document.getElementById("roleFilter")?.value||"";
+  const sf=document.getElementById("userStatusFilter")?.value||"active";
   const currentUserId=String(decodeJwt(getToken())?.id||"");
   const rows=adminState.clients.filter(c=>{
     const role=String(val(c,["role"],"client")).toLowerCase();
+    const userStatus=getUserStatus(c);
     const text=JSON.stringify(c).toLowerCase();
     const specialNoCompany=q==="sans entreprise";
-    return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(!specialNoCompany||!getCompany(c));
+    return(!q||specialNoCompany||text.includes(q))&&(!rf||role===rf)&&(sf==="all"||userStatus===sf)&&(!specialNoCompany||!getCompany(c));
   });
 
   const grid=document.getElementById("accountsCards");
@@ -817,13 +845,13 @@ function renderAccounts(){
     const jobTitle=val(c,["jobTitle","job_title"],"");
     const sector=val(c,["sector"],"");
     const role=String(val(c,["role"],"client")).toLowerCase();
-    const status=val(c,["status","statut"],"actif");
+    const status=val(c,["status","statut"],"active");
     const logos=getUserLogos(c);
     const organizationId=val(c,["organizationId","organization_id"],"");
     const organizationName=val(c,["organizationName","organization_name"],"");
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
-    const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Supprimer ce compte";
+    const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
     const canAttach=role==="client";
 
@@ -851,12 +879,20 @@ function renderAccounts(){
         <div class="account-info-box"><div class="account-info-label">Logo organisation</div><div class="account-logo-box">${logos.orgData?`<button class="mini-btn light" onclick="downloadDataUrl('${escapeAttr(logos.orgData)}','${escapeAttr(logos.orgName || "logo-organisation.png")}')">Télécharger</button>`:`<span class="muted">Aucun logo</span>`}</div></div>
       </div>
 
-      <div class="account-edit-panel">
+      <div class="account-edit-panel account-profile-panel">
         <div>
-          <div class="account-info-label">Entreprise / organisme du compte</div>
+          <div class="account-info-label">Entreprise / organisme</div>
           <input id="company-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(company)}" placeholder="Entreprise / organisme">
         </div>
-        <button class="mini-btn light" onclick="saveUserCompany('${escapeAttr(id)}')">Enregistrer</button>
+        <div>
+          <div class="account-info-label">Fonction / poste</div>
+          <input id="job-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(jobTitle)}" placeholder="Fonction / poste">
+        </div>
+        <div>
+          <div class="account-info-label">Secteur</div>
+          <input id="sector-${escapeAttr(id)}" class="admin-input" value="${escapeAttr(sector)}" placeholder="Secteur d’activité">
+        </div>
+        <button class="mini-btn light" onclick="saveUserProfile('${escapeAttr(id)}')">Enregistrer</button>
       </div>
 
       ${canAttach?`<div class="account-attach-panel">
@@ -877,8 +913,11 @@ function renderAccounts(){
           <button class="mini-btn" onclick="changeRole('${escapeAttr(id)}')">Changer rôle</button>
           ${role==="partner"?`<button class="mini-btn light" onclick="openPartnerFolder('${escapeAttr(id)}')">Dossier partner</button>`:""}
         </div>
-        <div>
-          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
+        <div class="account-role-edit" style="justify-content:flex-end">
+          ${status==="active" && !disableDelete?`<button class="mini-btn light" onclick="changeUserStatus('${escapeAttr(id)}','disabled')">Désactiver</button>`:""}
+          ${status==="disabled"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Réactiver</button>`:""}
+          ${status==="deleted"?`<button class="mini-btn" onclick="changeUserStatus('${escapeAttr(id)}','active')">Restaurer</button>`:""}
+          <button class="mini-btn danger" title="${escapeAttr(deleteTitle)}" ${disableDelete||status==="deleted"?"disabled":""} onclick="deleteUser('${escapeAttr(id)}','${escapeAttr(email)}')">Supprimer</button>
           ${disableDelete?'<div class="account-protected">Protégé</div>':''}
         </div>
       </div>
@@ -1237,15 +1276,17 @@ async function confirmDeleteProject(){
 }
 async function saveProjectStatus(projectId){return saveProjectPublication(projectId);}
 
-async function saveUserCompany(userId){
+async function saveUserProfile(userId){
   const companyName=document.getElementById("company-"+String(userId))?.value || "";
+  const jobTitle=document.getElementById("job-"+String(userId))?.value || "";
+  const sector=document.getElementById("sector-"+String(userId))?.value || "";
   try{
-    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/company`,{companyName});
-    showSuccess("Entreprise / organisme mis à jour.");
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/profile`,{companyName,jobTitle,sector});
+    showSuccess("Profil utilisateur mis à jour.");
     await loadAdminData();
   }catch(err){
     console.error(err);
-    showError("Mise à jour entreprise impossible. Il faut ajouter la route backend /api/admin/users/:id/company. Détail : "+err.message);
+    showError("Mise à jour profil impossible. Détail : "+err.message);
   }
 }
 
@@ -1320,6 +1361,8 @@ async function createUser(){
     lastName:document.getElementById("newLastname").value.trim(),
     email:document.getElementById("newEmail").value.trim(),
     companyName:document.getElementById("newCompany").value.trim(),
+    jobTitle:document.getElementById("newJobTitle").value.trim(),
+    sector:document.getElementById("newSector").value.trim(),
     role:document.getElementById("newRole").value,
     password:document.getElementById("newPassword").value
   };
@@ -1328,7 +1371,7 @@ async function createUser(){
     const created=await apiPost("/api/admin/users",payload);
     const emailInfo=created?.emailSent?" L’email d’accès a bien été envoyé.":" Attention : l’email automatique n’a pas été confirmé.";
     document.getElementById("createMsg").textContent="Compte créé. Le client sera invité à choisir son propre mot de passe à la première connexion."+emailInfo;
-    ["newFirstname","newLastname","newEmail","newCompany","newPassword"].forEach(id=>document.getElementById(id).value="");
+    ["newFirstname","newLastname","newEmail","newCompany","newJobTitle","newSector","newPassword"].forEach(id=>document.getElementById(id).value="");
     document.getElementById("newRole").value="client";
     showSuccess("Compte créé avec succès.");
     await loadAdminData();
@@ -1362,6 +1405,17 @@ async function changeRole(userId){
   }
 }
 
+async function changeUserStatus(userId,status){
+  try{
+    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/status`,{status});
+    showSuccess(status==="active"?"Compte réactivé.":status==="disabled"?"Compte désactivé.":"Compte supprimé.");
+    await loadAdminData();
+  }catch(err){
+    console.error(err);
+    showError("Changement de statut impossible. Détail : "+err.message);
+  }
+}
+
 let userToDelete = null;
 
 function deleteUser(userId, email){
@@ -1391,7 +1445,7 @@ async function confirmDeleteUser(){
   try{
     await apiDelete(`/api/admin/users/${encodeURIComponent(userToDelete.id)}`);
     closeDeleteUserModal();
-    showSuccess("Compte supprimé.");
+    showSuccess("Compte marqué comme supprimé.");
     await loadAdminData();
   }catch(err){
     console.error(err);
@@ -1425,7 +1479,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteProjectTitle"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;">
       <button class="mini-btn light" onclick="closeDeleteProjectModal()">Annuler</button>
-      <button class="mini-btn danger" onclick="confirmDeleteProject()">Supprimer définitivement</button>
+      <button class="mini-btn danger" onclick="confirmDeleteProject()">Supprimer le compte</button>
     </div>
   </div>
 </div>
@@ -1433,12 +1487,12 @@ document.addEventListener("DOMContentLoaded",()=>{
   <div style="background:#fff;border-radius:24px;padding:24px;max-width:520px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
     <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer ce compte ?</h3>
     <p style="margin:0 0 18px;color:#60758a;line-height:1.45;">
-      Cette action est définitive. Si ce compte est un partner, son dossier partner sera aussi supprimé.
+      Le compte sera masqué des listes actives et ne pourra plus se connecter. Ses données et projets sont conservés.
     </p>
     <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteUserEmail"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;">
       <button class="mini-btn light" onclick="closeDeleteUserModal()">Annuler</button>
-      <button class="mini-btn danger" onclick="confirmDeleteUser()">Supprimer définitivement</button>
+      <button class="mini-btn danger" onclick="confirmDeleteUser()">Supprimer le compte</button>
     </div>
   </div>
 </div>
