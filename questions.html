@@ -642,6 +642,7 @@ if (state && state.state && typeof state.state === 'object') {
   };
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
+  persistQuestionsStateForNextStep();
 }
 
 if (isBlankMode) {
@@ -866,6 +867,30 @@ function normalizeChaptersFromState(){
   });
 }
 
+function persistQuestionsStateForNextStep(){
+  // Stockage volontairement limité au brouillon courant : pas de cache de liste, pas d'image, pas de fichier lourd.
+  // parametrage.html dépend encore de l'état courant côté navigateur ; le backend reste la source de vérité pour la reprise par projectId.
+  try{
+    const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+    if(projectId){
+      localStorage.setItem('its_current_project_id', String(projectId));
+      localStorage.setItem('its_current_ad_id', String(projectId));
+    }
+    const lightState = { ...state };
+    delete lightState.organizationLogoDataUrl;
+    delete lightState.organization_logo_data_url;
+    delete lightState.passationLogoDataUrl;
+    delete lightState.passation_logo_data_url;
+    const serialized = JSON.stringify(lightState);
+    localStorage.setItem('its_state', serialized);
+    localStorage.setItem('intotheshift_customizer_state_v1', serialized);
+    sessionStorage.setItem('its_state', serialized);
+    sessionStorage.setItem('intotheshift_customizer_state_v1', serialized);
+  }catch(e){
+    console.warn('État courant non persisté pour le paramétrage', e);
+  }
+}
+
 function syncToState(){
   state.chapters = chapters.map(c => ({
     title: c.name,
@@ -898,6 +923,7 @@ function syncToState(){
 
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
+  persistQuestionsStateForNextStep();
 }
 
 function saveState(){ syncToState(); }
@@ -2134,7 +2160,13 @@ function trySave() {
     return;
   }
 
-  window.location.href = 'parametrage.html';
+  state.current_step = 'parametrage';
+  state.step = 'parametrage';
+  syncToState();
+  persistQuestionsStateForNextStep();
+
+  const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+  window.location.href = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
 }
 
 function closeSaveModal() {
