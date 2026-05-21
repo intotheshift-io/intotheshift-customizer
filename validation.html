@@ -1195,7 +1195,11 @@ async function transmit(){
     state.transmission.status = 'sent';
     if (typeof itsSave === 'function') itsSave(state);
     document.getElementById('success-alert').classList.remove('hidden');
-    showTransmitModal('success', 'Configuration transmise', 'Votre configuration a bien été transmise. Le client reçoit son récapitulatif, et Into The Shift reçoit le même récapitulatif avec le fichier Excel de configuration en pièce jointe.');
+    showTransmitModal(
+      'success',
+      'Configuration transmise',
+      'Votre autodiagnostic a bien été transmis à Into The Shift.\n\nNotre équipe va maintenant vérifier les derniers éléments, préparer la mise en ligne, et vous envoyer votre lien de passation définitif ainsi que le lien de votre Dashboard Statistiques.\n\nVous recevrez également un récapitulatif de votre configuration par email.'
+    );
     document.getElementById('btn-transmit').disabled = true;
     document.getElementById('btn-transmit').textContent = 'Demande transmise ✓';
   } else {
