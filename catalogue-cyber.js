@@ -1,16 +1,11 @@
 /**
  * catalogue-cyber.js — INTO THE SHIFT
  * Domaine : Cybersécurité
- *
  * Dépend de : catalogue-core.js
  */
 
 (function () {
   var T = window._ITS_CORE.templates;
-
-  // ─────────────────────────────────────────────────────────────────────────
-  //  QUESTIONS RÉDIGÉES — CYBERSÉCURITÉ
-  // ─────────────────────────────────────────────────────────────────────────
 
   Object.assign(window.CUSTOM_QUESTIONS, {
 
@@ -681,11 +676,674 @@
 
   },
 
-  }); // fin Object.assign CUSTOM_QUESTIONS
+  "mots-de-passe-acces": {
+    0: [
+      {
+        type: "choix",
+        text: "Votre organisation impose un renouvellement de mot de passe tous les 90 jours. À chaque renouvellement, vous ajoutez un chiffre à la fin de votre mot de passe habituel — 'Soleil2024', 'Soleil2025'.",
+        tags: ["mot de passe", "robustesse"],
+        answers: [
+          { text: "C'est conforme à la politique — je change bien mon mot de passe tous les 90 jours.", score: 0 },
+          { text: "Je crée un mot de passe entièrement nouveau à chaque renouvellement.", score: 2 },
+          { text: "Je varie davantage — je change aussi les lettres et les symboles.", score: 1 },
+          { text: "Je génère un mot de passe aléatoire avec le gestionnaire de mots de passe de l'entreprise.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre entreprise met à disposition un gestionnaire de mots de passe. Vous avez beaucoup de comptes à gérer et vous avez du mal à retenir tous vos mots de passe.",
+        tags: ["mot de passe", "gestionnaire"],
+        answers: [
+          { text: "Je note mes mots de passe dans un fichier Excel protégé par un mot de passe.", score: 0 },
+          { text: "J'utilise le gestionnaire de mots de passe fourni par l'entreprise.", score: 2 },
+          { text: "Je crée un système de codes dont je me souviens facilement.", score: 0.5 },
+          { text: "J'utilise le même mot de passe fort partout pour n'en retenir qu'un seul.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous utilisez des mots de passe différents pour chacun de vos comptes professionnels.",
+        tags: ["mot de passe", "unicité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre mot de passe professionnel principal contient le prénom de votre enfant et son année de naissance. Vous avez posté des photos avec votre enfant sur LinkedIn.",
+        tags: ["mot de passe", "contexte personnel"],
+        answers: [
+          { text: "C'est un bon moyen de s'en souvenir facilement et c'est personnel.", score: 0 },
+          { text: "Je le change — des informations personnelles accessibles publiquement fragilisent un mot de passe.", score: 2 },
+          { text: "Je le conserve mais j'ajoute des caractères spéciaux pour le renforcer.", score: 0.5 },
+          { text: "Je le remplace par une phrase de passe sans lien avec ma vie personnelle.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre responsable part en urgence et vous demande son mot de passe pour accéder à un dossier important pendant son absence. C'est exceptionnel.",
+        tags: ["mot de passe", "partage"],
+        answers: [
+          { text: "Je prends note du mot de passe — c'est mon responsable et la situation est urgente.", score: 0 },
+          { text: "Je lui demande de déléguer l'accès via les droits officiels plutôt que de partager son mot de passe.", score: 2 },
+          { text: "J'accepte pour cette fois et je lui demande de le changer dès son retour.", score: 0 },
+          { text: "Je contacte l'équipe informatique pour trouver une solution d'accès temporaire.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne partagez jamais vos mots de passe professionnels, même à votre responsable direct, même en situation d'urgence.",
+        tags: ["mot de passe", "partage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez noté votre mot de passe sur un post-it collé sous votre clavier. Votre bureau est en open space.",
+        tags: ["mot de passe", "post-it"],
+        answers: [
+          { text: "C'est pratique et je fais confiance à mes collègues.", score: 0 },
+          { text: "Je le retire immédiatement et j'utilise un gestionnaire de mots de passe.", score: 2 },
+          { text: "Je le déplace dans un endroit moins visible.", score: 0 },
+          { text: "Je le remplace par un indice que seul moi comprends.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un mail vous demandant de réinitialiser votre mot de passe car 'une activité suspecte a été détectée sur votre compte'. Le lien dans le mail pointe vers un site qui ressemble à votre intranet.",
+        tags: ["mot de passe", "réinitialisation"],
+        answers: [
+          { text: "Je clique sur le lien et je change mon mot de passe — mieux vaut sécuriser rapidement.", score: 0 },
+          { text: "Je me connecte directement sur l'intranet sans passer par le lien pour vérifier.", score: 2 },
+          { text: "Je contacte l'équipe informatique pour confirmer que la demande est réelle.", score: 2 },
+          { text: "Je change mon mot de passe depuis les paramètres de mon compte sans cliquer sur le lien.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vos mots de passe professionnels contiennent au moins 12 caractères avec un mélange de lettres, chiffres et caractères spéciaux.",
+        tags: ["mot de passe", "complexité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre mot de passe professionnel est le même que celui de votre boîte mail personnelle Gmail. Vous le trouvez très fort.",
+        tags: ["mot de passe", "réutilisation"],
+        answers: [
+          { text: "C'est un bon mot de passe fort — il couvre bien les deux comptes.", score: 0 },
+          { text: "Je change l'un des deux immédiatement — réutiliser un mot de passe expose les deux comptes si l'un est compromis.", score: 2 },
+          { text: "Je le garde mais j'ajoute un caractère différent pour chaque compte.", score: 0.5 },
+          { text: "Je le change uniquement si Gmail m'annonce une fuite de données.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos mots de passe sont faciles à retenir — ce qui les rend aussi faciles à deviner", desc: "Varier d'un chiffre à la fin, utiliser un prénom de proche, noter le mot de passe sous le clavier, utiliser le même mot de passe sur plusieurs comptes : ces pratiques sont extrêmement courantes et constituent la première porte d'entrée des attaquants. Un mot de passe fort et unique par compte, géré via un gestionnaire, supprime la quasi-totalité de ces risques sans demander plus d'effort de mémorisation." },
+          moyen: { label: "Pratiques en développement", titre: "Vos mots de passe sont globalement solides mais quelques pratiques héritées persistent", desc: "Vos mots de passe sont longs et complexes sur les comptes importants. Mais le post-it discret, le même mot de passe pour le professionnel et le personnel, le changement de mot de passe qui incrémente d'un chiffre : ces habitudes persistent. L'enjeu est de systématiser l'utilisation d'un gestionnaire de mots de passe et de traiter chaque compte comme un compte unique." },
+          haut: { label: "Réflexes installés", titre: "Vos mots de passe sont forts, uniques et gérés proprement — sans exception", desc: "Vous utilisez un gestionnaire de mots de passe, vous créez un mot de passe entièrement nouveau à chaque renouvellement, vous n'utilisez jamais le même mot de passe sur deux comptes, et vous ne stockez jamais vos mots de passe en dehors du gestionnaire. Cette discipline — qui ne demande pas plus d'effort une fois le gestionnaire en place — supprime la majorité des risques liés aux mots de passe." },
+        },
+      }
+    ],
 
-  // ─────────────────────────────────────────────────────────────────────────
-  //  ENREGISTREMENT DU DOMAINE
-  // ─────────────────────────────────────────────────────────────────────────
+    1: [
+      {
+        type: "choix",
+        text: "Votre organisation propose l'authentification à deux facteurs (2FA) pour accéder aux applications sensibles. La mise en place prend 10 minutes. Elle n'est pas encore obligatoire.",
+        tags: ["MFA", "activation"],
+        answers: [
+          { text: "Je l'active quand ça deviendra obligatoire — pour l'instant ça rajoute des étapes inutiles.", score: 0 },
+          { text: "Je l'active maintenant — l'attendre n'est une bonne raison de ne pas protéger ses accès.", score: 2 },
+          { text: "Je l'active uniquement sur les applications les plus sensibles.", score: 1 },
+          { text: "Je vérifie d'abord si mon mot de passe actuel est suffisamment fort avant de décider.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez un SMS avec un code d'authentification à six chiffres pour votre compte professionnel. Vous n'avez pas essayé de vous connecter à ce moment-là.",
+        tags: ["MFA", "code reçu"],
+        answers: [
+          { text: "Je l'ignore — c'est probablement un bug ou une erreur d'envoi.", score: 0 },
+          { text: "Je change immédiatement mon mot de passe et je contacte l'équipe informatique.", score: 2 },
+          { text: "Je me connecte pour vérifier si quelqu'un est en train d'accéder à mon compte.", score: 0 },
+          { text: "Je contacte l'équipe informatique en leur communiquant le code pour qu'ils enquêtent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous activez l'authentification à deux facteurs sur tous vos comptes professionnels qui le proposent, pas seulement ceux où c'est obligatoire.",
+        tags: ["MFA", "utilisation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Quelqu'un vous appelle en se présentant comme du support informatique. Il dit qu'il a besoin du code 2FA que vous venez de recevoir pour 'débloquer un accès technique'.",
+        tags: ["MFA", "pression"],
+        answers: [
+          { text: "Je lui donne — il est du support IT et a l'air de connaître le système.", score: 0 },
+          { text: "Je raccroche et je contacte le support IT par le numéro officiel.", score: 2 },
+          { text: "Je lui demande son nom et son matricule avant de décider.", score: 0.5 },
+          { text: "Je lui explique que je ne peux pas donner ce code et je signale l'appel.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Le processus 2FA de votre entreprise vous semble contraignant. Un collègue, Mathieu, vous explique une façon de le désactiver sur son poste pour gagner du temps.",
+        tags: ["MFA", "contournement"],
+        answers: [
+          { text: "Je fais pareil — si Mathieu l'a fait et que ça fonctionne, c'est que c'est toléré.", score: 0 },
+          { text: "Je lui explique que contourner le 2FA est une vulnérabilité pour toute l'organisation.", score: 2 },
+          { text: "Je ne le fais pas mais je ne dis rien à Mathieu — c'est sa responsabilité.", score: 0.5 },
+          { text: "Je signale à l'équipe informatique que le contournement est possible.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous ne communiquez jamais vos codes d'authentification à deux facteurs à qui que ce soit, même au support informatique.",
+        tags: ["MFA", "résistance"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre application d'authentification est sur votre téléphone personnel. Vous perdez votre téléphone.",
+        tags: ["MFA", "application"],
+        answers: [
+          { text: "J'attends de retrouver mon téléphone avant de faire quoi que ce soit.", score: 0 },
+          { text: "Je contacte immédiatement l'équipe informatique pour désactiver l'accès depuis cet appareil.", score: 2 },
+          { text: "Je change mes mots de passe depuis un autre appareil et j'attends.", score: 1 },
+          { text: "Je bloque mon téléphone à distance et je signale la perte à l'informatique.", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous recevez plusieurs notifications d'approbation 2FA en rafale alors que vous n'essayez pas de vous connecter. La dernière est accompagnée d'un message 'Approuvez pour résoudre l'accès'.",
+        tags: ["MFA", "notification"],
+        answers: [
+          { text: "J'approuve pour débloquer la situation — quelqu'un semble avoir un problème d'accès.", score: 0 },
+          { text: "Je n'approuve pas, je contacte immédiatement l'équipe informatique et je change mon mot de passe.", score: 2 },
+          { text: "J'approuve et je vérifie ensuite si quelqu'un d'autre utilise mon compte.", score: 0 },
+          { text: "J'ignore les notifications en espérant que l'attaquant abandonne.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Une notification 2FA que vous n'avez pas initiée vous conduit immédiatement à contacter l'équipe informatique.",
+        tags: ["MFA", "vigilance notifications"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous configurez un nouveau compte professionnel. Le système vous demande de définir des questions de sécurité de récupération. Vous choisissez 'Quel est le nom de votre premier animal de compagnie ?'.",
+        tags: ["MFA", "récupération"],
+        answers: [
+          { text: "C'est une question dont je me souviendrai facilement — c'est l'objectif.", score: 0 },
+          { text: "Je choisis des questions dont la réponse n'est pas devinable depuis mes réseaux sociaux.", score: 2 },
+          { text: "Je mets une fausse réponse que je note dans mon gestionnaire de mots de passe.", score: 2 },
+          { text: "Je choisis la question la plus obscure proposée dans la liste.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "L'authentification à deux facteurs est encore vue comme une contrainte plutôt qu'une protection", desc: "Activer le 2FA uniquement quand c'est obligatoire, donner son code 2FA au support qui appelle, approuver une notification qu'on n'a pas initiée pour 'débloquer' quelque chose : l'authentification à deux facteurs n'a de valeur que si elle est activée partout et jamais partagée. Un code 2FA demandé par téléphone ou via une notification imprévue est presque toujours une attaque." },
+          moyen: { label: "Pratiques en développement", titre: "Vous utilisez le 2FA sur les comptes imposés mais pas encore sur tous ceux qui le proposent", desc: "Vous avez activé le 2FA sur les applications sensibles que l'organisation impose. Mais les autres applications qui le proposent, la vigilance sur les codes 2FA non sollicités, la réaction rapide sur une notification non initiée : ces comportements ne sont pas encore automatiques. L'enjeu est d'étendre le 2FA à tous les comptes qui le permettent et de traiter toute demande de code non initiée comme une alerte." },
+          haut: { label: "Réflexes installés", titre: "Le 2FA est activé partout et vous ne communiquez jamais vos codes, même sous pression", desc: "Vous activez le 2FA sur tous les comptes qui le proposent, vous n'approuvez jamais une notification que vous n'avez pas initiée, et vous ne communiquez jamais un code 2FA à qui que ce soit. Quand quelqu'un appelle pour demander votre code, vous raccrochez et vous signalez. Cette posture absolue sur le 2FA est ce qui rend vos comptes résistants même si votre mot de passe est compromis." },
+        },
+      }
+    ],
+
+    2: [
+      {
+        type: "choix",
+        text: "Vous partez déjeuner et laissez votre session ouverte sur votre poste. Vous revenez dans 45 minutes. Votre bureau est dans un espace commun.",
+        tags: ["accès", "session ouverte"],
+        answers: [
+          { text: "Je laisse — je reviens dans moins d'une heure et je connais mes collègues.", score: 0 },
+          { text: "Je verrouille mon poste avant de partir.", score: 2 },
+          { text: "Je minimise toutes les fenêtres pour qu'on ne voie pas mon écran.", score: 0 },
+          { text: "Je mets mon écran en veille.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous verrouillez votre poste systématiquement dès que vous le quittez, même pour quelques minutes.",
+        tags: ["accès", "verrouillage"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Un collègue quitte l'entreprise. Avant son départ, il vous demande ses identifiants de connexion pour récupérer quelques fichiers personnels stockés sur les serveurs.",
+        tags: ["accès", "départ collaborateur"],
+        answers: [
+          { text: "Je lui donne — il part et a le droit de récupérer ses affaires personnelles.", score: 0 },
+          { text: "Je lui explique de passer par les RH et l'informatique pour la procédure de départ officielle.", score: 2 },
+          { text: "Je l'aide à récupérer ses fichiers en restant présent·e pendant la session.", score: 0.5 },
+          { text: "Je refuse et je le signale à notre responsable.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez accès à des dossiers et systèmes que votre poste ne nécessite pas vraiment. Cet accès étendu est pratique pour certaines tâches ponctuelles.",
+        tags: ["accès", "droits excessifs"],
+        answers: [
+          { text: "Je garde les accès — ils me sont utiles de temps en temps et ça ne change rien.", score: 0 },
+          { text: "Je le signale à l'équipe informatique pour que mes droits soient alignés sur mon périmètre réel.", score: 2 },
+          { text: "J'utilise ces accès avec parcimonie en restant dans ce qui semble légitime.", score: 0.5 },
+          { text: "Je pose la question à mon responsable pour savoir si ces accès sont voulus.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre équipe utilise un compte partagé pour accéder à un outil externe. Tout le monde connaît le même identifiant et mot de passe. C'est pratique.",
+        tags: ["accès", "compte partagé"],
+        answers: [
+          { text: "C'est la façon dont ça a toujours fonctionné — le compte partagé est géré collectivement.", score: 0 },
+          { text: "Je remonte la situation à l'équipe informatique pour qu'un accès individuel soit mis en place.", score: 2 },
+          { text: "Je change régulièrement le mot de passe partagé pour limiter le risque.", score: 0.5 },
+          { text: "J'accepte pour les outils peu sensibles mais je refuse pour les outils critiques.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous n'utilisez que les accès dont vous avez réellement besoin pour votre travail et vous signalez les droits excessifs dont vous disposez.",
+        tags: ["accès", "principe moindre privilège"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous travaillez depuis un café et vous devez accéder aux systèmes de votre entreprise. Le wifi du café est disponible. Vous n'avez pas activé votre VPN.",
+        tags: ["accès", "connexion externe"],
+        answers: [
+          { text: "Je me connecte directement — le wifi du café est protégé par un mot de passe.", score: 0 },
+          { text: "J'active mon VPN avant de me connecter aux systèmes de l'entreprise.", score: 2 },
+          { text: "Je me connecte uniquement pour les tâches non sensibles sans activer le VPN.", score: 0 },
+          { text: "Je partage la connexion 4G de mon téléphone pour éviter le wifi public.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous avez encore accès à un système d'une ancienne mission qui s'est terminée il y a trois mois. L'accès n'a pas été révoqué.",
+        tags: ["accès", "compte désactivé"],
+        answers: [
+          { text: "Je garde l'accès — ça peut être utile si on me consulte sur cette mission.", score: 0 },
+          { text: "Je le signale à l'équipe informatique pour que l'accès soit révoqué.", score: 2 },
+          { text: "Je n'utilise plus cet accès mais je ne fais pas la démarche de le signaler.", score: 0.5 },
+          { text: "J'en parle à mon responsable pour qu'il décide si je dois le conserver.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Quand une mission se termine ou que votre périmètre change, vous signalez les accès qui ne sont plus nécessaires pour qu'ils soient révoqués.",
+        tags: ["accès", "révocation"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "En fin de journée de télétravail, vous laissez votre ordinateur professionnel allumé et connecté au VPN. Vous reprenez le lendemain matin.",
+        tags: ["accès", "télétravail"],
+        answers: [
+          { text: "C'est pratique — je reprends directement là où j'en étais.", score: 0 },
+          { text: "Je me déconnecte du VPN et je verrouille ou éteins mon poste en fin de journée.", score: 2 },
+          { text: "Je verrouille mon poste mais je laisse le VPN connecté pour les mises à jour automatiques.", score: 0.5 },
+          { text: "Je laisse uniquement si je n'ai pas de données sensibles ouvertes.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "Vos sessions et accès restent ouverts au-delà de ce qui est nécessaire", desc: "Laisser la session ouverte pour le déjeuner, garder des accès d'une ancienne mission, utiliser un compte partagé, ne pas se déconnecter du VPN en fin de télétravail : chaque accès non révoqué et chaque session non verrouillée est une fenêtre ouverte. La règle est simple — on ferme ce dont on n'a pas besoin maintenant." },
+          moyen: { label: "Pratiques en développement", titre: "Vous verrouillez votre poste mais la gestion des accès reste encore perfectible", desc: "Vous verrouillez votre poste en partant. Mais les accès d'anciennes missions qui n'ont pas été révoqués, le compte partagé de l'équipe pour l'outil externe, la connexion au réseau d'entreprise sans VPN depuis un café : ces situations créent des expositions réelles. L'enjeu est d'appliquer le principe de moindre privilège — uniquement les accès dont on a besoin, révoqués quand on n'en a plus besoin." },
+          haut: { label: "Réflexes installés", titre: "Vos accès et sessions sont gérés selon le principe de moindre privilège, sans exception", desc: "Vous verrouillez votre poste dès que vous le quittez. Vous signalez les accès qui ne correspondent plus à votre périmètre. Vous utilisez le VPN sur les réseaux non sécurisés. Vous vous déconnectez en fin de session. Vous ne partagez jamais vos identifiants, même à votre responsable. Cette gestion rigoureuse des accès supprime les fenêtres d'opportunité pour les attaquants." },
+        },
+      }
+    ],
+
+    3: [
+      {
+        type: "choix",
+        text: "En vous connectant le matin, vous voyez dans l'historique de votre compte une connexion à 3h du matin depuis un pays étranger que vous n'avez pas visitée.",
+        tags: ["compromission", "détection"],
+        answers: [
+          { text: "Je vérifie si ça peut être une mise à jour automatique ou une connexion liée à un service cloud.", score: 0.5 },
+          { text: "Je change mon mot de passe immédiatement et je contacte l'équipe informatique.", score: 2 },
+          { text: "Je change mon mot de passe et j'attends de voir si ça se reproduit.", score: 0.5 },
+          { text: "Je contacte l'équipe informatique sans toucher à mon compte pour qu'ils enquêtent.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Sur tout signe de connexion non autorisée à l'un de vos comptes, vous changez votre mot de passe et contactez l'équipe informatique dans l'heure.",
+        tags: ["compromission", "réactivité"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous apprenez qu'un site externe sur lequel vous avez un compte a subi une fuite de données. Vous utilisez le même mot de passe sur plusieurs comptes professionnels.",
+        tags: ["compromission", "fuite"],
+        answers: [
+          { text: "Je change le mot de passe du site concerné — les autres comptes ont des adresses différentes.", score: 0 },
+          { text: "Je change le mot de passe sur tous les comptes où j'utilisais ce mot de passe.", score: 2 },
+          { text: "Je change les mots de passe des comptes professionnels les plus sensibles.", score: 1 },
+          { text: "J'attends de voir si mes comptes professionnels montrent des signes d'activité suspecte.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre collègue Sophie vous dit que son compte a probablement été compromis mais qu'elle hésite à le signaler car elle a peur des conséquences sur son évaluation.",
+        tags: ["compromission", "collègue"],
+        answers: [
+          { text: "Je lui dis de ne pas signaler si elle n'en est pas sûre — mieux vaut attendre d'avoir la certitude.", score: 0 },
+          { text: "Je lui explique que le délai de signalement aggrave le risque pour toute l'organisation et je l'encourage à agir maintenant.", score: 2 },
+          { text: "Je lui propose de signaler de façon anonyme si c'est possible.", score: 1 },
+          { text: "Je lui dis de changer son mot de passe et d'activer le 2FA avant de décider si elle signale.", score: 0.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous remarquez que des fichiers dans votre espace de travail partagé ont été modifiés mais vous n'avez pas de collègue qui aurait dû y toucher. Les modifications semblent mineures.",
+        tags: ["compromission", "accès tiers"],
+        answers: [
+          { text: "Je laisse — les modifications sont mineures et il y a peut-être une explication logique.", score: 0 },
+          { text: "Je le signale à l'équipe informatique en indiquant les fichiers concernés et l'heure des modifications.", score: 2 },
+          { text: "Je contacte les collègues qui ont accès à cet espace pour voir si l'un d'eux a fait ces modifications.", score: 1 },
+          { text: "Je surveille pendant quelques jours pour voir si d'autres modifications apparaissent.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "Vous signalez tout comportement anormal sur vos comptes ou vos fichiers, même si vous n'êtes pas certain·e d'une compromission.",
+        tags: ["compromission", "signalement"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Vous pensez que votre poste a été compromis. Vous avez besoin d'envoyer un fichier urgent à un client dans les prochaines minutes.",
+        tags: ["compromission", "propagation"],
+        answers: [
+          { text: "J'envoie le fichier rapidement puis je signale la compromission.", score: 0 },
+          { text: "Je déconnecte mon poste du réseau immédiatement et je contacte l'équipe informatique avant toute autre action.", score: 2 },
+          { text: "Je demande à un collègue d'envoyer le fichier depuis son poste pendant que je contacte l'informatique.", score: 1.5 },
+          { text: "J'utilise mon téléphone pour envoyer le fichier et je déconnecte mon poste.", score: 1 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "L'équipe informatique vous informe que votre compte a été compromis il y a deux semaines. Vous devez identifier les actions potentiellement impactées.",
+        tags: ["compromission", "historique"],
+        answers: [
+          { text: "Je ne me souviens pas de tout ce que j'ai fait — je laisse l'informatique enquêter.", score: 0.5 },
+          { text: "Je reconstitue au mieux les actions et accès de cette période et je les communique à l'équipe informatique.", score: 2 },
+          { text: "Je change tous mes mots de passe et j'attends les conclusions de l'enquête.", score: 1 },
+          { text: "Je consulte mon historique de connexion et mes envois de mails pour identifier les anomalies.", score: 1.5 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "likert",
+        text: "En cas de suspicion de compromission, vous coopérez activement avec l'équipe informatique en leur fournissant toutes les informations utiles, même inconfortables.",
+        tags: ["compromission", "coopération"],
+        answers: [
+          { text: "Jamais", score: 0 },
+          { text: "Rarement", score: 0.5 },
+          { text: "Parfois", score: 1 },
+          { text: "Souvent", score: 1.5 },
+          { text: "Toujours", score: 2 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }, 
+      {
+        type: "choix",
+        text: "Votre organisation propose une formation de 30 minutes sur la sécurité des mots de passe. Elle n'est pas obligatoire. Vous pensez déjà connaître les bases.",
+        tags: ["compromission", "prévention"],
+        answers: [
+          { text: "Je ne la fais pas — je connais les bonnes pratiques et 30 minutes de formation ne changent pas grand chose.", score: 0 },
+          { text: "Je la suis — les techniques évoluent et même 30 minutes peut m'apprendre quelque chose d'utile.", score: 2 },
+          { text: "Je la parcours rapidement pour voir si elle contient quelque chose de nouveau.", score: 0.5 },
+          { text: "Je la fais si un incident récent l'a rendue pertinente.", score: 0 },
+        ],
+        profiles: {
+          bas: { label: "Repères à consolider", titre: "La réaction à une compromission tarde encore, par incertitude ou par peur des conséquences", desc: "Attendre de voir si ça se reproduit, hésiter à signaler pour ne pas avoir d'ennuis, envoyer le fichier urgent avant de déconnecter le poste compromis : chaque minute de délai après une compromission donne à l'attaquant plus de temps pour extraire des données ou se propager. Signaler vite, même sur un doute, est toujours la bonne décision." },
+          moyen: { label: "Pratiques en développement", titre: "Vous signalez les incidents évidents mais les signaux ambigus ou inconfortables restent encore sans réaction immédiate", desc: "Vous signalez quand la compromission est évidente. Mais une connexion à 3h du matin depuis l'étranger qu'on pourrait 'expliquer', des modifications de fichiers qu'on surveille avant de signaler, une collègue qui hésite à signaler par peur de l'évaluation : le délai de réaction et l'hésitation au signalement restent insuffisants. L'enjeu est de signaler sur le doute, pas sur la certitude." },
+          haut: { label: "Réflexes installés", titre: "Vous réagissez immédiatement à tout signe de compromission et vous signalez sans attendre", desc: "Une connexion suspecte dans l'historique ? Vous changez le mot de passe et contactez l'informatique dans l'heure. Une fuite sur un site externe ? Vous changez le mot de passe partout où vous l'avez utilisé. Un fichier modifié sans raison apparente ? Vous le signalez sans attendre. Votre poste semble compromis ? Vous le déconnectez avant d'envoyer quoi que ce soit. Cette réactivité immédiate est ce qui limite la propagation des attaques." },
+        },
+      }
+    ],
+
+  },
+
+  }); // fin Object.assign
 
   window.ITS_registerTheme("cybersecurite", "Cybersécurité", "🔐", [
 
@@ -694,8 +1352,18 @@
       { domain: "cyber", chapters: [
         ["Reconnaître les tentatives de manipulation",  "Détecter les signaux d'alerte même dans les messages bien construits."],
         ["Réagir correctement face à une tentative",    "Signaler immédiatement, déconnecter, changer ses identifiants — sans attendre."],
-        ["Résister à la pression et aux prétextes",     "Maintenir la vérification indépendante même face à une autorité apparente ou une urgence."],
-        ["Adopter les bons réflexes au quotidien",      "Discrétion sur les informations indirectes, signalement du doute, participation aux exercices."]
+        ["Résister à la pression et aux prétextes",     "Maintenir la vérification indépendante même face à une autorité apparente."],
+        ["Adopter les bons réflexes au quotidien",      "Discrétion sur les informations indirectes et signalement du doute."]
+      ]}
+    ],
+
+    ["mots-de-passe-acces", "Mots de passe et authentification", "Tous publics",
+      "Créer des mots de passe solides, activer le 2FA et gérer ses accès selon le principe de moindre privilège.",
+      { domain: "cyber", chapters: [
+        ["Créer et gérer des mots de passe solides",      "Unicité, complexité, gestionnaire — sans exception ni contournement."],
+        ["Utiliser l'authentification à deux facteurs",   "Activer partout, ne jamais partager ses codes, réagir aux notifications non initiées."],
+        ["Gérer les accès et les sessions",                "Verrouiller, révoquer, appliquer le principe de moindre privilège."],
+        ["Réagir à une compromission d'accès",            "Signaler vite, déconnecter, coopérer — sans attendre la certitude."]
       ]}
     ],
 
