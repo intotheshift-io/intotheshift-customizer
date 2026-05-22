@@ -134,10 +134,15 @@ function itsProjectBelongsToCurrentFrontendUser(project) {
 }
 
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
+const ITS_IS_STAGING =
+  window.location.hostname === "localhost" ||
+  window.location.pathname.startsWith("/staging/") ||
+  window.location.pathname === "/staging";
+
 const ITS_API_BASE =
   window.ITS_API_BASE ||
   localStorage.getItem("its_api_base") ||
-  (window.location.hostname === "localhost"
+  (ITS_IS_STAGING
     ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
     : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
 
