@@ -533,15 +533,17 @@
     }
 
     function resumeLabel(project) {
-      const status = normalizeStatus(project);
-      if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+  const status = normalizeStatus(project);
 
-      const step = getProjectStep(project);
-      if (step.includes("validation")) return "Transmettre";
-      if (step.includes("campagne")) return "Reprendre le paramétrage";
-      if (step.includes("param")) return "Reprendre le paramétrage";
-      return "Reprendre la création";
-    }
+  if (status === "submitted") return "En attente de publication";
+  if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+
+  const step = getProjectStep(project);
+  if (step.includes("validation")) return "Transmettre";
+  if (step.includes("campagne")) return "Reprendre le paramétrage";
+  if (step.includes("param")) return "Reprendre le paramétrage";
+  return "Reprendre la création";
+}
 
     function resumeUrl(project) {
       const status = normalizeStatus(project);
