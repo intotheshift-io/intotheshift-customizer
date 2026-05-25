@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
+// HubSpot tracking code — required for HubSpot chatflow on Shift Studio.
+// Loaded immediately, outside DOMContentLoaded, so HubSpot can initialize the chat widget reliably.
+(function loadHubSpotTracking() {
+  if (document.getElementById("hs-script-loader")) return;
 
-  // HubSpot tracking code — required for the HubSpot chatflow on Shift Studio.
-  // Equivalent to:
-  // <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139575435.js"></script>
-  if (!document.getElementById("hs-script-loader")) {
-    const hsScript = document.createElement("script");
-    hsScript.type = "text/javascript";
-    hsScript.id = "hs-script-loader";
-    hsScript.async = true;
-    hsScript.defer = true;
-    hsScript.src = "//js-eu1.hs-scripts.com/139575435.js";
-    document.head.appendChild(hsScript);
-  }
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.id = "hs-script-loader";
+  script.async = true;
+  script.defer = true;
+  script.src = "https://js-eu1.hs-scripts.com/139575435.js";
+
+  (document.head || document.documentElement).appendChild(script);
+})();
+
+document.addEventListener("DOMContentLoaded", function () {
 
   const header = document.getElementById("header");
   if (!header) return;
