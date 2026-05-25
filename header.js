@@ -1,18 +1,3 @@
-// HubSpot tracking code — required for HubSpot chatflow on Shift Studio.
-// Loaded immediately, outside DOMContentLoaded, so HubSpot can initialize the chat widget reliably.
-(function loadHubSpotTracking() {
-  if (document.getElementById("hs-script-loader")) return;
-
-  const script = document.createElement("script");
-  script.type = "text/javascript";
-  script.id = "hs-script-loader";
-  script.async = true;
-  script.defer = true;
-  script.src = "https://js-eu1.hs-scripts.com/139575435.js";
-
-  (document.head || document.documentElement).appendChild(script);
-})();
-
 document.addEventListener("DOMContentLoaded", function () {
 
   const header = document.getElementById("header");

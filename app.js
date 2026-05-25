@@ -1,3 +1,15 @@
+// HubSpot tracking code - required for the chatflow on Shift Studio.
+(function itsLoadHubSpotTracking(){
+  if (document.getElementById("hs-script-loader")) return;
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.id = "hs-script-loader";
+  script.async = true;
+  script.defer = true;
+  script.src = "//js-eu1.hs-scripts.com/139575435.js";
+  (document.head || document.documentElement).appendChild(script);
+})();
+
 function itsDecodeJwtPayloadForStorage() {
   const token =
     localStorage.getItem("its_token") ||
