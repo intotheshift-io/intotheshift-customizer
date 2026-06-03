@@ -141,10 +141,198 @@ td:nth-child(9){width:125px}
 .publication-save-feedback{grid-column:1/-1;display:none;background:#eefbf3;border:1px solid #bee8cd;color:#176239;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800}
 .publication-save-feedback.on{display:block}
 
+
+/* Vue admin Autodiags épurée : supervision rapide + accès cockpit client */
+.project-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px;background:#f7fafd;border:1px solid #e2ebf2;border-radius:18px;padding:12px}
+.project-toolbar .admin-input,.project-toolbar .admin-select{min-width:180px}
+.project-card.compact{padding:16px 18px;border-radius:20px}
+.project-card.compact .project-card-head{align-items:flex-start;margin-bottom:10px}
+.project-title-block{min-width:0;flex:1}
+.project-title-block h3{font-size:17px;margin-bottom:5px;word-break:break-word}
+.project-badge-row{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start}
+.project-quick-grid{display:grid;grid-template-columns:1.25fr .9fr .9fr .9fr;gap:10px;margin:10px 0}
+.project-quick-item{background:#f7fafd;border:1px solid #e2ebf2;border-radius:14px;padding:10px;min-width:0}
+.project-quick-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;font-weight:900;margin-bottom:4px}
+.project-quick-value{font-size:13px;color:#18375d;font-weight:900;word-break:break-word;line-height:1.25}
+.project-quick-value.warn{color:#9a5b00}.project-quick-value.danger{color:#be123c}.project-quick-value.good{color:#16774a}
+.project-admin-row{display:grid;grid-template-columns:140px 150px 150px minmax(180px,1fr) minmax(180px,1fr);gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e8eef4;border-radius:16px;padding:12px;margin-top:10px}
+.project-admin-row .publication-field label{font-size:10px}
+.project-admin-row .publication-field select,.project-admin-row .publication-field input{height:40px;border-radius:11px;padding:8px 10px;font-size:13px}
+.project-card-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:10px}
+.project-card-actions .mini-btn{height:38px;border-radius:999px;padding:0 13px}
+.project-alert-note{font-size:12px;color:#60758a;background:#eef6fb;border:1px solid #d7e8f1;border-radius:12px;padding:8px 10px;margin-top:10px;line-height:1.35}
+@media(max-width:1100px){.project-quick-grid{grid-template-columns:1fr 1fr}.project-admin-row{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.project-quick-grid,.project-admin-row{grid-template-columns:1fr}.project-card-actions{justify-content:flex-start}.project-toolbar .admin-input,.project-toolbar .admin-select{width:100%;min-width:0}}
+
 .org-quota-panel{display:grid;grid-template-columns:220px 1fr 1fr auto;gap:10px;align-items:end;background:#fbfdfe;border:1px solid #e2ebf2;border-radius:16px;padding:12px;margin-top:12px}
 .quota-hidden{display:none!important}
 .org-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
+
+/* Design premium onglet Cockpit clients — carte uniquement, logique inchangée */
+.org-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid #dfe8ef;
+  border-radius:28px;
+  background:#fff;
+  padding:0;
+  box-shadow:0 16px 38px rgba(13,76,114,.08);
+}
+.org-card:before{display:none}
+.org-card-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  padding:22px 22px 16px;
+  margin:0;
+  background:linear-gradient(135deg,#ffffff 0%,#f7fbff 100%);
+  border-bottom:1px solid #edf2f6;
+}
+.org-title-row{display:flex;gap:14px;align-items:flex-start;min-width:0}
+.org-avatar{
+  width:50px;height:50px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 auto;
+  background:linear-gradient(135deg,#0d4c72,#1f7b98);
+  color:#fff;font-size:20px;font-weight:900;
+  box-shadow:0 12px 24px rgba(13,76,114,.20);
+}
+.org-title-text{min-width:0}
+.org-title-text h3{font-size:22px;margin:0 0 5px;color:#0d4c72;line-height:1.15}
+.org-card .card-meta{font-size:13px;color:#718497;font-weight:800;line-height:1.35;margin:0}
+.org-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.org-badges .badge{background:#eef6fb;color:#0d4c72;border:1px solid #d7e8f1}
+.org-card-body{padding:18px 22px 20px;display:grid;gap:16px}
+.org-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+.org-kpi{
+  position:relative;
+  min-height:104px;
+  background:#f7fafd;
+  border:1px solid #e2ebf2;
+  border-radius:20px;
+  padding:14px 14px 13px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:8px;
+}
+.org-kpi strong{display:block;color:#0d4c72;font-size:24px;line-height:1.05;margin:0;letter-spacing:-.02em}
+.org-kpi span{display:block;color:#60758a;font-size:12px;line-height:1.25;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.org-kpi small{display:block;color:#718497;font-size:12px;line-height:1.25;font-weight:800;text-transform:none;letter-spacing:0}
+.org-kpi.pack{background:#eef6fb;border-color:#d7e8f1}
+.org-kpi.remaining{background:#eefbf3;border-color:#c8ebd4}
+.org-kpi.used{background:#fff7ed;border-color:#fed7aa}
+.org-kpi.users{background:#f4f0ff;border-color:#ded5ff}
+.org-progress-mini{height:8px;border-radius:999px;background:#e8eef4;overflow:hidden;margin-top:2px}
+.org-progress-mini-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,#0d4c72,#1f7b98)}
+.org-progress-mini-bar.warning{background:linear-gradient(90deg,#f59e0b,#f97316)}
+.org-progress-mini-bar.critical{background:linear-gradient(90deg,#e11d48,#be123c)}
+.org-content-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:14px;align-items:start}
+.org-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0}
+.org-detail-box{
+  background:#fbfdfe;
+  border:1px solid #e2ebf2;
+  border-radius:20px;
+  padding:15px;
+  min-width:0;
+}
+.org-detail-title{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#74899a;font-weight:900;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.org-detail-main{font-size:15px;color:#18375d;font-weight:900;word-break:break-word;line-height:1.25}
+.org-detail-sub{font-size:13px;color:#60758a;line-height:1.35;margin-top:5px;word-break:break-word;font-weight:700}
+.org-users-panel{background:#fbfdfe;border:1px solid #e2ebf2;border-radius:20px;padding:15px;min-width:0}
+.org-user-list{display:grid;gap:8px;margin-top:0}
+.org-user-row{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border:1px solid #edf2f6;border-radius:15px;padding:10px 11px}
+.org-user-row strong{display:block;color:#18375d;font-size:13px;line-height:1.25}
+.org-user-row small{display:block;color:#718497;font-size:12px;margin-top:2px;word-break:break-word;font-weight:700}
+.org-user-role{display:inline-flex;white-space:nowrap;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900}
+.org-empty-note{background:#fff;border:1px dashed #cbd9e7;border-radius:15px;padding:14px;color:#718497;font-size:13px;text-align:center;font-weight:800}
+.org-card .org-quota-panel{
+  background:#f7fafd;
+  border:1px solid #dfe8ef;
+  border-radius:20px;
+  padding:15px;
+  margin:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:11px;
+  align-items:end;
+}
+.org-quota-title{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:2px}
+.org-quota-title strong{font-size:14px;color:#0d4c72}
+.org-quota-title span{font-size:12px;color:#718497;font-weight:800}
+.org-card .quota-field label{font-size:10px;color:#74899a}
+.org-card .quota-field input,.org-card .quota-field select{height:44px;border-radius:14px;background:#fff}
+.org-card .quota-rest{grid-column:1/-1;background:#eef6fb;border:1px solid #d7e8f1;border-radius:14px;padding:10px 12px;color:#0d4c72;line-height:1.35}
+.org-card .org-quota-panel .mini-btn{grid-column:1/-1;height:42px;border-radius:14px;background:#0d4c72;color:#fff}
+.org-card .org-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;padding:0 22px 22px;margin:0}
+.org-card .org-actions .mini-btn{border-radius:14px;padding:10px 14px}
+.org-card .org-actions .mini-btn.light{background:#0d4c72;color:#fff}
+@media(max-width:1100px){.org-content-grid{grid-template-columns:1fr}.org-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.org-card-head{flex-direction:column}.org-badges{justify-content:flex-start}}
+@media(max-width:620px){.org-card-head,.org-card-body{padding-left:16px;padding-right:16px}.org-card .org-actions{padding-left:16px;padding-right:16px}.org-kpi-grid,.org-detail-grid,.org-card .org-quota-panel{grid-template-columns:1fr}.org-user-row{align-items:flex-start;flex-direction:column}.org-user-role{white-space:normal}.org-card .org-actions .mini-btn{width:100%;justify-content:center}}
+
+
+
+/* Filtres SaaS conservés + tags santé pour l’onglet Cockpit clients */
+.org-section-tools{align-items:center}
+.org-section-tools .admin-select{min-width:170px}
+.org-cockpit-analytics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:12px 0 14px}
+.org-analytic-card{border:1px solid #e2ebf2;border-radius:20px;padding:14px;background:#fbfdfe;display:flex;gap:11px;align-items:flex-start;min-height:92px;box-shadow:0 8px 20px rgba(13,76,114,.04)}
+.org-analytic-card strong{display:block;color:#0d4c72;font-size:22px;line-height:1.1;margin-bottom:3px}
+.org-analytic-card span{display:block;color:#60758a;font-size:12px;line-height:1.3;font-weight:800}
+.org-analytic-ico{width:40px;height:40px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto;background:#eef6fb}
+.org-analytic-card.green{background:#eefbf3;border-color:#c8ebd4}.org-analytic-card.green .org-analytic-ico{background:#d9f4e3}
+.org-analytic-card.orange{background:#fff8ec;border-color:#ffd9a3}.org-analytic-card.orange .org-analytic-ico{background:#ffe9c7}
+.org-analytic-card.blue{background:#eef6ff;border-color:#cfe3ff}.org-analytic-card.blue .org-analytic-ico{background:#dcecff}
+.org-analytic-card.purple{background:#f4f0ff;border-color:#ded5ff}.org-analytic-card.purple .org-analytic-ico{background:#e7ddff}
+.org-filter-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.org-filter-chip{border:1px solid #d8e2ec;background:#fff;color:#0d4c72;border-radius:999px;padding:9px 12px;font-family:'Asap',sans-serif;font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .15s ease}
+.org-filter-chip:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(13,76,114,.08)}
+.org-filter-chip.active{background:#0d4c72;color:#fff;border-color:#0d4c72}
+.org-filter-chip-count{display:inline-flex;align-items:center;justify-content:center;min-width:21px;height:21px;padding:0 7px;border-radius:999px;background:#eef6fb;color:#0d4c72;font-size:11px;font-weight:900}
+.org-filter-chip.active .org-filter-chip-count{background:rgba(255,255,255,.22);color:#fff}
+.org-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.org-tag{display:inline-flex;align-items:center;gap:5px;background:#f6f9fb;border:1px solid #e2ebf2;color:#244b63;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900;line-height:1}
+.org-tag.theme{background:#f4f0ff;border-color:#ded5ff;color:#5b3bbd}.org-tag.sector{background:#eef6fb;border-color:#d7e8f1;color:#0d4c72}
+.org-theme-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.org-tag.more{background:#fff;border-color:#d8e2ec;color:#60758a}
+.org-tag strong{font-weight:900;color:inherit}
+.org-health-row{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 0}
+.org-health-badge{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;border:1px solid;line-height:1}
+.org-health-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}.org-health-badge.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}.org-health-badge.danger{background:#fff1f2;border-color:#fecdd3;color:#be123c}.org-health-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
+
+.org-pack-upgrade-panel{background:#fff8ec;border:1px solid #ffd9a3;border-radius:20px;padding:15px;margin:0;color:#8a5a00}
+.org-pack-upgrade-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;font-size:13px;font-weight:900;color:#17375d;margin-bottom:10px}
+.org-pack-upgrade-title span{font-size:12px;color:#9a5b00;font-weight:800}
+.org-pack-upgrade-list{display:grid;gap:8px}
+.org-pack-upgrade-item{background:#fff;border:1px solid #fed7aa;border-radius:15px;padding:10px 11px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.org-pack-upgrade-item strong{display:block;color:#17375d;font-size:13px;line-height:1.25}
+.org-pack-upgrade-item small{display:block;color:#8a5a00;font-size:12px;line-height:1.35;margin-top:3px}
+.org-pack-upgrade-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+.org-pack-upgrade-actions .mini-btn{font-size:12px;padding:7px 9px;border-radius:999px}
+@media(max-width:760px){.org-pack-upgrade-item{flex-direction:column}.org-pack-upgrade-actions{justify-content:flex-start}}
+.admin-modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.58);z-index:10020;display:none;align-items:center;justify-content:center;padding:20px}
+.admin-modal-backdrop.open{display:flex}
+.admin-modal{width:min(560px,100%);background:#fff;border:1px solid #d8e2ec;border-radius:26px;box-shadow:0 26px 80px rgba(0,0,0,.28);overflow:hidden}
+.admin-modal-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:#f8fafc;border-bottom:1px solid #e4edf5}
+.admin-modal-icon{width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;background:#eef6fb;color:#0d4c72}
+.admin-modal-icon.warn{background:#fff7ed;color:#9a3412}
+.admin-modal-title{margin:0 0 5px;color:#17375d;font-size:21px;line-height:1.15;font-weight:900}
+.admin-modal-sub{margin:0;color:#61738a;font-size:13px;line-height:1.45;font-weight:700}
+.admin-modal-body{padding:20px 24px;color:#60758a;font-size:14px;line-height:1.5}
+.admin-modal-detail{margin-top:12px;background:#eef6fb;border:1px solid #d7e8f1;border-radius:16px;padding:12px 13px;color:#0d4c72;font-weight:900}
+.admin-modal-warning{margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:16px;padding:12px 13px;color:#9a5b00;font-weight:800;font-size:13px;line-height:1.45}
+.admin-modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}
+.admin-modal-btn{border:none;border-radius:999px;padding:11px 17px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.admin-modal-btn.secondary{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}
+.admin-modal-btn.primary{background:#0d4c72;color:#fff}
+.admin-modal-btn.warn{background:#9a3412;color:#fff}
+.admin-modal-btn:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:620px){.admin-modal-footer .admin-modal-btn{width:100%}.admin-modal-head{padding:20px}.admin-modal-body{padding:18px 20px}.admin-modal-footer{padding:0 20px 20px}}
+
+@media(max-width:1200px){.org-cockpit-analytics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.org-cockpit-analytics{grid-template-columns:1fr}.org-section-tools .admin-select{width:100%}}
 
 /* Cartes comptes utilisateurs — styles isolés admin */
 .accounts-card-grid{
@@ -211,6 +399,40 @@ td:nth-child(9){width:125px}
   font-weight:800;
   max-width:100%;
 }
+.account-chip.clickable{cursor:pointer;text-decoration:none;font-family:'Asap',sans-serif;border-style:solid}
+button.account-chip{font-family:'Asap',sans-serif;border:1px solid #e2ebf2;text-align:left}
+.account-role-badge-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  font:inherit;
+  line-height:1;
+  cursor:pointer;
+  border-radius:999px;
+}
+.account-role-badge-btn .badge{
+  transition:background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.account-role-badge-btn .badge::after{
+  content:"↗";
+  font-size:10px;
+  margin-left:6px;
+  opacity:.65;
+}
+.account-role-badge-btn:hover .badge{
+  background:#eaf3f8;
+  color:#0d4c72;
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(13,76,114,.10);
+}
+.account-role-badge-btn:focus-visible{
+  outline:3px solid rgba(13,76,114,.18);
+  outline-offset:3px;
+}
+.account-chip.clickable:hover{background:#eaf3f8;border-color:#cbd9e7;color:#0d4c72}
 .account-chip.empty{
   background:#fbfdfe;
   color:#7b8c9a;
@@ -304,7 +526,7 @@ td:nth-child(9){width:125px}
 
 @media(max-width:1150px){.partner-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-layout{grid-template-columns:1fr}.admin-side{position:relative;top:auto;display:flex;overflow-x:auto}.side-title,.side-small{display:none}.side-link{white-space:nowrap}.admin-hero{flex-direction:column}.admin-actions{justify-content:flex-start}}
 @media(max-width:1050px){.admin-form{grid-template-columns:1fr 1fr}.form-actions{grid-column:1 / -1}.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visible}.table-wrap{max-width:100%;overflow-x:auto}
+html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip}#header{position:sticky!important;top:0!important;z-index:9999!important}.admin-page{width:100%;overflow:visible}.table-wrap{max-width:100%;overflow-x:auto}
 @media(max-width:620px){.partner-card-grid{grid-template-columns:1fr}.admin-form{grid-template-columns:1fr}.form-actions{grid-column:1}.admin-page{padding:14px}.admin-grid{grid-template-columns:1fr}.admin-hero{padding:22px;border-radius:22px}.admin-hero h1{font-size:26px}.section-head{flex-direction:column;align-items:flex-start}.admin-input,.admin-select{width:100%;min-width:0}}
 </style>
 </head>
@@ -312,6 +534,14 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
 <body>
 <div id="header"></div>
 <script src="header.js"></script>
+<script src="catalogue-core.js?v=5"></script>
+<script src="catalogue-cyber.js?v=5"></script>
+<script src="catalogue-securite.js?v=6"></script>
+<script src="catalogue-qvt.js?v=5"></script>
+<script src="catalogue-transfo.js?v=5"></script>
+<script src="catalogue-rse.js?v=5"></script>
+<script src="catalogue-ethique.js?v=5"></script>
+<script src="catalogue-custom.js?v=5"></script>
 
 <main class="admin-page">
   <section class="admin-hero">
@@ -359,11 +589,11 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
           Règle métier : un <strong>partner</strong> possède un quota global. Ses clients consomment ce quota. Un client direct Into The Shift peut avoir son propre pack.
         </div>
         <div class="global-cards">
-          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>Transmis</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">🧩</div><div style="width:100%"><h3>Autodiags</h3><div class="global-line clickable" onclick="goToProjects('draft')"><span>Brouillons</span><strong id="globalDrafts">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalSent">—</strong></div><div class="global-line clickable" onclick="goToProjects('published')"><span>Publiés</span><strong id="globalPublished">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Dépubliés</span><strong id="globalUnpublished">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🚀</div><div style="width:100%"><h3>Publication</h3><div class="global-line clickable" onclick="goToProjects('sent')"><span>À publier</span><strong id="globalToPublish">—</strong></div><div class="global-line clickable" onclick="goToProjects('unpublished')"><span>Campagnes terminées</span><strong id="globalPublishedNoResults">—</strong></div><div class="global-line clickable" onclick="goToProjects('', 'sans lien diffusion')"><span>Sans lien diffusion</span><strong id="globalNoShare">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">🏢</div><div style="width:100%"><h3>Clients</h3><div class="global-line clickable" onclick="goToOrganizations()"><span>Clients directs</span><strong id="kpiDirectOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Clients partners</span><strong id="kpiLinkedOrgs">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Partners</span><strong id="globalPartners">—</strong></div></div></article>
           <article class="global-card"><div class="global-ico">📊</div><div style="width:100%"><h3>Passations partners</h3><div class="global-line clickable" onclick="goToPartners()"><span>Achetées</span><strong id="kpiPartnerQuota">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Utilisées</span><strong id="kpiPartnerUsed">—</strong></div><div class="global-line clickable" onclick="goToPartners()"><span>Restantes</span><strong id="globalPartnerRemaining">—</strong></div></div></article>
-          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>Transmis sans lien</span><strong id="globalSentNoShare">—</strong></div></div></article>
+          <article class="global-card"><div class="global-ico">⚠️</div><div style="width:100%"><h3>Alertes</h3><div class="global-line clickable" onclick="goToAccounts('sans entreprise')"><span>Comptes sans entreprise</span><strong id="globalNoCompany">—</strong></div><div class="global-line clickable" onclick="goToOrganizations('sans quota')"><span>Clients sans quota</span><strong id="globalNoQuota">—</strong></div><div class="global-line clickable" onclick="goToProjects('sent', 'sans lien diffusion')"><span>À publier sans lien</span><strong id="globalSentNoShare">—</strong></div><div class="global-line clickable" onclick="goToPackUpgradeRequests()"><span>Recharges à valider</span><strong id="globalPackUpgradeRequests">—</strong></div></div></article>
         </div>
       </section>
 
@@ -479,10 +709,26 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <h2>Cockpit clients</h2>
             <div class="section-sub">Dossiers cockpit clients, rattachés à un partner ou directs Into The Shift.</div>
           </div>
-          <div class="section-tools">
-            <input id="orgSearch" class="admin-input" placeholder="Rechercher client, partenaire..." oninput="renderOrganizations()">
+          <div class="section-tools org-section-tools">
+            <input id="orgSearch" class="admin-input" placeholder="Rechercher client, secteur, thématique..." oninput="renderOrganizations()">
+            <select id="orgSectorFilter" class="admin-select" onchange="renderOrganizations()">
+              <option value="">Tous les secteurs</option>
+            </select>
+            <select id="orgThemeFilter" class="admin-select" onchange="renderOrganizations()">
+              <option value="">Toutes les thématiques</option>
+            </select>
+            <select id="orgSort" class="admin-select" onchange="renderOrganizations()">
+              <option value="priority">Tri intelligent</option>
+              <option value="recent">Activité récente</option>
+              <option value="remainingAsc">Passations restantes ↑</option>
+              <option value="usageDesc">Utilisation pack ↓</option>
+              <option value="projectsDesc">Nombre d’AD ↓</option>
+              <option value="nameAsc">Nom client A-Z</option>
+            </select>
           </div>
         </div>
+        <div id="orgCockpitAnalytics" class="org-cockpit-analytics"></div>
+        <div id="orgFilterChips" class="org-filter-chips"></div>
         <div id="orgsLoading" class="loading">Chargement du cockpit clients...</div>
         <div id="orgCards" class="card-list"></div>
         <div id="orgsEmpty" class="empty" style="display:none">Aucun client trouvé.</div>
@@ -494,14 +740,30 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
             <h2>Projets / autodiags</h2>
             <div class="section-sub">Toutes les configurations créées dans Shift Studio.</div>
           </div>
-          <div class="section-tools">
-            <input id="projectSearch" class="admin-input" placeholder="Rechercher titre, client, statut..." oninput="renderProjects()">
+          <div class="section-tools project-toolbar">
+            <input id="projectSearch" class="admin-input" placeholder="Rechercher AD, client, email, lien..." oninput="renderProjects()">
             <select id="statusFilter" class="admin-select" onchange="renderProjects()">
               <option value="">Tous les statuts</option>
               <option value="draft">Brouillon</option>
-              <option value="sent">Transmis</option>
+              <option value="sent">À publier</option>
               <option value="published">Publié</option>
               <option value="unpublished">Dépublié</option>
+            </select>
+            <select id="projectIssueFilter" class="admin-select" onchange="renderProjects()">
+              <option value="">Tous les suivis</option>
+              <option value="toPublishNoShare">À publier sans lien</option>
+              <option value="publishedNoEnd">Publiés sans date de fin</option>
+              <option value="ending7">Fin dans 7 jours</option>
+              <option value="ending2">Fin dans 2 jours</option>
+              <option value="expired">Date de fin dépassée</option>
+              <option value="noShare">Sans lien diffusion</option>
+            </select>
+            <select id="projectSort" class="admin-select" onchange="renderProjects()">
+              <option value="updatedDesc">Mis à jour récemment</option>
+              <option value="endAsc">Date de fin proche</option>
+              <option value="createdDesc">Créés récemment</option>
+              <option value="clientAsc">Client A-Z</option>
+              <option value="statusAsc">Statut</option>
             </select>
           </div>
         </div>
@@ -513,11 +775,33 @@ html,body{max-width:100%;overflow-x:hidden}.admin-page{width:100%;overflow:visib
   </div>
 </main>
 
+<div id="packUpgradeConfirmModal" class="admin-modal-backdrop" aria-hidden="true">
+  <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="packUpgradeConfirmTitle">
+    <div class="admin-modal-head">
+      <div id="packUpgradeConfirmIcon" class="admin-modal-icon">📦</div>
+      <div>
+        <h3 id="packUpgradeConfirmTitle" class="admin-modal-title">Valider cette recharge pack ?</h3>
+        <p id="packUpgradeConfirmSub" class="admin-modal-sub">Le quota réel du cockpit client sera mis à jour.</p>
+      </div>
+    </div>
+    <div class="admin-modal-body">
+      <div id="packUpgradeConfirmText">Confirmez le traitement de cette demande.</div>
+      <div id="packUpgradeConfirmDetail" class="admin-modal-detail"></div>
+      <div id="packUpgradeConfirmWarning" class="admin-modal-warning"></div>
+    </div>
+    <div class="admin-modal-footer">
+      <button type="button" class="admin-modal-btn secondary" onclick="closePackUpgradeConfirmModal(false)">Annuler</button>
+      <button id="packUpgradeConfirmBtn" type="button" class="admin-modal-btn primary" onclick="confirmAdminPackUpgrade()">Valider la recharge</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const API_BASE_URL = window.location.hostname === 'localhost' 
-  ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-  : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+const API_BASE_URL = "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
 let adminState = { summary:{}, clients:[], projects:[], organizations:[] };
+let currentOrgFilter = "all";
+let adminRenderedTabs = {};
+let adminOrgStatsCache = new Map();
 const ADMIN_JOB_OPTIONS = [
   'CEO / Direction générale',
   'COO / Direction des opérations',
@@ -590,13 +874,34 @@ async function handleApiError(res,path){
   try{const e=await res.json();if(e?.error)msg=e.error;if(e?.message)msg=e.message;}catch(_){}
   throw new Error(msg);
 }
-async function apiGet(path){const res=await fetch(API_BASE_URL+path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPatch(path, body){const res=await fetch(API_BASE_URL+path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiPost(path, body){const res=await fetch(API_BASE_URL+path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});if(!res.ok)return await handleApiError(res,path);return await res.json();}
-async function apiDelete(path){const res=await fetch(API_BASE_URL+path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});if(!res.ok)return await handleApiError(res,path);return await res.json().catch(()=>({ok:true}));}
+async function apiFetch(path, options = {}, timeoutMs = 12000){
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try{
+    const res = await fetch(API_BASE_URL + path, { ...options, signal: controller.signal });
+    if(!res.ok) return await handleApiError(res, path);
+    return await res.json().catch(() => ({}));
+  }catch(err){
+    if(err.name === "AbortError") throw new Error(`${path} ne répond pas après ${Math.round(timeoutMs/1000)} secondes`);
+    throw err;
+  }finally{
+    clearTimeout(timeout);
+  }
+}
+async function apiGet(path){return await apiFetch(path,{headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});}
+async function apiPatch(path, body){return await apiFetch(path,{method:"PATCH",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});}
+async function apiPost(path, body){return await apiFetch(path,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()},body:JSON.stringify(body)});}
+async function apiDelete(path){return await apiFetch(path,{method:"DELETE",headers:{"Content-Type":"application/json","Authorization":"Bearer "+getToken()}});}
 
 function val(obj,keys,fallback="—"){for(const key of keys){if(obj&&obj[key]!==undefined&&obj[key]!==null&&obj[key]!=="")return obj[key];}return fallback;}
 function num(v){return Number(v || 0);}
+function formatPackExpiryDate(value){
+  if(!value) return '—';
+  const d=new Date(value);
+  if(Number.isNaN(d.getTime())) return '—';
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+}
+
 function formatNumber(v){return num(v).toLocaleString("fr-FR");}
 function clampRemaining(value, quota){
   const q=Number(quota||0);
@@ -627,7 +932,52 @@ function formatPackLabel(pack, quota=0){
 function formatDate(value){if(!value)return"—";const d=new Date(value);if(isNaN(d.getTime()))return value;return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function escapeHtml(str){return String(str??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
 function escapeAttr(str){return escapeHtml(str).replace(/`/g,"&#096;");}
-function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
+function cleanAdTitle(title){
+  const cleaned=String(title||"").replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i,"").replace(/^\s*Autodiag\s*[-–—:]?\s*/i,"").trim();
+  if(!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) return "Projet sans titre";
+  return cleaned;
+}
+function pickProjectTitle(...values){for(const value of values){const cleaned=cleanAdTitle(value); if(cleaned && cleaned!=="Projet sans titre") return cleaned;} return "Projet sans titre";}
+function getAdminProjectRespondentTitle(p,cfg){
+  const data = cfg || getProjectConfig(p);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+  return pickProjectTitle(
+    val(param,["titre_repondants","titreRespondants","titre_visible_repondants","titreVisibleRepondants","titre_visible","titreVisible"],""),
+    val(payload,["titre_repondants","titreRespondants"],""),
+    val(state,["titre_repondants","titreRespondants"],""),
+    val(data,["titre_repondants","titreRespondants"],""),
+    val(param,["titre","nom"],""),
+    val(payload,["title","titre"],""),
+    val(state,["title","titre"],""),
+    val(data,["title","titre"],""),
+    val(p,["autodiag_title","project_title","title","name","project_name"],"")
+  );
+}
+function getAdminProjectCatalogueOriginalTitle(p,cfg){
+  const data = cfg || getProjectConfig(p);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+  const meta = data.meta || state.meta || payload.meta || {};
+  return pickProjectTitle(
+    val(data,["catalogueTitle","catalogue_title","originalCatalogueTitle","original_catalogue_title","baseTitle","base_title","templateTitle","template_title"],""),
+    val(payload,["catalogueTitle","catalogue_title","baseTitle","base_title"],""),
+    val(state,["catalogueTitle","catalogue_title","baseTitle","base_title"],""),
+    val(meta,["nom","titre"],""),
+    val(data,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(payload,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(state,["autodiagTitle","diagnosticTitle","adTitle","title","titre"],""),
+    val(param,["nom","titre"],""),
+    val(p,["autodiag_title","project_title","title","name","project_name"],"")
+  );
+}
+function renderAdminProjectTitleDetails(p,cfg){
+  const original=getAdminProjectCatalogueOriginalTitle(p,cfg);
+  const respondent=getAdminProjectRespondentTitle(p,cfg);
+  return `<div class="card-meta">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br>Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong></div>`;
+}
 function normalizeArray(data,keys){if(Array.isArray(data))return data;for(const k of keys){if(Array.isArray(data?.[k]))return data[k];}return[];}
 function roleBadge(role){const r=String(role||"client").toLowerCase();if(r==="admin")return`<span class="badge badge-admin">admin</span>`;if(r==="partner"||r==="expert")return`<span class="badge badge-partner">partner</span>`;return`<span class="badge badge-client">client</span>`;}
 function statusBadge(status){
@@ -762,15 +1112,455 @@ function getProjectsForOrg(org){
   return adminState.projects.filter(p=>String(val(p,["organization_id","organizationId","org_id","orgId"],""))===orgId);
 }
 
-function showTab(tab){
+function normalizeAdminText(value){
+  return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
+}
+function getProjectCatalogueAdId(project){
+  const cfg=getProjectConfig(project);
+  const payload=cfg.payload && typeof cfg.payload==="object" ? cfg.payload : {};
+  const state=cfg.state && typeof cfg.state==="object" ? cfg.state : {};
+  const meta=cfg.meta && typeof cfg.meta==="object" ? cfg.meta : {};
+  const source=cfg.source && typeof cfg.source==="object" ? cfg.source : {};
+  return String(
+    project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+    cfg.catalogueAdId || cfg.catalogue_ad_id || cfg.selectedAdId || cfg.selected_ad_id ||
+    payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+    state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+    meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+    source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+    ""
+  ).trim();
+}
+function getProjectThemeFromCatalogue(project){
+  const catalogueAdId=getProjectCatalogueAdId(project);
+  if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+  const ad=window.ITS_CATALOGUE.find(item=>String(item.id)===String(catalogueAdId));
+  return String(ad?.theme || ad?.themeLabel || "").trim();
+}
+function getExplicitProjectTheme(project){
+  const cfg=getProjectConfig(project);
+  const payload=cfg.payload && typeof cfg.payload==="object" ? cfg.payload : {};
+  const state=cfg.state && typeof cfg.state==="object" ? cfg.state : {};
+  const param=cfg.parametrage || state.parametrage || payload.parametrage || {};
+  return String(
+    project?.theme || project?.themeLabel || project?.themeName || project?.thematique || project?.thématique ||
+    cfg.theme || cfg.themeLabel || cfg.themeName || cfg.thematique || cfg.thématique ||
+    payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
+    state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
+    param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
+    ""
+  ).trim();
+}
+function inferProjectThemeFallback(project){
+  const cfg=getProjectConfig(project);
+  const raw=JSON.stringify(cfg || {})+" "+String(val(project,["title","name","project_title"],""));
+  const text=normalizeAdminText(raw);
+  if(text.includes("cyber") || text.includes("phishing") || text.includes("numerique")) return "Cybersécurité";
+  if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("sante au travail")) return "QVT & RPS";
+  if(text.includes("securite") || text.includes("surete") || text.includes("btp") || text.includes("accident")) return "Sécurité & sûreté au travail";
+  if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+  if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+  if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+  if(text.includes("inclusion") || text.includes("diversite") || text.includes("sexisme") || text.includes("handicap") || text.includes("lgbt")) return "Diversité & inclusion";
+  return "";
+}
+function getProjectThemeLabel(project){
+  const catalogueTheme=getProjectThemeFromCatalogue(project);
+  if(catalogueTheme) return catalogueTheme;
+
+  const explicitTheme=getExplicitProjectTheme(project);
+  if(explicitTheme) return explicitTheme;
+
+  return inferProjectThemeFallback(project) || "Thématique non renseignée";
+}
+function mostFrequent(values, fallback="—"){
+  const counts={};
+  values.filter(Boolean).forEach(v=>{counts[v]=(counts[v]||0)+1;});
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]));
+  return sorted[0]?.[0] || fallback;
+}
+function getOrgThemeCounts(org){
+  const counts={};
+  getProjectsForOrg(org).forEach(project=>{
+    const theme=getProjectThemeLabel(project);
+    if(theme && theme !== "Thématique non renseignée"){
+      counts[theme]=(counts[theme]||0)+1;
+    }
+  });
+  return Object.entries(counts)
+    .map(([label,count])=>({label,count}))
+    .sort((a,b)=>b.count-a.count || a.label.localeCompare(b.label));
+}
+function renderOrgThemeTags(stats, maxVisible=4){
+  const themes=Array.isArray(stats.themeCounts) ? stats.themeCounts : [];
+  if(!themes.length){
+    return `<div class="org-theme-row"><span class="org-tag theme">🧩 Thématique non renseignée</span></div>`;
+  }
+  const visible=themes.slice(0,maxVisible);
+  const hiddenCount=themes.length-visible.length;
+  const tags=visible.map(theme=>`<span class="org-tag theme">🧩 ${escapeHtml(theme.label)} <strong>(${formatNumber(theme.count)})</strong></span>`);
+  if(hiddenCount>0){
+    const hiddenAdCount=themes.slice(maxVisible).reduce((sum,theme)=>sum+Number(theme.count||0),0);
+    tags.push(`<span class="org-tag more">+${hiddenCount} thématique${hiddenCount>1?"s":""} · ${formatNumber(hiddenAdCount)} AD</span>`);
+  }
+  return `<div class="org-theme-row">${tags.join("")}</div>`;
+}
+function getOrgSector(org){
+  const users=Array.isArray(org.users)?org.users:[];
+  const sectors=[];
+  users.forEach(u=>{
+    const user=getUserById(val(u,["id","user_id"],""));
+    const sector=val(user || u,["sector"],"");
+    if(sector) sectors.push(sector);
+  });
+  const creator=getUserById(getOrgCreatorId(org));
+  if(creator && val(creator,["sector"],"")) sectors.push(val(creator,["sector"],""));
+  return mostFrequent(sectors, "Secteur non renseigné");
+}
+
+function getAdminProjectData(project){
+  const raw=project?.data || project?.payload || project?.configuration || {};
+  if(typeof raw==="string"){
+    try{return JSON.parse(raw) || {};}catch(e){return {};}
+  }
+  return raw && typeof raw==="object" ? raw : {};
+}
+function getAdminProjectPackUpgradeRequest(project){
+  const data=getAdminProjectData(project);
+  const param=data.parametrage && typeof data.parametrage==="object" ? data.parametrage : {};
+  const choice=String(
+    data.pack_upgrade_choice || data.packUpgradeChoice ||
+    param.pack_upgrade_choice || param.packUpgradeChoice ||
+    param.pack_choisi || param.packChoisi || param.selectedPack ||
+    data.pack_choisi || data.packChoisi || data.selectedPack || ""
+  ).trim();
+  const status=String(
+    data.pack_upgrade_status || data.packUpgradeStatus ||
+    param.pack_upgrade_status || param.packUpgradeStatus || ""
+  ).toLowerCase();
+  if(!choice || choice==="current_pack" || choice==="existing") return {requested:false,status,choice};
+
+  const orgPack=String(project.organizationPassationsPack || project.organization_passations_pack || "").toLowerCase();
+  if(orgPack==="illimite" && choice!=="illimite" && !["approved","rejected"].includes(status)) return {requested:false,status:"not_required",choice};
+
+  const quota=Number(project.organizationPassationsQuota || project.organization_passations_quota || 0);
+  const used=Number(project.organizationPassationsUsed || project.organization_passations_used || 0);
+  const amount=choice==="illimite" ? null : Number(data.pack_upgrade_amount || data.packUpgradeAmount || param.pack_upgrade_amount || param.packUpgradeAmount || choice || 0);
+  if(choice!=="illimite" && (!Number.isFinite(amount) || amount<=0)) return {requested:false,status,choice};
+
+  const totalAfter=choice==="illimite" ? null : Number(data.pack_upgrade_total_after || data.packUpgradeTotalAfter || param.pack_upgrade_total_after || param.packUpgradeTotalAfter || quota + amount);
+  return {
+    requested:true,
+    status:status || "pending",
+    choice,
+    amount,
+    unlimited:choice==="illimite",
+    currentQuota:quota,
+    currentUsed:used,
+    currentRemaining:orgPack==="illimite" ? null : Math.max(0, quota-used),
+    totalAfter,
+    projectId:val(project,["id"],""),
+    projectTitle:pickProjectTitle(val(project,["title","name","project_title"],""))
+  };
+}
+function getAdminOrgPackUpgradeRequest(org){
+  const raw = val(org,["packUpgradeRequest","pack_upgrade_request"],null) || {};
+  const choice = String(raw.choice || raw.pack_upgrade_choice || val(org,["pack_upgrade_choice"],"") || "").trim();
+  const status = String(raw.status || raw.pack_upgrade_status || val(org,["pack_upgrade_status"],"")).toLowerCase();
+  const requested = raw.requested === true || val(org,["pack_upgrade_requested"],false) === true;
+  if(!requested || !choice || choice==="current_pack" || choice==="existing") return {requested:false,status,choice};
+  const amount = choice==="illimite" ? null : Number(raw.amount ?? raw.pack_upgrade_amount ?? val(org,["pack_upgrade_amount"],choice));
+  if(choice!=="illimite" && (!Number.isFinite(amount) || amount<=0)) return {requested:false,status,choice};
+  const quota = num(val(org,["passationsQuota","passations_quota"],0));
+  const used = num(val(org,["passationsUsed","passations_used"],0));
+  const totalAfter = choice==="illimite" ? null : Number(raw.totalAfter ?? raw.total_after ?? raw.pack_upgrade_total_after ?? val(org,["pack_upgrade_total_after"],quota+amount));
+  return {
+    requested:true,
+    status: status || "pending",
+    choice,
+    amount,
+    unlimited: choice==="illimite" || raw.unlimited===true,
+    currentQuota: quota,
+    currentUsed: used,
+    currentRemaining: choice==="illimite" ? null : Math.max(0, quota-used),
+    totalAfter,
+    organizationId: val(org,["id"],""),
+    projectTitle: "Demande depuis Mon compte",
+    source: "organization",
+    requestedByEmail: raw.requestedByEmail || raw.requested_by_email || val(org,["pack_upgrade_requested_by_email"],"") || ""
+  };
+}
+function getOrgPackUpgradeRequests(org){
+  const orgRequest = getAdminOrgPackUpgradeRequest(org);
+  if(orgRequest.requested) return [{project:null,org,request:orgRequest}];
+  return getProjectsForOrg(org)
+    .map(project=>({project,org,request:getAdminProjectPackUpgradeRequest(project)}))
+    .filter(item=>item.request.requested);
+}
+function formatPackUpgradeRequestLabel(request){
+  if(request.unlimited) return "Passage en illimité";
+  return `+${formatNumber(request.amount || 0)} passations`;
+}
+function renderOrgPackUpgradePanel(stats){
+  const pending=(stats.packUpgradeRequests || []).filter(item=>String(item.request.status||"").toLowerCase()==="pending");
+  if(!pending.length) return "";
+  return `<div class="org-pack-upgrade-panel">
+    <div class="org-pack-upgrade-title"><strong>📦 Recharges pack à valider</strong><span>${pending.length} demande${pending.length>1?"s":""}</span></div>
+    <div class="org-pack-upgrade-list">
+      ${pending.map(({project,org,request})=>{
+        const isOrgRequest=request.source==="organization" || !project;
+        const projectId=isOrgRequest ? "" : val(project,["id"],"");
+        const orgId=val(org,["id"],request.organizationId || "");
+        const title=isOrgRequest ? "Demande depuis Mon compte" : pickProjectTitle(val(project,["title","name","project_title"],""));
+        const requester=request.requestedByEmail ? ` · demandé par ${request.requestedByEmail}` : "";
+        const after=request.unlimited ? "Pack illimité" : `${formatNumber(request.totalAfter || 0)} passations au total`;
+        return `<div class="org-pack-upgrade-item">
+          <div><strong>${escapeHtml(title)}</strong><small>${escapeHtml(formatPackUpgradeRequestLabel(request))} · après validation : ${escapeHtml(after)}${escapeHtml(requester)}</small></div>
+          <div class="org-pack-upgrade-actions">
+            ${isOrgRequest
+              ? `<button class="mini-btn" onclick="handleAdminOrganizationPackUpgrade('${escapeAttr(orgId)}','approve')">✅ Valider recharge</button><button class="mini-btn light" onclick="handleAdminOrganizationPackUpgrade('${escapeAttr(orgId)}','reject')">Refuser</button>`
+              : `<button class="mini-btn" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','approve')">Valider</button><button class="mini-btn light" onclick="handleAdminPackUpgrade('${escapeAttr(projectId)}','reject')">Refuser</button>`}
+          </div>
+        </div>`;
+      }).join("")}
+    </div>
+  </div>`;
+}
+
+function focusOrganizationPackEditor(orgId){
+  const packEl=document.getElementById("org-pack-"+String(orgId));
+  const remainingEl=document.getElementById("org-remaining-"+String(orgId));
+  if(packEl){
+    packEl.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>packEl.focus(),250);
+  }else if(remainingEl){
+    remainingEl.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>remainingEl.focus(),250);
+  }
+}
+
+function getOrgStats(org){
+  const cacheKey = String(val(org,["id"],""));
+  if(cacheKey && adminOrgStatsCache.has(cacheKey)) return adminOrgStatsCache.get(cacheKey);
+  const projects=getProjectsForOrg(org);
+  const statuses={draft:0,sent:0,published:0,unpublished:0};
+  projects.forEach(p=>{const s=getProjectEffectiveStatus(p);statuses[s]=(statuses[s]||0)+1;});
+  const pack=val(org,["passationsPack","passations_pack"],"");
+  const packExpiresAt=val(org,["packExpiresAt","pack_expires_at"],"");
+  const quota=num(val(org,["passationsQuota","passations_quota"],0));
+  const used=num(val(org,["passationsUsed","passations_used"],0));
+  const remaining=Math.max(0,quota-used);
+  const usageRate=quota>0 ? Math.min(100, Math.round((used/quota)*100)) : 0;
+  const remainingRate=quota>0 ? Math.round((remaining/quota)*100) : 0;
+  const users=Array.isArray(org.users)?org.users:[];
+  const usersCount=users.filter(u=>String(val(u,["email"],"")).trim()).length;
+  const themeCounts=getOrgThemeCounts(org);
+  const themes=themeCounts.map(t=>t.label);
+  const theme=mostFrequent(themes, "Thématique non renseignée");
+  const sector=getOrgSector(org);
+  const today=new Date().toISOString().slice(0,10);
+  const campaignLive=projects.some(p=>{
+    const start=getCampaignStartDate(p);
+    const end=getCampaignEndDate(p);
+    const status=getProjectEffectiveStatus(p);
+    return status==="published" && (!start || start<=today) && (!end || end>=today);
+  });
+  const quotaLow=quota>0 && remainingRate<=20;
+  const underused=quota>0 && usageRate<=10 && projects.length>0;
+  const inactive=projects.length===0 || (!campaignLive && statuses.published===0 && statuses.sent===0);
+  const active=campaignLive || statuses.published>0 || statuses.sent>0;
+  const packUpgradeRequests=getOrgPackUpgradeRequests(org);
+  const packUpgradePending=packUpgradeRequests.filter(item=>String(item.request.status||"").toLowerCase()==="pending").length;
+  const result = {projects,statuses,pack,packExpiresAt,quota,used,remaining,usageRate,remainingRate,usersCount,theme,themeCounts,sector,campaignLive,quotaLow,underused,inactive,active,packUpgradeRequests,packUpgradePending};
+  if(cacheKey) adminOrgStatsCache.set(cacheKey, result);
+  return result;
+}
+function getOrgPriority(org){
+  const s=getOrgStats(org);
+  let score=0;
+  if(s.campaignLive) score+=50;
+  if(s.packUpgradePending) score+=60;
+  if(s.statuses.sent) score+=40;
+  if(s.quotaLow) score+=35;
+  if(s.underused) score+=25;
+  score+=Math.min(20,s.projects.length*3);
+  score+=Math.min(20,s.usageRate/5);
+  return score;
+}
+function orgMatchesFilter(org){
+  const s=getOrgStats(org);
+  if(currentOrgFilter==="active") return s.active;
+  if(currentOrgFilter==="inactive") return s.inactive;
+  if(currentOrgFilter==="toPublish") return s.statuses.sent>0;
+  if(currentOrgFilter==="campaignLive") return s.campaignLive;
+  if(currentOrgFilter==="quotaLow") return s.quotaLow;
+  if(currentOrgFilter==="packUpgrade") return s.packUpgradePending>0;
+  if(currentOrgFilter==="underused") return s.underused;
+  if(currentOrgFilter==="noUser") return s.usersCount===0;
+  if(currentOrgFilter==="noQuota") return s.quota===0 && String(s.pack||"")!=="illimite";
+  return true;
+}
+function updateOrgSelectOptions(rows){
+  const sectorSelect=document.getElementById("orgSectorFilter");
+  const themeSelect=document.getElementById("orgThemeFilter");
+  if(!sectorSelect || !themeSelect) return;
+  const currentSector=sectorSelect.value || "";
+  const currentTheme=themeSelect.value || "";
+  const sectors=[...new Set(rows.map(o=>getOrgStats(o).sector).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  const themes=[...new Set(rows.flatMap(o=>getOrgStats(o).themeCounts.map(t=>t.label)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  sectorSelect.innerHTML='<option value="">Tous les secteurs</option>'+sectors.map(s=>`<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join("");
+  themeSelect.innerHTML='<option value="">Toutes les thématiques</option>'+themes.map(t=>`<option value="${escapeAttr(t)}">${escapeHtml(t)}</option>`).join("");
+  if(sectors.includes(currentSector)) sectorSelect.value=currentSector;
+  if(themes.includes(currentTheme)) themeSelect.value=currentTheme;
+}
+function setOrgFilter(filter){
+  currentOrgFilter=filter || "all";
+  renderOrganizations();
+}
+function renderOrgCockpitAnalytics(rows){
+  const el=document.getElementById("orgCockpitAnalytics");
+  if(!el) return;
+  const stats=rows.map(getOrgStats);
+  const active=stats.filter(s=>s.active).length;
+  const toPublish=stats.filter(s=>s.statuses.sent>0).length;
+  const live=stats.filter(s=>s.campaignLive).length;
+  const quotaLow=stats.filter(s=>s.quotaLow).length;
+  const packUpgrade=stats.reduce((sum,s)=>sum+Number(s.packUpgradePending||0),0);
+  const underused=stats.filter(s=>s.underused).length;
+  el.innerHTML=`
+    <article class="org-analytic-card green"><div class="org-analytic-ico">🟢</div><div><strong>${active}</strong><span>clients actifs</span></div></article>
+    <article class="org-analytic-card blue"><div class="org-analytic-ico">🚀</div><div><strong>${toPublish}</strong><span>AD à publier</span></div></article>
+    <article class="org-analytic-card purple"><div class="org-analytic-ico">📣</div><div><strong>${live}</strong><span>campagnes en cours</span></div></article>
+    <article class="org-analytic-card orange"><div class="org-analytic-ico">🔥</div><div><strong>${quotaLow}</strong><span>quotas faibles</span></div></article>
+    <article class="org-analytic-card orange"><div class="org-analytic-ico">📦</div><div><strong>${packUpgrade}</strong><span>recharges à valider</span></div></article>
+    <article class="org-analytic-card"><div class="org-analytic-ico">💤</div><div><strong>${underused}</strong><span>packs sous-utilisés</span></div></article>
+  `;
+}
+function renderOrgFilterChips(rows){
+  const el=document.getElementById("orgFilterChips");
+  if(!el) return;
+  const count=(filter)=>rows.filter(o=>{
+    const previous=currentOrgFilter;
+    currentOrgFilter=filter;
+    const ok=orgMatchesFilter(o);
+    currentOrgFilter=previous;
+    return ok;
+  }).length;
+  const filters=[
+    ["all","✨ Tous",rows.length],
+    ["active","🟢 Actifs",count("active")],
+    ["toPublish","🚀 À publier",count("toPublish")],
+    ["campaignLive","📣 Campagne en cours",count("campaignLive")],
+    ["quotaLow","🔥 Quota faible",count("quotaLow")],
+    ["packUpgrade","📦 Recharges à valider",count("packUpgrade")],
+    ["underused","💤 Pack sous-utilisé",count("underused")],
+    ["noUser","⚠️ Sans compte",count("noUser")],
+    ["noQuota","📦 Sans quota",count("noQuota")],
+    ["inactive","⚪ Inactifs",count("inactive")]
+  ];
+  el.innerHTML=filters.map(([key,label,total])=>`
+    <button type="button" class="org-filter-chip ${currentOrgFilter===key?'active':''}" onclick="setOrgFilter('${key}')">
+      <span>${label}</span><span class="org-filter-chip-count">${total}</span>
+    </button>
+  `).join("");
+}
+function renderOrgHealthBadges(stats){
+  const badges=[];
+  if(stats.campaignLive) badges.push(["good","🟢","Campagne en cours"]);
+  if(stats.statuses.sent>0) badges.push(["info","🚀",`${stats.statuses.sent} à publier`]);
+  if(stats.quotaLow) badges.push(["danger","🔥","Quota faible"]);
+  if(stats.packUpgradePending>0) badges.push(["warn","📦",`${stats.packUpgradePending} recharge${stats.packUpgradePending>1?"s":""} à valider`]);
+  if(stats.underused) badges.push(["warn","💤","Pack sous-utilisé"]);
+  if(stats.usersCount===0) badges.push(["warn","⚠️","Aucun compte rattaché"]);
+  if(!badges.length) badges.push([stats.active?"good":"info",stats.active?"✅":"⚪",stats.active?"Client actif":"À surveiller"]);
+  return `<div class="org-health-row">${badges.map(([kind,ico,text])=>`<span class="org-health-badge ${kind}">${ico} ${escapeHtml(text)}</span>`).join("")}</div>`;
+}
+function sortOrganizations(rows){
+  const sort=document.getElementById("orgSort")?.value || "priority";
+  return [...rows].sort((a,b)=>{
+    const sa=getOrgStats(a), sb=getOrgStats(b);
+    if(sort==="recent"){
+      const da=Math.max(0,...sa.projects.map(p=>new Date(val(p,["updated_at","updatedAt","created_at","createdAt"],"")).getTime()||0));
+      const db=Math.max(0,...sb.projects.map(p=>new Date(val(p,["updated_at","updatedAt","created_at","createdAt"],"")).getTime()||0));
+      return db-da;
+    }
+    if(sort==="remainingAsc") return sa.remaining-sb.remaining;
+    if(sort==="usageDesc") return sb.usageRate-sa.usageRate;
+    if(sort==="projectsDesc") return sb.projects.length-sa.projects.length;
+    if(sort==="nameAsc") return String(getOrgName(a)).localeCompare(String(getOrgName(b)));
+    return getOrgPriority(b)-getOrgPriority(a);
+  });
+}
+
+function getActiveAdminTab(){
+  const active=document.querySelector(".admin-section.active");
+  return active ? String(active.id || "").replace("tab-","") : "global";
+}
+
+function renderAdminTab(tab, force=false){
+  if(!tab) tab=getActiveAdminTab();
+  if(!force && adminRenderedTabs[tab]) return;
+  if(tab==="accounts") renderAccounts();
+  else if(tab==="partners") renderPartners();
+  else if(tab==="organizations") renderOrganizations();
+  else if(tab==="projects") renderProjects();
+  adminRenderedTabs[tab]=true;
+}
+
+function invalidateAdminRenderedTabs(){
+  adminRenderedTabs={};
+  adminOrgStatsCache=new Map();
+}
+
+function showTab(tab, renderNow=true){
   document.querySelectorAll(".admin-section").forEach(s=>s.classList.remove("active"));
   document.querySelectorAll(".side-link").forEach(a=>a.classList.remove("active"));
   document.getElementById("tab-"+tab)?.classList.add("active");
   document.querySelector(`.side-link[data-tab="${tab}"]`)?.classList.add("active");
+  if(renderNow) renderAdminTab(tab);
+}
+
+function getFocusedOrganizationId(){
+  const params = new URLSearchParams(window.location.search || "");
+  return cleanId(params.get("focusOrg") || params.get("organizationId") || params.get("orgId") || "");
+}
+
+function getInitialAdminTab(){
+  const hash = String(window.location.hash || "").replace("#", "").trim().toLowerCase();
+  const allowed = ["global", "create", "accounts", "partners", "organizations", "projects"];
+  if(getFocusedOrganizationId()) return "organizations";
+  return allowed.includes(hash) ? hash : "global";
+}
+
+function applyFocusedOrganization(){
+  const focusOrgId = getFocusedOrganizationId();
+  if(!focusOrgId) return false;
+
+  showTab("organizations", false);
+  currentOrgFilter = "all";
+
+  const orgSearch = document.getElementById("orgSearch");
+  const org = adminState.organizations.find(o => String(val(o,["id"],"")).trim() === String(focusOrgId));
+  if(orgSearch){
+    orgSearch.value = org ? getOrgName(org) : String(focusOrgId);
+  }
+
+  renderOrganizations();
+  document.getElementById("tab-organizations")?.scrollIntoView({behavior:"auto",block:"start"});
+  return true;
+}
+
+function applyInitialAdminTab(){
+  if(applyFocusedOrganization()) return;
+  const initialTab = getInitialAdminTab();
+  if(initialTab && initialTab !== "global"){
+    showTab(initialTab);
+    document.getElementById("tab-" + initialTab)?.scrollIntoView({behavior:"auto",block:"start"});
+  }
 }
 
 function goToProjects(status="", search=""){
-  showTab("projects");
+  showTab("projects", false);
   const statusFilter=document.getElementById("statusFilter");
   const projectSearch=document.getElementById("projectSearch");
   if(statusFilter)statusFilter.value=status||"";
@@ -779,21 +1569,29 @@ function goToProjects(status="", search=""){
   document.getElementById("tab-projects")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToOrganizations(search=""){
-  showTab("organizations");
+  showTab("organizations", false);
   const orgSearch=document.getElementById("orgSearch");
   if(orgSearch)orgSearch.value=search||"";
   renderOrganizations();
   document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
+function goToPackUpgradeRequests(){
+  showTab("organizations", false);
+  currentOrgFilter="packUpgrade";
+  const orgSearch=document.getElementById("orgSearch");
+  if(orgSearch)orgSearch.value="";
+  renderOrganizations();
+  document.getElementById("tab-organizations")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
 function goToPartners(){
-  showTab("partners");
+  showTab("partners", false);
   const partnerSearch=document.getElementById("partnerSearch");
   if(partnerSearch)partnerSearch.value="";
   renderPartners();
   document.getElementById("tab-partners")?.scrollIntoView({behavior:"smooth",block:"start"});
 }
 function goToAccounts(search=""){
-  showTab("accounts");
+  showTab("accounts", false);
   const clientSearch=document.getElementById("clientSearch");
   const roleFilter=document.getElementById("roleFilter");
   const userStatusFilter=document.getElementById("userStatusFilter");
@@ -808,10 +1606,15 @@ function resetAdminFilters(){
   ["clientSearch","projectSearch","orgSearch","partnerSearch"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
   const roleFilter=document.getElementById("roleFilter");
   const statusFilter=document.getElementById("statusFilter");
+  const projectIssueFilter=document.getElementById("projectIssueFilter");
+  const projectSort=document.getElementById("projectSort");
   const userStatusFilter=document.getElementById("userStatusFilter");
   if(roleFilter)roleFilter.value="";
   if(statusFilter)statusFilter.value="";
+  if(projectIssueFilter)projectIssueFilter.value="";
+  if(projectSort)projectSort.value="updatedDesc";
   if(userStatusFilter)userStatusFilter.value="active";
+  currentOrgFilter="all";
 }
 
 async function loadAdminData(){
@@ -828,7 +1631,9 @@ async function loadAdminData(){
     adminState.clients=normalizeArray(clients,["clients","users","data"]);
     adminState.projects=normalizeArray(projects,["projects","autodiags","data"]);
     adminState.organizations=normalizeArray(organizations,["organizations","clients","data"]);
+    invalidateAdminRenderedTabs();
     renderAll();
+    applyInitialAdminTab();
   }catch(err){
     console.error(err);
     showError("Impossible de charger l’espace admin. Détail : "+err.message);
@@ -839,10 +1644,7 @@ async function loadAdminData(){
 
 function renderAll(){
   renderKpis();
-  renderAccounts();
-  renderPartners();
-  renderOrganizations();
-  renderProjects();
+  renderAdminTab(getActiveAdminTab(), true);
 }
 
 function getUserStatus(c){return String(val(c,["status","statut"],"active")).toLowerCase();}
@@ -863,41 +1665,122 @@ function renderKpis(){
   const publishedNoResults=adminState.projects.filter(p=>getProjectEffectiveStatus(p)==="unpublished").length;
   const noCompany=visibleUsers.filter(c=>isActiveUser(c)&&!getCompany(c)).length;
   const noQuota=getDirectOrganizations().filter(o=>num(val(o,["passationsQuota","passations_quota"],0))===0).length;
-  document.getElementById("kpiUsers").textContent=visibleUsers.length;
-  document.getElementById("kpiPartners").textContent=partners.length;
-  document.getElementById("kpiOrganizations").textContent=directOrgs;
-  document.getElementById("kpiProjects").textContent=adminState.projects.length;  document.getElementById("kpiPartnerUsed").textContent=formatNumber(partnerUsed);
-  document.getElementById("kpiLinkedOrgs").textContent=linkedOrgs;
-  document.getElementById("kpiDirectOrgs").textContent=directOrgs;
+  const packUpgradeRequests=getDirectOrganizations().reduce((sum,o)=>sum+Number(getOrgStats(o).packUpgradePending||0),0);
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set("kpiUsers", visibleUsers.length);
+  set("kpiPartners", partners.length);
+  set("kpiOrganizations", directOrgs);
+  set("kpiProjects", adminState.projects.length);
+  set("kpiPartnerQuota", formatNumber(partnerQuota));
+  set("kpiPartnerUsed", formatNumber(partnerUsed));
+  set("kpiLinkedOrgs", linkedOrgs);
+  set("kpiDirectOrgs", directOrgs);
   set("globalDrafts",statusCounts.draft||0);set("globalSent",statusCounts.sent||0);set("globalPublished",statusCounts.published||0);set("globalUnpublished",statusCounts.unpublished||0);
   set("globalToPublish",statusCounts.sent||0);set("globalPublishedNoResults",publishedNoResults);set("globalNoShare",noShare);set("globalPartners",partners.length);
-  set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);
-  document.getElementById("sideUsers").textContent=visibleUsers.length;
-  document.getElementById("sidePartners").textContent=partners.length;
-  document.getElementById("sideOrganizations").textContent=directOrgs;
-  document.getElementById("sideProjects").textContent=adminState.projects.length;
+  set("globalPartnerRemaining",formatNumber(Math.max(0,partnerQuota-partnerUsed)));set("globalNoCompany",noCompany);set("globalNoQuota",noQuota);set("globalSentNoShare",sentNoShare);set("globalPackUpgradeRequests",packUpgradeRequests);
+  set("sideUsers", visibleUsers.length);
+  set("sidePartners", partners.length);
+  set("sideOrganizations", directOrgs);
+  set("sideProjects", adminState.projects.length);
 }
 
 function organizationOptionsForAccount(currentOrgId){
-  const orgs=getDirectOrganizations();
+  const orgs=getFinalOrganizations();
   const current=String(currentOrgId||"");
   return '<option value="">Choisir un cockpit client</option>'+orgs.map(o=>{
     const id=String(val(o,["id"],""));
-    return `<option value="${escapeAttr(id)}" ${id===current?"selected":""}>${escapeHtml(getOrgName(o))}</option>`;
+    return `<option value="${escapeAttr(id)}" ${id===current?"selected":""}>#${escapeHtml(id)} — ${escapeHtml(getOrgName(o))}</option>`;
   }).join("");
 }
 
-async function attachUserToOrganization(userId){
+function compactAdminName(value){
+  return normalizeAdminText(String(value || "").replace(/&/g," and "))
+    .replace(/and/g,"")
+    .replace(/\s+/g,"");
+}
+
+function accountMatchesOrganizationByName(accountCompany, org){
+  const accountText=normalizeAdminText(accountCompany);
+  const orgText=normalizeAdminText(getOrgName(org));
+  const accountCompact=compactAdminName(accountCompany);
+  const orgCompact=compactAdminName(getOrgName(org));
+  if(accountText && orgText && accountText===orgText) return true;
+  if(accountCompact && orgCompact && accountCompact===orgCompact) return true;
+  return accountCompact.length>=4 && orgCompact.length>=4 && (accountCompact.includes(orgCompact) || orgCompact.includes(accountCompact));
+}
+
+function getAccountOrganizationMatch(c){
+  const explicitId=cleanId(val(c,["organizationId","organization_id","orgId","org_id"],""));
+  const orgs=getFinalOrganizations();
+
+  if(explicitId){
+    const explicitOrg=orgs.find(o=>String(val(o,["id"],"")).trim()===explicitId);
+    if(explicitOrg) return { id: explicitId, name: getOrgName(explicitOrg), explicit: true };
+    return { id: explicitId, name: val(c,["organizationName","organization_name"],""), explicit: true };
+  }
+
+  const userId=String(val(c,["id","user_id"],"")).trim();
+  const email=String(val(c,["email"],"")).toLowerCase().trim();
+  const company=getCompany(c);
+
+  const projectOrgId=cleanId(val(
+    adminState.projects.find(p=>{
+      const ownerId=String(val(p,["user_id","client_id","owner_id","created_by","createdBy"],"")).trim();
+      const ownerEmail=String(val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"")).toLowerCase().trim();
+      return (userId && ownerId===userId) || (email && ownerEmail===email);
+    }),
+    ["organization_id","organizationId","org_id","orgId"],
+    ""
+  ));
+  if(projectOrgId){
+    const projectOrg=orgs.find(o=>String(val(o,["id"],"")).trim()===projectOrgId);
+    return { id: projectOrgId, name: projectOrg ? getOrgName(projectOrg) : val(c,["organizationName","organization_name"],""), explicit: false };
+  }
+
+  const matchedOrg=orgs.find(o=>{
+    const users=Array.isArray(o.users)?o.users:[];
+    const hasUser=users.some(u=>{
+      const uid=String(val(u,["id","user_id"],"")).trim();
+      const uEmail=String(val(u,["email"],"")).toLowerCase().trim();
+      return (userId && uid===userId) || (email && uEmail===email);
+    });
+    if(hasUser) return true;
+
+    const creatorId=String(getOrgCreatorId(o));
+    if(userId && creatorId===userId) return true;
+
+    const ownerEmail=String(val(o,["ownerEmail","owner_email","creatorEmail","creator_email","contactEmail","contact_email","email"],"")).toLowerCase().trim();
+    if(email && ownerEmail===email) return true;
+
+    return accountMatchesOrganizationByName(company, o);
+  });
+
+  if(matchedOrg){
+    return { id: String(val(matchedOrg,["id"],"")).trim(), name: getOrgName(matchedOrg), explicit: false };
+  }
+
+  return { id: "", name: val(c,["organizationName","organization_name"],""), explicit: false };
+}
+
+
+async function attachUserToOrganization(userId, transferProjects=false){
   const select=document.getElementById("attach-org-"+String(userId));
   const organizationId=select?.value || "";
   if(!organizationId){showError("Choisis d’abord un cockpit client à rattacher.");return;}
+
+  if(transferProjects){
+    const confirmed=window.confirm("Rattacher ce compte au cockpit sélectionné et transférer tous ses autodiagnostics vers ce cockpit ?");
+    if(!confirmed)return;
+  }
+
   try{
-    await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
+    const result=await apiPatch(`/api/admin/users/${encodeURIComponent(userId)}/organization`,{
       organizationId,
-      role:"member"
+      role:"member",
+      transferProjects: transferProjects === true
     });
-    showSuccess("Utilisateur rattaché au cockpit client.");
+    const moved=Number(result?.transferredProjects || 0);
+    showSuccess(transferProjects ? `Utilisateur rattaché au cockpit client. ${moved} autodiag${moved>1?"s":""} transféré${moved>1?"s":""}.` : "Utilisateur rattaché au cockpit client.");
     await loadAdminData();
   }catch(err){
     console.error(err);
@@ -906,6 +1789,7 @@ async function attachUserToOrganization(userId){
 }
 
 function renderAccounts(){
+  adminRenderedTabs.accounts=true;
   const q=(document.getElementById("clientSearch")?.value||"").toLowerCase().trim();
   const rf=document.getElementById("roleFilter")?.value||"";
   const sf=document.getElementById("userStatusFilter")?.value||"active";
@@ -931,13 +1815,17 @@ function renderAccounts(){
     const role=String(val(c,["role"],"client")).toLowerCase();
     const status=val(c,["status","statut"],"active");
     const logos=getUserLogos(c);
-    const organizationId=val(c,["organizationId","organization_id"],"");
-    const organizationName=val(c,["organizationName","organization_name"],"");
+    const organizationMatch=getAccountOrganizationMatch(c);
+    const organizationId=organizationMatch.id;
+    const organizationName=organizationMatch.name || val(c,["organizationName","organization_name"],"");
     const projectCount=val(c,["projectsCount","projects_count"],adminState.projects.filter(p=>String(val(p,["user_id","client_id","owner_id"],""))===String(id)).length);
     const disableDelete=String(id)===currentUserId || role==="admin";
     const deleteTitle=String(id)===currentUserId ? "Tu ne peux pas supprimer ton propre compte" : role==="admin" ? "Par sécurité, un compte admin ne se supprime pas depuis cette interface" : "Marquer ce compte comme supprimé";
     const currentOrgLabel=organizationName || (organizationId ? `Cockpit #${organizationId}` : "Aucun cockpit rattaché");
     const canAttach=role==="client";
+    const roleBadgeHtml=(role==="client" && organizationId)
+      ? `<button type="button" class="account-role-badge-btn" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">${roleBadge(role)}</button>`
+      : roleBadge(role);
 
     return`<article class="account-card">
       <div class="account-card-head">
@@ -945,13 +1833,13 @@ function renderAccounts(){
           <div class="account-name">${escapeHtml(name)}</div>
           <div class="account-email">${escapeHtml(email)}</div>
           <div class="account-chip-row">
-            <span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>
+            ${organizationId ? `<button type="button" class="account-chip clickable" onclick="openClientFolder('${escapeAttr(organizationId)}')" title="Ouvrir le dossier client">🏢 ${escapeHtml(company || organizationName || "Entreprise non renseignée")}</button>` : `<span class="account-chip">🏢 ${escapeHtml(company || "Entreprise non renseignée")}</span>`}
             <span class="account-chip ${jobTitle?"":"empty"}">💼 ${escapeHtml(jobTitle || "Fonction non renseignée")}</span>
             <span class="account-chip ${sector?"":"empty"}">🌐 ${escapeHtml(sector || "Secteur non renseigné")}</span>
           </div>
         </div>
         <div class="account-badges">
-          <span id="role-badge-${escapeAttr(id)}">${roleBadge(role)}</span>
+          <span id="role-badge-${escapeAttr(id)}">${roleBadgeHtml}</span>
           ${statusBadge(status)}
         </div>
       </div>
@@ -983,8 +1871,12 @@ function renderAccounts(){
         <div>
           <div class="account-info-label">Rattachement cockpit client</div>
           <select id="attach-org-${escapeAttr(id)}" class="admin-select">${organizationOptionsForAccount(organizationId)}</select>
+          <div class="muted" style="margin-top:6px">Le transfert déplace les AD de ce compte vers le cockpit choisi, sans fusionner les autres cockpits.</div>
         </div>
-        <button class="mini-btn" onclick="attachUserToOrganization('${escapeAttr(id)}')">Rattacher</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+          <button class="mini-btn light" onclick="attachUserToOrganization('${escapeAttr(id)}', false)">Rattacher seul</button>
+          <button class="mini-btn" onclick="attachUserToOrganization('${escapeAttr(id)}', true)">Rattacher et transférer les AD</button>
+        </div>
       </div>`:""}
 
       <div class="account-card-actions">
@@ -1013,6 +1905,7 @@ function renderAccounts(){
 }
 
 function renderPartners(){
+  adminRenderedTabs.partners=true;
   const q=(document.getElementById("partnerSearch")?.value||"").toLowerCase().trim();
   const partners=adminState.clients.filter(c=>String(val(c,["role"],"")).toLowerCase()==="partner").filter(p=>!q||JSON.stringify(p).toLowerCase().includes(q));
   const grid=document.getElementById("partnersGrid");
@@ -1063,8 +1956,34 @@ function renderPartners(){
 }
 
 function renderOrganizations(){
+  adminRenderedTabs.organizations=true;
+  adminOrgStatsCache=new Map();
   const q=(document.getElementById("orgSearch")?.value||"").toLowerCase().trim();
-  const rows=getDirectOrganizations().filter(o=>!q||JSON.stringify(o).toLowerCase().includes(q));
+  const sectorFilter=document.getElementById("orgSectorFilter")?.value || "";
+  const themeFilter=document.getElementById("orgThemeFilter")?.value || "";
+  const allRows=getDirectOrganizations();
+
+  updateOrgSelectOptions(allRows);
+  renderOrgCockpitAnalytics(allRows);
+  renderOrgFilterChips(allRows);
+
+  let rows=allRows.filter(o=>{
+    const stats=getOrgStats(o);
+    const text=[
+      JSON.stringify(o),
+      stats.sector,
+      stats.theme,
+      stats.themeCounts.map(t=>`${t.label} ${t.count}`).join(" "),
+      getOrgName(o),
+      stats.projects.map(p=>pickProjectTitle(val(p,["title"],""))).join(" ")
+    ].join(" ").toLowerCase();
+    return (!q || text.includes(q))
+      && (!sectorFilter || stats.sector===sectorFilter)
+      && (!themeFilter || stats.themeCounts.some(t=>t.label===themeFilter))
+      && orgMatchesFilter(o);
+  });
+
+  rows=sortOrganizations(rows);
   const grid=document.getElementById("orgCards");
   grid.innerHTML=rows.map(o=>{
     const id=val(o,["id"],"");
@@ -1074,25 +1993,91 @@ function renderOrganizations(){
     const ownerName=val(o,["ownerName","owner_name"],"—");
     const ownerEmail=val(o,["ownerEmail","owner_email"],"");
     const ownerCompany=val(o,["ownerCompanyName","owner_company_name"],"");
+    const stats=getOrgStats(o);
     const pack=val(o,["passationsPack","passations_pack"],"");
-    const quota=num(val(o,["passationsQuota","passations_quota"],0));
-    const used=num(val(o,["passationsUsed","passations_used"],0));
-    const remaining=Math.max(0, quota-used);
-    const projectsCount=getProjectsForOrg(o).length;
+    const packExpiresAt=stats.packExpiresAt || val(o,["packExpiresAt","pack_expires_at"],"");
+    const quota=stats.quota;
+    const used=stats.used;
+    const remaining=stats.remaining;
+    const usageRate=stats.usageRate;
+    const progressClass=usageRate>=90 ? "critical" : usageRate>=75 ? "warning" : "";
+    const projectsCount=stats.projects.length;
+    const users=Array.isArray(o.users)?o.users:[];
+    const activeUsers=users.filter(u=>String(val(u,["email"],"")).trim());
+    const usersCount=activeUsers.length;
+    const initials=String(name || "C").trim().slice(0,1).toUpperCase();
+    const canDeleteOrg=projectsCount===0 && usersCount===0;
+    const quotaLabel=String(pack)==="illimite" ? "Illimité" : quota ? formatNumber(quota) : "—";
+    const usersHtml=usersCount
+      ? `<div class="org-user-list">` + activeUsers.map(u=>{
+          const first=val(u,["firstName","first_name"],"");
+          const last=val(u,["lastName","last_name"],"");
+          const fullName=String((first+" "+last).trim() || val(u,["companyName","company_name"],"") || "Compte sans nom");
+          const email=val(u,["email"],"—");
+          const uid=val(u,["id","user_id"],"—");
+          const userRole=val(u,["role"],"member");
+          return `<div class="org-user-row"><span><strong>${escapeHtml(fullName)}</strong><small>${escapeHtml(email)}</small></span><span class="org-user-role">#${escapeHtml(uid)} · ${escapeHtml(userRole)}</span></div>`;
+        }).join("") + `</div>`
+      : `<div class="org-empty-note">Aucun compte utilisateur rattaché à ce cockpit.</div>`;
+
     return`<article class="org-card">
-      <div class="org-card-head"><div><h3>${escapeHtml(name)}</h3><div class="card-meta">ID ${escapeHtml(id)} · ${projectsCount} AD</div></div><span class="badge badge-direct">client direct Into The Shift</span></div>
-      <div class="info-grid">
-        <div class="info-box"><div class="info-label">Pack acheté</div><div class="info-value">${escapeHtml(formatPackLabel(pack, quota))}</div><div class="muted">${formatNumber(quota)} passations achetées</div></div>
-        <div class="info-box"><div class="info-label">Passations restantes</div><div class="info-value">${formatNumber(remaining)}</div><div class="muted">${formatNumber(used)} utilisées / ${formatNumber(quota)} achetées</div></div>
-        <div class="info-box"><div class="info-label">Contact dossier</div><div class="info-value">${escapeHtml(contactName)}</div><div class="muted">${escapeHtml(contactEmail)}</div></div>
+      <div class="org-card-head">
+        <div class="org-title-row">
+          <div class="org-avatar">${escapeHtml(initials)}</div>
+          <div class="org-title-text">
+            <h3>${escapeHtml(name)}</h3>
+            <div class="card-meta">ID cockpit #${escapeHtml(id)} · ${projectsCount} AD · ${usersCount} compte${usersCount>1?"s":""} rattaché${usersCount>1?"s":""}</div>
+            <div class="org-tag-row"><span class="org-tag sector">🏭 Secteur : ${escapeHtml(stats.sector)}</span></div>
+            ${renderOrgThemeTags(stats)}
+            ${renderOrgHealthBadges(stats)}
+          </div>
+        </div>
+        <div class="org-badges">
+          <span class="badge badge-direct">client direct Into The Shift</span>
+        </div>
       </div>
-      <div class="org-quota-panel">
-        <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div>
-        <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
-        <div class="quota-rest">Utilisées calculées : ${formatNumber(used)}<br><span class="muted">${formatNumber(quota)} achetées</span></div>
-        <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
+
+      <div class="org-card-body">
+        <div class="org-kpi-grid">
+          <div class="org-kpi pack"><span>Passations achetées</span><strong>${escapeHtml(quotaLabel)}</strong><small>${escapeHtml(formatPackLabel(pack, quota))}<br>Fin : ${escapeHtml(formatPackExpiryDate(packExpiresAt))}</small></div>
+          <div class="org-kpi remaining"><span>Restantes</span><strong>${formatNumber(remaining)}</strong><small>Solde disponible</small></div>
+          <div class="org-kpi used"><span>Utilisation pack</span><strong>${usageRate}%</strong><small>${formatNumber(used)} utilisées</small><div class="org-progress-mini"><div class="org-progress-mini-bar ${progressClass}" style="width:${usageRate}%"></div></div></div>
+          <div class="org-kpi users"><span>Comptes</span><strong>${usersCount}</strong><small>${projectsCount} autodiag${projectsCount>1?"s":""}</small></div>
+        </div>
+
+        ${renderOrgPackUpgradePanel(stats)}
+
+        <div class="org-content-grid">
+          <div style="display:grid;gap:12px;min-width:0">
+            <div class="org-detail-grid">
+              <div class="org-detail-box">
+                <div class="org-detail-title">👤 Contact dossier</div>
+                <div class="org-detail-main">${escapeHtml(contactName)}</div>
+                <div class="org-detail-sub">${escapeHtml(contactEmail || "Email non renseigné")}</div>
+              </div>
+              <div class="org-detail-box">
+                <div class="org-detail-title">🏷️ Créateur / owner</div>
+                <div class="org-detail-main">${escapeHtml(ownerName || ownerCompany || "—")}</div>
+                <div class="org-detail-sub">${escapeHtml(ownerEmail || "—")}</div>
+              </div>
+            </div>
+            <div class="org-users-panel">
+              <div class="org-detail-title">👥 Comptes utilisateurs rattachés à ce dossier</div>
+              ${usersHtml}
+            </div>
+          </div>
+
+          <div class="org-quota-panel">
+            <div class="org-quota-title"><strong>Gestion du pack</strong><span>${formatNumber(used)} utilisées</span></div>
+            <div class="quota-field"><label>Pack acheté</label><select id="org-pack-${escapeAttr(id)}" class="pack-select" style="width:100%" onchange="syncOrganizationPackQuota('${escapeAttr(id)}')"><option value="" ${!pack?"selected":""}>Pack non renseigné</option><option value="existing" ${pack==="existing"?"selected":""}>J’ai déjà un pack</option><option value="50" ${pack==="50"?"selected":""}>50</option><option value="100" ${pack==="100"?"selected":""}>100</option><option value="200" ${pack==="200"?"selected":""}>200</option><option value="500" ${pack==="500"?"selected":""}>500</option><option value="700" ${pack==="700"?"selected":""}>700</option><option value="1200" ${pack==="1200"?"selected":""}>1 200</option><option value="1500" ${pack==="1500"?"selected":""}>1 500</option><option value="1700" ${pack==="1700"?"selected":""}>1 700</option><option value="2000" ${pack==="2000"?"selected":""}>2 000</option><option value="2500" ${pack==="2500"?"selected":""}>2 500</option><option value="3000" ${pack==="3000"?"selected":""}>3 000</option><option value="4000" ${pack==="4000"?"selected":""}>4 000</option><option value="5000" ${pack==="5000"?"selected":""}>5 000</option><option value="7000" ${pack==="7000"?"selected":""}>7 000</option><option value="illimite" ${pack==="illimite"?"selected":""}>Illimité</option></select><input class="quota-hidden" id="org-quota-${escapeAttr(id)}" type="number" min="0" value="${quota}"></div><div class="quota-field"><label>Fin validité pack</label><input id="org-pack-expires-${escapeAttr(id)}" type="date" value="${escapeAttr(packExpiresAt ? String(packExpiresAt).slice(0,10) : '')}"></div>
+            <div class="quota-field"><label>Restantes</label><input id="org-remaining-${escapeAttr(id)}" type="number" min="0" value="${remaining}"></div>
+            <div class="quota-rest"><strong>Utilisées calculées : ${formatNumber(used)}</strong><br><span class="muted">${formatNumber(quota)} achetées · ${formatNumber(remaining)} restantes</span></div>
+            <button class="mini-btn light" onclick="saveOrganizationPassations('${escapeAttr(id)}')">Enregistrer</button>
+          </div>
+        </div>
       </div>
-      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Dossier client</button></div>
+
+      <div class="org-actions"><button class="mini-btn light" onclick="openClientFolder('${escapeAttr(id)}')">Ouvrir le dossier client</button><button class="mini-btn danger" ${canDeleteOrg ? "" : 'disabled title="Suppression possible uniquement si aucun AD et aucun compte n’est rattaché"'} onclick="deleteOrganization('${escapeAttr(id)}','${escapeAttr(name)}')">Supprimer le cockpit</button></div>
     </article>`;
   }).join("");
   document.getElementById("orgsEmpty").style.display=rows.length?"none":"block";
@@ -1158,7 +2143,7 @@ function getProjectStatusLabel(status){
   const s = String(status || "draft").toLowerCase();
   if(s === "unpublished") return "Dépublié";
   if(s === "published") return "Publié";
-  if(s === "sent") return "Transmis";
+  if(s === "sent") return "À publier";
   return "Brouillon";
 }
 
@@ -1166,7 +2151,7 @@ function projectStatusBadge(status){
   const s = String(status || "draft").toLowerCase();
   if(s === "unpublished") return `<span class="badge badge-unpublished">Dépublié</span>`;
   if(s === "published") return `<span class="badge badge-published">Publié</span>`;
-  if(s === "sent") return `<span class="badge badge-sent">Transmis</span>`;
+  if(s === "sent") return `<span class="badge badge-sent">À publier</span>`;
   return `<span class="badge badge-draft">Brouillon</span>`;
 }
 
@@ -1182,45 +2167,163 @@ function isProjectConfigActuallySent(p){
   );
 }
 
+function getProjectOrganizationId(p){
+  return cleanId(val(p,["organization_id","organizationId","org_id","orgId"],""));
+}
+
+function getProjectDateDelta(endDate){
+  if(!endDate) return null;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const end = new Date(endDate);
+  if(Number.isNaN(end.getTime())) return null;
+  end.setHours(0,0,0,0);
+  return Math.round((end - today) / 86400000);
+}
+
+function getProjectEndLabel(endDate, status){
+  if(!endDate) return { text:"Non renseignée", kind: status === "published" ? "danger" : "warn" };
+  const delta = getProjectDateDelta(endDate);
+  if(delta === null) return { text:formatDate(endDate), kind:"" };
+  if(delta < 0) return { text:`${formatDate(endDate)} · dépassée`, kind:"danger" };
+  if(delta === 0) return { text:`${formatDate(endDate)} · aujourd’hui`, kind:"danger" };
+  if(delta === 2) return { text:`${formatDate(endDate)} · J-2`, kind:"warn" };
+  if(delta === 7) return { text:`${formatDate(endDate)} · J-7`, kind:"warn" };
+  if(delta <= 10) return { text:`${formatDate(endDate)} · J-${delta}`, kind:"warn" };
+  return { text:formatDate(endDate), kind:"" };
+}
+
+function projectMatchesIssueFilter(p, issue){
+  if(!issue) return true;
+  const status=getProjectEffectiveStatus(p);
+  const share=getProjectShareUrl(p);
+  const endDate=getCampaignEndDate(p);
+  const delta=getProjectDateDelta(endDate);
+  if(issue==="toPublishNoShare") return status==="sent" && !share;
+  if(issue==="publishedNoEnd") return status==="published" && !endDate;
+  if(issue==="ending7") return status==="published" && delta===7;
+  if(issue==="ending2") return status==="published" && delta===2;
+  if(issue==="expired") return status==="published" && delta!==null && delta<0;
+  if(issue==="noShare") return ["sent","published","unpublished"].includes(status) && !share;
+  return true;
+}
+
+function getProjectClientLabel(p, cfg){
+  const organization=val(p,["organizationName","organization_name"],"");
+  const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
+  return organization || creatorCompany || val(cfg,["company","entreprise","clientCompany","clientEmail"],"—");
+}
+
+function sortProjectRows(rows){
+  const sort=document.getElementById("projectSort")?.value || "updatedDesc";
+  return [...rows].sort((a,b)=>{
+    const ca=getProjectClientLabel(a,getProjectConfig(a));
+    const cb=getProjectClientLabel(b,getProjectConfig(b));
+    if(sort==="clientAsc") return String(ca).localeCompare(String(cb));
+    if(sort==="statusAsc") return getProjectEffectiveStatus(a).localeCompare(getProjectEffectiveStatus(b)) || String(ca).localeCompare(String(cb));
+    if(sort==="endAsc"){
+      const da=getCampaignEndDate(a) ? new Date(getCampaignEndDate(a)).getTime() : Number.MAX_SAFE_INTEGER;
+      const db=getCampaignEndDate(b) ? new Date(getCampaignEndDate(b)).getTime() : Number.MAX_SAFE_INTEGER;
+      return da-db;
+    }
+    if(sort==="createdDesc"){
+      const da=new Date(val(a,["created_at","createdAt","date_creation"],"")).getTime()||0;
+      const db=new Date(val(b,["created_at","createdAt","date_creation"],"")).getTime()||0;
+      return db-da;
+    }
+    const da=new Date(val(a,["updated_at","updatedAt","date_update","created_at","createdAt"],"")).getTime()||0;
+    const db=new Date(val(b,["updated_at","updatedAt","date_update","created_at","createdAt"],"")).getTime()||0;
+    return db-da;
+  });
+}
+
+function renderProjectAlertNote({status, share, results, endDate}){
+  const delta=getProjectDateDelta(endDate);
+  if(status==="sent" && !share) return "À publier : ajoutez les liens au moment de la publication depuis ce panneau ou depuis le cockpit client.";
+  if(status==="published" && !endDate) return "Campagne publiée sans date de fin : les alertes J-7/J-2 et la dépublication automatique ne pourront pas fonctionner.";
+  if(status==="published" && delta===7) return "Cette campagne matche l’alerte automatique J-7 si elle n’a pas déjà été envoyée.";
+  if(status==="published" && delta===2) return "Cette campagne matche l’alerte automatique J-2 si elle n’a pas déjà été envoyée.";
+  if(status==="published" && delta!==null && delta<0) return "Date de fin dépassée : la campagne devrait passer en dépublié au prochain traitement serveur.";
+  if(status==="published" && (!share || !results)) return "Publié : vérifiez que les deux liens utiles sont bien renseignés.";
+  return "";
+}
+
 function renderProjects(){
+  adminRenderedTabs.projects=true;
   const q=(document.getElementById("projectSearch")?.value||"").toLowerCase().trim();
   const sf=(document.getElementById("statusFilter")?.value||"").toLowerCase();
-  const rows=adminState.projects.filter(p=>{const effectiveStatus=getProjectEffectiveStatus(p);const text=JSON.stringify(p).toLowerCase();const specialNoShare=q==="sans lien diffusion";return(!q||specialNoShare||text.includes(q))&&(!sf||effectiveStatus===sf)&&(!specialNoShare||(["sent","published","unpublished"].includes(effectiveStatus)&&!getProjectShareUrl(p)));});
+  const issue=(document.getElementById("projectIssueFilter")?.value||"");
+  let rows=adminState.projects.filter(p=>{
+    const effectiveStatus=getProjectEffectiveStatus(p);
+    const text=JSON.stringify(p).toLowerCase();
+    const specialNoShare=q==="sans lien diffusion";
+    return (!q||specialNoShare||text.includes(q))
+      && (!sf||effectiveStatus===sf)
+      && (!specialNoShare||(["sent","published","unpublished"].includes(effectiveStatus)&&!getProjectShareUrl(p)))
+      && projectMatchesIssueFilter(p, issue);
+  });
+  rows=sortProjectRows(rows);
   const grid=document.getElementById("projectCards");
   grid.innerHTML=rows.map(p=>{
     const cfg=getProjectConfig(p); const id=val(p,["id"],"");
-    const rawTitle=val(cfg,["autodiagTitle","diagnosticTitle","adTitle","title","titre","campaignTitle","passationTitle"],val(p,["autodiag_title","project_title","title","name","project_name"],"Autodiag sans titre")); const title=cleanAdTitle(rawTitle);
-    const organization=val(p,["organizationName","organization_name"],"—");
+    const param = cfg.parametrage || cfg.params || cfg.settings || {};
+    const title=getAdminProjectRespondentTitle(p,cfg);
+    const organization=val(p,["organizationName","organization_name"],"");
     const creatorCompany=val(p,["creatorCompanyName","creator_company_name","companyName","company_name"],val(p,["clientCompanyName","client_company_name"],""));
     const creatorEmail=val(p,["creatorEmail","creator_email","clientEmail","client_email","email"],"");
-    const client=organization || creatorCompany || val(cfg,["company","entreprise","clientCompany","clientEmail"],"—");
-    const status=getProjectEffectiveStatus(p); const created=formatDate(val(p,["created_at","createdAt","date_creation"],"")); const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
-    const sent=isProjectConfigActuallySent(p); const share=getProjectShareUrl(p); const results=getProjectResultsUrl(p); const startDate=getCampaignStartDate(p); const endDate=getCampaignEndDate(p); const logo=getProjectLogo(p);
-    const logoHtml = logo.data ? `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">${escapeHtml(logo.name || "Logo importé")}</div><button class="mini-btn light" style="margin-top:8px" onclick="downloadDataUrl('${escapeAttr(logo.data)}','${escapeAttr(logo.name || 'logo-passation.png')}')">Télécharger</button></div>` : `<div class="info-box"><div class="info-label">Logo passation</div><div class="info-value">—</div><div class="muted">Aucun logo spécifique</div></div>`;
-    return`<article class="project-card">
-      <div class="project-card-head"><div><h3>${escapeHtml(title)}</h3><div class="card-meta">Créé le ${created} · Mis à jour le ${updated}</div></div>${projectStatusBadge(status)}</div>
-      <div class="info-grid">
-        <div class="info-box"><div class="info-label">Client</div><div class="info-value">${escapeHtml(client)}</div><div class="muted">Organisation : ${escapeHtml(organization)}</div></div>
-        <div class="info-box"><div class="info-label">Compte créateur</div><div class="info-value">${escapeHtml(creatorCompany || "—")}</div><div class="muted">${escapeHtml(creatorEmail)}</div></div>
-        <div class="info-box"><div class="info-label">Configuration</div><div class="info-value">${sent?"Transmise":"Non transmise"}</div><div class="muted">Statut interne : ${getProjectStatusLabel(status)}</div></div>
-        <div class="info-box"><div class="info-label">Début campagne</div><div class="info-value">${formatDate(startDate)}</div></div>
-        <div class="info-box"><div class="info-label">Fin campagne</div><div class="info-value">${formatDate(endDate)}</div></div>
-        ${logoHtml}
+    const client=getProjectClientLabel(p,cfg);
+    const orgId=getProjectOrganizationId(p);
+    const status=getProjectEffectiveStatus(p);
+    const created=formatDate(val(p,["created_at","createdAt","date_creation"],""));
+    const updated=formatDate(val(p,["updated_at","updatedAt","date_update"],""));
+    const sent=isProjectConfigActuallySent(p);
+    const statusQuickClass=status==="published"?"good":status==="unpublished"?"warn":status==="sent"?"warn":"";
+    const statusQuickSub=sent?"Configuration transmise":"Configuration non transmise";
+    const share=getProjectShareUrl(p);
+    const results=getProjectResultsUrl(p);
+    const startDate=getCampaignStartDate(p);
+    const endDate=getCampaignEndDate(p);
+    const endLabel=getProjectEndLabel(endDate,status);
+    const alertNote=renderProjectAlertNote({status, share, results, endDate});
+    const statusHelp=status==="draft"?"Création client en cours":status==="sent"?"Action admin : publier":status==="published"?"Campagne en ligne":status==="unpublished"?"Campagne terminée":"";
+    return`<article class="project-card compact">
+      <div class="project-card-head">
+        <div class="project-title-block">
+          <h3>${escapeHtml(title)}</h3>
+          ${renderAdminProjectTitleDetails(p,cfg)}
+          <div class="card-meta">${escapeHtml(client)} · Créé le ${created} · Mis à jour le ${updated}</div>
+        </div>
+        <div class="project-badge-row">${projectStatusBadge(status)}</div>
       </div>
-      <div class="project-publication">
-        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>Transmis</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
-        <div class="publication-field"><label>Début campagne</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
-        <div class="publication-field"><label>Fin campagne</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
-        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL de diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
+      <div class="project-quick-grid">
+        <div class="project-quick-item"><div class="project-quick-label">Cockpit client</div><div class="project-quick-value">${escapeHtml(client)}</div><div class="muted">${orgId?`ID cockpit #${escapeHtml(orgId)}`:"Aucun cockpit rattaché"}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Statut</div><div class="project-quick-value ${statusQuickClass}">${escapeHtml(getProjectStatusLabel(status))}</div><div class="muted">${escapeHtml(statusQuickSub)}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Début campagne</div><div class="project-quick-value">${formatDate(startDate)}</div></div>
+        <div class="project-quick-item"><div class="project-quick-label">Fin campagne</div><div class="project-quick-value ${endLabel.kind}">${escapeHtml(endLabel.text)}</div></div>
+      </div>
+      <div class="project-admin-row">
+        <div class="publication-field"><label>Statut</label><select id="project-status-${escapeAttr(id)}" onchange="togglePublicationUrlFields('${escapeAttr(id)}')"><option value="draft" ${status==="draft"?"selected":""}>Brouillon</option><option value="sent" ${status==="sent"?"selected":""}>À publier</option><option value="published" ${status==="published"?"selected":""}>Publié</option><option value="unpublished" ${status==="unpublished"?"selected":""}>Dépublié</option></select></div>
+        <div class="publication-field"><label>Début</label><input id="project-start-${escapeAttr(id)}" type="date" value="${escapeAttr(String(startDate||"").slice(0,10))}"></div>
+        <div class="publication-field"><label>Fin</label><input id="project-end-${escapeAttr(id)}" type="date" value="${escapeAttr(String(endDate||"").slice(0,10))}"></div>
+        <div class="publication-field pub-url-field" id="project-share-wrap-${escapeAttr(id)}" style="display:${status==="published" ? "flex" : "none"}"><label>URL diffusion</label><input id="project-share-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(share)}" placeholder="https://..."></div>
         <div class="publication-field pub-url-field" id="project-results-wrap-${escapeAttr(id)}" style="display:${status==="published" || status==="unpublished" ? "flex" : "none"}"><label>URL résultats</label><input id="project-results-${escapeAttr(id)}" class="url-input" type="url" value="${escapeAttr(results)}" placeholder="https://..."></div>
-        <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
-        <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
-        <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
-        <div class="publication-help">${status==="draft"?"Autodiag en cours de création par le client.":status==="sent"?"Configuration transmise à Into The Shift. Les URL de diffusion et de résultats seront disponibles après publication.":status==="published"?"Autodiag publié et accessible aux répondants. La date de fin permettra la dépublication automatique.":status==="unpublished"?"Campagne terminée. L’URL de résultats reste accessible.":"Configuration de campagne."}</div>
       </div>
+      ${alertNote?`<div class="project-alert-note">${escapeHtml(alertNote)}</div>`:""}
+      <div class="project-card-actions">
+        ${orgId?`<button class="mini-btn light" onclick="openClientFolder('${escapeAttr(orgId)}')">Ouvrir cockpit client</button>`:""}
+        <button class="mini-btn" id="project-save-${escapeAttr(id)}" onclick="saveProjectPublication('${escapeAttr(id)}')">Enregistrer</button>
+        <button class="mini-btn light" onclick="openProjectCampaign('${escapeAttr(id)}')">Kit communication / QR code</button>
+        <button class="mini-btn danger" onclick="deleteProject('${escapeAttr(id)}','${escapeAttr(title)}')">Supprimer</button>
+      </div>
+      <div class="publication-save-feedback" id="project-save-feedback-${escapeAttr(id)}">✓ Modifications enregistrées.</div>
     </article>`;
   }).join("");
   document.getElementById("projectsEmpty").style.display=rows.length?"none":"block";
+}
+
+function openProjectCampaign(projectId){
+  if(!projectId)return;
+  window.location.href = "kit-communication.html?projectId=" + encodeURIComponent(projectId);
 }
 
 function togglePublicationUrlFields(projectId){
@@ -1261,7 +2364,7 @@ async function saveProjectPublication(projectId){
   if(feedback) feedback.classList.remove("on");
 
   try{
-    await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{
+    const result = await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/publication`,{
       status,
       share_url: shareUrl,
       results_url: resultsUrl,
@@ -1278,7 +2381,11 @@ async function saveProjectPublication(projectId){
     }:p);
     renderKpis();
     renderProjects();
-    showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + ".");
+    const emailInfo = result?.publicationEmail;
+    const emailMsg = status === "published"
+      ? (emailInfo?.sent ? " Email client envoyé." : emailInfo?.reason === "ALREADY_SENT" ? " Email client déjà envoyé auparavant." : " Email client non envoyé : " + (emailInfo?.reason || "non déclenché") + ".")
+      : "";
+    showSuccess("Modifications enregistrées : " + getProjectStatusLabel(status) + "." + emailMsg);
 
     setTimeout(()=>{
       const btn=document.getElementById("project-save-"+String(projectId));
@@ -1391,6 +2498,112 @@ async function saveUserPassations(userId){
   }
 }
 
+let packUpgradeToProcess = null;
+
+function openPackUpgradeConfirmModal({ projectId, organizationId, action, title, label, afterLabel }){
+  packUpgradeToProcess = { projectId, organizationId, action };
+  const modal=document.getElementById("packUpgradeConfirmModal");
+  const icon=document.getElementById("packUpgradeConfirmIcon");
+  const titleEl=document.getElementById("packUpgradeConfirmTitle");
+  const subEl=document.getElementById("packUpgradeConfirmSub");
+  const textEl=document.getElementById("packUpgradeConfirmText");
+  const detailEl=document.getElementById("packUpgradeConfirmDetail");
+  const warningEl=document.getElementById("packUpgradeConfirmWarning");
+  const btn=document.getElementById("packUpgradeConfirmBtn");
+
+  const approve=action==="approve";
+  if(icon){
+    icon.textContent=approve ? "✅" : "↩️";
+    icon.classList.toggle("warn", !approve);
+  }
+  if(titleEl) titleEl.textContent=approve ? "Valider cette recharge pack ?" : "Refuser cette recharge pack ?";
+  if(subEl) subEl.textContent=approve ? "Le quota réel du cockpit client sera mis à jour." : "La demande restera visible comme refusée.";
+  if(textEl) textEl.textContent=approve ? "Confirmez-vous la validation commerciale de cette recharge ?" : "Confirmez-vous le refus de cette demande de recharge ?";
+  if(detailEl) detailEl.innerHTML=`<strong>${escapeHtml(title)}</strong><br>${escapeHtml(label)}${afterLabel ? ` · après validation : ${escapeHtml(afterLabel)}` : ""}`;
+  if(warningEl){
+    warningEl.style.display=approve ? "block" : "none";
+    warningEl.textContent="À faire uniquement après validation commerciale / devis. Le client ne reçoit pas le détail interne HubSpot.";
+  }
+  if(btn){
+    btn.textContent=approve ? "Valider la recharge" : "Refuser la demande";
+    btn.className=approve ? "admin-modal-btn primary" : "admin-modal-btn warn";
+    btn.disabled=false;
+  }
+  if(modal){
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+  }
+}
+
+function closePackUpgradeConfirmModal(clear=true){
+  const modal=document.getElementById("packUpgradeConfirmModal");
+  if(modal){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+  }
+  if(clear) packUpgradeToProcess=null;
+}
+
+async function handleAdminOrganizationPackUpgrade(orgId, action){
+  if(!orgId || !["approve","reject"].includes(action)) return;
+  const org = adminState.organizations.find(o=>String(val(o,["id"],""))===String(orgId));
+  const request = org ? getAdminOrgPackUpgradeRequest(org) : null;
+  const orgName = org ? getOrgName(org) : "ce cockpit client";
+  const label = request?.requested ? formatPackUpgradeRequestLabel(request) : "cette recharge";
+  openPackUpgradeConfirmModal({
+    projectId: "org:" + String(orgId),
+    action,
+    title: orgName,
+    label,
+    afterLabel: request?.unlimited ? "Pack illimité" : `${formatNumber(request?.totalAfter || 0)} passations au total`,
+    isOrganizationRequest: true,
+    organizationId: orgId
+  });
+}
+
+async function handleAdminPackUpgrade(projectId, action){
+  if(!projectId || !["approve","reject"].includes(action)) return;
+  const project=adminState.projects.find(p=>String(val(p,["id"],""))===String(projectId));
+  const request=project ? getAdminProjectPackUpgradeRequest(project) : null;
+  const title=project ? pickProjectTitle(val(project,["title","name","project_title"],"")) : "cet autodiagnostic";
+  const label=request ? formatPackUpgradeRequestLabel(request) : "cette recharge";
+  const afterLabel=request ? (request.unlimited ? "Pack illimité" : `${formatNumber(request.totalAfter || 0)} passations au total`) : "";
+  openPackUpgradeConfirmModal({projectId, action, title, label, afterLabel});
+}
+
+async function confirmAdminPackUpgrade(){
+  if(!packUpgradeToProcess?.projectId || !packUpgradeToProcess?.action) return;
+  const {projectId, action}=packUpgradeToProcess;
+  const btn=document.getElementById("packUpgradeConfirmBtn");
+  const oldText=btn?.textContent || "Confirmer";
+
+  try{
+    if(btn){
+      btn.disabled=true;
+      btn.textContent=action==="approve" ? "Validation..." : "Refus...";
+    }
+    if(String(projectId || "").startsWith("org:")){
+      const orgId = String(projectId).slice(4);
+      await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/pack-upgrade`,{action});
+    }else{
+      await apiPatch(`/api/admin/projects/${encodeURIComponent(projectId)}/pack-upgrade`,{action});
+    }
+    closePackUpgradeConfirmModal(true);
+    showSuccess(action==="approve" ? "Recharge pack validée." : "Recharge pack refusée.");
+    await loadAdminData();
+    currentOrgFilter="packUpgrade";
+    renderOrganizations();
+  }catch(err){
+    console.error(err);
+    showError("Traitement de la recharge impossible. Détail : "+err.message);
+  }finally{
+    if(btn){
+      btn.disabled=false;
+      btn.textContent=oldText;
+    }
+  }
+}
+
 function syncOrganizationPackQuota(orgId){
   const packEl=document.getElementById("org-pack-"+String(orgId));
   const quotaEl=document.getElementById("org-quota-"+String(orgId));
@@ -1414,7 +2627,8 @@ async function saveOrganizationPassations(orgId){
     await apiPatch(`/api/admin/organizations/${encodeURIComponent(orgId)}/passations`,{
       passationsPack,
       passationsQuota,
-      passationsUsed
+      passationsUsed,
+      packExpiresAt:document.getElementById("org-pack-expires-"+String(orgId))?.value || undefined
     });
     showSuccess("Pack client mis à jour : "+formatNumber(passationsRemaining)+" passations restantes.");
     await loadAdminData();
@@ -1479,6 +2693,7 @@ async function changeRole(userId){
       if(id===String(userId))return {...c,role};
       return c;
     });
+    invalidateAdminRenderedTabs();
     renderAll();
     showSuccess("Rôle mis à jour.");
   }catch(err){
@@ -1537,6 +2752,53 @@ async function confirmDeleteUser(){
   }
 }
 
+let organizationToDelete = null;
+
+function deleteOrganization(orgId, name){
+  if(!orgId)return;
+
+  organizationToDelete = { id: orgId, name: name || "cockpit sélectionné" };
+
+  const nameEl=document.getElementById("deleteOrganizationName");
+  const modal=document.getElementById("deleteOrganizationModal");
+  if(nameEl)nameEl.textContent = `#${organizationToDelete.id} — ${organizationToDelete.name}`;
+  if(modal)modal.style.display = "flex";
+}
+
+function closeDeleteOrganizationModal(){
+  organizationToDelete = null;
+  const modal=document.getElementById("deleteOrganizationModal");
+  if(modal)modal.style.display = "none";
+}
+
+async function confirmDeleteOrganization(){
+  if(!organizationToDelete?.id)return;
+
+  const modal=document.getElementById("deleteOrganizationModal");
+  const confirmBtn=modal ? modal.querySelector(".mini-btn.danger") : null;
+  const previousText=confirmBtn?.textContent || "Supprimer le cockpit";
+
+  try{
+    if(confirmBtn){
+      confirmBtn.disabled=true;
+      confirmBtn.textContent="Suppression...";
+    }
+
+    await apiDelete(`/api/admin/organizations/${encodeURIComponent(organizationToDelete.id)}`);
+    closeDeleteOrganizationModal();
+    showSuccess("Cockpit client supprimé.");
+    await loadAdminData();
+  }catch(err){
+    console.error(err);
+    showError("Suppression du cockpit impossible. Détail : "+err.message);
+  }finally{
+    if(confirmBtn){
+      confirmBtn.disabled=false;
+      confirmBtn.textContent=previousText;
+    }
+  }
+}
+
 function openPartnerFolder(partnerId){
   window.location.href=`partner-folder.html?id=${encodeURIComponent(partnerId)}`;
 }
@@ -1548,12 +2810,41 @@ function hideError(){const box=document.getElementById("errorBox");box.style.dis
 function showSuccess(msg){hideError();const box=document.getElementById("successBox");box.textContent=msg;box.style.display="block";setTimeout(()=>hideSuccess(),3500);}
 function hideSuccess(){const box=document.getElementById("successBox");box.style.display="none";box.textContent="";}
 
+window.addEventListener("hashchange",()=>{
+  const tab = getInitialAdminTab();
+  if(tab){
+    showTab(tab);
+    if(tab === "organizations") renderOrganizations();
+    if(tab === "projects") renderProjects();
+    if(tab === "accounts") renderAccounts();
+    if(tab === "partners") renderPartners();
+  }
+});
+
 document.addEventListener("DOMContentLoaded",()=>{
   resetAdminFilters();
+  const initialTab = getInitialAdminTab();
+  if(initialTab && initialTab !== "global") showTab(initialTab);
   setTimeout(resetAdminFilters,250);
   if(requireAdmin())loadAdminData();
 });
 </script>
+<div id="deleteOrganizationModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:24px;padding:24px;max-width:560px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
+    <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer ce cockpit client ?</h3>
+    <p style="margin:0 0 12px;color:#60758a;line-height:1.45;">
+      Cette suppression est autorisée uniquement si le cockpit ne contient plus aucun autodiagnostic et aucun utilisateur rattaché.
+    </p>
+    <p style="margin:0 0 18px;color:#60758a;line-height:1.45;">
+      Les autres cockpits de la même entreprise ne seront pas modifiés.
+    </p>
+    <div style="background:#fff6f6;border:1px solid #ffd1d1;color:#9d2b2b;border-radius:14px;padding:12px;margin-bottom:18px;font-weight:800;" id="deleteOrganizationName"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
+      <button class="mini-btn light" onclick="closeDeleteOrganizationModal()">Annuler</button>
+      <button class="mini-btn danger" onclick="confirmDeleteOrganization()">Supprimer le cockpit</button>
+    </div>
+  </div>
+</div>
 <div id="deleteProjectModal" style="display:none;position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
   <div style="background:#fff;border-radius:24px;padding:24px;max-width:520px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.25);">
     <h3 style="margin:0 0 10px;color:#0d4c72;font-size:22px;">Supprimer cet autodiag ?</h3>
