@@ -46,6 +46,8 @@
     .status-draft{background:#fff5da;color:#8a6200}
     .status-sent{background:#e8f1ff;color:#1f4e91}
     .status-published{background:#eafbf1;color:#16774a}
+    .status-extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
+    .status-reprogrammed{background:#fff8ec;color:#9a5b00;border:1px solid #ffd9a3}
     .status-unpublished{background:#eef2f6;color:#64748b}
     .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .small-btn{border-radius:999px;padding:9px 13px;border:1px solid #d8e2ec;background:#fff;color:#0d4c72;font-weight:800;font-family:'Asap',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
@@ -65,6 +67,11 @@
     .campaign-link-actions{display:flex;gap:6px;flex-wrap:wrap}
     .small-btn.danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
     .small-btn.danger:hover{background:#ffe4e6}
+    .pack-upgrade-box{background:#fff8ec;border:1px solid #ffd9a3;color:#8a5a00;border-radius:16px;padding:12px 13px;margin:12px 0;font-size:13px;line-height:1.45}
+    .pack-upgrade-box strong{color:#17375d}
+    .pack-upgrade-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .small-btn.approve-pack{background:#16774a;color:#fff;border-color:#16774a}
+    .small-btn.reject-pack{background:#fff;color:#9a3412;border-color:#fed7aa}
     @media(max-width:760px){.campaign-link-row{grid-template-columns:1fr}.campaign-link-actions .small-btn{width:100%;justify-content:center}}
 
     .modal-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
@@ -93,6 +100,12 @@
     .project-logo-preview img{width:100%;height:100%;object-fit:contain;background:#fff}
     .project-logo-info{font-size:12px;color:#61738a;line-height:1.35;min-width:140px;flex:1}
     .project-logo-info strong{display:block;color:#17375d;font-size:13px}
+    .project-contact-box{background:#eef6fb;border:1px solid #d7e8f1;border-radius:14px;padding:10px 12px;margin:10px 0;color:#0d4c72;font-size:12px;line-height:1.4}
+    .project-contact-box strong{display:block;color:#17375d;font-size:12px;margin-bottom:2px}
+.attached-users-box{margin-top:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);border-radius:18px;padding:12px 14px;color:#fff;max-width:760px}
+    .attached-users-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:900;opacity:.86;margin-bottom:7px}
+    .attached-user-line{font-size:13px;line-height:1.45;opacity:.96}
+    .attached-user-line strong{font-weight:900;color:#fff}
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10000;opacity:0;pointer-events:none;transition:all .18s ease}
     .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -127,6 +140,9 @@
     .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
     .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
     .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .project-update-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;border:1px solid #fecdd3;background:#fff1f2;color:#be123c;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 10px;box-shadow:0 8px 18px rgba(190,18,60,.08)}
+    .project-update-dot{width:9px;height:9px;border-radius:999px;background:#e11d48;box-shadow:0 0 0 4px rgba(225,29,72,.12);flex:0 0 auto}
+    .project-update-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .resource-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
     .resource-cat{background:#f9fbfd;border:1px solid #e4edf5;border-radius:20px;padding:15px;display:flex;gap:12px;align-items:flex-start}
     .resource-cat-ico{width:42px;height:42px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#eef6fb;flex:0 0 auto}
@@ -161,6 +177,23 @@
 
     @media(max-width:900px){.kpis,.info-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}h1{font-size:28px}}
     @media(max-width:620px){.page{padding:20px 14px 50px}.kpis,.info-grid{grid-template-columns:1fr}.hero{padding:24px;border-radius:24px}}
+
+    .title-edit-btn{border:0;background:#eef6fb;color:#0d4c72;border-radius:999px;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:900;flex:0 0 auto}.title-edit-btn:hover{background:#dff0f7}.respondent-title-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+
+    .respondent-title-modal .modal-header{background:linear-gradient(135deg,#0d4c72,#1f7b98)}
+    .respondent-title-field{margin-top:14px}
+    .respondent-title-field label{display:block;font-size:12px;font-weight:900;color:#17375d;margin-bottom:6px}
+    .respondent-title-field input{width:100%;border:1px solid #d8e2ec;border-radius:14px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#17375d;outline:none;background:#fff}
+    .respondent-title-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
+
+    .id-debug-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 12px}
+    .id-pill{background:#fff;border:1px dashed #bfd2df;color:#244b63;border-radius:12px;padding:8px 9px;font-size:12px;line-height:1.25;word-break:break-word}
+    .id-pill strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#74899a;margin-bottom:3px}
+    .id-pill.warn{background:#fff8ec;border-color:#ffd9a3;color:#9a5b00}
+    .id-pill.good{background:#eefbf3;border-color:#c8ebd4;color:#176239}
+    .debug-note{background:#fff8ec;border:1px solid #ffd9a3;color:#8a5a00;border-radius:14px;padding:10px 12px;font-size:12px;font-weight:800;line-height:1.35;margin:8px 0}
+    @media(max-width:900px){.id-debug-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:620px){.id-debug-grid{grid-template-columns:1fr}}
   </style>
 </head>
 
@@ -184,7 +217,7 @@
 
     <section class="kpis">
       <div class="kpi"><strong id="kpiAds">—</strong><span>Autodiagnostics</span></div>
-      <div class="kpi"><strong id="kpiSent">—</strong><span>Transmis</span></div>
+      <div class="kpi"><strong id="kpiSent">—</strong><span>À publier</span></div>
       <div class="kpi"><strong id="kpiPublished">—</strong><span>Publiés</span></div>
       <div class="kpi"><strong id="kpiPassations">—</strong><span>Passations restantes</span></div>
     </section>
@@ -205,6 +238,7 @@
             <div class="panel-sub">Tous les AD rattachés à ce client, avec leur statut de traitement.</div>
           </div>
         </div>
+        <div id="clientPackUpgradePanel"></div>
         <div id="watchList" class="watch-grid"></div>
         <div class="ads-toolbar">
           <div id="adFilters" class="ad-filters"></div>
@@ -313,19 +347,60 @@
     </div>
   </div>
 
+  <div id="respondentTitleModal" class="modal-backdrop respondent-title-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="respondentTitleModalTitle">
+      <div class="modal-header">
+        <div>
+          <h3 id="respondentTitleModalTitle">Modifier le titre visible par les répondants</h3>
+          <p>Ce titre est celui qui apparaît côté répondants.</p>
+        </div>
+        <button class="modal-close" type="button" onclick="closeRespondentTitleModal()" aria-label="Fermer">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="respondent-title-field">
+          <label for="respondentTitleInput">Titre répondants</label>
+          <input id="respondentTitleInput" type="text" onkeydown="if(event.key === 'Enter') confirmRespondentTitleEdit()">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="small-btn" type="button" onclick="closeRespondentTitleModal()">Annuler</button>
+        <button class="small-btn publish" type="button" onclick="confirmRespondentTitleEdit()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
   <script src="header.js"></script>
+  <script src="catalogue-core.js?v=5"></script>
+  <script src="catalogue-cyber.js?v=5"></script>
+  <script src="catalogue-securite.js?v=6"></script>
+  <script src="catalogue-qvt.js?v=5"></script>
+  <script src="catalogue-transfo.js?v=5"></script>
+  <script src="catalogue-rse.js?v=5"></script>
+  <script src="catalogue-ethique.js?v=5"></script>
+  <script src="catalogue-custom.js?v=5"></script>
   <input id="projectLogoInput" type="file" accept="image/*" hidden onchange="uploadProjectLogo(event)">
   <div id="clientFolderToast" class="toast" aria-live="polite"></div>
 
   <script>
-    const API_URL = window.location.hostname === 'localhost'
-      ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
-      : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+    function resolveItsApiBase(){
+      const forced = window.ITS_API_BASE || localStorage.getItem("its_api_base") || "";
+      if(forced) return forced;
+      const host = window.location.hostname;
+      const path = window.location.pathname;
+      const isStaging = host === "localhost" || host === "127.0.0.1" || host.startsWith("staging.") || path.startsWith("/staging");
+      return isStaging
+        ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+        : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+    }
+    const API_URL = resolveItsApiBase();
 
     let currentClient = null;
     let projectToPublish = null;
     let projectToLogo = null;
+    let pendingRespondentTitleProjectId = "";
     let currentAdFilter = "all";
+    let renderedTabs = { ads:false, campaigns:false, resources:false };
+    let projectUpdateNotifications = {};
 
     document.addEventListener("DOMContentLoaded", async () => {
       await loadClientFolder();
@@ -335,11 +410,68 @@
       if(event.key === "Escape"){
         closePublishModal();
         closeConfirmModal(false);
+        closeRespondentTitleModal();
       }
     });
 
     function getToken(){
       return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+    }
+
+    function notificationIsUnread(item = {}){
+      if(item.unread === true) return true;
+      if(item.unread === false) return false;
+      return !Boolean(item.readAt || item.read_at);
+    }
+
+    function getNotificationProjectId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return cleanId(item.projectId || item.project_id || meta.projectId || meta.project_id || "");
+    }
+
+    function getNotificationOrganizationId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return cleanId(item.organizationId || item.organization_id || meta.organizationId || meta.organization_id || "");
+    }
+
+    function projectUpdateLabel(item = {}){
+      const type = String(item.type || "").toLowerCase();
+      if(type.includes("reprogram")) return "Reprogrammation demandée";
+      if(type.includes("extend")) return "Prolongation demandée";
+      if(type.includes("published")) return "Publication / lien mis à jour";
+      if(type.includes("communication") || type.includes("brand_assets")) return "Kit de communication modifié";
+      if(type.includes("submitted") || type.includes("transmission") || type.includes("configuration")) return "Configuration modifiée";
+      return item.title || "Modification récente";
+    }
+
+    async function loadProjectUpdateNotifications(){
+      projectUpdateNotifications = {};
+      const token = getToken();
+      if(!token) return;
+      try{
+        const data = await apiFetch(`/api/notifications?limit=50`, {
+          headers:{ Authorization:`Bearer ${token}` },
+          cache:"no-store"
+        }, 7000);
+        const clientId = String(getClientId() || "");
+        (data.notifications || []).forEach(item => {
+          if(!notificationIsUnread(item)) return;
+          const projectId = getNotificationProjectId(item);
+          if(!projectId) return;
+          const orgId = String(getNotificationOrganizationId(item) || "");
+          if(clientId && orgId && orgId !== clientId) return;
+          if(!projectUpdateNotifications[projectId]) projectUpdateNotifications[projectId] = projectUpdateLabel(item);
+        });
+      }catch(e){
+        projectUpdateNotifications = {};
+        console.warn("Notifications projet non chargées", e);
+      }
+    }
+
+    function renderProjectUpdateBadge(project){
+      const label = projectUpdateNotifications[String(project?.id || "")] || "";
+      if(!label) return "";
+      return `<div class="project-update-badge" title="${escapeAttr(label)}"><span class="project-update-dot" aria-hidden="true"></span><span class="project-update-text">${escapeHtml(label)}</span></div>`;
     }
 
     function decodeJwt(token){
@@ -387,7 +519,7 @@
       const link = document.getElementById("backToClients");
       if(!link) return;
       if(isAdmin()){
-        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour à la vue globale admin";
+        link.textContent = getClientOwnerRole() === "partner" ? "← Retour au dossier partner" : "← Retour cockpit client";
       }else{
         link.textContent = "← Retour à mes clients";
       }
@@ -398,6 +530,36 @@
         if(obj && obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
       }
       return fallback;
+    }
+
+    function cleanId(value){
+      const id = String(value || "").trim();
+      if(!id || id === "0" || id.toLowerCase() === "null" || id.toLowerCase() === "undefined") return "";
+      return id;
+    }
+
+    function displayId(value){
+      return cleanId(value) || "—";
+    }
+
+    function getProjectOrgId(project){
+      return cleanId(val(project,["organization_id","organizationId","org_id","orgId"],""));
+    }
+
+    function getProjectCreatorId(project){
+      return cleanId(val(project,["created_by","createdBy","creator_id","creatorId","user_id","userId","client_id","clientId"],""));
+    }
+
+    function getProjectOwnerId(project){
+      return cleanId(val(project,["owner_id","ownerId","partner_id","partnerId"],""));
+    }
+
+    function renderProjectIds(project){
+      return "";
+    }
+
+    function logClientFolderMappings(clientId, organizations = [], projects = []){
+      // Debug volontairement désactivé : les console.table sur tous les projets ralentissaient fortement le cockpit client.
     }
 
     function getContactName(client){
@@ -411,6 +573,54 @@
 
     function getContactEmail(client){
       return val(client,["contactEmail","contact_email","ownerEmail","owner_email","email"],"");
+    }
+
+
+    function getCreatorName(client){
+      return (
+        val(client,["ownerName","owner_name","creatorName","creator_name"],"") ||
+        getContactName(client)
+      );
+    }
+
+    function getCreatorEmail(client){
+      return (
+        val(client,["ownerEmail","owner_email","creatorEmail","creator_email"],"") ||
+        getContactEmail(client)
+      );
+    }
+
+    function getAttachedUsers(client){
+      const users = Array.isArray(client?.users) ? client.users : [];
+      const seen = new Set();
+      return users.filter(user => {
+        const key = String(val(user,["email"],"")).trim().toLowerCase() || String(val(user,["id"],"")).trim();
+        if(!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function getAttachedUserName(user){
+      return (
+        [val(user,["firstName","first_name"],""), val(user,["lastName","last_name"],"")].filter(Boolean).join(" ").trim() ||
+        val(user,["companyName","company_name"],"") ||
+        val(user,["email"],"") ||
+        "Compte rattaché"
+      );
+    }
+
+    function renderAttachedUsersHero(client){
+      const users = getAttachedUsers(client);
+      if(!users.length){
+        return `<div class="attached-users-box"><div class="attached-users-title">Comptes rattachés au cockpit</div><div class="attached-user-line">Aucun compte rattaché chargé pour le moment.</div></div>`;
+      }
+      return `<div class="attached-users-box"><div class="attached-users-title">Comptes rattachés au cockpit</div>${users.map(user => {
+        const name = getAttachedUserName(user);
+        const email = val(user,["email"],"");
+        const role = val(user,["role","organizationRole","organization_role"],"");
+        return `<div class="attached-user-line"><strong>${escapeHtml(name)}</strong>${email ? ` — ${escapeHtml(email)}` : ""}${role ? ` · ${escapeHtml(role)}` : ""}</div>`;
+      }).join("")}</div>`;
     }
 
     function getProjectData(project){
@@ -430,59 +640,141 @@
 
     function cleanAdTitle(title){return String(title || "").replace(/^\s*Autodiagnostic\s+/i,"").trim() || "Autodiag sans titre";}
 
-function getProjectTitle(project){
+function getProjectRespondentTitle(project){
       const data = getProjectData(project);
       const payload = getProjectPayload(project);
       const param = payload.parametrage || data.parametrage || {};
       return cleanAdTitle(
-        payload.titre_autodiag ||
-        payload.autodiagTitle ||
-        payload.title ||
-        payload.titre ||
-        param.nom ||
+        param.titre_repondants ||
+        param.titreRespondants ||
+        param.titre_visible_repondants ||
+        param.titreVisibleRepondants ||
+        param.titre_visible ||
+        param.titreVisible ||
+        payload.titre_repondants ||
+        payload.titreRespondants ||
+        data.titre_repondants ||
+        data.titreRespondants ||
         param.titre ||
-        data.autodiagTitle ||
+        param.nom ||
+        payload.title ||
         data.title ||
         project.title ||
         "Autodiag sans titre"
       );
     }
 
-    function getProjectThemes(project){
+function getProjectCatalogueOriginalTitle(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const meta = data.meta || payload.meta || {};
+      return cleanAdTitle(
+        data.catalogueTitle ||
+        data.catalogue_title ||
+        data.originalCatalogueTitle ||
+        data.original_catalogue_title ||
+        data.baseTitle ||
+        data.base_title ||
+        data.templateTitle ||
+        data.template_title ||
+        payload.catalogueTitle ||
+        payload.catalogue_title ||
+        payload.baseTitle ||
+        payload.base_title ||
+        meta.nom ||
+        meta.titre ||
+        payload.titre_autodiag ||
+        payload.autodiagTitle ||
+        data.autodiagTitle ||
+        payload.title ||
+        data.title ||
+        param.nom ||
+        project.autodiag_title ||
+        project.project_title ||
+        project.title ||
+        "Autodiag sans titre"
+      );
+    }
+
+function getProjectTitle(project){
+      return getProjectRespondentTitle(project);
+    }
+
+function renderProjectTitleDetails(project){
+      const original = getProjectCatalogueOriginalTitle(project);
+      const respondent = getProjectRespondentTitle(project);
+      return `<div class="card-meta" style="margin:2px 0 10px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br><span class="respondent-title-line">Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong><button class="title-edit-btn" type="button" onclick="openRespondentTitleEditor('${escapeAttr(project.id)}')" title="Modifier le titre visible par les répondants" aria-label="Modifier le titre visible par les répondants">✏️</button></span></div>`;
+    }
+
+    function getProjectCatalogueAdId(project){
       const payload = getProjectPayload(project);
       const data = getProjectData(project);
-      const forbidden = [
-        "base assistée par ia",
-        "base assistee par ia",
-        "aide à la rédaction",
-        "aide a la redaction",
-        "relecture obligatoire",
-        "conçu par un expert",
-        "concu par un expert"
-      ];
-      const businessKeywords = [
-        "cybersécurité","cybersecurite","cyber",
-        "qvt","rps",
-        "management","manager",
-        "compliance","conformité","conformite","éthique","ethique",
-        "diversité","diversite","inclusion","handicap","sexisme","lgbt","religieuse","origines",
-        "rse","sécurité","securite","sûreté","surete","transformation"
-      ];
-      const source = []
-        .concat(payload.theme?.title || [])
-        .concat(payload.themeTitle || [])
-        .concat(payload.title || [])
-        .concat(data.theme?.title || [])
-        .concat(data.themeTitle || [])
-        .concat(payload.tags || [])
-        .concat(payload.themeTags || [])
-        .concat(payload.theme?.tags || []);
-      const cleaned = source
-        .map(x => String(x || "").trim())
-        .filter(Boolean)
-        .filter(t => !forbidden.includes(t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')))
-        .filter(t => businessKeywords.some(k => t.toLowerCase().includes(k)) || !forbidden.some(f => t.toLowerCase().includes(f)));
-      return [...new Set(cleaned)].slice(0,4);
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+      const source = data.source && typeof data.source === "object" ? data.source : {};
+      return String(
+        project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+        data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+        payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+        state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+        meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+        source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+        ""
+      ).trim();
+    }
+
+    function getLibraryThemeFromCatalogue(project){
+      const catalogueAdId = getProjectCatalogueAdId(project);
+      if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+      const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+      return ad?.theme || "";
+    }
+
+    function getExplicitProjectTheme(project){
+      const payload = getProjectPayload(project);
+      const data = getProjectData(project);
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = payload.parametrage || data.parametrage || state.parametrage || {};
+      return String(
+        project?.theme || project?.themeLabel || project?.themeName || project?.thematique || project?.thématique ||
+        data.theme || data.themeLabel || data.themeName || data.thematique || data.thématique ||
+        payload.theme || payload.themeLabel || payload.themeName || payload.thematique || payload.thématique ||
+        state.theme || state.themeLabel || state.themeName || state.thematique || state.thématique ||
+        param.theme || param.themeLabel || param.themeName || param.thematique || param.thématique ||
+        ""
+      ).trim();
+    }
+
+    function getProjectThemes(project){
+      const fromCatalogue = getLibraryThemeFromCatalogue(project);
+      if(fromCatalogue) return [fromCatalogue];
+
+      const explicit = getExplicitProjectTheme(project);
+      if(explicit) return [explicit];
+
+      const inferred = inferThemeFromProject(project);
+      return inferred ? [inferred] : [];
+    }
+
+    function normalizeTextForTheme(value){
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function inferThemeFromProject(project){
+      const text = normalizeTextForTheme(JSON.stringify(getProjectData(project) || {}) + " " + getProjectTitle(project));
+      if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+      if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+      if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+      if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+      if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+      return "";
     }
 
     function renderThemeTags(project){
@@ -514,6 +806,195 @@ function getProjectTitle(project){
       const comment = getProjectComment(project);
       if(!comment) return "";
       return `<div class="card-meta" style="background:#fff;border:1px solid #e4edf5;border-radius:14px;padding:10px 12px;margin-top:10px"><strong>Commentaire client :</strong><br>${escapeHtml(comment)}</div>`;
+    }
+
+    function firstNonEmptyProjectValue(...values){
+      for(const value of values){
+        if(value !== undefined && value !== null && String(value).trim() !== "") return String(value).trim();
+      }
+      return "";
+    }
+
+    function getProjectCommanditaire(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const campaign = data.campagne || data.campaign || payload.campagne || payload.campaign || {};
+      const communication = data.communication || payload.communication || {};
+      const clientInfo = payload.clientInfo || payload.client_info || data.clientInfo || data.client_info || {};
+      const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
+      const transmissionPayload = transmission.payload && typeof transmission.payload === "object" ? transmission.payload : {};
+      const transmissionClientInfo = transmission.clientInfo || transmission.client_info || transmissionPayload.clientInfo || transmissionPayload.client_info || {};
+
+      const firstName = firstNonEmptyProjectValue(
+        campaign.commanditaireFirstName, campaign.commanditaire_first_name,
+        campaign.contactFirstName, campaign.contact_first_name,
+        param.commanditaireFirstName, param.commanditaire_first_name,
+        param.contactFirstName, param.contact_first_name,
+        clientInfo.firstName, clientInfo.first_name, clientInfo.prenom,
+        transmissionClientInfo.firstName, transmissionClientInfo.first_name, transmissionClientInfo.prenom
+      );
+      const lastName = firstNonEmptyProjectValue(
+        campaign.commanditaireLastName, campaign.commanditaire_last_name,
+        campaign.contactLastName, campaign.contact_last_name,
+        param.commanditaireLastName, param.commanditaire_last_name,
+        param.contactLastName, param.contact_last_name,
+        clientInfo.lastName, clientInfo.last_name, clientInfo.nom,
+        transmissionClientInfo.lastName, transmissionClientInfo.last_name, transmissionClientInfo.nom
+      );
+      const name = firstNonEmptyProjectValue(
+        campaign.commanditaireName, campaign.commanditaire_name,
+        campaign.referentName, campaign.referent_name,
+        campaign.contactName, campaign.contact_name,
+        communication.commanditaireName, communication.commanditaire_name,
+        communication.contactName, communication.contact_name,
+        param.commanditaireName, param.commanditaire_name,
+        param.referentName, param.referent_name,
+        param.contactName, param.contact_name,
+        clientInfo.name, clientInfo.fullName, clientInfo.full_name,
+        transmissionClientInfo.name, transmissionClientInfo.fullName, transmissionClientInfo.full_name,
+        [firstName, lastName].filter(Boolean).join(" ")
+      );
+      const email = firstNonEmptyProjectValue(
+        campaign.commanditaireEmail, campaign.commanditaire_email,
+        campaign.referentEmail, campaign.referent_email,
+        campaign.contactEmail, campaign.contact_email,
+        communication.commanditaireEmail, communication.commanditaire_email,
+        communication.contactEmail, communication.contact_email,
+        param.commanditaireEmail, param.commanditaire_email,
+        param.referentEmail, param.referent_email,
+        param.contactEmail, param.contact_email,
+        data.commanditaireEmail, data.commanditaire_email,
+        payload.commanditaireEmail, payload.commanditaire_email,
+        clientInfo.email, clientInfo.mail,
+        transmissionClientInfo.email, transmissionClientInfo.mail
+      );
+      return { name, email };
+    }
+
+    function renderProjectCommanditaire(project){
+      const contact = getProjectCommanditaire(project);
+      if(!contact.name && !contact.email) return `<div class="project-contact-box"><strong>Commanditaire campagne</strong>Non renseigné dans cet AD.</div>`;
+      return `<div class="project-contact-box"><strong>Commanditaire campagne</strong>${escapeHtml(contact.name || "—")}${contact.email ? ` — <a href="mailto:${escapeAttr(contact.email)}" style="color:#0d4c72;font-weight:900;text-decoration:none">${escapeHtml(contact.email)}</a>` : ""}</div>`;
+    }
+
+    function getPackUpgradeRequest(project){
+      const data = getProjectData(project);
+      const param = data.parametrage || {};
+      const choice = String(
+        param.pack_choisi ||
+        param.packChoisi ||
+        param.selectedPack ||
+        data.pack_choisi ||
+        data.packChoisi ||
+        data.selectedPack ||
+        ""
+      ).trim();
+
+      const status = String(
+        data.pack_upgrade_status ||
+        data.packUpgradeStatus ||
+        param.pack_upgrade_status ||
+        param.packUpgradeStatus ||
+        ""
+      ).toLowerCase();
+
+      if(!choice || choice === "current_pack" || choice === "existing") return { requested:false, status, choice };
+
+      const orgPack = String(project.organizationPassationsPack || project.organization_passations_pack || "").toLowerCase();
+      if(orgPack === "illimite" && choice !== "illimite") return { requested:false, status:"not_required", choice };
+
+      const quota = Number(project.organizationPassationsQuota || project.organization_passations_quota || 0);
+      const used = Number(project.organizationPassationsUsed || project.organization_passations_used || 0);
+      const amount = choice === "illimite" ? null : Number(choice || 0);
+      if(choice !== "illimite" && (!Number.isFinite(amount) || amount <= 0)) return { requested:false, status, choice };
+
+      return {
+        requested:true,
+        status: status || "pending",
+        choice,
+        amount,
+        unlimited: choice === "illimite",
+        currentQuota: quota,
+        currentUsed: used,
+        currentRemaining: orgPack === "illimite" ? null : Math.max(0, quota - used),
+        totalAfter: choice === "illimite" ? null : quota + amount
+      };
+    }
+
+    function renderPackUpgradeBox(project){
+      const request = getPackUpgradeRequest(project);
+      if(!request.requested) return "";
+
+      const isPending = request.status === "pending";
+      const isApproved = request.status === "approved";
+      const isRejected = request.status === "rejected";
+      const label = request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`;
+      const after = request.unlimited ? "Pack illimité" : `${Number(request.totalAfter || 0).toLocaleString("fr-FR")} passations au total`;
+
+      if(isApproved){
+        return `<div class="pack-upgrade-box">✅ <strong>Recharge pack validée</strong><br>${escapeHtml(label)} · ${escapeHtml(after)}</div>`;
+      }
+
+      if(isRejected){
+        return `<div class="pack-upgrade-box">↩️ <strong>Recharge pack refusée</strong><br>${escapeHtml(label)}</div>`;
+      }
+
+      return `
+        <div class="pack-upgrade-box">
+          📦 <strong>Recharge pack demandée</strong><br>
+          ${escapeHtml(label)} · après validation : ${escapeHtml(after)}
+          ${isAdmin() ? `
+            <div class="pack-upgrade-actions">
+              <button class="small-btn approve-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','approve')">✅ Valider recharge</button>
+              <button class="small-btn reject-pack" onclick="handlePackUpgrade('${escapeAttr(project.id)}','reject')">Refuser</button>
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }
+
+
+    function getClientPackUpgradeRequest(client){
+      const raw = val(client,["packUpgradeRequest","pack_upgrade_request"],null) || {};
+      const choice = String(raw.choice || raw.pack_upgrade_choice || val(client,["packUpgradeChoice","pack_upgrade_choice"],"") || "").trim();
+      const status = String(raw.status || raw.pack_upgrade_status || val(client,["packUpgradeStatus","pack_upgrade_status"],"")).toLowerCase();
+      const requested = raw.requested === true || val(client,["packUpgradeRequested","pack_upgrade_requested"],false) === true;
+      if(!requested || !choice || choice === "current_pack" || choice === "existing") return {requested:false,status,choice};
+      const amount = choice === "illimite" ? null : Number(raw.amount ?? raw.pack_upgrade_amount ?? val(client,["packUpgradeAmount","pack_upgrade_amount"],choice));
+      if(choice !== "illimite" && (!Number.isFinite(amount) || amount <= 0)) return {requested:false,status,choice};
+      const quota = Number(val(client,["passationsQuota","passations_quota"],0) || 0);
+      const used = Number(val(client,["passationsUsed","passations_used"],0) || 0);
+      const totalAfter = choice === "illimite" ? null : Number(raw.totalAfter ?? raw.total_after ?? val(client,["packUpgradeTotalAfter","pack_upgrade_total_after"],quota + amount));
+      return {
+        requested:true,
+        status: status || "pending",
+        choice,
+        amount,
+        unlimited: choice === "illimite" || raw.unlimited === true || val(client,["packUpgradeUnlimited","pack_upgrade_unlimited"],false) === true,
+        currentQuota: quota,
+        currentUsed: used,
+        currentRemaining: choice === "illimite" ? null : Math.max(0, quota - used),
+        totalAfter
+      };
+    }
+
+    function renderClientPackUpgradePanel(){
+      const holder = document.getElementById("clientPackUpgradePanel");
+      if(!holder) return;
+      const request = getClientPackUpgradeRequest(currentClient || {});
+      if(!request.requested){ holder.innerHTML = ""; return; }
+      const label = request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`;
+      const after = request.unlimited ? "Pack illimité" : `${Number(request.totalAfter || 0).toLocaleString("fr-FR")} passations au total`;
+      if(request.status === "approved"){
+        holder.innerHTML = `<div class="pack-upgrade-box">✅ <strong>Recharge pack validée</strong><br>${escapeHtml(label)} · ${escapeHtml(after)}</div>`;
+        return;
+      }
+      if(request.status === "rejected"){
+        holder.innerHTML = `<div class="pack-upgrade-box">↩️ <strong>Recharge pack refusée</strong><br>${escapeHtml(label)}</div>`;
+        return;
+      }
+      holder.innerHTML = `<div class="pack-upgrade-box">📦 <strong>Recharge pack demandée pour ce client</strong><br>${escapeHtml(label)} · après validation : ${escapeHtml(after)}${isAdmin() ? `<div class="pack-upgrade-actions"><button class="small-btn approve-pack" onclick="handleClientPackUpgrade('${escapeAttr(currentClient.id)}','approve')">✅ Valider recharge</button><button class="small-btn reject-pack" onclick="handleClientPackUpgrade('${escapeAttr(currentClient.id)}','reject')">Refuser</button></div>` : ""}</div>`;
     }
 
     function getProjectLogoData(project){
@@ -592,11 +1073,55 @@ function getProjectTitle(project){
       return projects.find(project => String(project.id) === String(projectId)) || null;
     }
 
+    function formatPackExpiryDate(value){
+      if(!value) return '—';
+      const d = new Date(value);
+      if(Number.isNaN(d.getTime())) return '—';
+      return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+    }
+
+
+    function clientPackIsExpired(client){
+      const value = val(client || {}, ["packExpiresAt","pack_expires_at"], "");
+      const iso = normalizeDateInputValue(value);
+      if(!iso) return false;
+      const [y,m,d] = iso.split("-").map(Number);
+      const expiry = new Date(y, m - 1, d);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      return !Number.isNaN(expiry.getTime()) && expiry.getTime() < today.getTime();
+    }
+
+    function clientPackValidityLabel(client){
+      const value = val(client || {}, ["packExpiresAt","pack_expires_at"], "");
+      const formatted = formatPackExpiryDate(value);
+      if(formatted === "—") return "Date de fin pack non renseignée";
+      return clientPackIsExpired(client)
+        ? `Pack expiré depuis le ${formatted} · rechargez vos crédits`
+        : `Pack valable jusqu’au : ${formatted}`;
+    }
+
     function formatDate(value){
       if(!value) return "—";
       const d = new Date(value);
       if(Number.isNaN(d.getTime())) return String(value);
       return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});
+    }
+
+    async function apiFetch(path, options = {}, timeoutMs = 12000){
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), timeoutMs);
+      try{
+        const response = await fetch(`${API_URL}${path}`, { ...options, signal: controller.signal });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || `${path} — ${response.status}`);
+        return data;
+      }catch(err){
+        if(err.name === "AbortError") throw new Error(`${path} ne répond pas après ${Math.round(timeoutMs/1000)} secondes`);
+        throw err;
+      }finally{
+        clearTimeout(timeout);
+      }
     }
 
     async function loadClientFolder(){
@@ -612,37 +1137,41 @@ function getProjectTitle(project){
 
       try{
         if(isAdmin()){
-          const [orgResponse, projectResponse] = await Promise.all([
-            fetch(`${API_URL}/api/admin/organizations`, { headers: { Authorization: `Bearer ${getToken()}` } }),
-            fetch(`${API_URL}/api/admin/projects`, { headers: { Authorization: `Bearer ${getToken()}` } })
+          const headers = { Authorization: `Bearer ${getToken()}` };
+          const [orgData, projectData] = await Promise.all([
+            apiFetch(`/api/admin/organizations`, { headers }),
+            apiFetch(`/api/admin/projects`, { headers })
           ]);
 
-          const orgData = await orgResponse.json().catch(() => ({}));
-          const projectData = await projectResponse.json().catch(() => ({}));
-
-          if(!orgResponse.ok) throw new Error(orgData.error || "Erreur API organisations");
-          if(!projectResponse.ok) throw new Error(projectData.error || "Erreur API projets");
+          let attachedUsers = [];
+          try{
+            const usersData = await apiFetch(`/api/admin/organizations/${encodeURIComponent(clientId)}/users`, { headers }, 6000);
+            attachedUsers = usersData.users || usersData.clients || usersData.data || [];
+          }catch(usersErr){
+            console.warn("Comptes rattachés non chargés, cockpit maintenu", usersErr);
+          }
 
           const organizations = orgData.organizations || orgData.clients || orgData.data || [];
           const projects = projectData.projects || projectData.autodiags || projectData.data || [];
 
           currentClient = organizations.find(c => String(c.id) === String(clientId));
+          logClientFolderMappings(clientId, organizations, projects);
 
           if(currentClient){
+            currentClient.users = attachedUsers;
             currentClient.projects = projects.filter(project =>
               String(project.organizationId || project.organization_id || project.orgId || project.org_id || "") === String(clientId)
             );
           }
         }else{
-          const response = await fetch(`${API_URL}/api/partner/clients`, {
+          const data = await apiFetch(`/api/partner/clients`, {
             headers: { Authorization: `Bearer ${getToken()}` }
           });
-
-          const data = await response.json().catch(() => ({}));
-
-          if(!response.ok) throw new Error(data.error || "Erreur API");
           currentClient = (data.clients || []).find(c => String(c.id) === String(clientId));
+          logClientFolderMappings(clientId, data.clients || [], currentClient?.projects || []);
         }
+
+        await loadProjectUpdateNotifications();
 
         if(!currentClient){
           alert("Client introuvable ou non autorisé.");
@@ -669,7 +1198,7 @@ function getProjectTitle(project){
 
     function getStatusLabel(status){
       const s = normalizeStatus(status);
-      if(s === "sent") return "Transmis";
+      if(s === "sent") return "À publier";
       if(s === "published") return "Publié";
       if(s === "unpublished") return "Dépublié";
       if(s === "archived") return "Archivé";
@@ -685,20 +1214,152 @@ function getProjectTitle(project){
       return "status-draft";
     }
 
+    function isProjectExtended(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+
+      return Boolean(
+        project?.extended === true ||
+        project?.isExtended === true ||
+        project?.extended_at ||
+        project?.extendedAt ||
+        data?.extended === true ||
+        data?.isExtended === true ||
+        data?.extended_at ||
+        data?.extendedAt ||
+        payload?.extended === true ||
+        payload?.isExtended === true ||
+        payload?.extended_at ||
+        payload?.extendedAt ||
+        param?.extended === true ||
+        param?.isExtended === true ||
+        param?.extended_at ||
+        param?.extendedAt
+      );
+    }
+
+    function renderExtendedBadge(project){
+      return normalizeStatus(project?.status) === "published" && isProjectExtended(project)
+        ? '<span class="status status-extended">📅 Campagne prolongée</span>'
+        : '';
+    }
+
+    function isProjectReprogrammed(project){
+      const data = getProjectData(project);
+      const payload = getProjectPayload(project);
+      const param = payload.parametrage || data.parametrage || {};
+      const transmission = data.transmission && typeof data.transmission === "object" ? data.transmission : {};
+      const transmissionPayload = transmission.payload && typeof transmission.payload === "object" ? transmission.payload : {};
+      const campaign = data.campagne || data.campaign || payload.campagne || payload.campaign || {};
+      const communication = data.communication || payload.communication || {};
+
+      const reprogrammingType = [
+        project?.transmissionType, project?.transmission_type, project?.type,
+        data?.transmissionType, data?.transmission_type, data?.type,
+        payload?.transmissionType, payload?.transmission_type, payload?.type,
+        param?.transmissionType, param?.transmission_type,
+        transmission?.transmissionType, transmission?.transmission_type, transmission?.type, transmission?.status,
+        transmissionPayload?.transmissionType, transmissionPayload?.transmission_type, transmissionPayload?.type,
+        campaign?.transmissionType, campaign?.transmission_type, campaign?.type,
+        communication?.transmissionType, communication?.transmission_type
+      ].some(value => String(value || "").toLowerCase().includes("reprogram"));
+
+      return Boolean(
+        reprogrammingType ||
+        project?.reprogrammed === true ||
+        project?.isReprogrammed === true ||
+        project?.is_reprogrammed === true ||
+        project?.reprogramming === true ||
+        project?.isReprogramming === true ||
+        project?.reprogrammingRequest === true ||
+        project?.reprogrammed_at ||
+        project?.reprogrammedAt ||
+        project?.campaign_reprogrammed === true ||
+        project?.campaignReprogrammed === true ||
+        project?.campaign_reprogrammed_at ||
+        project?.campaignReprogrammedAt ||
+        data?.reprogrammed === true ||
+        data?.isReprogrammed === true ||
+        data?.is_reprogrammed === true ||
+        data?.reprogramming === true ||
+        data?.isReprogramming === true ||
+        data?.reprogrammingRequest === true ||
+        data?.reprogrammed_at ||
+        data?.reprogrammedAt ||
+        data?.campaign_reprogrammed === true ||
+        data?.campaignReprogrammed === true ||
+        data?.campaign_reprogrammed_at ||
+        data?.campaignReprogrammedAt ||
+        payload?.reprogrammed === true ||
+        payload?.isReprogrammed === true ||
+        payload?.is_reprogrammed === true ||
+        payload?.reprogramming === true ||
+        payload?.isReprogramming === true ||
+        payload?.reprogrammingRequest === true ||
+        payload?.reprogrammed_at ||
+        payload?.reprogrammedAt ||
+        payload?.campaign_reprogrammed === true ||
+        payload?.campaignReprogrammed === true ||
+        payload?.campaign_reprogrammed_at ||
+        payload?.campaignReprogrammedAt ||
+        param?.reprogrammed === true ||
+        param?.isReprogrammed === true ||
+        param?.is_reprogrammed === true ||
+        param?.reprogramming === true ||
+        param?.isReprogramming === true ||
+        param?.reprogrammingRequest === true ||
+        param?.reprogrammed_at ||
+        param?.reprogrammedAt ||
+        param?.campaign_reprogrammed === true ||
+        param?.campaignReprogrammed === true ||
+        param?.campaign_reprogrammed_at ||
+        param?.campaignReprogrammedAt ||
+        transmission?.reprogrammed === true ||
+        transmission?.isReprogrammed === true ||
+        transmission?.is_reprogrammed === true ||
+        transmission?.reprogramming === true ||
+        transmission?.isReprogramming === true ||
+        transmission?.reprogrammingRequest === true ||
+        transmission?.reprogrammed_at ||
+        transmission?.reprogrammedAt ||
+        transmissionPayload?.reprogrammed === true ||
+        transmissionPayload?.isReprogrammed === true ||
+        transmissionPayload?.is_reprogrammed === true ||
+        transmissionPayload?.reprogramming === true ||
+        transmissionPayload?.isReprogramming === true ||
+        transmissionPayload?.reprogrammingRequest === true ||
+        transmissionPayload?.reprogrammed_at ||
+        transmissionPayload?.reprogrammedAt
+      );
+    }
+
+    function renderReprogrammedBadge(project){
+      return normalizeStatus(project?.status) === "published" && isProjectReprogrammed(project)
+        ? '<span class="status status-reprogrammed">🔁 Campagne reprogrammée</span>'
+        : '';
+    }
+
+
     function renderClient(){
       const projects = currentClient.projects || [];
       const sentCount = projects.filter(p => normalizeStatus(p.status) === "sent").length;
       const publishedCount = projects.filter(p => normalizeStatus(p.status) === "published").length;
-      const remaining = val(currentClient,["passationsRemaining","passations_remaining"],"—");
+      const packExpired = clientPackIsExpired(currentClient);
+      const remaining = packExpired ? "0" : val(currentClient,["passationsRemaining","passations_remaining"],"—");
 
       document.getElementById("loadingState").style.display = "none";
       document.getElementById("tab-ads").style.display = "block";
 
       document.getElementById("clientName").textContent = currentClient.name || "Cockpit client";
       document.getElementById("clientMeta").innerHTML = `
-        Contact : ${escapeHtml(getContactName(currentClient))}<br>
-        Email : ${escapeHtml(getContactEmail(currentClient) || "—")}<br>
+        Créateur du compte : ${escapeHtml(getCreatorName(currentClient))}<br>
+        Email créateur : ${escapeHtml(getCreatorEmail(currentClient) || "—")}<br>
+        ID cockpit : ${escapeHtml(displayId(currentClient.id))}<br>
+        ID créateur / owner : ${escapeHtml(displayId(getClientOwnerId()))}<br>
+        ${escapeHtml(clientPackValidityLabel(currentClient))}<br>
         Vue : ${isAdmin() ? "admin Into The Shift" : "partner"}
+        ${renderAttachedUsersHero(currentClient)}
       `;
 
       document.getElementById("kpiAds").textContent = projects.length;
@@ -706,10 +1367,10 @@ function getProjectTitle(project){
       document.getElementById("kpiPublished").textContent = publishedCount;
       document.getElementById("kpiPassations").textContent = remaining;
 
+      renderedTabs = { ads:false, campaigns:false, resources:false };
+      renderClientPackUpgradePanel();
       renderAds(projects);
-      renderCampaigns(projects);
-      renderResults(projects);
-      renderResources(projects);
+      renderedTabs.ads = true;
     }
 
     function getDaysUntil(dateValue){
@@ -793,8 +1454,8 @@ function getProjectTitle(project){
       if(status === "sent" && isAdmin()) alerts.push({kind:"info", icon:"🚀", text:"Prêt à publier"});
       const timing = isMonitorableCampaign(project) ? getCampaignTiming(project) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(status === "published" && isProjectReprogrammed(project)) alerts.push({kind:"warn", icon:"🔁", text:"Campagne reprogrammée"});
       if(status === "published" && !share) alerts.push({kind:"warn", icon:"🔗", text:"URL diffusion manquante"});
-      if(["published","unpublished"].includes(status) && results) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(["published","unpublished"].includes(status) && !results) alerts.push({kind:"warn", icon:"📊", text:"Résultats manquants"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
       if(status === "unpublished") alerts.push({kind:"neutral", icon:"🛑", text:"Dépublié"});
@@ -826,7 +1487,7 @@ function getProjectTitle(project){
       const filters = [
         ["all","✨ Tous"],
         ["endingSoon","🔴 Fin proche"],
-        ["sent","🚀 Transmis"],
+        ["sent","🚀 À publier"],
         ["results","📊 Résultats dispo"],
         ["draft","✏️ Brouillons"],
         ["published","🟢 Publiés"],
@@ -866,9 +1527,100 @@ function getProjectTitle(project){
       const resultsReady = projects.filter(p => ["published","unpublished"].includes(normalizeStatus(p.status)) && getProjectResultsUrl(p)).length;
       el.innerHTML = `
         <div class="watch-card orange clickable ${currentAdFilter==='endingSoon'?'active':''}" onclick="setAdFilter('endingSoon')"><div class="watch-ico">🔴</div><div><div class="watch-title">${endingSoon} campagne${endingSoon>1?'s':''} en fin proche</div><div class="watch-text">Moins de 14 jours avant clôture. Dont ${endingImminent} en fin imminente et ${ended} terminée${ended>1?'s':''}.</div></div></div>
-        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD transmis</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
+        <div class="watch-card blue clickable ${currentAdFilter==='sent'?'active':''}" onclick="setAdFilter('sent')"><div class="watch-ico">🚀</div><div><div class="watch-title">${toPublish} AD à publier</div><div class="watch-text">Cliquez pour n’afficher que les AD à publier.</div></div></div>
         <div class="watch-card green clickable ${currentAdFilter==='results'?'active':''}" onclick="setAdFilter('results')"><div class="watch-ico">📊</div><div><div class="watch-title">${resultsReady} résultat${resultsReady>1?'s':''} disponible${resultsReady>1?'s':''}</div><div class="watch-text">Cliquez pour n’afficher que les AD avec lien résultats.</div></div></div>
       `;
+    }
+
+    function getClientRemainingPassations(){
+      const raw = val(currentClient || {}, ["passationsRemaining","passations_remaining"], "");
+      const n = Number(raw);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function isClientPackUpgradeApproved(){
+      const request = getClientPackUpgradeRequest(currentClient || {});
+      return request.requested === true && String(request.status || "").toLowerCase() === "approved";
+    }
+
+    function canPublishDespitePendingPack(project){
+      const request = getPackUpgradeRequest(project || {});
+      if(!(request.requested && String(request.status || "").toLowerCase() === "pending")) return true;
+
+      // Cas attendu : la demande a été validée au niveau du cockpit client.
+      // Le projet peut encore porter un ancien flag pending dans data.parametrage ;
+      // on le nettoie juste avant publication sans ré-ajouter de quota.
+      if(isClientPackUpgradeApproved()) return true;
+
+      // Sécurité complémentaire : si le quota actuel couvre déjà la publication,
+      // on ne bloque pas l'ouverture de la modale de publication.
+      return getClientRemainingPassations() > 0;
+    }
+
+    async function showPackPublicationBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      await openConfirmModal({
+        tone:"warn",
+        icon:"📦",
+        title:"Recharge pack à valider",
+        subtitle:"La publication est bloquée tant que la demande de recharge n’est pas validée.",
+        text:"Validez la recharge dans le cockpit client, puis relancez la publication. Si la recharge apparaît déjà validée, actualisez la page pour recharger les données.",
+        project:title,
+        warning:"Cette vérification évite de publier une campagne sans passations disponibles.",
+        confirmText:"Compris",
+        hideCancel:true
+      });
+    }
+
+    function getProjectCurrentStep(project){
+      const data = getProjectData(project || {});
+      return project?.currentStep || project?.current_step || data.currentStep || data.current_step || data.step || "campagne";
+    }
+
+    async function clearProjectPackUpgradePendingFlag(projectId){
+      const project = getCurrentProjectById(projectId);
+      if(!project) return false;
+      const request = getPackUpgradeRequest(project);
+      if(!(request.requested && String(request.status || "").toLowerCase() === "pending")) return true;
+      if(!canPublishDespitePendingPack(project)) return false;
+
+      const data = getProjectData(project);
+      const parametrage = Object.assign({}, data.parametrage || {});
+      data.pack_upgrade_status = "approved";
+      data.packUpgradeStatus = "approved";
+      data.pack_upgrade_approved_from_cockpit = true;
+      data.packUpgradeApprovedFromCockpit = true;
+      parametrage.pack_upgrade_status = "approved";
+      parametrage.packUpgradeStatus = "approved";
+      parametrage.pack_upgrade_approved_from_cockpit = true;
+      parametrage.packUpgradeApprovedFromCockpit = true;
+
+      const response = await fetch(`${API_URL}/api/projects`, {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${getToken()}`
+        },
+        body:JSON.stringify({
+          projectId: projectId,
+          title: getProjectTitle(project),
+          organizationId: getProjectOrgId(project) || getClientId() || null,
+          status: project.status || "sent",
+          currentStep: getProjectCurrentStep(project),
+          campaignStartDate: getProjectStartDate(project) || undefined,
+          campaignEndDate: getProjectEndDate(project) || undefined,
+          data:Object.assign({}, data, { parametrage })
+        })
+      });
+      const json = await response.json().catch(()=>({}));
+      if(!response.ok) throw new Error(json.error || "Impossible de synchroniser la recharge validée sur cet AD.");
+
+      const localProject = getCurrentProjectById(projectId);
+      if(localProject){
+        localProject.data = Object.assign({}, data, { parametrage });
+      }
+      return true;
     }
 
     function renderAds(projects){
@@ -898,12 +1650,21 @@ function getProjectTitle(project){
         const projectTitle = getProjectTitle(project);
         const startDate = getProjectStartDate(project);
         const endDate = getProjectEndDate(project);
+        const packUpgrade = getPackUpgradeRequest(project);
 
         return `
           <article class="card">
             <h3>${escapeHtml(projectTitle)}</h3>
+            ${renderProjectUpdateBadge(project)}
+            ${renderProjectTitleDetails(project)}
+            ${renderProjectIds(project)}
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              ${renderExtendedBadge(project)}
+              ${renderReprogrammedBadge(project)}
+            </div>
+            ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             ${renderProjectLogo(project)}
             <div class="card-meta">
@@ -912,15 +1673,31 @@ function getProjectTitle(project){
             </div>
             ${renderProjectComment(project)}
             <div class="card-actions">
-              ${normalizedStatus === "published" ? "" : `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>`}
+              ${["draft","sent"].includes(normalizedStatus) ? `<button class="small-btn" onclick="editProject('${escapeAttr(project.id)}')">Modifier le contenu</button>` : ""}
+              ${["published","unpublished","archived"].includes(normalizedStatus) ? `<button class="small-btn" onclick="viewProjectContent('${escapeAttr(project.id)}')">👁️ Voir le contenu</button>` : ""}
               ${isAdmin()
-                ? `<button class="small-btn" onclick="openCampaignPage('${escapeAttr(project.id)}')">Voir campagne</button>`
-                : `<button class="small-btn" onclick="prepareCampaign('${escapeAttr(project.id)}')">Préparer campagne</button>`
+                ? `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
+                : `<button class="small-btn" onclick="openKitCommunicationPage('${escapeAttr(project.id)}')">📣 Kit de com</button>`
               }
-              <button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>
+              ${["draft","sent","archived"].includes(normalizedStatus)
+                ? `<button class="small-btn danger" onclick="deleteProjectFromFolder('${escapeAttr(project.id)}')">🗑️ Supprimer</button>`
+                : `<button class="small-btn danger" onclick="showDeleteBlockedModal('${escapeAttr(project.id)}')">🗑️ Supprimer</button>`
+              }
               ${
                 normalizedStatus === "sent" && isAdmin()
-                  ? `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`
+                  ? (packUpgrade.requested && packUpgrade.status === "pending" && !canPublishDespitePendingPack(project)
+                    ? `<button class="small-btn publish" onclick="showPackPublicationBlockedModal('${escapeAttr(project.id)}')">✅ Publier</button>`
+                    : `<button class="small-btn publish" onclick="openPublishModal('${escapeAttr(project.id)}','${escapeAttr(projectTitle)}')">✅ Publier</button>`)
+                  : ""
+              }
+              ${
+                normalizedStatus === "published" && isAdmin()
+                  ? `<button class="small-btn" onclick="extendProject('${escapeAttr(project.id)}')" title="Même URL : seule la date de clôture est modifiable.">📅 Prolonger</button>`
+                  : ""
+              }
+              ${
+                ["unpublished","archived"].includes(normalizedStatus) && isAdmin()
+                  ? `<button class="small-btn" onclick="reprogramProject('${escapeAttr(project.id)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">🚀 Reprogrammer</button>`
                   : ""
               }
               ${
@@ -929,8 +1706,10 @@ function getProjectTitle(project){
                   : ""
               }
               ${
-                ["sent","published","unpublished"].includes(normalizedStatus) && isAdmin()
-                  ? `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`
+                ["published","unpublished"].includes(normalizedStatus) && isAdmin()
+                  ? (normalizedStatus === "published"
+                    ? `<button class="small-btn archive" onclick="showArchivePublishedBlockedModal('${escapeAttr(project.id)}')">📦 Archiver</button>`
+                    : `<button class="small-btn archive" onclick="changeProjectStatus('${escapeAttr(project.id)}','archived','archiver')">📦 Archiver</button>`)
                   : ""
               }
             </div>
@@ -941,10 +1720,10 @@ function getProjectTitle(project){
 
     function renderCampaigns(projects){
       const list = document.getElementById("campaignsList");
-      const campaignProjects = projects.filter(p => ["sent","published","unpublished"].includes(normalizeStatus(p.status)) || getProjectShareUrl(p) || getProjectResultsUrl(p));
+      const campaignProjects = projects.filter(p => normalizeStatus(p.status) === "published");
 
       if(!campaignProjects.length){
-        list.innerHTML = `<div class="empty">Aucune campagne prête pour le moment. Les campagnes apparaissent après transmission ou publication d’un AD.</div>`;
+        list.innerHTML = `<div class="empty">Aucune campagne publiée pour le moment. Les campagnes apparaissent ici uniquement quand un AD est publié.</div>`;
         return;
       }
 
@@ -959,8 +1738,15 @@ function getProjectTitle(project){
         return `
           <article class="card">
             <h3>${escapeHtml(title)}</h3>
+            ${renderProjectTitleDetails(project)}
+            ${renderProjectIds(project)}
             ${renderThemeTags(project)}
-            <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+              <span class="status ${getStatusClass(project.status)}">${getStatusLabel(project.status)}</span>
+              ${renderExtendedBadge(project)}
+              ${renderReprogrammedBadge(project)}
+            </div>
+            ${renderProjectCommanditaire(project)}
             ${renderAlertBadges(project)}
             <div class="card-meta">
               Début : ${formatDate(startDate)}<br>
@@ -1003,7 +1789,9 @@ function getProjectTitle(project){
 
               <div class="card-actions">
                 <button class="small-btn publish" onclick="saveCampaignLinks('${pid}')">💾 Enregistrer les liens</button>
-                <button class="small-btn" onclick="openCampaignPage('${pid}')">Voir campagne</button>
+                <button class="small-btn" onclick="notifyCampaignLinksUpdated('${pid}')">✉️ Notifier le client</button>
+                ${isAdmin() ? `<button class="small-btn" onclick="extendProject('${pid}')" title="Même URL : seule la date de clôture est modifiable.">📅 Prolonger</button>` : ""}
+                <button class="small-btn" onclick="openKitCommunicationPage('${pid}')">📣 Kit de com</button>
               </div>
             </div>
           </article>
@@ -1036,12 +1824,20 @@ function getProjectTitle(project){
             <div class="info-value">${escapeHtml(currentClient.name || "—")}</div>
           </div>
           <div class="info-box">
-            <div class="info-label">Contact</div>
-            <div class="info-value">${escapeHtml(getContactName(currentClient))}</div>
+            <div class="info-label">ID cockpit / organization.id</div>
+            <div class="info-value">${escapeHtml(displayId(currentClient.id))}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">ID créateur / owner</div>
+            <div class="info-value">${escapeHtml(displayId(getClientOwnerId()))}</div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">Créateur du compte</div>
+            <div class="info-value">${escapeHtml(getCreatorName(currentClient))}</div>
           </div>
           <div class="info-box">
             <div class="info-label">État livrables</div>
-            <div class="info-value">${transmitted} transmis · ${published} publiés · ${results} résultats</div>
+            <div class="info-value">${transmitted} à publier · ${published} publiés · ${results} résultats</div>
           </div>
         </div>
         <div class="empty" style="text-align:left">
@@ -1061,7 +1857,22 @@ function getProjectTitle(project){
       document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
       if(button) button.classList.add("active");
       document.querySelectorAll(".tab-content").forEach(content => content.style.display = "none");
-      document.getElementById(`tab-${tabName}`).style.display = "block";
+      const target = document.getElementById(`tab-${tabName}`);
+      if(target) target.style.display = "block";
+
+      const projects = currentClient?.projects || [];
+      if(tabName === "ads" && !renderedTabs.ads){
+        renderAds(projects);
+        renderedTabs.ads = true;
+      }
+      if(tabName === "campaigns" && !renderedTabs.campaigns){
+        renderCampaigns(projects);
+        renderedTabs.campaigns = true;
+      }
+      if(tabName === "resources" && !renderedTabs.resources){
+        renderResources(projects);
+        renderedTabs.resources = true;
+      }
     }
 
     function showTabByName(tabName){
@@ -1076,38 +1887,57 @@ function getProjectTitle(project){
       window.location.href = "index.html";
     }
 
-    function editProject(projectId){
-      if(projectId) localStorage.setItem("its_current_project_id", projectId);
+    function setActiveProjectForNavigation(projectId){
+      const id = String(projectId || "").trim();
+      if(!id) return "";
+      localStorage.setItem("its_current_project_id", id);
+      localStorage.setItem("its_current_ad_id", id);
       localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = "questions.html";
+
+      const project = getCurrentProjectById(id);
+      if(project){
+        try{
+          sessionStorage.setItem("its_project_cache_" + id, JSON.stringify(project));
+        }catch(e){}
+      }
+
+      console.log("ITS NAV PROJECT", { projectId:id, clientId:getClientId(), title:project ? getProjectTitle(project) : "" });
+      return id;
+    }
+
+    function editProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `questions.html?projectId=${encodeURIComponent(id)}` : "questions.html";
+    }
+
+    function viewProjectContent(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1` : "questions.html?contentOnly=1";
     }
 
     function prepareCampaign(projectId){
-      if(projectId){
-        localStorage.setItem("its_current_project_id", projectId);
-        const project = getCurrentProjectById(projectId);
-        if(project){
-          try{
-            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
-          }catch(e){}
-        }
-      }
-      localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
     }
 
     function openCampaignPage(projectId){
-      if(projectId){
-        localStorage.setItem("its_current_project_id", projectId);
-        const project = getCurrentProjectById(projectId);
-        if(project){
-          try{
-            sessionStorage.setItem("its_project_cache_"+projectId, JSON.stringify(project));
-          }catch(e){}
-        }
-      }
-      localStorage.setItem("its_selected_partner_client_id", getClientId());
-      window.location.href = `campagne.html?projectId=${encodeURIComponent(projectId || "")}`;
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}` : "campagne.html";
+    }
+
+    function extendProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}&extend=1` : "campagne.html?extend=1";
+    }
+
+    function reprogramProject(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1` : "campagne.html?reprogram=1";
+    }
+
+    function openKitCommunicationPage(projectId){
+      const id = setActiveProjectForNavigation(projectId);
+      window.location.href = id ? `kit-communication.html?projectId=${encodeURIComponent(id)}` : "kit-communication.html";
     }
 
     function openPublishModal(projectId, projectTitle){
@@ -1148,9 +1978,7 @@ function getProjectTitle(project){
       const btn = document.getElementById("confirmPublishBtn");
       const oldText = btn?.textContent || "Publier";
 
-      try{
-        if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
-
+      async function sendPublicationRequest(){
         const shareUrl = String(document.getElementById("publishShareUrl")?.value || "").trim();
         const resultsUrl = String(document.getElementById("publishResultsUrl")?.value || "").trim();
         const startDate = String(document.getElementById("publishStartDate")?.value || "").trim();
@@ -1180,7 +2008,28 @@ function getProjectTitle(project){
         });
 
         const data = await response.json().catch(() => ({}));
-        if(!response.ok) throw new Error(data.error || "Erreur publication");
+        if(!response.ok){
+          const err = new Error(data.error || "Erreur publication");
+          err.status = response.status;
+          throw err;
+        }
+        return data;
+      }
+
+      try{
+        if(btn){ btn.disabled = true; btn.textContent = "Publication…"; }
+
+        await clearProjectPackUpgradePendingFlag(projectToPublish.id);
+
+        try{
+          await sendPublicationRequest();
+        }catch(firstErr){
+          const isPackError = String(firstErr.message || "").toLowerCase().includes("recharge") || Number(firstErr.status) === 409;
+          if(!isPackError) throw firstErr;
+
+          await clearProjectPackUpgradePendingFlag(projectToPublish.id);
+          await sendPublicationRequest();
+        }
 
         document.getElementById("publishSuccess").classList.add("on");
 
@@ -1191,10 +2040,221 @@ function getProjectTitle(project){
 
       }catch(err){
         console.error(err);
-        alert(err.message || "Impossible de publier cet autodiagnostic.");
+        const message = String(err.message || "Impossible de publier cet autodiagnostic.");
+        const isPackBlockingError =
+          Number(err.status) === 409 ||
+          /pack|recharge|quota|passation/i.test(message);
+
+        if(isPackBlockingError){
+          await openConfirmModal({
+            tone:"warn",
+            icon:"📦",
+            title:"Publication bloquée",
+            subtitle:"Le pack ou le quota bloque encore la publication.",
+            text:message,
+            project:projectToPublish.title,
+            warning:"Vérifiez le quota réel du cockpit client ou la validation de recharge côté API. Cette alerte ne doit apparaître que pour un blocage pack/quota.",
+            confirmText:"Compris",
+            hideCancel:true
+          });
+        }else{
+          await openConfirmModal({
+            tone:"warn",
+            icon:"⚠️",
+            title:"Publication impossible",
+            subtitle:"La publication n’a pas pu aboutir.",
+            text:message,
+            project:projectToPublish.title,
+            warning:"",
+            confirmText:"Compris",
+            hideCancel:true
+          });
+        }
       }finally{
         if(btn){ btn.disabled = false; btn.textContent = oldText; }
       }
+    }
+
+    async function handleClientPackUpgrade(orgId, action){
+      if(!orgId || !["approve","reject"].includes(action)) return;
+      const request = getClientPackUpgradeRequest(currentClient || {});
+      const label = request?.requested ? (request.unlimited ? "Passage en illimité" : `+${Number(request.amount || 0).toLocaleString("fr-FR")} passations`) : "cette recharge";
+      const ok = await openConfirmModal({
+        tone: action === "approve" ? "primary" : "warn",
+        icon: action === "approve" ? "✅" : "↩️",
+        title: action === "approve" ? "Valider cette recharge pack ?" : "Refuser cette recharge pack ?",
+        subtitle: action === "approve" ? "Le quota réel du cockpit client sera mis à jour." : "La demande restera visible comme refusée.",
+        text: action === "approve" ? "Confirmez-vous la validation commerciale de cette recharge ?" : "Confirmez-vous le refus de cette demande de recharge ?",
+        project: `${currentClient?.name || "Cockpit client"} · ${label}`,
+        warning: action === "approve" ? "Après validation, les passations restantes seront mises à jour dans les vues client et admin." : "",
+        confirmText: action === "approve" ? "Valider la recharge" : "Refuser"
+      });
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/organizations/${orgId}/pack-upgrade`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`
+          },
+          body: JSON.stringify({ action })
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur validation recharge pack");
+        showToast(action === "approve" ? "Recharge pack validée." : "Recharge pack refusée.");
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        await openConfirmModal({tone:"warn",icon:"📦",title:"Recharge pack non traitée",subtitle:"La demande n’a pas pu être mise à jour.",text:err.message || "Impossible de traiter la recharge pack.",confirmText:"Compris",hideCancel:true});
+      }
+    }
+
+    async function handlePackUpgrade(projectId, action){
+      if(!projectId || !["approve","reject"].includes(action)) return;
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const ok = await openConfirmModal({
+        tone: action === "approve" ? "primary" : "warn",
+        icon: action === "approve" ? "✅" : "↩️",
+        title: action === "approve" ? "Valider cette recharge pack ?" : "Refuser cette recharge pack ?",
+        subtitle: action === "approve" ? "Le quota réel du cockpit client sera mis à jour." : "La demande restera visible comme refusée.",
+        text: action === "approve" ? "Confirmez-vous la validation commerciale de cette recharge ?" : "Confirmez-vous le refus de cette demande de recharge ?",
+        project: title,
+        warning: action === "approve" ? "Après validation, les passations restantes seront mises à jour dans les vues client et admin." : "",
+        confirmText: action === "approve" ? "Valider la recharge" : "Refuser"
+      });
+      if(!ok) return;
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/pack-upgrade`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`
+          },
+          body: JSON.stringify({ action })
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur validation recharge pack");
+        showToast(action === "approve" ? "Recharge pack validée." : "Recharge pack refusée.");
+        await loadClientFolder();
+      }catch(err){
+        console.error(err);
+        await openConfirmModal({tone:"warn",icon:"📦",title:"Recharge pack non traitée",subtitle:"La demande n’a pas pu être mise à jour.",text:err.message || "Impossible de traiter la recharge pack.",confirmText:"Compris",hideCancel:true});
+      }
+    }
+
+    function applyRespondentTitleLocally(project, newTitle){
+      if(!project || !newTitle) return;
+      const data = getProjectData(project);
+      const applyAliases = (target) => {
+        if(!target || typeof target !== "object") return;
+        target.titre = newTitle;
+        target.titre_repondants = newTitle;
+        target.titreRespondants = newTitle;
+        target.titre_visible_repondants = newTitle;
+        target.titreVisibleRepondants = newTitle;
+        target.titre_visible = newTitle;
+        target.titreVisible = newTitle;
+      };
+      data.parametrage = data.parametrage && typeof data.parametrage === "object" ? data.parametrage : {};
+      applyAliases(data.parametrage);
+      applyAliases(data);
+      if(data.state && typeof data.state === "object"){
+        data.state.parametrage = data.state.parametrage && typeof data.state.parametrage === "object" ? data.state.parametrage : {};
+        applyAliases(data.state.parametrage);
+        applyAliases(data.state);
+      }
+      if(data.payload && typeof data.payload === "object"){
+        data.payload.parametrage = data.payload.parametrage && typeof data.payload.parametrage === "object" ? data.payload.parametrage : {};
+        applyAliases(data.payload.parametrage);
+        applyAliases(data.payload);
+      }
+      project.title = newTitle;
+      project.displayTitle = newTitle;
+      project.data = data;
+    }
+
+    async function openRespondentTitleEditor(projectId){
+      const project = getCurrentProjectById(projectId);
+      if(!project) return;
+      pendingRespondentTitleProjectId = String(projectId);
+      const currentTitle = getProjectRespondentTitle(project);
+      const modal = document.getElementById("respondentTitleModal");
+      const input = document.getElementById("respondentTitleInput");
+      if(input) input.value = currentTitle || "";
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        setTimeout(() => input && input.focus(), 80);
+      }
+    }
+
+    function closeRespondentTitleModal(){
+      pendingRespondentTitleProjectId = "";
+      const modal = document.getElementById("respondentTitleModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    async function confirmRespondentTitleEdit(){
+      const projectId = pendingRespondentTitleProjectId;
+      const project = getCurrentProjectById(projectId);
+      if(!project) return closeRespondentTitleModal();
+      const currentTitle = getProjectRespondentTitle(project);
+      const nextTitle = document.getElementById("respondentTitleInput")?.value;
+      const cleaned = String(nextTitle || "").trim();
+      if(!cleaned){
+        alert("Le titre visible par les répondants est obligatoire.");
+        return;
+      }
+      if(cleaned === currentTitle){
+        closeRespondentTitleModal();
+        return;
+      }
+
+      try{
+        const response = await fetch(`${API_URL}/api/projects/${encodeURIComponent(projectId)}/respondent-title`, {
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${getToken()}`
+          },
+          body:JSON.stringify({ title: cleaned })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(payload.error || "Impossible de modifier le titre visible répondants.");
+        applyRespondentTitleLocally(project, payload.project?.displayTitle || payload.project?.title || cleaned);
+        closeRespondentTitleModal();
+        renderClient();
+        showToast("Titre répondants modifié");
+      }catch(err){
+        alert(err.message || "Impossible de modifier le titre visible répondants.");
+      }
+    }
+
+    async function showArchivePublishedBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      if(typeof openConfirmModal === "function"){
+        await openConfirmModal({
+          tone: "warn",
+          icon: "📦",
+          title: "Dépublier avant d’archiver",
+          subtitle: "Un autodiagnostic publié ne peut pas être archivé directement.",
+          text: "Dépubliez d’abord la campagne, puis vous pourrez l’archiver depuis l’onglet Dépubliés.",
+          project: title,
+          warning: "Cette étape évite d’archiver par erreur une campagne encore active côté client.",
+          confirmText: "Compris",
+          hideCancel: true
+        });
+      }else{
+        showToast("Dépubliez d’abord la campagne avant de l’archiver.");
+      }
+      return false;
     }
 
     async function changeProjectStatus(projectId, nextStatus, actionLabel){
@@ -1203,6 +2263,21 @@ function getProjectTitle(project){
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const isArchive = nextStatus === "archived";
       const isUnpublish = nextStatus === "unpublished";
+      const currentStatus = project ? normalizeStatus(project.status) : "";
+      if(isArchive && currentStatus === "published"){
+        await openConfirmModal({
+          tone: "warn",
+          icon: "📦",
+          title: "Dépublier avant d’archiver",
+          subtitle: "Un autodiagnostic publié ne peut pas être archivé directement.",
+          text: "Dépubliez d’abord la campagne, puis vous pourrez l’archiver depuis l’onglet Dépubliés.",
+          project: title,
+          warning: "Cette étape évite d’archiver par erreur une campagne encore active côté client.",
+          confirmText: "Compris",
+          hideCancel: true
+        });
+        return;
+      }
       const ok = await openConfirmModal({
         tone: isArchive ? "warn" : "primary",
         icon: isArchive ? "📦" : "🛑",
@@ -1283,20 +2358,52 @@ function getProjectTitle(project){
       }
     }
 
+
+    async function notifyCampaignLinksUpdated(projectId){
+      if(!projectId) return;
+      const project = getCurrentProjectById(projectId);
+      if(!project) return;
+
+      if(!getProjectShareUrl(project) && !getProjectResultsUrl(project)){
+        alert("Aucun lien n’est renseigné pour cet AD. Enregistrez d’abord au moins un lien.");
+        return;
+      }
+
+      try{
+        const response = await fetch(`${API_URL}/api/admin/projects/${projectId}/communication-links/notify`, {
+          method:"POST",
+          headers:{ Authorization:`Bearer ${getToken()}` }
+        });
+        const data = await response.json().catch(() => ({}));
+        if(!response.ok) throw new Error(data.error || "Erreur notification liens");
+        showToast(data.emailSent ? "Email envoyé au client" : `Notification non envoyée : ${data.emailStatus || "à vérifier"}`);
+      }catch(err){
+        console.error(err);
+        alert(err.message || "Impossible de notifier le client.");
+      }
+    }
+
     async function deleteProjectFromFolder(projectId){
       if(!projectId) return;
       const project = getCurrentProjectById(projectId);
       const title = project ? getProjectTitle(project) : "cet autodiagnostic";
       const status = project ? normalizeStatus(project.status) : "";
+      const canDeleteDirectly = ["draft","sent","archived"].includes(status);
+      if(!canDeleteDirectly){
+        await showDeleteBlockedModal(projectId);
+        return;
+      }
+
+      const statusLabel = status === "draft" ? "ce brouillon" : status === "sent" ? "cet autodiagnostic à publier" : "cet autodiagnostic archivé";
       const ok = await openConfirmModal({
         tone: "danger",
         icon: "🗑️",
-        title: "Supprimer définitivement cet autodiagnostic ?",
-        subtitle: status === "published" ? "Attention : cet AD est publié." : "Cette action retirera l’AD du cockpit client.",
-        text: "Confirmez-vous la suppression définitive de cet autodiagnostic ?",
+        title: "Supprimer définitivement ?",
+        subtitle: "Cette action est irréversible.",
+        text: `Vous êtes sur le point de supprimer définitivement ${statusLabel}.`,
         project: title,
-        warning: status === "published" ? "La campagne associée sera aussi retirée du cockpit client. Cette action est définitive." : "Cette action est définitive.",
-        confirmText: "Supprimer"
+        warning: "Le contenu, les questions, les profils et le rattachement au cockpit client seront supprimés. Cette action ne pourra pas être annulée.",
+        confirmText: "Supprimer définitivement"
       });
       if(!ok) return;
 
@@ -1362,6 +2469,8 @@ function getProjectTitle(project){
         warning.textContent = "";
       }
 
+      const cancelBtn = document.getElementById("confirmCancelBtn");
+      if(cancelBtn) cancelBtn.style.display = options.hideCancel ? "none" : "inline-flex";
       okBtn.textContent = options.confirmText || "Confirmer";
       okBtn.className = "confirm-btn " + (tone === "danger" ? "danger" : tone === "warn" ? "warn" : "primary");
       modal.classList.add("open");
@@ -1371,6 +2480,39 @@ function getProjectTitle(project){
         confirmModalResolver = resolve;
       });
     }
+
+
+    async function showDeleteBlockedModal(projectId){
+      const project = getCurrentProjectById(projectId);
+      const title = project ? getProjectTitle(project) : "cet autodiagnostic";
+      const status = project ? normalizeStatus(project.status) : "";
+
+      let text = "Cet autodiagnostic ne peut pas être supprimé dans son statut actuel.";
+      let warning = "La suppression directe est possible pour les brouillons, les AD à publier et les AD archivés.";
+
+      if(status === "published"){
+        text = "Cet autodiagnostic est publié. Dépubliez d’abord la campagne pour éviter de supprimer une campagne encore active côté client.";
+        warning = "Un autodiagnostic publié peut encore être diffusé aux répondants : il ne doit pas être supprimé directement.";
+      }else if(status === "unpublished"){
+        text = "Cet autodiagnostic est dépublié. Archivez-le d’abord si vous souhaitez le retirer du traitement actif, puis supprimez-le depuis les archivés.";
+      }
+
+      await openConfirmModal({
+        tone: "warn",
+        icon: "🗑️",
+        title: "Suppression non disponible ici",
+        subtitle: "Le statut actuel ne permet pas cette suppression directe.",
+        text,
+        project: title,
+        warning,
+        confirmText: "Compris",
+        hideCancel: true
+      });
+      return false;
+    }
+
+    window.showArchivePublishedBlockedModal = showArchivePublishedBlockedModal;
+    window.openConfirmModal = openConfirmModal;
 
     function closeConfirmModal(result){
       const modal = document.getElementById("confirmModal");
