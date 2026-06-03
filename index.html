@@ -20,7 +20,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 .badges-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:22px 26px;margin-bottom:24px}
 .badges-title{font-size:14px;font-weight:800;color:#18375d;margin-bottom:16px}
-.badges-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.badges-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .badge-item{display:grid;grid-template-columns:118px 1fr;align-items:flex-start;gap:12px;min-width:0}
 .badge-copy{font-size:13px;line-height:1.45;color:#475569;min-width:0}
 .badge-copy strong{display:block;color:#18375d;margin-bottom:4px;font-size:13px}
@@ -34,10 +34,26 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 .catalogue-count{font-size:12px;color:#64748b;margin-left:auto;align-self:center}
 
-.blank-create-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:22px 0 24px;display:flex;justify-content:space-between;align-items:center;gap:18px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
+.quick-start-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:22px 0 24px}
+.blank-create-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;padding:20px 22px;margin:0;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(24,55,93,.05);min-height:168px}
 .blank-create-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:5px}
 .blank-create-text{font-size:13px;color:#64748b;line-height:1.5;max-width:780px}
 .blank-create-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+
+.custom-models-card{background:#fff;border:1px solid #d8e0ea;border-radius:14px;margin:0;box-shadow:0 8px 24px rgba(24,55,93,.05);overflow:hidden;min-height:168px}
+.custom-models-toggle{width:100%;border:0;background:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;cursor:pointer;font-family:'Asap',sans-serif;text-align:left;color:#18375d}
+.custom-models-toggle:hover{background:#fbfdff}
+.custom-models-title{font-size:17px;font-weight:800;color:#18375d;margin-bottom:4px}
+.custom-models-text{font-size:13px;color:#64748b;line-height:1.5}
+.custom-models-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.custom-models-arrow{display:inline-flex;align-items:center;gap:6px;border:1px solid #d8e0ea;background:#fff;color:#0d4c72;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;white-space:nowrap;transition:background .16s ease,border-color .16s ease}
+.custom-models-arrow::after{content:"▾";font-size:13px;line-height:1;transition:transform .16s ease}
+.custom-models-card[open] .custom-models-arrow{background:#eef6fb;border-color:#b8dfe0}
+.custom-models-card[open] .custom-models-arrow::after{transform:rotate(180deg)}
+.custom-models-card summary{list-style:none}
+.custom-models-card summary::-webkit-details-marker{display:none}
+.custom-models-body{padding:0 22px 22px;border-top:1px solid #edf1f6}
+.custom-models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-top:16px}
 
 .guides-card{background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);border:1px solid #d8e0ea;border-radius:18px;padding:24px 26px;margin:22px 0 24px;box-shadow:0 8px 24px rgba(24,55,93,.05)}
 .guides-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
@@ -119,7 +135,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .guides-grid{grid-template-columns:1fr 1fr}
   .badges-grid{grid-template-columns:1fr 1fr}
   .library-hero{flex-direction:column}
-  .blank-create-card{flex-direction:column;align-items:flex-start}
+  .quick-start-grid{grid-template-columns:1fr}
+  .custom-models-grid{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:560px){
@@ -129,9 +146,27 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
   .badges-grid{grid-template-columns:1fr}
   .badge-item{grid-template-columns:1fr}
   .badges-card .tag{width:max-content;min-width:118px}
-  .blank-create-actions .btn{width:100%;justify-content:center}
+  .blank-create-actions,.blank-create-actions .btn{width:100%;justify-content:center}
+  .custom-models-toggle{padding:18px}
+  .custom-models-grid{grid-template-columns:1fr}
   .faq-section{padding:20px}
 }
+
+.custom-model-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn-delete-model{background:#fff6f6!important;border:1px solid #ffd1d1!important;color:#b42318!important}
+.btn-delete-model:hover{background:#fceaea!important;border-color:#eb6366!important;color:#7a271a!important}
+#deleteCustomModelModal{position:fixed;inset:0;z-index:21000;background:rgba(15,30,55,.58);display:none;align-items:center;justify-content:center;padding:22px}
+#deleteCustomModelModal.on{display:flex}
+.delete-model-panel{width:min(460px,100%);background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 28px 80px rgba(0,0,0,.28);padding:26px}
+.delete-model-icon{width:52px;height:52px;border-radius:16px;background:#fff1f1;color:#b42318;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px}
+.delete-model-title{font-size:20px;font-weight:900;color:#18375d;margin:0 0 8px}
+.delete-model-text{font-size:14px;line-height:1.6;color:#475569;margin:0 0 18px}
+.delete-model-name{font-weight:900;color:#18375d}
+.delete-model-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#7a4b00;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;margin-bottom:14px}
+.delete-model-error.on{display:block}
+.delete-model-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:560px){.delete-model-actions .btn{width:100%;justify-content:center}}
+
 </style>
 </head>
 
@@ -173,21 +208,38 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
     <div class="badges-grid">
       <div class="badge-item"><span class="tag ai">Base IA</span><div class="badge-copy"><strong>Base assistée par IA</strong>Contenu généré ou structuré avec l’IA. À adapter avant utilisation.</div></div>
       <div class="badge-item"><span class="tag tbf">Expert</span><div class="badge-copy"><strong>Conçu par un expert</strong>Contenu conçu par un expert. Base robuste et exploitable après relecture.</div></div>
-      <div class="badge-item"><span class="tag help">Aide rédaction</span><div class="badge-copy"><strong>Aide à la rédaction</strong>Support de réflexion pour accélérer la conception.</div></div>
       <div class="badge-item"><span class="tag review">Relecture</span><div class="badge-copy"><strong>Relecture obligatoire</strong>Une relecture est nécessaire avant diffusion.</div></div>
     </div>
   </div>
 
-  <div class="blank-create-card">
-    <div>
-      <div class="blank-create-title">Créer un autodiag de A à Z</div>
-      <div class="blank-create-text">
-        Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue.
+  <div class="quick-start-grid">
+    <div class="blank-create-card">
+      <div>
+        <div class="blank-create-title">Créer un autodiag de A à Z</div>
+        <div class="blank-create-text">
+          Partez d’une page vierge pour créer vos propres chapitres, questions, réponses, profils et ressources, sans reprendre une base du catalogue.
+        </div>
+      </div>
+      <div class="blank-create-actions">
+        <button class="btn btn-secondary" onclick="startBlankDiagnostic()">Créer depuis une page vierge</button>
       </div>
     </div>
-    <div class="blank-create-actions">
-      <button class="btn btn-secondary" onclick="startBlankDiagnostic()">Créer depuis une page vierge</button>
-    </div>
+
+    <details class="custom-models-card" id="customModelsCard" style="display:none">
+      <summary class="custom-models-toggle">
+        <div>
+          <div class="custom-models-title">Mes modèles personnalisés</div>
+          <div class="custom-models-text">Retrouvez ici vos autodiagnostics enregistrés comme modèles réutilisables, sans encombrer la bibliothèque.</div>
+        </div>
+        <div class="custom-models-right">
+          <div class="catalogue-count" id="customModelsCount"></div>
+          <div class="custom-models-arrow">Afficher</div>
+        </div>
+      </summary>
+      <div class="custom-models-body">
+        <div class="custom-models-grid" id="customModelsGrid"></div>
+      </div>
+    </details>
   </div>
 
 
@@ -269,6 +321,19 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 
 </div>
 
+<div id="deleteCustomModelModal" role="dialog" aria-modal="true" aria-labelledby="deleteCustomModelTitle" onclick="if(event.target===this) closeDeleteCustomModelModal()">
+  <div class="delete-model-panel">
+    <div class="delete-model-icon">🗑️</div>
+    <h2 class="delete-model-title" id="deleteCustomModelTitle">Supprimer ce modèle personnalisé ?</h2>
+    <p class="delete-model-text">Êtes-vous sûre de vouloir supprimer <span class="delete-model-name" id="deleteCustomModelName">ce modèle</span> ? Cette action est définitive et le modèle ne sera plus disponible dans votre bibliothèque.</p>
+    <div class="delete-model-error" id="deleteCustomModelError">Impossible de supprimer ce modèle pour le moment.</div>
+    <div class="delete-model-actions">
+      <button class="btn btn-secondary" type="button" onclick="closeDeleteCustomModelModal()">Annuler</button>
+      <button class="btn btn-delete-model" type="button" id="confirmDeleteCustomModelBtn" onclick="confirmDeleteCustomModel()">Supprimer le modèle</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="previewModal">
   <div class="modal-panel">
     <button class="modal-close" onclick="closePreview()" aria-label="Fermer l’aperçu">×</button>
@@ -279,6 +344,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;color:#18375d}
 <script>
 let currentTheme = "all";
 let expertOnly = false;
+let customModels = [];
+let pendingDeleteCustomModelId = null;
 
 function isLoggedIn(){
   return localStorage.getItem("its_logged_in") === "true";
@@ -311,6 +378,148 @@ function getAdById(id){
   return getCatalogue().find(ad => ad.id === id);
 }
 
+function tokenForCatalogueProjects(){
+  return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";
+}
+
+function apiBaseForCatalogueProjects(){
+  if(typeof ITS_API_BASE !== "undefined") return ITS_API_BASE;
+  const host = String(window.location.hostname || "").toLowerCase();
+  const forced = localStorage.getItem("its_api_base") || "";
+  if(forced) return forced;
+  return host === "localhost" || host.startsWith("staging.") || host.includes("github.io")
+    ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io"
+    : "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+}
+
+function customModelFromApi(model){
+  return {
+    id: model.id,
+    title: model.title || "Modèle personnalisé",
+    subject: model.subject || "Personnalisé",
+    audience: model.audience || "Collaborateurs",
+    description: model.description || "Modèle créé à partir d’un autodiagnostic existant"
+  };
+}
+
+async function loadCustomModels(){
+  if(!isLoggedIn()) return;
+  const token = tokenForCatalogueProjects();
+  if(!token) return;
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models", { headers:{ Authorization:"Bearer " + token } });
+    if(!res.ok) return;
+    const json = await res.json();
+    customModels = (json.models || []).map(customModelFromApi);
+    renderCustomModels();
+  }catch(e){
+    console.warn("Modèles personnalisés non chargés", e);
+  }
+}
+
+function renderCustomModels(){
+  const card = document.getElementById("customModelsCard");
+  const grid = document.getElementById("customModelsGrid");
+  const count = document.getElementById("customModelsCount");
+  if(!card || !grid) return;
+  if(!customModels.length){
+    card.style.display = "none";
+    return;
+  }
+  card.style.display = "block";
+  if(count) count.textContent = `${customModels.length} modèle${customModels.length > 1 ? "s" : ""}`;
+  grid.innerHTML = customModels.map(model => `
+    <div class="ad-card card">
+      <div class="audience">${model.subject} · ${model.audience}</div>
+      <div class="ad-title">${model.title}</div>
+      <div class="ad-desc">${model.description}</div>
+      <div class="custom-model-actions">
+        <button class="btn btn-primary" onclick="useCustomModel('${model.id}')">Utiliser ce modèle</button>
+        <button class="btn btn-delete-model" onclick="openDeleteCustomModelModal('${model.id}')">Supprimer</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function openDeleteCustomModelModal(modelId){
+  const model = customModels.find(m => String(m.id) === String(modelId));
+  if(!model) return;
+  pendingDeleteCustomModelId = modelId;
+  const name = document.getElementById("deleteCustomModelName");
+  const error = document.getElementById("deleteCustomModelError");
+  const btn = document.getElementById("confirmDeleteCustomModelBtn");
+  if(name) name.textContent = "« " + (model.title || "ce modèle") + " »";
+  if(error) error.classList.remove("on");
+  if(btn){ btn.disabled = false; btn.textContent = "Supprimer le modèle"; }
+  document.getElementById("deleteCustomModelModal")?.classList.add("on");
+}
+
+function closeDeleteCustomModelModal(){
+  pendingDeleteCustomModelId = null;
+  document.getElementById("deleteCustomModelModal")?.classList.remove("on");
+}
+
+async function confirmDeleteCustomModel(){
+  const modelId = pendingDeleteCustomModelId;
+  if(!modelId) return;
+  const token = tokenForCatalogueProjects();
+  const btn = document.getElementById("confirmDeleteCustomModelBtn");
+  const error = document.getElementById("deleteCustomModelError");
+  if(error) error.classList.remove("on");
+  if(btn){ btn.disabled = true; btn.textContent = "Suppression…"; }
+
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId), {
+      method:"DELETE",
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok){
+      throw new Error(json.error || "Impossible de supprimer ce modèle pour le moment.");
+    }
+    customModels = customModels.filter(model => String(model.id) !== String(modelId));
+    closeDeleteCustomModelModal();
+    renderCustomModels();
+  }catch(e){
+    console.warn("Suppression modèle personnalisé impossible", e);
+    if(error){
+      error.textContent = e.message || "Impossible de supprimer ce modèle pour le moment.";
+      error.classList.add("on");
+    }
+    if(btn){ btn.disabled = false; btn.textContent = "Supprimer le modèle"; }
+  }
+}
+
+async function useCustomModel(modelId){
+  if(!modelId) return;
+  if(!isLoggedIn()){
+    redirectToLogin("index.html");
+    return;
+  }
+  const token = tokenForCatalogueProjects();
+  if(!token) return;
+  try{
+    const res = await fetch(apiBaseForCatalogueProjects() + "/api/custom-models/" + encodeURIComponent(modelId) + "/use", {
+      method:"POST",
+      headers:{ Authorization:"Bearer " + token }
+    });
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok || !json.project){
+      alert(json.error || "Impossible de créer un autodiag depuis ce modèle.");
+      return;
+    }
+    const projectId = json.project.id || json.project.project_id;
+    if(projectId){
+      localStorage.setItem("its_current_project_id", String(projectId));
+      localStorage.setItem("its_current_ad_id", String(projectId));
+      window.location.href = "questions.html?projectId=" + encodeURIComponent(projectId);
+    }
+  }catch(e){
+    console.warn("Création depuis modèle impossible", e);
+    alert("Impossible de créer un autodiag depuis ce modèle.");
+  }
+}
+
 function cleanTags(tags){
   const allowed = [];
   (tags || []).forEach(t => {
@@ -318,7 +527,6 @@ function cleanTags(tags){
     if(x.includes("base assistée") || x.includes("base assistee")) allowed.push("Base assistée par IA");
     else if(x.includes("the big factory")){allowed.push("Conçu par un expert");allowed.push("Conçu par The Big Factory")}
     else if(x.includes("expert")) allowed.push("Conçu par un expert");
-    else if(x.includes("aide à la rédaction") || x.includes("aide a la redaction")) allowed.push("Aide à la rédaction");
     else if(x.includes("relecture obligatoire")) allowed.push("Relecture obligatoire");
   });
   return [...new Set(allowed)];
@@ -327,7 +535,6 @@ function cleanTags(tags){
 function tagClass(t){
   if(t.includes("Factory") || t.includes("expert")) return "tbf";
   if(t.includes("IA")) return "ai";
-  if(t.includes("Aide")) return "help";
   if(t.includes("Relecture")) return "review";
   return "";
 }
@@ -461,22 +668,27 @@ function buildBlankState(){
 
 function startBlankDiagnostic(){
   if(!isLoggedIn()){
-    redirectToLogin("questions.html?mode=blank");
+    redirectToLogin("questions.html?mode=blank&setup=1");
     return;
   }
 
-  const blankState = buildBlankState();
-
-  if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
+  if(typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
+  else if(typeof itsClearCurrentProjectId === "function") itsClearCurrentProjectId();
   else {
     localStorage.removeItem("its_current_project_id");
     localStorage.removeItem("its_current_ad_id");
   }
 
-  if(typeof itsSave === "function") itsSave(blankState);
-  else localStorage.setItem("intotheshift_customizer_state_v1", JSON.stringify(blankState));
+  try {
+    sessionStorage.setItem("its_start_blank_setup", "1");
+    localStorage.removeItem("its_state");
+    localStorage.removeItem("intotheshift_customizer_state_v1");
+    Object.keys(localStorage)
+      .filter(key => key.indexOf("intotheshift_customizer_state_v1") === 0)
+      .forEach(key => localStorage.removeItem(key));
+  } catch(e) {}
 
-  window.location.assign("questions.html?mode=blank");
+  window.location.assign("questions.html?mode=blank&setup=1");
 }
 
 function useAd(id){
@@ -509,11 +721,15 @@ document.getElementById("previewModal").addEventListener("click", function(e){
 });
 
 document.addEventListener("keydown", function(e){
-  if(e.key === "Escape") closePreview();
+  if(e.key === "Escape"){
+    closeDeleteCustomModelModal();
+    closePreview();
+  }
 });
 
 renderFilters();
 renderCatalogue();
+loadCustomModels();
 </script>
 
 <script src="FAQ.JS"></script>
