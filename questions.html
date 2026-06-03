@@ -79,6 +79,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .btn-save{width:100%;background:#18375d;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Asap',sans-serif;transition:all 0.15s}
 .btn-save:hover:not(:disabled){background:#122a47}
 .btn-save:disabled{background:#c5ccd5;cursor:not-allowed;opacity:0.7}
+.btn-save.is-blocked{background:#c5ccd5;cursor:pointer;opacity:0.9}
+.btn-save.is-blocked:hover{background:#b8c1cc}
 .btn-save-hint{font-size:10px;color:#eb6366;font-family:'Asap',sans-serif;text-align:center;padding:0 4px;line-height:1.4;display:none}
 .btn-save-hint.visible{display:block}
 
@@ -132,6 +134,11 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .q-text{font-size:13px;font-weight:600;color:#18375d;font-family:'Asap',sans-serif;line-height:1.4;margin-bottom:7px}
 .editable-q{outline:none;border-radius:6px;padding:2px 4px;margin-left:-4px;min-height:18px;cursor:text}
 .editable-q:focus{background:#edf1f7;box-shadow:0 0 0 1px #d8e0ea inset}
+.edit-hint{display:inline-flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;line-height:1;opacity:.72;flex-shrink:0;cursor:default}
+.editable-wrap{display:flex;align-items:flex-start;gap:6px;min-width:0}
+.editable-wrap .editable-q{flex:1}
+.editable-field-wrap{display:flex;align-items:center;gap:6px;min-width:0;flex:1}
+.editable-field-wrap input{min-width:0}
 .q-tags-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 
 /* Tags de provenance */
@@ -274,6 +281,15 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .filter-tag.on{background:#18375d;color:#fff;border-color:#18375d}
 .filter-tag:hover:not(.on){background:#edf1f7}
 .panel-list{flex:1;min-height:220px;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:6px;background:#fff}
+/* Correctif panneau bibliothèque : le drawer doit rester entièrement lisible et refermable,
+   même si un mode lecture seule global désactive des boutons ailleurs dans la page. */
+.panel-right{height:100dvh;max-height:100dvh;overflow:hidden;box-shadow:-18px 0 45px rgba(24,55,93,.18)}
+.panel-right.on{right:0!important}
+.panel-right .panel-head{flex-shrink:0;position:sticky;top:0;z-index:3;background:#fff;min-height:56px}
+.panel-right .panel-close{pointer-events:auto!important;opacity:1!important;cursor:pointer!important;flex:0 0 auto}
+.panel-right .panel-context,.panel-right .panel-search,.panel-right .panel-tags{flex-shrink:0}
+.panel-right .panel-list{min-height:0}
+.overlay.on{display:block!important}
 .panel-q{background:#fafbfc;border:1px solid #e8edf4;border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;transition:border-color 0.12s}
 .panel-q:hover{border-color:#b8c4d4}
 .panel-q-text{font-size:12px;color:#18375d;font-family:'Asap',sans-serif;font-weight:500;line-height:1.4;margin-bottom:4px}
@@ -314,6 +330,16 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 .blank-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#8a5a00;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.4;margin-top:14px;font-family:'Asap',sans-serif}
 .blank-error.on{display:block}
 @media(max-width:760px){.blank-form-grid{grid-template-columns:1fr}.blank-setup-hero{padding:22px}.blank-actions{align-items:flex-start;flex-direction:column}.blank-actions .btn-save{width:auto}}
+
+/* ── Modale ajout de tag ───────────────────────── */
+.tag-modal-intro{font-size:13px;color:#64748b;line-height:1.55;margin-bottom:14px}
+.tag-modal-input{width:100%;border:1px solid #d8e0ea;border-radius:10px;padding:11px 13px;font-size:14px;color:#18375d;font-family:'Asap',sans-serif;outline:none;background:#fff;margin-bottom:10px}
+.tag-modal-input:focus{border-color:#007883;box-shadow:0 0 0 3px rgba(0,120,131,.10)}
+.tag-modal-error{display:none;background:#fff7e8;border:1px solid #ffc866;color:#8a5a00;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.4;margin-bottom:12px}
+.tag-modal-error.on{display:block}
+.tag-modal-examples{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px}
+.tag-modal-chip{border:1px solid #d8e0ea;background:#f8fafc;color:#18375d;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:700;font-family:'Asap',sans-serif;cursor:pointer}
+.tag-modal-chip:hover{background:#e5f4f5;border-color:#b8dfe0;color:#007883}
 
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -394,6 +420,257 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   .main-editor{padding:16px 14px 42px!important;}
 }
 
+
+
+/* Correctif final panneau bibliothèque — priorité au-dessus du header global */
+.overlay{z-index:9998!important;}
+.overlay.on{display:block!important;}
+.panel-right{
+  position:fixed!important;
+  top:0!important;
+  right:-560px!important;
+  height:100dvh!important;
+  max-height:100dvh!important;
+  z-index:9999!important;
+  overflow:hidden!important;
+}
+.panel-right.on{right:0!important;}
+.panel-right .panel-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  min-height:58px!important;
+  flex-shrink:0!important;
+  background:#fff!important;
+  z-index:10001!important;
+  position:relative!important;
+  padding:15px 18px!important;
+}
+.panel-right .panel-title{display:inline-flex!important;padding-right:42px!important;}
+.panel-right .panel-close{
+  display:flex!important;
+  position:absolute!important;
+  top:14px!important;
+  right:16px!important;
+  width:30px!important;
+  height:30px!important;
+  z-index:10002!important;
+  pointer-events:auto!important;
+  opacity:1!important;
+  visibility:visible!important;
+  cursor:pointer!important;
+}
+.panel-right .panel-list{min-height:0!important;overflow-y:auto!important;}
+@media (max-width:760px){
+  .panel-right{width:100vw!important;max-width:100vw!important;right:-100vw!important;}
+  .panel-right.on{right:0!important;}
+}
+
+
+/* ── Aide contextuelle éditeur questions ───────────────── */
+.help-tip{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef6fb;color:#0d4c72;border:1px solid #b8dfe0;font-size:12px;font-weight:900;line-height:1;cursor:help;position:relative;vertical-align:middle;flex-shrink:0}
+.help-tip::after{content:attr(data-help);position:absolute;left:50%;bottom:25px;transform:translateX(-50%);width:min(280px,72vw);background:#18375d;color:#fff;border-radius:10px;padding:10px 12px;font-size:11px;font-weight:600;line-height:1.38;text-transform:none;letter-spacing:0;box-shadow:0 12px 30px rgba(15,30,55,.22);opacity:0;pointer-events:none;transition:opacity .12s;z-index:10010;white-space:normal;text-align:left}
+.help-tip::before{content:"";position:absolute;left:50%;bottom:19px;transform:translateX(-50%);border:6px solid transparent;border-top-color:#18375d;opacity:0;transition:opacity .12s;z-index:10011}
+.chap-actions .help-tip::after{bottom:auto;top:25px;left:auto;right:0;transform:none}
+.chap-actions .help-tip::before{bottom:auto;top:19px;left:auto;right:4px;transform:none;border-color:transparent;border-bottom-color:#18375d;border-top-color:transparent}
+.chap-title-edit-row{display:inline-flex;align-items:center;gap:3px;max-width:100%}
+.chap-title-edit-row .chap-name-inp{width:auto;min-width:180px;max-width:min(100%,720px);flex:0 1 auto}
+.likert-info{align-items:center}
+.likert-info-body{flex:0 1 auto}
+.likert-info-toggle{display:inline-flex;align-items:center;border:1px solid #b8dfe0;background:#fff;color:#007883;border-radius:999px;padding:4px 9px;font-weight:800;margin-left:4px}
+.seuils-more{display:inline-flex;align-items:center;gap:5px;border:1px solid #b8dfe0;background:#fff;color:#007883;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800;font-family:'Asap',sans-serif;text-transform:none;letter-spacing:0}
+.help-tip:hover::after,.help-tip:hover::before,.help-tip:focus::after,.help-tip:focus::before{opacity:1}
+.context-help-box{background:#eef6fb;border:1px solid #d7e8f1;color:#18375d;border-radius:12px;padding:11px 13px;margin:0 0 14px;font-size:12px;line-height:1.45;font-family:'Asap',sans-serif;display:flex;gap:9px;align-items:flex-start}
+.context-help-box strong{display:block;color:#0d4c72;margin-bottom:2px}
+.context-help-ico{font-size:16px;line-height:1.2;flex-shrink:0}
+@media(max-width:760px){.help-tip::after{left:auto;right:0;transform:none}.help-tip::before{left:auto;right:4px;transform:none}}
+.panel-head{overflow:visible!important}
+.panel-title{overflow:visible!important}
+.panel-head .help-tip::after{bottom:auto!important;top:26px!important;left:0!important;right:auto!important;transform:none!important;width:min(320px,82vw)!important;z-index:10050!important}
+.panel-head .help-tip::before{bottom:auto!important;top:20px!important;left:4px!important;right:auto!important;transform:none!important;border-color:transparent!important;border-bottom-color:#18375d!important;border-top-color:transparent!important;z-index:10051!important}
+
+
+
+/* ── Ajustements ciblés aide / profils ───────────────── */
+.sb-title .help-tip::after{left:0;bottom:auto;top:25px;transform:none;width:260px;line-height:1.45}
+.sb-title .help-tip::before{left:5px;bottom:auto;top:19px;transform:none;border-color:transparent;border-bottom-color:#18375d;border-top-color:transparent}
+.chap-title-edit-row{gap:0;position:relative;display:block;width:100%;max-width:760px}
+.chap-title-edit-row .chap-name-inp{display:block;width:100%;max-width:100%;padding-right:34px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chap-title-edit-row .edit-hint{position:absolute;right:8px;top:50%;transform:translateY(-50%);margin-left:0;pointer-events:none;background:#fff}
+.cni-name .edit-hint{display:none!important}
+.seuil-inp{width:66px;min-width:66px;padding:7px 10px}
+.seuil-item{min-width:245px}
+.seuil-range{flex-shrink:0}
+.profil-score-range{white-space:nowrap}
+.pfield input{min-height:42px;padding:11px 13px}
+
+
+
+/* ── Correctifs aperçu / aide profils ───────────────── */
+.panel-head{overflow:visible!important;}
+.panel-title{display:flex!important;align-items:center!important;gap:5px!important;line-height:1.45!important;overflow:visible!important;padding-right:48px!important;}
+.panel-title .help-tip{position:relative!important;top:auto!important;flex:0 0 auto!important;margin-left:0!important;}
+.profile-preview-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end;margin-bottom:14px;}
+.btn-preview-passation{background:#fff;color:#18375d;border:1px solid #c5cfdc;border-radius:8px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px;}
+.btn-preview-passation:hover{background:#edf1f7;}
+.btn-preview-final{background:#18375d;color:#fff;border:1px solid #18375d;border-radius:8px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px;}
+.btn-preview-final:hover{background:#122a47;}
+@media(max-width:760px){.profile-preview-actions{justify-content:stretch}.profile-preview-actions button{width:100%;justify-content:center}}
+
+
+/* Correctif tooltip panneau bibliothèque : l’aide ne doit pas être coupée */
+.panel-right .panel-head{overflow:visible!important;}
+.panel-right .panel-title{position:relative!important;overflow:visible!important;align-items:center!important;gap:6px!important;}
+.panel-right .panel-title .help-tip{position:relative!important;}
+.panel-right .panel-title .help-tip::after{
+  left:auto!important;
+  right:-6px!important;
+  bottom:auto!important;
+  top:26px!important;
+  transform:none!important;
+  width:min(320px, calc(100vw - 34px))!important;
+}
+.panel-right .panel-title .help-tip::before{
+  left:auto!important;
+  right:0!important;
+  bottom:auto!important;
+  top:20px!important;
+  transform:none!important;
+  border-color:transparent!important;
+  border-bottom-color:#18375d!important;
+  border-top-color:transparent!important;
+}
+
+
+/* ── Correctifs ciblés bulles d’aide coupées ─────────────────
+   Ne modifie que le positionnement des tooltips dans l’onglet Profils
+   et dans le panneau Bibliothèque. */
+.profils-grid,.profil-card,.profil-header,.profil-body,.pfield,.pfield label{overflow:visible!important}
+.profil-body{position:relative!important;z-index:1!important}
+.pfield{position:relative!important;z-index:1!important}
+.pfield:has(.help-tip:hover),.pfield:has(.help-tip:focus){z-index:50!important}
+.pfield label{display:inline-flex!important;align-items:center!important;gap:5px!important;position:relative!important;width:auto!important;max-width:100%!important;line-height:1.35!important}
+.pfield label .help-tip{position:relative!important;flex:0 0 18px!important}
+.pfield label .help-tip::after{
+  bottom:auto!important;
+  top:24px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(300px, calc(100vw - 42px))!important;
+  max-width:300px!important;
+  z-index:10080!important;
+}
+.pfield label .help-tip::before{
+  bottom:auto!important;
+  top:18px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  border-color:transparent!important;
+  border-bottom-color:#18375d!important;
+  border-top-color:transparent!important;
+  z-index:10081!important;
+}
+@media(max-width:760px){
+  .pfield label .help-tip::after{
+    left:auto!important;
+    right:0!important;
+    transform:none!important;
+    width:min(300px, calc(100vw - 34px))!important;
+  }
+  .pfield label .help-tip::before{left:auto!important;right:4px!important;transform:none!important}
+}
+.panel-right{overflow:visible!important}
+.panel-right .panel-head{overflow:visible!important}
+.panel-right .panel-title .help-tip::after{
+  bottom:auto!important;
+  top:26px!important;
+  left:auto!important;
+  right:0!important;
+  transform:none!important;
+  width:min(320px, calc(100vw - 34px))!important;
+  max-width:320px!important;
+  z-index:10080!important;
+}
+.panel-right .panel-title .help-tip::before{
+  bottom:auto!important;
+  top:20px!important;
+  left:auto!important;
+  right:4px!important;
+  transform:none!important;
+  border-color:transparent!important;
+  border-bottom-color:#18375d!important;
+  border-top-color:transparent!important;
+  z-index:10081!important;
+}
+
+
+/* Mode Voir le contenu : consultation possible, édition bloquée */
+body.its-content-only-view .btn-add-chapter,
+body.its-content-only-view .btn-save,
+body.its-content-only-view .chap-actions,
+body.its-content-only-view .qa-btn,
+body.its-content-only-view .tag-x,
+body.its-content-only-view .tag-add,
+body.its-content-only-view .score-pill,
+body.its-content-only-view .mkw-x,
+body.its-content-only-view .mkw-inp,
+body.its-content-only-view .media-slot,
+body.its-content-only-view .rte-toolbar button{
+  pointer-events:none!important;
+  cursor:not-allowed!important;
+  opacity:.55!important;
+}
+body.its-content-only-view .editable-q,
+body.its-content-only-view .chap-name-inp,
+body.its-content-only-view .chap-desc-inp,
+body.its-content-only-view .la-inp,
+body.its-content-only-view .mc-inp,
+body.its-content-only-view .seuil-inp,
+body.its-content-only-view .pfield input,
+body.its-content-only-view .rte-area{
+  cursor:default!important;
+  background:#f8fafc!important;
+}
+body.its-content-only-view .edit-hint{display:none!important}
+body.its-content-only-view .cni-head,
+body.its-content-only-view .cni-tab,
+body.its-content-only-view .q-header,
+body.its-content-only-view .q-chevron-btn{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+  opacity:1!important;
+}
+body.its-content-only-view .cni-delete{display:none!important}
+body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;cursor:not-allowed!important;opacity:.42!important}
+
+
+/* ── Accessibilité : renforcer le contraste des titres et consignes ── */
+.sb-title,
+.cni-lbl,
+.chap-badge,
+.qc-text,
+.seuils-hint,
+.score-note,
+.panel-context-title,
+.panel-tags-lbl,
+.blank-help,
+.media-lbl,
+.media-hint{color:#475569!important}
+.pfield label,
+.blank-field label,
+.seuil-label,
+.panel-title{color:#18375d!important}
+.pfield input::placeholder,
+.mkw-inp::placeholder,
+.rte-area:empty:before{color:#64748b!important}
+.btn-save-hint{color:#c53030!important;font-weight:700}
+.cni-qcount,
+.la-score-info,
+.profil-score-range{color:#475569!important}
+.edit-hint{color:#64748b!important;opacity:1!important}
+
 </style>
 </head>
 
@@ -423,7 +700,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 
 <div class="editor-layout">
   <div class="sidebar">
-    <div class="sb-title">Chapitres</div>
+    <div class="sb-title">Chapitres <span class="help-tip" tabindex="0" data-help="Vous pouvez ajouter ou supprimer des chapitres, en gardant au moins 3 chapitres. Évitez de trop charger l’autodiagnostic : trop de contenu décourage les répondants. Chaque chapitre doit rester clair, court et utile.">?</span></div>
     <div id="chap-nav"></div>
     <button class="btn-add-chapter" id="btn-add-chapter" onclick="addChapter()">+ Ajouter un chapitre</button>
     <div class="sb-bot">
@@ -441,8 +718,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
 <div class="panel-right" id="panel-right">
   <div class="panel-head">
-    <span class="panel-title">Piocher dans la bibliothèque</span>
-    <button class="panel-close" onclick="closePanel()">✕</button>
+    <span class="panel-title">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" data-help="Cette bibliothèque propose des questions compatibles avec le sujet et le chapitre sélectionné. Vous pouvez filtrer par tag et ajouter une question en un clic.">?</span></span>
+    <button class="panel-close" type="button" aria-label="Fermer la bibliothèque" title="Fermer" onclick="closePanel();event.stopPropagation();">✕</button>
   </div>
   <div class="panel-context">
     <div class="panel-context-title">Pioche filtrée</div>
@@ -466,8 +743,8 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <div class="modal-overlay" id="modal-save-blocked">
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
-    <h3>Impossible d'enregistrer le thème</h3>
-    <p>Certains chapitres sont incomplets. Chaque chapitre doit contenir au moins <strong>5 questions</strong> avec réponses et scores, et <strong>3 profils</strong> avec titre, résumé et description.</p>
+    <h3>Impossible de continuer vers le paramétrage</h3>
+    <p>Certains chapitres sont encore incomplets. Pour passer au paramétrage, chaque chapitre doit avoir un <strong>nom</strong>, au moins <strong>5 questions complètes</strong>, chaque question doit contenir un <strong>énoncé</strong> et au moins <strong>3 réponses renseignées</strong> avec scores, et les <strong>3 profils</strong> doivent être complets avec résumé du profil, phrase courte et description.</p>
     <div id="modal-save-list" style="display:flex;flex-direction:column;gap:6px;margin:12px 0 20px"></div>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeSaveModal()">Compléter les questions</button>
@@ -479,7 +756,7 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">🔒</div>
     <h3>Complétez d’abord les questions</h3>
-    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec au moins <strong>3 réponses scorées</strong> par question, avant d’ouvrir les profils.</p>
+    <p>Les profils de résultat se rédigent à partir des questions et des scores du chapitre. Ajoutez au moins <strong>5 questions valides</strong>, avec un <strong>énoncé</strong> et au moins <strong>3 réponses renseignées et scorées</strong> par question, avant d’ouvrir les profils.</p>
     <div class="modal-acts">
       <button class="btn-confirm" style="background:#18375d" onclick="closeProfilesLockedModal()">Compris</button>
     </div>
@@ -497,6 +774,25 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-add-tag">
+  <div class="modal" style="max-width:460px;text-align:left">
+    <div style="width:48px;height:48px;border-radius:16px;background:#e5f4f5;color:#007883;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px">🏷️</div>
+    <h3>Ajouter un tag</h3>
+    <p class="tag-modal-intro">Ajoutez un tag court pour qualifier cette situation. Vous pouvez avoir jusqu’à 3 tags par question.</p>
+    <input class="tag-modal-input" id="tag-modal-input" maxlength="40" placeholder="Ex. Signalement, Arbitrage, Réflexe…">
+    <div class="tag-modal-error" id="tag-modal-error">Merci de saisir un tag valide.</div>
+    <div class="tag-modal-examples">
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Signalement')">Signalement</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Arbitrage')">Arbitrage</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Réflexe')">Réflexe</button>
+      <button type="button" class="tag-modal-chip" onclick="prefillTagModal('Vigilance')">Vigilance</button>
+    </div>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="closeTagModal()">Annuler</button>
+      <button class="btn-confirm" style="background:#18375d" onclick="confirmTagModal()">Ajouter le tag</button>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modal-delete-chapter">
   <div class="modal" style="max-width:440px;text-align:left">
@@ -513,11 +809,11 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <div class="modal-overlay" id="modal-regen">
   <div class="modal">
     <div style="font-size:22px;margin-bottom:12px">⚠️</div>
-    <h3>Créer des brouillons avec l’aide IA ?</h3>
-    <p>Les <strong id="modal-q-count"></strong> questions actuelles seront remplacées par des brouillons à adapter, relire et valider avant diffusion.</p>
+    <h3>Remplacer les questions avec l’aide IA ?</h3>
+    <p>Remplacer ces <strong id="modal-q-count"></strong> questions par d’autres questions générées par l’IA, à adapter, relire et valider avant diffusion.</p>
     <div class="modal-acts">
       <button class="btn-cancel" onclick="closeRegenModal()">Annuler</button>
-      <button class="btn-confirm" onclick="confirmRegen()">Créer les brouillons</button>
+      <button class="btn-confirm" onclick="confirmRegen()">Remplacer les questions</button>
     </div>
   </div>
 </div>
@@ -525,16 +821,34 @@ body{font-family:'Asap',sans-serif;background:#f4f6f9;min-height:100vh}
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const isBlankMode = urlParams.get('mode') === 'blank';
+const hasBlankProjectId = Boolean(urlParams.get('projectId') || urlParams.get('projectid') || urlParams.get('id'));
+const forceBlankSetup = isBlankMode && !hasBlankProjectId;
+if (forceBlankSetup) {
+  try { sessionStorage.removeItem('its_start_blank_setup'); } catch(e) {}
+}
+const isContentOnlyView = urlParams.get('contentOnly') === '1' || urlParams.get('viewContent') === '1';
+
+function itsQuestionsIsEditBlocked(){
+  return Boolean(isContentOnlyView);
+}
+
+if(isContentOnlyView){
+  document.body.classList.add('its-content-only-view');
+}
 
 function makeBlankDiagnosticState(){
   return {
     mode: 'blank',
     source: 'blank',
-    selectedTheme: null,
+    selectedTheme: '',
     selectedPack: null,
+    themeKey: '',
+    theme_key: '',
+    themeLabel: '',
+    theme_label: '',
+    theme: '',
     currentAdId: null,
     title: '',
-    subject: '',
     chapters: [
       {
         title: 'Chapitre 1',
@@ -542,7 +856,7 @@ function makeBlankDiagnosticState(){
         questions: [],
         profiles: [
           { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
-          { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+          { level:'Intermédiaire', title:'', summary:'', description:'', min:0.66, max:1.32 },
           { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
         ]
       }
@@ -554,9 +868,16 @@ function makeBlankDiagnosticState(){
 }
 
 function questionsApiBase(){
-  return window.ITS_API_BASE || localStorage.getItem('its_api_base') || (window.location.hostname === 'localhost'
+  const host = String(window.location.hostname || '').toLowerCase();
+  const forced = window.ITS_API_BASE || localStorage.getItem('its_api_base') || '';
+  if(forced) return forced;
+
+  const isLocal = host === 'localhost' || host === '127.0.0.1';
+  const isStaging = isLocal || host.includes('staging') || host.includes('github.io');
+
+  return isStaging
     ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
-    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io');
+    : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io';
 }
 
 function questionsToken(){
@@ -570,6 +891,54 @@ function questionsExplicitProjectIdFromUrl(){
 function questionsProjectIdFromUrl(){
   if(isBlankMode) return questionsExplicitProjectIdFromUrl();
   return questionsExplicitProjectIdFromUrl() || localStorage.getItem('its_current_project_id') || localStorage.getItem('its_current_ad_id') || '';
+}
+
+function questionsCleanOrganizationId(value){
+  const id = String(value || '').trim();
+  if(!id || id === '0' || id.toLowerCase() === 'null' || id.toLowerCase() === 'undefined') return '';
+  return id;
+}
+
+function questionsTargetOrganizationIdFromContext(){
+  return questionsCleanOrganizationId(
+    urlParams.get('organizationId') ||
+    urlParams.get('organization_id') ||
+    urlParams.get('orgId') ||
+    urlParams.get('clientId') ||
+    localStorage.getItem('its_target_organization_id') ||
+    localStorage.getItem('its_admin_create_for_organization_id') ||
+    localStorage.getItem('its_selected_partner_client_id') ||
+    ''
+  );
+}
+
+function questionsAttachOrganizationContext(targetState, projectId){
+  if(!targetState || typeof targetState !== 'object') return targetState || {};
+  const existingOrgId = questionsCleanOrganizationId(
+    targetState.organizationId ||
+    targetState.organization_id ||
+    targetState.orgId ||
+    targetState.org_id ||
+    targetState.targetOrganizationId ||
+    targetState.target_organization_id ||
+    ''
+  );
+  const contextOrgId = !projectId ? questionsTargetOrganizationIdFromContext() : '';
+  const finalOrgId = existingOrgId || contextOrgId;
+  if(!finalOrgId) return targetState;
+
+  targetState.organizationId = finalOrgId;
+  targetState.organization_id = finalOrgId;
+  targetState.targetOrganizationId = finalOrgId;
+  targetState.target_organization_id = finalOrgId;
+  targetState.adminCreateForOrganizationId = finalOrgId;
+
+  const orgName = localStorage.getItem('its_target_organization_name') || targetState.organizationName || targetState.organization_name || '';
+  if(orgName){
+    targetState.organizationName = orgName;
+    targetState.organization_name = orgName;
+  }
+  return targetState;
 }
 
 function questionsClearStaleProject(projectId){
@@ -602,12 +971,20 @@ function questionsExtractProjectState(project){
   const status = project.status || project.project_status || data.status || 'draft';
   const step = project.currentStep || project.current_step || data.currentStep || data.current_step || data.step || 'questions';
   const id = project.id || project.project_id || project.projectId || data.project_id || data.projectId || questionsProjectIdFromUrl();
+  const organizationId = questionsCleanOrganizationId(
+    project.organization_id || project.organizationId || project.org_id || project.orgId ||
+    data.organization_id || data.organizationId || data.org_id || data.orgId || ''
+  );
 
   const merged = { ...data };
   if(title && !merged.title) merged.title = title;
   merged.status = status;
   merged.step = step;
   merged.current_step = step;
+  if(organizationId){
+    merged.organizationId = organizationId;
+    merged.organization_id = organizationId;
+  }
   if(id){
     merged.projectId = id;
     merged.project_id = id;
@@ -617,18 +994,49 @@ function questionsExtractProjectState(project){
 }
 
 function questionsReadLocalStateFallback(){
-  const keys = [
-    'its_state',
-    'intotheshift_customizer_state_v1',
-    (typeof itsGetStorageKey === 'function' ? itsGetStorageKey() : '')
-  ].filter(Boolean);
-  for(const key of keys){
+  const explicitProjectId = questionsExplicitProjectIdFromUrl();
+  const keys = [];
+
+  if(explicitProjectId){
+    try{
+      const cached = sessionStorage.getItem('its_project_cache_' + explicitProjectId);
+      if(cached){
+        const cachedState = questionsExtractProjectState(JSON.parse(cached));
+        if(cachedState && Array.isArray(cachedState.chapters) && cachedState.chapters.length){
+          cachedState.projectId = explicitProjectId;
+          cachedState.project_id = explicitProjectId;
+          cachedState.currentAdId = explicitProjectId;
+          return cachedState;
+        }
+      }
+    }catch(e){}
+
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+    keys.push('intotheshift_customizer_state_v1_' + (typeof itsGetCurrentUserKey === 'function' ? itsGetCurrentUserKey() : '') + '_project_' + explicitProjectId);
+  }
+
+  if(!explicitProjectId){
+    keys.push('its_state', 'intotheshift_customizer_state_v1');
+    if(typeof itsGetStorageKey === 'function') keys.push(itsGetStorageKey());
+  }
+
+  const seen = new Set();
+  for(const key of keys.filter(Boolean)){
+    if(seen.has(key)) continue;
+    seen.add(key);
     try{
       const raw = localStorage.getItem(key) || sessionStorage.getItem(key);
       if(!raw) continue;
       let data = JSON.parse(raw);
       if(data && data.state && typeof data.state === 'object') data = data.state;
-      if(data && Array.isArray(data.chapters) && data.chapters.length) return data;
+      if(data && Array.isArray(data.chapters) && data.chapters.length){
+        if(explicitProjectId){
+          data.projectId = explicitProjectId;
+          data.project_id = explicitProjectId;
+          data.currentAdId = explicitProjectId;
+        }
+        return data;
+      }
     }catch(e){}
   }
   return null;
@@ -677,10 +1085,16 @@ let state = requestedProjectId
   ? (fetchedProjectState || questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')))
   : (questionsReadLocalStateFallback() || ((typeof itsLoad === 'function') ? itsLoad() : JSON.parse(localStorage.getItem('its_state') || '{}')));
 
+if(state && typeof state === 'object'){
+  questionsAttachOrganizationContext(state, requestedProjectId);
+}
+
 if(requestedProjectId && state && Array.isArray(state.chapters) && state.chapters.length){
-  state.projectId = state.projectId || requestedProjectId;
-  state.project_id = state.project_id || requestedProjectId;
-  state.currentAdId = state.currentAdId || requestedProjectId;
+  state.projectId = requestedProjectId;
+  state.project_id = requestedProjectId;
+  state.currentAdId = requestedProjectId;
+  localStorage.setItem('its_current_project_id', String(requestedProjectId));
+  localStorage.setItem('its_current_ad_id', String(requestedProjectId));
 }
 
 
@@ -700,9 +1114,9 @@ if (state && state.state && typeof state.state === 'object') {
   persistQuestionsStateForNextStep();
 }
 
-if (isBlankMode) {
+if (isBlankMode && !requestedProjectId) {
   const freshBlank = makeBlankDiagnosticState();
-  if (!state || state.mode !== 'blank') {
+  if (forceBlankSetup || !state || state.mode !== 'blank') {
     state = freshBlank;
   } else if (!Array.isArray(state.chapters) || !state.chapters.length) {
     state.chapters = freshBlank.chapters;
@@ -710,6 +1124,7 @@ if (isBlankMode) {
   }
   state.mode = 'blank';
   state.source = 'blank';
+  if (state.blankSetupDone !== true) state.blankSetupDone = false;
   if (typeof itsSave === 'function') itsSave(state);
   else localStorage.setItem('its_state', JSON.stringify(state));
 } else if (!state || !Array.isArray(state.chapters) || !state.chapters.length) {
@@ -743,6 +1158,19 @@ if (isBlankMode) {
   window.location.href = 'index.html';
 }
 
+
+function injectContentOnlyBanner(){
+  if(!isContentOnlyView || document.getElementById('its-content-only-banner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'its-content-only-banner';
+  banner.style.cssText = 'background:#f0fbf2;border-bottom:1px solid #b8e8c0;color:#18375d;padding:12px 24px;font-family:Asap,sans-serif;font-size:13px;line-height:1.45;font-weight:700';
+  banner.innerHTML = 'Consultation du contenu uniquement : les questions et profils sont consultables, mais aucune modification n’est possible. Pour toute modification, contactez <a href="mailto:contact@intotheshift.io" style="color:#0d4c72;font-weight:900;text-decoration:none">contact@intotheshift.io</a>.';
+  const header = document.getElementById('header');
+  if(header && header.parentNode) header.parentNode.insertBefore(banner, header.nextSibling);
+  else document.body.insertBefore(banner, document.body.firstChild);
+}
+injectContentOnlyBanner();
+
 const PROV = {
   AI: { key:'ai', label:'Base assistée par IA', ico:'🤖', cls:'' },
   TBF: { key:'tbf', label:'Conçu par The Big Factory', ico:'⭐', cls:'expert' },
@@ -751,7 +1179,7 @@ const PROV = {
 
 const profils_config = [
   {couleur:'#ff847e', bgHead:'#fff0ef', borderHead:'#ffd6d4', textColor:'#c0392b', nom:'En développement'},
-  {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'En progression'},
+  {couleur:'#ffc744', bgHead:'#fff9ec', borderHead:'#ffedb8', textColor:'#b7840a', nom:'Intermédiaire'},
   {couleur:'#77cd8a', bgHead:'#f0fbf2', borderHead:'#b8e8c0', textColor:'#27823a', nom:'Ancré'}
 ];
 
@@ -778,7 +1206,7 @@ function norm(v){
 }
 
 function getCurrentSubject(){
-  return state.subject || state.theme || state.topic || state.title || state.name || state.selectedSubject || '';
+  return state.themeLabel || state.theme_label || state.theme || state.selectedTheme || state.title || state.name || '';
 }
 
 function normalizeProv(tags){
@@ -789,34 +1217,12 @@ function normalizeProv(tags){
 }
 
 function complianceBadgesHTML(prov){
-  if (prov === 'COMPANY') return '';
-  return `<span class="tag-prov help">Aide à la rédaction</span><span class="tag-prov review">Relecture obligatoire</span>`;
+  // Affichage limité : 1 tag de provenance + 3 tags de contexte.
+  return '';
 }
 
 function complianceTagsForState(prov){
-  if (prov === 'COMPANY') return [];
-  return ['Aide à la rédaction', 'Relecture obligatoire'];
-}
-
-function normalizeTags(tags){
-  return (tags || [])
-    .filter(Boolean)
-    .filter(t => {
-      const x = String(t).toLowerCase();
-      return !x.includes('base assistée')
-        && !x.includes('base assistee')
-        && !x.includes('conçu par')
-        && !x.includes('concu par')
-        && !x.includes('création entreprise')
-        && !x.includes('creation entreprise')
-        && !x.includes('contribution client')
-        && !x.includes('validation obligatoire')
-        && !x.includes('relecture obligatoire')
-        && !x.includes('aide à la rédaction')
-        && !x.includes('aide a la redaction');
-    })
-    .slice(0,10)
-    .map(t => ({t:String(t), ai:String(t).toLowerCase().includes('ia')}));
+  return [];
 }
 
 function uniqTags(tags){
@@ -832,25 +1238,145 @@ function uniqTags(tags){
     });
 }
 
-function inferContentTags(text, subject, chapter){
-  const hay = norm([text, subject, chapter].join(' '));
-  const tags = [];
+function tagTextValue(tag){
+  if(tag && typeof tag === 'object') return String(tag.t || tag.label || tag.text || tag.name || '').trim();
+  return String(tag || '').trim();
+}
 
-  if(hay.includes('cyber') || hay.includes('securite numerique') || hay.includes('risque numerique') || hay.includes('email') || hay.includes('sms') || hay.includes('mot de passe') || hay.includes('piece jointe')) {
-    tags.push('Cybersécurité');
+function normalizeTags(tags){
+  const source = Array.isArray(tags) ? tags : [];
+  return source
+    .map(tagTextValue)
+    .filter(Boolean)
+    .filter(t => {
+      const x = t.toLowerCase();
+      return !x.includes('base assistée')
+        && !x.includes('base assistee')
+        && !x.includes('conçu par')
+        && !x.includes('concu par')
+        && !x.includes('création entreprise')
+        && !x.includes('creation entreprise')
+        && !x.includes('contribution client')
+        && !x.includes('validation obligatoire')
+        && !x.includes('relecture obligatoire')
+        && !x.includes('aide à la rédaction')
+        && !x.includes('aide a la redaction');
+    })
+    .filter((t, i, arr) => arr.findIndex(x => norm(x) === norm(t)) === i)
+    .slice(0,3)
+    .map(t => ({t:String(t), ai:false}));
+}
+
+function catalogueQuestionTags(cq){
+  return normalizeTags(cq && cq.tags ? cq.tags : []);
+}
+
+// Règle unique : les tags visibles d'une question catalogue viennent directement
+// de la question source chargée dans window.CUSTOM_QUESTIONS / window.ITS_CATALOGUE.
+// On construit un index une seule fois pour éviter de reparcourir tous les catalogues
+// à chaque rendu de carte, ce qui protège les temps de chargement.
+let ITS_QUESTION_TAG_INDEX = null;
+
+function indexCatalogueQuestion(source, tags){
+  if(!source || !ITS_QUESTION_TAG_INDEX) return;
+  const cleanTags = catalogueQuestionTags({ tags });
+  if(!cleanTags.length) return;
+
+  const ids = [source.id, source.catalogueId, source.catalogue_id].map(v => String(v || '').trim()).filter(Boolean);
+  ids.forEach(id => ITS_QUESTION_TAG_INDEX.byId.set(id, cleanTags));
+
+  const textKey = canonicalQuestionText(source.text || source.question || source.title || '');
+  if(textKey) ITS_QUESTION_TAG_INDEX.byText.set(textKey, cleanTags);
+}
+
+function buildCatalogueQuestionTagIndex(){
+  ITS_QUESTION_TAG_INDEX = { byId:new Map(), byText:new Map() };
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    window.ITS_CATALOGUE.forEach(ad => {
+      (ad.chapters || []).forEach(ch => {
+        (ch.questions || []).forEach(q => indexCatalogueQuestion(q, q.tags));
+      });
+    });
   }
-  if(hay.includes('email') || hay.includes('mail') || hay.includes('sms') || hay.includes('message')) tags.push('Message suspect');
-  if(hay.includes('lien') || hay.includes('url')) tags.push('Lien suspect');
-  if(hay.includes('mot de passe') || hay.includes('acces') || hay.includes('réinitialiser') || hay.includes('reinitialiser')) tags.push('Accès');
-  if(hay.includes('piece jointe') || hay.includes('document') || hay.includes('fichier')) tags.push('Document');
-  if(hay.includes('virement') || hay.includes('rib') || hay.includes('paiement')) tags.push('Fraude');
-  if(hay.includes('donnee') || hay.includes('confidentiel') || hay.includes('sensible') || hay.includes('comptabilite')) tags.push('Données sensibles');
-  if(hay.includes('signaler') || hay.includes('alerte') || hay.includes('doute')) tags.push('Signalement');
-  if(hay.includes('qvt') || hay.includes('rps') || hay.includes('charge de travail') || hay.includes('épuisement') || hay.includes('epuisement')) tags.push('QVT / RPS');
-  if(hay.includes('management') || hay.includes('manager') || hay.includes('équipe') || hay.includes('equipe')) tags.push('Management');
-  if(hay.includes('environnement') || hay.includes('sobriete') || hay.includes('empreinte')) tags.push('Environnement');
 
-  return tags;
+  if(window.CUSTOM_QUESTIONS && typeof window.CUSTOM_QUESTIONS === 'object'){
+    Object.keys(window.CUSTOM_QUESTIONS).forEach(adKey => {
+      const chaptersObj = window.CUSTOM_QUESTIONS[adKey] || {};
+      Object.keys(chaptersObj).forEach(chapterKey => {
+        const list = Array.isArray(chaptersObj[chapterKey]) ? chaptersObj[chapterKey] : [];
+        list.forEach(q => indexCatalogueQuestion(q, q.tags));
+      });
+    });
+  }
+
+  return ITS_QUESTION_TAG_INDEX;
+}
+
+function getCatalogueQuestionTagIndex(){
+  return ITS_QUESTION_TAG_INDEX || buildCatalogueQuestionTagIndex();
+}
+
+function canonicalQuestionText(v){
+  return norm(v)
+    .replace(/[’']/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sameCatalogueQuestion(question, cq){
+  if(!question || !cq) return false;
+
+  const qid = String(question.id || question.catalogueId || question.catalogue_id || '').trim();
+  const cid = String(cq.id || cq.catalogueId || cq.catalogue_id || '').trim();
+  if(qid && cid && qid === cid) return true;
+
+  const qtext = canonicalQuestionText(question.text || question.question || question.title || '');
+  const ctext = canonicalQuestionText(cq.text || cq.question || cq.title || '');
+  if(!qtext || !ctext) return false;
+  if(qtext === ctext) return true;
+
+  if(qtext.length >= 80 && ctext.length >= 80 && (qtext.includes(ctext) || ctext.includes(qtext))) return true;
+  return false;
+}
+
+function findCatalogueQuestionTags(question){
+  if(!question) return [];
+
+  const index = getCatalogueQuestionTagIndex();
+  const ids = [question.id, question.catalogueId, question.catalogue_id]
+    .map(v => String(v || '').trim())
+    .filter(Boolean);
+
+  for(const id of ids){
+    const byId = index.byId.get(id);
+    if(byId && byId.length) return byId;
+  }
+
+  const textKey = canonicalQuestionText(question.text || question.question || question.title || '');
+  if(textKey){
+    const byText = index.byText.get(textKey);
+    if(byText && byText.length) return byText;
+  }
+
+  return [];
+}
+
+function catalogueOrRawTags(question, rawTags){
+  const catalogueTags = findCatalogueQuestionTags(question);
+  if(catalogueTags.length) return catalogueTags;
+  return normalizeTags(rawTags || []);
+}
+
+function contextualTags(text, rawTags, subject, chapter){
+  // Source de vérité : tags présents dans les catalogues ou dans la question importée.
+  // Aucune génération métier dans questions.html.
+  return catalogueOrRawTags({ text }, rawTags || []);
+}
+
+function inferContentTags(text, subject, chapter){
+  return [];
 }
 
 function panelSearchHaystack(q){
@@ -859,7 +1385,7 @@ function panelSearchHaystack(q){
     q.subject,
     q.adTitle,
     q.chapter,
-    ...(q.tags || [])
+    ...(q.tags || []).map(tagTextValue)
   ].join(' '));
 }
 
@@ -869,6 +1395,47 @@ function normalizeAnswers(q){
     l: a.l ?? a.label ?? a.text ?? `Réponse ${String.fromCharCode(65+i)}`,
     s: Number(a.s ?? a.score ?? i)
   }));
+}
+
+
+function isGenericProfileLevel(value){
+  const v = norm(value);
+  return !v
+    || v === '1' || v === '2' || v === '3'
+    || v === 'en developpement'
+    || v === 'intermediaire'
+    || v === 'ancre';
+}
+
+function normalizeCatalogueProfileObject(p){
+  if(!p || typeof p !== 'object') return null;
+  return {
+    niveau: p.niveau || p.level || p.label || '',
+    titre: p.titre || p.title || '',
+    phrase: p.phrase || p.summary || p.resume || '',
+    description: p.description || p.desc || '',
+    motscles: p.motscles || p.keywords || []
+  };
+}
+
+function extractProfilesFromCatalogueQuestions(questions){
+  const source = (questions || []).find(q => q && q.profiles && typeof q.profiles === 'object');
+  if(!source) return [];
+  const raw = source.profiles;
+  if(Array.isArray(raw)) return raw.map(normalizeCatalogueProfileObject).filter(Boolean).slice(0,3);
+  return ['bas','moyen','haut'].map(key => normalizeCatalogueProfileObject(raw[key])).filter(Boolean);
+}
+
+function mergeProfileWithCatalogue(current, catalogue, index){
+  const p = normalizeCatalogueProfileObject(current) || {};
+  const cat = normalizeCatalogueProfileObject(catalogue) || {};
+  return {
+    niveau: isGenericProfileLevel(p.niveau) && cat.niveau ? cat.niveau : (p.niveau || cat.niveau || `Profil ${index + 1}`),
+    titre: p.titre || cat.titre || '',
+    phrase: p.phrase || cat.phrase || '',
+    description: p.description || cat.description || '',
+    motscles: p.motscles || cat.motscles || []
+  };
 }
 
 function normalizeChaptersFromState(){
@@ -892,6 +1459,7 @@ function normalizeChaptersFromState(){
 
   return state.chapters.map((c, i) => {
     const profiles = c.profiles || c.profils || [];
+    const catalogueProfiles = extractProfilesFromCatalogueQuestions(c.questions || []);
     return {
       id: i + 1,
       name: c.name || c.title || '',
@@ -902,21 +1470,10 @@ function normalizeChaptersFromState(){
         type: q.type === 'likert' ? 'likert' : 'choix',
         prov: q.prov || normalizeProv(q.tags),
         text: q.text || q.question || 'Nouvelle mise en situation',
-        tags: Array.isArray(q.tags) && q.tags.length && typeof q.tags[0] === 'object'
-          ? q.tags
-          : normalizeTags(q.tags),
+tags: catalogueOrRawTags(q, q.tags),
         answers: normalizeAnswers(q)
       })),
-      profils: [0,1,2].map(pi => {
-        const p = profiles[pi] || {};
-        return {
-          niveau: p.niveau || p.level || pi+1,
-          titre: p.titre || p.title || '',
-          phrase: p.phrase || p.summary || '',
-          description: p.description || '',
-          motscles: p.motscles || p.keywords || []
-        };
-      }),
+      profils: [0,1,2].map(pi => mergeProfileWithCatalogue(profiles[pi] || {}, catalogueProfiles[pi] || {}, pi)),
       seuils: [{min:0,max:0.66},{min:0.66,max:1.32},{min:1.32,max:2}]
     };
   });
@@ -927,6 +1484,7 @@ function persistQuestionsStateForNextStep(){
   // parametrage.html dépend encore de l'état courant côté navigateur ; le backend reste la source de vérité pour la reprise par projectId.
   try{
     const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+    questionsAttachOrganizationContext(state, projectId);
     if(projectId){
       localStorage.setItem('its_current_project_id', String(projectId));
       localStorage.setItem('its_current_ad_id', String(projectId));
@@ -968,10 +1526,12 @@ function syncToState(){
       answers: q.answers.map(a => ({text:a.l, score:Number(a.s)}))
     })),
     profiles: c.profils.map((p, i) => ({
-      level: profils_config[i]?.nom || p.niveau || `Profil ${i+1}`,
+      level: p.niveau || profils_config[i]?.nom || `Profil ${i+1}`,
       title: p.titre,
       summary: p.phrase,
       description: p.description,
+      keywords: p.motscles || [],
+      motscles: p.motscles || [],
       min: c.seuils[i]?.min ?? 0,
       max: c.seuils[i]?.max ?? 2
     }))
@@ -1011,12 +1571,7 @@ function getRawBibliotheque(){
           if (!norm(q.text || '') || seen.has(key)) return;
           seen.add(key);
 
-          const contentTags = uniqTags([
-            ...normalizeTags(q.tags).map(t => t.t),
-            ...normalizeTags(ch.tags).map(t => t.t),
-            ...normalizeTags(ad.tags).map(t => t.t),
-            ...inferContentTags(q.text || '', ad.theme || ad.title || '', ch.title || '')
-          ]);
+const contentTags = normalizeTags(q.tags || []).map(t => t.t);
 
           out.push({
             id: q.id,
@@ -1049,7 +1604,7 @@ function normalizeLibraryQuestion(q, i){
     adTitle: q.adTitle || '',
     chapter: q.chapter || q.chapitre || q.partie || q.part || q.topic || '',
     text: q.text || q.question || q.title || 'Question de bibliothèque',
-    tags: Array.isArray(rawTags) ? rawTags.map(String) : [],
+tags: normalizeTags(Array.isArray(rawTags) ? rawTags : []).map(t => t.t),
     answers: q.answers || q.reponses || null,
     type: q.type || 'choix',
     added: q.added || false
@@ -1065,9 +1620,11 @@ const icoTrash = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><p
 const icoStar = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>`;
 
 function questionHasValidScoring(q){
-  return q && Array.isArray(q.answers) && q.answers.length >= 3 && q.answers.every(a => {
+  if(!q || !String(q.text || '').trim()) return false;
+  return Array.isArray(q.answers) && q.answers.length >= 3 && q.answers.every(a => {
+    const label = String(a.l ?? a.label ?? a.text ?? '').trim();
     const n = Number(a.s);
-    return !isNaN(n) && n >= 0 && n <= 2;
+    return label && !isNaN(n) && n >= 0 && n <= 2;
   });
 }
 
@@ -1143,9 +1700,39 @@ function needsBlankSetup(){
 function makeBlankProfiles(){
   return [
     { level:'En développement', title:'', summary:'', description:'', min:0, max:0.66 },
-    { level:'En progression', title:'', summary:'', description:'', min:0.66, max:1.32 },
+    { level:'Intermédiaire', title:'', summary:'', description:'', min:0.66, max:1.32 },
     { level:'Ancré', title:'', summary:'', description:'', min:1.32, max:2 }
   ];
+}
+
+function makeBlankQuestion(chapterIndex, questionIndex){
+  return {
+    id: `blank-q${chapterIndex + 1}-${questionIndex + 1}-${Date.now()}-${questionIndex}`,
+    type: 'choix',
+    prov: 'COMPANY',
+    text: '',
+    tags: [],
+    answers: [
+      { l: '', s: 0 },
+      { l: '', s: 1 },
+      { l: '', s: 2 }
+    ]
+  };
+}
+
+function makeBlankQuestionState(chapterIndex, questionIndex){
+  const q = makeBlankQuestion(chapterIndex, questionIndex);
+  return {
+    id: q.id,
+    type: q.type,
+    text: q.text,
+    tags: ['Création entreprise', 'Relecture obligatoire'],
+    answers: q.answers.map(a => ({ text: a.l, score: a.s }))
+  };
+}
+
+function makeBlankQuestionsForChapter(chapterIndex){
+  return Array.from({ length: DEFAULT_GENERATED_QUESTIONS }, (_, qi) => makeBlankQuestionState(chapterIndex, qi));
 }
 
 function makeEmptyChapter(index){
@@ -1155,7 +1742,7 @@ function makeEmptyChapter(index){
     name: '',
     desc: subject ? `À préciser — ${subject}` : 'À préciser',
     isCustomChapter: true,
-    questions: [],
+    questions: isBlankFlow() ? makeBlankQuestionsForChapter(index) : [],
     profils: [0,1,2].map(i => ({
       niveau: i + 1,
       titre: '',
@@ -1187,6 +1774,63 @@ function addChapter(){
   updateSaveButton();
 }
 
+function normalizeBlankThemeOption(source){
+  if(!source || typeof source !== 'object') return null;
+  const key = String(source.key || source.themeKey || source.theme_key || source.id || source.slug || '').trim();
+  const label = String(source.label || source.name || source.title || source.theme || source.titre || source.nom || '').trim();
+  if(!key && !label) return null;
+  return { key: key || norm(label).replace(/\s+/g, '-'), label: label || key };
+}
+
+function getBlankPrivateThemes(){
+  const themes = [];
+  const seen = new Set();
+
+  function addTheme(source){
+    const item = normalizeBlankThemeOption(source);
+    if(!item) return;
+    const unique = String(item.key || item.label || '').toLowerCase();
+    if(!unique || seen.has(unique)) return;
+    seen.add(unique);
+    themes.push(item);
+  }
+
+  if(Array.isArray(window.ITS_THEMES)){
+    window.ITS_THEMES.forEach(addTheme);
+  }
+
+  if(Array.isArray(window.ITS_CATALOGUE)){
+    window.ITS_CATALOGUE.forEach(ad => {
+      addTheme({
+        key: ad.themeKey || ad.theme_key || ad.theme || '',
+        label: ad.theme || ad.themeLabel || ad.theme_label || ad.themeName || ad.theme_name || ''
+      });
+    });
+  }
+
+  const currentKey = String(state.themeKey || state.theme_key || state.selectedThemeKey || state.privateThemeKey || state.private_theme_key || '').trim();
+  const currentLabel = String(state.themeLabel || state.theme_label || state.selectedTheme || state.privateThemeLabel || state.private_theme_label || '').trim();
+  if(currentKey || currentLabel) addTheme({ key: currentKey, label: currentLabel });
+
+  const hasAutre = themes.some(t => norm(t.key) === 'autre' || norm(t.label) === 'autre');
+  if(!hasAutre) themes.push({ key:'autre', label:'Autre' });
+  return themes;
+}
+
+function blankThemeOptionsHTML(){
+  const current = String(state.themeKey || state.theme_key || state.selectedThemeKey || state.privateThemeKey || state.private_theme_key || '').trim();
+  const currentLabel = String(state.themeLabel || state.theme_label || state.selectedTheme || state.privateThemeLabel || state.private_theme_label || '').trim();
+  return '<option value="">Choisir une thématique</option>' + getBlankPrivateThemes().map(t => {
+    const selected = current === t.key || (!current && currentLabel === t.label) ? 'selected' : '';
+    return `<option value="${esc(t.key)}" ${selected}>${esc(t.label)}</option>`;
+  }).join('');
+}
+
+function getBlankThemeByKey(key){
+  const k = String(key || '').trim();
+  return getBlankPrivateThemes().find(t => t.key === k) || null;
+}
+
 
 function renderBlankSetup(){
   updateBreadcrumb('Cadrage de l’autodiag');
@@ -1200,13 +1844,14 @@ function renderBlankSetup(){
   saveBtn.textContent = 'Cadrage requis';
   hint.classList.add('visible');
   hint.textContent = 'Complétez le cadrage pour créer les chapitres';
+  updateCustomModelButton();
 
   document.getElementById('main-editor').innerHTML = `
     <div class="blank-setup-wrap">
       <div class="blank-setup-hero">
         <div class="blank-setup-kicker">Création de A à Z</div>
         <div class="blank-setup-title">Définir le cadre avant de créer les questions</div>
-        <div class="blank-setup-text">Pour éviter de générer ou de piocher des situations hors sujet, commencez par préciser le thème, le public et l’objectif. Les chapitres seront ensuite créés vides, prêts à être remplis manuellement ou avec une aide contextualisée.</div>
+        <div class="blank-setup-text">Commencez par préciser la thématique associée, le public et l’objectif. Les chapitres seront ensuite créés avec 5 situations vides à compléter directement dans l’éditeur.</div>
       </div>
       <div class="blank-setup-card">
         <div class="blank-form-grid">
@@ -1215,12 +1860,15 @@ function renderBlankSetup(){
             <input id="blank-title" placeholder="Ex. Autodiag cybersécurité — réflexes du quotidien" value="${esc(state.title || '')}">
           </div>
           <div class="blank-field">
-            <label for="blank-subject">Sujet / thématique</label>
-            <input id="blank-subject" placeholder="Ex. Cybersécurité, QVT, management…" value="${esc(state.subject || '')}">
-          </div>
-          <div class="blank-field">
             <label for="blank-audience">Public cible</label>
             <input id="blank-audience" placeholder="Ex. Managers, collaborateurs, équipe RH…" value="${esc(state.audience || '')}">
+          </div>
+          <div class="blank-field full">
+            <label for="blank-private-theme">Thématique associée</label>
+            <select id="blank-private-theme">
+              ${blankThemeOptionsHTML()}
+            </select>
+            <div class="blank-help" style="font-size:11px;margin-top:-2px">Permet de classer votre autodiagnostic dans votre espace.<br>Cette thématique n’est pas visible par les autres entreprises.</div>
           </div>
           <div class="blank-field full">
             <label for="blank-objective">Objectif de l’autodiag</label>
@@ -1229,7 +1877,7 @@ function renderBlankSetup(){
           <div class="blank-field">
             <label for="blank-count">Nombre de chapitres</label>
             <select id="blank-count">
-              ${[1,2,3,4,5,6].map(n => `<option value="${n}" ${Number(state.chapterCount || 4) === n ? 'selected' : ''}>${n} chapitre${n>1?'s':''}</option>`).join('')}
+              ${[3,4,5,6].map(n => `<option value="${n}" ${Number(state.chapterCount || 3) === n ? 'selected' : ''}>${n} chapitres</option>`).join('')}
             </select>
           </div>
           <div class="blank-field">
@@ -1237,10 +1885,10 @@ function renderBlankSetup(){
             <input id="blank-chapters" placeholder="Optionnel : séparez par des virgules" value="${esc(state.chapterNames || '')}">
           </div>
         </div>
-        <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, un sujet et un objectif.</div>
+        <div class="blank-error" id="blank-error">Merci de renseigner au moins un titre, une thématique associée et un objectif.</div>
         <div class="blank-actions">
-          <div class="blank-help">Après validation, vous arriverez dans l’éditeur avec des chapitres vides. Les boutons IA et bibliothèque seront alors contextualisés par votre sujet.</div>
-          <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Créer les chapitres</button>
+          <div class="blank-help">Vous arriverez dans l’éditeur avec 5 situations vides par chapitre. Vous pourrez les compléter directement, puis enregistrer l’autodiag comme modèle réutilisable depuis Mes autodiagnostics, quand il sera vraiment prêt.</div>
+          <button class="btn-save" style="width:auto;padding:11px 18px" onclick="completeBlankSetup()">Démarrer la création</button>
         </div>
       </div>
     </div>`;
@@ -1248,14 +1896,16 @@ function renderBlankSetup(){
 
 function completeBlankSetup(){
   const title = document.getElementById('blank-title').value.trim();
-  const subject = document.getElementById('blank-subject').value.trim();
   const audience = document.getElementById('blank-audience').value.trim();
+  const privateThemeKey = document.getElementById('blank-private-theme') ? document.getElementById('blank-private-theme').value.trim() : '';
+  const privateTheme = getBlankThemeByKey(privateThemeKey);
+  const privateThemeLabel = privateTheme ? privateTheme.label : '';
   const objective = document.getElementById('blank-objective').value.trim();
-  const count = Number(document.getElementById('blank-count').value || 4);
+  const count = Math.max(3, Number(document.getElementById('blank-count').value || 3));
   const chapterNamesRaw = document.getElementById('blank-chapters').value.trim();
   const err = document.getElementById('blank-error');
 
-  if(!title || !subject || !objective){
+  if(!title || !privateThemeKey || !privateThemeLabel || !objective){
     err.classList.add('on');
     return;
   }
@@ -1265,8 +1915,17 @@ function completeBlankSetup(){
     : [];
 
   state.title = title;
-  state.subject = subject;
-  state.theme = subject;
+  state.themeKey = privateThemeKey;
+  state.theme_key = privateThemeKey;
+  state.selectedThemeKey = privateThemeKey;
+  state.privateThemeKey = privateThemeKey;
+  state.private_theme_key = privateThemeKey;
+  state.themeLabel = privateThemeLabel;
+  state.theme_label = privateThemeLabel;
+  state.selectedTheme = privateThemeLabel;
+  state.privateThemeLabel = privateThemeLabel;
+  state.private_theme_label = privateThemeLabel;
+  state.theme = privateThemeLabel;
   state.audience = audience;
   state.objective = objective;
   state.chapterCount = count;
@@ -1274,9 +1933,9 @@ function completeBlankSetup(){
   state.blankSetupDone = true;
   state.chapters = Array.from({length: count}, (_, i) => ({
     title: names[i] || '',
-    description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${subject}`,
-    isCustomChapter: !names[i],
-    questions: [],
+    description: names[i] ? `Partie dédiée à ${names[i]}` : `À préciser — ${privateThemeLabel}`,
+    isCustomChapter: true,
+    questions: makeBlankQuestionsForChapter(i),
     profiles: makeBlankProfiles()
   }));
 
@@ -1293,12 +1952,12 @@ function completeBlankSetup(){
 let chapterDeleteIndex = null;
 
 function canDeleteChapter(index){
-  return Number(index) >= 4;
+  return Array.isArray(chapters) && chapters.length > 3;
 }
 
 function openDeleteChapterModal(index){
   if(!canDeleteChapter(index)){
-    openFeatureSoonModal('Chapitre non supprimable', 'Les 4 chapitres de base de l’autodiagnostic ne sont pas supprimables. Vous pouvez modifier leur titre, leur description et leurs questions.');
+    openFeatureSoonModal('Suppression impossible', 'Un autodiagnostic doit contenir au moins 3 chapitres. Vous pourrez supprimer ce chapitre si vous ajoutez ou conservez un chapitre supplémentaire.');
     return;
   }
   chapterDeleteIndex = index;
@@ -1318,13 +1977,13 @@ function closeDeleteChapterModal(){
 
 function confirmDeleteChapter(){
   const index = chapterDeleteIndex;
-  if(index === null || index === undefined || !canDeleteChapter(index)){
+  if(index === null || index === undefined || !canDeleteChapter(index) || chapters.length <= 3){
     closeDeleteChapterModal();
     return;
   }
 
   chapters.splice(index, 1);
-  chapters = chapters.map((c, i) => ({ ...c, id: i + 1, isCustomChapter: c.isCustomChapter === true || i >= 4 }));
+  chapters = chapters.map((c, i) => ({ ...c, id: i + 1 }));
 
   if(activeChap >= chapters.length) activeChap = Math.max(0, chapters.length - 1);
   else if(activeChap > index) activeChap = activeChap - 1;
@@ -1342,7 +2001,7 @@ function confirmDeleteChapter(){
 function renderNav() {
   const addChapBtn = document.getElementById('btn-add-chapter');
   if(addChapBtn){
-    addChapBtn.disabled = needsBlankSetup() || chapters.length >= 10;
+    addChapBtn.disabled = isContentOnlyView || needsBlankSetup() || chapters.length >= 10;
     addChapBtn.textContent = chapters.length >= 10 ? 'Maximum 10 chapitres' : '+ Ajouter un chapitre';
   }
 
@@ -1361,8 +2020,8 @@ function renderNav() {
       <div class="cni-head" onclick="selectChap(${i})">
         <div class="cni-lbl">Chapitre ${i+1}</div>
         <div class="cni-title-row">
-          <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'}</div>
-          ${canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
+          <div class="cni-name">${c.name ? esc(c.name) : '<span style="color:#94a3b8;font-weight:500">Renommer le chapitre</span>'} <span class="edit-hint" title="Titre modifiable">✏️</span></div>
+          ${!isContentOnlyView && canDeleteChapter(i) ? `<button class="cni-delete" title="Supprimer ce chapitre" onclick="openDeleteChapterModal(${i});event.stopPropagation()">×</button>` : ''}
         </div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorQ}"></span><span class="cni-qcount">${n}/10 questions</span></div>
         <div class="cni-meta"><span class="cni-dot" style="background:${dotColorP}"></span><span class="cni-qcount">${nProfils}/3 profils</span></div>
@@ -1403,11 +2062,28 @@ function setTab(i, tab) {
 }
 
 
+function getRespondentVisibleTitle(){
+  const param = state.parametrage || state.meta || {};
+  return String(
+    param.titre_repondants ||
+    param.titreRespondants ||
+    param.titre_visible_repondants ||
+    param.titreVisibleRepondants ||
+    param.titre_visible ||
+    param.titreVisible ||
+    param.titre ||
+    state.titre_repondants ||
+    state.titreRespondants ||
+    state.title ||
+    ''
+  ).trim();
+}
+
 function updateBreadcrumb(label){
   const titleEl = document.getElementById('bc-title');
   const sepEl = document.getElementById('bc-title-sep');
   const curEl = document.getElementById('bc-cur');
-  const title = String(state.title || '').trim();
+  const title = getRespondentVisibleTitle();
   if(title){
     titleEl.textContent = title;
     titleEl.style.display = 'inline';
@@ -1421,6 +2097,10 @@ function updateBreadcrumb(label){
 }
 
 function renderMain() {
+  if (needsBlankSetup()) {
+    renderBlankSetup();
+    return;
+  }
   const ch = chapters[activeChap];
   const chapterLabel = ch.name || `Chapitre ${activeChap + 1}`;
   updateBreadcrumb(activeTab === 'questions' ? `Questions — ${chapterLabel}` : `Profils — ${chapterLabel}`);
@@ -1467,7 +2147,7 @@ function aiUnavailableMessage(){
 }
 
 function aiActionLabel(){
-  return "Aide IA à la rédaction (brouillon)";
+  return "Remplacer toutes les questions (IA)";
 }
 
 function aiActionText(){
@@ -1480,6 +2160,7 @@ function chapterHasCatalogueQuestions(){
 }
 
 function chapterUsesCatalogueSupport(){
+  if(isBlankFlow()) return false;
   const ch = chapters[activeChap];
   if(!ch) return false;
   if(ch.isCustomChapter === true) return false;
@@ -1521,6 +2202,8 @@ function emptyActionCard(title, text, onclick, primary, disabled){
 }
 
 function renderQuestions(ch) {
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
   const n = ch.questions.length;
   const pct = Math.min(100, Math.round((n / MAX_QUESTIONS_PER_CHAPTER) * 100));
   const isEmpty = n === 0;
@@ -1532,24 +2215,25 @@ function renderQuestions(ch) {
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Questions</div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
-          <span title="Cliquez sur le titre pour le modifier" style="color:#c5ccd5;font-size:13px;cursor:default;flex-shrink:0">✏️</span>
+        <div class="chap-title-edit-row">
+          <input class="chap-name-inp" value="${esc(ch.name)}" ${readonlyAttr} placeholder="Renommer le chapitre" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].name=this.value;saveState();renderNav()">
+          <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
-        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" ${readonlyAttr} oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].desc=this.value;saveState()">
       </div>
       ${!isEmpty ? `<div class="chap-actions">
-        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque</button>` : ''}
-        <button class="btn-add-manual" onclick="addManual()">Ajouter manuellement</button>
+        <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’aperçu répondant</button>
+        ${catalogueSupport ? `<button class="btn-regen-all" onclick="askRegen()" ${!aiAllowed ? 'disabled title="' + aiUnavailableMessage() + '" style="opacity:.42;cursor:not-allowed"' : ''}>${aiActionLabel()}</button><button class="btn-pioche" onclick="openPanel()">Piocher dans la bibliothèque <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ouvre une sélection de questions déjà rédigées, filtrées par sujet et par chapitre. Les questions déjà ajoutées ne sont pas proposées à nouveau.">?</span></button>` : ''}
+        <button class="btn-add-manual" onclick="addManual()">+ Ajouter une situation vide <span class="help-tip" tabindex="0" onclick="event.stopPropagation()" data-help="Ajoutez une situation vide, puis renseignez l’énoncé de la question, au moins 3 réponses et leurs scores. Une question vide bloque l’accès au paramétrage.">?</span></button>
       </div>` : ''}
     </div>`;
 
   const emptyState = `
     <div style="padding:12px 0 0">
-      ${emptyActionCard('Ajouter manuellement', 'Rédigez vos propres mises en situation, réponses et scores. C’est le parcours recommandé pour une création totalement de A à Z.', 'addManual()', true, false)}
+      ${emptyActionCard('Ajouter une situation vide', 'Créez une nouvelle mise en situation à compléter avec ses réponses et ses scores.', 'addManual()', true, editBlocked)}
       ${catalogueSupport ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, false)}
-        ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, !aiAllowed)}
+        ${emptyActionCard('Piocher dans la bibliothèque', 'Importez uniquement des questions correspondant au sujet et au chapitre, si une base pertinente existe.', 'openPanel()', false, editBlocked)}
+        ${emptyActionCard(aiActionLabel(), aiAllowed ? aiActionText() : aiUnavailableMessage(), 'confirmRegen()', false, editBlocked || !aiAllowed)}
       </div>` : ''}
     </div>`;
 
@@ -1557,7 +2241,8 @@ function renderQuestions(ch) {
 
   document.getElementById('main-editor').innerHTML = `
     ${header}
-    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10</span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif de cette étape</strong> ${isBlankFlow() && state.objective ? 'Objectif défini : ' + esc(state.objective) + '<br>' : ''}Construisez des situations concrètes issues du quotidien professionnel. L’autodiagnostic ne teste ni les connaissances ni les compétences : il expose des comportements réalistes et permet au répondant de se positionner sur ses réflexes habituels.</span></div>
+    ${!isEmpty ? `<div class="q-counter"><span class="qc-text"><strong>${n}</strong> question${n !== 1 ? 's' : ''} · min 5, max 10 <span class="help-tip" tabindex="0" data-help="Il faut au minimum 5 questions complètes par chapitre pour pouvoir passer aux profils : chaque question doit avoir un énoncé et au moins 3 réponses renseignées avec leurs scores. Le maximum est fixé à 10 questions par chapitre.">?</span></span><div class="qc-bar"><div class="qc-fill" style="width:${pct}%"></div></div></div>
     <div class="likert-info">
       <span class="likert-info-ico">ℹ️</span>
       <div class="likert-info-body">
@@ -1578,6 +2263,7 @@ function toggleLikertInfo() {
 }
 
 function updateQuestionText(qid, value) {
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if (q) {
     q.text = value;
@@ -1588,32 +2274,39 @@ function updateQuestionText(qid, value) {
 function renderCard(q, qi) {
   const open = openCards[q.id];
   const p = PROV[q.prov] || PROV.AI;
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
+  const disabledAttr = editBlocked ? 'disabled' : '';
+  const contentEditableAttr = editBlocked ? 'false' : 'true';
   const provHTML = `<span class="tag-prov ${p.cls}">${p.ico} ${p.label}</span>` + complianceBadgesHTML(q.prov);
-  const tagsHTML = (q.tags || []).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span></span>`).join('');
-  const addBtn = (q.tags || []).length < 6 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
+  const tagsHTML = (q.tags || []).slice(0,3).map((t, ti) => `<span class="tag-pill ${t.ai ? 'ai-sug' : ''}">${t.ai ? '✦ ' : ''}${esc(t.t)}${editBlocked ? '' : `<span class="tag-x" onclick="removeTag('${q.id}',${ti});event.stopPropagation()">×</span>`}</span>`).join('');
+  const addBtn = !editBlocked && (q.tags || []).length < 3 ? `<span class="tag-add" onclick="addTag('${q.id}');event.stopPropagation()">+ Tag</span>` : '';
   let bodyHTML = '';
 
   if (open) {
     const isLikert = q.type === 'likert';
     const answersHTML = isLikert
-      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><input class="la-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
-      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><input class="mc-inp" value="${esc(a.l)}" oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><div class="score-pill" onclick="editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" onclick="deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" onclick="addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
+      ? `<div class="likert-list">${q.answers.map((a, ai) => `<div class="la-row"><div class="la-bar"></div><div class="editable-field-wrap"><input class="la-inp" value="${esc(a.l)}" ${readonlyAttr} oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><span class="la-score-info">→ score ${a.s}</span><div class="score-pill" ${editBlocked ? 'aria-disabled="true"' : ''} onclick="if(itsQuestionsIsEditBlocked()) return false; editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div></div>`).join('')}</div>`
+      : `<div class="mc-list">${q.answers.map((a, ai) => `<div class="mc-row"><div class="mc-dot"></div><div class="editable-field-wrap"><input class="mc-inp" value="${esc(a.l)}" ${readonlyAttr} oninput="updateAnswer('${q.id}',${ai},'l',this.value)"><span class="edit-hint" title="Réponse modifiable">✏️</span></div><div class="score-pill" ${editBlocked ? 'aria-disabled="true"' : ''} onclick="if(itsQuestionsIsEditBlocked()) return false; editScore(this,event,'${q.id}',${ai})" data-score="${a.s}"><span class="sp-lbl">Score</span><span class="sp-val">${a.s}</span></div><button class="qa-btn del" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; deleteAnswer('${q.id}',${ai});event.stopPropagation()">×</button></div>`).join('')}<button class="btn-add-manual" style="margin-top:8px" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; addAnswer('${q.id}')">+ Ajouter une réponse</button></div>`;
 
-    bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive</div>${answersHTML}</div>`;
+    bodyHTML = `<div class="q-body"><span class="type-badge ${isLikert ? 'tb-likert' : 'tb-choix'}">${isLikert ? 'Échelle 1→5 (normalisée 0→2)' : 'Mise en situation — choix comportemental'}</span><div class="score-note">Scores : 0 = posture fragile · 1 = intention partielle · 2 = posture constructive <span class="help-tip" tabindex="0" data-help="Le score n’est pas visible par les répondants. Il sert uniquement à calculer la moyenne du chapitre et à afficher le bon profil de résultat.">?</span></div>${answersHTML}</div>`;
   }
 
   return `<div class="q-card ${open ? 'open' : ''}" id="qc-${q.id}">
     <div class="q-header" onclick="toggleCard('${q.id}')">
       <div class="q-num">${qi + 1}</div>
       <div class="q-main">
-        <div class="q-text editable-q" contenteditable="true" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+        <div class="editable-wrap">
+          <div class="q-text editable-q" contenteditable="${contentEditableAttr}" spellcheck="true" onclick="event.stopPropagation()" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();} event.stopPropagation();" oninput="if(itsQuestionsIsEditBlocked()) return false; updateQuestionText('${q.id}', this.innerText)">${esc(q.text)}</div>
+          <span class="edit-hint" title="Question modifiable">✏️</span>
+        </div>
         <div class="q-tags-row">${provHTML}${tagsHTML}${addBtn}</div>
       </div>
       <div class="q-right" onclick="event.stopPropagation()">
         <button class="q-chevron-btn" onclick="toggleCard('${q.id}')">▾</button>
         <div class="q-vsep"></div>
-        <button class="qa-btn regen-q" title="Créer un nouveau brouillon avec l’aide rédactionnelle" onclick="regenOne('${q.id}',this)">${icoRegen}</button>
-        <button class="qa-btn del" title="Supprimer" onclick="deleteQ('${q.id}')">${icoTrash}</button>
+        <button class="qa-btn regen-q" ${disabledAttr} title="Créer un nouveau brouillon avec l’aide rédactionnelle" onclick="if(itsQuestionsIsEditBlocked()) return false; regenOne('${q.id}',this)">${icoRegen}</button>
+        <button class="qa-btn del" ${disabledAttr} title="Supprimer" onclick="if(itsQuestionsIsEditBlocked()) return false; deleteQ('${q.id}')">${icoTrash}</button>
       </div>
     </div>
     ${bodyHTML}
@@ -1621,6 +2314,7 @@ function renderCard(q, qi) {
 }
 
 function updateAnswer(qid, ai, field, value){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q && q.answers[ai]){
     q.answers[ai][field] = field === 's' ? Number(value) : value;
@@ -1630,6 +2324,7 @@ function updateAnswer(qid, ai, field, value){
 }
 
 function addAnswer(qid){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q){
     q.answers.push({l:'Nouvelle réponse',s:1});
@@ -1640,6 +2335,7 @@ function addAnswer(qid){
 }
 
 function deleteAnswer(qid, ai){
+  if(itsQuestionsIsEditBlocked()) return;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if(q){
     q.answers.splice(ai,1);
@@ -1650,7 +2346,41 @@ function deleteAnswer(qid, ai){
   }
 }
 
+
+function previewUrl(mode){
+  if(!itsQuestionsIsEditBlocked()){
+    saveState();
+    persistQuestionsStateForNextStep();
+  }
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
+  const params = new URLSearchParams();
+  if(mode) params.set('preview', mode);
+  if(projectId) params.set('projectId', projectId);
+  const qs = params.toString();
+  return 'apercu-passation.html' + (qs ? '?' + qs : '');
+}
+
+function openRespondentPreview(){
+  window.open(previewUrl('respondent'), '_blank');
+}
+
+function openFinalPreview(){
+  if(!itsQuestionsIsEditBlocked()){
+    saveState();
+    persistQuestionsStateForNextStep();
+  }
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
+  const params = new URLSearchParams();
+  if(projectId) params.set('projectId', projectId);
+  const qs = params.toString();
+  window.open('apercu-recap-final.html' + (qs ? '?' + qs : ''), '_blank');
+}
+
 function renderProfils(ch) {
+  const editBlocked = itsQuestionsIsEditBlocked();
+  const readonlyAttr = editBlocked ? 'readonly' : '';
+  const disabledAttr = editBlocked ? 'disabled' : '';
+  const contentEditableAttr = editBlocked ? 'false' : 'true';
   if(!chapterQuestionsReady(ch)){
     openProfilesLockedModal();
     activeTab = 'questions';
@@ -1665,11 +2395,11 @@ function renderProfils(ch) {
     const pc = profils_config[i];
     return `<div class="seuil-item">
       <div class="seuil-dot" style="background:${pc.couleur}"></div>
-      <span class="seuil-label">${pc.nom}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
+      <span class="seuil-label">${esc((ch.profils[i] && ch.profils[i].niveau) || pc.nom)}<br><small style="font-weight:400;color:#94a3b8">moyenne</small></span>
       <div class="seuil-range">
-        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.min}" ${readonlyAttr} onchange="chapters[activeChap].seuils[${i}].min=parseFloat(this.value);saveState();updateSaveButton()">
         <span class="seuil-sep">→</span>
-        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.max}" onchange="chapters[activeChap].seuils[${i}].max=parseFloat(this.value);saveState();updateSaveButton()">
+        <input class="seuil-inp" type="number" min="0" max="2" step="0.01" value="${s.max}" ${readonlyAttr} onchange="chapters[activeChap].seuils[${i}].max=parseFloat(this.value);saveState();updateSaveButton()">
       </div>
     </div>`;
   }).join('');
@@ -1681,58 +2411,63 @@ function renderProfils(ch) {
       <div class="profil-header" style="background:${pc.bgHead};border-bottom:1px solid ${pc.borderHead}">
         <div class="profil-level">
           <div class="profil-dot" style="background:${pc.couleur}"></div>
-          <span class="profil-level-name" style="color:${pc.textColor}">Profil ${i+1} — ${pc.nom}</span>
+          <span class="profil-level-name" style="color:${pc.textColor}">Profil ${i+1} — ${esc(p.niveau || pc.nom)}</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
           <span class="profil-score-range" style="color:${pc.textColor}">Moyenne ${ch.seuils[i].min} → ${ch.seuils[i].max}</span>
-          <button class="btn-ai-profil" style="background:rgba(0,0,0,0.08);color:${pc.textColor}" onclick="genProfil(${i})">${icoStar} Générer avec l'IA</button>
+
         </div>
       </div>
       <div class="profil-body">
         <div class="pfield">
-          <label>Titre du profil <span style="color:#eb6366">*</span></label>
-          <input type="text" value="${esc(p.titre)}" placeholder="Titre évocateur" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
+          <label>Titre du profil en quelques mots <span style="color:#eb6366">*</span> <span class="help-tip" tabindex="0" data-help="Ce titre est visible par les répondants sur la page de résultat du chapitre. Il doit résumer le profil en quelques mots.">?</span></label>
+          <input type="text" value="${esc(p.titre)}" ${readonlyAttr} placeholder="Ex. Vous êtes en progression sur ce sujet" oninput="chapters[activeChap].profils[${i}].titre=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Phrase courte de résumé</label>
-          <input type="text" class="short" value="${esc(p.phrase)}" placeholder="Une phrase concise, bienveillante" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
+          <label>Résumé du profil <span class="help-tip" tabindex="0" data-help="Phrase courte affichée dans le récapitulatif final.">?</span></label>
+          <input type="text" class="short" value="${esc(p.phrase)}" ${readonlyAttr} placeholder="Phrase courte affichée dans le récapitulatif final" oninput="chapters[activeChap].profils[${i}].phrase=this.value;saveState();updateSaveButton()">
         </div>
         <div class="pfield">
-          <label>Description détaillée</label>
+          <label>Description détaillée <span class="help-tip" tabindex="0" data-help="Cette description est visible à la fin du chapitre pendant le parcours de passation. Elle doit expliquer le résultat avec bienveillance et proposer une piste concrète.">?</span></label>
           <div class="rte-wrap">
             <div class="rte-toolbar">
-              <button class="rte-btn" onclick="fmt('bold')" title="Gras"><b>G</b></button>
-              <button class="rte-btn" onclick="fmt('underline')" title="Souligné"><u>S</u></button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('bold')" title="Gras"><b>G</b></button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('underline')" title="Souligné"><u>S</u></button>
               <div class="rte-sep"></div>
-              <button class="rte-btn" onclick="fmt('insertUnorderedList')" title="Liste à puces">☰</button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; fmt('insertUnorderedList')" title="Liste à puces">☰</button>
               <div class="rte-sep"></div>
-              <button class="rte-btn" onclick="addLink()" title="Lien hypertexte">🔗</button>
+              <button class="rte-btn" ${disabledAttr} onclick="if(itsQuestionsIsEditBlocked()) return false; addLink()" title="Lien hypertexte">🔗</button>
             </div>
-            <div class="rte-area" contenteditable="true" data-placeholder="Description bienveillante et actionnable…" oninput="chapters[activeChap].profils[${i}].description=this.innerHTML;saveState();updateSaveButton()">${p.description}</div>
+            <div class="rte-area" contenteditable="${contentEditableAttr}" data-placeholder="Description bienveillante et actionnable…" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].profils[${i}].description=this.innerHTML;saveState();updateSaveButton()">${p.description}</div>
           </div>
         </div>
         <div class="pfield">
-          <label>Mots clés</label>
-          <div class="mkw-wrap" onclick="this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" placeholder="+ mot clé" onkeydown="addMkw(event,${i})"></div>
+          <label>Mots clés / conseils courts <span style="color:#475569;text-transform:none;letter-spacing:0;font-weight:700">(optionnel)</span> <span class="help-tip" tabindex="0" data-help="Ces mots-clés sont optionnels. S’ils sont renseignés, ils apparaissent dans le récapitulatif final du répondant comme repères ou conseils très courts : ex. vérifier, signaler, demander un avis, prendre du recul.">?</span></label>
+          <div class="mkw-wrap" onclick="if(!itsQuestionsIsEditBlocked()) this.querySelector('.mkw-inp').focus()">${mkwHTML}<input class="mkw-inp" ${disabledAttr} placeholder="+ mot clé" onkeydown="if(itsQuestionsIsEditBlocked()) return false; addMkw(event,${i})"></div>
         </div>
       </div>
     </div>`;
   }).join('');
 
   document.getElementById('main-editor').innerHTML = `
+    <div class="context-help-box"><span class="context-help-ico">💡</span><span><strong>Objectif des profils</strong> Les profils sont les retours personnalisés affichés aux répondants à la fin du chapitre. Ils doivent être bienveillants, compréhensibles et actionnables.Ils sont responsabilisants sans être culpabilisants</span></div>
+    <div class="profile-preview-actions">
+      <button class="btn-preview-passation" onclick="openRespondentPreview()">▶ Tester l’AD en mode répondant</button>
+      <button class="btn-preview-final" onclick="openFinalPreview()">👁 Voir l’aperçu du récap final</button>
+    </div>
     <div class="chap-head">
       <div class="chap-info">
         <div class="chap-badge">Chapitre ${activeChap+1} · Profils de résultat</div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <input class="chap-name-inp" value="${esc(ch.name)}" placeholder="Renommer le chapitre" oninput="chapters[activeChap].name=this.value;saveState();renderNav()">
-          <span style="color:#c5ccd5;font-size:13px">✏️</span>
+        <div class="chap-title-edit-row">
+          <input class="chap-name-inp" value="${esc(ch.name)}" ${readonlyAttr} placeholder="Renommer le chapitre" oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].name=this.value;saveState();renderNav()">
+          <span class="edit-hint" title="Cliquez sur le titre pour le modifier">✏️</span>
         </div>
-        <input class="chap-desc-inp" value="${esc(ch.desc)}" oninput="chapters[activeChap].desc=this.value;saveState()">
+        <input class="chap-desc-inp" value="${esc(ch.desc)}" ${readonlyAttr} oninput="if(itsQuestionsIsEditBlocked()) return false; chapters[activeChap].desc=this.value;saveState()">
       </div>
     </div>
     <div class="seuils-card">
       <div class="seuils-head">
-        <span class="seuils-title">${icoStar} Seuils de moyenne par profil</span>
+        <span class="seuils-title">${icoStar} Seuils de moyenne par profil <span class="seuils-more">Voir plus <span class="help-tip" tabindex="0" data-help="Les seuils déterminent quel profil s’affiche selon la moyenne des réponses du chapitre. Ils sont proposés automatiquement mais restent ajustables.">?</span></span></span>
         <span class="seuils-hint">Seuils proposés automatiquement selon les réponses possibles. Échelle moyenne 0 → 2.</span>
       </div>
       <div class="seuils-row">${seuilsHTML}</div>
@@ -1746,6 +2481,7 @@ function toggleCard(id) {
 }
 
 function deleteQ(id) {
+  if(itsQuestionsIsEditBlocked()) return false;
   chapters[activeChap].questions = chapters[activeChap].questions.filter(q => q.id !== id);
   delete openCards[id];
   refreshThresholdsAfterQuestionChange();
@@ -1756,6 +2492,7 @@ function deleteQ(id) {
 }
 
 function regenOne(id, btn) {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const ch = chapters[activeChap];
   const idx = ch.questions.findIndex(q => q.id === id);
@@ -1767,98 +2504,149 @@ function regenOne(id, btn) {
   updateSaveButton();
 }
 
-function makeAIQuestion(id){
-  const subject = getCurrentSubject();
-  const ch = chapters[activeChap] || {name:'ce chapitre'};
-  const sid = String(id || 'q' + Date.now());
-  const variantsCyber = [
-    {
-      text:`Vous recevez un message contenant un lien urgent lié à ${ch.name}. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Lien suspect',ai:true}],
-      answers:[
-        {l:"Je clique rapidement pour vérifier de quoi il s’agit.",s:0},
-        {l:"Je demande à une personne autour de moi si le message semble fiable.",s:1},
-        {l:"Je vérifie l’expéditeur, l’adresse du lien et je signale le message en cas de doute.",s:2}
-      ]
-    },
-    {
-      text:`Un document sensible doit être partagé avec une personne externe dans le cadre de ${ch.name}. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Données sensibles',ai:true}],
-      answers:[
-        {l:"Je l’envoie par le canal le plus rapide pour ne pas bloquer le dossier.",s:0},
-        {l:"Je demande confirmation à mon interlocuteur avant l’envoi.",s:1},
-        {l:"Je vérifie le droit de partage, le canal sécurisé et les règles internes avant d’envoyer.",s:2}
-      ]
-    },
-    {
-      text:`Vous devez créer ou modifier un mot de passe pour accéder à un outil professionnel. Quel réflexe adoptez-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Mot de passe',ai:true}],
-      answers:[
-        {l:"J’utilise un mot de passe simple dont je me souviens facilement.",s:0},
-        {l:"Je réutilise un ancien mot de passe en le modifiant légèrement.",s:1},
-        {l:"Je crée un mot de passe robuste ou j’utilise le gestionnaire validé par l’organisation.",s:2}
-      ]
-    },
-    {
-      text:`Une demande inhabituelle vous invite à transmettre rapidement une information confidentielle. Que faites-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Vérification',ai:true}],
-      answers:[
-        {l:"Je réponds vite pour éviter de retarder la demande.",s:0},
-        {l:"Je vérifie seulement si le nom de l’expéditeur me semble connu.",s:1},
-        {l:"Je contrôle la demande par un autre canal et j’applique la procédure de signalement si nécessaire.",s:2}
-      ]
-    },
-    {
-      text:`Vous utilisez un outil numérique non validé pour gagner du temps sur une tâche liée à ${ch.name}. Quelle posture adoptez-vous ?`,
-      tags:[{t:'Cybersécurité',ai:true},{t:'Outil numérique',ai:true}],
-      answers:[
-        {l:"Je l’utilise si l’outil est pratique et gratuit.",s:0},
-        {l:"Je l’utilise seulement pour des informations qui me semblent peu sensibles.",s:1},
-        {l:"Je vérifie les règles internes avant d’y déposer des données professionnelles.",s:2}
-      ]
-    }
-  ];
-
-  const variantsGeneric = [
-    {
-      text:`Dans une situation liée à ${subject || ch.name}, vous devez choisir entre aller vite et vérifier un point important. Que faites-vous ?`,
-      tags:[{t:'Brouillon',ai:true},{t:'À adapter',ai:true}],
-      answers:[
-        {l:"J’avance rapidement avec les informations disponibles.",s:0},
-        {l:"Je demande un avis avant de décider.",s:1},
-        {l:"Je clarifie le cadre et les risques avant d’agir.",s:2}
-      ]
-    }
-  ];
-
-  const pool = norm(subject).includes('cyber') || norm(subject).includes('securite numerique') || norm(subject).includes('risques numeriques') || norm(subject).includes('securite informatique') ? variantsCyber : variantsGeneric;
-  const n = Math.abs([...sid].reduce((a,c)=>a+c.charCodeAt(0),0)) % pool.length;
-  return { id: sid, type:'choix', prov:'AI', ...pool[n] };
+function catalogueQuestionToEditorQuestion(bq, forcedId){
+  return {
+    id: forcedId || bq.id || ('q' + Date.now()),
+    type: bq.type === 'likert' ? 'likert' : 'choix',
+    prov: bq.prov || 'AI',
+    text: bq.text,
+    tags: normalizeTags(bq.tags || []).map(t => ({t:t.t, ai:false})),
+    answers: normalizeImportedAnswers(bq)
+  };
 }
 
-function addManual() {
-  if (chapters[activeChap].questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
+function nextCatalogueQuestionForChapter(excludeId){
+  const existing = currentQuestionKeys();
+  if(excludeId){
+    const ch = chapters[activeChap];
+    const current = (ch.questions || []).find(q => q.id === excludeId);
+    if(current){
+      existing.delete(String(current.id || ''));
+      existing.delete(norm(current.text || ''));
+    }
+  }
 
-  const id = 'q' + Date.now();
-  chapters[activeChap].questions.push({
-    id,
-    type: 'choix',
-    prov: 'COMPANY',
-    text: 'Nouvelle mise en situation',
-    tags: [],
-    answers: [
-      {l:'Réponse A',s:0},
-      {l:'Réponse B',s:1},
-      {l:'Réponse C',s:2}
+  return currentLib().find(q => {
+    if(String(q.id || '') === String(excludeId || '')) return false;
+    return !existing.has(String(q.id || '')) && !existing.has(norm(q.text || ''));
+  }) || null;
+}
+
+function makeAIQuestion(id){
+  // Le bouton d'aide rédactionnelle ne fabrique pas de tags locaux.
+  // Il prend la prochaine question disponible dans la route catalogue chargée,
+  // puis conserve exactement ses tags métier.
+  const source = nextCatalogueQuestionForChapter(id);
+  if(source) return catalogueQuestionToEditorQuestion(source, id || source.id);
+
+  return {
+    id: id || ('q' + Date.now()),
+    type:'choix',
+    prov:'AI',
+    text:'Nouvelle mise en situation à rédiger',
+    tags:[],
+    answers:[
+      {l:'Réponse fragile',s:0},
+      {l:'Réponse intermédiaire',s:1},
+      {l:'Réponse constructive',s:2}
     ]
-  });
+  };
+}
 
-  openCards[id] = true;
+function addManual(){
+  if(itsQuestionsIsEditBlocked()) return;
+  const ch = chapters[activeChap];
+  if(!ch) return;
+  if(ch.questions.length >= MAX_QUESTIONS_PER_CHAPTER) return;
+  const q = makeBlankQuestion(activeChap, ch.questions.length);
+  ch.questions.push(q);
+  openCards[q.id] = true;
   refreshThresholdsAfterQuestionChange();
   saveState();
   renderNav();
   renderMain();
   updateSaveButton();
+}
+
+async function saveAsCustomModel(){
+  if(itsQuestionsIsEditBlocked()) return;
+  if(!isBlankFlow()) return;
+  syncToState();
+
+  const btn = document.getElementById('btn-custom-model');
+  const originalText = btn ? btn.textContent : '';
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = 'Enregistrement…';
+  }
+
+  const token = questionsToken();
+  if(!token){
+    alert('Vous devez être connecté·e pour enregistrer un modèle réutilisable.');
+    if(btn){ btn.disabled = false; btn.textContent = originalText || 'Enregistrer comme modèle réutilisable'; }
+    return;
+  }
+
+  try{
+    const currentProjectId =
+      state.currentAdId ||
+      state.project_id ||
+      state.projectId ||
+      (typeof itsGetCurrentProjectId === 'function' ? itsGetCurrentProjectId() : '') ||
+      '';
+
+    const res = await fetch(`${questionsApiBase()}/api/custom-models`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        projectId: currentProjectId || undefined,
+        title: state.title || 'Modèle personnalisé',
+        subject: state.themeLabel || state.theme_label || state.theme || 'Personnalisé',
+        audience: state.audience || 'Collaborateurs',
+        description: state.objective || 'Modèle créé par le client',
+        data: state
+      })
+    });
+
+    const json = await res.json().catch(() => ({}));
+    if(!res.ok || !json.model){
+      throw new Error(json.error || 'Erreur enregistrement modèle personnalisé.');
+    }
+
+    state.savedAsCustomModel = true;
+    state.customModelId = json.model.id;
+    state.custom_model_id = json.model.id;
+    state.customModelSavedAt = new Date().toISOString();
+    if (typeof itsSave === 'function') itsSave(state);
+    else localStorage.setItem('its_state', JSON.stringify(state));
+    persistQuestionsStateForNextStep();
+
+    if(btn){
+      btn.textContent = 'Modèle enregistré ✓';
+      btn.disabled = true;
+    }
+  }catch(e){
+    console.warn('Enregistrement modèle réutilisable impossible', e);
+    alert(e.message || 'Impossible d’enregistrer ce modèle pour le moment.');
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = originalText || 'Enregistrer comme modèle réutilisable';
+    }
+  }
+}
+
+function updateCustomModelButton(){
+  const btn = document.getElementById('btn-custom-model');
+  if(!btn) return;
+  const visible = isBlankFlow() && state.blankSetupDone === true && !isContentOnlyView;
+  btn.style.display = visible ? 'block' : 'none';
+  const allProblems = Array.isArray(chapters) ? chapters.map(c => ({ c, problems: chapProblems(c) })).filter(x => x.problems.length) : [];
+  btn.disabled = state.savedAsCustomModel === true || allProblems.length > 0;
+  btn.title = allProblems.length > 0 ? 'Complétez les questions et les profils avant d’enregistrer ce modèle.' : '';
+  btn.textContent = state.savedAsCustomModel === true ? 'Modèle enregistré ✓' : 'Enregistrer comme modèle réutilisable';
 }
 
 function addOneAI() {
@@ -1875,22 +2663,77 @@ function addOneAI() {
 }
 
 function removeTag(qid, ti) {
+  if(itsQuestionsIsEditBlocked()) return false;
   const q = chapters[activeChap].questions.find(q => q.id === qid);
   if (q) q.tags.splice(ti, 1);
   saveState();
   renderMain();
 }
 
-function addTag(qid) {
-  const t = prompt('Nom du tag :');
-  if (!t) return;
-  const q = chapters[activeChap].questions.find(q => q.id === qid);
-  if (q && q.tags.length < 6) q.tags.push({t, ai:false});
+let pendingTagQuestionId = null;
+
+function openTagModal(qid){
+  pendingTagQuestionId = qid;
+  const input = document.getElementById('tag-modal-input');
+  const error = document.getElementById('tag-modal-error');
+  if(input) input.value = '';
+  if(error) error.classList.remove('on');
+  document.getElementById('modal-add-tag')?.classList.add('on');
+  setTimeout(() => input?.focus(), 50);
+}
+
+function closeTagModal(){
+  pendingTagQuestionId = null;
+  document.getElementById('modal-add-tag')?.classList.remove('on');
+}
+
+function prefillTagModal(value){
+  const input = document.getElementById('tag-modal-input');
+  if(input){
+    input.value = value || '';
+    input.focus();
+  }
+}
+
+function confirmTagModal(){
+  if(itsQuestionsIsEditBlocked()) return false;
+  const input = document.getElementById('tag-modal-input');
+  const error = document.getElementById('tag-modal-error');
+  const t = String(input?.value || '').trim();
+  if(!t){
+    error?.classList.add('on');
+    return;
+  }
+  const q = chapters[activeChap].questions.find(q => q.id === pendingTagQuestionId);
+  if(q && q.tags.length < 3){
+    const exists = q.tags.some(tag => norm(tag.t) === norm(t));
+    if(!exists) q.tags.push({t, ai:false});
+  }
   saveState();
+  closeTagModal();
   renderMain();
 }
 
+function addTag(qid) {
+  if(itsQuestionsIsEditBlocked()) return false;
+  openTagModal(qid);
+}
+
+document.addEventListener('keydown', function(e){
+  const modal = document.getElementById('modal-add-tag');
+  if(!modal || !modal.classList.contains('on')) return;
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    confirmTagModal();
+  }
+  if(e.key === 'Escape'){
+    e.preventDefault();
+    closeTagModal();
+  }
+});
+
 function askRegen() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   const n = chapters[activeChap].questions.length;
   document.getElementById('modal-q-count').textContent = `${n} question${n!==1?'s':''}`;
@@ -1902,9 +2745,11 @@ function closeRegenModal() {
 }
 
 function confirmRegen() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (!chapterUsesCatalogueSupport() || !aiHelpAvailable()) { openAiSoon(); return; }
   closeRegenModal();
-  chapters[activeChap].questions = Array.from({length: DEFAULT_GENERATED_QUESTIONS}, (_, i) => makeAIQuestion('qr' + (i + 1)));
+  const sources = currentLib().slice(0, DEFAULT_GENERATED_QUESTIONS);
+  chapters[activeChap].questions = sources.map((q, i) => catalogueQuestionToEditorQuestion(q, q.id || ('qr' + (i + 1))));
   refreshThresholdsAfterQuestionChange();
   saveState();
   openCards = {};
@@ -1914,6 +2759,7 @@ function confirmRegen() {
 }
 
 function editScore(pill, e, qid, ai) {
+  if(itsQuestionsIsEditBlocked()) return false;
   e.stopPropagation();
   const v = prompt('Score entre 0 et 2 :', pill.dataset.score);
   if (v === null) return;
@@ -1925,12 +2771,14 @@ function editScore(pill, e, qid, ai) {
 }
 
 function removeMkw(profIdx, mkIdx) {
+  if(itsQuestionsIsEditBlocked()) return false;
   chapters[activeChap].profils[profIdx].motscles.splice(mkIdx, 1);
   saveState();
   renderMain();
 }
 
 function addMkw(e, profIdx) {
+  if(itsQuestionsIsEditBlocked()) return false;
   if (e.key !== 'Enter') return;
   const val = e.target.value.trim();
   if (!val) return;
@@ -1941,40 +2789,15 @@ function addMkw(e, profIdx) {
 }
 
 function genProfil(profIdx) {
-  const texts = [
-    {
-      titre:"La prise de conscience démarre",
-      phrase:"Vous identifiez certains réflexes, mais ils restent encore irréguliers.",
-      desc:"Ce profil montre une posture en construction. L'objectif est de rendre les bons réflexes plus visibles et plus faciles à activer dans le quotidien."
-    },
-    {
-      titre:"Les réflexes progressent",
-      phrase:"Vous adoptez déjà plusieurs comportements utiles, mais pas encore dans toutes les situations.",
-      desc:"Vous disposez de points d'appui solides. La prochaine étape consiste à gagner en constance, notamment dans les moments de pression ou d'incertitude."
-    },
-    {
-      titre:"Les bons réflexes sont ancrés",
-      phrase:"Vous agissez avec constance et pouvez inspirer les pratiques autour de vous.",
-      desc:"Votre posture est installée dans le quotidien. Vous êtes une ressource pour renforcer la dynamique collective et diffuser les bons comportements."
-    }
-  ];
-  const t = texts[profIdx];
-  Object.assign(chapters[activeChap].profils[profIdx], {
-    titre:t.titre,
-    phrase:t.phrase,
-    description:t.desc
-  });
-  saveState();
-  renderNav();
-  renderMain();
-  updateSaveButton();
+  // Fonction conservée par compatibilité, sans contenu générique local.
 }
-
 function fmt(cmd) {
+  if(itsQuestionsIsEditBlocked()) return false;
   document.execCommand(cmd, false, null);
 }
 
 function addLink() {
+  if(itsQuestionsIsEditBlocked()) return false;
   const url = prompt('URL du lien :');
   if (url) document.execCommand('createLink', false, url);
 }
@@ -1995,27 +2818,40 @@ function libraryMatchesContext(q){
 }
 
 function openPanel() {
+  if(itsQuestionsIsEditBlocked()) return false;
   if(!chapterUsesCatalogueSupport()){ openLibrarySoon(); return; }
   activeFilterTag = '';
   document.getElementById('panel-search-inp').value = '';
-  document.getElementById('overlay').classList.add('on');
-  document.getElementById('panel-right').classList.add('on');
+  const overlay = document.getElementById('overlay');
+  const panel = document.getElementById('panel-right');
+  const closeBtn = panel?.querySelector('.panel-close');
+  if(closeBtn){
+    closeBtn.disabled = false;
+    closeBtn.removeAttribute('disabled');
+    closeBtn.style.pointerEvents = 'auto';
+  }
+  overlay?.classList.add('on');
+  panel?.classList.add('on');
   updatePanelContext();
   renderPanelTags();
   renderPanelList('', '');
 }
 
 function closePanel() {
-  document.getElementById('overlay').classList.remove('on');
-  document.getElementById('panel-right').classList.remove('on');
+  document.getElementById('overlay')?.classList.remove('on');
+  document.getElementById('panel-right')?.classList.remove('on');
 }
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closePanel();
+});
 
 function updatePanelContext(){
   const ch = chapters[activeChap];
   const subject = getCurrentSubject();
   const el = document.getElementById('panel-context-body');
   if(!el) return;
-  el.textContent = `${subject ? `Sujet : ${subject} · ` : ''}Partie : ${ch.name}`;
+  el.textContent = `${subject ? `Thématique : ${subject} · ` : ''}Partie : ${ch.name}`;
 }
 
 function currentQuestionKeys(){
@@ -2133,27 +2969,7 @@ function addFromLib(qid) {
 
   markLibraryAdded(qid);
 
-  chapters[activeChap].questions.push({
-    id: bq.id || ('q' + Date.now()),
-    type: bq.type === 'likert' ? 'likert' : 'choix',
-    prov: bq.prov || 'AI',
-    text: bq.text,
-    tags:(bq.tags || [])
-      .filter(t => {
-        const x = String(t).toLowerCase();
-        return !x.includes('base assistée')
-          && !x.includes('base assistee')
-          && !x.includes('conçu par')
-          && !x.includes('concu par')
-          && !x.includes('validation obligatoire')
-          && !x.includes('relecture obligatoire')
-          && !x.includes('aide à la rédaction')
-          && !x.includes('aide a la redaction')
-          && !x.includes('contribution client');
-      })
-      .map(t => ({t, ai:false})),
-    answers: normalizeImportedAnswers(bq)
-  });
+  chapters[activeChap].questions.push(catalogueQuestionToEditorQuestion(bq));
 
   refreshThresholdsAfterQuestionChange();
   saveState();
@@ -2165,18 +2981,26 @@ function addFromLib(qid) {
   renderPanelList(document.getElementById('panel-search-inp').value, activeFilterTag);
 }
 
+function chapterDisplayName(c){
+  return String((c && (c.name || c.title)) || '').trim();
+}
+
 function chapProblems(c) {
   const problems = [];
+
+  if(!chapterDisplayName(c)) {
+    problems.push({type:'q', msg:'Nom du chapitre requis', tab:'questions'});
+  }
 
   if(c.questions.length < MIN_QUESTIONS_PER_CHAPTER) {
     problems.push({type:'q', msg:`${c.questions.length} question${c.questions.length!==1?'s':''} — minimum 5 requises`, tab:'questions'});
   } else {
-    const badQ = c.questions.filter(q => !q.answers || q.answers.length < 3 || q.answers.some(a => isNaN(Number(a.s)) || Number(a.s)<0 || Number(a.s)>2));
-    if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — min 3 réponses, scores entre 0 et 2 requis`, tab:'questions'});
+    const badQ = c.questions.filter(q => !questionHasValidScoring(q));
+    if(badQ.length) problems.push({type:'q', msg:`${badQ.length} question${badQ.length>1?'s':''} incomplète${badQ.length>1?'s':''} — énoncé, min 3 réponses renseignées et scores entre 0 et 2 requis`, tab:'questions'});
   }
 
   const badP = c.profils.filter(p => !String(p.titre).trim() || !String(p.phrase).trim() || !stripHtml(p.description).trim());
-  if(badP.length) problems.push({type:'p', msg:`${badP.length} profil${badP.length>1?'s':''} incomplet${badP.length>1?'s':''} — titre, résumé et description requis`, tab:'profils'});
+  if(badP.length) problems.push({type:'p', msg:`${badP.length} profil${badP.length>1?'s':''} incomplet${badP.length>1?'s':''} — résumé du profil, phrase courte et description requis`, tab:'profils'});
 
   const badS = c.seuils.some(s => isNaN(Number(s.min)) || isNaN(Number(s.max)) || Number(s.min)>=Number(s.max) || Number(s.min)<0 || Number(s.max)>2);
   if(badS) problems.push({type:'p', msg:'Seuils incohérents — ils doivent rester sur une moyenne 0 → 2', tab:'profils'});
@@ -2188,17 +3012,23 @@ function updateSaveButton() {
   const btn = document.getElementById('btn-save');
   const hint = document.getElementById('btn-save-hint');
 
-  btn.textContent = 'Continuer vers le paramétrage';
+  btn.textContent = isContentOnlyView ? 'Lecture seule' : 'Continuer vers le paramétrage';
 
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
-  btn.disabled = allProblems.length > 0;
+  // Le bouton reste cliquable quand il manque des éléments :
+  // il ouvre alors la modale détaillée au lieu de se limiter à une petite phrase rouge.
+  btn.disabled = isContentOnlyView;
+  btn.classList.toggle('is-blocked', !isContentOnlyView && allProblems.length > 0);
+  btn.setAttribute('aria-disabled', (!isContentOnlyView && allProblems.length > 0) ? 'true' : 'false');
   hint.classList.toggle('visible', allProblems.length > 0);
 
-  if(allProblems.length) hint.textContent = '5 questions minimum et profils complets requis sur chaque chapitre';
+  if(allProblems.length) hint.textContent = 'Chapitres nommés, 5 questions complètes avec 3 réponses minimum et profils complets requis';
+  updateCustomModelButton();
 }
 
 function trySave() {
+  if(itsQuestionsIsEditBlocked()) return;
   syncToState();
   const allProblems = chapters.map(c => ({c, problems:chapProblems(c)})).filter(x => x.problems.length);
 
@@ -2206,8 +3036,8 @@ function trySave() {
     const list = document.getElementById('modal-save-list');
     list.innerHTML = allProblems.map(({c,problems}) => problems.map(p => `<div style="display:flex;align-items:center;justify-content:space-between;background:#fafbfc;border:1px solid #e8edf4;border-radius:8px;padding:9px 14px;gap:10px">
       <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(c.name || 'Nommer le chapitre')}</div>
-        <div style="font-size:11px;color:#94a3b8;font-family:Asap,sans-serif;margin-top:2px;line-height:1.4">${p.msg}</div>
+        <div style="font-size:12px;font-weight:700;color:#18375d;font-family:Asap,sans-serif">Chapitre ${c.id} — ${esc(chapterDisplayName(c) || 'Nommer le chapitre')}</div>
+        <div style="font-size:11px;color:#475569;font-family:Asap,sans-serif;margin-top:2px;line-height:1.4">${p.msg}</div>
       </div>
       <button onclick="closeSaveModal();setTab(${c.id-1},'${p.tab}')" style="background:#eb6366;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:Asap,sans-serif;flex-shrink:0">Compléter →</button>
     </div>`).join('')).join('');
@@ -2221,7 +3051,15 @@ function trySave() {
   syncToState();
   persistQuestionsStateForNextStep();
 
-  const projectId = state.projectId || state.project_id || state.currentAdId || requestedProjectId || '';
+  const projectId = requestedProjectId || state.projectId || state.project_id || state.currentAdId || '';
+  if(projectId){
+    state.projectId = projectId;
+    state.project_id = projectId;
+    state.currentAdId = projectId;
+    localStorage.setItem('its_current_project_id', String(projectId));
+    localStorage.setItem('its_current_ad_id', String(projectId));
+    persistQuestionsStateForNextStep();
+  }
   window.location.href = projectId ? `parametrage.html?projectId=${encodeURIComponent(projectId)}` : 'parametrage.html';
 }
 
@@ -2236,6 +3074,7 @@ if (needsBlankSetup()) {
   renderMain();
   updateSaveButton();
   syncToState();
+  updateCustomModelButton();
 }
 
 
@@ -2284,12 +3123,22 @@ function restoreAdminQuestionNavigation(){
   });
 }
 
-if(typeof itsApplyReadOnlyMode === 'function'){
+function restorePanelCloseNavigation(){
+  document.querySelectorAll('.panel-close').forEach(btn => {
+    btn.disabled = false;
+    btn.removeAttribute('disabled');
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  });
+}
+
+if(typeof itsApplyReadOnlyMode === 'function' && !isContentOnlyView){
   setTimeout(() => {
     itsApplyReadOnlyMode();
     restoreAdminQuestionNavigation();
+    restorePanelCloseNavigation();
   }, 50);
-  setTimeout(restoreAdminQuestionNavigation, 250);
+  setTimeout(() => { restoreAdminQuestionNavigation(); restorePanelCloseNavigation(); }, 250);
 }
 </script>
 </body>
