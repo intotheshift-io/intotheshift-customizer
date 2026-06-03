@@ -1,13 +1,12 @@
-// HubSpot tracking code - required for the chatflow on Shift Studio.
 (function itsLoadHubSpotTracking(){
   if (document.getElementById("hs-script-loader")) return;
-  const script = document.createElement("script");
+  var script = document.createElement("script");
   script.type = "text/javascript";
   script.id = "hs-script-loader";
   script.async = true;
   script.defer = true;
   script.src = "//js-eu1.hs-scripts.com/139575435.js";
-  (document.head || document.documentElement).appendChild(script);
+  document.head.appendChild(script);
 })();
 
 function itsDecodeJwtPayloadForStorage() {
@@ -148,6 +147,7 @@ function itsProjectBelongsToCurrentFrontendUser(project) {
 const ITS_LEGACY_KEY = "intotheshift_customizer_state_v1";
 const ITS_IS_STAGING =
   window.location.hostname === "localhost" ||
+  window.location.hostname.startsWith("staging.") ||
   window.location.pathname.startsWith("/staging/") ||
   window.location.pathname === "/staging";
 
@@ -176,6 +176,65 @@ function itsPickFirstNonEmpty(values) {
     }
   }
   return "";
+}
+
+function itsCleanOrganizationId(value) {
+  const id = String(value || "").trim();
+  if (!id || id === "0" || id.toLowerCase() === "null" || id.toLowerCase() === "undefined") return "";
+  return id;
+}
+
+function itsGetCreationOrganizationIdFromContext() {
+  let fromUrl = "";
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    fromUrl = params.get("organizationId") || params.get("organization_id") || params.get("orgId") || params.get("clientId") || "";
+  } catch(e) {}
+
+  return itsCleanOrganizationId(
+    fromUrl ||
+    localStorage.getItem("its_target_organization_id") ||
+    localStorage.getItem("its_admin_create_for_organization_id") ||
+    localStorage.getItem("its_selected_partner_client_id") ||
+    ""
+  );
+}
+
+function itsAttachOrganizationContext(state, projectId) {
+  if (!state || typeof state !== "object") return state || {};
+
+  const existingOrgId = itsCleanOrganizationId(
+    state.organizationId ||
+    state.organization_id ||
+    state.orgId ||
+    state.org_id ||
+    state.targetOrganizationId ||
+    state.target_organization_id ||
+    state.payload?.organizationId ||
+    state.payload?.organization_id ||
+    state.state?.organizationId ||
+    state.state?.organization_id ||
+    ""
+  );
+
+  const contextOrgId = !projectId ? itsGetCreationOrganizationIdFromContext() : "";
+  const finalOrgId = existingOrgId || contextOrgId;
+
+  if (!finalOrgId) return state;
+
+  state.organizationId = finalOrgId;
+  state.organization_id = finalOrgId;
+  state.targetOrganizationId = finalOrgId;
+  state.target_organization_id = finalOrgId;
+  state.adminCreateForOrganizationId = finalOrgId;
+
+  const orgName = localStorage.getItem("its_target_organization_name") || state.organizationName || state.organization_name || "";
+  if (orgName) {
+    state.organizationName = orgName;
+    state.organization_name = orgName;
+  }
+
+  return state;
 }
 
 function itsCanonicalizeCampaignDates(state) {
@@ -305,11 +364,18 @@ function itsInferCurrentStep() {
 function itsProjectTitleFromState(state) {
   const p = state?.parametrage || state?.meta || {};
   return (
-    p.nom ||
+    p.titre_repondants ||
+    p.titreRespondants ||
+    p.titre_visible_repondants ||
+    p.titreVisibleRepondants ||
+    p.titre_visible ||
+    p.titreVisible ||
     p.titre ||
+    state?.titre_repondants ||
+    state?.titreRespondants ||
     state?.autodiagTitle ||
     state?.title ||
-    state?.subject ||
+    p.nom ||
     state?.theme ||
     "Nouveau projet"
   );
@@ -392,6 +458,8 @@ function itsSave(state) {
     Boolean(safeState.selectedAdId && !safeState.currentAdId && !safeState.project_id && !safeState.projectId);
 
   const projectId = safeState.currentAdId || safeState.project_id || safeState.projectId || (isExplicitNewProject ? "" : itsGetCurrentProjectId());
+  itsAttachOrganizationContext(safeState, projectId);
+
   if (projectId) {
     safeState.currentAdId = projectId;
     safeState.project_id = projectId;
@@ -418,6 +486,8 @@ async function itsSyncProjectToApi(state) {
   if (!token || !state || typeof state !== "object") return;
 
   const projectId = state.currentAdId || state.project_id || state.projectId || itsGetCurrentProjectId();
+  state = itsAttachOrganizationContext(state, projectId);
+  const organizationId = itsCleanOrganizationId(state.organizationId || state.organization_id || state.orgId || state.org_id || "");
   const title = itsProjectTitleFromState(state);
   const currentStep = state.current_step || state.step || itsInferCurrentStep();
   const configSent = state.configTransmise === true || state.config_transmise === true || state.submitted === true;
@@ -432,6 +502,8 @@ async function itsSyncProjectToApi(state) {
     title,
     status,
     currentStep,
+    organizationId: organizationId || undefined,
+    organization_id: organizationId || undefined,
     campaignStartDate: campaignStartDate || undefined,
     campaignEndDate: campaignEndDate || undefined,
     data: state
@@ -624,7 +696,7 @@ function itsResumeUrlForProject(project) {
   }
 
   if (rawStep.includes("validation")) return "validation.html" + suffix;
-  if (rawStep.includes("campagne")) return "parametrage.html" + suffix;
+  if (rawStep.includes("campagne")) return "campagne.html" + suffix;
   if (rawStep.includes("param")) return "parametrage.html" + suffix;
   return "questions.html" + suffix;
 }
@@ -664,8 +736,19 @@ function itsStartFromCatalogue(adId) {
 
   const state = {
     selectedAdId: ad.id,
+    selected_ad_id: ad.id,
+    catalogueAdId: ad.id,
+    catalogue_ad_id: ad.id,
+    themeKey: ad.themeKey || "",
+    theme_key: ad.themeKey || "",
+    theme: ad.theme || "",
+    themeLabel: ad.theme || "",
+    theme_label: ad.theme || "",
+    catalogueTitle: ad.title,
+    catalogue_title: ad.title,
+    originalCatalogueTitle: ad.title,
+    original_catalogue_title: ad.title,
     title: ad.title,
-    theme: ad.theme,
     audience: ad.audience,
     tags: ad.tags || ["Base assistée par IA", "Aide à la rédaction", "Relecture obligatoire"],
     duration: ad.duration || "8 à 12 min",
@@ -712,9 +795,82 @@ function itsStartFromCatalogue(adId) {
 
   itsCanonicalizeCampaignDates(state);
   itsSave(state);
+
   return state;
 }
 
+function itsGetProjectDataForCatalogue(project) {
+  const raw = project?.data || project?.payload || project?.configuration || project || {};
+  if (typeof raw === "string") {
+    try { return JSON.parse(raw) || {}; } catch(e) { return {}; }
+  }
+  return raw && typeof raw === "object" ? raw : {};
+}
+
+function itsGetProjectCatalogueAdId(project) {
+  const data = itsGetProjectDataForCatalogue(project);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+  const source = data.source && typeof data.source === "object" ? data.source : {};
+  return String(
+    project?.catalogueAdId || project?.catalogue_ad_id || project?.selectedAdId || project?.selected_ad_id ||
+    data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+    payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+    state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+    meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+    source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+    ""
+  ).trim();
+}
+
+function itsGetThemeFromCatalogue(project) {
+  const catalogueAdId = itsGetProjectCatalogueAdId(project);
+  if (!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+  const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+  return ad?.theme || "";
+}
+
+function itsNormalizeThemeValue(value) {
+  if (value === undefined || value === null) return "";
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "object") {
+    return String(value.title || value.name || value.label || value.titre || value.nom || value.theme || value.value || "").trim();
+  }
+  return String(value || "").trim();
+}
+
+function itsGetProjectThemes(project) {
+  const fromCatalogue = itsGetThemeFromCatalogue(project);
+  if (fromCatalogue) return [fromCatalogue];
+
+  const data = itsGetProjectDataForCatalogue(project);
+  const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+  const state = data.state && typeof data.state === "object" ? data.state : {};
+  const param = data.parametrage || state.parametrage || payload.parametrage || {};
+
+  const explicitValues = [
+    project?.theme, project?.themeLabel, project?.themeName, project?.thematique, project?.thématique,
+    data.theme, data.themeLabel, data.themeName, data.thematique, data.thématique,
+    payload.theme, payload.themeLabel, payload.themeName, payload.thematique, payload.thématique,
+    state.theme, state.themeLabel, state.themeName, state.thematique, state.thématique,
+    param.theme, param.themeLabel, param.themeName, param.thematique, param.thématique
+  ];
+
+  for (const value of explicitValues) {
+    const cleaned = itsNormalizeThemeValue(value);
+    if (cleaned) return [cleaned];
+  }
+
+  return [];
+}
+
+window.ITSProject = Object.assign(window.ITSProject || {}, {
+  getThemes: itsGetProjectThemes,
+  getCatalogueAdId: itsGetProjectCatalogueAdId,
+  getThemeFromCatalogue: itsGetThemeFromCatalogue,
+  resumeUrl: typeof window.ITSProject?.resumeUrl === "function" ? window.ITSProject.resumeUrl : undefined
+});
 
 
 function itsNormalizeProjectStatus(projectOrState) {
@@ -727,6 +883,8 @@ function itsNormalizeProjectStatus(projectOrState) {
     data.project_status ||
     ""
   ).toLowerCase();
+
+  if (raw === "archived" || raw.includes("archiv")) return "archived";
 
   const sentFlag =
     project.configTransmise === true ||
@@ -751,29 +909,99 @@ function itsNormalizeProjectStatus(projectOrState) {
   return "draft";
 }
 
-function itsIsProjectReadOnly(state) {
+function itsGetFrontendUserRole() {
+  return String(
+    localStorage.getItem("its_user_role") ||
+    localStorage.getItem("user_role") ||
+    localStorage.getItem("role") ||
+    itsDecodeJwtPayloadForStorage()?.role ||
+    ""
+  ).toLowerCase();
+}
+
+function itsIsAdminLikeRole() {
+  const role = itsGetFrontendUserRole();
+  return role === "admin" || role === "partner";
+}
+
+function itsIsPendingPublicationStatus(state) {
   const status = itsNormalizeProjectStatus(state || itsLoad());
-  return status === "published" || status === "unpublished" || status === "archived" || status === "sent" || status === "submitted";
+  return status === "sent" || status === "submitted";
+}
+
+function itsIsProjectReadOnly(state) {
+  const currentState = state || itsLoad();
+  const status = itsNormalizeProjectStatus(currentState);
+
+  if (status === "published" || status === "unpublished" || status === "archived") return true;
+
+  // Côté client, un projet transmis reste consultable mais non modifiable
+  // jusqu'à publication par Into The Shift. Admin et partner gardent la main.
+  if (itsIsPendingPublicationStatus(currentState) && !itsIsAdminLikeRole()) return true;
+
+  return false;
 }
 
 async function itsFetchProjectById(projectId) {
   const token = itsGetToken();
   if (!token || !projectId) return null;
 
+  const headers = { "Authorization": "Bearer " + token };
+  const role = itsGetFrontendUserRole();
+
   try {
+    if (role === "admin") {
+      try {
+        const direct = await fetch(ITS_API_BASE + "/api/admin/projects/" + encodeURIComponent(projectId), { headers });
+        const directJson = await direct.json().catch(() => ({}));
+        if (direct.ok) return directJson.project || directJson.data || directJson;
+      } catch(e) {}
+
+      const list = await fetch(ITS_API_BASE + "/api/admin/projects", { headers });
+      const listJson = await list.json().catch(() => ({}));
+      if (list.ok) {
+        const projects = Array.isArray(listJson) ? listJson : (listJson.projects || listJson.autodiags || listJson.data || []);
+        const found = projects.find(p => String(p.id || p.project_id || p.projectId || "") === String(projectId));
+        if (found) return found;
+      }
+    }
+
+    if (role === "partner") {
+      try {
+        const resPartner = await fetch(ITS_API_BASE + "/api/partner/clients", { headers });
+        const dataPartner = await resPartner.json().catch(() => ({}));
+        if (resPartner.ok) {
+          const clients = dataPartner.clients || dataPartner.organizations || [];
+          for (const client of clients) {
+            const found = (client.projects || client.autodiags || []).find(p => String(p.id || p.project_id || p.projectId || "") === String(projectId));
+            if (found) {
+              return Object.assign({}, found, {
+                organizationName: client.name || found.organizationName || found.organization_name || "",
+                organization_id: client.id || found.organization_id,
+                organizationId: client.id || found.organizationId
+              });
+            }
+          }
+        }
+      } catch(e) {}
+    }
+
     const res = await fetch(
       ITS_API_BASE + "/api/projects/" + encodeURIComponent(projectId),
-      {
-        headers: {
-          "Authorization": "Bearer " + token
-        }
-      }
+      { headers }
     );
 
     if (!res.ok) {
       if (res.status === 403 || res.status === 404) {
         const currentProjectId = itsGetCurrentProjectId();
-        if (String(currentProjectId) === String(projectId)) itsClearProjectContextOnly();
+        if (String(currentProjectId) === String(projectId)) {
+          // On ne vide pas brutalement le contexte en mode reprogrammation :
+          // le cache local peut encore contenir le projet chargé depuis le cockpit.
+          const params = new URLSearchParams(window.location.search || "");
+          const isReprogram = params.get("reprogram") === "1";
+          const isExtend = params.get("extend") === "1";
+          if (!isReprogram && !isExtend) itsClearProjectContextOnly();
+        }
       }
       return null;
     }
@@ -839,17 +1067,30 @@ function itsInjectReadOnlyBanner(message) {
 }
 
 function itsApplyReadOnlyMode(options = {}) {
+  const params = new URLSearchParams(window.location.search || "");
+  const isReprogram = params.get("reprogram") === "1";
+  const isExtend = params.get("extend") === "1";
+  const isContentOnly = params.get("contentOnly") === "1" || params.get("viewContent") === "1";
+  if (isReprogram || isExtend || isContentOnly) return false;
+
   const state = window.ITS_CURRENT_PROJECT_STATE || itsLoad();
   if (!itsIsProjectReadOnly(state)) return false;
 
+  const status = itsNormalizeProjectStatus(state);
+  const isPendingPublication = (status === "sent" || status === "submitted") && !itsIsAdminLikeRole();
+  const message = options.message || (isPendingPublication
+    ? "Cet autodiagnostic a été transmis à Into The Shift et il est maintenant en attente de publication. Cette page est en lecture seule. Pour toute modification, contactez <a href=\"mailto:contact@intotheshift.io\" style=\"color:#0d4c72;font-weight:900;text-decoration:none\">contact@intotheshift.io</a>."
+    : "");
+
   document.body.classList.add("its-readonly-mode");
-  itsInjectReadOnlyBanner(options.message);
+  itsInjectReadOnlyBanner(message);
 
   document.querySelectorAll(".step-link").forEach(link => {
     link.removeAttribute("href");
     link.style.pointerEvents = "none";
-    link.style.opacity = ".55";
-    link.title = "Navigation bloquée : projet publié";
+    link.style.opacity = isPendingPublication ? ".45" : ".55";
+    link.style.cursor = "not-allowed";
+    link.title = isPendingPublication ? "Projet transmis : navigation bloquée" : "Navigation bloquée : projet publié";
   });
 
   document.querySelectorAll("input, textarea, select").forEach(el => {
@@ -887,6 +1128,12 @@ function itsApplyReadOnlyMode(options = {}) {
 }
 
 function itsShouldApplyReadOnlyOnThisPage() {
+  const params = new URLSearchParams(window.location.search || "");
+  const isReprogram = params.get("reprogram") === "1";
+  const isExtend = params.get("extend") === "1";
+  const isContentOnly = params.get("contentOnly") === "1" || params.get("viewContent") === "1";
+  if (isReprogram || isExtend || isContentOnly) return false;
+
   const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
 
   // On bloque uniquement les pages d'édition / consultation d'un projet précis.
@@ -911,4 +1158,10 @@ if (document.readyState === "loading") {
     if (itsShouldApplyReadOnlyOnThisPage()) itsApplyReadOnlyMode();
   }, 0);
 }
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted && itsShouldApplyReadOnlyOnThisPage()) {
+    window.location.reload();
+  }
+});
 
