@@ -46,6 +46,7 @@
     .meta{font-size:13px;color:#64748b;line-height:1.5}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .tag{font-size:12px;font-weight:800;border-radius:999px;background:#edf1f7;color:#18375d;border:1px solid #d0d8e8;padding:5px 10px}
+    .tag.copy{background:#f0edff;color:#6d28d9;border-color:#c4b5fd}
     .status{display:inline-flex;align-items:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
     .status.draft{background:#edf1f7;color:#475569}
     .status.submitted{background:#fff4d5;color:#9a6700}
@@ -53,6 +54,8 @@
     .status.results{background:#e8f8ef;color:#22824d}
     .status.archived{background:#f1f4f8;color:#94a3b8}
     .status.unpublished{background:#eef2f6;color:#64748b}
+    .status.extended{background:#eef6ff;color:#1f4e91;border:1px solid #cfe3ff}
+    .status.reprogrammed{background:#fff8ec;color:#9a5b00;border:1px solid #ffd9a3}
 
     .actions{grid-column:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:4px}
     .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-start}
@@ -74,8 +77,8 @@
     .copy-btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:9px;padding:6px 8px;font-size:12px;font-weight:900;cursor:pointer;font-family:'Asap',sans-serif;white-space:nowrap}
     .copy-btn:hover{background:#eef6fb;border-color:#b8dfe0}
 
-    .empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
-    .empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
+    .ad-empty{background:#fff;border:1px dashed #cbd5e1;border-radius:16px;text-align:center;padding:48px 20px;color:#64748b}
+    .ad-empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:8px}
 
     .menu{position:absolute;right:16px;top:74px;background:#fff;border:1px solid #d8e0ea;border-radius:12px;box-shadow:0 14px 35px rgba(24,55,93,.14);min-width:250px;z-index:20;display:none;overflow:hidden}
     .menu.open{display:block}
@@ -84,6 +87,15 @@
     .menu .danger{color:#c24141}
     .sep{height:1px;background:#edf1f6;margin:3px 0}
 
+
+    .title-edit-btn{border:0;background:#eef6fb;color:#0d4c72;border-radius:999px;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:900;flex:0 0 auto}.title-edit-btn:hover{background:#dff0f7}.respondent-title-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+
+    .respondent-title-modal{width:min(520px,100%)}
+    .respondent-title-modal .modal-icon{background:#eef6fb;color:#0d4c72}
+    .respondent-title-field{margin-top:14px}
+    .respondent-title-field label{display:block;font-size:11px;font-weight:900;color:#18375d;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+    .respondent-title-field input{width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;outline:none}
+    .respondent-title-field input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.08)}
 
     /* Modale archive */
     .modal-backdrop{position:fixed;inset:0;background:rgba(15,30,55,.42);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
@@ -97,15 +109,6 @@
     .modal-btn:hover{background:#f7f9fc}
     .modal-btn.danger{background:#eb6366;border-color:#eb6366;color:#fff}
     .modal-btn.danger:hover{background:#d94f52}
-
-
-
-    /* Pack passations — repris depuis Mon compte */
-    .quota-wrap{margin:0 0 18px}
-    .its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
-    .its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
-    .its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
-    .its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}.its-quota-box:nth-child(1) span::before{content:"🛒"}.its-quota-box:nth-child(2) span::before{content:"✅"}.its-quota-box:nth-child(3) span::before{content:"🚀"}.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
 
 
     /* Présentation cockpit client — Mes AD */
@@ -131,12 +134,28 @@
     .alert-badge.info{background:#eef6ff;border-color:#cfe3ff;color:#1f4e91}
     .alert-badge.good{background:#eefbf3;border-color:#c8ebd4;color:#16774a}
     .alert-badge.neutral{background:#eef2f6;border-color:#d8e2ec;color:#64748b}
+    .project-update-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;border:1px solid #fecdd3;background:#fff1f2;color:#be123c;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin:0 0 9px;box-shadow:0 8px 18px rgba(190,18,60,.08)}
+    .project-update-dot{width:9px;height:9px;border-radius:999px;background:#e11d48;box-shadow:0 0 0 4px rgba(225,29,72,.12);flex:0 0 auto}
+    .project-update-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .card.draft-card{border-color:#d8e2ec}
     .card.published-card{border-color:#b8dfe0}
     .card.submitted-card{border-color:#ffdf8a}
     .card.unpublished-card{border-color:#d8e2ec}
     .btn-danger-soft{background:#fff1f2;color:#be123c;border-color:#fecdd3}
     .btn-danger-soft:hover{background:#ffe4e6}
+
+    .more-actions{display:block;width:100%;margin-top:2px}
+    .more-actions summary{list-style:none;border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:11px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Asap',sans-serif;display:inline-flex;align-items:center;gap:6px}
+    .more-actions summary::-webkit-details-marker{display:none}
+    .more-actions summary:hover{background:#f7f9fc}
+    .more-actions summary::after{content:"▾";font-size:12px;transition:transform .16s ease}
+    .more-actions[open] summary{background:#eef6fb;border-color:#b8dfe0;color:#0d4c72}
+    .more-actions[open] summary::after{transform:rotate(180deg)}
+    .more-actions-menu{margin-top:8px;background:#f8fbfd;border:1px solid #e1e8f0;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;width:100%}
+    .more-actions-menu .btn{justify-content:flex-start}
+    .model-success-modal .modal-icon{background:#e5f4f5;color:#007883}
+    .model-success-name{margin-top:12px;background:#f8fbfd;border:1px solid #d8e0ea;border-radius:12px;padding:10px 12px;color:#18375d;font-size:13px;font-weight:900;line-height:1.35}
+    .model-success-hint{margin-top:10px;color:#64748b;font-size:13px;line-height:1.45}
     @media(max-width:900px){.watch-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.search{max-width:none;width:100%}.list{grid-template-columns:1fr}.url-line{grid-template-columns:1fr auto}.url-line strong{grid-column:1/-1}}
 
     @media(max-width:850px){
@@ -153,6 +172,14 @@
   <div id="header"></div>
   <script src="header.js"></script>
   <script src="app.js"></script>
+  <script src="catalogue-core.js?v=5"></script>
+  <script src="catalogue-cyber.js?v=5"></script>
+  <script src="catalogue-securite.js?v=6"></script>
+  <script src="catalogue-qvt.js?v=5"></script>
+  <script src="catalogue-transfo.js?v=5"></script>
+  <script src="catalogue-rse.js?v=5"></script>
+  <script src="catalogue-ethique.js?v=5"></script>
+  <script src="catalogue-custom.js?v=5"></script>
 
   <main class="page">
     <section class="hero">
@@ -163,7 +190,7 @@
           campagnes publiées, liens de diffusion et accès aux résultats.
         </p>
       </div>
-      <button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn-primary" onclick="window.location.href='index.html'">+ Créer un autodiagnostic</button><button class="btn-primary" style="background:#ffc744;color:#18375d" onclick="window.location.href='account.html?tab=quota'">🎟️ Recharger mon pack</button><button id="archivesQuickBtn" class="btn-primary" style="background:#fff;color:#18375d" onclick="window.location.href='archives.html'">📦 Archives <span id="archiveQuickCount" style="margin-left:6px;background:#eef6fb;color:#0d4c72;border-radius:999px;padding:2px 7px;font-size:12px">0</span></button></div>
     </section>
 
     <section class="quick-note" aria-label="Information espace client">
@@ -204,6 +231,22 @@
   </main>
 
 
+  <div class="modal-backdrop" id="cloneModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cloneModalTitle">
+      <div class="modal-icon">🧬</div>
+      <h2 id="cloneModalTitle">Cloner cet autodiagnostic ?</h2>
+      <p id="cloneModalText">Le clone reprend le contenu et les profils. Vous pourrez modifier le contenu, le paramétrage et programmer de nouvelles dates. Une nouvelle URL sera délivrée après publication.</p>
+      <div style="margin-top:14px">
+        <label for="cloneTitleInput" style="display:block;font-size:11px;font-weight:900;color:#18375d;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Titre du nouvel autodiagnostic</label>
+        <input id="cloneTitleInput" type="text" style="width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 12px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;outline:none">
+      </div>
+      <div style="margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:12px;padding:10px 12px;color:#9a5b00;font-size:13px;font-weight:800;line-height:1.4">Le pack ne sera pas sélectionné d’office sur la copie. Si votre entreprise dispose déjà d’un pack actif, vous pourrez l’utiliser ; sinon, vous pourrez demander une recharge dans le paramétrage.</div>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeCloneModal()">Annuler</button>
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="confirmCloneProject()">Cloner</button>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-backdrop" id="archiveModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
@@ -217,18 +260,108 @@
     </div>
   </div>
 
+  <div class="modal-backdrop" id="respondentTitleModal" aria-hidden="true">
+    <div class="modal-box respondent-title-modal" role="dialog" aria-modal="true" aria-labelledby="respondentTitleModalTitle">
+      <div class="modal-icon">✏️</div>
+      <h2 id="respondentTitleModalTitle">Modifier le titre visible par les répondants</h2>
+      <p>Ce titre est celui qui apparaît côté répondants.</p>
+      <div class="respondent-title-field">
+        <label for="respondentTitleInput">Titre répondants</label>
+        <input id="respondentTitleInput" type="text" onkeydown="if(event.key === 'Enter') confirmRespondentTitleEdit()">
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn" type="button" onclick="closeRespondentTitleModal()">Annuler</button>
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="confirmRespondentTitleEdit()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-backdrop" id="customModelSuccessModal" aria-hidden="true">
+    <div class="modal-box model-success-modal" role="dialog" aria-modal="true" aria-labelledby="customModelSuccessTitle">
+      <div class="modal-icon">💾</div>
+      <h2 id="customModelSuccessTitle">Modèle enregistré</h2>
+      <p id="customModelSuccessText">Votre autodiagnostic a été ajouté à vos modèles réutilisables.</p>
+      <div class="model-success-name" id="customModelSuccessName"></div>
+      <div class="model-success-hint">Vous pourrez repartir de ce modèle lors de la création d’un prochain autodiagnostic.</div>
+      <div class="modal-actions">
+        <button class="modal-btn" style="background:#18375d;border-color:#18375d;color:#fff" type="button" onclick="closeCustomModelSuccessModal()">Compris</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const API_BASE =
-      window.ITS_API_BASE ||
-      localStorage.getItem("its_api_base") ||
-      "https://into-the-shift-studio-api.osc-fr1.scalingo.io";
+    const API_BASE = (typeof ITS_API_BASE !== 'undefined' && ITS_API_BASE)
+      ? ITS_API_BASE
+      : (window.ITS_API_BASE || localStorage.getItem('its_api_base') || (
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          window.location.hostname.startsWith('staging.') ||
+          window.location.pathname.startsWith('/staging')
+            ? 'https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io'
+            : 'https://into-the-shift-studio-api.osc-fr1.scalingo.io'
+        ));
 
     let projects = [];
     let currentFilter = "all";
     let pendingArchiveProjectId = "";
+    let pendingCloneProjectId = "";
+    let pendingRespondentTitleProjectId = "";
+    let projectUpdateNotifications = {};
 
     function token() {
       return localStorage.getItem("its_token") || localStorage.getItem("token") || "";
+    }
+
+    function notificationIsUnread(item = {}){
+      if(item.unread === true) return true;
+      if(item.unread === false) return false;
+      return !Boolean(item.readAt || item.read_at);
+    }
+
+    function getNotificationProjectId(item = {}){
+      const meta = item.metadata && typeof item.metadata === "object" ? item.metadata : {};
+      return String(item.projectId || item.project_id || meta.projectId || meta.project_id || "").trim();
+    }
+
+    function projectUpdateLabel(item = {}){
+      const type = String(item.type || "").toLowerCase();
+      if(type.includes("reprogram")) return "Reprogrammation transmise";
+      if(type.includes("extend")) return "Prolongation transmise";
+      if(type.includes("published")) return "Publication / lien mis à jour";
+      if(type.includes("communication") || type.includes("brand_assets")) return "Kit de communication modifié";
+      if(type.includes("submitted") || type.includes("transmission") || type.includes("configuration")) return "Configuration modifiée";
+      return item.title || "Modification récente";
+    }
+
+    async function loadProjectUpdateNotifications(){
+      projectUpdateNotifications = {};
+      const authToken = token();
+      if(!authToken) return;
+      try{
+        const res = await fetch(`${API_BASE}/api/notifications?limit=50`, {
+          cache:"no-store",
+          headers:{ Authorization:`Bearer ${authToken}` }
+        });
+        if(!res.ok) return;
+        const data = await res.json();
+        (data.notifications || []).forEach(item => {
+          if(!notificationIsUnread(item)) return;
+          const projectId = getNotificationProjectId(item);
+          if(!projectId) return;
+          if(!projectUpdateNotifications[projectId]) projectUpdateNotifications[projectId] = projectUpdateLabel(item);
+        });
+      }catch(e){
+        projectUpdateNotifications = {};
+        console.warn("Notifications projet non chargées", e);
+      }
+    }
+
+    function renderProjectUpdateBadge(project){
+      const projectId = getProjectId(project);
+      const label = projectUpdateNotifications[String(projectId || "")] || "";
+      if(!label) return "";
+      return `<div class="project-update-badge" title="${escapeAttr(label)}"><span class="project-update-dot" aria-hidden="true"></span><span class="project-update-text">${escapeHtml(label)}</span></div>`;
     }
 
     function quotaFormatNumber(v){
@@ -242,11 +375,12 @@
       const used = obj.passationsUsed ?? obj.passations_used ?? obj.used ?? obj.passations_utilisees ?? obj.passationsUtilisees ?? 0;
       const remainingRaw = obj.passationsRemaining ?? obj.passations_remaining ?? obj.remaining ?? obj.passations_restantes ?? obj.passationsRestantes;
       const pack = obj.passationsPack ?? obj.passations_pack ?? obj.pack ?? obj.pack_choisi ?? obj.packChoisi ?? '';
-      if(quota === undefined && remainingRaw === undefined && !pack) return null;
+      const packExpiresAt = obj.packExpiresAt ?? obj.pack_expires_at ?? obj.organizationPackExpiresAt ?? obj.organization_pack_expires_at ?? obj.packExpirationDate ?? obj.pack_expiration_date ?? '';
+      if(quota === undefined && remainingRaw === undefined && !pack && !packExpiresAt) return null;
       const q = Number(quota || 0);
       const u = Number(used || 0);
       const r = remainingRaw !== undefined && remainingRaw !== null && remainingRaw !== '' ? Number(remainingRaw) : Math.max(q - u, 0);
-      return { quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack || '') };
+      return { quota:Number.isFinite(q)?q:0, used:Number.isFinite(u)?u:0, remaining:Number.isFinite(r)?r:0, pack:String(pack || ''), packExpiresAt:String(packExpiresAt || '') };
     }
 
     function pickQuotaPayload(data){
@@ -256,7 +390,25 @@
       return {quota:0,used:0,remaining:0,pack:''};
     }
 
+
+    function quotaFormatPackExpiry(value){
+      if(!value) return '';
+      const s = String(value).trim();
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      const d = m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : new Date(s);
+      if(Number.isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
+    }
+
+    function quotaExpiryLine(q){
+      const formatted = quotaFormatPackExpiry(q?.packExpiresAt);
+      if(!formatted) return 'Validité du pack : date de fin non renseignée.';
+      if(isPackExpired(q)) return 'Pack expiré depuis le : <strong>' + formatted + '</strong>.';
+      return 'Pack valable jusqu’au : <strong>' + formatted + '</strong>.';
+    }
+
     function quotaLabel(q){
+      if(isPackExpired(q)) return 'Pack expiré';
       if(!q || (!q.pack && !q.quota)) return 'Pack non renseigné';
       if(String(q.pack) === 'illimite') return 'Pack illimité';
       if(String(q.pack) === 'existing') return 'Pack en cours';
@@ -264,7 +416,31 @@
       return n ? ('Pack ' + n.toLocaleString('fr-FR')) : 'Pack en cours';
     }
 
+    function packExpiryDate(value){
+      if(!value) return null;
+      const s = String(value).trim();
+      const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      const d = m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : new Date(s);
+      return Number.isNaN(d.getTime()) ? null : d;
+    }
+
+    function isPackExpired(q){
+      if(!q || String(q.pack) === 'illimite') return false;
+      const d = packExpiryDate(q.packExpiresAt);
+      if(!d) return false;
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      d.setHours(0,0,0,0);
+      return d.getTime() < today.getTime();
+    }
+
+    function displayQuota(q){
+      if(isPackExpired(q)) return {...(q || {}), quota:0, used:0, remaining:0, _packExpired:true};
+      return q || {quota:0, used:0, remaining:0, pack:''};
+    }
+
     function quotaNudge(q){
+      if(isPackExpired(q)) return 'Votre pack a expiré : rechargez votre pack pour relancer vos campagnes et créer de nouveaux autodiagnostics.';
       if(!q || !q.quota) return 'Votre pack sera affiché ici dès qu’il sera renseigné par l’équipe Into The Shift.';
       const ratio = q.quota ? q.remaining / q.quota : 0;
       if(String(q.pack) === 'illimite') return 'Vous disposez d’un pack illimité : vous pouvez lancer plusieurs campagnes sans recharge de passations.';
@@ -274,16 +450,20 @@
     }
 
     function quotaCardHTML(q){
-      const quota = Number(q?.quota || 0);
-      const used = Number(q?.used || 0);
-      const remaining = String(q?.pack) === 'illimite' ? '∞' : Number(q?.remaining ?? Math.max(quota - used, 0));
-      const pct = quota ? Math.max(0, Math.min(100, Math.round((Number(q.remaining || 0) / quota) * 100))) : 0;
-      const cls = !quota && !q?.pack ? 'empty' : (pct < 20 && String(q?.pack) !== 'illimite' ? 'warn' : 'ok');
+      const source = q || {};
+      const view = displayQuota(source);
+      const quota = Number(view.quota || 0);
+      const used = Number(view.used || 0);
+      const remaining = String(view.pack) === 'illimite' ? '∞' : Number(view.remaining ?? Math.max(quota - used, 0));
+      const pct = String(view.pack) === 'illimite' ? 100 : (quota ? Math.max(0, Math.min(100, Math.round((Number(view.remaining || 0) / quota) * 100))) : 0);
+      const cls = view._packExpired ? 'empty' : (!quota && !view.pack ? 'empty' : (pct < 20 && String(view.pack) !== 'illimite' ? 'warn' : 'ok'));
       return `<div class="its-quota-card ${cls}">
-        <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${quotaLabel(q)}</div></div><div class="its-quota-pill">${String(q?.pack)==='illimite'?'Illimité':pct+'% restant'}</div></div>
+        <div class="its-quota-top"><div><div class="its-quota-kicker">Mon pack de passations</div><div class="its-quota-title">${quotaLabel(source)}</div></div><div class="its-quota-pill">${view._packExpired?'Expiré':(String(view.pack)==='illimite'?'Illimité':pct+'% restant')}</div></div>
         <div class="its-quota-main"><div class="its-quota-box"><strong>${quotaFormatNumber(quota)}</strong><span>Achetées</span></div><div class="its-quota-box"><strong>${quotaFormatNumber(used)}</strong><span>Utilisées</span></div><div class="its-quota-box"><strong>${remaining==='∞'?'∞':quotaFormatNumber(remaining)}</strong><span>Restantes</span></div></div>
-        <div class="its-quota-bar"><div class="its-quota-fill" style="width:${String(q?.pack)==='illimite'?100:pct}%"></div></div>
-        <div class="its-quota-nudge">${quotaNudge(q)}</div>
+        <div class="its-quota-bar"><div class="its-quota-fill" style="width:${pct}%"></div></div>
+        <div class="its-quota-nudge">${quotaExpiryLine(source)}</div>
+        <div class="its-quota-nudge">${quotaNudge(source)}</div>
+        ${view._packExpired?'<div class="its-quota-actions"><a class="its-quota-action" href="account.html?tab=quota">Recharger mon pack</a></div>':''}
       </div>`;
     }
 
@@ -316,6 +496,10 @@
     function normalizeStatus(project) {
       const raw = String(project.status || project.project_status || "").toLowerCase();
       const data = getProjectData(project);
+      const archivedFlag = Boolean(
+        project.archived_at || project.archivedAt || project.is_archived === true || project.isArchived === true ||
+        data.archived_at || data.archivedAt || data.is_archived === true || data.isArchived === true
+      );
       const sentFlag =
         project.configTransmise === true ||
         project.config_transmise === true ||
@@ -323,10 +507,19 @@
         data.config_transmise === true ||
         data.submitted === true;
 
+      const hasCopyMarker = Boolean(
+        project?.isCopy === true || project?.is_copy === true ||
+        data.isCopy === true || data.is_copy === true ||
+        data.copiedFromProjectId || data.copied_from_project_id ||
+        data.clonedFromProjectId || data.cloned_from_project_id ||
+        data.cloneSourceProjectId || data.clone_source_project_id
+      );
+
+      if (archivedFlag || raw === "archived" || raw.includes("archiv")) return "archived";
+      if (hasCopyMarker && (!raw || raw === "draft" || raw === "brouillon")) return "draft";
       if (raw.includes("unpublished") || raw.includes("dépub") || raw.includes("depub")) return "unpublished";
       if (raw.includes("publi")) return "published";
-      if (raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
-      if (raw.includes("archiv")) return "archived";
+      if (raw === "sent" || raw.includes("sent") || raw.includes("transmis") || raw.includes("submitted") || sentFlag) return "submitted";
       return "draft";
     }
 
@@ -334,6 +527,7 @@
       return {
         draft: "Brouillon",
         submitted: "Transmis à Into The Shift",
+        sent: "Transmis à Into The Shift",
         published: "Publié",
         unpublished: "Dépublié",
         archived: "Archivé"
@@ -349,8 +543,104 @@
       }
     }
 
+    function cleanAdTitle(title) {
+      const cleaned = String(title || "")
+        .replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i, "")
+        .replace(/^\s*Autodiag\s*[-–—:]?\s*/i, "")
+        .trim();
+      if (!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) return "Projet sans titre";
+      return cleaned;
+    }
+
+    function pickTitleValue(...values) {
+      for (const value of values) {
+        const cleaned = cleanAdTitle(value);
+        if (cleaned && cleaned !== "Projet sans titre") return cleaned;
+      }
+      return "Projet sans titre";
+    }
+
+    function getRespondentTitle(p) {
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      return pickTitleValue(
+        param.titre_repondants,
+        param.titreRespondants,
+        param.titre_visible_repondants,
+        param.titreVisibleRepondants,
+        param.titre_visible,
+        param.titreVisible,
+        payload.titre_repondants,
+        payload.titreRespondants,
+        state.titre_repondants,
+        state.titreRespondants,
+        data.titre_repondants,
+        data.titreRespondants,
+        param.titre,
+        param.nom,
+        payload.title,
+        state.title,
+        data.title,
+        p.title,
+        p.name,
+        p.project_name,
+        p.ad_title
+      );
+    }
+
+    function getCatalogueOriginalTitle(p) {
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const meta = data.meta || state.meta || payload.meta || {};
+      return pickTitleValue(
+        data.catalogueTitle,
+        data.catalogue_title,
+        data.originalCatalogueTitle,
+        data.original_catalogue_title,
+        data.baseTitle,
+        data.base_title,
+        data.templateTitle,
+        data.template_title,
+        payload.catalogueTitle,
+        payload.catalogue_title,
+        payload.baseTitle,
+        payload.base_title,
+        state.catalogueTitle,
+        state.catalogue_title,
+        state.baseTitle,
+        state.base_title,
+        meta.nom,
+        meta.titre,
+        data.autodiagTitle,
+        payload.autodiagTitle,
+        state.autodiagTitle,
+        data.title,
+        payload.title,
+        state.title,
+        param.nom,
+        p.autodiag_title,
+        p.project_title,
+        p.title,
+        p.name,
+        p.project_name,
+        p.ad_title
+      );
+    }
+
     function getTitle(p) {
-      return p.title || p.name || p.project_name || p.ad_title || "Autodiagnostic sans titre";
+      return getRespondentTitle(p);
+    }
+
+    function renderTitleDetails(p) {
+      const original = getCatalogueOriginalTitle(p);
+      const respondent = getRespondentTitle(p);
+      const projectId = getProjectId(p);
+      if(!original && !respondent) return "";
+      return `<div class="meta" style="margin:3px 0 8px">Base catalogue : <strong>${escapeHtml(original || "—")}</strong><br><span class="respondent-title-line">Titre répondants : <strong>${escapeHtml(respondent || "—")}</strong><button class="title-edit-btn" type="button" onclick="openRespondentTitleEditor('${escapeAttr(projectId)}')" title="Modifier le titre visible par les répondants" aria-label="Modifier le titre visible par les répondants">✏️</button></span></div>`;
     }
 
     function deepFindTheme(obj, depth = 0) {
@@ -376,7 +666,7 @@
       const keys = [
         "theme", "thematique", "thématique", "selectedTheme", "themeLabel", "themeName",
         "baseTheme", "catalogTheme", "base_theme", "catalog_theme", "category", "topic",
-        "categorie", "catégorie", "subject", "domaine", "universe", "libraryTheme"
+        "categorie", "catégorie", "domaine", "universe", "libraryTheme"
       ];
 
       for (const key of keys) {
@@ -414,7 +704,140 @@
     }
 
     function getTheme(p) {
-      return deepFindTheme(p) || inferThemeFromTitle(getTitle(p)) || "Thématique non renseignée";
+      const themes = getProjectThemes(p);
+      return themes[0] || "Thématique non renseignée";
+    }
+
+    function normalizeTextForTheme(value){
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function addThemeCandidate(list, value, titleNorm, strictTag){
+      const forbidden = [
+        "base assistee par ia",
+        "aide a la redaction",
+        "relecture obligatoire",
+        "concu par un expert",
+        "brouillon",
+        "publie",
+        "transmis"
+      ];
+      const businessKeywords = [
+        "cyber", "cybersecurite", "qvt", "rps", "risques psychosociaux", "management", "manager", "transformation",
+        "compliance", "conformite", "ethique", "diversite", "inclusion", "handicap", "sexisme", "lgbt", "religieuse", "origines",
+        "rse", "environnement", "sobriete", "securite", "surete", "btp"
+      ];
+
+      if(Array.isArray(value)){
+        value.forEach(item => addThemeCandidate(list, item, titleNorm, strictTag));
+        return;
+      }
+      if(value && typeof value === "object"){
+        addThemeCandidate(list, value.title || value.name || value.label || value.titre || value.nom || "", titleNorm, strictTag);
+        return;
+      }
+      const raw = String(value || "").trim();
+      if(!raw) return;
+      const norm = normalizeTextForTheme(raw);
+      if(!norm || norm === titleNorm) return;
+      if(forbidden.includes(norm) || forbidden.some(f => norm.includes(f))) return;
+      if(strictTag && !businessKeywords.some(k => norm.includes(k))) return;
+      if(!list.some(existing => normalizeTextForTheme(existing) === norm)) list.push(raw);
+    }
+
+    function inferThemeFromProject(p){
+      const text = normalizeTextForTheme(JSON.stringify(getProjectData(p) || {}) + " " + getTitle(p));
+      if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
+      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+      if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
+      if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
+      if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
+      if(text.includes("ethique") || text.includes("compliance") || text.includes("conformite")) return "Éthique & compliance";
+      return "";
+    }
+
+    function getProjectCatalogueAdId(p){
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const meta = data.meta && typeof data.meta === "object" ? data.meta : {};
+      const source = data.source && typeof data.source === "object" ? data.source : {};
+      return String(
+        p?.catalogueAdId || p?.catalogue_ad_id || p?.selectedAdId || p?.selected_ad_id ||
+        data.catalogueAdId || data.catalogue_ad_id || data.selectedAdId || data.selected_ad_id ||
+        payload.catalogueAdId || payload.catalogue_ad_id || payload.selectedAdId || payload.selected_ad_id ||
+        state.catalogueAdId || state.catalogue_ad_id || state.selectedAdId || state.selected_ad_id ||
+        param.catalogueAdId || param.catalogue_ad_id || param.selectedAdId || param.selected_ad_id ||
+        meta.catalogueAdId || meta.catalogue_ad_id || meta.selectedAdId || meta.selected_ad_id ||
+        source.catalogueAdId || source.catalogue_ad_id || source.selectedAdId || source.selected_ad_id ||
+        ""
+      ).trim();
+    }
+
+    function getLibraryThemeFromCatalogue(p){
+      const catalogueAdId = getProjectCatalogueAdId(p);
+      if(!catalogueAdId || !Array.isArray(window.ITS_CATALOGUE)) return "";
+      const ad = window.ITS_CATALOGUE.find(item => String(item.id) === String(catalogueAdId));
+      return ad?.theme || "";
+    }
+
+    function normalizeProjectThemeValue(value){
+      if(value === undefined || value === null) return "";
+      if(typeof value === "string") return value.trim();
+      if(typeof value === "object"){
+        return String(value.title || value.name || value.label || value.titre || value.nom || value.theme || value.value || "").trim();
+      }
+      return String(value || "").trim();
+    }
+
+    function getExplicitProjectTheme(p){
+      const data = getProjectData(p);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      const values = [
+        p?.theme, p?.themeLabel, p?.themeName, p?.thematique, p?.thématique,
+        data.theme, data.themeLabel, data.themeName, data.thematique, data.thématique,
+        payload.theme, payload.themeLabel, payload.themeName, payload.thematique, payload.thématique,
+        state.theme, state.themeLabel, state.themeName, state.thematique, state.thématique,
+        param.theme, param.themeLabel, param.themeName, param.thematique, param.thématique
+      ];
+      for(const value of values){
+        const cleaned = normalizeProjectThemeValue(value);
+        if(cleaned) return cleaned;
+      }
+      return "";
+    }
+
+    function getProjectThemes(p){
+      if(window.ITSProject && typeof window.ITSProject.getThemes === "function"){
+        const shared = window.ITSProject.getThemes(p);
+        if(Array.isArray(shared) && shared.length) {
+          const cleaned = shared.map(normalizeProjectThemeValue).filter(Boolean);
+          if(cleaned.length) return cleaned;
+        }
+      }
+
+      const fromCatalogue = getLibraryThemeFromCatalogue(p);
+      if(fromCatalogue) return [fromCatalogue];
+
+      const explicit = getExplicitProjectTheme(p);
+      if(explicit) return [explicit];
+
+      const inferred = inferThemeFromProject(p) || inferThemeFromTitle(getTitle(p));
+      return inferred ? [inferred] : [];
+    }
+
+    function renderThemeTags(project){
+      const themes = getProjectThemes(project);
+      if(!themes.length) return `<span class="tag">Thématique non renseignée</span>`;
+      return themes.map(normalizeProjectThemeValue).filter(Boolean).map(theme => `<span class="tag">${escapeHtml(theme)}</span>`).join("") || `<span class="tag">Thématique non renseignée</span>`;
     }
 
     function getCampaignDates(p) {
@@ -495,6 +918,8 @@
       if(status === "submitted") alerts.push({kind:"info", icon:"🚀", text:"Transmis à Into The Shift"});
       const timing = isMonitorableCampaign(p) ? getCampaignTiming(p) : null;
       if(timing) alerts.push({kind:timing.kind, icon:timing.icon, text:timing.label});
+      if(status === "published" && isProjectExtended(p)) alerts.push({kind:"info", icon:"📅", text:"Campagne prolongée"});
+      if(status === "published" && isProjectReprogrammed(p)) alerts.push({kind:"warn", icon:"🔁", text:"Campagne reprogrammée"});
       if(status === "published" && shareUrl) alerts.push({kind:"good", icon:"🔗", text:"Lien de diffusion disponible"});
       if((status === "published" || status === "unpublished") && resultsUrl) alerts.push({kind:"good", icon:"📊", text:"Résultats disponibles"});
       if(status === "draft") alerts.push({kind:"neutral", icon:"✏️", text:"Brouillon"});
@@ -516,31 +941,261 @@
       return raw && typeof raw === "object" ? raw : {};
     }
 
+    function hasParametrageStarted(project) {
+      const data = getProjectData(project);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const stateData = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || stateData.parametrage || payload.parametrage || {};
+
+      return Boolean(
+        param.done === true ||
+        param.nom ||
+        param.titre ||
+        param.desc ||
+        param.entreprise ||
+        param.pack_choisi ||
+        param.date_lancement ||
+        param.date_cloture ||
+        param.slug ||
+        data.campaignStartDate ||
+        data.campaign_start_date ||
+        data.campaignEndDate ||
+        data.campaign_end_date ||
+        project.campaignStartDate ||
+        project.campaign_start_date ||
+        project.campaignEndDate ||
+        project.campaign_end_date
+      );
+    }
+
     function getProjectStep(project) {
       const data = getProjectData(project);
-      return String(
+      const rawStep = String(
         project.currentStep ||
         project.current_step ||
         data.current_step ||
         data.currentStep ||
         data.step ||
-        "questions"
+        ""
       ).toLowerCase();
+
+      if (rawStep) return rawStep;
+      if (hasParametrageStarted(project)) return "parametrage";
+      return "questions";
     }
 
     function getProjectId(project) {
       return String(project?.id || project?.project_id || project?.projectId || project?.data?.project_id || project?.data?.projectId || "");
     }
 
+    function isTruthyCopyFlag(value){
+      return value === true || value === 1 || String(value || "").toLowerCase() === "true";
+    }
+
+    function getNestedCopyMarker(data){
+      if(!data || typeof data !== "object") return "";
+      const param = data.parametrage || {};
+      const meta = data.meta || {};
+      const source = data.source || {};
+      return (
+        data.copiedFromProjectId || data.copied_from_project_id ||
+        data.clonedFromProjectId || data.cloned_from_project_id ||
+        data.cloneSourceProjectId || data.clone_source_project_id ||
+        data.originalProjectId || data.original_project_id ||
+        data.parentProjectId || data.parent_project_id ||
+        param.copiedFromProjectId || param.copied_from_project_id ||
+        meta.copiedFromProjectId || meta.copied_from_project_id ||
+        source.projectId || source.project_id || ""
+      );
+    }
+
+    function isProjectCopy(project){
+      const data = getProjectData(project);
+      const rawTitle = String(project?.title || project?.name || project?.project_name || data?.title || data?.name || "").trim();
+      return Boolean(
+        isTruthyCopyFlag(project?.isCopy) ||
+        isTruthyCopyFlag(project?.is_copy) ||
+        isTruthyCopyFlag(data?.isCopy) ||
+        isTruthyCopyFlag(data?.is_copy) ||
+        getNestedCopyMarker(project) ||
+        getNestedCopyMarker(data) ||
+        /^copie\b/i.test(rawTitle) ||
+        /^copie\s*[—\-:]/i.test(rawTitle)
+      );
+    }
+
+    function copyTagHTML(project){
+      return isProjectCopy(project) ? `<span class="tag copy">🧬 Copie</span>` : "";
+    }
+
+    function isProjectExtended(project){
+      const data = getProjectData(project);
+      const param = data.parametrage || {};
+      return Boolean(
+        project?.extended === true ||
+        project?.isExtended === true ||
+        project?.extended_at ||
+        project?.extendedAt ||
+        data.extended === true ||
+        data.isExtended === true ||
+        data.extended_at ||
+        data.extendedAt ||
+        param.extended === true ||
+        param.isExtended === true ||
+        param.extended_at ||
+        param.extendedAt
+      );
+    }
+
+    function isProjectReprogrammed(project){
+      const data = getProjectData(project);
+      const payload = data.payload && typeof data.payload === "object" ? data.payload : {};
+      const state = data.state && typeof data.state === "object" ? data.state : {};
+      const param = data.parametrage || state.parametrage || payload.parametrage || {};
+      return Boolean(
+        project?.reprogrammed === true ||
+        project?.isReprogrammed === true ||
+        project?.reprogrammed_at ||
+        project?.reprogrammedAt ||
+        project?.campaign_reprogrammed === true ||
+        project?.campaignReprogrammed === true ||
+        project?.campaign_reprogrammed_at ||
+        project?.campaignReprogrammedAt ||
+        data.reprogrammed === true ||
+        data.isReprogrammed === true ||
+        data.reprogrammed_at ||
+        data.reprogrammedAt ||
+        data.campaign_reprogrammed === true ||
+        data.campaignReprogrammed === true ||
+        data.campaign_reprogrammed_at ||
+        data.campaignReprogrammedAt ||
+        payload.reprogrammed === true ||
+        payload.isReprogrammed === true ||
+        payload.reprogrammed_at ||
+        payload.reprogrammedAt ||
+        payload.campaign_reprogrammed === true ||
+        payload.campaignReprogrammed === true ||
+        payload.campaign_reprogrammed_at ||
+        payload.campaignReprogrammedAt ||
+        state.reprogrammed === true ||
+        state.isReprogrammed === true ||
+        state.reprogrammed_at ||
+        state.reprogrammedAt ||
+        state.campaign_reprogrammed === true ||
+        state.campaignReprogrammed === true ||
+        state.campaign_reprogrammed_at ||
+        state.campaignReprogrammedAt ||
+        param.reprogrammed === true ||
+        param.isReprogrammed === true ||
+        param.reprogrammed_at ||
+        param.reprogrammedAt ||
+        param.campaign_reprogrammed === true ||
+        param.campaignReprogrammed === true ||
+        param.campaign_reprogrammed_at ||
+        param.campaignReprogrammedAt
+      );
+    }
+
+    function extendedStatusHTML(project){
+      return normalizeStatus(project) === "published" && isProjectExtended(project) ? `<span class="status extended">📅 Campagne prolongée</span>` : "";
+    }
+
+    function reprogrammedStatusHTML(project){
+      return normalizeStatus(project) === "published" && isProjectReprogrammed(project) ? `<span class="status reprogrammed">🔁 Campagne reprogrammée</span>` : "";
+    }
+
+
+
+    async function markProjectAsCopy(cloneId, cloneProject, sourceProjectId){
+      if(!cloneId || !token()) return cloneProject;
+      const data = getProjectData(cloneProject);
+      const cloneTitle = cloneProject?.title || cloneProject?.name || getTitle(cloneProject);
+      const nextParam = Object.assign({}, data.parametrage || {}, {
+        titre_repondants: cloneTitle,
+        titreRespondants: cloneTitle,
+        titre_visible_repondants: cloneTitle,
+        titreVisibleRepondants: cloneTitle,
+        titre: cloneTitle,
+        pack: "",
+        packChoisi: "",
+        pack_choisi: "",
+        selectedPack: "",
+        formule: "",
+        offre: "",
+        offreChoisie: "",
+        pack_mode: "",
+        pack_upgrade_requested: false,
+        pack_upgrade_status: "",
+        pack_upgrade_choice: "",
+        packUpgradeRequested: false,
+        packUpgradeStatus: "",
+        packUpgradeChoice: ""
+      });
+      const nextData = Object.assign({}, data, {
+        isCopy: true,
+        is_copy: true,
+        copiedFromProjectId: sourceProjectId || "",
+        copied_from_project_id: sourceProjectId || "",
+        current_step: "questions",
+        step: "questions",
+        status: "draft",
+        title: cloneTitle,
+        autodiagTitle: cloneTitle,
+        titre_repondants: cloneTitle,
+        titreRespondants: cloneTitle,
+        pack: "",
+        packChoisi: "",
+        pack_choisi: "",
+        selectedPack: "",
+        pack_upgrade_requested: false,
+        pack_upgrade_status: "",
+        pack_upgrade_choice: "",
+        packUpgradeRequested: false,
+        packUpgradeStatus: "",
+        packUpgradeChoice: "",
+        campaignStartDate: "",
+        campaign_start_date: "",
+        campaignEndDate: "",
+        campaign_end_date: "",
+        parametrage: nextParam
+      });
+
+      const body = {
+        projectId: cloneId,
+        title: cloneTitle,
+        status: "draft",
+        currentStep: "questions",
+        data: nextData
+      };
+
+      try{
+        const res = await fetch(`${API_BASE}/api/projects`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token()}`
+          },
+          body: JSON.stringify(body)
+        });
+        if(!res.ok) return cloneProject;
+        const saved = await res.json().catch(() => ({}));
+        return saved.project || Object.assign({}, cloneProject, {data: nextData, status:"draft", currentStep:"questions"});
+      }catch(e){
+        console.warn("Marquage copie non enregistré", e);
+        return cloneProject;
+      }
+    }
+
     function resumeLabel(project) {
   const status = normalizeStatus(project);
 
-  if (status === "submitted") return "En attente de publication";
-  if (status === "published" || status === "unpublished" || status === "archived") return "Voir le projet";
+  if (status === "submitted" || status === "sent") return "En attente de publication";
+  if (status === "published") return "Kit de com";
+  if (status === "archived") return "Voir le projet";
 
   const step = getProjectStep(project);
   if (step.includes("validation")) return "Transmettre";
-  if (step.includes("campagne")) return "Reprendre le paramétrage";
+  if (step.includes("campagne")) return "Reprendre la campagne";
   if (step.includes("param")) return "Reprendre le paramétrage";
   return "Reprendre la création";
 }
@@ -550,11 +1205,13 @@
       const id = getProjectId(project);
       const suffix = id ? `?projectId=${encodeURIComponent(id)}` : "";
 
-      if (status === "published" || status === "unpublished" || status === "archived") return "validation.html" + suffix;
+      if (status === "published") return "kit-communication.html" + suffix;
+      if (status === "archived" || status === "submitted" || status === "sent") return "validation.html" + suffix;
+      if (status === "unpublished") return reprogramUrl(project);
 
       const step = getProjectStep(project);
       if (step.includes("validation")) return "validation.html" + suffix;
-      if (step.includes("campagne")) return "parametrage.html" + suffix;
+      if (step.includes("campagne")) return "campagne.html" + suffix;
       if (step.includes("param")) return "parametrage.html" + suffix;
       return "questions.html" + suffix;
     }
@@ -593,8 +1250,50 @@
     }
 
     function canCloneProject(project) {
-      return ["submitted", "published", "unpublished"].includes(normalizeStatus(project));
+      return ["submitted", "sent", "published", "unpublished", "archived"].includes(normalizeStatus(project));
     }
+
+    function reprogramUrl(project){
+      const id = getProjectId(project);
+      return id ? `campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1` : "campagne.html?reprogram=1";
+    }
+
+    function reprogramProject(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`);
+    }
+
+    function extendProject(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`campagne.html?projectId=${encodeURIComponent(id)}&extend=1`);
+    }
+
+    function openKitCommunication(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`kit-communication.html?projectId=${encodeURIComponent(id)}`);
+    }
+
+    function openContentOnlyView(id){
+      if(!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if(project) setCurrentProjectPointer(project);
+      window.location.assign(`questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1`);
+    }
+
+    function canOpenKitCommunication(project){
+      const status = normalizeStatus(project);
+      const data = getProjectData(project);
+      const shareUrl = project.shareUrl || project.share_url || project.ad_url || project.public_url || data.shareUrl || data.share_url || "";
+      const resultsUrl = project.resultsUrl || project.results_url || project.result_url || data.resultsUrl || data.results_url || "";
+      return (status === "published" || status === "unpublished") && Boolean(shareUrl || resultsUrl);
+    }
+
 
     function shortUrl(url) {
       if (!url) return "";
@@ -619,9 +1318,42 @@
       alert("Lien copié.");
     }
 
+    function isArchivedProject(project){
+      const data = getProjectData(project);
+      const raw = String(project?.status || project?.project_status || data?.status || data?.project_status || "").toLowerCase();
+      return Boolean(
+        raw === "archived" ||
+        raw.includes("archiv") ||
+        project?.archived_at ||
+        project?.archivedAt ||
+        project?.is_archived === true ||
+        project?.isArchived === true ||
+        data?.archived_at ||
+        data?.archivedAt ||
+        data?.is_archived === true ||
+        data?.isArchived === true
+      );
+    }
+
+    function getArchivedProjects(){
+      return projects.filter(isArchivedProject);
+    }
+
+    function updateArchiveCounter(count){
+      const archiveQuickCount = document.getElementById("archiveQuickCount");
+      if(archiveQuickCount) archiveQuickCount.textContent = Number(count || 0);
+    }
+
+    function getActiveProjects(){
+      return projects.filter(p => !isArchivedProject(p) && normalizeStatus(p) !== "archived");
+    }
+
     function renderStats() {
+      const activeProjects = getActiveProjects();
+      const archivedCount = getArchivedProjects().length;
+      updateArchiveCounter(archivedCount);
       const counts = { draft:0, submitted:0, published:0, unpublished:0, endingSoon:0, results:0 };
-      projects.forEach(p => {
+      activeProjects.forEach(p => {
         const status = normalizeStatus(p);
         counts[status] = (counts[status] || 0) + 1;
         if(isEndingSoon(p)) counts.endingSoon += 1;
@@ -633,7 +1365,7 @@
         if(el) el.textContent = value;
       };
 
-      setCount("countAll", projects.length);
+      setCount("countAll", activeProjects.length);
       setCount("countDraft", counts.draft || 0);
       setCount("countSubmitted", counts.submitted || 0);
       setCount("countPublished", counts.published || 0);
@@ -680,12 +1412,12 @@
       const list = document.getElementById("adList");
       const q = document.getElementById("searchInput").value.trim().toLowerCase();
 
-      const filtered = projects.filter(p => {
+      const filtered = getActiveProjects().filter(p => {
         const status = normalizeStatus(p);
         const text = `${getTitle(p)} ${getTheme(p)}`.toLowerCase();
         const filterOk =
           currentFilter === "all" ||
-          status === currentFilter ||
+          (status === currentFilter || (currentFilter === "submitted" && status === "sent")) ||
           (currentFilter === "endingSoon" && isEndingSoon(p)) ||
           (currentFilter === "results" && hasResultsAvailable(p));
         return filterOk && (!q || text.includes(q));
@@ -693,7 +1425,7 @@
 
       if (!filtered.length) {
         list.innerHTML = `
-          <div class="empty">
+          <div class="ad-empty">
             <strong>Aucun autodiagnostic trouvé</strong>
             Aucun élément ne correspond à ce filtre.
           </div>
@@ -720,6 +1452,8 @@
 
             <div>
               <div class="title">${escapeHtml(title)}</div>
+              ${renderProjectUpdateBadge(p)}
+              ${renderTitleDetails(p)}
               <div class="meta">
                 Créé le ${formatDate(p.created_at || p.createdAt)} ·
                 ${getCampaignDates(p)}<br>
@@ -732,20 +1466,41 @@
                 ${hasResults ? `<div class="url-line"><strong>URL résultats</strong><a class="url-short" href="${escapeAttr(resultsUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr(resultsUrl)}">${escapeHtml(shortUrl(resultsUrl))}</a><button class="copy-btn" type="button" onclick="copyText('${escapeAttr(resultsUrl)}')">Copier</button></div>` : ""}
               </div>
               <div class="tags">
-                <span class="tag">${escapeHtml(theme)}</span>
+                ${renderThemeTags(p)}
+                ${copyTagHTML(p)}
                 ${p.passations_used !== undefined ? `<span class="tag">${p.passations_used} passations</span>` : ""}
               </div>
             </div>
 
             <div class="actions">
-              <span class="status ${status}">${statusLabel(status)}</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <span class="status ${status}">${statusLabel(status)}</span>
+                ${extendedStatusHTML(p)}
+                ${reprogrammedStatusHTML(p)}
+              </div>
               <div class="row-actions">
-                <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
-                  ${resumeLabel(p)}
-                </button>
-                ${hasResults ? `
-                  <button class="btn" onclick="openExternal('${escapeAttr(resultsUrl)}')">
-                    Résultats
+                ${status === "unpublished" ? `
+                  <button class="btn btn-blue" onclick="reprogramProject('${escapeAttr(projectId)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">
+                    🚀 Reprogrammer
+                  </button>
+                ` : `
+                  <button class="btn btn-blue" onclick="resumeProjectById('${escapeAttr(projectId)}')">
+                    ${resumeLabel(p)}
+                  </button>
+                `}
+                ${["submitted", "sent", "published", "unpublished", "archived"].includes(status) ? `
+                  <button class="btn" onclick="openContentOnlyView('${escapeAttr(projectId)}')">
+                    👁️ Voir le contenu
+                  </button>
+                ` : ""}
+                ${status === "published" ? `
+                  <button class="btn" onclick="extendProject('${escapeAttr(projectId)}')" title="Même URL : seule la date de clôture est modifiable.">
+                    📅 Prolonger
+                  </button>
+                ` : ""}
+                ${canOpenKitCommunication(p) ? `
+                  <button class="btn btn-green" onclick="openKitCommunication('${escapeAttr(projectId)}')">
+                    📣 Kit de com
                   </button>
                 ` : ""}
                 ${status === "draft" ? `
@@ -753,6 +1508,24 @@
                     🗑️ Supprimer
                   </button>
                 ` : ""}
+                ${canClone ? `
+                  <button class="btn" onclick="duplicateProject('${escapeAttr(projectId)}')" title="Nouvel autodiagnostic : une nouvelle URL sera délivrée après publication.">
+                    🧬 Cloner
+                  </button>
+                ` : ""}
+                <details class="more-actions" onclick="event.stopPropagation()">
+                  <summary>Autres actions</summary>
+                  <div class="more-actions-menu">
+                    <button class="btn" onclick="saveProjectAsCustomModel('${escapeAttr(projectId)}', this); this.closest('details') && this.closest('details').removeAttribute('open');" title="Ajoute cet autodiagnostic à vos modèles personnalisés réutilisables.">
+                      💾 Enregistrer comme modèle
+                    </button>
+                    ${status === "unpublished" ? `
+                      <button class="btn" onclick="archiveProject('${escapeAttr(projectId)}'); this.closest('details') && this.closest('details').removeAttribute('open');">
+                        📦 Archiver
+                      </button>
+                    ` : ""}
+                  </div>
+                </details>
               </div>
             </div>
 
@@ -770,6 +1543,10 @@
 
     document.addEventListener("click", e => {
       if (e.target.id === "archiveModal") closeArchiveModal();
+      if (e.target.id === "cloneModal") closeCloneModal();
+      if (e.target.id === "respondentTitleModal") closeRespondentTitleModal();
+      if (e.target.id === "customModelSuccessModal") closeCustomModelSuccessModal();
+      if (!e.target.closest(".more-actions")) document.querySelectorAll(".more-actions[open]").forEach(d => d.removeAttribute("open"));
       if (!e.target.closest(".menu") && !e.target.closest(".btn")) {
         document.querySelectorAll(".menu").forEach(m => m.classList.remove("open"));
       }
@@ -787,9 +1564,26 @@
 
     document.getElementById("searchInput").addEventListener("input", renderProjects);
 
+    async function refreshArchiveCounterFromApi(){
+      if(!token()) return;
+      try{
+        const res = await fetch(`${API_BASE}/api/projects`, {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+        if(!res.ok) return;
+        const data = await res.json();
+        const all = Array.isArray(data) ? data : (data.projects || data.items || []);
+        updateArchiveCounter(all.filter(isArchivedProject).length);
+      }catch(e){
+        console.warn("Compteur archives non rafraîchi", e);
+      }
+    }
+
     async function loadProjects() {
       try {
         const res = await fetch(`${API_BASE}/api/projects`, {
+          cache: "no-store",
           headers: { Authorization: `Bearer ${token()}` }
         });
 
@@ -797,16 +1591,112 @@
 
         const data = await res.json();
         projects = Array.isArray(data) ? data : (data.projects || data.items || []);
+        await loadProjectUpdateNotifications();
       } catch (e) {
         projects = JSON.parse(localStorage.getItem("its_projects_cache") || "[]");
+        await loadProjectUpdateNotifications();
       }
 
       renderStats();
       renderProjects();
+      refreshArchiveCounterFromApi();
     }
 
-    async function duplicateProject(id) {
+    function openCustomModelSuccessModal({ updated = false, title = "" } = {}) {
+      const modal = document.getElementById("customModelSuccessModal");
+      const titleEl = document.getElementById("customModelSuccessTitle");
+      const textEl = document.getElementById("customModelSuccessText");
+      const nameEl = document.getElementById("customModelSuccessName");
+      if(titleEl) titleEl.textContent = updated ? "Modèle mis à jour" : "Modèle enregistré";
+      if(textEl) textEl.textContent = updated ? "Le modèle existant a été mis à jour avec la dernière version de cet autodiagnostic." : "Votre autodiagnostic a été ajouté à vos modèles personnalisés réutilisables.";
+      if(nameEl) nameEl.textContent = title || "Modèle personnalisé";
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function closeCustomModelSuccessModal(){
+      const modal = document.getElementById("customModelSuccessModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    async function saveProjectAsCustomModel(id, btn) {
       if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+
+      const originalText = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = "⏳ Enregistrement…";
+      }
+
+      try {
+        const themes = typeof getProjectThemes === "function" ? getProjectThemes(project) : [];
+        const title = getTitle(project) || "Modèle personnalisé";
+        const res = await fetch(`${API_BASE}/api/custom-models`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token()}`
+          },
+          body: JSON.stringify({
+            projectId: id,
+            title,
+            subject: themes[0] || "Personnalisé",
+            audience: getProjectData(project).audience || "Collaborateurs",
+            description: `Modèle créé depuis l’autodiagnostic ${title}`
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.model) throw new Error(data.error || "Enregistrement impossible");
+
+        if (btn) btn.innerHTML = "✅ Modèle enregistré";
+        openCustomModelSuccessModal({ updated: Boolean(data.updated), title });
+      } catch (e) {
+        alert(e.message || "Impossible d’enregistrer ce modèle pour le moment.");
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalText || "💾 Enregistrer comme modèle";
+        }
+      }
+    }
+
+    function duplicateProject(id) {
+      if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+      pendingCloneProjectId = String(id);
+      const modal = document.getElementById("cloneModal");
+      const input = document.getElementById("cloneTitleInput");
+      const sourceTitle = getTitle(project);
+      if(input) input.value = "Copie de " + sourceTitle;
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        setTimeout(() => input && input.focus(), 80);
+      }
+    }
+
+    function closeCloneModal(){
+      const modal = document.getElementById("cloneModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+      pendingCloneProjectId = "";
+    }
+
+    async function confirmCloneProject() {
+      const id = pendingCloneProjectId;
+      if (!id) return closeCloneModal();
+      const input = document.getElementById("cloneTitleInput");
+      const cloneTitle = String(input?.value || "").trim() || "Copie";
 
       try {
         const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`, {
@@ -814,22 +1704,72 @@
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token()}`
-          }
+          },
+          body: JSON.stringify({ title: cloneTitle })
         });
 
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || "Clonage impossible");
 
-        const cloned = data.project;
-        if (cloned) {
-          setCurrentProjectPointer(cloned);
-          window.location.href = `questions.html?projectId=${encodeURIComponent(cloned.id)}`;
+        let cloned = data.project || data.clone || data.item || data;
+        const clonedId = getProjectId(cloned);
+
+        if (cloned && clonedId) {
+          cloned = await markProjectAsCopy(clonedId, cloned, id);
+          setCurrentProjectPointer(Object.assign({}, cloned, {id: clonedId, project_id: clonedId}));
+          closeCloneModal();
+          window.location.assign(`questions.html?projectId=${encodeURIComponent(clonedId)}`);
           return;
         }
 
+        closeCloneModal();
         await loadProjects();
       } catch (e) {
         alert(e.message || "Clonage impossible pour le moment.");
+      }
+    }
+
+    function archiveProject(id) {
+      if (!id) return alert("Projet introuvable.");
+      const project = projects.find(p => getProjectId(p) === String(id));
+      if (!project) return alert("Projet introuvable.");
+      const status = normalizeStatus(project);
+      if (status !== "unpublished") {
+        return alert("Un projet doit d’abord être dépublié avant d’être archivé.");
+      }
+
+      pendingArchiveProjectId = String(id);
+      const modal = document.getElementById("archiveModal");
+      if (modal) {
+        const title = getTitle(project);
+        modal.querySelector(".modal-icon").textContent = "📦";
+        modal.querySelector("#archiveModalTitle").textContent = "Archiver cet autodiagnostic ?";
+        modal.querySelector("p").innerHTML = `Vous allez déplacer cet autodiagnostic dépublié dans la page Archives :<br><strong style="color:#18375d">${escapeHtml(title)}</strong><br><br>Il ne sera plus affiché dans votre liste principale. Vous pourrez le reprogrammer depuis les archives avec la même URL, ou le cloner pour créer un nouvel autodiagnostic.`;
+        modal.querySelector(".modal-actions").innerHTML = '<button class="modal-btn" type="button" onclick="closeArchiveModal()">Annuler</button><button class="modal-btn danger" type="button" onclick="confirmArchiveActiveProject()">Archiver</button>';
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    async function confirmArchiveActiveProject() {
+      if (!pendingArchiveProjectId) return closeArchiveModal();
+      const projectId = pendingArchiveProjectId;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}/archive`, {
+          method: "PATCH",
+          headers: { Authorization: `Bearer ${token()}` }
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Archivage impossible");
+
+        projects = projects.map(p => getProjectId(p) === String(projectId) ? Object.assign({}, p, {status:"archived", archived_at:new Date().toISOString()}) : p);
+        closeArchiveModal();
+        renderStats();
+        renderProjects();
+      } catch(e) {
+        alert(e.message || "Archivage impossible pour le moment.");
       }
     }
 
@@ -859,6 +1799,97 @@
       if (modal) {
         modal.classList.remove("open");
         modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    function applyRespondentTitleLocally(project, newTitle) {
+      if(!project || !newTitle) return;
+      const data = getProjectData(project);
+      const applyAliases = (target) => {
+        if(!target || typeof target !== "object") return;
+        target.titre = newTitle;
+        target.titre_repondants = newTitle;
+        target.titreRespondants = newTitle;
+        target.titre_visible_repondants = newTitle;
+        target.titreVisibleRepondants = newTitle;
+        target.titre_visible = newTitle;
+        target.titreVisible = newTitle;
+      };
+      data.parametrage = data.parametrage && typeof data.parametrage === "object" ? data.parametrage : {};
+      applyAliases(data.parametrage);
+      applyAliases(data);
+      if(data.state && typeof data.state === "object"){
+        data.state.parametrage = data.state.parametrage && typeof data.state.parametrage === "object" ? data.state.parametrage : {};
+        applyAliases(data.state.parametrage);
+        applyAliases(data.state);
+      }
+      if(data.payload && typeof data.payload === "object"){
+        data.payload.parametrage = data.payload.parametrage && typeof data.payload.parametrage === "object" ? data.payload.parametrage : {};
+        applyAliases(data.payload.parametrage);
+        applyAliases(data.payload);
+      }
+      project.title = newTitle;
+      project.displayTitle = newTitle;
+      project.data = data;
+    }
+
+    async function openRespondentTitleEditor(projectId) {
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if(!project) return;
+      pendingRespondentTitleProjectId = String(projectId);
+      const currentTitle = getRespondentTitle(project);
+      const modal = document.getElementById("respondentTitleModal");
+      const input = document.getElementById("respondentTitleInput");
+      if(input) input.value = currentTitle || "";
+      if(modal){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        setTimeout(() => input && input.focus(), 80);
+      }
+    }
+
+    function closeRespondentTitleModal(){
+      pendingRespondentTitleProjectId = "";
+      const modal = document.getElementById("respondentTitleModal");
+      if(modal){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    async function confirmRespondentTitleEdit(){
+      const projectId = pendingRespondentTitleProjectId;
+      const project = projects.find(p => getProjectId(p) === String(projectId));
+      if(!project) return closeRespondentTitleModal();
+      const currentTitle = getRespondentTitle(project);
+      const nextTitle = document.getElementById("respondentTitleInput")?.value;
+      const cleaned = String(nextTitle || "").trim();
+      if(!cleaned){
+        alert("Le titre visible par les répondants est obligatoire.");
+        return;
+      }
+      if(cleaned === currentTitle){
+        closeRespondentTitleModal();
+        return;
+      }
+
+      try{
+        const res = await fetch(`${API_BASE}/api/projects/${encodeURIComponent(projectId)}/respondent-title`, {
+          method:"PATCH",
+          headers:{
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token()}`
+          },
+          body:JSON.stringify({ title: cleaned })
+        });
+        const payload = await res.json().catch(() => ({}));
+        if(!res.ok) throw new Error(payload.error || "Impossible de modifier le titre visible répondants.");
+        applyRespondentTitleLocally(project, payload.project?.displayTitle || payload.project?.title || cleaned);
+        closeRespondentTitleModal();
+        renderStats();
+        renderProjects();
+      }catch(e){
+        alert(e.message || "Impossible de modifier le titre visible répondants.");
       }
     }
 
@@ -901,6 +1932,18 @@
     function escapeAttr(str) {
       return escapeHtml(str).replaceAll("`", "");
     }
+
+    function refreshProjectsAfterBrowserBack(){
+      // Quand on revient avec le bouton “page précédente”, le navigateur peut restaurer
+      // l’ancienne page depuis son cache. On force alors un rechargement API pour ne
+      // pas garder un ancien statut local “brouillon” après transmission.
+      loadProjects();
+    }
+
+    window.addEventListener("pageshow", refreshProjectsAfterBrowserBack);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") refreshProjectsAfterBrowserBack();
+    });
 
     loadQuotaCard();
     loadProjects();
