@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives — Into The Shift</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/asap@5/index.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{margin:0;font-family:'Asap',sans-serif;background:#f5f7fb;color:#18375d}.page{max-width:1180px;margin:0 auto;padding:28px 20px 60px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;background:linear-gradient(135deg,#18375d,#0d4c72);color:#fff;border-radius:26px;padding:26px 28px;box-shadow:0 18px 45px rgba(24,55,93,.18);margin-bottom:18px}.hero h1{margin:0 0 8px;color:#fff}.hero p{margin:0;color:rgba(255,255,255,.84);line-height:1.45}.btn{border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:999px;padding:10px 14px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;gap:7px;align-items:center}.btn.primary{background:#ffc744;border-color:#ffc744;color:#18375d}.toolbar{background:#fff;border:1px solid #d8e0ea;border-radius:18px;padding:14px;display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}.search{min-width:260px;flex:1;max-width:420px}.search input{width:100%;border:1px solid #d8e0ea;border-radius:12px;padding:11px 13px;font-family:'Asap',sans-serif}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #d8e0ea;border-radius:22px;padding:18px;box-shadow:0 12px 28px rgba(24,55,93,.06)}.card h2{font-size:18px;margin:0 0 7px}.meta{font-size:13px;color:#64748b;line-height:1.5}.badge{display:inline-flex;border-radius:999px;background:#f1f4f8;color:#64748b;padding:5px 10px;font-size:12px;font-weight:900;margin-bottom:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.empty{background:#fff;border:1px dashed #cbd5e1;border-radius:18px;padding:42px 20px;text-align:center;color:#64748b}.empty strong{display:block;color:#18375d;font-size:18px;margin-bottom:7px}.confirm-backdrop{position:fixed;inset:0;background:rgba(13,31,45,.58);z-index:10001;display:none;align-items:center;justify-content:center;padding:20px}.confirm-backdrop.open{display:flex}.confirm-modal{width:min(540px,100%);background:#fff;border-radius:26px;box-shadow:0 26px 80px rgba(0,0,0,.28);overflow:hidden;border:1px solid #d8e2ec}.confirm-head{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;background:#f8fafc;border-bottom:1px solid #e4edf5}.confirm-icon{width:44px;height:44px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto;background:#eef6fb;color:#0d4c72}.confirm-icon.warn{background:#fff7ed;color:#9a3412}.confirm-title{margin:0 0 5px;color:#18375d;font-size:21px;line-height:1.15;font-weight:900}.confirm-sub{margin:0;color:#64748b;font-size:13px;line-height:1.45;font-weight:700}.confirm-body{padding:20px 24px;color:#60758a;font-size:14px;line-height:1.5}.confirm-project{margin-top:12px;background:#eef6fb;border:1px solid #d7e8f1;border-radius:16px;padding:12px 13px;color:#0d4c72;font-weight:900}.confirm-input-wrap{display:none;margin-top:12px}.confirm-input-label{display:block;font-size:11px;font-weight:900;color:#18375d;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}.confirm-input{width:100%;border:1px solid #d8e2ec;border-radius:14px;padding:12px 13px;font-family:'Asap',sans-serif;font-size:14px;color:#18375d;outline:none}.confirm-input:focus{border-color:#0d4c72;box-shadow:0 0 0 3px rgba(13,76,114,.10)}.confirm-warning{margin-top:12px;background:#fff8ec;border:1px solid #ffd9a3;border-radius:16px;padding:12px 13px;color:#9a5b00;font-weight:800;font-size:13px;line-height:1.45}.confirm-footer{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px;flex-wrap:wrap}.confirm-btn{border:none;border-radius:999px;padding:11px 17px;font-family:'Asap',sans-serif;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}.confirm-btn.secondary{background:#fff;color:#0d4c72;border:1px solid #cbd9e7}.confirm-btn.primary{background:#0d4c72;color:#fff}.confirm-btn.warn{background:#9a3412;color:#fff}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:#0d4c72;color:#fff;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:900;box-shadow:0 14px 35px rgba(15,30,55,.25);z-index:10002;opacity:0;pointer-events:none;transition:all .18s ease}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:850px){.list{grid-template-columns:1fr}.search{max-width:none}}
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <script src="header.js"></script>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Archives</h1>
+        <p>Retrouvez les autodiagnostics archivés. Vous pouvez les reprogrammer avec la même URL ou les cloner pour créer un nouvel autodiagnostic avec une nouvelle URL.</p>
+      </div>
+      <a id="backLink" class="btn primary" href="mes-autodiagnostics.html">← Retour</a>
+    </section>
+    <section class="toolbar">
+      <div><strong id="archiveCount">—</strong> projet(s) archivé(s)</div>
+      <div class="search"><input id="searchInput" type="search" placeholder="Rechercher dans les archives…" oninput="renderArchives()"></div>
+    </section>
+    <section id="archiveList" class="list"></section>
+  </main>
+
+  <div id="confirmModal" class="confirm-backdrop" aria-hidden="true">
+    <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+      <div class="confirm-head">
+        <div id="confirmModalIcon" class="confirm-icon">⚠️</div>
+        <div>
+          <h3 id="confirmModalTitle" class="confirm-title">Confirmer l’action</h3>
+          <p id="confirmModalSubtitle" class="confirm-sub">Cette action va modifier l’autodiagnostic.</p>
+        </div>
+      </div>
+      <div class="confirm-body">
+        <div id="confirmModalText"></div>
+        <div id="confirmModalProject" class="confirm-project" style="display:none"></div>
+        <div id="confirmModalInputWrap" class="confirm-input-wrap"><label id="confirmModalInputLabel" class="confirm-input-label" for="confirmModalInput">Titre du clone</label><input id="confirmModalInput" class="confirm-input" type="text" /></div>
+        <div id="confirmModalWarning" class="confirm-warning" style="display:none"></div>
+      </div>
+      <div class="confirm-footer">
+        <button class="confirm-btn secondary" type="button" onclick="closeConfirmModal(false)">Annuler</button>
+        <button id="confirmOkBtn" class="confirm-btn primary" type="button" onclick="closeConfirmModal(true)">Confirmer</button>
+      </div>
+    </div>
+  </div>
+  <div id="archiveToast" class="toast" aria-live="polite"></div>
+  <script>
+    const API_BASE = window.ITS_API_BASE || localStorage.getItem("its_api_base") || (location.hostname === "localhost" || location.hostname.startsWith("staging.") ? "https://into-the-shift-studio-api-staging.osc-fr1.scalingo.io" : "https://into-the-shift-studio-api.osc-fr1.scalingo.io");
+    let archives = [];
+    const params = new URLSearchParams(location.search);
+    const clientId = params.get("clientId") || "";
+    function token(){return localStorage.getItem("its_token") || localStorage.getItem("token") || localStorage.getItem("auth_token") || "";}
+    function decodeJwt(){try{const t=token(); return JSON.parse(atob(t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));}catch(e){return {}}}
+    function role(){return localStorage.getItem("its_user_role") || decodeJwt().role || "client";}
+    function isAdmin(){return role()==="admin";}
+    function setupBackLink(){const a=document.getElementById("backLink"); if(!a)return; if(clientId){a.href=`client-folder.html?id=${encodeURIComponent(clientId)}`; a.textContent="← Retour au dossier client";}else{a.href="mes-autodiagnostics.html"; a.textContent="← Retour aux autodiagnostics";}}
+    function escapeHtml(str){return String(str||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+    function escapeAttr(str){return escapeHtml(str).replace(/`/g,"");}
+    function getData(p){const raw=p?.data||{}; if(typeof raw==="string"){try{return JSON.parse(raw)||{}}catch(e){return {}}} return raw&&typeof raw==="object"?raw:{}}
+    function cleanAdTitle(value){const cleaned=String(value||"").replace(/^\s*Autodiagnostic\s*[-–—:]?\s*/i,"").replace(/^\s*Autodiag\s*[-–—:]?\s*/i,"").trim(); return (!cleaned || /^(mon projet|nouveau projet|mon premier customizer)$/i.test(cleaned)) ? "Projet sans titre" : cleaned;}
+    function pickTitle(...values){for(const value of values){const cleaned=cleanAdTitle(value); if(cleaned && cleaned!=="Projet sans titre") return cleaned;} return "Projet sans titre";}
+    function title(p){const d=getData(p); const payload=d.payload&&typeof d.payload==="object"?d.payload:{}; const state=d.state&&typeof d.state==="object"?d.state:{}; const param=d.parametrage||state.parametrage||payload.parametrage||{}; return pickTitle(param.titre_repondants,param.titreRespondants,param.titre_visible_repondants,param.titreVisibleRepondants,param.titre_visible,param.titreVisible,param.nom,param.titre,payload.titre_repondants,payload.titreRespondants,payload.autodiagTitle,payload.title,state.titre_repondants,state.titreRespondants,state.autodiagTitle,state.title,d.titre_repondants,d.titreRespondants,d.autodiagTitle,d.title,p.title,p.name,p.project_name,p.ad_title);}
+    function formatDate(v){if(!v)return"—"; const d=new Date(v); return isNaN(d.getTime())?String(v):d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"});}
+    function projectId(p){return String(p?.id||p?.project_id||p?.projectId||"");}
+
+    let confirmModalResolver = null;
+    let confirmModalInputMode = false;
+    function openConfirmModal(options = {}){
+      const modal=document.getElementById("confirmModal"), icon=document.getElementById("confirmModalIcon"), titleEl=document.getElementById("confirmModalTitle"), subtitle=document.getElementById("confirmModalSubtitle"), text=document.getElementById("confirmModalText"), project=document.getElementById("confirmModalProject"), warning=document.getElementById("confirmModalWarning"), inputWrap=document.getElementById("confirmModalInputWrap"), input=document.getElementById("confirmModalInput"), inputLabel=document.getElementById("confirmModalInputLabel"), okBtn=document.getElementById("confirmOkBtn");
+      if(!modal || !okBtn) return Promise.resolve(window.confirm(options.text || options.title || "Confirmer ?"));
+      const tone=options.tone||"primary";
+      icon.className="confirm-icon "+(tone==="warn"?"warn":"");
+      icon.textContent=options.icon || (tone==="warn"?"⚠️":"ℹ️");
+      titleEl.textContent=options.title || "Confirmer l’action";
+      subtitle.textContent=options.subtitle || "Cette action va modifier l’autodiagnostic.";
+      text.textContent=options.text || "Confirmez-vous cette action ?";
+      if(options.project){project.style.display="block";project.textContent=options.project;}else{project.style.display="none";project.textContent="";}
+      if(options.inputDefault !== undefined){
+        confirmModalInputMode = true;
+        if(inputWrap) inputWrap.style.display = "block";
+        if(inputLabel) inputLabel.textContent = options.inputLabel || "Titre";
+        if(input) input.value = options.inputDefault || "";
+      }else{
+        confirmModalInputMode = false;
+        if(inputWrap) inputWrap.style.display = "none";
+        if(input) input.value = "";
+      }
+      if(options.warning){warning.style.display="block";warning.textContent=options.warning;}else{warning.style.display="none";warning.textContent="";}
+      okBtn.textContent=options.confirmText || "Confirmer";
+      okBtn.className="confirm-btn "+(tone==="warn"?"warn":"primary");
+      modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+      setTimeout(()=>{ if(confirmModalInputMode && input) input.focus(); }, 50);
+      return new Promise(resolve=>{confirmModalResolver=resolve;});
+    }
+    function closeConfirmModal(result){
+      const modal=document.getElementById("confirmModal");
+      if(modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");}
+      if(confirmModalResolver){
+        const r=confirmModalResolver;
+        const input=document.getElementById("confirmModalInput");
+        const payload = confirmModalInputMode ? { ok:Boolean(result), value: input ? String(input.value || "").trim() : "" } : Boolean(result);
+        confirmModalResolver=null;
+        confirmModalInputMode=false;
+        r(payload);
+      }
+    }
+    function showToast(message){
+      const toast=document.getElementById("archiveToast");
+      if(!toast)return;
+      toast.textContent=message; toast.classList.add("on");
+      clearTimeout(showToast._timer); showToast._timer=setTimeout(()=>toast.classList.remove("on"),2200);
+    }
+    function isArchivedProject(p){const d=getData(p);const raw=String(p?.status||p?.project_status||d.status||d.project_status||"").toLowerCase();return raw.includes("archiv") || Boolean(p?.archived_at || p?.archivedAt || p?.is_archived===true || p?.isArchived===true || d.archived_at || d.archivedAt || d.is_archived===true || d.isArchived===true);}
+    async function loadArchives(){
+      if(!token()){ location.href="login.html?redirect=archives.html"; return; }
+      try{
+        setupBackLink();
+        const endpoint = isAdmin() ? `${API_BASE}/api/admin/projects` : `${API_BASE}/api/projects`;
+        const res = await fetch(endpoint, {headers:{Authorization:`Bearer ${token()}`}});
+        const data = await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Chargement impossible");
+        const all = Array.isArray(data) ? data : (data.projects || data.items || []);
+        archives = all.filter(isArchivedProject);
+        if(clientId){
+          archives = archives.filter(p => String(p.organizationId || p.organization_id || p.orgId || p.org_id || "") === String(clientId));
+        }
+        renderArchives();
+      }catch(e){
+        document.getElementById("archiveList").innerHTML = `<div class="empty"><strong>Archives indisponibles</strong>${escapeHtml(e.message || "Impossible de charger les archives.")}</div>`;
+      }
+    }
+    function renderArchives(){
+      const q=(document.getElementById("searchInput")?.value||"").toLowerCase().trim();
+      const rows=archives.filter(p => !q || JSON.stringify(p).toLowerCase().includes(q));
+      document.getElementById("archiveCount").textContent = rows.length;
+      const list=document.getElementById("archiveList");
+      if(!rows.length){list.innerHTML='<div class="empty"><strong>Aucune archive</strong>Aucun projet archivé ne correspond à ce filtre.</div>';return;}
+      list.innerHTML=rows.map(p=>{
+        const id=projectId(p);
+        return `<article class="card"><span class="badge">📦 Archivé</span><h2>${escapeHtml(title(p))}</h2><div class="meta">Créé le ${formatDate(p.created_at||p.createdAt)} · Archivé le ${formatDate(p.archived_at||p.archivedAt)}<br>Dernière mise à jour : ${formatDate(p.updated_at||p.updatedAt)}</div><div class="actions"><button class="btn" onclick="openContentOnlyView('${escapeAttr(id)}')">👁 Voir le contenu</button><button class="btn primary" onclick="reprogramProject('${escapeAttr(id)}')" title="Même URL : seules les dates de campagne sont à reprogrammer.">🚀 Reprogrammer</button><button class="btn" onclick="cloneProject('${escapeAttr(id)}')" title="Nouvel autodiagnostic : une nouvelle URL sera délivrée après publication.">🧬 Cloner</button></div></article>`;
+      }).join("");
+    }
+    function openProject(id){ if(!id)return; location.href=`validation.html?projectId=${encodeURIComponent(id)}`; }
+    function openContentOnlyView(id){ if(!id)return; location.href=`questions.html?projectId=${encodeURIComponent(id)}&contentOnly=1`; }
+    async function reprogramProject(id){
+      if(!id)return;
+      const p = archives.find(item => projectId(item) === String(id));
+      const ok = await openConfirmModal({
+        tone:"warn",
+        icon:"↩️",
+        title:"Reprogrammer cet autodiagnostic ?",
+        subtitle:"Même URL : seules les dates de campagne sont à reprogrammer.",
+        text:"Vous allez rouvrir la page Campagne pour définir une nouvelle période de diffusion. Le contenu, l’historique et les liens restent conservés. Les nouvelles statistiques s’ajouteront à l’historique existant et resteront consultables par période dans le dashboard.",
+        project:p ? title(p) : "Projet archivé",
+        warning:"Reprogrammer ne crée pas de nouvel autodiagnostic : l’URL de passation et l’URL de statistiques restent les mêmes. Pour obtenir une nouvelle URL, utilisez Cloner.",
+        confirmText:"Reprogrammer"
+      });
+      if(!ok)return;
+      try{
+        const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/restore`,{method:"PATCH",headers:{Authorization:`Bearer ${token()}`}});
+        const data=await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Reprogrammation impossible");
+        archives=archives.filter(p=>projectId(p)!==String(id));
+        renderArchives();
+        showToast("Autodiagnostic prêt à reprogrammer");
+        location.href=`campagne.html?projectId=${encodeURIComponent(id)}&reprogram=1`;
+      }catch(e){alert(e.message || "Reprogrammation impossible pour le moment.");}
+    }
+    async function cloneProject(id){
+      if(!id)return;
+      const p = archives.find(item => projectId(item) === String(id));
+      const sourceTitle = p ? title(p) : "Projet archivé";
+      const result = await openConfirmModal({
+        tone:"primary",
+        icon:"🧬",
+        title:"Cloner cet autodiagnostic ?",
+        subtitle:"Un nouvel autodiagnostic indépendant sera créé en brouillon.",
+        text:"Le clone reprend le contenu et les profils. Vous pourrez modifier le contenu, le paramétrage et programmer de nouvelles dates. Une nouvelle URL sera délivrée après publication.",
+        project:sourceTitle,
+        inputLabel:"Titre du nouvel autodiagnostic",
+        inputDefault:`Copie de ${sourceTitle}`,
+        warning:"Le pack ne sera pas sélectionné d’office : vous devrez choisir un pack dans le paramétrage.",
+        confirmText:"Cloner"
+      });
+      if(!result || !result.ok)return;
+      const cloneTitle = result.value || `Copie de ${sourceTitle}`;
+      try{
+        const res=await fetch(`${API_BASE}/api/projects/${encodeURIComponent(id)}/clone`,{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${token()}`},body:JSON.stringify({title:cloneTitle})});
+        const data=await res.json().catch(()=>({}));
+        if(!res.ok) throw new Error(data.error || "Clonage impossible");
+        showToast("Projet cloné");
+        if(data.project?.id){ location.href=`questions.html?projectId=${encodeURIComponent(data.project.id)}`; return; }
+        alert("Projet cloné.");
+      }catch(e){alert(e.message || "Clonage impossible pour le moment.");}
+    }
+    setupBackLink();
+    loadArchives();
+  </script>
+</body>
+</html>
