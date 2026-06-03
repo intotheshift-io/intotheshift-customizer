@@ -1,7 +1,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Asap',sans-serif;background:#f0f2f5;min-height:100vh;color:#18375d}
 #header{
-  position: sticky;
+  position: sticky !important;
   top: 0;
   z-index: 9999;
 }
@@ -465,3 +465,183 @@ input[type="url"]:focus,
 .url-line strong{color:#18375d;margin-right:5px}
 .url-line a{color:#007883;font-weight:800;text-decoration:none}
 .url-line a:hover{text-decoration:underline}
+
+.quota-wrap{margin:0 0 18px}
+/* ── Composant global Crédits & pack client ───────────────────── */
+.its-quota-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%);border:0;border-radius:28px;padding:24px;color:#fff;box-shadow:0 22px 55px rgba(13,76,114,.22)}
+.its-quota-card::before{content:"";position:absolute;right:-70px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
+.its-quota-card::after{content:"";position:absolute;left:-60px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,192,0,.20)}
+.its-quota-card>*{position:relative;z-index:1}.its-quota-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}.its-quota-kicker{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.78;margin-bottom:6px}.its-quota-title{font-size:22px;font-weight:900;line-height:1.15}.its-quota-title::before{content:"🎟️";display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:14px;background:rgba(255,255,255,.18);vertical-align:middle}.its-quota-pill{background:#ffc000;color:#18375d;border:0;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.its-quota-box{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:14px;text-align:left;min-height:86px}.its-quota-box strong{display:block;font-size:30px;line-height:1;color:#fff;margin-bottom:7px}.its-quota-box span{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;opacity:.86}.its-quota-box:nth-child(1) span::before{content:"🛒"}.its-quota-box:nth-child(2) span::before{content:"✅"}.its-quota-box:nth-child(3) span::before{content:"🚀"}.its-quota-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.24);overflow:hidden;margin-top:14px}.its-quota-fill{height:100%;border-radius:999px;background:#ffc000;width:0%;transition:width .4s ease}.its-quota-nudge{background:rgba(255,255,255,.94);color:#18375d;border-radius:16px;padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.45;font-weight:800}.its-quota-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.its-quota-action{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:14px;padding:11px 14px;background:#fff;color:#0d4c72;font-family:'Asap',sans-serif;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 8px 18px rgba(0,0,0,.12)}.its-quota-action.secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.34);box-shadow:none}.its-quota-card.warn{background:linear-gradient(135deg,#8a5a00 0%,#eb6366 100%)}.its-quota-card.ok{background:linear-gradient(135deg,#0d4c72 0%,#007883 58%,#13a0a4 100%)}.its-quota-card.empty{background:linear-gradient(135deg,#64748b 0%,#18375d 100%)}
+.its-quota-inline{background:#f0f8f7;border:1px solid #b8dfe0;border-radius:14px;padding:12px 14px;margin:10px 0;color:#18375d}.its-quota-inline strong{color:#007883}.its-quota-inline .mini{font-size:12px;color:#64748b;line-height:1.45;margin-top:3px}
+@media(max-width:760px){.its-quota-main{grid-template-columns:1fr}.its-quota-top{flex-direction:column}.its-quota-pill{white-space:normal}}
+
+
+
+
+.account-pack-rules{background:#eef6fb;border:1px solid #d7e8f1;color:#244b63;border-radius:18px;padding:16px 18px;margin-top:18px;font-size:13px;line-height:1.5}
+.account-pack-rules-title{font-size:15px;font-weight:950;color:#0d4c72;margin-bottom:8px}
+.account-pack-rules ul{margin:0;padding-left:18px}
+.account-pack-rules li{margin:6px 0}
+
+/* ── Grille de recharge depuis Mon compte ───────────────────── */
+.account-pack-grid-card{background:linear-gradient(135deg,#ffffff 0%,#f8fbfd 100%);border:1px solid #cfe4ea;border-radius:22px;padding:18px;margin-top:18px;box-shadow:0 12px 30px rgba(13,76,114,.08)}
+.account-pack-grid-title{font-size:17px;font-weight:950;color:#0d4c72;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.account-pack-grid-sub{font-size:13px;color:#718497;line-height:1.45;margin-bottom:14px}.account-pack-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.account-pack-chip{position:relative;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:11px 10px;text-align:left;min-height:98px;box-shadow:0 5px 14px rgba(24,55,93,.04);cursor:pointer;transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease;font-family:'Asap',sans-serif;color:#18375d}
+.account-pack-chip:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(24,55,93,.10);border-color:#007883}.account-pack-chip:disabled{cursor:wait;opacity:.62;transform:none}.account-pack-chip strong{display:block;font-size:18px;font-weight:950;color:#18375d;line-height:1.05;margin-bottom:4px}.account-pack-chip em{display:block;font-style:normal;font-size:12px;font-weight:900;color:#007883;margin-bottom:5px}.account-pack-chip span{display:block;font-size:9px;font-weight:900;color:#94a3b8;text-transform:uppercase;letter-spacing:.045em;line-height:1.2}.account-pack-chip b{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:950;border-radius:999px;padding:3px 7px;margin-bottom:7px;background:#fff;color:#8a5a00;border:1px solid rgba(255,199,68,.65)}
+.account-pack-chip.popular{background:linear-gradient(135deg,#fff9e9 0%,#fff1bd 100%);border-color:#ffc744;box-shadow:0 8px 20px rgba(255,199,68,.18)}.account-pack-chip.popular strong,.account-pack-chip.popular em{color:#8a5a00}.account-pack-chip.entreprise{background:linear-gradient(135deg,#eef9fb 0%,#dff2f5 100%);border-color:#9fd0e0;box-shadow:0 8px 20px rgba(0,120,131,.12)}.account-pack-chip.entreprise b{color:#0d4c72;border-color:#9fd0e0;background:#fff}.account-pack-chip.entreprise strong,.account-pack-chip.entreprise em{color:#0d4c72}.account-pack-chip.illimite{background:linear-gradient(135deg,#18375d 0%,#007883 100%);border-color:#18375d}.account-pack-chip.illimite strong,.account-pack-chip.illimite em,.account-pack-chip.illimite span{color:#fff}.account-pack-status{display:none;margin-top:12px;border-radius:14px;padding:12px 14px;font-size:13px;font-weight:800;line-height:1.45}.account-pack-status.ok{display:block;background:#eefbf3;color:#176239;border:1px solid #bee8cd}.account-pack-status.err{display:block;background:#fff0f0;color:#9d2b2b;border:1px solid #ffd1d1}
+@media(max-width:980px){.account-pack-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:620px){.account-pack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.account-pack-chip{min-height:86px}}
+
+/* Centre de notifications global */
+.its-notif-wrap{position:relative;display:flex;align-items:center}
+.its-notif-bell{position:relative;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;min-width:38px;height:38px;padding:0 10px;font-size:17px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Asap',sans-serif;line-height:1}
+.its-notif-bell:hover,.its-notif-bell[aria-expanded="true"]{background:rgba(255,255,255,.18)}
+.its-notif-count{position:absolute;right:-4px;top:-5px;min-width:18px;height:18px;border-radius:999px;background:#eb6366;color:#fff;border:2px solid #18375d;font-size:10px;font-weight:900;align-items:center;justify-content:center;padding:0 5px;line-height:1}
+.its-notif-panel{position:fixed;right:18px;top:64px;width:min(380px,calc(100vw - 28px));max-height:520px;overflow:hidden;background:#fff;border:1px solid #d8e0ea;border-radius:20px;box-shadow:0 22px 60px rgba(15,30,55,.24);z-index:10050;display:none;color:#18375d}
+.its-notif-panel.open{display:block}
+.its-notif-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:15px 16px;border-bottom:1px solid #edf2f6;background:#f8fbfd}
+.its-notif-head strong{font-size:15px;color:#18375d}
+.its-notif-head button{border:0;background:transparent;color:#0d4c72;font-family:'Asap',sans-serif;font-size:12px;font-weight:900;cursor:pointer;white-space:nowrap}
+.its-notif-list{max-height:420px;overflow:auto;padding:6px}
+.its-notif-item{width:100%;border:0;background:#fff;border-radius:15px;padding:11px 10px;display:grid;grid-template-columns:34px minmax(0,1fr) 28px;gap:10px;align-items:start;text-align:left;font-family:'Asap',sans-serif;color:#18375d}
+.its-notif-item:hover{background:#f6f9fb}
+.its-notif-item.unread{background:#eef6fb}
+.its-notif-item.treated{opacity:.72}
+.its-notif-ico{width:34px;height:34px;border-radius:12px;background:#fff;border:1px solid #dfe8ef;display:flex;align-items:center;justify-content:center;font-size:16px}
+.its-notif-main{border:0;background:transparent;padding:0;margin:0;text-align:left;font-family:'Asap',sans-serif;color:inherit;cursor:pointer;min-width:0}
+.its-notif-check{width:25px;height:25px;border-radius:9px;border:1.5px solid #bfd0dc;background:#fff;color:#007883;font-size:15px;font-weight:950;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin-top:4px;font-family:'Asap',sans-serif}
+.its-notif-check:hover{border-color:#007883;background:#f0f8f7}
+.its-notif-item.treated .its-notif-check{background:#007883;border-color:#007883;color:#fff}
+.its-notif-copy{min-width:0;display:grid;gap:3px}
+.its-notif-copy strong{font-size:13px;color:#18375d;line-height:1.25}
+.its-notif-copy span{font-size:12px;color:#60758a;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.its-notif-copy small{font-size:11px;color:#94a3b8;font-weight:800}
+.its-notif-empty{display:none;padding:28px 16px;text-align:center;color:#718497;font-size:13px;line-height:1.45}
+@media(max-width:760px){.its-notif-wrap{order:2;margin-left:auto}.its-notif-panel{right:8px;top:58px}.its-notif-bell{height:34px;min-width:34px}}
+
+
+/* ── Alignement header : navigation à gauche, actions à droite ───────────── */
+.header-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+.header-actions .nav-link,
+.header-actions .btn-register{
+  color:rgba(255,255,255,.86);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  padding:8px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.header-actions .nav-link:hover,
+.header-actions .nav-link.active{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+.compact-topbar{
+  overflow:visible;
+}
+.compact-topbar .main-nav{
+  flex:1 1 auto;
+  min-width:0;
+  overflow-x:auto;
+  max-width:none;
+}
+.compact-topbar .its-notif-wrap{
+  flex:0 0 auto;
+}
+@media(max-width:900px){
+  .compact-topbar{
+    overflow:visible;
+  }
+  .compact-topbar .main-nav{
+    max-width:none;
+  }
+  .header-actions{
+    margin-left:auto;
+  }
+}
+@media(max-width:760px){
+  .header-actions{
+    order:2;
+    margin-left:auto;
+    gap:8px;
+  }
+  .header-actions .nav-link,
+  .header-actions .btn-register{
+    font-size:12px;
+    padding:7px 9px;
+  }
+  .compact-topbar .main-nav{
+    order:3;
+  }
+}
+
+
+/* ── Correctif header : déconnexion tout à droite ───────────── */
+.header-spacer{
+  flex:1 1 auto;
+  min-width:24px;
+}
+.header-actions{
+  margin-left:0 !important;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex:0 0 auto;
+}
+.compact-topbar .main-nav{
+  flex:0 1 auto !important;
+  min-width:0;
+}
+.compact-topbar .logout-link{
+  margin-left:4px;
+}
+@media(max-width:760px){
+  .header-spacer{
+    display:none;
+  }
+  .header-actions{
+    margin-left:auto !important;
+  }
+}
+
+
+/* ── Notifications : ouverture sans traitement automatique ───────────── */
+.its-notif-item.unread{
+  border:1px solid #cfe4ea;
+  box-shadow:0 6px 18px rgba(0,120,131,.08);
+}
+
+.its-notif-item.unread .its-notif-copy strong::after{
+  content:" • Nouveau";
+  color:#eb6366;
+  font-size:11px;
+  font-weight:900;
+  margin-left:6px;
+}
+
+.its-notif-main{
+  transition:opacity .15s ease;
+}
+
+.its-notif-item.treated .its-notif-main{
+  opacity:.72;
+}
+
+/* ── Correctif global notifications : liste déroulante visible partout ───── */
+.its-notif-panel{
+  height:auto !important;
+  max-height:calc(100vh - 88px) !important;
+}
+.its-notif-list{
+  max-height:420px !important;
+  overflow:auto !important;
+  padding:6px !important;
+}
