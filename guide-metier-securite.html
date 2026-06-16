@@ -244,6 +244,46 @@ h1{font-size:31px}
 h2{font-size:26px}
 .btn{width:100%}
 }
+
+.anonymous-box{
+  margin-top:24px;
+  background:linear-gradient(135deg,#ffffff 0%,#eef6fb 100%);
+  border:1px solid var(--border);
+  border-left:6px solid var(--yellow);
+  border-radius:22px;
+  padding:22px 24px;
+  box-shadow:0 12px 30px rgba(24,55,93,.07);
+}
+.anonymous-box strong{
+  display:block;
+  font-size:20px;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.anonymous-box p{
+  margin:0;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.65;
+}
+.anonymous-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.anonymous-tags span{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--blue);
+}
+
 </style>
 </head>
 <body>
@@ -281,6 +321,19 @@ Les procédures existent souvent déjà. Pourtant, les incidents continuent d’
 
 </div>
 </section>
+
+  <section class="anonymous-box" aria-label="Anonymat des diagnostics Into The Shift">
+    <strong>🔒 100 % anonyme dès la première réponse</strong>
+    <p>Les répondants accèdent au diagnostic sans compte, sans login, sans mot de passe et sans adresse email à renseigner. Aucune adresse IP n’est conservée : les résultats sont exploités uniquement sous forme collective et anonyme.</p>
+    <div class="anonymous-tags">
+      <span>Sans compte répondant</span>
+      <span>Sans email</span>
+      <span>Sans mot de passe</span>
+      <span>Aucune IP conservée</span>
+      <span>Résultats collectifs</span>
+    </div>
+  </section>
+
 
 <section class="section">
 <div class="section-head">
