@@ -478,6 +478,265 @@ function itsProjectTitleFromState(state) {
   );
 }
 
+
+const ITS_MEANDYOUTOO_CONTACT_EMAIL = "contact@meandyoutoo.app";
+const ITS_MEANDYOUTOO_LOCKED_TERMS = [
+  "diversité", "diversite", "inclusion", "discrimination", "discriminations",
+  "sexisme", "sexiste", "agissement sexiste", "harcèlement sexuel", "harcelement sexuel",
+  "violences sexistes", "violences sexuelles", "vss", "lgbt", "lgbtq", "lgbt+",
+  "handicap", "origine", "origines", "diversité des origines", "diversite des origines",
+  "religion", "religieuse", "religieux", "diversité religieuse", "diversite religieuse",
+  "égalité professionnelle", "egalite professionnelle", "management inclusif", "manager inclusif",
+  "collaborateur inclusif", "collègue inclusif", "collegue inclusif", "mixité", "mixite",
+  "allié de la mixité", "allie de la mixite", "micro-agression", "microagression",
+  "stéréotype", "stereotype", "stéréotypes", "stereotypes"
+];
+const ITS_MEANDYOUTOO_SOFT_TERMS = ["harcèlement moral", "harcelement moral"];
+
+function itsNormalizeForRestrictedTerms(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[’']/g, " ")
+    .replace(/[^a-z0-9+]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function itsProjectTextForRestrictedTerms(state) {
+  const source = state && typeof state === "object" ? state : {};
+  const param = source.parametrage || source.meta || {};
+  const fields = [
+    source.title, source.autodiagTitle, source.subject, source.theme, source.themeLabel, source.objective, source.description,
+    param.nom, param.titre, param.titre_repondants, param.titreRespondants, param.desc, param.description, param.intro,
+    source.customPrompt, source.prompt, source.aiPrompt
+  ];
+  return fields.filter(Boolean).join(" \n ");
+}
+
+function itsFindMeAndYouTooLockedTerms(state) {
+  const text = itsNormalizeForRestrictedTerms(itsProjectTextForRestrictedTerms(state));
+  if (!text) return [];
+  const found = [];
+  ITS_MEANDYOUTOO_LOCKED_TERMS.forEach((term) => {
+    const normalized = itsNormalizeForRestrictedTerms(term);
+    if (normalized && text.includes(normalized) && !found.includes(term)) found.push(term);
+  });
+  return found;
+}
+
+function itsFindMeAndYouTooSoftTerms(state) {
+  const text = itsNormalizeForRestrictedTerms(itsProjectTextForRestrictedTerms(state));
+  if (!text) return [];
+  const found = [];
+  ITS_MEANDYOUTOO_SOFT_TERMS.forEach((term) => {
+    const normalized = itsNormalizeForRestrictedTerms(term);
+    if (normalized && text.includes(normalized) && !found.includes(term)) found.push(term);
+  });
+  return found;
+}
+
+function itsEscapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function itsShowMeAndYouTooRestrictionMessage(terms) {
+  const existing = document.getElementById("its-meandyoutoo-restriction-message");
+  if (existing) existing.remove();
+
+  const subjects = (terms || []).slice(0, 4).map(itsEscapeHtml).join(", ");
+  const banner = document.createElement("div");
+  banner.id = "its-meandyoutoo-restriction-message";
+  banner.setAttribute("role", "status");
+  banner.style.cssText = [
+    "position:fixed",
+    "left:50%",
+    "bottom:22px",
+    "transform:translateX(-50%)",
+    "z-index:25000",
+    "width:min(680px,calc(100vw - 28px))",
+    "background:#ffffff",
+    "border:1px solid #ffc866",
+    "border-left:7px solid #ffc000",
+    "border-radius:18px",
+    "box-shadow:0 24px 70px rgba(15,30,55,.25)",
+    "padding:18px 18px 16px",
+    "font-family:Asap,Arial,sans-serif",
+    "color:#18375d"
+  ].join(";");
+
+  banner.innerHTML = `
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="width:38px;height:38px;border-radius:12px;background:#eef6fb;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🔒</div>
+      <div style="min-width:0;flex:1">
+        <div style="font-size:15px;font-weight:950;margin-bottom:5px">Catalogue Inclusion Expert Me&YouToo</div>
+        <div style="font-size:13px;line-height:1.5;color:#475569">
+          Cette thématique n’est pas disponible en création autonome sur Into The Shift.
+          ${subjects ? `<br><strong>Sujets détectés :</strong> ${subjects}` : ""}
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <a href="mailto:${ITS_MEANDYOUTOO_CONTACT_EMAIL}?subject=Catalogue%20Inclusion%20Expert%20Me%26YouToo" style="display:inline-flex;align-items:center;justify-content:center;background:#0d4c72;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900;font-size:13px;text-decoration:none">Contacter Me&YouToo</a>
+          <button type="button" id="its-meandyoutoo-close" style="border:1px solid #d8e0ea;background:#fff;color:#18375d;border-radius:10px;padding:9px 12px;font-weight:900;font-size:13px;cursor:pointer;font-family:Asap,Arial,sans-serif">Fermer</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(banner);
+  document.getElementById("its-meandyoutoo-close")?.addEventListener("click", () => banner.remove());
+  setTimeout(() => {
+    if (document.body.contains(banner)) banner.remove();
+  }, 12000);
+}
+
+function itsAlertMeAndYouTooRestriction(terms) {
+  const key = "its_meandyoutoo_locked_alert_at";
+  const now = Date.now();
+  try {
+    sessionStorage.setItem(key, String(now));
+  } catch(e) {}
+
+  if (typeof document !== "undefined" && document.body) {
+    itsShowMeAndYouTooRestrictionMessage(terms);
+    return;
+  }
+
+  console.warn(
+    "Catalogue Inclusion Expert Me&YouToo — création autonome bloquée.",
+    terms || []
+  );
+}
+
+function itsWarnMeAndYouTooSoftTermsOnce(terms) {
+  if (!terms || !terms.length) return;
+  const key = "its_meandyoutoo_soft_warning_at";
+  const now = Date.now();
+  try {
+    const last = Number(sessionStorage.getItem(key) || 0);
+    if (now - last < 120000) return;
+    sessionStorage.setItem(key, String(now));
+  } catch(e) {}
+  console.warn(
+    "Sujet sensible détecté : " + terms.join(", ") +
+    ". Peut relever des RPS/QVCT ou du Catalogue Inclusion Expert Me&YouToo selon le contexte."
+  );
+}
+
+
+function itsCollectBlankCreationFormText() {
+  if (typeof document === "undefined") return "";
+  const fields = Array.from(document.querySelectorAll("input, textarea, select"));
+  const values = [];
+
+  fields.forEach((field) => {
+    const type = String(field.getAttribute("type") || "").toLowerCase();
+    if (type === "password" || type === "hidden" || type === "file") return;
+    if (field.disabled) return;
+
+    const value = String(field.value || "").trim();
+    if (value) values.push(value);
+
+    if (field.tagName && field.tagName.toLowerCase() === "select") {
+      const selected = field.options && field.selectedIndex >= 0 ? field.options[field.selectedIndex] : null;
+      const label = String(selected?.textContent || "").trim();
+      if (label) values.push(label);
+    }
+  });
+
+  return values.join(" \n ");
+}
+
+function itsLooksLikeBlankCreationTrigger(target) {
+  if (!target || typeof target.closest !== "function") return false;
+  const trigger = target.closest("button, a, input[type='submit'], input[type='button']");
+  if (!trigger) return false;
+
+  const label = itsNormalizeForRestrictedTerms(trigger.textContent || trigger.value || trigger.getAttribute("aria-label") || "");
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+  if (label.includes("demarrer la creation") || label.includes("creer depuis une page vierge")) return true;
+  if (page === "questions.html" && label.includes("continuer vers")) return true;
+
+  return false;
+}
+
+function itsHandleRestrictedBlankCreationAttempt(event) {
+  const page = (window.location.pathname.split("/").pop() || "").toLowerCase();
+
+  // Sur la bibliothèque, la modale de création de zéro possède déjà son propre
+  // contrôle bloquant avec message intégré. On laisse index.html gérer le clic,
+  // sinon le garde global intercepte le bouton Continuer et peut bloquer la modale.
+  if (page === "index.html" || page === "" || page === "/") return false;
+
+  const text = itsCollectBlankCreationFormText();
+  const terms = itsFindMeAndYouTooLockedTerms({
+    title: text,
+    subject: text,
+    theme: text,
+    objective: text,
+    description: text,
+    customPrompt: text
+  });
+
+  if (!terms.length) return false;
+
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (typeof event.stopImmediatePropagation === "function") event.stopImmediatePropagation();
+  }
+
+  try {
+    if (typeof itsClearProjectContextOnly === "function") itsClearProjectContextOnly();
+    else itsClearCurrentProjectId();
+    sessionStorage.removeItem("its_start_blank_setup");
+    sessionStorage.removeItem("its_blank_initial_topic");
+  } catch(e) {}
+
+  itsAlertMeAndYouTooRestriction(terms);
+
+  if (page === "questions.html") {
+    try {
+      sessionStorage.setItem("its_meandyoutoo_blocked_terms", JSON.stringify(terms || []));
+      sessionStorage.setItem("its_meandyoutoo_blocked_return", "1");
+    } catch(e) {}
+
+    // On laisse le temps de lire le message avant de revenir sur la bibliothèque.
+    setTimeout(() => {
+      try { window.location.replace("index.html?startBlank=1&blocked=1"); } catch(e) {}
+    }, 6500);
+  }
+
+  return true;
+}
+
+function itsInstallBlankCreationRestrictionGuard() {
+  if (typeof document === "undefined" || document.__itsBlankCreationRestrictionGuardInstalled) return;
+  document.__itsBlankCreationRestrictionGuardInstalled = true;
+
+  document.addEventListener("click", function(event) {
+    if (!itsLooksLikeBlankCreationTrigger(event.target)) return;
+    itsHandleRestrictedBlankCreationAttempt(event);
+  }, true);
+
+  document.addEventListener("submit", function(event) {
+    itsHandleRestrictedBlankCreationAttempt(event);
+  }, true);
+}
+
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", itsInstallBlankCreationRestrictionGuard);
+  } else {
+    itsInstallBlankCreationRestrictionGuard();
+  }
+}
+
 function itsCompactStateForLocalStorage(value) {
   if (!value || typeof value !== "object") return value || {};
   const cloned = JSON.parse(JSON.stringify(value));
@@ -582,6 +841,14 @@ async function itsSyncProjectToApi(state) {
   const token = itsGetToken();
   if (!token || !state || typeof state !== "object") return;
 
+  const lockedTerms = itsFindMeAndYouTooLockedTerms(state);
+  if (lockedTerms.length) {
+    itsAlertMeAndYouTooRestriction(lockedTerms);
+    return;
+  }
+
+  itsWarnMeAndYouTooSoftTermsOnce(itsFindMeAndYouTooSoftTerms(state));
+
   const projectId = state.currentAdId || state.project_id || state.projectId || itsGetCurrentProjectId();
   state = itsAttachOrganizationContext(state, projectId);
   const organizationId = itsCleanOrganizationId(state.organizationId || state.organization_id || state.orgId || state.org_id || "");
@@ -619,6 +886,10 @@ async function itsSyncProjectToApi(state) {
     if (!res.ok) {
       let errorPayload = {};
       try { errorPayload = await res.json(); } catch(e) {}
+
+      if (errorPayload?.code === "MEANDYOUTOO_RESTRICTED_TOPIC") {
+        itsAlertMeAndYouTooRestriction(errorPayload?.terms || []);
+      }
 
       if (res.status === 404 && errorPayload?.code === "PROJECT_NOT_FOUND_NO_RECREATE") {
         const staleProjectId = String(projectId || "");
