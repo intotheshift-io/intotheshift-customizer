@@ -292,6 +292,26 @@ h2{font-size:26px}
 <body>
 <div id="header"></div>
 <script src="../../header.js"></script>
+<script>
+(function(){
+  function setHeaderImageDimensions(img){
+    if(!img.hasAttribute("width")) img.setAttribute("width","260");
+    if(!img.hasAttribute("height")) img.setAttribute("height","60");
+    if(!img.hasAttribute("decoding")) img.setAttribute("decoding","async");
+  }
+
+  function scanHeaderImages(){
+    document.querySelectorAll("#header img").forEach(setHeaderImageDimensions);
+  }
+
+  scanHeaderImages();
+
+  const header = document.getElementById("header");
+  if(header){
+    new MutationObserver(scanHeaderImages).observe(header,{childList:true,subtree:true});
+  }
+})();
+</script>
 <script defer="" src="../../assets/js/resource-tags.js"></script>
 <script src="../../app.js"></script>
 <main class="page">
@@ -439,6 +459,19 @@ Aborder la coactivité, les écarts de procédure, le PGCSPS ou les arbitrages s
 Questionnement permanent, défense des barrières de sûreté et culture du retour d’expérience.
 </p>
 </div>
+</div>
+</section>
+
+<section class="section" id="ressources-associees" style="margin-top:46px">
+<div class="section-head">
+<div><div class="eyebrow">Maillage interne</div><h2>Ressources associées à explorer</h2></div>
+<p class="section-text">Ces contenus complètent le guide et renforcent le parcours de lecture par thématique.</p>
+</div>
+<div class="panel" style="background:#fff;border:1px solid #d8e0ea;border-radius:24px;padding:24px">
+<ul>
+<li><a href="comportements-securite.html">Comportements de sécurité au travail</a></li>
+<li><a href="quart-dheure-securite.html">Quart d’heure sécurité</a></li>
+</ul>
 </div>
 </section>
 <section class="cta">

@@ -16,6 +16,26 @@
 <body style="background:#f4f8fb;color:#18375d;margin:0">
 <div id="header"></div>
 <script src="../../header.js"></script>
+<script>
+(function(){
+  function setHeaderImageDimensions(img){
+    if(!img.hasAttribute("width")) img.setAttribute("width","260");
+    if(!img.hasAttribute("height")) img.setAttribute("height","60");
+    if(!img.hasAttribute("decoding")) img.setAttribute("decoding","async");
+  }
+
+  function scanHeaderImages(){
+    document.querySelectorAll("#header img").forEach(setHeaderImageDimensions);
+  }
+
+  scanHeaderImages();
+
+  const header = document.getElementById("header");
+  if(header){
+    new MutationObserver(scanHeaderImages).observe(header,{childList:true,subtree:true});
+  }
+})();
+</script>
 <script defer="" src="../../assets/js/resource-tags.js"></script>
 <script src="../../app.js"></script>
 <div style="max-width:1100px;margin:auto;padding:40px 20px 80px">
@@ -137,6 +157,23 @@ Votre équipe estime qu’une règle de compliance n’est jamais appliquée dan
 <strong>Intégrité collective</strong>
 <p style="color:#5f6f82;line-height:1.6">Écart entre les règles affichées et les comportements réellement observés.</p>
 </div>
+</div>
+</section>
+
+<section class="section" id="ressources-associees" style="margin-top:46px">
+<div class="section-head">
+<div><div class="eyebrow">Maillage interne</div><h2>Ressources associées à explorer</h2></div>
+<p class="section-text">Ces contenus complètent le guide et renforcent le parcours de lecture par thématique.</p>
+</div>
+<div class="panel" style="background:#fff;border:1px solid #d8e0ea;border-radius:24px;padding:24px">
+<ul>
+<li><a href="alerte-ethique-entreprise.html">Alerte éthique en entreprise</a></li>
+<li><a href="charte-ethique-entreprise.html">Charte éthique en entreprise</a></li>
+<li><a href="gouvernance-ethique-compliance.html">Gouvernance éthique et compliance</a></li>
+<li><a href="prevention-corruption-entreprise.html">Prévention de la corruption</a></li>
+<li><a href="rgpd-comportements-protection-donnees.html">RGPD et comportements</a></li>
+<li><a href="tiers-fournisseurs-compliance.html">Tiers et fournisseurs</a></li>
+</ul>
 </div>
 </section>
 <section style="margin-top:54px;background:linear-gradient(135deg,#18375d,#0f4c81);padding:30px;border-radius:26px;color:white;display:flex;justify-content:space-between;gap:20px;align-items:center">
