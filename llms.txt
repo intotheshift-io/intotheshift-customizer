@@ -85,7 +85,7 @@ Les répondants passent les diagnostics sans compte, sans login, sans mot de pas
 - [Comment developper une culture cybersecurite en entreprise](https://shiftstudio.intotheshift.io/resources/cyber/comment-developper-une-culture-cybersecurite-en-entreprise.html)
 - [Comment mesurer la culture cybersecurite](https://shiftstudio.intotheshift.io/resources/cyber/comment-mesurer-la-culture-cybersecurite.html)
 - [Comment savoir si une campagne de sensibilisation cybersecurite fonctionne](https://shiftstudio.intotheshift.io/resources/cyber/comment-savoir-si-une-campagne-de-sensibilisation-cybersecurite-fonctionne.html)
-- [Comment sensibiliser les collaborateurs a la cybersecurite](https://shiftstudio.intotheshift.io/resources/cyber/comment-sensibiliser-les-collaborateurs-a-la-cybersecurite.html)
+- [Sensibilisation cybersecurite en entreprise](https://shiftstudio.intotheshift.io/resources/cyber/comment-sensibiliser-les-collaborateurs-a-la-cybersecurite.html)
 - [Comportements cyber a risque](https://shiftstudio.intotheshift.io/resources/cyber/comportements-cyber-a-risque.html)
 - [Formation cybersecurite](https://shiftstudio.intotheshift.io/resources/cyber/formation-cybersecurite.html)
 - [Fraude au dirigeant et demandes urgentes](https://shiftstudio.intotheshift.io/resources/cyber/fraude-au-dirigeant-et-demandes-urgentes.html)
