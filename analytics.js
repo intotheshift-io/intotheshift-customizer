@@ -1,7 +1,10 @@
-// Google Analytics 4 + Google Tag - Into The Shift
+// Google Tag + Google Analytics 4 - Into The Shift
 (function () {
   if (window.__ITS_GOOGLE_TAG_LOADED__) return;
   window.__ITS_GOOGLE_TAG_LOADED__ = true;
+
+  // Garde-fou : ne pas envoyer de données Google depuis le staging.
+  if (window.location.hostname.includes("staging.")) return;
 
   const googleTagId = "GT-PLW5S2GX";
   const gaMeasurementId = "G-JC95LF9TF0";
