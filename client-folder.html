@@ -195,7 +195,6 @@
     @media(max-width:900px){.id-debug-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:620px){.id-debug-grid{grid-template-columns:1fr}}
   </style>
-  <script src="/analytics.js"></script>
 </head>
 
 <body>
@@ -770,7 +769,7 @@ function renderProjectTitleDetails(project){
     function inferThemeFromProject(project){
       const text = normalizeTextForTheme(JSON.stringify(getProjectData(project) || {}) + " " + getProjectTitle(project));
       if(text.includes("cyber") || text.includes("phishing") || text.includes("fraude numerique")) return "Cybersécurité";
-      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVT & RPS";
+      if(text.includes("qvt") || text.includes("rps") || text.includes("risques psychosociaux") || text.includes("signaux faibles")) return "QVCT & RPS";
       if(text.includes("btp") || text.includes("accident") || text.includes("surete") || text.includes("securite")) return "Sécurité & sûreté au travail";
       if(text.includes("management") || text.includes("manager") || text.includes("transformation")) return "Transformation & management";
       if(text.includes("rse") || text.includes("environnement") || text.includes("sobriete")) return "RSE";
@@ -2619,5 +2618,6 @@ function renderProjectTitleDetails(project){
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
   </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>
