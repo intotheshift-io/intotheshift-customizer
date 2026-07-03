@@ -15,6 +15,32 @@
     "kit-communication.html"
   ]);
 
+
+  // Google Analytics / Google tag - Into The Shift
+  function loadGoogleTag() {
+    if (window.__ITS_GOOGLE_TAG_LOADED__) return;
+    window.__ITS_GOOGLE_TAG_LOADED__ = true;
+
+    const gaMeasurementId = "G-JC95LF9TF0";
+    const googleTagId = "GT-PLW5S2GX";
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaMeasurementId);
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () {
+      window.dataLayer.push(arguments);
+    };
+
+    window.gtag("js", new Date());
+    window.gtag("config", gaMeasurementId);
+    window.gtag("config", googleTagId);
+  }
+
+  loadGoogleTag();
+
   if (hiddenPages.has(currentPage)) return;
 
   function renderFooter() {
