@@ -540,7 +540,6 @@ button.account-chip{font-family:'Asap',sans-serif;border:1px solid #e2ebf2;text-
 html{max-width:100%;overflow-x:clip}body{max-width:100%;overflow-x:clip}#header{position:sticky!important;top:0!important;z-index:9999!important}.admin-page{width:100%;overflow:visible}.table-wrap{max-width:100%;overflow-x:auto}
 @media(max-width:620px){.partner-card-grid{grid-template-columns:1fr}.admin-form{grid-template-columns:1fr}.form-actions{grid-column:1}.admin-page{padding:14px}.admin-grid{grid-template-columns:1fr}.admin-hero{padding:22px;border-radius:22px}.admin-hero h1{font-size:26px}.section-head{flex-direction:column;align-items:flex-start}.admin-input,.admin-select{width:100%;min-width:0}}
 </style>
-  <script src="/analytics.js"></script>
 </head>
 
 <body>
@@ -2488,6 +2487,11 @@ async function saveProjectPublication(projectId){
     return;
   }
 
+  const previousProject = adminState.projects.find(p => String(val(p,["id"],"")) === String(projectId));
+  const previousStatus = previousProject ? getProjectEffectiveStatus(previousProject) : "";
+  const previousStartDate = previousProject ? getCampaignStartDate(previousProject) : "";
+  const previousEndDate = previousProject ? getCampaignEndDate(previousProject) : "";
+
   const oldBtnText=saveBtn?.textContent || "Enregistrer";
   if(saveBtn){
     saveBtn.disabled=true;
@@ -2511,6 +2515,29 @@ async function saveProjectPublication(projectId){
       campaign_start_date: campaignStartDate || "",
       campaign_end_date: campaignEndDate || ""
     }:p);
+    if (window.ITSAnalytics) {
+      const analyticsPayload = {
+        project_id: projectId,
+        project_status: status,
+        share_url_added: Boolean(shareUrl),
+        results_url_added: Boolean(resultsUrl),
+        campaign_start_date: campaignStartDate || '',
+        campaign_end_date: campaignEndDate || '',
+        first_publish: previousStatus !== 'published'
+      };
+      if (status === 'published' && typeof window.ITSAnalytics.publishAutodiagnostic === 'function') {
+        window.ITSAnalytics.publishAutodiagnostic(analyticsPayload);
+      }
+      if (previousStatus === 'published' && status === 'published') {
+        if (campaignStartDate && campaignStartDate !== previousStartDate && typeof window.ITSAnalytics.reprogramCampaign === 'function') {
+          window.ITSAnalytics.reprogramCampaign(analyticsPayload);
+        }
+        if (campaignEndDate && campaignEndDate !== previousEndDate && typeof window.ITSAnalytics.extendCampaign === 'function') {
+          window.ITSAnalytics.extendCampaign(analyticsPayload);
+        }
+      }
+    }
+
     renderKpis();
     renderProjects();
     const emailInfo = result?.publicationEmail;
@@ -3003,5 +3030,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
   </div>
 </div>
+  <script src="/analytics.js"></script>
 </body>
 </html>

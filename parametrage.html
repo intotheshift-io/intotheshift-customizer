@@ -223,7 +223,6 @@ select option[value="current_pack"]{
 @media(max-width:760px){.anonymity-dosdonts{grid-template-columns:1fr}}
 
 </style>
-  <script src="/analytics.js"></script>
 </head>
 <body>
 <div id="header"></div>
@@ -1889,6 +1888,14 @@ async function goNext(){
   // On ne bloque plus la navigation sur la réponse du backend.
   // Si l'API est lente ou indisponible, le client avance quand même avec la sauvegarde locale.
   const navigationTimer = setTimeout(() => {
+    if (window.ITSAnalytics && typeof window.ITSAnalytics.parametrageCompleted === 'function') {
+      window.ITSAnalytics.parametrageCompleted({
+        project_id: targetId || state.projectId || state.project_id || state.currentAdId || '',
+        pack: state.parametrage?.pack_choisi || '',
+        company: state.parametrage?.entreprise || ''
+      });
+    }
+
     window.location.href = fallbackUrl;
   }, 350);
 
@@ -1900,6 +1907,14 @@ async function goNext(){
   }
 
   clearTimeout(navigationTimer);
+  if (window.ITSAnalytics && typeof window.ITSAnalytics.parametrageCompleted === 'function') {
+    window.ITSAnalytics.parametrageCompleted({
+      project_id: targetId || state.projectId || state.project_id || state.currentAdId || '',
+      pack: state.parametrage?.pack_choisi || '',
+      company: state.parametrage?.entreprise || ''
+    });
+  }
+
   window.location.href = targetId ? 'campagne.html?projectId=' + encodeURIComponent(targetId) : 'campagne.html';
 }
 async function bootParametragePage(){
@@ -1942,6 +1957,7 @@ async function bootParametragePage(){
 
 bootParametragePage();
 </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>
 

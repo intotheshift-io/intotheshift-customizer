@@ -690,7 +690,6 @@ body.its-content-only-view .cni-tab.disabled{pointer-events:none!important;curso
 .edit-hint{color:#64748b!important;opacity:1!important}
 
 </style>
-  <script src="/analytics.js"></script>
 </head>
 
 <body>
@@ -1657,6 +1656,14 @@ function goBackToProfilesFromReminder(){
 
 function continueAfterProfilesReminder(){
   closeProfilesReminderModal();
+  if (window.ITSAnalytics && typeof window.ITSAnalytics.questionsCompleted === 'function') {
+    window.ITSAnalytics.questionsCompleted({
+      project_id: state.projectId || state.project_id || state.currentAdId || requestedProjectId || '',
+      chapter_count: Array.isArray(chapters) ? chapters.length : undefined,
+      question_count: Array.isArray(chapters) ? chapters.reduce((sum, chapter) => sum + ((chapter.questions || []).length), 0) : undefined
+    });
+  }
+
   if(pendingParametrageUrl) window.location.href = pendingParametrageUrl;
 }
 
@@ -3177,6 +3184,14 @@ function trySave() {
     openProfilesReminderModal(nextUrl);
     return;
   }
+  if (window.ITSAnalytics && typeof window.ITSAnalytics.questionsCompleted === 'function') {
+    window.ITSAnalytics.questionsCompleted({
+      project_id: projectId || state.projectId || state.project_id || state.currentAdId || '',
+      chapter_count: Array.isArray(chapters) ? chapters.length : undefined,
+      question_count: Array.isArray(chapters) ? chapters.reduce((sum, chapter) => sum + ((chapter.questions || []).length), 0) : undefined
+    });
+  }
+
   window.location.href = nextUrl;
 }
 
@@ -3258,6 +3273,7 @@ if(typeof itsApplyReadOnlyMode === 'function' && !isContentOnlyView){
   setTimeout(() => { restoreAdminQuestionNavigation(); restorePanelCloseNavigation(); }, 250);
 }
 </script>
+  <script src="/analytics.js"></script>
 </body>
 </html>
 

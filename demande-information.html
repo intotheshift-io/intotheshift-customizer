@@ -19,7 +19,6 @@ h1{font-size:34px;line-height:1.12;color:#18375d;margin-bottom:10px}
 .back-link:hover{text-decoration:underline}
 @media(max-width:620px){.info-wrap{padding:22px 14px 52px}.info-card{padding:24px;border-radius:22px}h1{font-size:28px}.info-form{padding:16px}}
 </style>
-  <script src="/analytics.js"></script>
 </head>
 <body>
 <div id="header"></div>
@@ -39,11 +38,20 @@ h1{font-size:34px;line-height:1.12;color:#18375d;margin-bottom:10px}
         hbspt.forms.create({
           portalId: "139575435",
           formId: "3ed49d01-9f25-43fd-bd02-b9480176f396",
-          region: "eu1"
+          region: "eu1",
+          onFormSubmitted: function () {
+            if (window.ITSAnalytics && typeof window.ITSAnalytics.informationRequest === "function") {
+              window.ITSAnalytics.informationRequest({
+                form_id: "3ed49d01-9f25-43fd-bd02-b9480176f396",
+                form_name: "demande_information"
+              });
+            }
+          }
         });
       </script>
     </div>
   </section>
 </main>
+  <script src="/analytics.js"></script>
 </body>
 </html>
