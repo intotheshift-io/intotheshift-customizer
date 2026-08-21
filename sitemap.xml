@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shiftstudio.intotheshift.io/home.html</loc>
@@ -351,10 +351,4 @@
   <url>
     <loc>https://shiftstudio.intotheshift.io/resources/webinaires/mesurez-impact-formations-webinaire.html</loc>
   </url>
-  <url>
-    <loc>https://shiftstudio.intotheshift.io/resources/webinaires/merci-pour-votre-presence.html</loc>
-  </url>
-  <url>
-    <loc>https://shiftstudio.intotheshift.io/resources/webinaires/merci-davoir-signale-votre-absence.html</loc>
-  </url>
-</urlset>
+  </urlset>
