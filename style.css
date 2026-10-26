@@ -2607,3 +2607,9 @@ body.home-body .help-option-tool .btn-secondary{
   body.home-body .help-option-card{padding:22px;border-radius:22px;min-height:auto}
   body.home-body .help-option-card h3{font-size:21px}
 }
+
+/* Tableaux réponses / scores (articles méthodologie) */
+.article-data-table.article-answers th:last-child,.article-data-table.article-answers td:last-child{width:84px;text-align:center;font-weight:800;color:#18375d;white-space:nowrap}
+.article-data-table.article-answers td:first-child{font-weight:400;color:#526274;background:transparent;width:auto}
+.article-data-table.article-answers tr.is-best td{background:#f0f8f7}
+.article-data-table.article-answers tr.is-best td:last-child{color:#007883}
